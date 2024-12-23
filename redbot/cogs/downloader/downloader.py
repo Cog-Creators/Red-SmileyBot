@@ -936,7 +936,11 @@ class Downloader(commands.Cog):
         await self.send_pagified(ctx, f"{message}{deprecation_notice}\n---")
         for cog in installed_cogs:
             if cog.install_msg:
-                await ctx.send(cog.install_msg.replace("[p]", ctx.clean_prefix))
+                await ctx.send(
+                    cog.install_msg.replace("[p]", ctx.clean_prefix).replace(
+                        "[botname]", ctx.me.display_name
+                    )
+                )
 
     @cog.command(name="uninstall", require_var_positional=True)
     async def _cog_uninstall(self, ctx: commands.Context, *cogs: InstalledCog) -> None:
