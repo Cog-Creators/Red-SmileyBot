@@ -347,9 +347,15 @@ class ModSettings(MixinMeta):
                 )
             )
 
-    @modset.command()
+    @modset.group()
     @commands.guild_only()
-    async def dm(self, ctx: commands.Context, enabled: bool = None):
+    async def dm(self, ctx: commands.Context):
+        """Command to manage DMing users."""
+        pass
+
+    @dm.command()
+    @commands.guild_only()
+    async def toggle(self, ctx: commands.Context, enabled: bool = None):
         """Toggle whether a message should be sent to a user when they are kicked/banned.
 
         If this option is enabled, the bot will attempt to DM the user with the guild name
@@ -369,6 +375,26 @@ class ModSettings(MixinMeta):
             await ctx.send(
                 _("Bot will no longer attempt to send a DM to user before kick and ban.")
             )
+
+    @dm.command()
+    @commands.guild_only()
+    async def message(self, ctx: commands.Context, *, message: str = None):
+        """Set the message to be sent to a user when they are kicked/banned.
+
+        If this option is set, the bot will attempt to DM the user the custom provided message.
+        Set to "None" to reset to the default message.
+        """
+        guild = ctx.guild
+        if message in [None, "None"]:
+            await self.config.guild(guild).msg_on_kickban.set(None)
+            await ctx.send(
+                _("DM message when kicked/banned has been reset to default.").format(
+                    message=message
+                )
+            )
+            return
+        await self.config.guild(guild).msg_on_kickban.set(message)
+        await ctx.send(_("DM message when kicked/banned has been updated."))
 
     @modset.command()
     @commands.guild_only()

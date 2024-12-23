@@ -140,9 +140,13 @@ class KickBanMixin(MixinMeta):
 
             toggle = await self.config.guild(guild).dm_on_kickban()
             if toggle:
+                if await self.config.guild(guild).msg_on_kickban() is not None:
+                    title = (await self.config.guild(guild).msg_on_kickban(),)
+                else:
+                    title = (bold(_("You have been banned from {guild}.").format(guild=guild)),)
                 with contextlib.suppress(discord.HTTPException):
                     em = discord.Embed(
-                        title=bold(_("You have been banned from {guild}.").format(guild=guild)),
+                        title=str(title[0]),
                         color=await self.bot.get_embed_color(user),
                     )
                     em.add_field(
