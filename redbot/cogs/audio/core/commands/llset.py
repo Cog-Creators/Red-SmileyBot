@@ -124,7 +124,7 @@ class LavalinkSetupCommands(MixinMeta, metaclass=CompositeMetaClass):
                 if meta[1]:
                     await ctx.send(
                         _(
-                            "Heap-size must be less than your system RAM, "
+                            "Heap-size must be less than your system RAM. "
                             "You currently have {ram_in_bytes} of RAM available."
                         ).format(ram_in_bytes=inline(sizeof_fmt(meta[0])))
                     )
@@ -250,7 +250,7 @@ class LavalinkSetupCommands(MixinMeta, metaclass=CompositeMetaClass):
             return await self.send_embed_msg(
                 ctx,
                 title=_("Setting Not Changed"),
-                description=_("A port must be between 0 and 65535 "),
+                description=_("A port must be between 0 and 65535."),
             )
         await self.config.ws_port.set(port)
         await self.send_embed_msg(
@@ -295,11 +295,14 @@ class LavalinkSetupCommands(MixinMeta, metaclass=CompositeMetaClass):
                 title=_("Setting Changed"),
                 description=_(
                     "Unmanaged Lavalink node will no longer connect using the secured "
-                    "{secured_protocol} protocol and wil use {unsecured_protocol} instead .\n\n"
+                    "{secured_protocol} protocol and will use {unsecured_protocol} instead.\n\n"
                     "Run `{p}{cmd}` for it to take effect."
-                ).format(p=ctx.prefix, cmd=self.command_audioset_restart.qualified_name),
-                unsecured_protocol=inline("ws://"),
-                secured_protocol=inline("wss://"),
+                ).format(
+                    p=ctx.prefix,
+                    cmd=self.command_audioset_restart.qualified_name,
+                    unsecured_protocol=inline("ws://"),
+                    secured_protocol=inline("wss://"),
+                ),
             )
 
     @command_llset.command(name="info", aliases=["settings"])

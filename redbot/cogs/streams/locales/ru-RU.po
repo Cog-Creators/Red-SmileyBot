@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-05-01 22:55+0000\n"
+"POT-Creation-Date: 2024-04-04 07:32+0000\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -86,7 +86,7 @@ msgstr "Что-то пошло не так при попытке связать�
 
 #: redbot/cogs/streams/streams.py:301 redbot/cogs/streams/streams.py:810
 msgid "Watch the stream"
-msgstr ""
+msgstr "Смотреть стрим"
 
 #: redbot/cogs/streams/streams.py:310
 #, docstring
@@ -363,45 +363,45 @@ msgstr "{mention}, {display_name} в эфире!"
 msgid "{display_name} is live!"
 msgstr "{display_name} в прямом эфире!"
 
-#: redbot/cogs/streams/streamtypes.py:226
-msgid "This stream will start in {time}"
-msgstr "Трансляция начнется через {time}"
+#: redbot/cogs/streams/streamtypes.py:227
+msgid "This stream will start <t:{time}:R>"
+msgstr ""
 
-#: redbot/cogs/streams/streamtypes.py:232
-msgid "This stream was scheduled for {min} minutes ago"
-msgstr "Эта трансляция была запланирована на {min} минут назад"
+#: redbot/cogs/streams/streamtypes.py:231
+msgid "This stream was scheduled for <t:{time}:R>"
+msgstr ""
 
-#: redbot/cogs/streams/streamtypes.py:445
+#: redbot/cogs/streams/streamtypes.py:446
 msgid "Untitled broadcast"
 msgstr "Трансляция без названия"
 
-#: redbot/cogs/streams/streamtypes.py:447
+#: redbot/cogs/streams/streamtypes.py:448
 msgid " - Rerun"
 msgstr " - Повторный запуск"
 
-#: redbot/cogs/streams/streamtypes.py:450
-#: redbot/cogs/streams/streamtypes.py:498
+#: redbot/cogs/streams/streamtypes.py:451
+#: redbot/cogs/streams/streamtypes.py:497
 msgid "Followers"
 msgstr "Подписчики"
 
-#: redbot/cogs/streams/streamtypes.py:451
-#: redbot/cogs/streams/streamtypes.py:499
+#: redbot/cogs/streams/streamtypes.py:452
+#: redbot/cogs/streams/streamtypes.py:498
 msgid "Total views"
 msgstr "Всего просмотров"
 
-#: redbot/cogs/streams/streamtypes.py:456
+#: redbot/cogs/streams/streamtypes.py:457
 msgid "Playing: "
 msgstr "Воспроизводится: "
 
-#: redbot/cogs/streams/streamtypes.py:504
+#: redbot/cogs/streams/streamtypes.py:503
 msgid "None"
 msgstr "Отсутствует"
 
-#: redbot/cogs/streams/streamtypes.py:507
+#: redbot/cogs/streams/streamtypes.py:506
 msgid "NSFW | "
 msgstr "NSFW | "
 
-#: redbot/cogs/streams/streamtypes.py:511
+#: redbot/cogs/streams/streamtypes.py:510
 msgid "{adult}Category: {category} | Tags: {tags}"
 msgstr "{adult}Категория: {category} | Теги: {tags}"
 

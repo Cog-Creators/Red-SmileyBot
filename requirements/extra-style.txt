@@ -1,8 +1,8 @@
-black==23.9.1
+black==23.12.1
     # via -r extra-style.in
 mypy-extensions==1.0.0
     # via black
-pathspec==0.11.2
+pathspec==0.12.1
     # via black
 tomli==2.0.1
     # via black

@@ -22,54 +22,55 @@ msgid "Create user reports that server staff can respond to.\n\n"
 "    to a channel in the server for staff, and the report creator\n"
 "    gets a DM. Both can be used to communicate.\n"
 "    "
-msgstr ""
+msgstr "Crie relatórios de usuário aos quais a equipe do servidor pode responder.\n\n"
+"Os usuários podem abrir relatórios usando [p]report. Esses relatórios são enviados para um canal no servidor destinado à equipe, e o criador do relatório recebe uma mensagem direta. Ambos podem ser usados para comunicação.    "
 
 #: redbot/cogs/reports/reports.py:104
 #, docstring
 msgid "Manage Reports."
-msgstr ""
+msgstr "Gerir Reports."
 
 #: redbot/cogs/reports/reports.py:114
 #, docstring
 msgid "Set the channel where reports will be sent."
-msgstr ""
+msgstr "Definir o canal onde os reports serão enviados."
 
 #: redbot/cogs/reports/reports.py:116
 msgid "The report channel has been set."
-msgstr ""
+msgstr "O canal de reports foi definido."
 
 #: redbot/cogs/reports/reports.py:121
 #, docstring
 msgid "Enable or disable reporting for this server."
-msgstr ""
+msgstr "Ative ou desative os reports para este servidor."
 
 #: redbot/cogs/reports/reports.py:126
 msgid "Reporting is now enabled"
-msgstr ""
+msgstr "Os reports estão habilitados"
 
 #: redbot/cogs/reports/reports.py:128
 msgid "Reporting is now disabled."
-msgstr ""
+msgstr "Os reports estão desativados."
 
 #: redbot/cogs/reports/reports.py:187
 msgid "You took too long to select. Try again later."
-msgstr ""
+msgstr "Demoraste muito a selecionar. Tenta novamente mais tarde."
 
 #: redbot/cogs/reports/reports.py:194
 msgid "That wasn't a valid choice."
-msgstr ""
+msgstr "Essa não era uma escolha válida."
 
 #: redbot/cogs/reports/reports.py:216
 msgid "Report from {author}{maybe_nick}"
-msgstr ""
+msgstr "Report de {author}{maybe_nick}"
 
 #: redbot/cogs/reports/reports.py:221
 msgid "Report #{}"
-msgstr ""
+msgstr "Report #{}"
 
 #: redbot/cogs/reports/reports.py:225
 msgid "Report from {author.mention} (Ticket #{number})"
-msgstr ""
+msgstr "Report de {author.mention} (Ticket #{number})"
 
 #: redbot/cogs/reports/reports.py:244
 #, docstring
@@ -77,60 +78,64 @@ msgid "Send a report.\n\n"
 "        Use without arguments for interactive reporting, or do\n"
 "        `[p]report [text]` to use it non-interactively.\n"
 "        "
-msgstr ""
+msgstr "Envie um report.\n\n"
+"        Não use argumentos para report interativos, ou faça\n"
+"        `[p]relatório [text]` para usá-lo não-interativamente.\n"
+"        "
 
 #: redbot/cogs/reports/reports.py:253
 msgid "Select a server to make a report in by number."
-msgstr ""
+msgstr "Selecione um servidor para reportar por número."
 
 #: redbot/cogs/reports/reports.py:259
 msgid "Reporting has not been enabled for this server"
-msgstr ""
+msgstr "Os reports não foram habilitados para este servidor"
 
 #: redbot/cogs/reports/reports.py:266
 msgid "You've sent too many reports recently. Please contact a server admin if this is important matter, or please wait and try again later."
-msgstr ""
+msgstr "Enviaste muitos reports recentemente. Entra em contacto com um administrador do servidor se este é um assunto importante, ou por favor aguarde e tente novamente mais tarde."
 
 #: redbot/cogs/reports/reports.py:274
 msgid "Please finish making your prior report before trying to make an additional one!"
-msgstr ""
+msgstr "Termina de fazer o teu report anterior antes de tentar fazer um adicional!"
 
 #: redbot/cogs/reports/reports.py:289
 msgid "Please respond to this message with your Report.\n"
 "Your report should be a single message"
-msgstr ""
+msgstr "Por favor, responde a esta mensagem com o teu report.\n"
+"O report deve ser uma única mensagem"
 
 #: redbot/cogs/reports/reports.py:295
 msgid "This requires DMs enabled."
-msgstr ""
+msgstr "Isto requer que mensagens diretas sejam ativadas."
 
 #: redbot/cogs/reports/reports.py:304
 msgid "You took too long. Try again later."
-msgstr ""
+msgstr "Demoraste muito. Tenta novamente mais tarde."
 
 #: redbot/cogs/reports/reports.py:312
 msgid "This server has no reports channel set up. Please contact a server admin."
-msgstr ""
+msgstr "Este servidor não possui nenhum canal de relatórios configurado. Por favor, contacte um administrador do servidor."
 
 #: redbot/cogs/reports/reports.py:318
 msgid "There was an error sending your report, please contact a server admin."
-msgstr ""
+msgstr "Ocorreu um erro ao enviar o report, entre em contacto com um administrador do servidor."
 
 #: redbot/cogs/reports/reports.py:321
 msgid "Your report was submitted. (Ticket #{})"
-msgstr ""
+msgstr "O teu report foi submetido. (Ticket #{})"
 
 #: redbot/cogs/reports/reports.py:357
 msgid "{closer} has closed the correspondence"
-msgstr ""
+msgstr "{closer} fechou a correspondência"
 
 #: redbot/cogs/reports/reports.py:372
 msgid "Re: ticket# {ticket_number} in {guild.name}"
-msgstr ""
+msgstr "Re: ticket# {ticket_number} em {guild.name}"
 
 #: redbot/cogs/reports/reports.py:385
 msgid "Correspondence about ticket# {ticket_number} in {guild.name} has been ended due to reports being disabled in that server."
-msgstr ""
+msgstr "Correspondência sobre ticket# {ticket_number} no {guild.name} foi encerrada devido a relatórios estarem desativados nesse servidor."
 
 #: redbot/cogs/reports/reports.py:396
 #, docstring
@@ -139,36 +144,41 @@ msgid "Open a message tunnel.\n\n"
 "        to the ticket opener's direct messages.\n\n"
 "        Tunnels do not persist across bot restarts.\n"
 "        "
-msgstr ""
+msgstr "Abra um túnel de mensagens.\n\n"
+"Este túnel irá encaminhar o que disseres neste canal ou tópico para as mensagens diretas do autor do ticket.\n\n"
+"Os túneis não persistem através de reinicializações do bot.        "
 
 #: redbot/cogs/reports/reports.py:410
 msgid "That ticket doesn't seem to exist"
-msgstr ""
+msgstr "Parece que esse ticket não existe"
 
 #: redbot/cogs/reports/reports.py:413
 msgid "That user isn't here anymore."
-msgstr ""
+msgstr "Esse utilizador já não está aqui."
 
 #: redbot/cogs/reports/reports.py:419
 msgid "Either you or the user you are trying to reach already has an open communication."
-msgstr ""
+msgstr "Ou tu ou o usuário que você estás a tentar acessar já possui uma comunicação aberta."
 
 #: redbot/cogs/reports/reports.py:425
 msgid " Anything you say or upload here (8MB file size limitation on uploads) will be forwarded to them until the communication is closed.\n"
 "You can close a communication at any point by reacting with the ❎ to the last message received.\n"
 "Any message successfully forwarded will be marked with ✅.\n"
 "Tunnels are not persistent across bot restarts."
-msgstr ""
+msgstr " Tudo o que disseres ou enviar aqui (com um limite de tamanho de ficheiro de 8MB) será encaminhado para eles até que a comunicação seja fechada.\n"
+"Podes fechar a comunicação a qualquer momento reagindo com ❎ à última mensagem recebida.\n"
+"Qualquer mensagem encaminhada com sucesso será marcada com ✅.\n"
+"Os túneis não persistem através de reinícios do bot."
 
 #: redbot/cogs/reports/reports.py:436
 msgid "A moderator in the server `{guild.name}` has opened a 2-way communication about ticket number {ticket_number}."
-msgstr ""
+msgstr "Um moderador no servidor `{guild.name}` abriu uma comunicação de 2 vias sobre o número de ticket {ticket_number}."
 
 #: redbot/cogs/reports/reports.py:445
 msgid "That user has DMs disabled."
-msgstr ""
+msgstr "Esse utilizador tem mensagens diretas desabilitadas."
 
 #: redbot/cogs/reports/reports.py:449
 msgid "You have opened a 2-way communication about ticket number {ticket_number}."
-msgstr ""
+msgstr "Abriste uma comunicação de duas vias sobre o ticket {ticket_number}."
 

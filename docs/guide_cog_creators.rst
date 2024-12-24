@@ -41,17 +41,16 @@ Any Cog Creator that does not follow these requirements will have their repo rem
 - Repo-wide ``info.json`` file with the keys
 
   - ``author``
-  - ``name``
   - ``short``
   - ``description``
 
 - Cog ``info.json`` files with the keys
 
   - ``author``
-  - ``name``
   - ``short``
   - ``requirements`` (if applicable)
   - ``description``
+  - ``min_python_version`` (if applicable)
 
   See `info-json-format` for more information on how to set up ``info.json`` files.
 

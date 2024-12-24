@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-05-02 23:06+0000\n"
+"POT-Creation-Date: 2023-06-14 02:57+0000\n"
 "Last-Translator: \n"
 "Language-Team: Vietnamese\n"
 "MIME-Version: 1.0\n"
@@ -17,19 +17,19 @@ msgstr ""
 
 #: redbot/cogs/admin/admin.py:20
 msgid "I attempted to do something that Discord denied me permissions for. Your command failed to successfully complete."
-msgstr "Lệnh của bạn không được thực hiện thành công vì discord đã từ chối quyền của tôi."
+msgstr "Tôi không thể thực hiện do Discord không cấp quyền tương ứng. Lệnh của bạn không thể thực hiện."
 
 #: redbot/cogs/admin/admin.py:25
 msgid "I can not give {role.name} to {member.display_name} because that role is higher than or equal to my highest role in the Discord hierarchy."
-msgstr "Không thể đưa {role.name} cho {member.display_name} vì role đó có quyền cao hơn hoặc bằng role cao nhất của tôi trong Discord."
+msgstr "Tôi không thể cấp {role.name} cho {member.display_name} vì vai trò có quyền cao hơn hoặc ngang vai trò cao nhất của tôi trong Discord."
 
 #: redbot/cogs/admin/admin.py:31
 msgid "I can not remove {role.name} from {member.display_name} because that role is higher than or equal to my highest role in the Discord hierarchy."
-msgstr "Không thể xoá {role.name} cho {member.display_name} vì role đó có quyền cao hơn hoặc bằng role cao nhất của tôi trong Discord."
+msgstr "Không thể xoá {role.name} cho {member.display_name} vì vai trò có quyền cao hơn hoặc ngang vai trò cao nhất của tôi trong Discord."
 
 #: redbot/cogs/admin/admin.py:37
 msgid "I can not edit {role.name} because that role is higher than my or equal to highest role in the Discord hierarchy."
-msgstr "Không thể chỉnh sửa {role.name} vì role đó có quyền cao hơn hoặc bằng role cao nhất của tôi trong Discord."
+msgstr "Tôi không thể chỉnh sửa {role.name} vì vai trò có quyền cao hơn hoặc ngang vai trò cao nhất của tôi trong Discord."
 
 #: redbot/cogs/admin/admin.py:43
 msgid "I can not let you give {role.name} to {member.display_name} because that role is higher than or equal to your highest role in the Discord hierarchy."
@@ -45,16 +45,16 @@ msgstr "Tôi không thể cho phép bạn bạn chỉnh sửa role {role.name} b
 
 #: redbot/cogs/admin/admin.py:61
 msgid "I need the \"Manage Roles\" permission to do that."
-msgstr "Tôi cần quyền \"Manage Roles\" để làm việc đó."
+msgstr "Tôi cần quyền \"Quản lý vai trò\" để thực hiện."
 
 #: redbot/cogs/admin/admin.py:63
 msgid "I am already announcing something. If you would like to make a different announcement please use `{prefix}announce cancel` first."
-msgstr "Tôi đang thông báo lúc này. Nếu bạn muốn làm một thông báo khác hãy sử dụng lệnh `{prefix}announce cancel` trước."
+msgstr "Tôi đang thực hiện thông báo. Nếu bạn muốn làm một thông báo khác hãy sử dụng lệnh `{prefix}announce cancel` trước."
 
 #: redbot/cogs/admin/admin.py:73
 #, docstring
 msgid "A collection of server administration utilities."
-msgstr "Một tập hợp các dụng cụ cho việc quản lý server."
+msgstr "Tập hợp các công cụ cho việc quản lý máy chủ."
 
 #: redbot/cogs/admin/admin.py:159
 msgid "{member.display_name} already has the role {role.name}."
@@ -79,7 +79,11 @@ msgid "\n"
 "        Use double quotes if the role contains spaces.\n"
 "        If user is left blank it defaults to the author of the command.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        Thêm vai trò cho người dùng.\n\n"
+"        Sử dụng dấu ngoặc kép nếu vai trò chứa dấu cách.\n"
+"        Nếu tùy chọn người dùng trống, mặc định sẽ là người thực hiện lệnh.\n"
+"        "
 
 #: redbot/cogs/admin/admin.py:244
 #, docstring
@@ -88,12 +92,16 @@ msgid "\n"
 "        Use double quotes if the role contains spaces.\n"
 "        If user is left blank it defaults to the author of the command.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        Thêm vai trò cho người dùng.\n\n"
+"        Sử dụng dấu ngoặc kép nếu vai trò chứa dấu cách.\n"
+"        Nếu tùy chọn người dùng trống, mặc định sẽ là người thực hiện lệnh.\n"
+"        "
 
 #: redbot/cogs/admin/admin.py:256
 #, docstring
 msgid "Edit role settings."
-msgstr "Chỉnh quyền của vai trò."
+msgstr "Chỉnh sửa quyền của vai trò."
 
 #: redbot/cogs/admin/admin.py:263
 #, docstring
@@ -106,13 +114,25 @@ msgid "\n"
 "            `[p]editrole colour \"The Transistor\" #ff0000`\n"
 "            `[p]editrole colour Test #ff9900`\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        Chỉnh sửa màu vai trò.\n\n"
+"        Sử dụng dấu ngoặc kép nếu vai trò chứa dấu cách.\n"
+"        Màu phải ở định dạng thập lục phân.\n"
+"        [Chọn màu](http://www.w3schools.com/colors/colors_picker.asp)\n\n"
+"        Ví dụ:\n"
+"            `[p]editrole colour \"The Transistor\" #ff0000`\n"
+"            `[p]editrole colour Test #ff9900`\n"
+"        "
 
-#: redbot/cogs/admin/admin.py:292 redbot/cogs/admin/admin.py:325
+#: redbot/cogs/admin/admin.py:275
+msgid "{author} ({author.id}) changed the colour of role '{role.name}'"
+msgstr "{author} ({author.id}) đã đổi màu vai trò '{role.name}'"
+
+#: redbot/cogs/admin/admin.py:294 redbot/cogs/admin/admin.py:327
 msgid "Done."
 msgstr "Xong."
 
-#: redbot/cogs/admin/admin.py:296
+#: redbot/cogs/admin/admin.py:298
 #, docstring
 msgid "\n"
 "        Edit a role's name.\n\n"
@@ -120,50 +140,59 @@ msgid "\n"
 "        Example:\n"
 "            `[p]editrole name \"The Transistor\" Test`\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        Chỉnh sửa tên vai trò.\n"
+"        Sử dụng dấu ngoặc kép nếu vai trò chứa dấu cách.\n\n"
+"        Ví dụ:\n\n"
+"            `[p]editrole name \"The Transistor\" Test`\n"
+"        "
 
-#: redbot/cogs/admin/admin.py:330
+#: redbot/cogs/admin/admin.py:308
+msgid "{author} ({author.id}) changed the name of role '{old_name}' to '{name}'"
+msgstr "{author} ({author.id}) đã đổi tên vai trò '{old_name}' thành '{name}'"
+
+#: redbot/cogs/admin/admin.py:332
 #, docstring
 msgid "Announce a message to all servers the bot is in."
-msgstr "Thông báo một thông báo tới tất cả các server mà con bot ở trong."
+msgstr "Thông báo tới toàn bộ máy chủ có bot tham gia."
 
-#: redbot/cogs/admin/admin.py:337
+#: redbot/cogs/admin/admin.py:339
 msgid "The announcement has begun."
-msgstr "Sự kiện {0} đã được bắt đầu."
-
-#: redbot/cogs/admin/admin.py:344
-#, docstring
-msgid "Cancel a running announce."
-msgstr "Hủy một thông báo đang chạy."
+msgstr "Đã hoàn tất thông báo."
 
 #: redbot/cogs/admin/admin.py:346
+#, docstring
+msgid "Cancel a running announce."
+msgstr "Hủy thông báo đang thực hiện."
+
+#: redbot/cogs/admin/admin.py:348
 msgid "There is no currently running announcement."
-msgstr ""
+msgstr "Không có thông báo đang chạy."
 
-#: redbot/cogs/admin/admin.py:349
+#: redbot/cogs/admin/admin.py:351
 msgid "The current announcement has been cancelled."
-msgstr "Thông báo đang chạy đã được hủy."
+msgstr "Đã hủy thông báo."
 
-#: redbot/cogs/admin/admin.py:355
+#: redbot/cogs/admin/admin.py:357
 #, docstring
 msgid "Change how announcements are sent in this guild."
-msgstr ""
+msgstr "Thay đổi cách gửi thông báo trong máy chủ."
 
-#: redbot/cogs/admin/admin.py:365
+#: redbot/cogs/admin/admin.py:367
 #, docstring
 msgid "Change the channel where the bot will send announcements."
-msgstr ""
+msgstr "Thay đổi kênh thông báo của bot."
 
-#: redbot/cogs/admin/admin.py:368
+#: redbot/cogs/admin/admin.py:370
 msgid "The announcement channel has been set to {channel.mention}"
 msgstr "Kênh thông báo đã được đổi sang {channel.mention}"
 
-#: redbot/cogs/admin/admin.py:373
+#: redbot/cogs/admin/admin.py:375
 #, docstring
 msgid "Unsets the channel for announcements."
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:398
+#: redbot/cogs/admin/admin.py:400
 #, docstring
 msgid "\n"
 "        Add or remove a selfrole from yourself.\n\n"
@@ -172,7 +201,7 @@ msgid "\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:411
+#: redbot/cogs/admin/admin.py:413
 #, docstring
 msgid "\n"
 "        Add a selfrole to yourself.\n\n"
@@ -181,7 +210,7 @@ msgid "\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:422
+#: redbot/cogs/admin/admin.py:424
 #, docstring
 msgid "\n"
 "        Remove a selfrole from yourself.\n\n"
@@ -190,27 +219,27 @@ msgid "\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:433
+#: redbot/cogs/admin/admin.py:435
 #, docstring
 msgid "\n"
 "        Lists all available selfroles.\n"
 "        "
 msgstr "\n"
-"        Hiển thị hết tất cả các vai trò tự thêm.\n"
+"        Hiển thị tất cả các vai trò tự thêm.\n"
 "        "
 
-#: redbot/cogs/admin/admin.py:443
+#: redbot/cogs/admin/admin.py:445
 msgid "Available Selfroles:\n"
 "{selfroles}"
 msgstr "Vai trò tự thêm:\n"
 "{selfroles}"
 
-#: redbot/cogs/admin/admin.py:449
+#: redbot/cogs/admin/admin.py:451
 #, docstring
 msgid "Manage selfroles."
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:454
+#: redbot/cogs/admin/admin.py:456
 #, docstring
 msgid "\n"
 "        Add a role, or a selection of roles, to the list of available selfroles.\n\n"
@@ -218,23 +247,23 @@ msgid "\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:463
+#: redbot/cogs/admin/admin.py:465
 msgid "I cannot let you add {role.name} as a selfrole because that role is higher than or equal to your highest role in the Discord hierarchy."
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:473
+#: redbot/cogs/admin/admin.py:475
 msgid "The role \"{role.name}\" is already a selfrole."
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:479
+#: redbot/cogs/admin/admin.py:481
 msgid "Added {count} selfroles."
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:481
+#: redbot/cogs/admin/admin.py:483
 msgid "Added 1 selfrole."
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:487
+#: redbot/cogs/admin/admin.py:489
 #, docstring
 msgid "\n"
 "        Remove a role, or a selection of roles, from the list of available selfroles.\n\n"
@@ -242,57 +271,57 @@ msgid "\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:496
+#: redbot/cogs/admin/admin.py:498
 msgid "I cannot let you remove {role.name} from being a selfrole because that role is higher than or equal to your highest role in the Discord hierarchy."
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:506
+#: redbot/cogs/admin/admin.py:508
 msgid "Removed {count} selfroles."
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:508
+#: redbot/cogs/admin/admin.py:510
 msgid "Removed 1 selfrole."
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:514
+#: redbot/cogs/admin/admin.py:516
 #, docstring
 msgid "Clear the list of available selfroles for this server."
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:518
+#: redbot/cogs/admin/admin.py:520
 msgid "There are currently no selfroles."
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:521
+#: redbot/cogs/admin/admin.py:523
 msgid "Are you sure you want to clear this server's selfrole list?"
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:527
+#: redbot/cogs/admin/admin.py:529
 msgid "You took too long to respond."
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:536
+#: redbot/cogs/admin/admin.py:538
 msgid "I cannot clear the selfroles because the selfrole '{role.name}' is higher than or equal to your highest role in the Discord hierarchy."
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:542
+#: redbot/cogs/admin/admin.py:544
 msgid "Selfrole list cleared."
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:544
+#: redbot/cogs/admin/admin.py:546
 msgid "No changes have been made."
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:549
+#: redbot/cogs/admin/admin.py:551
 #, docstring
 msgid "Lock a bot to its current servers only."
 msgstr "Khóa lệnh bot cho server hiện tại."
 
-#: redbot/cogs/admin/admin.py:554
+#: redbot/cogs/admin/admin.py:556
 msgid "The bot is no longer serverlocked."
 msgstr ""
 
-#: redbot/cogs/admin/admin.py:556
+#: redbot/cogs/admin/admin.py:558
 msgid "The bot is now serverlocked."
 msgstr ""
 

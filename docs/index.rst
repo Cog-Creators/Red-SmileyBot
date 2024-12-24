@@ -71,6 +71,7 @@ Welcome to Red - Discord Bot's documentation!
     framework_bot
     framework_checks
     framework_commands
+    framework_app_commands
     framework_config
     framework_datamanager
     framework_events

@@ -94,7 +94,14 @@ msgid "This cog extends the default permission model of the bot. By default, man
 "4. Rules about a role the user has (The highest role they have with a rule will be used).\n"
 "5. Rules about the server a user is in (Global rules only).\n\n"
 "For more details, please read the [official documentation](https://docs.discord.red/en/stable/cog_permissions.html)."
-msgstr ""
+msgstr "Dieser Cog erweitert das standardmäßige Berechtigungsmodell des Bots. Standardmäßig sind viele Befehle basierend auf das beschränkt, was der Befehl tun kann. Mit diesem Cog können Sie einige dieser Einschränkungen verfeinern. Sie können den Zugriff auf die meisten Befehle erweitern oder einschränken, jedoch können Sie die Einschränkungen für Eigentümerbefehle nicht ändern.\n\n"
+"Wenn zusätzliche Regeln mit diesem Cog festgelegt werden, werden diese Regeln vor der Überprüfung der standardmäßigen Einschränkungen des Befehls überprüft. Globale Regeln (vom Eigentümer festgelegt) werden zuerst überprüft, dann Regeln, die für Server festgelegt wurden. Wenn mehrere globale oder Serverregeln auf den Fall zutreffen, erfolgt die Überprüfung in folgender Reihenfolge:\n"
+"1. Regeln zu einem Benutzer.\n"
+"2. Regeln zu dem Sprach- oder Bühnenkanal, zu dem ein Benutzer verbunden ist.\n"
+"3. Regeln zum Kanal oder einem Elternkanal des Threads, in dem der Befehl ausgeführt wurde.\n"
+"4. Regeln zu einer Rolle, die der Benutzer hat (die höchste Rolle mit einer Regel wird verwendet).\n"
+"5. Regeln über den Server, in dem sich ein Benutzer befindet (nur globale Regeln).\n\n"
+"Für weitere Details lesen Sie bitte die [offizielle Dokumentation](https://docs.discord.red/en/stable/cog_permissions.html)."
 
 #: redbot/cogs/permissions/permissions.py:239
 #, docstring
@@ -127,7 +134,7 @@ msgstr "Verwalte Berechtigungen mit YAML Dateien."
 #: redbot/cogs/permissions/permissions.py:278
 #, docstring
 msgid "Sends an example of the yaml layout for permissions"
-msgstr ""
+msgstr "Sendet ein Beispiel für das yaml-Layout für Berechtigungen"
 
 #: redbot/cogs/permissions/permissions.py:280
 msgid "Example YAML for setting rules:\n"
@@ -212,7 +219,12 @@ msgid "Add a global rule to a command.\n\n"
 "        This is case sensitive.\n\n"
 "        `<who_or_what...>` is one or more users, channels or roles the rule is for.\n"
 "        "
-msgstr ""
+msgstr "Füge eine globale Regel zu einem Befehl hinzu.\n\n"
+"        `<allow_or_deny>` sollte einer von \"allow\" oder \"deny\".\n\n"
+"        `<cog_or_command>` ist der Cog oder Befehl, der die Regel hinzufügen soll.\n"
+"        Bitte berücksichtigen Sie Groß- und Kleinschreibung.\n\n"
+"        `<who_or_what...>` ist ein oder mehrere Benutzer, Kanäle oder Rollen, für die die Regel ist.\n"
+"        "
 
 #: redbot/cogs/permissions/permissions.py:399
 #: redbot/cogs/permissions/permissions.py:429
@@ -227,7 +239,12 @@ msgid "Add a rule to a command in this server.\n\n"
 "        This is case sensitive.\n\n"
 "        `<who_or_what...>` is one or more users, channels or roles the rule is for.\n"
 "        "
-msgstr ""
+msgstr "Füge eine Regel zu einem Befehl in diesem Server hinzu.\n\n"
+"        `<allow_or_deny>` sollte einer von \"allow\" oder \"deny\".\n\n"
+"        `<cog_or_command>` ist der Cog oder Befehl, um die Regel hinzuzufügen.\n"
+"        Bitte berücksichtigen Sie Groß- und Kleinschreibung.\n\n"
+"        `<who_or_what...>` ist ein oder mehrere Benutzer, Kanäle oder Rollen, für die die Regel ist.\n"
+"        "
 
 #: redbot/cogs/permissions/permissions.py:439
 #, docstring
@@ -236,7 +253,11 @@ msgid "Remove a global rule from a command.\n\n"
 "        from. This is case sensitive.\n\n"
 "        `<who_or_what...>` is one or more users, channels or roles the rule is for.\n"
 "        "
-msgstr ""
+msgstr "Entferne eine globale Regel aus einem Befehl.\n\n"
+"        `<cog_or_command>` ist der Cog oder Befehl, um die Regel zu entfernen\n"
+"        Bitte beachten Sie Groß- und Kleinschreibung.\n\n"
+"       `<who_or_what...>` ist ein oder mehrere Benutzer, Kanäle oder Rollen, für die die Regel ist.\n"
+"        "
 
 #: redbot/cogs/permissions/permissions.py:448
 #: redbot/cogs/permissions/permissions.py:472
@@ -250,7 +271,11 @@ msgid "Remove a server rule from a command.\n\n"
 "        from. This is case sensitive.\n\n"
 "        `<who_or_what...>` is one or more users, channels or roles the rule is for.\n"
 "        "
-msgstr ""
+msgstr "Entferne eine Serverregel von einem Befehl.\n\n"
+"        `<cog_or_command>` ist der Cog oder Befehl, um die Regel zu entfernen\n"
+"        Bitte Groß- und Kleinschreibung beachten.\n\n"
+"        `<who_or_what...>` ist ein oder mehrere Benutzer, Kanäle oder Rollen für die Regel.\n"
+"        "
 
 #: redbot/cogs/permissions/permissions.py:480
 #, docstring

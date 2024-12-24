@@ -39,6 +39,11 @@ Go ahead and load your cog. Once it is loaded, we will have to enable and sync o
 We can do this by using the :ref:`[p]slash<core-command-slash>` command to manage our slash commands.
 Once you have registered your slash commands, you can test them out by typing ``/hello`` in your server.
 
+.. tip::
+
+    You may need to restart your Discord client with ``Ctrl + R`` (or your device's equivalent) to force
+    your client to see the new command after syncing.
+
 ----------------------------
 Slash Commands and Arguments
 ----------------------------

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-05-13 10:40+0000\n"
+"POT-Creation-Date: 2023-06-14 02:57+0000\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -185,32 +185,32 @@ msgstr "Страница {page_num}/{page_len}."
 msgid "Economy Leaderboard"
 msgstr "Таблица лидеров по экономики"
 
-#: redbot/cogs/economy/economy.py:450
+#: redbot/cogs/economy/economy.py:452
 msgid "There are no accounts in the bank."
 msgstr "В банке нет счетов."
 
-#: redbot/cogs/economy/economy.py:454
+#: redbot/cogs/economy/economy.py:456
 msgid "Name"
 msgstr "Имя"
 
-#: redbot/cogs/economy/economy.py:455
+#: redbot/cogs/economy/economy.py:457
 msgid "Score"
 msgstr "Счет"
 
-#: redbot/cogs/economy/economy.py:521
+#: redbot/cogs/economy/economy.py:523
 msgid "No balances found."
 msgstr "Балансы не найдены."
 
-#: redbot/cogs/economy/economy.py:526
+#: redbot/cogs/economy/economy.py:528
 #, docstring
 msgid "Show the payouts for the slot machine."
 msgstr "Показать выплаты слот-машины."
 
-#: redbot/cogs/economy/economy.py:530
+#: redbot/cogs/economy/economy.py:532
 msgid "I can't send direct messages to you."
 msgstr "Я не могу отправить вам личное сообщение."
 
-#: redbot/cogs/economy/economy.py:535
+#: redbot/cogs/economy/economy.py:537
 #, docstring
 msgid "Use the slot machine.\n\n"
 "        Example:\n"
@@ -220,44 +220,44 @@ msgid "Use the slot machine.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/economy/economy.py:562
+#: redbot/cogs/economy/economy.py:564
 msgid "You're on cooldown, try again in a bit."
 msgstr "Ты играешь слишком часто, попробуй чуть позже."
 
-#: redbot/cogs/economy/economy.py:565
+#: redbot/cogs/economy/economy.py:567
 msgid "That's an invalid bid amount, sorry :/"
 msgstr "К сожалению, это неправильная сумма ставки :/"
 
-#: redbot/cogs/economy/economy.py:568
+#: redbot/cogs/economy/economy.py:570
 msgid "You ain't got enough money, friend."
 msgstr "Слушай, у тебя нет столько денег."
 
-#: redbot/cogs/economy/economy.py:623
+#: redbot/cogs/economy/economy.py:625
 msgid "You've reached the maximum amount of {currency}! Please spend some more 😬\n"
 "{old_balance} -> {new_balance}!"
 msgstr "Вы достигли максимальной суммы {currency}! Пожалуйста, потратьте еще немного 😬\n"
 "{old_balance} -> {new_balance}!"
 
-#: redbot/cogs/economy/economy.py:638
+#: redbot/cogs/economy/economy.py:640
 msgid "Nothing!"
 msgstr "Ничего!"
 
-#: redbot/cogs/economy/economy.py:642
+#: redbot/cogs/economy/economy.py:644
 msgid "Your bid: {bid}"
 msgstr "Ваша ставка: {bid}"
 
-#: redbot/cogs/economy/economy.py:643
+#: redbot/cogs/economy/economy.py:645
 msgid "\n"
 "{old_balance} - {bid} (Your bid) + {pay} (Winnings) → {new_balance}!"
 msgstr "\n"
 "{old_balance} - {bid} (Ваша ставка) + {pay} (Выигрыш) → {new_balance}!"
 
-#: redbot/cogs/economy/economy.py:660
+#: redbot/cogs/economy/economy.py:662
 #, docstring
 msgid "Base command to manage Economy settings."
 msgstr "Базовая команда для управления настройками экономики."
 
-#: redbot/cogs/economy/economy.py:664
+#: redbot/cogs/economy/economy.py:666
 #, docstring
 msgid "\n"
 "        Shows the current economy settings\n"
@@ -266,7 +266,7 @@ msgstr "\n"
 "        Показывает текущие настройки экономии\n"
 "        "
 
-#: redbot/cogs/economy/economy.py:679
+#: redbot/cogs/economy/economy.py:681
 msgid "---Economy Settings---\n"
 "Minimum slot bid: {slot_min}\n"
 "Maximum slot bid: {slot_max}\n"
@@ -275,11 +275,11 @@ msgid "---Economy Settings---\n"
 "Payday cooldown: {payday_time}\n"
 msgstr ""
 
-#: redbot/cogs/economy/economy.py:696
+#: redbot/cogs/economy/economy.py:698
 msgid "---Role Payday Amounts---\n"
 msgstr ""
 
-#: redbot/cogs/economy/economy.py:700
+#: redbot/cogs/economy/economy.py:702
 #, docstring
 msgid "Set the minimum slot machine bid.\n\n"
 "        Example:\n"
@@ -289,15 +289,15 @@ msgid "Set the minimum slot machine bid.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/economy/economy.py:717
+#: redbot/cogs/economy/economy.py:719
 msgid "Warning: Minimum bid is greater than the maximum bid ({max_bid}). Slots will not work."
 msgstr "Предупреждение: Минимальная ставка больше максимальной ставки ({max_bid}). Слоты не будут работать."
 
-#: redbot/cogs/economy/economy.py:728
+#: redbot/cogs/economy/economy.py:730
 msgid "Minimum bid is now {bid} {currency}."
 msgstr "Минимальная ставка сейчас {bid} {currency}."
 
-#: redbot/cogs/economy/economy.py:735
+#: redbot/cogs/economy/economy.py:737
 #, docstring
 msgid "Set the maximum slot machine bid.\n\n"
 "        Example:\n"
@@ -307,15 +307,15 @@ msgid "Set the maximum slot machine bid.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/economy/economy.py:752
+#: redbot/cogs/economy/economy.py:754
 msgid "Warning: Maximum bid is less than the minimum bid ({min_bid}). Slots will not work."
 msgstr "Предупреждение: Максимальная ставка меньше минимальной ставки ({min_bid}). Слоты не будут работать."
 
-#: redbot/cogs/economy/economy.py:763
+#: redbot/cogs/economy/economy.py:765
 msgid "Maximum bid is now {bid} {currency}."
 msgstr "Максимальная ставка сейчас {bid} {currency}."
 
-#: redbot/cogs/economy/economy.py:772
+#: redbot/cogs/economy/economy.py:774
 #, docstring
 msgid "Set the cooldown for the slot machine.\n\n"
 "        Examples:\n"
@@ -327,11 +327,11 @@ msgid "Set the cooldown for the slot machine.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/economy/economy.py:789
+#: redbot/cogs/economy/economy.py:791
 msgid "Cooldown is now {num} seconds."
 msgstr "Перерыв между играми теперь {num} секунд."
 
-#: redbot/cogs/economy/economy.py:795
+#: redbot/cogs/economy/economy.py:797
 #, docstring
 msgid "Set the cooldown for the payday command.\n\n"
 "        Examples:\n"
@@ -343,11 +343,11 @@ msgid "Set the cooldown for the payday command.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/economy/economy.py:813
+#: redbot/cogs/economy/economy.py:815
 msgid "Value modified. At least {num} seconds must pass between each payday."
 msgstr "Значение изменено. Теперь между выплатами должно пройти как минимум {num} секунд."
 
-#: redbot/cogs/economy/economy.py:820
+#: redbot/cogs/economy/economy.py:822
 #, docstring
 msgid "Set the amount earned each payday.\n\n"
 "        Example:\n"
@@ -357,15 +357,15 @@ msgid "Set the amount earned each payday.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/economy/economy.py:833
+#: redbot/cogs/economy/economy.py:835
 msgid "Amount must be greater than zero and less than {maxbal}."
 msgstr "Сумма должна быть больше нуля и меньше {maxbal}."
 
-#: redbot/cogs/economy/economy.py:843
+#: redbot/cogs/economy/economy.py:845
 msgid "Every payday will now give {num} {currency}."
 msgstr "Каждая выплата теперь дает {num}{currency}."
 
-#: redbot/cogs/economy/economy.py:850
+#: redbot/cogs/economy/economy.py:852
 #, docstring
 msgid "Set the amount earned each payday for a role.\n\n"
 "        Set to `0` to remove the payday amount you set for that role.\n\n"
@@ -378,19 +378,19 @@ msgid "Set the amount earned each payday for a role.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/economy/economy.py:868
+#: redbot/cogs/economy/economy.py:870
 msgid "The bank requires that you set the payday to be less than its maximum balance of {maxbal}."
 msgstr "Банк требует, чтобы размер выплат был меньше, чем его максимальный баланс в {maxbal}."
 
-#: redbot/cogs/economy/economy.py:875
+#: redbot/cogs/economy/economy.py:877
 msgid "The bank must be per-server for per-role paydays to work."
 msgstr "Банк должен быть серверным, чтобы делать выплаты жалованья для ролей."
 
-#: redbot/cogs/economy/economy.py:881
+#: redbot/cogs/economy/economy.py:883
 msgid "The payday value attached to role has been removed. Users with this role will now receive the default pay of {num} {currency}."
 msgstr "Значение зарплаты, прикрепленное к роли, было удалено. Пользователи с этой ролью теперь будут получать зарплату по умолчанию {num} {currency}."
 
-#: redbot/cogs/economy/economy.py:890
+#: redbot/cogs/economy/economy.py:892
 msgid "Every payday will now give {num} {currency} to people with the role {role_name}."
 msgstr "Теперь каждый день выплаты будет давать {num} {currency} людям с ролью {role_name}."
 

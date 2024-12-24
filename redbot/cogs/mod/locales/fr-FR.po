@@ -707,30 +707,33 @@ msgstr ""
 
 #: redbot/cogs/mod/settings.py:178
 msgid "Autowarn for mention spam is already disabled."
-msgstr ""
+msgstr "Autowarn pour spam de mention est déjà désactivé."
 
 #: redbot/cogs/mod/settings.py:180
 msgid "Autowarn for mention spam disabled."
-msgstr ""
+msgstr "Autowarn pour spam de mention désactivé."
 
 #: redbot/cogs/mod/settings.py:183
 msgid "`<max_mentions>` must be 1 or higher to autowarn."
-msgstr ""
+msgstr "`<max_mentions>` doit être 1 ou supérieur à autowarn."
 
 #: redbot/cogs/mod/settings.py:189
 msgid "\n"
 "Autowarn is equal to or higher than autokick."
-msgstr ""
+msgstr "\n"
+"Autowarn est égal ou supérieur a l'explusion automatique ."
 
 #: redbot/cogs/mod/settings.py:193
 msgid "\n"
 "Autowarn is equal to or higher than autoban."
-msgstr ""
+msgstr "\n"
+"Autowarn est égal ou supérieur à l'autoban."
 
 #: redbot/cogs/mod/settings.py:197
 msgid "Autowarn for mention spam enabled. Anyone mentioning {max_mentions} or more people in a single message will be autowarned.\n"
 "{mismatch_message}"
-msgstr ""
+msgstr "Autowarn pour le spam de mention activé. Quiconque mentionnant {max_mentions} ou plus de personnes dans un seul message sera automatiquement autowarn.\n"
+"{mismatch_message}"
 
 #: redbot/cogs/mod/settings.py:207
 #, docstring
@@ -752,12 +755,13 @@ msgstr "Expulsion automatique pour le spam de mention désactivée."
 
 #: redbot/cogs/mod/settings.py:223
 msgid "`<max_mentions>` must be 1 or higher to autokick."
-msgstr ""
+msgstr "`<max_mentions>` doit être 1 ou plus élevé pour l'autokick."
 
 #: redbot/cogs/mod/settings.py:229
 msgid "\n"
 "Autokick is equal to or lower than autowarn."
-msgstr ""
+msgstr "\n"
+"L'autokick est égal ou inférieur à celui de l'autowarn."
 
 #: redbot/cogs/mod/settings.py:233
 msgid "\n"

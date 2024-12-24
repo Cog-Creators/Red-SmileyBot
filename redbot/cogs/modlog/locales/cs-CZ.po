@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-04-13 18:17+0000\n"
+"POT-Creation-Date: 2024-03-05 19:45+0000\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
@@ -17,31 +17,31 @@ msgstr ""
 
 #: redbot/cogs/modlog/modlog.py:19
 #, docstring
-msgid "Browse and manage modlog cases."
-msgstr ""
+msgid "Browse and manage modlog cases. To manage modlog settings, use `[p]modlogset`."
+msgstr "Procházejte a spravujte modlog případů. Chcete-li spravovat nastavení modlogu, použijte `[p]modlogset`."
 
 #: redbot/cogs/modlog/modlog.py:32
 #, docstring
 msgid "Show the specified case."
-msgstr ""
+msgstr "Zobrazit zvolený případ."
 
 #: redbot/cogs/modlog/modlog.py:36
 msgid "That case does not exist for this server."
-msgstr ""
+msgstr "Tento případ neexistuje pro tento server."
 
 #: redbot/cogs/modlog/modlog.py:45 redbot/cogs/modlog/modlog.py:82
 #: redbot/cogs/modlog/modlog.py:117
 msgid "Timestamp:"
-msgstr ""
+msgstr "Časové razítko:"
 
 #: redbot/cogs/modlog/modlog.py:52
 #, docstring
 msgid "Display cases for the specified member."
-msgstr ""
+msgstr "Seznam případů pro daného člena."
 
 #: redbot/cogs/modlog/modlog.py:64 redbot/cogs/modlog/modlog.py:103
 msgid "That user does not exist."
-msgstr ""
+msgstr "Tento uživatel neexistuje."
 
 #: redbot/cogs/modlog/modlog.py:67 redbot/cogs/modlog/modlog.py:106
 msgid "Something unexpected went wrong while fetching that user by ID."
@@ -54,7 +54,7 @@ msgstr "Tento uživatel nemá žádné případy."
 #: redbot/cogs/modlog/modlog.py:91
 #, docstring
 msgid "List cases for the specified member."
-msgstr ""
+msgstr "Seznam případů pro daného člena."
 
 #: redbot/cogs/modlog/modlog.py:126
 #, docstring
@@ -63,11 +63,15 @@ msgid "Specify a reason for a modlog case.\n\n"
 "        the owner of unless you are a mod, admin or server owner.\n\n"
 "        If no case number is specified, the latest case will be used.\n"
 "        "
-msgstr ""
+msgstr "Zadejte důvod pro moderátorský případ:\n\n"
+"        Měj na vědomí, že můžeš upravovat pouze případy\n"
+"        u kterých jsi vlastníkem. Neplatí v případě, že jsi moderátor, admin či vlastník serveru.\n\n"
+"        pakli-že není specifikováno číslo případu, bude použit ten poslední.\n"
+"        "
 
 #: redbot/cogs/modlog/modlog.py:139
 msgid "There are no modlog cases in this server."
-msgstr ""
+msgstr "Na tomto serveru nejsou žádné moderátorské záznamy."
 
 #: redbot/cogs/modlog/modlog.py:145
 msgid "That case does not exist!"
@@ -75,9 +79,9 @@ msgstr "Tento případ neexistuje!"
 
 #: redbot/cogs/modlog/modlog.py:152
 msgid "You are not authorized to modify that case!"
-msgstr ""
+msgstr "Nemáte oprávnění měnit tento případ!"
 
 #: redbot/cogs/modlog/modlog.py:160
 msgid "Reason for case #{num} has been updated."
-msgstr ""
+msgstr "Důvod pro případ #{num} byl aktualizován."
 

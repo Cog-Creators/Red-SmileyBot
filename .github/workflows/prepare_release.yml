@@ -26,7 +26,7 @@ jobs:
           curl https://artifacts.crowdin.com/repo/GPG-KEY-crowdin | sudo apt-key add -
           echo "deb https://artifacts.crowdin.com/repo/deb/ /" | sudo tee -a /etc/apt/sources.list
           sudo apt-get update -qq
-          sudo apt-get install -y crowdin
+          sudo apt-get install -y crowdin3
           pip install redgettext==3.4.2
 
       - name: Generate source files
@@ -36,8 +36,8 @@ jobs:
         run: |
           make download_translations
         env:
-          CROWDIN_API_KEY: ${{ secrets.crowdin_token}}
-          CROWDIN_PROJECT_ID: ${{ secrets.crowdin_identifier }}
+          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+          CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_IDENTIFIER }}
 
       - name: Create Pull Request
         id: cpr_crowdin

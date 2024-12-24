@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-03-02 14:44+0000\n"
+"POT-Creation-Date: 2024-04-01 01:11+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -15,15 +15,15 @@ msgstr ""
 "X-Crowdin-File-ID: 45\n"
 "Language: zh_TW\n"
 
-#: redbot/cogs/trivia/checks.py:13 redbot/cogs/trivia/trivia.py:365
+#: redbot/cogs/trivia/checks.py:13 redbot/cogs/trivia/trivia.py:385
 msgid "There is no ongoing trivia session in this channel."
 msgstr "此頻道中沒有正在進行的問答會議。"
 
-#: redbot/cogs/trivia/converters.py:15
+#: redbot/cogs/trivia/converters.py:18
 msgid "`{arg}` is not a number."
 msgstr "`{arg}` 不是一個數字。"
 
-#: redbot/cogs/trivia/converters.py:17
+#: redbot/cogs/trivia/converters.py:20
 msgid "`{arg}` is not a finite number."
 msgstr "`{arg}` 不是有限數。"
 
@@ -31,225 +31,261 @@ msgstr "`{arg}` 不是有限數。"
 msgid "The trivia list does not contain any questions."
 msgstr "瑣事列表不包含任何問題。"
 
-#: redbot/cogs/trivia/schema.py:39 redbot/cogs/trivia/schema.py:40
+#: redbot/cogs/trivia/schema.py:39
 msgid "{key} key must be a text value."
 msgstr "{key} 鍵必須是文本值。"
 
-#: redbot/cogs/trivia/schema.py:46
+#: redbot/cogs/trivia/schema.py:43
+msgid "{key} key must be a text value not longer than 1000 characters."
+msgstr ""
+
+#: redbot/cogs/trivia/schema.py:48
+msgid "{key} key must be a text value not longer than 200 characters."
+msgstr ""
+
+#: redbot/cogs/trivia/schema.py:55
 msgid "{key} key in {parent_key} must be a positive integer."
 msgstr "{parent_key} 中的 {key} 鍵必須是正整數。"
 
-#: redbot/cogs/trivia/schema.py:51
+#: redbot/cogs/trivia/schema.py:60
 msgid "{key} key in {parent_key} must be a positive number."
 msgstr "{parent_key} 中的 {key} 鍵必須是正數。"
 
-#: redbot/cogs/trivia/schema.py:56
+#: redbot/cogs/trivia/schema.py:65
 msgid "{key} key in {parent_key} must be a positive number greater than or equal to 4."
 msgstr "{parent_key} 中的{key} 鍵必須是大於等於4的正數。"
 
-#: redbot/cogs/trivia/schema.py:62 redbot/cogs/trivia/schema.py:65
-#: redbot/cogs/trivia/schema.py:73
+#: redbot/cogs/trivia/schema.py:71 redbot/cogs/trivia/schema.py:74
+#: redbot/cogs/trivia/schema.py:82
 msgid "{key} key in {parent_key} must be either true or false."
 msgstr "{parent_key} 中的 {key} 鍵必須為 true 或 false。"
 
-#: redbot/cogs/trivia/schema.py:70
+#: redbot/cogs/trivia/schema.py:79
 msgid "{key} key in {parent_key} must be a non-negative number."
 msgstr "{parent_key} 中的 {key} 鍵必須是非負數。"
 
-#: redbot/cogs/trivia/schema.py:79
+#: redbot/cogs/trivia/schema.py:88
 msgid "{key} is not a key that can be specified in {parent_key}."
 msgstr "{key} 不是可以在 {parent_key} 中指定的鍵。"
 
-#: redbot/cogs/trivia/schema.py:82
+#: redbot/cogs/trivia/schema.py:91
 msgid "{key} should be a 'key: value' mapping."
 msgstr "{key} 應該是一個 'key: value' 映射。"
 
-#: redbot/cogs/trivia/schema.py:86
+#: redbot/cogs/trivia/schema.py:95
 msgid "Value of question {key} is not a list of text values (answers)."
 msgstr "問題 {key} 的值不是文本值（答案）列表。"
 
-#: redbot/cogs/trivia/schema.py:92
+#: redbot/cogs/trivia/schema.py:101
 msgid "A key of question {key} is not a text value."
 msgstr "問題 {key} 的鍵不是文本值。"
 
-#: redbot/cogs/trivia/schema.py:95
+#: redbot/cogs/trivia/schema.py:104
 msgid "A trivia list should be a 'key: value' mapping."
 msgstr "瑣事列表應該是“鍵：值”映射。"
 
-#: redbot/cogs/trivia/session.py:20
+#: redbot/cogs/trivia/session.py:21
 msgid "I know this one! {answer}!"
 msgstr "我知道這個！ {answer}！"
 
-#: redbot/cogs/trivia/session.py:21
+#: redbot/cogs/trivia/session.py:22
 msgid "Easy: {answer}."
 msgstr "太簡單了：{answer}。"
 
-#: redbot/cogs/trivia/session.py:22
+#: redbot/cogs/trivia/session.py:23
 msgid "Oh really? It's {answer} of course."
 msgstr "哦真的嗎？ 當然是{answer}。"
 
-#: redbot/cogs/trivia/session.py:26
+#: redbot/cogs/trivia/session.py:27
 msgid "I know this one! ||{answer}!||"
 msgstr "我知道這個！ ||{answer}！||"
 
-#: redbot/cogs/trivia/session.py:27
+#: redbot/cogs/trivia/session.py:28
 msgid "Easy: ||{answer}.||"
 msgstr "太簡單了：||{answer}。||"
 
-#: redbot/cogs/trivia/session.py:28
+#: redbot/cogs/trivia/session.py:29
 msgid "Oh really? It's ||{answer}|| of course."
 msgstr "哦真的嗎？ 這當然是 ||{answer}|| 。"
 
-#: redbot/cogs/trivia/session.py:32
+#: redbot/cogs/trivia/session.py:33
 msgid "To the next one I guess..."
 msgstr "下一個我猜..."
 
-#: redbot/cogs/trivia/session.py:33
+#: redbot/cogs/trivia/session.py:34
 msgid "Moving on..."
 msgstr "繼續..."
 
-#: redbot/cogs/trivia/session.py:34
+#: redbot/cogs/trivia/session.py:35
 msgid "I'm sure you'll know the answer of the next one."
 msgstr "相信下一位就知道答案了。"
 
-#: redbot/cogs/trivia/session.py:35
+#: redbot/cogs/trivia/session.py:36
 msgid "😔 Next one."
 msgstr "😔 下一個。"
 
-#: redbot/cogs/trivia/session.py:121
+#: redbot/cogs/trivia/session.py:122
 msgid "An unexpected error occurred in the trivia session."
 msgstr "知識問答環節發生意外錯誤。"
 
-#: redbot/cogs/trivia/session.py:123
+#: redbot/cogs/trivia/session.py:124
 msgid "An unexpected error occurred in the trivia session.\n"
 "Check your console or logs for details."
 msgstr "知識問答環節發生意外錯誤。\n"
 "檢查您的控制台或日誌以獲取詳細信息。"
 
-#: redbot/cogs/trivia/session.py:143
+#: redbot/cogs/trivia/session.py:144
 msgid "Question number {num}!"
 msgstr "問題編號 {num}！"
 
-#: redbot/cogs/trivia/session.py:152
+#: redbot/cogs/trivia/session.py:153
 msgid "There are no more questions!"
 msgstr "沒有問題了！"
 
-#: redbot/cogs/trivia/session.py:160
+#: redbot/cogs/trivia/session.py:161
 msgid "{trivia_list} (by {author})"
 msgstr "{trivia_list} (作者：{author})"
 
-#: redbot/cogs/trivia/session.py:165
+#: redbot/cogs/trivia/session.py:166
 msgid "Starting Trivia: {list_names}"
 msgstr "開始瑣事：{list_names}"
 
-#: redbot/cogs/trivia/session.py:211
+#: redbot/cogs/trivia/session.py:212
 msgid "Guys...? Well, I guess I'll stop then."
 msgstr "同伴們...？ 好吧，我想我會停下來的。"
 
-#: redbot/cogs/trivia/session.py:222
+#: redbot/cogs/trivia/session.py:223
 msgid " **+1** for me!"
 msgstr " **+1** 對我來說！"
 
-#: redbot/cogs/trivia/session.py:227
+#: redbot/cogs/trivia/session.py:228
 msgid "You got it {user}! **+1** to you!"
 msgstr "{user} 你明白了！ **+1**給你！"
 
-#: redbot/cogs/trivia/session.py:332
+#: redbot/cogs/trivia/session.py:334
 msgid "Congratulations {users}! You have each received {num} {currency} for winning!"
 msgstr "恭喜{users}！ 你們每人因獲勝而獲得了 {num} {currency}！"
 
-#: redbot/cogs/trivia/session.py:340
+#: redbot/cogs/trivia/session.py:342
 msgid "Congratulations {user}! You have received {num} {currency} for winning!"
 msgstr "恭喜{user}！ 您贏得了 {num} {currency}！"
 
-#: redbot/cogs/trivia/trivia.py:42
+#: redbot/cogs/trivia/trivia.py:43
+msgid "Yes"
+msgstr "是"
+
+#: redbot/cogs/trivia/trivia.py:45
+msgid "No"
+msgstr "否"
+
+#: redbot/cogs/trivia/trivia.py:49
+msgid "{seconds} seconds"
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:55
+msgid "Bot gains points"
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:56
+msgid "Answer time limit"
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:57
+msgid "Lack of response timeout"
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:58
+msgid "Points to win"
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:59
+msgid "Answers are revealed on timeout"
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:60
+msgid "Payout multiplier"
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:61
+msgid "Lists are allowed to override settings"
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:62
+msgid "Answers use spoilers"
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:74
 #, docstring
 msgid "Play trivia with friends!"
 msgstr "和朋友一起玩猜謎遊戲！"
 
-#: redbot/cogs/trivia/trivia.py:82
+#: redbot/cogs/trivia/trivia.py:114
 #, docstring
 msgid "Manage Trivia settings."
 msgstr "管理瑣事設置。"
 
-#: redbot/cogs/trivia/trivia.py:86
+#: redbot/cogs/trivia/trivia.py:118
 #, docstring
 msgid "Show the current trivia settings."
 msgstr "顯示當前的瑣事設置。"
 
-#: redbot/cogs/trivia/trivia.py:90
-msgid "Current settings\n"
-"Bot gains points: {bot_plays}\n"
-"Answer time limit: {delay} seconds\n"
-"Lack of response timeout: {timeout} seconds\n"
-"Points to win: {max_score}\n"
-"Reveal answer on timeout: {reveal_answer}\n"
-"Payout multiplier: {payout_multiplier}\n"
-"Allow lists to override settings: {allow_override}\n"
-"Use Spoilers in answers: {use_spoilers}"
-msgstr "當前的設置\n"
-"機器人獲得分數：{bot_plays}\n"
-"回答時間限制：{delay} 秒\n"
-"缺少響應超時：{timeout} 秒\n"
-"獲勝點數：{max_score}\n"
-"顯示超時答案：{reveal_answer}\n"
-"支出乘數：{payout_multiplier}\n"
-"允許列表覆蓋設置：{allow_override}\n"
-"在答案中使用劇透：{use_spoilers}"
+#: redbot/cogs/trivia/trivia.py:120
+msgid "Current settings:\n\n"
+msgstr ""
 
-#: redbot/cogs/trivia/trivia.py:107
+#: redbot/cogs/trivia/trivia.py:125
 #, docstring
 msgid "Set the total points required to win."
 msgstr "設置獲勝所需的總分。"
 
-#: redbot/cogs/trivia/trivia.py:109
+#: redbot/cogs/trivia/trivia.py:127
 msgid "Score must be greater than 0."
 msgstr "分數必須大於 0。"
 
-#: redbot/cogs/trivia/trivia.py:113
+#: redbot/cogs/trivia/trivia.py:131
 msgid "Done. Points required to win set to {num}."
 msgstr "完成。 獲勝所需的點數設置為 {num}。"
 
-#: redbot/cogs/trivia/trivia.py:117
+#: redbot/cogs/trivia/trivia.py:135
 #, docstring
 msgid "Set the maximum seconds permitted to answer a question."
 msgstr "設置允許回答問題的最大秒數。"
 
-#: redbot/cogs/trivia/trivia.py:119
+#: redbot/cogs/trivia/trivia.py:137
 msgid "Must be at least 4 seconds."
 msgstr "必須至少為 4 秒。"
 
-#: redbot/cogs/trivia/trivia.py:123
+#: redbot/cogs/trivia/trivia.py:141
 msgid "Done. Maximum seconds to answer set to {num}."
 msgstr "完成。 回答的最大秒數設置為 {num}。"
 
-#: redbot/cogs/trivia/trivia.py:127
+#: redbot/cogs/trivia/trivia.py:145
 #, docstring
 msgid "Set how long until trivia stops due to no response."
 msgstr "設置瑣事由於沒有響應而停止的時間。"
 
-#: redbot/cogs/trivia/trivia.py:130
+#: redbot/cogs/trivia/trivia.py:148
 msgid "Must be larger than the answer time limit."
 msgstr "必須大於回答時間限制。"
 
-#: redbot/cogs/trivia/trivia.py:134
+#: redbot/cogs/trivia/trivia.py:152
 msgid "Done. Trivia sessions will now time out after {num} seconds of no responses."
 msgstr "完成。 瑣事會話現在將在 {num} 秒無響應後超時。"
 
-#: redbot/cogs/trivia/trivia.py:141
+#: redbot/cogs/trivia/trivia.py:159
 #, docstring
 msgid "Allow/disallow trivia lists to override settings."
 msgstr "允許/禁止瑣事列表覆蓋設置。"
 
-#: redbot/cogs/trivia/trivia.py:146
+#: redbot/cogs/trivia/trivia.py:164
 msgid "Done. Trivia lists can now override the trivia settings for this server."
 msgstr "完畢。 瑣事列表現在可以覆蓋此伺服器的瑣事設置。"
 
-#: redbot/cogs/trivia/trivia.py:150
+#: redbot/cogs/trivia/trivia.py:168
 msgid "Done. Trivia lists can no longer override the trivia settings for this server."
 msgstr "完畢。 瑣事列表不能再覆蓋此伺服器的瑣事設置。"
 
-#: redbot/cogs/trivia/trivia.py:158
+#: redbot/cogs/trivia/trivia.py:176
 #, docstring
 msgid "Set if bot will display the answers in spoilers.\n\n"
 "        If enabled, the bot will use spoilers to hide answers.\n"
@@ -258,15 +294,15 @@ msgstr "設置機器人是否會在劇透中顯示答案。\n\n"
 "        如果啟用，機器人將使用劇透來隱藏答案。\n"
 "        "
 
-#: redbot/cogs/trivia/trivia.py:165
+#: redbot/cogs/trivia/trivia.py:183
 msgid "Done. I'll put the answers in spoilers next time."
 msgstr "完成。下次我會把答案放在劇透裡。"
 
-#: redbot/cogs/trivia/trivia.py:167
+#: redbot/cogs/trivia/trivia.py:185
 msgid "Alright, I won't use spoilers to hide answers anymore."
 msgstr "好了，我不會再用劇透來隱藏答案了。"
 
-#: redbot/cogs/trivia/trivia.py:171
+#: redbot/cogs/trivia/trivia.py:189
 #, docstring
 msgid "Set whether or not the bot gains points.\n\n"
 "        If enabled, the bot will gain a point if no one guesses correctly.\n"
@@ -275,15 +311,15 @@ msgstr "設置機器人是否獲得積分。\n\n"
 "        如果啟用，如果沒有人猜對，機器人將獲得一分。\n"
 "        "
 
-#: redbot/cogs/trivia/trivia.py:178
+#: redbot/cogs/trivia/trivia.py:196
 msgid "Done. I'll now gain a point if users don't answer in time."
 msgstr "完成。 如果用戶沒有及時回答，我現在將獲得一分。"
 
-#: redbot/cogs/trivia/trivia.py:180
+#: redbot/cogs/trivia/trivia.py:198
 msgid "Alright, I won't embarrass you at trivia anymore."
 msgstr "好的，我不在瑣事上為難你了。"
 
-#: redbot/cogs/trivia/trivia.py:184
+#: redbot/cogs/trivia/trivia.py:202
 #, docstring
 msgid "Set whether or not the answer is revealed.\n\n"
 "        If enabled, the bot will reveal the answer if no one guesses correctly\n"
@@ -294,15 +330,15 @@ msgstr "設置是否顯示答案。\n\n"
 "        答案。\n"
 "        "
 
-#: redbot/cogs/trivia/trivia.py:192
+#: redbot/cogs/trivia/trivia.py:210
 msgid "Done. I'll reveal the answer if no one knows it."
 msgstr "完成。如果沒有人知道，我會揭曉答案。"
 
-#: redbot/cogs/trivia/trivia.py:194
+#: redbot/cogs/trivia/trivia.py:212
 msgid "Alright, I won't reveal the answer to the questions anymore."
 msgstr "好的，問題的答案我就不透露了。"
 
-#: redbot/cogs/trivia/trivia.py:200
+#: redbot/cogs/trivia/trivia.py:218
 #, docstring
 msgid "Set the payout multiplier.\n\n"
 "        This can be any positive decimal number. If a user wins trivia when at\n"
@@ -319,81 +355,81 @@ msgstr "設置支出乘數。\n\n"
 "        這個乘數。\n"
 "        "
 
-#: redbot/cogs/trivia/trivia.py:211
+#: redbot/cogs/trivia/trivia.py:229
 msgid "Multiplier must be at least 0."
 msgstr "乘數必須至少為 0。"
 
-#: redbot/cogs/trivia/trivia.py:215
+#: redbot/cogs/trivia/trivia.py:233
 msgid "Done. Payout multiplier set to {num}."
 msgstr "完成。支出乘數設置為 {num}。"
 
-#: redbot/cogs/trivia/trivia.py:217
+#: redbot/cogs/trivia/trivia.py:235
 msgid "Done. I will no longer reward the winner with a payout."
 msgstr "完成。我將不再獎勵獲勝者。"
 
-#: redbot/cogs/trivia/trivia.py:222
+#: redbot/cogs/trivia/trivia.py:240
 #, docstring
 msgid "Manage Custom Trivia lists."
 msgstr "管理自定義瑣事列表。"
 
-#: redbot/cogs/trivia/trivia.py:227
+#: redbot/cogs/trivia/trivia.py:245
 #, docstring
 msgid "List uploaded custom trivia."
 msgstr "列出上傳的自定義瑣事。"
 
-#: redbot/cogs/trivia/trivia.py:229
+#: redbot/cogs/trivia/trivia.py:247
 msgid "No custom Trivia lists uploaded."
 msgstr "沒有上傳自定義瑣事列表。"
 
-#: redbot/cogs/trivia/trivia.py:245 redbot/cogs/trivia/trivia.py:252
+#: redbot/cogs/trivia/trivia.py:263 redbot/cogs/trivia/trivia.py:270
 msgid "Uploaded trivia lists"
 msgstr "上傳的瑣事列表"
 
-#: redbot/cogs/trivia/trivia.py:262
+#: redbot/cogs/trivia/trivia.py:280
 #, docstring
 msgid "Upload a trivia file."
 msgstr "上傳一個瑣事文件。"
 
-#: redbot/cogs/trivia/trivia.py:264
+#: redbot/cogs/trivia/trivia.py:282
 msgid "Supply a file with next message or type anything to cancel."
 msgstr "提供包含下一條消息的文件或輸入任何內容以取消。"
 
-#: redbot/cogs/trivia/trivia.py:270
+#: redbot/cogs/trivia/trivia.py:288
 msgid "You took too long to upload a list."
 msgstr "您上傳列表的時間太長。"
 
-#: redbot/cogs/trivia/trivia.py:273
+#: redbot/cogs/trivia/trivia.py:291
 msgid "You have cancelled the upload process."
 msgstr "您已取消上傳。"
 
-#: redbot/cogs/trivia/trivia.py:281
+#: redbot/cogs/trivia/trivia.py:299
 msgid "Invalid syntax:\n"
 msgstr "無效的語法： \n"
 
-#: redbot/cogs/trivia/trivia.py:284
+#: redbot/cogs/trivia/trivia.py:302
 msgid "There was an error parsing the trivia list. See logs for more info."
 msgstr "解析瑣事列表時出錯。 有關詳細信息，請參閱日誌。"
 
-#: redbot/cogs/trivia/trivia.py:289
+#: redbot/cogs/trivia/trivia.py:307
 msgid "The custom trivia list was not saved. The file does not follow the proper data format.\n"
 "{schema_error}"
 msgstr "自定義瑣事列表未保存。該文件不遵循正確的數據格式。\n"
 "{schema_error}"
 
-#: redbot/cogs/trivia/trivia.py:298
+#: redbot/cogs/trivia/trivia.py:316
 #, docstring
 msgid "Delete a trivia file."
 msgstr "刪除瑣事文件。"
 
-#: redbot/cogs/trivia/trivia.py:302
+#: redbot/cogs/trivia/trivia.py:320
 msgid "Trivia {filename} was deleted."
 msgstr "瑣事 {filename} 已刪除。"
 
-#: redbot/cogs/trivia/trivia.py:304
+#: redbot/cogs/trivia/trivia.py:322
 msgid "Trivia file was not found."
 msgstr "找不到瑣事文件。"
 
-#: redbot/cogs/trivia/trivia.py:309
+#: redbot/cogs/trivia/trivia.py:327
 #, docstring
 msgid "Start trivia session on the specified category.\n\n"
 "        You may list multiple categories, in which case the trivia will involve\n"
@@ -404,41 +440,86 @@ msgstr "在指定類別上啟動瑣事會話。\n\n"
 "        他們所有人的問題。\n"
 "        "
 
-#: redbot/cogs/trivia/trivia.py:317
+#: redbot/cogs/trivia/trivia.py:335
 msgid "There is already an ongoing trivia session in this channel."
 msgstr "此頻道中已經有一個正在進行的問答環節。"
 
-#: redbot/cogs/trivia/trivia.py:328
+#: redbot/cogs/trivia/trivia.py:346
 msgid "Invalid category `{name}`. See `{prefix}trivia list` for a list of trivia categories."
 msgstr "類別 `{name}` 無效。 有關瑣事類別的列表，請參閱 `{prefix}trivia list`。"
 
-#: redbot/cogs/trivia/trivia.py:335
+#: redbot/cogs/trivia/trivia.py:353
 msgid "There was an error parsing the trivia list for the `{name}` category. It may be formatted incorrectly."
 msgstr "解析 `{name}` 類別的瑣事列表時出錯。 它可能格式不正確。"
 
-#: redbot/cogs/trivia/trivia.py:347
+#: redbot/cogs/trivia/trivia.py:368
 msgid "The trivia list was parsed successfully, however it appears to be empty!"
 msgstr "瑣事列表已成功解析，但它似乎是空的！"
 
-#: redbot/cogs/trivia/trivia.py:362
+#: redbot/cogs/trivia/trivia.py:382
 #, docstring
 msgid "Stop an ongoing trivia session."
 msgstr "停止正在進行的問答環節。"
 
-#: redbot/cogs/trivia/trivia.py:369
+#: redbot/cogs/trivia/trivia.py:389
 msgid "Trivia stopped."
 msgstr "瑣事停止了。"
 
-#: redbot/cogs/trivia/trivia.py:373
+#: redbot/cogs/trivia/trivia.py:393
 #, docstring
 msgid "List available trivia categories."
 msgstr "列出可用的瑣事類別。"
 
-#: redbot/cogs/trivia/trivia.py:378 redbot/cogs/trivia/trivia.py:384
+#: redbot/cogs/trivia/trivia.py:398 redbot/cogs/trivia/trivia.py:404
 msgid "Available trivia lists"
 msgstr "可用的瑣事列表"
 
-#: redbot/cogs/trivia/trivia.py:394
+#: redbot/cogs/trivia/trivia.py:412
+#, docstring
+msgid "Get information about a trivia category."
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:417
+msgid "Category {name} does not exist. See {command} for the list of available trivia categories."
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:424
+msgid "There was an error parsing the trivia list for the {name} category. It may be formatted incorrectly."
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:433
+msgid "\"{category}\" Category Details"
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:437
+msgid "Authors"
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:437
+msgid "Not provided."
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:439
+msgid "Question count"
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:441
+msgid "Custom"
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:447
+msgid "Description"
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:450
+msgid "No description provided for this category."
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:457
+msgid "Config"
+msgstr ""
+
+#: redbot/cogs/trivia/trivia.py:467
 #, docstring
 msgid "Leaderboard for trivia.\n\n"
 "        Defaults to the top 10 of this server, sorted by total wins. Use\n"
@@ -449,7 +530,7 @@ msgstr "瑣事排行榜。\n\n"
 "        更自定義排行榜的子指令。\n"
 "        "
 
-#: redbot/cogs/trivia/trivia.py:409
+#: redbot/cogs/trivia/trivia.py:482
 #, docstring
 msgid "Leaderboard for this server.\n\n"
 "        `<sort_by>` can be any of the following fields:\n"
@@ -468,11 +549,11 @@ msgstr "此伺服器的排行榜。\n\n"
 "        `<top>` 是排行榜上顯示的排名數。\n"
 "        "
 
-#: redbot/cogs/trivia/trivia.py:422 redbot/cogs/trivia/trivia.py:451
+#: redbot/cogs/trivia/trivia.py:495 redbot/cogs/trivia/trivia.py:524
 msgid "Unknown field `{field_name}`, see `{prefix}help trivia leaderboard server` for valid fields to sort by."
 msgstr "未知字段“{field_name}”，請參閱“{prefix}help trivia leaderboard server”以獲取要排序的有效字段。"
 
-#: redbot/cogs/trivia/trivia.py:438
+#: redbot/cogs/trivia/trivia.py:511
 #, docstring
 msgid "Global trivia leaderboard.\n\n"
 "        `<sort_by>` can be any of the following fields:\n"
@@ -491,59 +572,59 @@ msgstr "全球瑣事排行榜。\n\n"
 "        `<top>` 是排行榜上顯示的排名數。\n"
 "        "
 
-#: redbot/cogs/trivia/trivia.py:506
+#: redbot/cogs/trivia/trivia.py:579
 msgid "There are no scores on record!"
 msgstr "沒有記錄在案的分數！"
 
-#: redbot/cogs/trivia/trivia.py:536
+#: redbot/cogs/trivia/trivia.py:609
 msgid "Rank"
 msgstr "排名"
 
-#: redbot/cogs/trivia/trivia.py:537
+#: redbot/cogs/trivia/trivia.py:610
 msgid "Member"
 msgstr "成員"
 
-#: redbot/cogs/trivia/trivia.py:538
+#: redbot/cogs/trivia/trivia.py:611
 msgid "Wins"
 msgstr "獲勝場次"
 
-#: redbot/cogs/trivia/trivia.py:539
+#: redbot/cogs/trivia/trivia.py:612
 msgid "Games Played"
 msgstr "遊玩次數"
 
-#: redbot/cogs/trivia/trivia.py:540
+#: redbot/cogs/trivia/trivia.py:613
 msgid "Total Score"
 msgstr "總積分"
 
-#: redbot/cogs/trivia/trivia.py:541
+#: redbot/cogs/trivia/trivia.py:614
 msgid "Average Score"
 msgstr "平均分數"
 
-#: redbot/cogs/trivia/trivia.py:650
+#: redbot/cogs/trivia/trivia.py:723
 msgid "{filename} is a reserved trivia name and cannot be replaced.\n"
 "Choose another name."
 msgstr "{filename} 是一個保留的瑣事名稱，不能被替換。\n"
 "選擇另一個名稱。"
 
-#: redbot/cogs/trivia/trivia.py:659
+#: redbot/cogs/trivia/trivia.py:732
 msgid "{filename} already exists. Do you wish to overwrite?"
 msgstr "{filename} 已經存在。 你是否想覆蓋？"
 
-#: redbot/cogs/trivia/trivia.py:681
+#: redbot/cogs/trivia/trivia.py:754
 msgid "You took too long answering."
 msgstr "你回答的時間太長了。"
 
-#: redbot/cogs/trivia/trivia.py:685
+#: redbot/cogs/trivia/trivia.py:758
 msgid "I am not replacing the existing file."
 msgstr "我不會替換現有文件。"
 
-#: redbot/cogs/trivia/trivia.py:698
+#: redbot/cogs/trivia/trivia.py:771
 msgid "There was an error saving the file.\n"
 "Please check the filename and try again, as it could be longer than your system supports."
 msgstr "保存文件時出錯。\n"
 "請檢查文件名並重試，因為它可能比您的系統支持的字數更長。"
 
-#: redbot/cogs/trivia/trivia.py:705
+#: redbot/cogs/trivia/trivia.py:778
 msgid "Saved Trivia list as {filename}."
 msgstr "將 Trivia 列表保存為 {filename}。"
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-05-01 22:55+0000\n"
+"POT-Creation-Date: 2024-04-04 07:32+0000\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian Bokmal\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,14 @@ msgid "You need a client secret key if you want to use the Twitch API on this co
 "5. Copy your client ID and your client secret into:\n"
 "{command}\n\n"
 "Note: These tokens are sensitive and should only be used in a private channel or in DM with the bot."
-msgstr ""
+msgstr "Du trenger en nøkkel \"client secret key\" hvis du vil bruke Twitch API med denne cog.\n"
+"Følg disse instruksjonene:\n"
+"Gå til denne siden: {link}.\n"
+"Klikk \"Manage\" på applikasjonen.\n"
+"Klikk på \"New secret\".\n"
+"Kopier client ID og client secret til:\n"
+"{command}\n\n"
+"Merk: Disse tokens bør kun brukes i en privat kanal eller i DM med boten."
 
 #: redbot/cogs/streams/streams.py:138 redbot/cogs/streams/streams.py:534
 msgid "<your_client_id_here>"
@@ -66,7 +73,7 @@ msgstr "Den brukeren er frakoblet."
 
 #: redbot/cogs/streams/streams.py:255 redbot/cogs/streams/streams.py:491
 msgid "That user doesn't seem to exist."
-msgstr ""
+msgstr "Den brukeren ser ikke ut til å eksistere."
 
 #: redbot/cogs/streams/streams.py:258 redbot/cogs/streams/streams.py:459
 msgid "The Twitch token is either invalid or has not been set. See {command}."
@@ -86,7 +93,7 @@ msgstr "Noe gikk galt under forsøk på å kontakte strømmetjenestens API."
 
 #: redbot/cogs/streams/streams.py:301 redbot/cogs/streams/streams.py:810
 msgid "Watch the stream"
-msgstr ""
+msgstr "Se på streamen"
 
 #: redbot/cogs/streams/streams.py:310
 #, docstring
@@ -101,7 +108,7 @@ msgstr "Administrer Twitch-stream varsler."
 #: redbot/cogs/streams/streams.py:334
 #, docstring
 msgid "Toggle alerts in this or the given channel for a Twitch stream."
-msgstr ""
+msgstr "Aktiver varsler i denne eller den gitte kanalen for en Twitch-streams."
 
 #: redbot/cogs/streams/streams.py:337
 msgid "Please supply the name of a *Twitch* channel, not a Discord channel."
@@ -182,7 +189,15 @@ msgid "To set the twitch API tokens, follow these steps:\n"
 "{command}\n\n"
 "Note: These tokens are sensitive and should only be used in a private channel\n"
 "or in DM with the bot.\n"
-msgstr ""
+msgstr "Følg disse trinnene for å angi twitch API-tokens:\n"
+"1. Gå til denne siden: {link}.\n"
+"2. Klikk på *Register Your Application*.\n"
+"3. Skriv inn et navn, sett OAuth Redirect URI til {localhost}, og velg en programkategori som passer ditt formål.\n"
+"4. Klikk på *Register*.\n"
+"5. Kopier client ID og client secret til:\n"
+"{command}\n\n"
+"Merk: Disse tokens bør kun brukes i en privat kanal\n"
+"eller i DM med boten.\n"
 
 #: redbot/cogs/streams/streams.py:543
 #, docstring
@@ -200,7 +215,16 @@ msgid "To get one, do the following:\n"
 "4. Copy your API key and run the command {command}\n\n"
 "Note: These tokens are sensitive and should only be used in a private channel\n"
 "or in DM with the bot.\n"
-msgstr ""
+msgstr "For å få en, gjør følgende:\n"
+"1. Lag et prosjekt\n"
+"(se {link1} for detaljer)\n"
+"2. Aktiver YouTube Data API v3\n"
+"(se {link2} for instruksjoner)\n"
+"3. Sett opp API-nøkkelen din\n"
+"(se {link3} for instruksjoner)\n"
+"4. Kopier API-nøkkelen og kjør kommandoen {command}\n\n"
+"Merk: Disse tokens bør kun brukes i en privat kanal\n"
+"eller i DM med boten.\n"
 
 #: redbot/cogs/streams/streams.py:562
 msgid "<your_api_key_here>"
@@ -264,11 +288,11 @@ msgstr "Veksle nevnelsen til `@everyone`."
 
 #: redbot/cogs/streams/streams.py:627
 msgid "{everyone} will no longer be mentioned for stream alerts."
-msgstr ""
+msgstr "{everyone} vil ikke lenger bli nevnt for strømvarsler."
 
 #: redbot/cogs/streams/streams.py:634
 msgid "When a stream is live, {everyone} will be mentioned."
-msgstr ""
+msgstr "Når en streamer er live, vil {everyone} bli nevnt."
 
 #: redbot/cogs/streams/streams.py:642
 #, docstring
@@ -277,11 +301,11 @@ msgstr "Veksle følgende ommening `@here`."
 
 #: redbot/cogs/streams/streams.py:648
 msgid "{here} will no longer be mentioned for stream alerts."
-msgstr ""
+msgstr "{here} vil ikke lenger bli nevnt for strømvarsler."
 
 #: redbot/cogs/streams/streams.py:655
 msgid "When a stream is live, {here} will be mentioned."
-msgstr ""
+msgstr "Når en streamer er live, vil {here} bli nevnt."
 
 #: redbot/cogs/streams/streams.py:663
 #, docstring
@@ -290,11 +314,11 @@ msgstr "Veksle en rolle omtale."
 
 #: redbot/cogs/streams/streams.py:668
 msgid "{role} will no longer be mentioned for stream alerts."
-msgstr ""
+msgstr "{role} vil ikke lenger bli nevnt for strømvarsler."
 
 #: redbot/cogs/streams/streams.py:674
 msgid "When a stream or community is live, {role} will be mentioned."
-msgstr ""
+msgstr "Når en streamer er live, vil {role} bli nevnt."
 
 #: redbot/cogs/streams/streams.py:678
 msgid "Since the role is not mentionable, it will be momentarily made mentionable when announcing a streamalert. Please make sure I have the correct permissions to manage this role, or else members of this role won't receive a notification."
@@ -342,23 +366,23 @@ msgstr "Streamer tidsplaner vil ikke lenger sende et varsel."
 #: redbot/cogs/streams/streams.py:725
 #, docstring
 msgid "Toggle whether to use buttons for stream alerts."
-msgstr ""
+msgstr "Aktiver om du vil bruke knapper ''buttons'' under varsler."
 
 #: redbot/cogs/streams/streams.py:730
 msgid "I will no longer use buttons in stream alerts."
-msgstr ""
+msgstr "Jeg vil ikke lenger bruke knapper ''buttons'' i strømvarsler."
 
 #: redbot/cogs/streams/streams.py:733
 msgid "I will use buttons in stream alerts."
-msgstr ""
+msgstr "Jeg vil sette knapper ''buttons'' under varsel-meldingen."
 
 #: redbot/cogs/streams/streams.py:741
 msgid "I'll now send a notification in the {channel.mention} channel when {stream.name} is live."
-msgstr ""
+msgstr "Jeg sender fra nå et varsel i {channel.mention} når {stream.name} er live."
 
 #: redbot/cogs/streams/streams.py:751
 msgid "I won't send notifications about {stream.name} in the {channel.mention} channel anymore"
-msgstr ""
+msgstr "Jeg vil ikke sende varsler om {stream.name} i {channel.mention} lenger"
 
 #: redbot/cogs/streams/streams.py:914
 msgid "{mention}, {display_name} is live!"
@@ -368,45 +392,45 @@ msgstr "{mention}, {display_name} er live!"
 msgid "{display_name} is live!"
 msgstr "{display_name} er live!"
 
-#: redbot/cogs/streams/streamtypes.py:226
-msgid "This stream will start in {time}"
-msgstr "Denne strømmen starter om {time}"
+#: redbot/cogs/streams/streamtypes.py:227
+msgid "This stream will start <t:{time}:R>"
+msgstr ""
 
-#: redbot/cogs/streams/streamtypes.py:232
-msgid "This stream was scheduled for {min} minutes ago"
-msgstr "Denne strømmen ble planlagt for {min} minutter siden"
+#: redbot/cogs/streams/streamtypes.py:231
+msgid "This stream was scheduled for <t:{time}:R>"
+msgstr ""
 
-#: redbot/cogs/streams/streamtypes.py:445
+#: redbot/cogs/streams/streamtypes.py:446
 msgid "Untitled broadcast"
 msgstr "Frakoblet sending"
 
-#: redbot/cogs/streams/streamtypes.py:447
+#: redbot/cogs/streams/streamtypes.py:448
 msgid " - Rerun"
 msgstr " - kjøre om igjen"
 
-#: redbot/cogs/streams/streamtypes.py:450
-#: redbot/cogs/streams/streamtypes.py:498
+#: redbot/cogs/streams/streamtypes.py:451
+#: redbot/cogs/streams/streamtypes.py:497
 msgid "Followers"
 msgstr "Følgere"
 
-#: redbot/cogs/streams/streamtypes.py:451
-#: redbot/cogs/streams/streamtypes.py:499
+#: redbot/cogs/streams/streamtypes.py:452
+#: redbot/cogs/streams/streamtypes.py:498
 msgid "Total views"
 msgstr "Visninger totalt"
 
-#: redbot/cogs/streams/streamtypes.py:456
+#: redbot/cogs/streams/streamtypes.py:457
 msgid "Playing: "
 msgstr "Spiller: "
 
-#: redbot/cogs/streams/streamtypes.py:504
+#: redbot/cogs/streams/streamtypes.py:503
 msgid "None"
 msgstr "Ingen"
 
-#: redbot/cogs/streams/streamtypes.py:507
+#: redbot/cogs/streams/streamtypes.py:506
 msgid "NSFW | "
 msgstr "NSFW | "
 
-#: redbot/cogs/streams/streamtypes.py:511
+#: redbot/cogs/streams/streamtypes.py:510
 msgid "{adult}Category: {category} | Tags: {tags}"
 msgstr "{adult}Kategori: {category} ＋ Tagger: {tags}"
 

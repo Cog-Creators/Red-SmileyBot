@@ -273,7 +273,7 @@ class Admin(commands.Cog):
         """
         author = ctx.author
         reason = _("{author} ({author.id}) changed the colour of role '{role.name}'").format(
-            author=author, role=role.name
+            author=author, role=role
         )
 
         if not self.pass_user_hierarchy_check(ctx, role):

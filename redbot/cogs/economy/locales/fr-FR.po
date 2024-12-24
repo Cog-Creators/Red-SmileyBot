@@ -67,7 +67,7 @@ msgstr "Valeur invalide, l'argument doit être un entier, éventuellement préc�
 
 #: redbot/cogs/economy/economy.py:118
 msgid "Invalid value, the amount of currency to increase or decrease must be an integer different from zero."
-msgstr ""
+msgstr "Valeur invalide, le montant de la devise à augmenter ou à diminuer doit être un entier différent de zéro."
 
 #: redbot/cogs/economy/economy.py:130
 #, docstring
@@ -141,7 +141,9 @@ msgstr "{author} définit le solde du compte de {user} à {num} {currency}."
 msgid "Get some free currency.\n\n"
 "        The amount awarded and frequency can be configured.\n"
 "        "
-msgstr ""
+msgstr "Obtenez des devises gratuites.\n\n"
+"        Le montant attribué et la fréquence peuvent être configurés.\n"
+"        "
 
 #: redbot/cogs/economy/economy.py:312 redbot/cogs/economy/economy.py:368
 msgid "You've reached the maximum amount of {currency}! Please spend some more 😬\n\n"
@@ -159,7 +161,7 @@ msgstr "{author.mention} Tenez, voici un peu de {currency}. Amusez-vous bien ! (
 
 #: redbot/cogs/economy/economy.py:345 redbot/cogs/economy/economy.py:402
 msgid "{author.mention} Too soon. Your next payday is {relative_time}."
-msgstr ""
+msgstr "{author.mention} Trop tôt. Pour le prochain payday, vous devez attendre {relative_time}."
 
 #: redbot/cogs/economy/economy.py:410
 #, docstring
@@ -253,14 +255,16 @@ msgstr "\n"
 #: redbot/cogs/economy/economy.py:662
 #, docstring
 msgid "Base command to manage Economy settings."
-msgstr ""
+msgstr "Commande de base pour gérer les paramètres de l'Economie."
 
 #: redbot/cogs/economy/economy.py:666
 #, docstring
 msgid "\n"
 "        Shows the current economy settings\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        Montre les paramètres économiques actuels\n"
+"        "
 
 #: redbot/cogs/economy/economy.py:681
 msgid "---Economy Settings---\n"
@@ -269,11 +273,16 @@ msgid "---Economy Settings---\n"
 "Slot cooldown: {slot_time}\n"
 "Payday amount: {payday_amount}\n"
 "Payday cooldown: {payday_time}\n"
-msgstr ""
+msgstr "--- Paramètres Économiques---\n"
+"Enchère minimum : {slot_min}\n"
+"Enchère maximale : {slot_max}\n"
+"Temps de recharge des emplacements : {slot_time} \n"
+"Montant du jour de paie : {payday_amount}\n"
+"Délai de récupération du jour de paie : {payday_time}"
 
 #: redbot/cogs/economy/economy.py:698
 msgid "---Role Payday Amounts---\n"
-msgstr ""
+msgstr "---Montants du Role Jour de paye--\n"
 
 #: redbot/cogs/economy/economy.py:702
 #, docstring
@@ -287,7 +296,7 @@ msgstr ""
 
 #: redbot/cogs/economy/economy.py:719
 msgid "Warning: Minimum bid is greater than the maximum bid ({max_bid}). Slots will not work."
-msgstr ""
+msgstr "Attention : l'enchère minimale est supérieure à l'enchère maximale ({max_bid}). Les enchères ne fonctionneront pas."
 
 #: redbot/cogs/economy/economy.py:730
 msgid "Minimum bid is now {bid} {currency}."
@@ -305,7 +314,7 @@ msgstr ""
 
 #: redbot/cogs/economy/economy.py:754
 msgid "Warning: Maximum bid is less than the minimum bid ({min_bid}). Slots will not work."
-msgstr ""
+msgstr "Attention : l'enchère maximale est inférieure à l'enchère minimale ({min_bid}). Les enchères ne fonctionneront pas."
 
 #: redbot/cogs/economy/economy.py:765
 msgid "Maximum bid is now {bid} {currency}."
@@ -384,7 +393,7 @@ msgstr "La banque doit être par serveur pour que les paydays par rôle fonction
 
 #: redbot/cogs/economy/economy.py:883
 msgid "The payday value attached to role has been removed. Users with this role will now receive the default pay of {num} {currency}."
-msgstr ""
+msgstr "La valeur du jour de paye attachée au rôle a été supprimée. Les utilisateurs avec ce rôle recevront désormais le paiement par défaut de {num} {currency}."
 
 #: redbot/cogs/economy/economy.py:892
 msgid "Every payday will now give {num} {currency} to people with the role {role_name}."

@@ -18,59 +18,64 @@ msgstr ""
 #: redbot/cogs/audio/apis/interface.py:270
 #: redbot/cogs/audio/apis/interface.py:600
 msgid "Failing to get tracks, skipping remaining."
-msgstr ""
+msgstr "Não foi possível encontrar faixas, ignorando o restante."
 
 #: redbot/cogs/audio/apis/interface.py:303
 #: redbot/cogs/audio/apis/spotify.py:175
 msgid "The Spotify API key or client secret has not been set properly. \n"
 "Use `{prefix}audioset spotifyapi` for instructions."
-msgstr ""
+msgstr "A chave de API do Spotify ou segredo do cliente não foi definida corretamente. \n"
+"Use `{prefix}audioset spotifyapi` para instruções."
 
 #: redbot/cogs/audio/apis/interface.py:345
 msgid "This doesn't seem to be a valid Spotify playlist/album URL or code."
-msgstr ""
+msgstr "Esta não parece ser uma lista de reprodução do Spotify/URL ou código de álbum válido."
 
 #: redbot/cogs/audio/apis/interface.py:471
 msgid "This doesn't seem to be a supported Spotify URL or code."
-msgstr ""
+msgstr "Isto não parece ser uma URL ou código do Spotify suportado."
 
 #: redbot/cogs/audio/apis/interface.py:561
 msgid "The connection was reset while loading the playlist."
-msgstr ""
+msgstr "A conexão foi redefinida durante o carregamento da lista de reprodução."
 
 #: redbot/cogs/audio/apis/interface.py:572
 msgid "Player timeout, skipping remaining tracks."
-msgstr ""
+msgstr "O tempo expirou, ignorando faixas restantes."
 
 #: redbot/cogs/audio/apis/interface.py:665
 msgid " {bad_tracks} tracks cannot be queued."
-msgstr ""
+msgstr " {bad_tracks} faixas não podem ser colocadas em fila."
 
 #: redbot/cogs/audio/apis/interface.py:673
 msgid "Playlist Enqueued"
-msgstr ""
+msgstr "Playlist na fila"
 
 #: redbot/cogs/audio/apis/interface.py:674
 msgid "Added {num} tracks to the queue.{maxlength_msg}"
-msgstr ""
+msgstr "Adicionadas {num} faixas à fila.{maxlength_msg}"
 
 #: redbot/cogs/audio/apis/interface.py:680
 msgid "{time} until start of playlist playback: starts at #{position} in queue"
-msgstr ""
+msgstr "{time} até o início da reprodução da playlist: inicia em #{position} na fila"
 
 #: redbot/cogs/audio/apis/interface.py:691
 msgid "Nothing found.\n"
 "The YouTube API key may be invalid or you may be rate limited on YouTube's search service.\n"
 "Check the YouTube API key again and follow the instructions at `{prefix}audioset youtubeapi`."
-msgstr ""
+msgstr "Nada foi encontrado.\n"
+"A chave de API do YouTube pode ser inválida ou pode estar limitado no serviço de pesquisa do YouTube.\n"
+"Revise a chave de API do YouTube e siga as instruções em `{prefix}audioset youtubeapi`."
 
 #: redbot/cogs/audio/apis/youtube.py:62
 msgid "Your YouTube Data API token is invalid.\n"
 "Check the YouTube API key again and follow the instructions at `{prefix}audioset youtubeapi`."
-msgstr ""
+msgstr "O seu token de API de dados do YouTube é inválido.\n"
+"Verifique a chave da API do YouTube novamente e siga as instruções no youtubeapi`{prefix}."
 
 #: redbot/cogs/audio/apis/youtube.py:74
 msgid "YouTube API error code: 403\n"
 "Your YouTube API key may have reached the account's query limit for today. Please check <https://developers.google.com/youtube/v3/getting-started#quota> for more information."
-msgstr ""
+msgstr "Código de erro da API do YouTube: 403\n"
+"A sua chave da API do YouTube pode ter chegado ao limite de consulta da conta hoje. Por favor, verifique <https://developers.google.com/youtube/v3/getting-started#quota> para mais informações."
 

@@ -840,7 +840,7 @@ class CogMixin(CogGroupMixin, CogCommandMixin):
 
         .. note::
 
-            This method is documented provisionally
+            This method is documented `provisionally <developer-guarantees-exclusions>`
             and may have minor changes made to it.
             It is not expected to undergo major changes,
             but nothing utilizes this method yet and the inclusion of this method

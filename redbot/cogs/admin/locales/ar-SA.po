@@ -122,7 +122,7 @@ msgstr "\n"
 
 #: redbot/cogs/admin/admin.py:275
 msgid "{author} ({author.id}) changed the colour of role '{role.name}'"
-msgstr ""
+msgstr "{author}({author.id}) تغيير لون رول {role.name}"
 
 #: redbot/cogs/admin/admin.py:294 redbot/cogs/admin/admin.py:327
 msgid "Done."
@@ -144,7 +144,7 @@ msgstr "\n"
 
 #: redbot/cogs/admin/admin.py:308
 msgid "{author} ({author.id}) changed the name of role '{old_name}' to '{name}'"
-msgstr ""
+msgstr "{author}({author.id}) تغيير اسم رول {old_name} إلى {name}"
 
 #: redbot/cogs/admin/admin.py:332
 #, docstring
@@ -185,7 +185,7 @@ msgstr "تم تحديث قناة الإعلانات إلى {channel.mention}"
 #: redbot/cogs/admin/admin.py:375
 #, docstring
 msgid "Unsets the channel for announcements."
-msgstr ""
+msgstr "إزالة القناة من الإعلانات."
 
 #: redbot/cogs/admin/admin.py:400
 #, docstring
@@ -194,7 +194,11 @@ msgid "\n"
 "        Server admins must have configured the role as user settable.\n"
 "        NOTE: The role is case sensitive!\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        أزاله أو ازالة الرول الشخصي منك.\n\n"
+"        يجب أن يكون لدى أدمن السيرفر اعدادت للتعيين من قبل المستخدم.\n"
+"        ملاحظة: الرول حساس لحالة الأحرف\n"
+"        "
 
 #: redbot/cogs/admin/admin.py:413
 #, docstring
@@ -253,15 +257,15 @@ msgstr "لا يمكنني السماح لك بإضافة {role.name} لرتبة 
 
 #: redbot/cogs/admin/admin.py:475
 msgid "The role \"{role.name}\" is already a selfrole."
-msgstr ""
+msgstr "الرول \"{role.name}\" هو بالفعل رول شخصي."
 
 #: redbot/cogs/admin/admin.py:481
 msgid "Added {count} selfroles."
-msgstr ""
+msgstr "إضافة {count} رول شخصي."
 
 #: redbot/cogs/admin/admin.py:483
 msgid "Added 1 selfrole."
-msgstr ""
+msgstr "تم اضافة 1 رول شخصي."
 
 #: redbot/cogs/admin/admin.py:489
 #, docstring

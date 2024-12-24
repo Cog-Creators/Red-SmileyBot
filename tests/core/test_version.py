@@ -64,7 +64,7 @@ def test_python_version_has_lower_bound():
     Due to constant issues in support with Red being installed on a Python version that was not
     supported by any Red version, it is important that we have both an upper and lower bound set.
     """
-    requires_python = importlib.metadata.metadata("Red-DiscordBot")["Requires-Python"]
+    requires_python = importlib.metadata.metadata("Red-DiscordBot").get("Requires-Python")
     assert requires_python is not None
 
     # Requirement needs a regular requirement string, so "x" serves as requirement's name here
@@ -81,7 +81,7 @@ def test_python_version_has_upper_bound():
     Due to constant issues in support with Red being installed on a Python version that was not
     supported by any Red version, it is important that we have both an upper and lower bound set.
     """
-    requires_python = importlib.metadata.metadata("Red-DiscordBot")["Requires-Python"]
+    requires_python = importlib.metadata.metadata("Red-DiscordBot").get("Requires-Python")
     assert requires_python is not None
 
     # Requirement needs a regular requirement string, so "x" serves as requirement's name here

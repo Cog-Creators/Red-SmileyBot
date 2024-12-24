@@ -117,6 +117,7 @@ _ = i18n.Translator("Core", __file__)
 TokenConverter = commands.get_dict_converter(delims=[" ", ",", ";"])
 
 MAX_PREFIX_LENGTH = 25
+MINIMUM_PREFIX_LENGTH = 1
 
 
 class CoreLogic:
@@ -2377,7 +2378,7 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         await ctx.send(
             _(
                 "You seem to be attempting to sync after recently syncing. Discord does not like it "
-                "when bots sync more often than neccecary, so this command has a cooldown. You "
+                "when bots sync more often than necessary, so this command has a cooldown. You "
                 "should enable/disable all commands you want to change first, and run this command "
                 "one time only after all changes have been made. "
             )
@@ -2847,21 +2848,12 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
             ctx.bot.description = description
             await ctx.tick()
 
-    @_set_bot.group(name="avatar", invoke_without_command=True)
-    @commands.is_owner()
-    async def _set_bot_avatar(self, ctx: commands.Context, url: str = None):
-        """Sets [botname]'s avatar
-
-        Supports either an attachment or an image URL.
-
-        **Examples:**
-        - `[p]set bot avatar` - With an image attachment, this will set the avatar.
-        - `[p]set bot avatar` - Without an attachment, this will show the command help.
-        - `[p]set bot avatar https://links.flaree.xyz/k95` - Sets the avatar to the provided url.
-
-        **Arguments:**
-        - `[url]` - An image url to be used as an avatar. Leave blank when uploading an attachment.
-        """
+    async def _set_bot_image(
+        self,
+        image_type: Literal["avatar", "banner"],
+        ctx: commands.Context,
+        url: Optional[str] = None,
+    ):
         if len(ctx.message.attachments) > 0:  # Attachments take priority
             data = await ctx.message.attachments[0].read()
         elif url is not None:
@@ -2882,19 +2874,48 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
 
         try:
             async with ctx.typing():
-                await ctx.bot.user.edit(avatar=data)
+                if image_type == "avatar":
+                    await ctx.bot.user.edit(avatar=data)
+                else:
+                    await ctx.bot.user.edit(banner=data)
         except discord.HTTPException:
-            await ctx.send(
-                _(
-                    "Failed. Remember that you can edit my avatar "
-                    "up to two times a hour. The URL or attachment "
-                    "must be a valid image in either JPG or PNG format."
+            if image_type == "avatar":
+                await ctx.send(
+                    _(
+                        "Failed. Remember that you can edit my avatar "
+                        "up to two times a hour. The URL or attachment "
+                        "must be a valid image in either JPG, PNG, GIF, or WEBP format."
+                    )
                 )
-            )
+            else:
+                await ctx.send(
+                    _(
+                        "Failed. Remember that you can edit my banner "
+                        "up to two times a hour. The URL or attachment "
+                        "must be a valid image in either JPG, PNG, GIF, or WEBP format."
+                    )
+                )
         except ValueError:
-            await ctx.send(_("JPG / PNG format only."))
+            await ctx.send(_("JPG / PNG / GIF / WEBP format only."))
         else:
             await ctx.send(_("Done."))
+
+    @_set_bot.group(name="avatar", invoke_without_command=True)
+    @commands.is_owner()
+    async def _set_bot_avatar(self, ctx: commands.Context, url: str = None):
+        """Sets [botname]'s avatar
+
+        Supports either an attachment or an image URL.
+
+        **Examples:**
+        - `[p]set bot avatar` - With an image attachment, this will set the avatar.
+        - `[p]set bot avatar` - Without an attachment, this will show the command help.
+        - `[p]set bot avatar https://avatars.githubusercontent.com/u/23690422` - Sets the avatar to the provided url.
+
+        **Arguments:**
+        - `[url]` - An image url to be used as an avatar. Leave blank when uploading an attachment.
+        """
+        await self._set_bot_image("avatar", ctx, url)
 
     @_set_bot_avatar.command(name="remove", aliases=["clear"])
     @commands.is_owner()
@@ -2908,6 +2929,36 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         async with ctx.typing():
             await ctx.bot.user.edit(avatar=None)
         await ctx.send(_("Avatar removed."))
+
+    @_set_bot.group(name="banner", invoke_without_command=True)
+    @commands.is_owner()
+    async def _set_bot_banner(self, ctx: commands.Context, url: str = None):
+        """Sets [botname]'s banner
+
+        Supports either an attachment or an image URL.
+
+        **Examples:**
+        - `[p]set bot banner` - With an image attachment, this will set the banner.
+        - `[p]set bot banner` - Without an attachment, this will show the command help.
+        - `[p]set bot banner https://opengraph.githubassets.com` - Sets the banner to the provided url.
+
+        **Arguments:**
+        - `[url]` - An image url to be used as an banner. Leave blank when uploading an attachment.
+        """
+        await self._set_bot_image("banner", ctx, url)
+
+    @_set_bot_banner.command(name="remove", aliases=["clear"])
+    @commands.is_owner()
+    async def _set_bot_banner_remove(self, ctx: commands.Context):
+        """
+        Removes [botname]'s banner.
+
+        **Example:**
+        - `[p]set bot banner remove`
+        """
+        async with ctx.typing():
+            await ctx.bot.user.edit(banner=None)
+        await ctx.send(_("Banner removed."))
 
     @_set_bot.command(name="username", aliases=["name"])
     @commands.is_owner()
@@ -4052,6 +4103,24 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
                 _("Prefixes cannot start with '/', as it conflicts with Discord's slash commands.")
             )
             return
+        if any(len(x) < MINIMUM_PREFIX_LENGTH for x in prefixes):
+            await ctx.send(
+                _(
+                    "Warning: A prefix is below the recommended length (1 character).\n"
+                    "Do you want to continue?"
+                )
+                + " (yes/no)"
+            )
+            pred = MessagePredicate.yes_or_no(ctx)
+            try:
+                await self.bot.wait_for("message", check=pred, timeout=30)
+            except asyncio.TimeoutError:
+                await ctx.send(_("Response timed out."))
+                return
+            else:
+                if pred.result is False:
+                    await ctx.send(_("Cancelled."))
+                    return
         if any(len(x) > MAX_PREFIX_LENGTH for x in prefixes):
             await ctx.send(
                 _(
@@ -4110,6 +4179,9 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
             await ctx.send(
                 _("Prefixes cannot start with '/', as it conflicts with Discord's slash commands.")
             )
+            return
+        if any(len(x) < MINIMUM_PREFIX_LENGTH for x in prefixes):
+            await ctx.send(_("You cannot have a prefix shorter than 1 character."))
             return
         if any(len(x) > MAX_PREFIX_LENGTH for x in prefixes):
             await ctx.send(_("You cannot have a prefix longer than 25 characters."))
@@ -4446,8 +4518,6 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
     async def helpset_maxpages(self, ctx: commands.Context, pages: int):
         """Set the maximum number of help pages sent in a server channel.
 
-        Note: This setting does not apply to menu help.
-
         If a help message contains more pages than this value, the help message will
         be sent to the command author via DM. This is to help reduce spam in server
         text channels.
@@ -4535,8 +4605,11 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         The maximum tagline length is 2048 characters.
         This setting only applies to embedded help. If no tagline is specified, the default will be used instead.
 
+        You can use `[\u200bp]` in your tagline, which will be replaced by the bot's prefix.
+
         **Examples:**
         - `[p]helpset tagline Thanks for using the bot!`
+        - `[p]helpset tagline Use [\u200bp]invite to add me to your server.`
         - `[p]helpset tagline` - Resets the tagline to the default.
 
         **Arguments:**

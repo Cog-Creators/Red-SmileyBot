@@ -418,10 +418,10 @@ class Streams(commands.Cog):
             return
 
         for channel_id, stream_platform in streams_list.items():
-            msg += f"** - #{ctx.guild.get_channel(channel_id)}**\n"
+            msg += f"- {ctx.guild.get_channel(channel_id).mention}\n"
             for platform, streams in stream_platform.items():
-                msg += f"\t** - {platform}**\n"
-                msg += f"\t\t{humanize_list(streams)}\n"
+                msg += f"  - **{platform}**\n"
+                msg += f"    {humanize_list(streams)}\n"
 
         for page in pagify(msg):
             await ctx.send(page)
