@@ -1799,9 +1799,24 @@ class Red(
         """
         Get the cached ID for a particular app command.
 
-        Pulls from Reds internal cache of app command IDs, which is updated when this instance runs ``[p]slash sync`` or ``bot.tree.sync()``.
-        Does not keep track of guild specific app commands.
-        Returns ``None`` if the command does not exist or if Red does not know the ID for that app command.
+        Pulls from Red's internal cache of app command IDs, which is updated
+        when the ``[p]slash sync`` command is ran on this instance
+        or `bot.tree.sync() <RedTree.sync()>` is called.
+        Does not keep track of guild-specific app commands.
+
+        Parameters
+        ----------
+        command_name : str
+            Name of the command to get the ID of.
+        command_type : `discord.AppCommandType`
+            Type of the command to get the ID of.
+
+        Returns
+        -------
+        Optional[int]
+            The cached of the specified app command or ``None``,
+            if the command does not exist or Red does not know the ID
+            for that app command.
         """
         if command_type is discord.AppCommandType.chat_input:
             cfg = self._config.enabled_slash_commands()
@@ -1823,9 +1838,24 @@ class Red(
         """
         Get the string that allows you to mention a particular app command.
 
-        Pulls from Reds internal cache of app command IDs, which is updated when this instance runs ``[p]slash sync`` or ``bot.tree.sync()``.
-        Does not keep track of guild specific app commands.
-        Returns ``None`` if the command does not exist or if Red does not know the ID for that app command.
+        Pulls from Red's internal cache of app command IDs, which is updated
+        when the ``[p]slash sync`` command is ran on this instance
+        or `bot.tree.sync() <RedTree.sync()>` is called.
+        Does not keep track of guild-specific app commands.
+
+        Parameters
+        ----------
+        command_name : str
+            Name of the command to get the mention for.
+        command_type : `discord.AppCommandType`
+            Type of the command to get the mention for.
+
+        Returns
+        -------
+        Optional[str]
+            The string that allows you to mention the specified app command
+            or ``None``, if the command does not exist or Red does not know the ID
+            for that app command.
         """
         # Empty string names will break later code and can't exist as commands, exit early
         if not command_name:
