@@ -107,6 +107,17 @@ class SimpleMenu(discord.ui.View):
         under the select menu in this instance.
         Defaults to False.
 
+    Attributes
+    ----------
+    select_menu: `discord.ui.Select`
+        A select menu with a list of pages. The usage of this attribute is discouraged
+        as it may store different instances throughout the menu's lifetime.
+
+        .. deprecated-removed:: 3.5.14 60
+            Any behaviour enabled by the usage of this attribute should no longer be depended on.
+            If you need this for something and cannot replace it with the other functionality,
+            create an issue on Red's issue tracker.
+
     Examples
     --------
         You can provide a list of strings::
