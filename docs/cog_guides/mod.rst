@@ -266,6 +266,28 @@ and reason as to why they were kicked/banned.
 
 * ``[enabled]``: Whether a message should be sent to a user when they are kicked/banned. |bool-input|
 
+.. _mod-command-modset-requirereason:
+
+""""""""""""""""""""
+modset requirereason
+""""""""""""""""""""
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]modset requirereason [enabled]
+
+**Description**
+
+Toggle whether a reason is required for mod actions.
+        
+If this is enabled, the bot will require a reason to be provided for all mod actions.
+
+**Arguments**
+
+* ``[enabled]``: Whether a reason should be required when performing mod actions. |bool-input|
+
 .. _mod-command-modset-hierarchy:
 
 """"""""""""""""

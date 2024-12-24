@@ -51,8 +51,11 @@ __all__ = [
 
 _ = Translator("commands.converter", __file__)
 
-ID_REGEX = re.compile(r"([0-9]{15,20})")
-USER_MENTION_REGEX = re.compile(r"<@!?([0-9]{15,21})>$")
+# You'd think that Discord's documentation showing an example of 2 ** 64 - 1 snowflake would mean that
+# this is going to be accepted by everything in their API but nope... Let's assume 2 ** 63 - 1 as the max instead.
+ID_REGEX = re.compile(r"([0-9]{15,19})")
+USER_MENTION_REGEX = re.compile(r"<@!?([0-9]{15,19})>$")
+_MAX_ID = 2**63 - 1
 
 
 # Taken with permission from
@@ -239,8 +242,16 @@ class RawUserIdConverter(dpy_commands.Converter):
         # are most likely not in the guild.
         # Mentions are supported, but most likely won't ever be in cache.
 
-        if match := ID_REGEX.match(argument) or USER_MENTION_REGEX.match(argument):
-            return int(match.group(1))
+        if match := ID_REGEX.fullmatch(argument) or USER_MENTION_REGEX.fullmatch(argument):
+            user_id = int(match.group(1))
+
+            # Validate user ID range
+            if user_id > _MAX_ID:
+                raise BadArgument(
+                    f"The ID '{argument}' is too large to be a valid Discord user ID."
+                )
+
+            return user_id
 
         raise BadArgument(_("'{input}' doesn't look like a valid user ID.").format(input=argument))
 
