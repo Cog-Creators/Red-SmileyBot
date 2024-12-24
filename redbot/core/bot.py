@@ -886,13 +886,12 @@ class Red(
             if ctx.channel.type is not discord.ChannelType.private:
                 raise TypeError("Can't check permissions for non-private PartialMessageable.")
             is_private = True
-        if isinstance(ctx, discord.Interaction):
-            ctx: discord.Interaction
-            perms = ctx.permissions
-            # The permissions here are always linked to the interaction author &
-            # the channel it originated from.
-        else:
+        if isinstance(ctx, discord.Message):
             perms = ctx.channel.permissions_for(author)
+        else:
+            # `permissions` attribute will use permissions from the interaction when possible,
+            # or `ctx.channel.permissions_for(author)` for non-interaction contexts.
+        	perms = ctx.permissions
         surpass_ignore = (
             is_private
             or perms.manage_guild
