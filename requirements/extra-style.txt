@@ -4,5 +4,5 @@ mypy-extensions==1.0.0
     # via black
 pathspec==0.12.1
     # via black
-tomli==2.0.1
+tomli==2.2.1
     # via black
