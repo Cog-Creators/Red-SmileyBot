@@ -29,6 +29,7 @@ __all__ = ("Trivia", "UNIQUE_ID", "InvalidListError", "get_core_lists", "get_lis
 
 UNIQUE_ID = 0xB3C0E453
 _ = Translator("Trivia", __file__)
+YAMLSafeLoader = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
 
 
 class InvalidListError(Exception):
@@ -759,7 +760,7 @@ class Trivia(commands.Cog):
                 return
 
         buffer = io.BytesIO(await attachment.read())
-        trivia_dict = yaml.safe_load(buffer)
+        trivia_dict = yaml.load(buffer, YAMLSafeLoader)
         TRIVIA_LIST_SCHEMA.validate(trivia_dict)
 
         buffer.seek(0)
@@ -803,7 +804,7 @@ def get_core_lists() -> List[pathlib.Path]:
     return list(core_lists_path.glob("*.yaml"))
 
 
-def get_list(path: pathlib.Path) -> Dict[str, Any]:
+def get_list(path: pathlib.Path, *, validate_schema: bool = True) -> Dict[str, Any]:
     """
     Returns a trivia list dictionary from the given path.
 
@@ -814,12 +815,14 @@ def get_list(path: pathlib.Path) -> Dict[str, Any]:
     """
     with path.open(encoding="utf-8") as file:
         try:
-            trivia_dict = yaml.safe_load(file)
+            trivia_dict = yaml.load(file, YAMLSafeLoader)
         except yaml.error.YAMLError as exc:
             raise InvalidListError("YAML parsing failed.") from exc
 
-    try:
-        TRIVIA_LIST_SCHEMA.validate(trivia_dict)
-    except schema.SchemaError as exc:
-        raise InvalidListError("The list does not adhere to the schema.") from exc
+    if validate_schema:
+        try:
+            TRIVIA_LIST_SCHEMA.validate(trivia_dict)
+        except schema.SchemaError as exc:
+            raise InvalidListError("The list does not adhere to the schema.") from exc
+
     return trivia_dict

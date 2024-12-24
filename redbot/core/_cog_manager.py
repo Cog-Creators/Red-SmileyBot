@@ -258,6 +258,12 @@ class CogManager:
 
         try:
             mod = import_module(real_name, package=package)
+            if mod.__spec__.name == "redbot.cogs.locales":
+                raise NoSuchCog(
+                    "No core cog by the name of '{}' could be found.".format(name),
+                    path=mod.__spec__.origin,
+                    name=name,
+                )
         except ImportError as e:
             if e.name == package + real_name:
                 raise NoSuchCog(

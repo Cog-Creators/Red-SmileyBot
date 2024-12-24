@@ -372,6 +372,29 @@ class ModSettings(MixinMeta):
 
     @modset.command()
     @commands.guild_only()
+    async def requirereason(self, ctx: commands.Context, enabled: bool = None):
+        """
+        Toggle whether a reason is required for mod actions.
+
+        If this is enabled, the bot will require a reason to be provided for all mod actions.
+        """
+        guild = ctx.guild
+        if enabled is None:
+            setting = await self.config.guild(guild).require_reason()
+            await ctx.send(
+                _("Mod action reason requirement is currently set to: {setting}").format(
+                    setting=setting
+                )
+            )
+            return
+        await self.config.guild(guild).require_reason.set(enabled)
+        if enabled:
+            await ctx.send(_("Bot will now require a reason for all mod actions."))
+        else:
+            await ctx.send(_("Bot will no longer require a reason for all mod actions."))
+
+    @modset.command()
+    @commands.guild_only()
     async def defaultdays(self, ctx: commands.Context, days: int = 0):
         """Set the default number of days worth of messages to be deleted when a user is banned.
 

@@ -212,13 +212,12 @@ async def menu(
         # where the original message is already sent prior to starting.
         # This is not normally the way we recommend sending this because
         # internally we already include the emojis we expect.
+        view = SimpleMenu(pages, timeout=timeout)
         if controls == DEFAULT_CONTROLS:
-            view = SimpleMenu(pages, timeout=timeout)
             await view.start(ctx, user=user)
             await view.wait()
             return
         else:
-            view = SimpleMenu(pages, timeout=timeout)
             view.remove_item(view.last_button)
             view.remove_item(view.first_button)
             has_next = False

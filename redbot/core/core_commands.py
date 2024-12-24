@@ -2375,6 +2375,11 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         """Custom cooldown error message."""
         if not isinstance(error, commands.CommandOnCooldown):
             return await ctx.bot.on_command_error(ctx, error, unhandled_by_cog=True)
+        if ctx.bot._bypass_cooldowns and ctx.author.id in ctx.bot.owner_ids:
+            ctx.command.reset_cooldown(ctx)
+            new_ctx = await ctx.bot.get_context(ctx.message)
+            await ctx.bot.invoke(new_ctx)
+            return
         await ctx.send(
             _(
                 "You seem to be attempting to sync after recently syncing. Discord does not like it "
