@@ -380,14 +380,14 @@ class ModSettings(MixinMeta):
         """
         guild = ctx.guild
         if enabled is None:
-            setting = await self.config.guild(guild).mod_reason()
+            setting = await self.config.guild(guild).require_reason()
             await ctx.send(
                 _("Mod action reason requirement is currently set to: {setting}").format(
                     setting=setting
                 )
             )
             return
-        await self.config.guild(guild).mod_reason.set(enabled)
+        await self.config.guild(guild).require_reason.set(enabled)
         if enabled:
             await ctx.send(_("Bot will now require a reason for all mod actions."))
         else:
