@@ -17,6 +17,12 @@ def pip_compile(version: str, name: str) -> None:
     if EXCLUDE_STEM_RE.fullmatch(stem):
         return
 
+    constraint_flags = [
+        arg
+        for file in REQUIREMENTS_FOLDER.glob(f"{sys.platform}-3.8-*.txt")
+        for arg in ("-c", file.name)
+    ]
+
     executable = ("py", f"-{version}") if sys.platform == "win32" else (f"python{version}",)
     subprocess.check_call(
         (
@@ -30,6 +36,7 @@ def pip_compile(version: str, name: str) -> None:
             f"{name}.in",
             "--output-file",
             f"{stem}.txt",
+            *constraint_flags,
         )
     )
 
