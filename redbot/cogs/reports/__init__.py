@@ -2,5 +2,5 @@ from redbot.core.bot import Red
 from .reports import Reports
 
 
-def setup(bot: Red):
-    bot.add_cog(Reports(bot))
+async def setup(bot: Red) -> None:
+    await bot.add_cog(Reports(bot))

@@ -1,4 +1,3 @@
-import asyncio as _asyncio
 import os as _os
 import re as _re
 import sys as _sys
@@ -14,22 +13,19 @@ from typing import (
     Union as _Union,
 )
 
-
-MIN_PYTHON_VERSION = (3, 8, 1)
-
-__all__ = [
-    "MIN_PYTHON_VERSION",
+__all__ = (
     "__version__",
     "version_info",
     "VersionInfo",
-    "_update_event_loop_policy",
-]
-if _sys.version_info < MIN_PYTHON_VERSION and not _os.getenv("READTHEDOCS", False):
+)
+
+MIN_PYTHON_VERSION = (3, 8, 1)
+if _sys.version_info < MIN_PYTHON_VERSION:
     print(
         f"Python {'.'.join(map(str, MIN_PYTHON_VERSION))} is required to run Red, but you have "
         f"{_sys.version}! Please update Python."
     )
-    _sys.exit(1)
+    _sys.exit(78)
 
 
 class VersionInfo:
@@ -44,6 +40,7 @@ class VersionInfo:
         r"(?:(?P<releaselevel>a|b|rc)(?P<serial>0|[1-9]\d*))?"
         r"(?:\.post(?P<post_release>0|[1-9]\d*))?"
         r"(?:\.dev(?P<dev_release>0|[1-9]\d*))?"
+        r"(?:\+(?P<local_version>g[a-z0-9]+(?:\.dirty)?))?"
         r"$",
         flags=_re.IGNORECASE,
     )
@@ -63,6 +60,7 @@ class VersionInfo:
         serial: _Optional[int] = None,
         post_release: _Optional[int] = None,
         dev_release: _Optional[int] = None,
+        local_version: _Optional[str] = None,
     ) -> None:
         self.major: int = major
         self.minor: int = minor
@@ -75,6 +73,17 @@ class VersionInfo:
         self.serial: _Optional[int] = serial
         self.post_release: _Optional[int] = post_release
         self.dev_release: _Optional[int] = dev_release
+        self.local_version: _Optional[str] = local_version
+
+    @property
+    def short_commit_hash(self) -> _Optional[str]:
+        if self.local_version is None:
+            return None
+        return self.local_version[1:].split(".", 1)[0]
+
+    @property
+    def dirty(self) -> bool:
+        return self.local_version is not None and self.local_version.endswith(".dirty")
 
     @classmethod
     def from_str(cls, version_str: str) -> "VersionInfo":
@@ -101,6 +110,7 @@ class VersionInfo:
         for key in ("serial", "post_release", "dev_release"):
             if match[key] is not None:
                 kwargs[key] = int(match[key])
+        kwargs["local_version"] = match["local_version"]
         return cls(**kwargs)
 
     @classmethod
@@ -123,26 +133,38 @@ class VersionInfo:
             "serial": self.serial,
             "post_release": self.post_release,
             "dev_release": self.dev_release,
+            "local_version": self.local_version,
         }
 
     def _generate_comparison_tuples(
         self, other: "VersionInfo"
     ) -> _List[
-        _Tuple[int, int, int, int, _Union[int, float], _Union[int, float], _Union[int, float]]
+        _Tuple[int, int, int, int, _Union[int, float], _Union[int, float], _Union[int, float], int]
     ]:
         tups: _List[
-            _Tuple[int, int, int, int, _Union[int, float], _Union[int, float], _Union[int, float]]
+            _Tuple[
+                int, int, int, int, _Union[int, float], _Union[int, float], _Union[int, float], int
+            ]
         ] = []
         for obj in (self, other):
+            if (
+                obj.releaselevel == obj.FINAL
+                and obj.post_release is None
+                and obj.dev_release is not None
+            ):
+                releaselevel = -1
+            else:
+                releaselevel = obj._RELEASE_LEVELS.index(obj.releaselevel)
             tups.append(
                 (
                     obj.major,
                     obj.minor,
                     obj.micro,
-                    obj._RELEASE_LEVELS.index(obj.releaselevel),
+                    releaselevel,
                     obj.serial if obj.serial is not None else _inf,
                     obj.post_release if obj.post_release is not None else -_inf,
                     obj.dev_release if obj.dev_release is not None else _inf,
+                    int(obj.dirty),
                 )
             )
         return tups
@@ -170,25 +192,114 @@ class VersionInfo:
             ret += f".post{self.post_release}"
         if self.dev_release is not None:
             ret += f".dev{self.dev_release}"
+        if self.local_version is not None:
+            ret += f"+{self.local_version}"
         return ret
 
     def __repr__(self) -> str:
         return (
             "VersionInfo(major={major}, minor={minor}, micro={micro}, "
             "releaselevel={releaselevel}, serial={serial}, post={post_release}, "
-            "dev={dev_release})".format(**self.to_json())
+            "dev={dev_release}, local={local_version})"
+        ).format(**self.to_json())
+
+    @classmethod
+    def _get_version(cls, *, ignore_installed: bool = False) -> _Tuple[str, "VersionInfo"]:
+        if not _VERSION.endswith(".dev1"):
+            return _VERSION, cls.from_str(_VERSION)
+
+        project_root = _os.path.abspath(_os.path.dirname(_os.path.dirname(__file__)))
+
+        methods = [
+            cls._get_version_from_git_repo,
+        ]
+        # `ignore_installed` is `True` when building with setuptools.
+        if ignore_installed:
+            methods.append(cls._get_version_from_sdist_pkg_info)
+            methods.append(cls._get_version_from_git_archive)
+        else:
+            methods.append(cls._get_version_from_package_metadata)
+        exceptions = []
+        for method in methods:
+            try:
+                version = method(project_root)
+            except Exception as exc:
+                exceptions.append(exc)
+            else:
+                break
+        else:
+            import traceback
+
+            for exc in exceptions:
+                traceback.print_exception(None, exc, exc.__traceback__)
+                exc.__traceback__ = None
+
+            version = _VERSION
+
+        return version, cls.from_str(version)
+
+    @classmethod
+    def _get_version_from_git_repo(cls, project_root: str) -> str:
+        # we only want to do this for editable installs
+        if not _os.path.exists(_os.path.join(project_root, ".git")):
+            raise RuntimeError("not a git repository")
+
+        import subprocess
+
+        output = subprocess.check_output(
+            ("git", "describe", "--tags", "--long", "--dirty"),
+            stderr=subprocess.DEVNULL,
+            cwd=project_root,
         )
+        _, count, commit, *dirty = output.decode("utf-8").strip().split("-", 3)
+        dirty_suffix = f".{dirty[0]}" if dirty else ""
+        return f"{_VERSION[:-1]}{count}+{commit}{dirty_suffix}"
+
+    @classmethod
+    def _get_version_from_git_archive(cls, project_root: str) -> str:
+        with open(_os.path.join(project_root, ".git_archive_info.txt"), encoding="utf-8") as fp:
+            commit, describe_name = fp.read().splitlines()
+            if not describe_name:
+                raise RuntimeError("git archive's describe didn't output anything")
+            if "%(describe" in describe_name:
+                # either git-archive was generated with Git < 2.35 or this is not a git-archive
+                raise RuntimeError("git archive did not support describe output")
+            _, _, suffix = describe_name.partition("-")
+            if suffix:
+                count, _, _ = suffix.partition("-")
+            else:
+                count = "0"
+            return f"{_VERSION[:-1]}{count}+g{commit}"
+
+    @classmethod
+    def _get_version_from_sdist_pkg_info(cls, project_root: str) -> str:
+        pkg_info_path = _os.path.join(project_root, "PKG-INFO")
+        if not _os.path.exists(pkg_info_path):
+            raise RuntimeError("not an sdist")
+
+        import email
+
+        with open(pkg_info_path, encoding="utf-8") as fp:
+            return email.message_from_file(fp)["Version"]
+
+    @classmethod
+    def _get_version_from_package_metadata(cls, project_root: str) -> str:
+        from importlib.metadata import version
+
+        return version("Red-DiscordBot")
 
 
 def _update_event_loop_policy():
     if _sys.implementation.name == "cpython":
         # Let's not force this dependency, uvloop is much faster on cpython
         try:
-            import uvloop as _uvloop
+            import uvloop
         except ImportError:
             pass
         else:
-            _asyncio.set_event_loop_policy(_uvloop.EventLoopPolicy())
+            import asyncio
+
+            asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
 
 
 def _ensure_no_colorama():
@@ -197,8 +308,12 @@ def _ensure_no_colorama():
     from rich.console import detect_legacy_windows
 
     if not detect_legacy_windows():
-        import colorama
-        import colorama.initialise
+        try:
+            import colorama
+            import colorama.initialise
+        except ModuleNotFoundError:
+            # colorama is not Red's primary dependency so it might not be present
+            return
 
         colorama.deinit()
 
@@ -209,20 +324,30 @@ def _ensure_no_colorama():
         colorama.initialise.wrap_stream = _colorama_wrap_stream
 
 
+def _update_logger_class():
+    from red_commons.logging import maybe_update_logger_class
+
+    maybe_update_logger_class()
+
+
 def _early_init():
+    # This function replaces logger so we preferably (though not necessarily) want that to happen
+    # before importing anything that calls `logging.getLogger()`, i.e. `asyncio`.
+    _update_logger_class()
     _update_event_loop_policy()
     _ensure_no_colorama()
 
 
-__version__ = "3.5.0.dev1"
-version_info = VersionInfo.from_str(__version__)
+# This is bumped automatically by release workflow (`.github/workflows/scripts/bump_version.py`)
+_VERSION = "3.5.14.dev1"
 
-# Filter fuzzywuzzy slow sequence matcher warning
-_warnings.filterwarnings("ignore", module=r"fuzzywuzzy.*")
+__version__, version_info = VersionInfo._get_version()
+
 # Show DeprecationWarning
 _warnings.filterwarnings("default", category=DeprecationWarning)
 
-if "--debug" not in _sys.argv:
+# TODO: Rearrange cli flags here and use the value instead of this monkeypatch
+if not any(_re.match("^-(-debug|d+|-verbose|v+)$", i) for i in _sys.argv):
     # DEP-WARN
     # Individual warnings - tracked in https://github.com/Cog-Creators/Red-DiscordBot/issues/3529
     # DeprecationWarning: an integer is required (got type float).  Implicit conversion to integers using __int__ is deprecated, and may be removed in a future version of Python.
@@ -235,4 +360,23 @@ if "--debug" not in _sys.argv:
         category=DeprecationWarning,
         module="asyncio",
         message="The loop argument is deprecated since Python 3.8",
+    )
+    # DEP-WARN - d.py currently uses audioop module, Danny is aware of the deprecation
+    #
+    # DeprecationWarning: 'audioop' is deprecated and slated for removal in Python 3.13
+    #   import audioop
+    _warnings.filterwarnings(
+        "ignore",
+        category=DeprecationWarning,
+        module="discord",
+        message="'audioop' is deprecated and slated for removal",
+    )
+    # DEP-WARN - will need a fix before Python 3.12 support
+    #
+    # DeprecationWarning: the load_module() method is deprecated and slated for removal in Python 3.12; use exec_module() instead
+    _warnings.filterwarnings(
+        "ignore",
+        category=DeprecationWarning,
+        module="importlib",
+        message=r"the load_module\(\) method is deprecated and slated for removal",
     )

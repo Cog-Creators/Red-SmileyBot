@@ -2,5 +2,5 @@ from .cleanup import Cleanup
 from redbot.core.bot import Red
 
 
-def setup(bot: Red):
-    bot.add_cog(Cleanup(bot))
+async def setup(bot: Red) -> None:
+    await bot.add_cog(Cleanup(bot))

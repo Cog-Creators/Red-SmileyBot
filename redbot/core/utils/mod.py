@@ -1,6 +1,6 @@
 import asyncio
 from datetime import timedelta
-from typing import List, Iterable, Union, TYPE_CHECKING, Dict
+from typing import List, Iterable, Union, TYPE_CHECKING, Dict, Optional
 
 import discord
 
@@ -8,8 +8,25 @@ if TYPE_CHECKING:
     from ..bot import Red
     from ..commands import Context
 
+__all__ = (
+    "mass_purge",
+    "slow_deletion",
+    "get_audit_reason",
+    "is_mod_or_superior",
+    "strfdelta",
+    "is_admin_or_superior",
+    "check_permissions",
+)
 
-async def mass_purge(messages: List[discord.Message], channel: discord.TextChannel):
+
+async def mass_purge(
+    messages: List[discord.Message],
+    channel: Union[
+        discord.TextChannel, discord.VoiceChannel, discord.StageChannel, discord.Thread
+    ],
+    *,
+    reason: Optional[str] = None,
+):
     """Bulk delete messages from a channel.
 
     If more than 100 messages are supplied, the bot will delete 100 messages at
@@ -24,8 +41,10 @@ async def mass_purge(messages: List[discord.Message], channel: discord.TextChann
     ----------
     messages : `list` of `discord.Message`
         The messages to bulk delete.
-    channel : discord.TextChannel
+    channel : `discord.TextChannel`, `discord.VoiceChannel`, `discord.StageChannel`, or `discord.Thread`
         The channel to delete messages from.
+    reason : `str`, optional
+        The reason for bulk deletion, which will appear in the audit log.
 
     Raises
     ------
@@ -40,7 +59,7 @@ async def mass_purge(messages: List[discord.Message], channel: discord.TextChann
         # discord.NotFound can be raised when `len(messages) == 1` and the message does not exist.
         # As a result of this obscure behavior, this error needs to be caught just in case.
         try:
-            await channel.delete_messages(messages[:100])
+            await channel.delete_messages(messages[:100], reason=reason)
         except discord.errors.HTTPException:
             pass
         messages = messages[100:]
@@ -245,7 +264,7 @@ async def check_permissions(ctx: "Context", perms: Dict[str, bool]) -> bool:
         return True
     elif not perms:
         return False
-    resolved = ctx.channel.permissions_for(ctx.author)
+    resolved = ctx.permissions
 
     return resolved.administrator or all(
         getattr(resolved, name, None) == value for name, value in perms.items()

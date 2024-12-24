@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2021-05-08 00:51+0000\n"
+"POT-Creation-Date: 2023-05-02 23:06+0000\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian Bokmal\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: red-discordbot\n"
 "X-Crowdin-Project-ID: 289505\n"
@@ -33,49 +33,49 @@ msgstr "Opprett brukerrapporter som serveransatte kan svare på.\n\n"
 msgid "Manage Reports."
 msgstr "Behandle rapporter."
 
-#: redbot/cogs/reports/reports.py:110
+#: redbot/cogs/reports/reports.py:114
 #, docstring
 msgid "Set the channel where reports will be sent."
 msgstr "Angi kanalen hvor rapporter skal sendes."
 
-#: redbot/cogs/reports/reports.py:112
+#: redbot/cogs/reports/reports.py:116
 msgid "The report channel has been set."
 msgstr "Den rapporteringskanalen har blitt satt."
 
-#: redbot/cogs/reports/reports.py:117
+#: redbot/cogs/reports/reports.py:121
 #, docstring
 msgid "Enable or disable reporting for this server."
-msgstr ""
+msgstr "Aktiver eller deaktiver rapportering for denne serveren."
 
-#: redbot/cogs/reports/reports.py:122
+#: redbot/cogs/reports/reports.py:126
 msgid "Reporting is now enabled"
 msgstr "Rapportering er nå aktivert"
 
-#: redbot/cogs/reports/reports.py:124
+#: redbot/cogs/reports/reports.py:128
 msgid "Reporting is now disabled."
 msgstr "Rapportering er nå deaktivert."
 
-#: redbot/cogs/reports/reports.py:183
+#: redbot/cogs/reports/reports.py:187
 msgid "You took too long to select. Try again later."
 msgstr "Du tok for lang tid å velge. Prøv igjen senere."
 
-#: redbot/cogs/reports/reports.py:190
+#: redbot/cogs/reports/reports.py:194
 msgid "That wasn't a valid choice."
 msgstr "Det var ikke et gyldig valg."
 
-#: redbot/cogs/reports/reports.py:213
+#: redbot/cogs/reports/reports.py:216
 msgid "Report from {author}{maybe_nick}"
 msgstr "Rapport fra {author}{maybe_nick}"
 
-#: redbot/cogs/reports/reports.py:218
+#: redbot/cogs/reports/reports.py:221
 msgid "Report #{}"
 msgstr "Rapport #{}"
 
-#: redbot/cogs/reports/reports.py:222
+#: redbot/cogs/reports/reports.py:225
 msgid "Report from {author.mention} (Ticket #{number})"
 msgstr "Rapport fra {author.mention} (Tikket #{number})"
 
-#: redbot/cogs/reports/reports.py:241
+#: redbot/cogs/reports/reports.py:244
 #, docstring
 msgid "Send a report.\n\n"
 "        Use without arguments for interactive reporting, or do\n"
@@ -86,64 +86,64 @@ msgstr "Send en rapport.\n\n"
 "        `[p]report [text]` for å bruke den ikke-interaktivt.\n"
 "        "
 
-#: redbot/cogs/reports/reports.py:250
+#: redbot/cogs/reports/reports.py:253
 msgid "Select a server to make a report in by number."
 msgstr "Velg en server for å lage en rapport i form av nummer."
 
-#: redbot/cogs/reports/reports.py:256
+#: redbot/cogs/reports/reports.py:259
 msgid "Reporting has not been enabled for this server"
 msgstr "Rapportering er ikke aktivert for denne serveren"
 
-#: redbot/cogs/reports/reports.py:263
+#: redbot/cogs/reports/reports.py:266
 msgid "You've sent too many reports recently. Please contact a server admin if this is important matter, or please wait and try again later."
 msgstr "Du har sendt for mange rapporter nylig. Kontakt en serveradministrator hvis dette er viktig eller vennligst vent og prøv igjen senere."
 
-#: redbot/cogs/reports/reports.py:271
+#: redbot/cogs/reports/reports.py:274
 msgid "Please finish making your prior report before trying to make an additional one!"
 msgstr "Fullfør arbeidet med å lage en foregående rapport før du prøver å lage en ekstra en!"
 
-#: redbot/cogs/reports/reports.py:286
+#: redbot/cogs/reports/reports.py:289
 msgid "Please respond to this message with your Report.\n"
 "Your report should be a single message"
 msgstr "Svar på denne meldingen med rapporten din.\n"
 "Rapporten skal være en enkelt melding"
 
-#: redbot/cogs/reports/reports.py:292
+#: redbot/cogs/reports/reports.py:295
 msgid "This requires DMs enabled."
 msgstr "Dette krever at DMs er aktivert."
 
-#: redbot/cogs/reports/reports.py:301
+#: redbot/cogs/reports/reports.py:304
 msgid "You took too long. Try again later."
 msgstr "Du tok for lang tid. Prøv igjen senere."
 
-#: redbot/cogs/reports/reports.py:309
+#: redbot/cogs/reports/reports.py:312
 msgid "This server has no reports channel set up. Please contact a server admin."
 msgstr "Denne serveren har ingen rapporter kanal satt opp. Kontakt en server admin."
 
-#: redbot/cogs/reports/reports.py:315
+#: redbot/cogs/reports/reports.py:318
 msgid "There was an error sending your report, please contact a server admin."
 msgstr "Det oppstod en feil under sending av rapporten, vennligst kontakt en serveradministrator."
 
-#: redbot/cogs/reports/reports.py:318
+#: redbot/cogs/reports/reports.py:321
 msgid "Your report was submitted. (Ticket #{})"
 msgstr "Rapporten din ble sendt inn. (Ticket #{})"
 
-#: redbot/cogs/reports/reports.py:354
+#: redbot/cogs/reports/reports.py:357
 msgid "{closer} has closed the correspondence"
 msgstr "{closer} har lukket korrespondansen"
 
-#: redbot/cogs/reports/reports.py:371
+#: redbot/cogs/reports/reports.py:372
 msgid "Re: ticket# {ticket_number} in {guild.name}"
 msgstr "Re: billett# {ticket_number} i {guild.name}"
 
-#: redbot/cogs/reports/reports.py:384
+#: redbot/cogs/reports/reports.py:385
 msgid "Correspondence about ticket# {ticket_number} in {guild.name} has been ended due to reports being disabled in that server."
 msgstr "Korrespondanse om billett # {ticket_number} i {guild.name} er avsluttet da rapporter er deaktivert i den serveren."
 
-#: redbot/cogs/reports/reports.py:395
+#: redbot/cogs/reports/reports.py:396
 #, docstring
 msgid "Open a message tunnel.\n\n"
-"        This tunnel will forward things you say in this channel\n"
+"        This tunnel will forward things you say in this channel or thread\n"
 "        to the ticket opener's direct messages.\n\n"
 "        Tunnels do not persist across bot restarts.\n"
 "        "
@@ -153,19 +153,19 @@ msgstr "Åpne meldingstunnel.\n\n"
 "        Tunneler forblir ikke omstart fra roboten.\n"
 "        "
 
-#: redbot/cogs/reports/reports.py:409
+#: redbot/cogs/reports/reports.py:410
 msgid "That ticket doesn't seem to exist"
 msgstr "Den billetten ser ikke ut til å finnes"
 
-#: redbot/cogs/reports/reports.py:412
+#: redbot/cogs/reports/reports.py:413
 msgid "That user isn't here anymore."
 msgstr "Den brukeren er ikke her lenger."
 
-#: redbot/cogs/reports/reports.py:418
+#: redbot/cogs/reports/reports.py:419
 msgid "Either you or the user you are trying to reach already has an open communication."
 msgstr "Enten har du eller brukeren du prøver å nå en åpen kommunikasjon."
 
-#: redbot/cogs/reports/reports.py:424
+#: redbot/cogs/reports/reports.py:425
 msgid " Anything you say or upload here (8MB file size limitation on uploads) will be forwarded to them until the communication is closed.\n"
 "You can close a communication at any point by reacting with the ❎ to the last message received.\n"
 "Any message successfully forwarded will be marked with ✅.\n"
@@ -175,15 +175,15 @@ msgstr " Noe som du sier eller laster opp her (8MB begrensning i filstørrelse v
 "Enhver melding med suksess vil bli merket med ✅.\n"
 "Tunneler er ikke vedvarende over bot restarter."
 
-#: redbot/cogs/reports/reports.py:435
+#: redbot/cogs/reports/reports.py:436
 msgid "A moderator in the server `{guild.name}` has opened a 2-way communication about ticket number {ticket_number}."
 msgstr "En moderator i serveren `{guild.name}` har åpnet en 2-veis kommunikasjon om saksnummer {ticket_number}."
 
-#: redbot/cogs/reports/reports.py:444
+#: redbot/cogs/reports/reports.py:445
 msgid "That user has DMs disabled."
 msgstr "Brukeren har deaktivert direktemeldinger."
 
-#: redbot/cogs/reports/reports.py:448
+#: redbot/cogs/reports/reports.py:449
 msgid "You have opened a 2-way communication about ticket number {ticket_number}."
 msgstr "Du har åpnet en 2-veis kommunikasjon om saksnummer {ticket_number}."
 

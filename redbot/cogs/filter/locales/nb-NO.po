@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2021-02-11 12:29+0000\n"
+"POT-Creation-Date: 2024-07-10 18:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian Bokmal\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: red-discordbot\n"
 "X-Crowdin-Project-ID: 289505\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Crowdin-File-ID: 35\n"
 "Language: nb_NO\n"
 
-#: redbot/cogs/filter/filter.py:17
+#: redbot/cogs/filter/filter.py:19
 #, docstring
 msgid "This cog is designed for \"filtering\" unwanted words and phrases from a server.\n\n"
 "    It provides tools to manage a list of words or sentences, and to customize automatic actions to be taken against users who use those words in channels or in their name/nickname.\n\n"
@@ -26,74 +26,56 @@ msgstr "Denne cog er designet for \"filtering\" uønskede ord og uttrykk fra en 
 "    Dette kan brukes til å forebygge upassende språk, diskusjoner, invitasjonslenker, med flere.\n"
 "    "
 
-#: redbot/cogs/filter/filter.py:83
+#: redbot/cogs/filter/filter.py:85
 #, docstring
 msgid "Base command to manage filter settings."
 msgstr "Standard kommando for å administrere filterinnstillinger."
 
-#: redbot/cogs/filter/filter.py:88
+#: redbot/cogs/filter/filter.py:90
 #, docstring
 msgid "Set the nickname for users with a filtered name.\n\n"
 "        Note that this has no effect if filtering names is disabled\n"
 "        (to toggle, run `[p]filter names`).\n\n"
 "        The default name used is *John Doe*.\n\n"
 "        Example:\n"
-"            - `[p]filterset defaultname Missingno`\n\n"
+"        - `[p]filterset defaultname Missingno`\n\n"
 "        **Arguments:**\n\n"
 "        - `<name>` The new nickname to assign.\n"
 "        "
-msgstr "Angi kallenavnet for brukere med et filtrert navn.\n\n"
-"        Merk at dette ikke har noen effekt hvis du vil filtrere navn er deaktivert\n"
-"        (til å veksle, kjør `[p]filter navn `).\n\n"
-"        Standardnavnet som brukes, er *John Doe*.\n\n"
-"        Eksempel:\n"
-"            - `[p]filtrert standardnavn Missingno`\n\n"
-"        **Argumenter:**\n\n"
-"        - `<name>` det nye kallenavnet å tilknytte.\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/filter/filter.py:104
+#: redbot/cogs/filter/filter.py:106
 msgid "The name to use on filtered names has been set."
 msgstr "Navnet som skal brukes på filtrerte navn er blitt satt."
 
-#: redbot/cogs/filter/filter.py:108
+#: redbot/cogs/filter/filter.py:110
 #, docstring
 msgid "Set the filter's autoban conditions.\n\n"
 "        Users will be banned if they send `<count>` filtered words in\n"
 "        `<timeframe>` seconds.\n\n"
 "        Set both to zero to disable autoban.\n\n"
 "        Examples:\n"
-"            - `[p]filterset ban 5 5` - Ban users who say 5 filtered words in 5 seconds.\n"
-"            - `[p]filterset ban 2 20` - Ban users who say 2 filtered words in 20 seconds.\n\n"
+"        - `[p]filterset ban 5 5` - Ban users who say 5 filtered words in 5 seconds.\n"
+"        - `[p]filterset ban 2 20` - Ban users who say 2 filtered words in 20 seconds.\n\n"
 "        **Arguments:**\n\n"
 "        - `<count>` The amount of filtered words required to trigger a ban.\n"
 "        - `<timeframe>` The period of time in which too many filtered words will trigger a ban.\n"
 "        "
-msgstr "Angi autobanteriet filteret. (Automatic Translation)\n\n"
-"        brukere blir utestengt hvis de sender `<count>` filtrerte ord som\n"
-"        `<timeframe>sekunder\n\n"
-"        Sett begge til null for å deaktivere autoban.\n\n"
-"        Eksempler:\n"
-"            - `[p]filter ban 5 5` - Ban brukere som sier 5 filtrerte ord om 5 sekunder.\n"
-"            - `[p]filterset ban 2 20` - Forby brukere som sier 2 filtrerte ord om 20 sekunder.\n\n"
-"        **Argumenter:**\n\n"
-"        - `<count>` Antall filtrerte ord som kreves for å skyve bannlysning.\n"
-"        - `<timeframe>` tiden der for mange filtrerte ord vil utløse en utestengelse.\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/filter/filter.py:126
+#: redbot/cogs/filter/filter.py:128
 msgid "Count and timeframe either both need to be 0 or both need to be greater than 0!"
 msgstr "Teller og tidsramme trenger enten å være 0 eller begge må være større enn 0!"
 
-#: redbot/cogs/filter/filter.py:136
+#: redbot/cogs/filter/filter.py:138
 msgid "Autoban disabled."
 msgstr "Autoban er deaktivert."
 
-#: redbot/cogs/filter/filter.py:141
+#: redbot/cogs/filter/filter.py:143
 msgid "Count and time have been set."
 msgstr "Antall og tid har blitt satt."
 
-#: redbot/cogs/filter/filter.py:147
+#: redbot/cogs/filter/filter.py:149
 #, docstring
 msgid "Base command to add or remove words from the server filter.\n\n"
 "        Use double quotes to add or remove sentences.\n"
@@ -102,24 +84,49 @@ msgstr "Standard kommando for å legge til eller fjerne ord fra serverfilteret.\
 "        Bruk dobbel anførsel for å legge til eller fjerne setninger.\n"
 "        "
 
-#: redbot/cogs/filter/filter.py:155
+#: redbot/cogs/filter/filter.py:157
+#, docstring
+msgid "Clears this server's filter list."
+msgstr "Fjerner serverens filterliste."
+
+#: redbot/cogs/filter/filter.py:162
+msgid "The filter list for this server is empty."
+msgstr "Filterlisten for denne serveren er tom."
+
+#: redbot/cogs/filter/filter.py:164
+msgid "Are you sure you want to clear this server's filter list?"
+msgstr "Er du sikker på at du vil tømme serverens filterliste?"
+
+#: redbot/cogs/filter/filter.py:170 redbot/cogs/filter/filter.py:227
+msgid "You took too long to respond."
+msgstr "Du tok for lang tid å svare."
+
+#: redbot/cogs/filter/filter.py:175
+msgid "Server filter cleared."
+msgstr "Serverfilteret ble tømt."
+
+#: redbot/cogs/filter/filter.py:177 redbot/cogs/filter/filter.py:234
+msgid "No changes have been made."
+msgstr "Ingen endringer er utført."
+
+#: redbot/cogs/filter/filter.py:181
 #, docstring
 msgid "Send a list of this server's filtered words."
 msgstr "Send en liste over denne serverens filtrerte ord."
 
-#: redbot/cogs/filter/filter.py:160
-msgid "There is no current words setup to be filtered in this server."
+#: redbot/cogs/filter/filter.py:186
+msgid "There are no current words setup to be filtered in this server."
 msgstr "Det er ingen gjeldende ordoppsett som skal filtreres på denne serveren."
 
-#: redbot/cogs/filter/filter.py:163
+#: redbot/cogs/filter/filter.py:189
 msgid "Filtered in this server:"
 msgstr "Filtrert i denne serveren:"
 
-#: redbot/cogs/filter/filter.py:168 redbot/cogs/filter/filter.py:193
+#: redbot/cogs/filter/filter.py:194 redbot/cogs/filter/filter.py:251
 msgid "I can't send direct messages to you."
 msgstr "Jeg kan ikke sende direktemeldinger til deg."
 
-#: redbot/cogs/filter/filter.py:172
+#: redbot/cogs/filter/filter.py:198
 #, docstring
 msgid "Base command to add or remove words from the channel filter.\n\n"
 "        Use double quotes to add or remove sentences.\n"
@@ -128,124 +135,119 @@ msgstr "Standard kommando for å legge til eller fjerne ord fra kanalfilteret.\n
 "        Bruk doble anførselstegn for å legge til eller fjerne setninger.\n"
 "        "
 
-#: redbot/cogs/filter/filter.py:180
+#: redbot/cogs/filter/filter.py:206
+#, docstring
+msgid "Clears this channel's filter list."
+msgstr "Sletter filterlisten til kanalen."
+
+#: redbot/cogs/filter/filter.py:210
+msgid "Threads can't have a filter list set up. If you want to clear this list for the parent channel, send the command in that channel."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:219
+msgid "The filter list for this channel is empty."
+msgstr "Filterlisten for denne kanalen er tom."
+
+#: redbot/cogs/filter/filter.py:221
+msgid "Are you sure you want to clear this channel's filter list?"
+msgstr "Er du sikker på at du vil slette denne kanalens filterliste?"
+
+#: redbot/cogs/filter/filter.py:232
+msgid "Channel filter cleared."
+msgstr "Kanal filter tømt."
+
+#: redbot/cogs/filter/filter.py:238
 #, docstring
 msgid "Send a list of the channel's filtered words."
 msgstr "Send en liste over kanalens filtrerte ord."
 
-#: redbot/cogs/filter/filter.py:185
-msgid "There is no current words setup to be filtered in this channel."
+#: redbot/cogs/filter/filter.py:243
+msgid "There are no current words setup to be filtered in this channel."
 msgstr "Det er ingen gjeldende ordoppsett som skal filtreres i denne kanalen."
 
-#: redbot/cogs/filter/filter.py:188
+#: redbot/cogs/filter/filter.py:246
 msgid "Filtered in this channel:"
 msgstr "Filtrert i denne kanalen:"
 
-#: redbot/cogs/filter/filter.py:197
+#: redbot/cogs/filter/filter.py:262
 #, docstring
 msgid "Add words to the filter.\n\n"
 "        Use double quotes to add sentences.\n\n"
 "        Examples:\n"
-"            - `[p]filter channel add word1 word2 word3`\n"
-"            - `[p]filter channel add \"This is a sentence\"`\n\n"
+"        - `[p]filter channel add #channel word1 word2 word3`\n"
+"        - `[p]filter channel add #channel \"This is a sentence\"`\n\n"
 "        **Arguments:**\n\n"
+"        - `<channel>` The text, voice, stage, or forum channel to add filtered words to.\n"
 "        - `[words...]` The words or sentences to filter.\n"
 "        "
-msgstr "Legg til ord i filteret.\n\n"
-"        Bruk doble tilbud for å legge til setninger.\n\n"
-"        Eksempler:\n"
-"            - `[p]filter channel add  ord1 ord2 ord3`\n"
-"            - `[p]filter channel add \"Dette er en setning\"`\n\n"
-"        **Argumenter:**\n\n"
-"        - `[words...]` Ord eller setninger til filter.\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/filter/filter.py:213
+#: redbot/cogs/filter/filter.py:278
 msgid "Words added to filter."
 msgstr "Ord som er lagt til filteret."
 
-#: redbot/cogs/filter/filter.py:215
+#: redbot/cogs/filter/filter.py:280
 msgid "Words already in the filter."
 msgstr "Ord er allerede i filteret."
 
-#: redbot/cogs/filter/filter.py:219
+#: redbot/cogs/filter/filter.py:291
 #, docstring
 msgid "Remove words from the filter.\n\n"
 "        Use double quotes to remove sentences.\n\n"
 "        Examples:\n"
-"            - `[p]filter channel remove word1 word2 word3`\n"
-"            - `[p]filter channel remove \"This is a sentence\"`\n\n"
+"        - `[p]filter channel remove #channel word1 word2 word3`\n"
+"        - `[p]filter channel remove #channel \"This is a sentence\"`\n\n"
 "        **Arguments:**\n\n"
+"        - `<channel>` The text, voice, stage, or forum channel to add filtered words to.\n"
 "        - `[words...]` The words or sentences to no longer filter.\n"
 "        "
-msgstr "Fjern ord fra filteret.\n\n"
-"        Bruk doble tilbud for å fjerne setninger.\n\n"
-"        Eksempler:\n"
-"            - `[p]filter channel remove ord1 ord2 ord3`\n"
-"            - `[p]filter channel remove \"Dette er en setning\"`\n\n"
-"        **Argumenter:**\n\n"
-"        - `[words...]` Ord eller setninger som ikke skal filtreres lenger.\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/filter/filter.py:234
+#: redbot/cogs/filter/filter.py:306
 msgid "Words removed from filter."
 msgstr "Ord fjernet fra filteret."
 
-#: redbot/cogs/filter/filter.py:237 redbot/cogs/filter/filter.py:281
+#: redbot/cogs/filter/filter.py:309 redbot/cogs/filter/filter.py:353
 msgid "Those words weren't in the filter."
 msgstr "Disse ordene var ikke i filteret."
 
-#: redbot/cogs/filter/filter.py:241
+#: redbot/cogs/filter/filter.py:313
 #, docstring
 msgid "Add words to the filter.\n\n"
 "        Use double quotes to add sentences.\n\n"
 "        Examples:\n"
-"            - `[p]filter add word1 word2 word3`\n"
-"            - `[p]filter add \"This is a sentence\"`\n\n"
+"        - `[p]filter add word1 word2 word3`\n"
+"        - `[p]filter add \"This is a sentence\"`\n\n"
 "        **Arguments:**\n\n"
 "        - `[words...]` The words or sentences to filter.\n"
 "        "
-msgstr "Legg til ord i filteret.\n\n"
-"        Bruk doble tilbud for å legge til setninger.\n\n"
-"        Eksempler:\n"
-"            - `[p]filter add word1 word2 word3`\n"
-"            - `[p]filter add \"This is a sentence\"`\n\n"
-"        **Arguments:**\n\n"
-"        - `[words...]` Ordene eller setningene å filtrere.\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/filter/filter.py:257
+#: redbot/cogs/filter/filter.py:329
 msgid "Words successfully added to filter."
 msgstr "Ord lagt til filteret."
 
-#: redbot/cogs/filter/filter.py:259
+#: redbot/cogs/filter/filter.py:331
 msgid "Those words were already in the filter."
 msgstr "Disse ordene var allerede i filteret."
 
-#: redbot/cogs/filter/filter.py:263
+#: redbot/cogs/filter/filter.py:335
 #, docstring
 msgid "Remove words from the filter.\n\n"
 "        Use double quotes to remove sentences.\n\n"
 "        Examples:\n"
-"            - `[p]filter remove word1 word2 word3`\n"
-"            - `[p]filter remove \"This is a sentence\"`\n\n"
+"        - `[p]filter remove word1 word2 word3`\n"
+"        - `[p]filter remove \"This is a sentence\"`\n\n"
 "        **Arguments:**\n\n"
 "        - `[words...]` The words or sentences to no longer filter.\n"
 "        "
-msgstr "Fjern ord fra filteret.\n\n"
-"        Bruk doble tilbud for å fjerne setninger.\n\n"
-"        Eksempler:\n"
-"            - `[p]filtrer remove ord1 ord2 ord3`\n"
-"            - `[p]filter remove \"This is a sentence\"`\n\n"
-"        **Arguments:**\n\n"
-"        - `[words...]` Ordene eller setningene til ikke å filtrere mer.\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/filter/filter.py:279
+#: redbot/cogs/filter/filter.py:351
 msgid "Words successfully removed from filter."
 msgstr "Ord fjernet fra filter."
 
-#: redbot/cogs/filter/filter.py:285
+#: redbot/cogs/filter/filter.py:357
 #, docstring
 msgid "Toggle name and nickname filtering.\n\n"
 "        This is disabled by default.\n"
@@ -254,31 +256,31 @@ msgstr "Veksle navn og filter for kallenavn.\n\n"
 "        Dette er deaktivert som standard.\n"
 "        "
 
-#: redbot/cogs/filter/filter.py:295
+#: redbot/cogs/filter/filter.py:367
 msgid "Names and nicknames will no longer be filtered."
 msgstr "Navn og kallenavn vil ikke lenger bli filtrert."
 
-#: redbot/cogs/filter/filter.py:297
+#: redbot/cogs/filter/filter.py:369
 msgid "Names and nicknames will now be filtered."
 msgstr "Navn og kallenavn vil nå bli filtrert."
 
-#: redbot/cogs/filter/filter.py:411
+#: redbot/cogs/filter/filter.py:535
 msgid "Filtered words used: {words}"
 msgstr "Filtrerte ord som brukes: {words}"
 
-#: redbot/cogs/filter/filter.py:413
+#: redbot/cogs/filter/filter.py:537
 msgid "Filtered word used: {word}"
 msgstr "Filtrert ord brukt: {word}"
 
-#: redbot/cogs/filter/filter.py:427
+#: redbot/cogs/filter/filter.py:551
 msgid "Autoban (too many filtered messages.)"
 msgstr "Autoban (for mange filtrerte meldinger.)"
 
-#: redbot/cogs/filter/filter.py:498
+#: redbot/cogs/filter/filter.py:621
 msgid "Filtered nickname"
 msgstr "Filtrert kallenavn"
 
-#: redbot/cogs/filter/filter.py:498
+#: redbot/cogs/filter/filter.py:621
 msgid "Filtered name"
 msgstr "Filtrert navn"
 

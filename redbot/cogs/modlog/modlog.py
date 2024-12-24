@@ -1,15 +1,14 @@
-import asyncio
 from datetime import datetime, timezone
 
 from typing import Optional, Union
 
 import discord
 
-from redbot.core import checks, commands, modlog
+from redbot.core import commands, modlog
 from redbot.core.bot import Red
 from redbot.core.i18n import Translator, cog_i18n
-from redbot.core.utils.chat_formatting import box, pagify
-from redbot.core.utils.menus import DEFAULT_CONTROLS, menu
+from redbot.core.utils.chat_formatting import bold, box, pagify
+from redbot.core.utils.menus import menu
 from redbot.core.utils.predicates import MessagePredicate
 
 _ = Translator("ModLog", __file__)
@@ -17,14 +16,14 @@ _ = Translator("ModLog", __file__)
 
 @cog_i18n(_)
 class ModLog(commands.Cog):
-    """Browse and manage modlog cases."""
+    """Browse and manage modlog cases. To manage modlog settings, use `[p]modlogset`."""
 
     def __init__(self, bot: Red):
         super().__init__()
         self.bot = bot
 
     async def red_delete_data_for_user(self, **kwargs):
-        """ Nothing to delete """
+        """Nothing to delete"""
         return
 
     @commands.command()
@@ -34,15 +33,16 @@ class ModLog(commands.Cog):
         try:
             case = await modlog.get_case(number, ctx.guild, self.bot)
         except RuntimeError:
-            await ctx.send(_("That case does not exist for that server."))
+            await ctx.send(_("That case does not exist for this server."))
             return
         else:
             if await ctx.embed_requested():
                 await ctx.send(embed=await case.message_content(embed=True))
             else:
-                message = _("{case}\n**Timestamp:** {timestamp}").format(
-                    case=await case.message_content(embed=False),
-                    timestamp=f"<t:{int(case.created_at)}>",
+                created_at = datetime.fromtimestamp(case.created_at, tz=timezone.utc)
+                message = (
+                    f"{await case.message_content(embed=False)}\n"
+                    f"{bold(_('Timestamp:'))} {discord.utils.format_dt(created_at)}"
                 )
                 await ctx.send(message)
 
@@ -76,13 +76,14 @@ class ModLog(commands.Cog):
             else:
                 rendered_cases = []
                 for case in cases:
-                    message = _("{case}\n**Timestamp:** {timestamp}").format(
-                        case=await case.message_content(embed=False),
-                        timestamp=f"<t:{int(case.created_at)}>",
+                    created_at = datetime.fromtimestamp(case.created_at, tz=timezone.utc)
+                    message = (
+                        f"{await case.message_content(embed=False)}\n"
+                        f"{bold(_('Timestamp:'))} {discord.utils.format_dt(created_at)}"
                     )
                     rendered_cases.append(message)
 
-        await menu(ctx, rendered_cases, DEFAULT_CONTROLS)
+        await menu(ctx, rendered_cases)
 
     @commands.command()
     @commands.guild_only()
@@ -110,13 +111,14 @@ class ModLog(commands.Cog):
             rendered_cases = []
             message = ""
             for case in cases:
-                message += _("{case}\n**Timestamp:** {timestamp}\n\n").format(
-                    case=await case.message_content(embed=False),
-                    timestamp=f"<t:{int(case.created_at)}>",
+                created_at = datetime.fromtimestamp(case.created_at, tz=timezone.utc)
+                message += (
+                    f"{await case.message_content(embed=False)}\n"
+                    f"{bold(_('Timestamp:'))} {discord.utils.format_dt(created_at)}\n\n"
                 )
             for page in pagify(message, ["\n\n", "\n"], priority=True):
                 rendered_cases.append(page)
-        await menu(ctx, rendered_cases, DEFAULT_CONTROLS)
+        await menu(ctx, rendered_cases)
 
     @commands.command()
     @commands.guild_only()
@@ -152,7 +154,7 @@ class ModLog(commands.Cog):
         to_modify = {"reason": reason}
         if case_obj.moderator != author:
             to_modify["amended_by"] = author
-        to_modify["modified_at"] = ctx.message.created_at.replace(tzinfo=timezone.utc).timestamp()
+        to_modify["modified_at"] = ctx.message.created_at.timestamp()
         await case_obj.edit(to_modify)
         await ctx.send(
             _("Reason for case #{num} has been updated.").format(num=case_obj.case_number)

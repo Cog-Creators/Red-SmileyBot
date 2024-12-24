@@ -1,28 +1,25 @@
 import asyncio
-import datetime
 import itertools
-import logging
 from pathlib import Path
 
 from typing import Optional
 
 import lavalink
+from lavalink import NodeNotFound, PlayerNotFound
+from red_commons.logging import getLogger
 
 from redbot.core.data_manager import cog_data_path
 from redbot.core.i18n import Translator
 from redbot.core.utils import AsyncIter
-from redbot.core.utils._internal_utils import send_to_owners_with_prefix_replaced
 from redbot.core.utils.dbtools import APSWConnectionWrapper
 
 from ...apis.interface import AudioAPIInterface
 from ...apis.playlist_wrapper import PlaylistWrapper
-from ...audio_logging import debug_exc_log
 from ...errors import DatabaseError, TrackEnqueueError
-from ...utils import task_callback
 from ..abc import MixinMeta
-from ..cog_utils import _OWNER_NOTIFICATION, _SCHEMA_VERSION, CompositeMetaClass
+from ..cog_utils import _SCHEMA_VERSION, CompositeMetaClass
 
-log = logging.getLogger("red.cogs.Audio.cog.Tasks.startup")
+log = getLogger("red.cogs.Audio.cog.Tasks.startup")
 _ = Translator("Audio", Path(__file__))
 
 
@@ -32,8 +29,7 @@ class StartUpTasks(MixinMeta, metaclass=CompositeMetaClass):
         # If it waits for ready in startup, we cause a deadlock during initial load
         # as initial load happens before the bot can ever be ready.
         lavalink.set_logging_level(self.bot._cli_flags.logging_level)
-        self.cog_init_task = self.bot.loop.create_task(self.initialize())
-        self.cog_init_task.add_done_callback(task_callback)
+        self.cog_init_task = asyncio.create_task(self.initialize())
 
     async def initialize(self) -> None:
         await self.bot.wait_until_red_ready()
@@ -56,25 +52,35 @@ class StartUpTasks(MixinMeta, metaclass=CompositeMetaClass):
             await self.api_interface.persistent_queue_api.delete_scheduled()
             await self._build_bundled_playlist()
             self.lavalink_restart_connect()
-            self.player_automated_timer_task = self.bot.loop.create_task(
-                self.player_automated_timer()
-            )
-            self.player_automated_timer_task.add_done_callback(task_callback)
-        except Exception as err:
-            log.exception("Audio failed to start up, please report this issue.", exc_info=err)
-            raise err
+            self.player_automated_timer_task = asyncio.create_task(self.player_automated_timer())
+        except Exception as exc:
+            log.critical("Audio failed to start up, please report this issue.", exc_info=exc)
+            return
 
         self.cog_ready_event.set()
 
     async def restore_players(self):
+        log.debug("Starting new restore player task")
         tries = 0
         tracks_to_restore = await self.api_interface.persistent_queue_api.fetch_all()
-        while not lavalink.node._nodes:
+        while not lavalink.get_all_nodes():
             await asyncio.sleep(1)
+            log.trace("Waiting for node to be available")
             tries += 1
-            if tries > 60:
-                log.exception("Unable to restore players, couldn't connect to Lavalink.")
+            if tries > 600:  # Give 10 minutes from node creation date.
+                log.warning("Unable to restore players, couldn't connect to Lavalink node.")
                 return
+        try:
+            for node in lavalink.get_all_nodes():
+                if not node.ready:
+                    log.trace("Waiting for node: %r", node)
+                    await node.wait_until_ready(timeout=60)  # In theory this should be instant.
+        except asyncio.TimeoutError:
+            log.error(
+                "Restoring player task aborted due to a timeout waiting for Lavalink node to be ready."
+            )
+            log.warning("Audio will attempt queue restore on next restart.")
+            return
         metadata = {}
         all_guilds = await self.config.all_guilds()
         async for guild_id, guild_data in AsyncIter(all_guilds.items(), steps=100):
@@ -82,7 +88,9 @@ class StartUpTasks(MixinMeta, metaclass=CompositeMetaClass):
                 if guild_data["currently_auto_playing_in"]:
                     notify_channel, vc_id = guild_data["currently_auto_playing_in"]
                     metadata[guild_id] = (notify_channel, vc_id)
-
+        if self.lavalink_connection_aborted:
+            log.warning("Aborting player restore due to Lavalink connection being aborted.")
+            return
         for guild_id, track_data in itertools.groupby(tracks_to_restore, key=lambda x: x.guild_id):
             await asyncio.sleep(0)
             tries = 0
@@ -91,22 +99,24 @@ class StartUpTasks(MixinMeta, metaclass=CompositeMetaClass):
                 track_data = list(track_data)
                 guild = self.bot.get_guild(guild_id)
                 if not guild:
+                    log.verbose(
+                        "Skipping player restore - Bot is no longer in Guild (%s)", guild_id
+                    )
                     continue
                 persist_cache = self._persist_queue_cache.setdefault(
                     guild_id, await self.config.guild(guild).persist_queue()
                 )
                 if not persist_cache:
+                    log.verbose(
+                        "Skipping player restore - Guild (%s) does not have a persist cache",
+                        guild_id,
+                    )
                     await self.api_interface.persistent_queue_api.drop(guild_id)
                     continue
-                if self.lavalink_connection_aborted:
+                try:
+                    player = lavalink.get_player(guild_id)
+                except (NodeNotFound, PlayerNotFound):
                     player = None
-                else:
-                    try:
-                        player = lavalink.get_player(guild_id)
-                    except IndexError:
-                        player = None
-                    except KeyError:
-                        player = None
                 vc = 0
                 guild_data = await self.config.guild_from_id(guild.id).all()
                 shuffle = guild_data["shuffle"]
@@ -128,23 +138,40 @@ class StartUpTasks(MixinMeta, metaclass=CompositeMetaClass):
                             if not (perms.connect and perms.speak):
                                 vc = None
                                 break
-                            player = await lavalink.connect(vc, deafen=auto_deafen)
+                            player = await lavalink.connect(vc, self_deaf=auto_deafen)
                             player.store("notify_channel", notify_channel_id)
                             break
-                        except IndexError:
+                        except NodeNotFound:
                             await asyncio.sleep(5)
                             tries += 1
                         except Exception as exc:
                             tries += 1
-                            debug_exc_log(
-                                log, exc, "Failed to restore music voice channel %s", vc_id
+                            log.debug(
+                                "Failed to restore music voice channel %s", vc_id, exc_info=exc
                             )
                             if vc is None:
                                 break
                             else:
                                 await asyncio.sleep(1)
 
-                if tries >= 5 or guild is None or vc is None or player is None:
+                if tries >= 5 or vc is None or player is None:
+                    if tries >= 5:
+                        log.verbose(
+                            "Skipping player restore - Guild (%s), 5 attempts to restore player failed.",
+                            guild_id,
+                        )
+                    elif vc is None:
+                        log.verbose(
+                            "Skipping player restore - Guild (%s), VC (%s) does not exist.",
+                            guild_id,
+                            vc_id,
+                        )
+                    else:
+                        log.verbose(
+                            "Skipping player restore - Guild (%s), Unable to create player for VC (%s).",
+                            guild_id,
+                            vc_id,
+                        )
                     await self.api_interface.persistent_queue_api.drop(guild_id)
                     continue
 
@@ -159,9 +186,9 @@ class StartUpTasks(MixinMeta, metaclass=CompositeMetaClass):
                 player.maybe_shuffle()
                 if not player.is_playing:
                     await player.play()
-                log.info("Restored %r", player)
-            except Exception as err:
-                debug_exc_log(log, err, "Error restoring player in %d", guild_id)
+                log.debug("Restored %r", player)
+            except Exception as exc:
+                log.debug("Error restoring player in %s", guild_id, exc_info=exc)
                 await self.api_interface.persistent_queue_api.drop(guild_id)
 
         for guild_id, (notify_channel_id, vc_id) in metadata.items():
@@ -176,9 +203,7 @@ class StartUpTasks(MixinMeta, metaclass=CompositeMetaClass):
             else:
                 try:
                     player = lavalink.get_player(guild_id)
-                except IndexError:
-                    player = None
-                except KeyError:
+                except (NodeNotFound, PlayerNotFound):
                     player = None
             if player is None:
                 guild_data = await self.config.guild_from_id(guild.id).all()
@@ -197,20 +222,37 @@ class StartUpTasks(MixinMeta, metaclass=CompositeMetaClass):
                         if not (perms.connect and perms.speak):
                             vc = None
                             break
-                        player = await lavalink.connect(vc, deafen=auto_deafen)
+                        player = await lavalink.connect(vc, self_deaf=auto_deafen)
                         player.store("notify_channel", notify_channel_id)
                         break
-                    except IndexError:
+                    except NodeNotFound:
                         await asyncio.sleep(5)
                         tries += 1
                     except Exception as exc:
                         tries += 1
-                        debug_exc_log(log, exc, "Failed to restore music voice channel %s", vc_id)
+                        log.debug("Failed to restore music voice channel %s", vc_id, exc_info=exc)
                         if vc is None:
                             break
                         else:
                             await asyncio.sleep(1)
-                if tries >= 5 or guild is None or vc is None or player is None:
+                if tries >= 5 or vc is None or player is None:
+                    if tries >= 5:
+                        log.verbose(
+                            "Skipping player restore - Guild (%s), 5 attempts to restore player failed.",
+                            guild_id,
+                        )
+                    elif vc is None:
+                        log.verbose(
+                            "Skipping player restore - Guild (%s), VC (%s) does not exist.",
+                            guild_id,
+                            vc_id,
+                        )
+                    else:
+                        log.verbose(
+                            "Skipping player restore - Guild (%s), Unable to create player for VC (%s).",
+                            guild_id,
+                            vc_id,
+                        )
                     continue
 
                 player.repeat = repeat
@@ -219,29 +261,30 @@ class StartUpTasks(MixinMeta, metaclass=CompositeMetaClass):
                 if player.volume != volume:
                     await player.set_volume(volume)
                 player.maybe_shuffle()
-                log.info("Restored %r", player)
+                log.debug("Restored %r", player)
                 if not player.is_playing:
                     notify_channel = player.fetch("notify_channel")
                     try:
                         await self.api_interface.autoplay(player, self.playlist_api)
                     except DatabaseError:
-                        notify_channel = self.bot.get_channel(notify_channel)
+                        notify_channel = guild.get_channel_or_thread(notify_channel)
                         if notify_channel:
                             await self.send_embed_msg(
                                 notify_channel, title=_("Couldn't get a valid track.")
                             )
                         return
                     except TrackEnqueueError:
-                        notify_channel = self.bot.get_channel(notify_channel)
+                        notify_channel = guild.get_channel_or_thread(notify_channel)
                         if notify_channel:
                             await self.send_embed_msg(
                                 notify_channel,
                                 title=_("Unable to Get Track"),
                                 description=_(
-                                    "I'm unable to get a track from Lavalink at the moment, "
+                                    "I'm unable to get a track from the Lavalink node at the moment, "
                                     "try again in a few minutes."
                                 ),
                             )
                         return
         del metadata
         del all_guilds
+        log.debug("Player restore task completed successfully")

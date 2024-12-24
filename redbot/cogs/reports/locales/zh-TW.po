@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2021-05-08 00:51+0000\n"
+"POT-Creation-Date: 2023-05-02 23:06+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: red-discordbot\n"
 "X-Crowdin-Project-ID: 289505\n"
@@ -22,154 +22,168 @@ msgid "Create user reports that server staff can respond to.\n\n"
 "    to a channel in the server for staff, and the report creator\n"
 "    gets a DM. Both can be used to communicate.\n"
 "    "
-msgstr ""
+msgstr "創建伺服器人員可以響應的用戶報告。\n\n"
+"    用戶可以使用“[p]report”打開報告。 然後發送這些\n"
+"    到服務器中的員工頻道和報告創建者\n"
+"    得到一個DM。 兩者都可以用來交流。\n"
+"    "
 
 #: redbot/cogs/reports/reports.py:104
 #, docstring
 msgid "Manage Reports."
 msgstr "管理回報。"
 
-#: redbot/cogs/reports/reports.py:110
+#: redbot/cogs/reports/reports.py:114
 #, docstring
 msgid "Set the channel where reports will be sent."
 msgstr "設定回報將會送到哪個頻道。"
 
-#: redbot/cogs/reports/reports.py:112
+#: redbot/cogs/reports/reports.py:116
 msgid "The report channel has been set."
 msgstr "已設定回報頻道。"
 
-#: redbot/cogs/reports/reports.py:117
+#: redbot/cogs/reports/reports.py:121
 #, docstring
 msgid "Enable or disable reporting for this server."
-msgstr ""
+msgstr "對此伺服器啟用或停用回報系統。"
 
-#: redbot/cogs/reports/reports.py:122
+#: redbot/cogs/reports/reports.py:126
 msgid "Reporting is now enabled"
 msgstr "回報系統已啟用"
 
-#: redbot/cogs/reports/reports.py:124
+#: redbot/cogs/reports/reports.py:128
 msgid "Reporting is now disabled."
 msgstr "回報系統已停用。"
 
-#: redbot/cogs/reports/reports.py:183
+#: redbot/cogs/reports/reports.py:187
 msgid "You took too long to select. Try again later."
 msgstr "您在選擇時使用太多時間。請稍後再試。"
 
-#: redbot/cogs/reports/reports.py:190
+#: redbot/cogs/reports/reports.py:194
 msgid "That wasn't a valid choice."
 msgstr "這並非有效的選擇。"
 
-#: redbot/cogs/reports/reports.py:213
+#: redbot/cogs/reports/reports.py:216
 msgid "Report from {author}{maybe_nick}"
 msgstr "由 {author}{maybe_nick} 提出的回報"
 
-#: redbot/cogs/reports/reports.py:218
+#: redbot/cogs/reports/reports.py:221
 msgid "Report #{}"
 msgstr "回報 #{}"
 
-#: redbot/cogs/reports/reports.py:222
+#: redbot/cogs/reports/reports.py:225
 msgid "Report from {author.mention} (Ticket #{number})"
 msgstr "由 {author.mention} 提出的回報 (回報 #{number})"
 
-#: redbot/cogs/reports/reports.py:241
+#: redbot/cogs/reports/reports.py:244
 #, docstring
 msgid "Send a report.\n\n"
 "        Use without arguments for interactive reporting, or do\n"
 "        `[p]report [text]` to use it non-interactively.\n"
 "        "
-msgstr ""
+msgstr "送出回報。\n\n"
+"        若不帶參數時則啟用互動式回報，或使用\n"
+"        `[p]report [text]` 來非互動式的回報。\n"
+"        "
 
-#: redbot/cogs/reports/reports.py:250
+#: redbot/cogs/reports/reports.py:253
 msgid "Select a server to make a report in by number."
-msgstr ""
+msgstr "按編號選擇要報告的伺服器。"
 
-#: redbot/cogs/reports/reports.py:256
+#: redbot/cogs/reports/reports.py:259
 msgid "Reporting has not been enabled for this server"
-msgstr ""
+msgstr "此服務器尚未啟用回報系統"
 
-#: redbot/cogs/reports/reports.py:263
+#: redbot/cogs/reports/reports.py:266
 msgid "You've sent too many reports recently. Please contact a server admin if this is important matter, or please wait and try again later."
-msgstr ""
+msgstr "您最近發送的報告過度頻繁。如果這很緊急，請聯繫伺服器管理員，或者請稍後再試。"
 
-#: redbot/cogs/reports/reports.py:271
+#: redbot/cogs/reports/reports.py:274
 msgid "Please finish making your prior report before trying to make an additional one!"
-msgstr ""
+msgstr "請先完成您之前的回報，然後再嘗試製作另一份回報！"
 
-#: redbot/cogs/reports/reports.py:286
+#: redbot/cogs/reports/reports.py:289
 msgid "Please respond to this message with your Report.\n"
 "Your report should be a single message"
 msgstr "請將回報內容回應於此訊息。\n"
 "您的回報須為單一訊息"
 
-#: redbot/cogs/reports/reports.py:292
+#: redbot/cogs/reports/reports.py:295
 msgid "This requires DMs enabled."
-msgstr ""
+msgstr "這需要啟用 DM 功能。"
 
-#: redbot/cogs/reports/reports.py:301
+#: redbot/cogs/reports/reports.py:304
 msgid "You took too long. Try again later."
-msgstr ""
+msgstr "您使用太多時間了。請稍後再試。"
 
-#: redbot/cogs/reports/reports.py:309
+#: redbot/cogs/reports/reports.py:312
 msgid "This server has no reports channel set up. Please contact a server admin."
-msgstr ""
-
-#: redbot/cogs/reports/reports.py:315
-msgid "There was an error sending your report, please contact a server admin."
-msgstr ""
+msgstr "此伺服器沒有設置回報頻道。請直接聯繫伺服器管理員。"
 
 #: redbot/cogs/reports/reports.py:318
+msgid "There was an error sending your report, please contact a server admin."
+msgstr "發送報告時出錯，請聯繫伺服器管理員。"
+
+#: redbot/cogs/reports/reports.py:321
 msgid "Your report was submitted. (Ticket #{})"
 msgstr "您的回報已送出。 (回報 #{})"
 
-#: redbot/cogs/reports/reports.py:354
+#: redbot/cogs/reports/reports.py:357
 msgid "{closer} has closed the correspondence"
 msgstr "{closer} 已結束對話"
 
-#: redbot/cogs/reports/reports.py:371
+#: redbot/cogs/reports/reports.py:372
 msgid "Re: ticket# {ticket_number} in {guild.name}"
-msgstr ""
+msgstr "回覆：回報# {ticket_number} 於 {guild.name}"
 
-#: redbot/cogs/reports/reports.py:384
+#: redbot/cogs/reports/reports.py:385
 msgid "Correspondence about ticket# {ticket_number} in {guild.name} has been ended due to reports being disabled in that server."
-msgstr ""
+msgstr "由於回報系統在該伺服器中被禁用，於 {guild.name} 中的 ticket# {ticket_number} 的通信已經結束。"
 
-#: redbot/cogs/reports/reports.py:395
+#: redbot/cogs/reports/reports.py:396
 #, docstring
 msgid "Open a message tunnel.\n\n"
-"        This tunnel will forward things you say in this channel\n"
+"        This tunnel will forward things you say in this channel or thread\n"
 "        to the ticket opener's direct messages.\n\n"
 "        Tunnels do not persist across bot restarts.\n"
 "        "
-msgstr ""
+msgstr "打開訊息隧道功能。\n\n"
+"        此隧道將轉發您在此頻道或線程中所說的內容\n"
+"        到開票人的直接消息。\n\n"
+"        隧道不會在 bot 重啟後持續存在。\n"
+"        "
 
-#: redbot/cogs/reports/reports.py:409
+#: redbot/cogs/reports/reports.py:410
 msgid "That ticket doesn't seem to exist"
-msgstr ""
+msgstr "這個ticket好像不存在"
 
-#: redbot/cogs/reports/reports.py:412
+#: redbot/cogs/reports/reports.py:413
 msgid "That user isn't here anymore."
-msgstr ""
+msgstr "該用戶已經不存在了。"
 
-#: redbot/cogs/reports/reports.py:418
+#: redbot/cogs/reports/reports.py:419
 msgid "Either you or the user you are trying to reach already has an open communication."
-msgstr ""
+msgstr "您試圖聯繫的用戶已經有了開放的交流。"
 
-#: redbot/cogs/reports/reports.py:424
+#: redbot/cogs/reports/reports.py:425
 msgid " Anything you say or upload here (8MB file size limitation on uploads) will be forwarded to them until the communication is closed.\n"
 "You can close a communication at any point by reacting with the ❎ to the last message received.\n"
 "Any message successfully forwarded will be marked with ✅.\n"
 "Tunnels are not persistent across bot restarts."
-msgstr ""
+msgstr " 您在這裡說的或上傳的任何內容（上傳的文件大小限制為 8MB）將被轉發給他們，直到通信結束。\n"
+"您可以隨時通過對收到的最後一條消息作出反應❎來關閉通信。\n"
+"任何成功轉發的消息都會被標記為✅。\n"
+"隧道在 bot 重啟後不會持續存在。"
 
-#: redbot/cogs/reports/reports.py:435
+#: redbot/cogs/reports/reports.py:436
 msgid "A moderator in the server `{guild.name}` has opened a 2-way communication about ticket number {ticket_number}."
 msgstr "`{guild.name}` 伺服器上的管理員已針對回報編號 {ticket_number} 開啟了雙向聊天通道。"
 
-#: redbot/cogs/reports/reports.py:444
+#: redbot/cogs/reports/reports.py:445
 msgid "That user has DMs disabled."
-msgstr ""
+msgstr "該用戶已禁用 DM。"
 
-#: redbot/cogs/reports/reports.py:448
+#: redbot/cogs/reports/reports.py:449
 msgid "You have opened a 2-way communication about ticket number {ticket_number}."
 msgstr "您已針對回報編號 {ticket_number} 開啟了雙向聊天通道。"
 

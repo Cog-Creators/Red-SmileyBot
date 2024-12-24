@@ -1,5 +1,5 @@
 .. This file will be run at the beginning of all files.
-    You can add the subsitutions you need.
+    You can add the substitutions you need.
 
 .. this is a .txt so sphinx doesn't error because it's
     missing in the index
@@ -25,7 +25,7 @@
 .. |role-input| replace:: Please give **the exact role name or ID**, or it won't be detected.
 
 .. |role-input-quotes| replace:: Please give **the exact role name or ID**, or it won't be detected.
-    If the role name has spaces, provide it enclosed in quotes like this: ``"my role with spaces"``
+    If the role name has spaces, provide it enclosed in quotes like this: ``"my role with spaces"``.
 
 .. |member-input| replace:: You can either mention the member, provide their ID, their exact name with
     the tag or not, or their nickname.

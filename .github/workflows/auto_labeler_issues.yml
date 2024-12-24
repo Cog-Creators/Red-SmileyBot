@@ -7,12 +7,11 @@ permissions:
   issues: write
 
 jobs:
-  build:
-
+  apply_triage_label_to_issues:
     runs-on: ubuntu-latest
     steps:
       - name: Apply Triage Label
-        uses: actions/github-script@v3
+        uses: actions/github-script@v6
         with:
           github-token: ${{secrets.GITHUB_TOKEN}}
           script: |
@@ -21,7 +20,7 @@ jobs:
                 console.log('Issue already has Status label, skipping...');
                 return;
             }
-            github.issues.addLabels({
+            github.rest.issues.addLabels({
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,

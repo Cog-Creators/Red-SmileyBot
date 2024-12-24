@@ -1,5 +1,5 @@
 import pytest
-from redbot.core.rpc import RPC, RPCMixin
+from redbot.core._rpc import RPC, RPCMixin
 
 from unittest.mock import MagicMock
 
@@ -7,8 +7,10 @@ __all__ = ["rpc", "rpcmixin", "cog", "existing_func", "existing_multi_func"]
 
 
 @pytest.fixture()
-def rpc():
-    return RPC()
+async def rpc():
+    rpc = RPC()
+    await rpc._pre_login()
+    return rpc
 
 
 @pytest.fixture()

@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2021-05-28 17:07+0000\n"
+"POT-Creation-Date: 2023-05-13 10:40+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: red-discordbot\n"
 "X-Crowdin-Project-ID: 289505\n"
@@ -17,120 +17,123 @@ msgstr ""
 
 #: redbot/cogs/permissions/converters.py:65
 msgid "\"{arg}\" was not found. It must be the ID, mention, or name of a server, channel, user or role which the bot can see."
-msgstr ""
+msgstr "未找到“{arg}”。 它必須是機器人可以看到的伺服器、頻道、用戶或身分組的 ID、提及或名稱。"
 
 #: redbot/cogs/permissions/converters.py:74
 msgid "\"{arg}\" does not refer to a unique server, channel, user or role. Please use the ID for whatever/whoever you're trying to specify, or mention it/them."
-msgstr ""
+msgstr "“{arg}”不指代唯一的伺服器、頻道、用戶或身分組。 請將 ID 用於您要指定的任何人/任何人，或提及它/他們。"
 
 #: redbot/cogs/permissions/converters.py:117
 msgid "\"{arg}\" was not found. It must be the ID, mention, or name of a channel, user or role in this server."
-msgstr ""
+msgstr "未找到“{arg}”。 它必須是此伺服器中頻道、用戶或身分組的 ID、提及或名稱。"
 
 #: redbot/cogs/permissions/converters.py:126
 msgid "\"{arg}\" does not refer to a unique channel, user or role. Please use the ID for whatever/whoever you're trying to specify, or mention it/them."
-msgstr ""
+msgstr "“{arg}”不指代唯一的頻道、用戶或身分組。 請將 ID 用於您要指定的任何人/任何人，或提及它/他們。"
 
 #: redbot/cogs/permissions/converters.py:156
 msgid "Cog or command \"{name}\" not found. Please note that this is case sensitive."
-msgstr ""
+msgstr "未找到cog或指令“{name}”。請注意，這有區分大小寫。"
 
 #: redbot/cogs/permissions/converters.py:169
 msgid "\"{arg}\" is not a valid rule. Valid rules are \"allow\" or \"deny\""
-msgstr ""
+msgstr "“{arg}”不是有效規則。 有效規則是“allow”或“deny”"
 
 #: redbot/cogs/permissions/converters.py:182
 msgid "\"{arg}\" is not a valid rule. Valid rules are \"allow\" or \"deny\", or \"clear\" to remove the rule"
-msgstr ""
+msgstr "“{arg}”不是有效規則。 有效規則是“allow”或“deny”，或“clear”以刪除規則"
 
-#: redbot/cogs/permissions/permissions.py:46
-#: redbot/cogs/permissions/permissions.py:61
+#: redbot/cogs/permissions/permissions.py:47
+#: redbot/cogs/permissions/permissions.py:62
 msgid "Rules must be either `true` or `false`."
-msgstr ""
+msgstr "規則必須是`true`或`false`。"
 
-#: redbot/cogs/permissions/permissions.py:50
+#: redbot/cogs/permissions/permissions.py:51
 msgid "Keys under command names must be IDs (numbers) or `default`."
-msgstr ""
+msgstr "指令名稱下的文字必須是 ID(數字) 或“default”。"
 
-#: redbot/cogs/permissions/permissions.py:54
+#: redbot/cogs/permissions/permissions.py:55
 msgid "Keys under `COMMAND` must be command names (strings)."
-msgstr ""
+msgstr "`COMMAND` 下的字串必須是命令名稱(字符串)。"
 
-#: redbot/cogs/permissions/permissions.py:65
+#: redbot/cogs/permissions/permissions.py:66
 msgid "Keys under cog names must be IDs or `default`."
-msgstr ""
+msgstr "Cog 名稱下的文字必須是 ID 或 `default`。"
 
-#: redbot/cogs/permissions/permissions.py:69
+#: redbot/cogs/permissions/permissions.py:70
 msgid "Keys under `COG` must be cog names (strings)."
-msgstr ""
+msgstr "`COG` 下的文字必須是 cog 名稱(字符串)。"
 
-#: redbot/cogs/permissions/permissions.py:73
+#: redbot/cogs/permissions/permissions.py:74
 msgid "Top-level keys must be either `COG` or `COMMAND`."
-msgstr ""
+msgstr "高等級下文字必須是`COG`或`COMMAND`。"
 
-#: redbot/cogs/permissions/permissions.py:83
+#: redbot/cogs/permissions/permissions.py:84
 #, docstring
 msgid "Customise permissions for commands and cogs."
-msgstr ""
+msgstr "自定義指令和cog的權限。"
 
-#: redbot/cogs/permissions/permissions.py:207
+#: redbot/cogs/permissions/permissions.py:205
 #, docstring
 msgid "Command permission management tools."
-msgstr ""
+msgstr "指令權限管理工具。"
 
-#: redbot/cogs/permissions/permissions.py:212
+#: redbot/cogs/permissions/permissions.py:210
 #, docstring
 msgid "Explain how permissions works."
-msgstr ""
+msgstr "解釋權限的工作原理。"
 
-#: redbot/cogs/permissions/permissions.py:215
+#: redbot/cogs/permissions/permissions.py:213
 msgid "This cog extends the default permission model of the bot. By default, many commands are restricted based on what the command can do.\n"
 "This cog allows you to refine some of those restrictions. You can allow wider or narrower access to most commands using it. You cannot, however, change the restrictions on owner-only commands.\n\n"
 "When additional rules are set using this cog, those rules will be checked prior to checking for the default restrictions of the command.\n"
 "Global rules (set by the owner) are checked first, then rules set for servers. If multiple global or server rules apply to the case, the order they are checked in is:\n"
-"  1. Rules about a user.\n"
-"  2. Rules about the voice channel a user is in.\n"
-"  3. Rules about the text channel a command was issued in.\n"
-"  4. Rules about a role the user has (The highest role they have with a rule will be used).\n"
-"  5. Rules about the server a user is in (Global rules only).\n\n"
+"1. Rules about a user.\n"
+"2. Rules about the voice/stage channel a user is connected to.\n"
+"3. Rules about the channel or a parent of the thread a command was issued in.\n"
+"4. Rules about a role the user has (The highest role they have with a rule will be used).\n"
+"5. Rules about the server a user is in (Global rules only).\n\n"
 "For more details, please read the [official documentation](https://docs.discord.red/en/stable/cog_permissions.html)."
 msgstr ""
 
-#: redbot/cogs/permissions/permissions.py:241
+#: redbot/cogs/permissions/permissions.py:239
 #, docstring
 msgid "Check if a user can run a command.\n\n"
 "        This will take the current context into account, such as the\n"
 "        server and text channel.\n"
 "        "
-msgstr ""
+msgstr "檢查用戶是否可以運行命令。\n\n"
+"        這將考慮當前上下文，例如\n"
+"        服務器和文本通道。\n"
+"        "
 
-#: redbot/cogs/permissions/permissions.py:256
+#: redbot/cogs/permissions/permissions.py:254
 msgid "No such command"
-msgstr ""
+msgstr "沒有這個指令"
+
+#: redbot/cogs/permissions/permissions.py:265
+msgid "That user can run the specified command."
+msgstr "該用戶可以運行其指定的指令。"
 
 #: redbot/cogs/permissions/permissions.py:267
-msgid "That user can run the specified command."
-msgstr ""
-
-#: redbot/cogs/permissions/permissions.py:269
 msgid "That user can not run the specified command."
-msgstr ""
+msgstr "該用戶無法運行該指定的指令。"
 
-#: redbot/cogs/permissions/permissions.py:276
+#: redbot/cogs/permissions/permissions.py:274
 #, docstring
 msgid "Manage permissions with YAML files."
-msgstr ""
+msgstr "使用 YAML 文件管理權限。"
 
-#: redbot/cogs/permissions/permissions.py:280
+#: redbot/cogs/permissions/permissions.py:278
 #, docstring
 msgid "Sends an example of the yaml layout for permissions"
-msgstr ""
+msgstr "發送權限的 yaml 佈局示例"
 
-#: redbot/cogs/permissions/permissions.py:282
+#: redbot/cogs/permissions/permissions.py:280
 msgid "Example YAML for setting rules:\n"
-msgstr ""
+msgstr "用於設置規則的 YAML 示例：\n"
 
-#: redbot/cogs/permissions/permissions.py:304
+#: redbot/cogs/permissions/permissions.py:302
 #, docstring
 msgid "Set global rules with a YAML file.\n\n"
 "        **WARNING**: This will override reset *all* global rules\n"
@@ -138,53 +141,67 @@ msgid "Set global rules with a YAML file.\n\n"
 "        This does not validate the names of commands and cogs before\n"
 "        setting the new rules.\n"
 "        "
-msgstr ""
+msgstr "使用 YAML 文件設置全局規則。\n\n"
+"        **警告**：這將覆蓋重置*所有*全局規則\n"
+"        上傳文件中指定的規則。\n\n"
+"        這不會在之前驗證命令和齒輪的名稱\n"
+"        制定新規則。\n"
+"        "
 
-#: redbot/cogs/permissions/permissions.py:318
+#: redbot/cogs/permissions/permissions.py:316
 #, docstring
 msgid "Set rules for this server with a YAML file.\n\n"
 "        **WARNING**: This will override reset *all* rules in this\n"
 "        server to the rules specified in the uploaded file.\n"
 "        "
-msgstr ""
+msgstr "使用 YAML 文件為此服務器設置規則。\n\n"
+"        **警告**：這將覆蓋重置*所有*規則\n"
+"        服務器到上傳文件中指定的規則。\n"
+"        "
 
-#: redbot/cogs/permissions/permissions.py:328
+#: redbot/cogs/permissions/permissions.py:326
 #, docstring
 msgid "Get a YAML file detailing all global rules."
-msgstr ""
+msgstr "獲取詳細說明所有全局規則的 YAML 文件。"
 
-#: redbot/cogs/permissions/permissions.py:333
-#: redbot/cogs/permissions/permissions.py:349
+#: redbot/cogs/permissions/permissions.py:331
+#: redbot/cogs/permissions/permissions.py:347
 msgid "I'm not allowed to DM you."
-msgstr ""
+msgstr "我不允許私信你。"
 
-#: redbot/cogs/permissions/permissions.py:336
-#: redbot/cogs/permissions/permissions.py:351
+#: redbot/cogs/permissions/permissions.py:334
+#: redbot/cogs/permissions/permissions.py:349
 msgid "I've just sent the file to you via DM."
-msgstr ""
+msgstr "我剛剛通過 DM 將文件發送給您。"
 
-#: redbot/cogs/permissions/permissions.py:344
+#: redbot/cogs/permissions/permissions.py:342
 #, docstring
 msgid "Get a YAML file detailing all rules in this server."
-msgstr ""
+msgstr "獲取詳細說明此伺服器中所有規則的 YAML 文件。"
 
-#: redbot/cogs/permissions/permissions.py:358
+#: redbot/cogs/permissions/permissions.py:356
 #, docstring
 msgid "Update global rules with a YAML file.\n\n"
 "        This won't touch any rules not specified in the YAML\n"
 "        file.\n"
 "        "
-msgstr ""
+msgstr "使用 YAML 文件更新全局規則。\n\n"
+"        這不會觸及 YAML 中未指定的任何規則\n"
+"        文件。\n"
+"        "
 
-#: redbot/cogs/permissions/permissions.py:369
+#: redbot/cogs/permissions/permissions.py:367
 #, docstring
 msgid "Update rules for this server with a YAML file.\n\n"
 "        This won't touch any rules not specified in the YAML\n"
 "        file.\n"
 "        "
-msgstr ""
+msgstr "使用 YAML 文件更新此伺服器的規則。\n\n"
+"        這不會觸及 YAML 中未指定的任何規則\n"
+"        文件。\n"
+"        "
 
-#: redbot/cogs/permissions/permissions.py:385
+#: redbot/cogs/permissions/permissions.py:383
 #, docstring
 msgid "Add a global rule to a command.\n\n"
 "        `<allow_or_deny>` should be one of \"allow\" or \"deny\".\n\n"
@@ -192,14 +209,19 @@ msgid "Add a global rule to a command.\n\n"
 "        This is case sensitive.\n\n"
 "        `<who_or_what...>` is one or more users, channels or roles the rule is for.\n"
 "        "
-msgstr ""
+msgstr "將全局規則添加到指令。\n\n"
+"        `<allow_or_deny>` 應該是“allow”或“deny”之一。\n\n"
+"        `<cog_or_command>` 是要添加規則的 cog 或指令。\n"
+"        這是區分大小寫的。\n\n"
+"        `<who_or_what...>` 是規則適用的一個或多個用戶、頻道或身分組。\n"
+"        "
 
-#: redbot/cogs/permissions/permissions.py:401
-#: redbot/cogs/permissions/permissions.py:431
+#: redbot/cogs/permissions/permissions.py:399
+#: redbot/cogs/permissions/permissions.py:429
 msgid "Rule added."
-msgstr ""
+msgstr "規則已添加。"
 
-#: redbot/cogs/permissions/permissions.py:415
+#: redbot/cogs/permissions/permissions.py:413
 #, docstring
 msgid "Add a rule to a command in this server.\n\n"
 "        `<allow_or_deny>` should be one of \"allow\" or \"deny\".\n\n"
@@ -207,32 +229,45 @@ msgid "Add a rule to a command in this server.\n\n"
 "        This is case sensitive.\n\n"
 "        `<who_or_what...>` is one or more users, channels or roles the rule is for.\n"
 "        "
-msgstr ""
+msgstr "將規則添加到此伺服器中的指令。\n\n"
+"        `<allow_or_deny>` 應該是“allow”或“deny”之一。\n\n"
+"        `<cog_or_command>` 是要添加規則的 cog 或指令。\n"
+"        這是區分大小寫的。\n\n"
+"        `<who_or_what...>` 是規則適用的一個或多個用戶、頻道或身分組。\n"
+"        "
 
-#: redbot/cogs/permissions/permissions.py:441
+#: redbot/cogs/permissions/permissions.py:439
 #, docstring
 msgid "Remove a global rule from a command.\n\n"
 "        `<cog_or_command>` is the cog or command to remove the rule\n"
 "        from. This is case sensitive.\n\n"
 "        `<who_or_what...>` is one or more users, channels or roles the rule is for.\n"
 "        "
-msgstr ""
+msgstr "從指令中刪除全局規則。\n\n"
+"        `<cog_or_command>` 是移除規則的 cog 或命令\n"
+"        從。 這是區分大小寫的。\n\n"
+"        `<who_or_what...>` 是規則適用的一個或多個用戶、頻道或角色。\n"
+"        "
 
-#: redbot/cogs/permissions/permissions.py:450
-#: redbot/cogs/permissions/permissions.py:474
+#: redbot/cogs/permissions/permissions.py:448
+#: redbot/cogs/permissions/permissions.py:472
 msgid "Rule removed."
-msgstr ""
+msgstr "規則已移除。"
 
-#: redbot/cogs/permissions/permissions.py:463
+#: redbot/cogs/permissions/permissions.py:461
 #, docstring
 msgid "Remove a server rule from a command.\n\n"
 "        `<cog_or_command>` is the cog or command to remove the rule\n"
 "        from. This is case sensitive.\n\n"
 "        `<who_or_what...>` is one or more users, channels or roles the rule is for.\n"
 "        "
-msgstr ""
+msgstr "從指令中刪除伺服器規則。\n\n"
+"        `<cog_or_command>` 是移除規則的 cog 或指令\n"
+"        從。 這是區分大小寫的。\n\n"
+"        `<who_or_what...>` 是規則適用的一個或多個用戶、頻道或身分組。\n"
+"        "
 
-#: redbot/cogs/permissions/permissions.py:482
+#: redbot/cogs/permissions/permissions.py:480
 #, docstring
 msgid "Set the default rule for a command in this server.\n\n"
 "        This is the rule a command will default to when no other rule\n"
@@ -242,14 +277,21 @@ msgid "Set the default rule for a command in this server.\n\n"
 "        `<cog_or_command>` is the cog or command to set the default\n"
 "        rule for. This is case sensitive.\n"
 "        "
-msgstr ""
+msgstr "在此伺服器中設置命令的默認規則。\n\n"
+"        這是指令在沒有其他規則時將默認使用的規則\n"
+"        被發現。\n\n"
+"        `<allow_or_deny>` 應該是“allow”、“deny”或“clear”之一。\n"
+"        “清除”將重置默認規則。\n\n"
+"        `<cog_or_command>` 是設置默認值的 cog 或指令\n"
+"        規則。 這是區分大小寫的。\n"
+"        "
 
-#: redbot/cogs/permissions/permissions.py:498
-#: redbot/cogs/permissions/permissions.py:519
+#: redbot/cogs/permissions/permissions.py:496
+#: redbot/cogs/permissions/permissions.py:517
 msgid "Default set."
-msgstr ""
+msgstr "設置為默認。"
 
-#: redbot/cogs/permissions/permissions.py:505
+#: redbot/cogs/permissions/permissions.py:503
 #, docstring
 msgid "Set the default global rule for a command.\n\n"
 "        This is the rule a command will default to when no other rule\n"
@@ -259,48 +301,60 @@ msgid "Set the default global rule for a command.\n\n"
 "        `<cog_or_command>` is the cog or command to set the default\n"
 "        rule for. This is case sensitive.\n"
 "        "
-msgstr ""
+msgstr "設置命令的默認全局規則。\n\n"
+"        這是命令在沒有其他規則時將默認使用的規則\n"
+"        被發現。\n\n"
+"        `<allow_or_deny>` 應該是“allow”、“deny”或“clear”之一。\n"
+"        “clear”將重置默認規則。\n\n"
+"        `<cog_or_command>` 是設置默認值的 cog 或指令\n"
+"        規則。這是區分大小寫的。\n"
+"        "
 
-#: redbot/cogs/permissions/permissions.py:524
+#: redbot/cogs/permissions/permissions.py:522
 #, docstring
 msgid "Reset all global rules."
-msgstr ""
+msgstr "重置所有全局規則。"
 
-#: redbot/cogs/permissions/permissions.py:534
+#: redbot/cogs/permissions/permissions.py:532
 #, docstring
 msgid "Reset all rules in this server."
-msgstr ""
+msgstr "重置此伺服器中的所有規則。"
 
-#: redbot/cogs/permissions/permissions.py:637
-msgid "You must upload a file."
-msgstr ""
+#: redbot/cogs/permissions/permissions.py:635
+msgid "Supply a file with next message or type anything to cancel."
+msgstr "提供包含下一條消息的文件或輸入任何內容以取消。"
 
-#: redbot/cogs/permissions/permissions.py:643
+#: redbot/cogs/permissions/permissions.py:641
+msgid "You took too long to upload a file."
+msgstr "您上傳文件的時間太長。"
+
+#: redbot/cogs/permissions/permissions.py:644
+msgid "You have cancelled the upload process."
+msgstr "您已取消上傳。"
+
+#: redbot/cogs/permissions/permissions.py:653
 msgid "Invalid syntax: "
-msgstr ""
+msgstr "無效的語法： "
 
-#: redbot/cogs/permissions/permissions.py:646
+#: redbot/cogs/permissions/permissions.py:656
 msgid "Your YAML file did not match the schema: "
-msgstr ""
+msgstr "您的 YAML 文件與架構不匹配： "
 
-#: redbot/cogs/permissions/permissions.py:649
+#: redbot/cogs/permissions/permissions.py:659
 msgid "Rules set."
-msgstr ""
+msgstr "規則已設定。"
 
-#: redbot/cogs/permissions/permissions.py:693
+#: redbot/cogs/permissions/permissions.py:703
+#: redbot/cogs/permissions/permissions.py:718
 msgid "Are you sure?"
-msgstr ""
+msgstr "是否確定？"
 
-#: redbot/cogs/permissions/permissions.py:700
-#: redbot/cogs/permissions/permissions.py:713
+#: redbot/cogs/permissions/permissions.py:710
+#: redbot/cogs/permissions/permissions.py:723
 msgid "Response timed out."
-msgstr ""
+msgstr "沒有回應，已逾時"
 
-#: redbot/cogs/permissions/permissions.py:708
-msgid "Are you sure? (y/n)"
-msgstr ""
-
-#: redbot/cogs/permissions/permissions.py:719
+#: redbot/cogs/permissions/permissions.py:729
 msgid "Action cancelled."
-msgstr ""
+msgstr "操作已取消。"
 

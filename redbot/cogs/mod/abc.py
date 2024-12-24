@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import List, Tuple, Optional
+from typing import Optional
 
 import discord
 from redbot.core import Config, commands

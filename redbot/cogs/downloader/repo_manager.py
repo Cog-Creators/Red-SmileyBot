@@ -188,6 +188,17 @@ class Repo(RepoJSONMixin):
         git_path = self.folder_path / ".git"
         return git_path.exists(), git_path
 
+    def _parse_git_error(self, git_command: str, stderr: str) -> errors.GitException:
+        stderr = stderr.lower()
+        # Expected to catch:
+        #   Could not read from remote repository
+        #   could not read X for 'URL': terminal prompts disabled
+        #   Authentication failed
+        if "could not read" in stderr or "authentication failed" in stderr:
+            return errors.AuthenticationError("Failed to Authenticate", git_command)
+
+        return errors.CloningError("Error when running git clone.", git_command)
+
     async def is_ancestor(self, maybe_ancestor_rev: str, descendant_rev: str) -> bool:
         """
         Check if the first is an ancestor of the second.
@@ -548,13 +559,20 @@ class Repo(RepoJSONMixin):
         """
         env = os.environ.copy()
         env["GIT_TERMINAL_PROMPT"] = "0"
+        env["GIT_TRACE"] = "0"
+        # make sure we never enter an askpass routine
+        # https://github.com/git/git/blob/1424303/prompt.c#L56
         env.pop("GIT_ASKPASS", None)
+        env.pop("SSH_ASKPASS", None)
         # attempt to force all output to plain ascii english
         # some methods that parse output may expect it
         # according to gettext manual both variables have to be set:
         # https://www.gnu.org/software/gettext/manual/gettext.html#Locale-Environment-Variables
         env["LC_ALL"] = "C"
         env["LANGUAGE"] = "C"
+        # Make sure git does not consider us smart
+        # https://github.com/git/git/blob/a7312d1a2/editor.c#L11-L15
+        env["TERM"] = "dumb"
         kwargs["env"] = env
         async with self._repo_lock:
             p: CompletedProcess = await asyncio.get_running_loop().run_in_executor(
@@ -659,7 +677,7 @@ class Repo(RepoJSONMixin):
         if p.returncode:
             # Try cleaning up folder
             shutil.rmtree(str(self.folder_path), ignore_errors=True)
-            raise errors.CloningError("Error when running git clone.", git_command)
+            raise self._parse_git_error(git_command, p.stderr.decode(**DECODE_PARAMS))
 
         if self.branch is None:
             self.branch = await self.current_branch()
@@ -998,7 +1016,7 @@ class Repo(RepoJSONMixin):
 
     @classmethod
     async def from_folder(cls, folder: Path, branch: str = "") -> Repo:
-        repo = cls(name=folder.stem, url="", branch=branch, commit="", folder_path=folder)
+        repo = cls(name=folder.name, url="", branch=branch, commit="", folder_path=folder)
         repo.url = await repo.current_url()
         if branch == "":
             repo.branch = await repo.current_branch()
@@ -1009,7 +1027,6 @@ class Repo(RepoJSONMixin):
 
 
 class RepoManager:
-
     GITHUB_OR_GITLAB_RE = re.compile(r"https?://git(?:hub)|(?:lab)\.com/")
     TREE_URL_RE = re.compile(r"(?P<tree>/tree)/(?P<branch>\S+)$")
 
@@ -1214,14 +1231,14 @@ class RepoManager:
             if not folder.is_dir():
                 continue
             try:
-                branch = await self.config.repos.get_raw(folder.stem, default="")
-                ret[folder.stem] = await Repo.from_folder(folder, branch)
+                branch = await self.config.repos.get_raw(folder.name, default="")
+                ret[folder.name] = await Repo.from_folder(folder, branch)
                 if branch == "":
-                    await self.config.repos.set_raw(folder.stem, value=ret[folder.stem].branch)
+                    await self.config.repos.set_raw(folder.name, value=ret[folder.name].branch)
             except errors.NoRemoteURL:
-                log.warning("A remote URL does not exist for repo %s", folder.stem)
+                log.warning("A remote URL does not exist for repo %s", folder.name)
             except errors.DownloaderException as err:
-                log.error("Ignoring repo %s due to error.", folder.stem, exc_info=err)
+                log.error("Ignoring repo %s due to error.", folder.name, exc_info=err)
                 # Downloader should NOT remove the repo on generic errors like this one.
                 # We were removing whole repo folder here in the past,
                 # but it's quite destructive for such a generic error.

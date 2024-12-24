@@ -7,6 +7,18 @@ from .i18n import Translator
 
 _ = Translator(__name__, __file__)
 
+__all__ = (
+    "RedError",
+    "PackageAlreadyLoaded",
+    "CogLoadError",
+    "BankError",
+    "BalanceTooHigh",
+    "BankPruneError",
+    "ConfigError",
+    "StoredTypeError",
+    "CannotSetSubfield",
+)
+
 
 class RedError(Exception):
     """Base error class for Red-related errors."""

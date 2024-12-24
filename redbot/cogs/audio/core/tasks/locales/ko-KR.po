@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2021-06-17 17:28+0000\n"
+"POT-Creation-Date: 2022-03-28 15:24+0000\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: red-discordbot\n"
 "X-Crowdin-Project-ID: 289505\n"
@@ -15,15 +15,15 @@ msgstr ""
 "X-Crowdin-File-ID: 664\n"
 "Language: ko_KR\n"
 
-#: redbot/cogs/audio/core/tasks/startup.py:231
+#: redbot/cogs/audio/core/tasks/startup.py:273
 msgid "Couldn't get a valid track."
 msgstr "유효한 트랙을 얻을 수 없습니다."
 
-#: redbot/cogs/audio/core/tasks/startup.py:239
+#: redbot/cogs/audio/core/tasks/startup.py:281
 msgid "Unable to Get Track"
 msgstr "트랙을 찾을수 없습니다"
 
-#: redbot/cogs/audio/core/tasks/startup.py:240
-msgid "I'm unable to get a track from Lavalink at the moment, try again in a few minutes."
-msgstr "지금은 라바링크를 통해 음악을 가져올 수 없습니다. 몇분 뒤에 다시 시도해주세요."
+#: redbot/cogs/audio/core/tasks/startup.py:282
+msgid "I'm unable to get a track from the Lavalink node at the moment, try again in a few minutes."
+msgstr ""
 

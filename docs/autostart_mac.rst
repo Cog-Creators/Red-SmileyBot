@@ -20,11 +20,12 @@ Now run :code:`sudo nano /Library/LaunchDaemons/red.plist`
 
 Paste the following and replace the following: 
 
-- all instances of :code:`username` with your Mac username 
+- :code:`username` (but not :code:`UserName`) with your Mac username
 - :code:`path` with the path you copied earlier
 - :code:`instance-name` with your instance name:
 
 .. code-block:: none
+    :emphasize-lines: 9, 13, 28
 
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
@@ -56,6 +57,8 @@ Paste the following and replace the following:
             <string>username</string>
             <key>InitGroups</key>
             <true/>
+            <key>ProcessType</key>
+            <string>Interactive</string>
         </dict>
     </plist>
 

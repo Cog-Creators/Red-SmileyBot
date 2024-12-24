@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2021-05-26 17:35+0000\n"
+"POT-Creation-Date: 2024-03-05 19:45+0000\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Crowdin-Project: red-discordbot\n"
 "X-Crowdin-Project-ID: 289505\n"
@@ -15,136 +15,48 @@ msgstr ""
 "X-Crowdin-File-ID: 38\n"
 "Language: fr_FR\n"
 
-#: redbot/cogs/modlog/modlog.py:20
+#: redbot/cogs/modlog/modlog.py:19
 #, docstring
-msgid "Manage log channels for moderation actions."
-msgstr "Gérer les salons de log pour les actions de modération."
-
-#: redbot/cogs/modlog/modlog.py:33
-#, docstring
-msgid "Manage modlog settings."
-msgstr "Gérer les paramètres du modlog."
-
-#: redbot/cogs/modlog/modlog.py:39
-#, docstring
-msgid "Command to fix misbehaving casetypes."
-msgstr "Commande pour réparer les cas de mauvaise conduite."
-
-#: redbot/cogs/modlog/modlog.py:46
-#, docstring
-msgid "Set a channel as the modlog.\n\n"
-"        Omit `[channel]` to disable the modlog.\n"
-"        "
-msgstr "Définir un salon comme modlog.\n\n"
-"        Omettre `[channel]` pour désactiver le modlog.\n"
-"        "
-
-#: redbot/cogs/modlog/modlog.py:55
-msgid "Mod events will be sent to {channel}."
-msgstr "Les événements de modération seront envoyés à {channel}."
-
-#: redbot/cogs/modlog/modlog.py:59
-msgid "I do not have permissions to send messages in {channel}!"
-msgstr "Je n'ai pas les permissions d'envoyer des messages dans {channel} !"
-
-#: redbot/cogs/modlog/modlog.py:67
-msgid "Mod log is already disabled."
-msgstr "Le journal des mods est déjà désactivé."
-
-#: redbot/cogs/modlog/modlog.py:70
-msgid "Mod log deactivated."
-msgstr "Mod log désactivé."
-
-#: redbot/cogs/modlog/modlog.py:75
-#, docstring
-msgid "Enable or disable case creation for a mod action."
-msgstr "Activer ou désactiver la création d'argument pour une action de modération."
-
-#: redbot/cogs/modlog/modlog.py:83 redbot/cogs/modlog/modlog.py:97
-msgid "enabled"
-msgstr "activé"
-
-#: redbot/cogs/modlog/modlog.py:83 redbot/cogs/modlog/modlog.py:97
-msgid "disabled"
-msgstr "désactivé"
-
-#: redbot/cogs/modlog/modlog.py:86
-msgid "Current settings:\n"
-msgstr "Paramètres actuels :\n"
-
-#: redbot/cogs/modlog/modlog.py:91
-msgid "That action is not registered."
-msgstr "Cette action n’est pas enregistrée."
-
-#: redbot/cogs/modlog/modlog.py:96
-msgid "Case creation for {action_name} actions is now {enabled}."
-msgstr "La création d’arguments pour les actions {action_name} est maintenant {enabled}."
-
-#: redbot/cogs/modlog/modlog.py:104
-#, docstring
-msgid "Reset all modlog cases in this server."
-msgstr "Réinitialiser tous les arguments de modlog dans ce serveur."
-
-#: redbot/cogs/modlog/modlog.py:107
-msgid "Are you sure you would like to reset all modlog cases in this server?"
+msgid "Browse and manage modlog cases. To manage modlog settings, use `[p]modlogset`."
 msgstr ""
 
-#: redbot/cogs/modlog/modlog.py:114
-msgid "You took too long to respond."
-msgstr "Vous avez pris trop de temps à répondre."
-
-#: redbot/cogs/modlog/modlog.py:118
-msgid "Cases have been reset."
-msgstr "Les arguments ont été réinitialisés."
-
-#: redbot/cogs/modlog/modlog.py:120
-msgid "No changes have been made."
-msgstr "Aucune modification n'a été faite."
-
-#: redbot/cogs/modlog/modlog.py:125
+#: redbot/cogs/modlog/modlog.py:32
 #, docstring
 msgid "Show the specified case."
 msgstr "Afficher l'argument spécifié."
 
-#: redbot/cogs/modlog/modlog.py:129
-msgid "That case does not exist for that server."
-msgstr "Ce cas n'existe pas pour ce serveur."
+#: redbot/cogs/modlog/modlog.py:36
+msgid "That case does not exist for this server."
+msgstr "Ce cas n'existe pas sur ce serveur."
 
-#: redbot/cogs/modlog/modlog.py:135 redbot/cogs/modlog/modlog.py:173
-msgid "{case}\n"
-"**Timestamp:** {timestamp}"
-msgstr "{case}\n"
-"**Horodatage :** {timestamp}"
+#: redbot/cogs/modlog/modlog.py:45 redbot/cogs/modlog/modlog.py:82
+#: redbot/cogs/modlog/modlog.py:117
+msgid "Timestamp:"
+msgstr "Date et heure :"
 
-#: redbot/cogs/modlog/modlog.py:146
+#: redbot/cogs/modlog/modlog.py:52
 #, docstring
 msgid "Display cases for the specified member."
 msgstr "Afficher les cas pour le membre spécifié."
 
-#: redbot/cogs/modlog/modlog.py:158 redbot/cogs/modlog/modlog.py:198
+#: redbot/cogs/modlog/modlog.py:64 redbot/cogs/modlog/modlog.py:103
 msgid "That user does not exist."
 msgstr "Cet utilisateur n'existe pas."
 
-#: redbot/cogs/modlog/modlog.py:161 redbot/cogs/modlog/modlog.py:201
+#: redbot/cogs/modlog/modlog.py:67 redbot/cogs/modlog/modlog.py:106
 msgid "Something unexpected went wrong while fetching that user by ID."
 msgstr "Quelque chose s'est mal passé lors de la récupération de cet utilisateur par ID."
 
-#: redbot/cogs/modlog/modlog.py:165 redbot/cogs/modlog/modlog.py:204
+#: redbot/cogs/modlog/modlog.py:71 redbot/cogs/modlog/modlog.py:109
 msgid "That user does not have any cases."
 msgstr "Cet utilisateur n'a aucun cas."
 
-#: redbot/cogs/modlog/modlog.py:186
+#: redbot/cogs/modlog/modlog.py:91
 #, docstring
 msgid "List cases for the specified member."
 msgstr "Liste les cas pour le membre spécifié."
 
-#: redbot/cogs/modlog/modlog.py:209
-msgid "{case}\n"
-"**Timestamp:** {timestamp}\n\n"
-msgstr "{case}\n"
-"**Horodatage:** {timestamp}\n\n"
-
-#: redbot/cogs/modlog/modlog.py:222
+#: redbot/cogs/modlog/modlog.py:126
 #, docstring
 msgid "Specify a reason for a modlog case.\n\n"
 "        Please note that you can only edit cases you are\n"
@@ -157,19 +69,19 @@ msgstr "Spécifiez une raison pour un argument de modlog.\n\n"
 "        Si aucun numéro d'argument n'est spécifié, le dernier argument sera utilisé.\n"
 "        "
 
-#: redbot/cogs/modlog/modlog.py:235
+#: redbot/cogs/modlog/modlog.py:139
 msgid "There are no modlog cases in this server."
 msgstr "Il n'y a aucun cas de modlog dans ce serveur."
 
-#: redbot/cogs/modlog/modlog.py:241
+#: redbot/cogs/modlog/modlog.py:145
 msgid "That case does not exist!"
 msgstr "Cet argument n'existe pas !"
 
-#: redbot/cogs/modlog/modlog.py:248
+#: redbot/cogs/modlog/modlog.py:152
 msgid "You are not authorized to modify that case!"
 msgstr "Vous n’êtes pas autorisé à modifier cette argument !"
 
-#: redbot/cogs/modlog/modlog.py:256
+#: redbot/cogs/modlog/modlog.py:160
 msgid "Reason for case #{num} has been updated."
 msgstr "La raison du cas #{num} a été mise à jour."
 

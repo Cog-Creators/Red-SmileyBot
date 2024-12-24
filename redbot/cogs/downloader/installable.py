@@ -84,7 +84,7 @@ class Installable(RepoJSONMixin):
         self._location = location
 
         self.repo = repo
-        self.repo_name = self._location.parent.stem
+        self.repo_name = self._location.parent.name
         self.commit = commit
 
         self.end_user_data_statement: str
@@ -129,7 +129,7 @@ class Installable(RepoJSONMixin):
 
         # noinspection PyBroadException
         try:
-            copy_func(src=str(self._location), dst=str(target_dir / self._location.stem))
+            copy_func(src=str(self._location), dst=str(target_dir / self._location.name))
         except:  # noqa: E722
             log.exception("Error occurred when copying path: %s", self._location)
             return False

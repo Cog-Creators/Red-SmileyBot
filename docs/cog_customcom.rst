@@ -19,7 +19,7 @@ Cooldowns
 
 You can set cooldowns for your custom commands. If a command is on cooldown, it will not be triggered.
 
-You can set cooldowns per member or per channel, or set a cooldown guild-wide. You can also set multiple types of cooldown on a single custom command. All cooldowns must pass before the command will trigger.
+You can set cooldowns per member or per thread/channel, or set a cooldown guild-wide. You can also set multiple types of cooldown on a single custom command. All cooldowns must pass before the command will trigger.
 
 ------------------
 Context Parameters
@@ -27,19 +27,19 @@ Context Parameters
 
 You can enhance your custom command's response by leaving spaces for the bot to substitute.
 
-+-----------+----------------------------------------+
-| Argument  | Substitute                             |
-+===========+========================================+
-| {message} | The message the bot is responding to.  |
-+-----------+----------------------------------------+
-| {author}  | The user who called the command.       |
-+-----------+----------------------------------------+
-| {channel} | The channel the command was called in. |
-+-----------+----------------------------------------+
-| {server}  | The server the command was called in.  |
-+-----------+----------------------------------------+
-| {guild}   | Same as with {server}.                 |
-+-----------+----------------------------------------+
++-----------+--------------------------------------------------+
+| Argument  | Substitute                                       |
++===========+==================================================+
+| {message} | The message the bot is responding to.            |
++-----------+--------------------------------------------------+
+| {author}  | The user who called the command.                 |
++-----------+--------------------------------------------------+
+| {channel} | The channel or thread the command was called in. |
++-----------+--------------------------------------------------+
+| {server}  | The server the command was called in.            |
++-----------+--------------------------------------------------+
+| {guild}   | Same as with {server}.                           |
++-----------+--------------------------------------------------+
 
 You can further refine the response with dot notation. For example, {author.mention} will mention the user who called the command.
 
@@ -81,7 +81,7 @@ Showing your own avatar
 
 .. code-block:: none
 
-    [p]customcom add simple avatar {author.avatar_url}
+    [p]customcom add simple avatar {author.display_avatar}
     [p]avatar
         https://cdn.discordapp.com/avatars/133801473317404673/be4c4a4fe47cb3e74c31a0504e7a295e.webp?size=1024
 

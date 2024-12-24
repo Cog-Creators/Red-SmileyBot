@@ -27,7 +27,7 @@
 </p>
 <p align="center">
   <a href="https://github.com/Cog-Creators/Red-DiscordBot/actions">
-    <img src="https://img.shields.io/github/workflow/status/Cog-Creators/Red-Discordbot/Tests?label=tests" alt="GitHub Actions">
+    <img src="https://img.shields.io/github/actions/workflow/status/Cog-Creators/Red-Discordbot/tests.yml?label=tests" alt="GitHub Actions">
   </a>
   <a href="http://docs.discord.red/en/stable/?badge=stable">
     <img src="https://readthedocs.org/projects/red-discordbot/badge/?version=stable" alt="Red on readthedocs.org">

@@ -1,4 +1,3 @@
-import logging
 import math
 from pathlib import Path
 
@@ -6,8 +5,9 @@ from typing import List, Tuple
 
 import discord
 import lavalink
+from red_commons.logging import getLogger
 
-from fuzzywuzzy import process
+import rapidfuzz
 from redbot.core import commands
 from redbot.core.i18n import Translator
 from redbot.core.utils import AsyncIter
@@ -17,7 +17,7 @@ from ...audio_dataclasses import LocalPath, Query
 from ..abc import MixinMeta
 from ..cog_utils import CompositeMetaClass
 
-log = logging.getLogger("red.cogs.Audio.cog.Utilities.queue")
+log = getLogger("red.cogs.Audio.cog.Utilities.queue")
 _ = Translator("Audio", Path(__file__))
 
 
@@ -26,7 +26,7 @@ class QueueUtilities(MixinMeta, metaclass=CompositeMetaClass):
         self,
         ctx: commands.Context,
         queue: list,
-        player: lavalink.player_manager.Player,
+        player: lavalink.player.Player,
         page_num: int,
     ) -> discord.Embed:
         shuffle = await self.config.guild(ctx.guild).shuffle()
@@ -116,7 +116,7 @@ class QueueUtilities(MixinMeta, metaclass=CompositeMetaClass):
     async def _build_queue_search_list(
         self, queue_list: List[lavalink.Track], search_words: str
     ) -> List[Tuple[int, str]]:
-        track_list = []
+        tracks = {}
         async for queue_idx, track in AsyncIter(queue_list).enumerate(start=1):
             if not self.match_url(track.uri):
                 query = Query.process_input(track, self.local_folder_current_path)
@@ -131,14 +131,14 @@ class QueueUtilities(MixinMeta, metaclass=CompositeMetaClass):
             else:
                 track_title = track.title
 
-            song_info = {str(queue_idx): track_title}
-            track_list.append(song_info)
-        search_results = process.extract(search_words, track_list, limit=50)
+            tracks[queue_idx] = track_title
+        search_results = rapidfuzz.process.extract(
+            search_words, tracks, limit=50, processor=rapidfuzz.utils.default_process
+        )
         search_list = []
-        async for search, percent_match in AsyncIter(search_results):
-            async for queue_position, title in AsyncIter(search.items()):
-                if percent_match > 89:
-                    search_list.append((queue_position, title))
+        async for title, percent_match, queue_position in AsyncIter(search_results):
+            if percent_match > 89:
+                search_list.append((queue_position, title))
         return search_list
 
     async def _build_queue_search_page(

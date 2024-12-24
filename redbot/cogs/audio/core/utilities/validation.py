@@ -1,10 +1,10 @@
-import logging
 import re
 
 from typing import Final, List, Optional, Pattern, Set, Union
 from urllib.parse import urlparse
 
 import discord
+from red_commons.logging import getLogger
 
 from redbot.core import Config
 from redbot.core.commands import Context
@@ -13,7 +13,7 @@ from ...audio_dataclasses import Query
 from ..abc import MixinMeta
 from ..cog_utils import CompositeMetaClass
 
-log = logging.getLogger("red.cogs.Audio.cog.Utilities.validation")
+log = getLogger("red.cogs.Audio.cog.Utilities.validation")
 
 _RE_YT_LIST_PLAYLIST: Final[Pattern] = re.compile(
     r"^(https?://)?(www\.)?(youtube\.com|youtu\.?be)(/playlist\?).*(list=)(.*)(&|$)"
@@ -60,7 +60,15 @@ class ValidationUtilities(MixinMeta, metaclass=CompositeMetaClass):
     async def is_query_allowed(
         self,
         config: Config,
-        ctx_or_channel: Optional[Union[Context, discord.TextChannel]],
+        ctx_or_channel: Optional[
+            Union[
+                Context,
+                discord.TextChannel,
+                discord.VoiceChannel,
+                discord.StageChannel,
+                discord.Thread,
+            ]
+        ],
         query: str,
         query_obj: Query,
     ) -> bool:

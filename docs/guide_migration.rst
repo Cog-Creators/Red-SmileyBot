@@ -7,7 +7,7 @@
 Migrating cogs from Red V2
 ==========================
 
-First, be sure to read :dpy_docs:`discord.py's migration guide <migrating.html>`
+First, be sure to read :dpy_docs:`discord.py's migration guide <migrating_to_v1.html>`
 as that covers all of the changes to discord.py that will affect the migration process
 
 ----------------

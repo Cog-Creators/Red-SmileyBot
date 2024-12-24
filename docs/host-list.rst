@@ -106,13 +106,16 @@ Average Providers
  provider with locations in Germany, US and Finland.
 
 | `Contabo <https://contabo.com/>`_ is also a German VPS and dedicated server provider
- with locations in Germany, Asia and the United States.
+ with locations in Germany, Asia, Australia and the United States.
 
 | `Ramnode <https://www.ramnode.com/>`_ is a US based VPS provider focused on
  low to middle end VPS with locations in the US and Netherlands.
 
 | `LowEndBox <http://lowendbox.com/>`_ is a website where hosting providers are
  discussed and curated, often with lower costs and less known providers.
+
+| `AlphaVps <https://alphavps.com>`_ is a Bulgaria VPS and dedicated server provider 
+ with locations in Los Angeles, New York, England, Germany and Bulgaria.
 
 --------------------
 Higher End Providers

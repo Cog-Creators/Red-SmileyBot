@@ -7,8 +7,9 @@ import urllib.parse
 import aiohttp
 import discord
 from redbot.core import commands
+from redbot.core.bot import Red
 from redbot.core.i18n import Translator, cog_i18n
-from redbot.core.utils.menus import menu, DEFAULT_CONTROLS
+from redbot.core.utils.menus import menu
 from redbot.core.utils.chat_formatting import (
     bold,
     escape,
@@ -39,7 +40,7 @@ class RPSParser:
             self.choice = None
 
 
-MAX_ROLL: Final[int] = 2 ** 64 - 1
+MAX_ROLL: Final[int] = 2**63 - 1
 
 
 @cog_i18n(_)
@@ -72,12 +73,13 @@ class General(commands.Cog):
     ]
     _ = T_
 
-    def __init__(self):
+    def __init__(self, bot: Red) -> None:
         super().__init__()
+        self.bot = bot
         self.stopwatches = {}
 
     async def red_delete_data_for_user(self, **kwargs):
-        """ Nothing to delete """
+        """Nothing to delete"""
         return
 
     @commands.command(usage="<first> <second> [others...]")
@@ -218,7 +220,9 @@ class General(commands.Cog):
     async def lmgtfy(self, ctx, *, search_terms: str):
         """Create a lmgtfy link."""
         search_terms = escape(urllib.parse.quote_plus(search_terms), mass_mentions=True)
-        await ctx.send("https://lmgtfy.app/?q={}".format(search_terms))
+        await ctx.send(
+            f"https://cog-creators.github.io/lmgtfy/search?q={search_terms}&btnK=Google+Search"
+        )
 
     @commands.command(hidden=True)
     @commands.guild_only()
@@ -254,18 +258,23 @@ class General(commands.Cog):
         Default to False.
         """
         guild = ctx.guild
-        created_at = _("Created on <t:{0}>. That's <t:{0}:R>!").format(
-            int(guild.created_at.replace(tzinfo=datetime.timezone.utc).timestamp()),
+        created_at = _("Created on {date_and_time}. That's {relative_time}!").format(
+            date_and_time=discord.utils.format_dt(guild.created_at),
+            relative_time=discord.utils.format_dt(guild.created_at, "R"),
         )
         online = humanize_number(
             len([m.status for m in guild.members if m.status != discord.Status.offline])
         )
-        total_users = humanize_number(guild.member_count)
+        total_users = guild.member_count and humanize_number(guild.member_count)
         text_channels = humanize_number(len(guild.text_channels))
         voice_channels = humanize_number(len(guild.voice_channels))
+        stage_channels = humanize_number(len(guild.stage_channels))
         if not details:
             data = discord.Embed(description=created_at, colour=await ctx.embed_colour())
-            data.add_field(name=_("Users online"), value=f"{online}/{total_users}")
+            data.add_field(
+                name=_("Users online"),
+                value=f"{online}/{total_users}" if total_users else _("Not available"),
+            )
             data.add_field(name=_("Text Channels"), value=text_channels)
             data.add_field(name=_("Voice Channels"), value=voice_channels)
             data.add_field(name=_("Roles"), value=humanize_number(len(guild.roles)))
@@ -277,9 +286,9 @@ class General(commands.Cog):
                     command=f"{ctx.clean_prefix}serverinfo 1"
                 )
             )
-            if guild.icon_url:
-                data.set_author(name=guild.name, url=guild.icon_url)
-                data.set_thumbnail(url=guild.icon_url)
+            if guild.icon:
+                data.set_author(name=guild.name, url=guild.icon)
+                data.set_thumbnail(url=guild.icon)
             else:
                 data.set_author(name=guild.name)
         else:
@@ -342,39 +351,13 @@ class General(commands.Cog):
                 "low": _("1 - Low"),
                 "medium": _("2 - Medium"),
                 "high": _("3 - High"),
-                "extreme": _("4 - Extreme"),
+                "highest": _("4 - Highest"),
             }
-
-            features = {
-                "ANIMATED_ICON": _("Animated Icon"),
-                "BANNER": _("Banner Image"),
-                "COMMERCE": _("Commerce"),
-                "COMMUNITY": _("Community"),
-                "DISCOVERABLE": _("Server Discovery"),
-                "FEATURABLE": _("Featurable"),
-                "INVITE_SPLASH": _("Splash Invite"),
-                "MEMBER_LIST_DISABLED": _("Member list disabled"),
-                "MEMBER_VERIFICATION_GATE_ENABLED": _("Membership Screening enabled"),
-                "MORE_EMOJI": _("More Emojis"),
-                "NEWS": _("News Channels"),
-                "PARTNERED": _("Partnered"),
-                "PREVIEW_ENABLED": _("Preview enabled"),
-                "PUBLIC_DISABLED": _("Public disabled"),
-                "VANITY_URL": _("Vanity URL"),
-                "VERIFIED": _("Verified"),
-                "VIP_REGIONS": _("VIP Voice Servers"),
-                "WELCOME_SCREEN_ENABLED": _("Welcome Screen enabled"),
-            }
-            guild_features_list = [
-                f"\N{WHITE HEAVY CHECK MARK} {name}"
-                for feature, name in features.items()
-                if feature in guild.features
-            ]
 
             joined_on = _(
                 "{bot_name} joined this server on {bot_join}. That's over {since_join} days ago!"
             ).format(
-                bot_name=ctx.bot.user.name,
+                bot_name=ctx.bot.user.display_name,
                 bot_join=guild.me.joined_at.strftime("%d %b %Y %H:%M:%S"),
                 since_join=humanize_number((ctx.message.created_at - guild.me.joined_at).days),
             )
@@ -389,17 +372,22 @@ class General(commands.Cog):
                 if "VERIFIED" in guild.features
                 else "https://cdn.discordapp.com/emojis/508929941610430464.png"
                 if "PARTNERED" in guild.features
-                else discord.Embed.Empty,
+                else None,
             )
-            if guild.icon_url:
-                data.set_thumbnail(url=guild.icon_url)
+            if guild.icon:
+                data.set_thumbnail(url=guild.icon)
             data.add_field(name=_("Members:"), value=member_msg)
             data.add_field(
                 name=_("Channels:"),
                 value=_(
                     "\N{SPEECH BALLOON} Text: {text}\n"
-                    "\N{SPEAKER WITH THREE SOUND WAVES} Voice: {voice}"
-                ).format(text=bold(text_channels), voice=bold(voice_channels)),
+                    "\N{SPEAKER WITH THREE SOUND WAVES} Voice: {voice}\n"
+                    "\N{STUDIO MICROPHONE} Stage: {stage}"
+                ).format(
+                    text=bold(text_channels),
+                    voice=bold(voice_channels),
+                    stage=bold(stage_channels),
+                ),
             )
             data.add_field(
                 name=_("Utility:"),
@@ -427,8 +415,38 @@ class General(commands.Cog):
                 ),
                 inline=False,
             )
-            if guild_features_list:
-                data.add_field(name=_("Server features:"), value="\n".join(guild_features_list))
+
+            excluded_features = {
+                # available to everyone since forum channels private beta
+                "THREE_DAY_THREAD_ARCHIVE",
+                "SEVEN_DAY_THREAD_ARCHIVE",
+                # rolled out to everyone already
+                "NEW_THREAD_PERMISSIONS",
+                "TEXT_IN_VOICE_ENABLED",
+                "THREADS_ENABLED",
+                # available to everyone sometime after forum channel release
+                "PRIVATE_THREADS",
+            }
+            custom_feature_names = {
+                "VANITY_URL": "Vanity URL",
+                "VIP_REGIONS": "VIP regions",
+            }
+            features = sorted(guild.features)
+            if "COMMUNITY" in features:
+                features.remove("NEWS")
+            feature_names = [
+                custom_feature_names.get(feature, " ".join(feature.split("_")).capitalize())
+                for feature in features
+                if feature not in excluded_features
+            ]
+            if guild.features:
+                data.add_field(
+                    name=_("Server features:"),
+                    value="\n".join(
+                        f"\N{WHITE HEAVY CHECK MARK} {feature}" for feature in feature_names
+                    ),
+                )
+
             if guild.premium_tier != 0:
                 nitro_boost = _(
                     "Tier {boostlevel} with {nitroboosters} boosts\n"
@@ -444,7 +462,7 @@ class General(commands.Cog):
                 )
                 data.add_field(name=_("Nitro Boost:"), value=nitro_boost)
             if guild.splash:
-                data.set_image(url=guild.splash_url_as(format="png"))
+                data.set_image(url=guild.splash.replace(format="png"))
             data.set_footer(text=joined_on)
 
         await ctx.send(embed=data)
@@ -505,7 +523,6 @@ class General(commands.Cog):
                     await menu(
                         ctx,
                         pages=embeds,
-                        controls=DEFAULT_CONTROLS,
                         message=None,
                         page=0,
                         timeout=30,
@@ -517,7 +534,11 @@ class General(commands.Cog):
                     message = _(
                         "<{permalink}>\n {word} by {author}\n\n{description}\n\n"
                         "{thumbs_down} Down / {thumbs_up} Up, Powered by Urban Dictionary."
-                    ).format(word=ud.pop("word").capitalize(), description="{description}", **ud)
+                    ).format(
+                        word=ud.pop("word").capitalize(),
+                        description="{description}",
+                        **ud,
+                    )
                     max_desc_len = 2000 - len(message)
 
                     description = _("{definition}\n\n**Example:** {example}").format(**ud)
@@ -531,7 +552,6 @@ class General(commands.Cog):
                     await menu(
                         ctx,
                         pages=messages,
-                        controls=DEFAULT_CONTROLS,
                         message=None,
                         page=0,
                         timeout=30,

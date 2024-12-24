@@ -113,7 +113,9 @@ async def global_unique_user_finder(
             return user
 
     maybe_matches = []
-    async for user in AsyncIter(bot.users).filter(lambda u: u.name == arg or f"{u}" == arg):
+    async for user in AsyncIter(bot.users).filter(
+        lambda u: u.name == arg or u.global_name == arg or f"{u}" == arg
+    ):
         maybe_matches.append(user)
 
     if guild is not None:
@@ -192,7 +194,6 @@ class ScopeParser(commands.Converter):
     async def convert(
         self, ctx: commands.Context, argument: str
     ) -> Tuple[Optional[str], discord.User, Optional[discord.Guild], bool]:
-
         target_scope: Optional[str] = None
         target_user: Optional[Union[discord.Member, discord.User]] = None
         target_guild: Optional[discord.Guild] = None
@@ -248,10 +249,10 @@ class ScopeParser(commands.Converter):
             guild_raw = " ".join(guild).strip()
             try:
                 target_guild = await global_unique_guild_finder(ctx, guild_raw)
-            except TooManyMatches as err:
-                server_error = f"{err}\n"
-            except NoMatchesFound as err:
-                server_error = f"{err}\n"
+            except TooManyMatches as exc:
+                server_error = f"{exc}\n"
+            except NoMatchesFound as exc:
+                server_error = f"{exc}\n"
             if target_guild is None:
                 raise commands.ArgParserFailure(
                     "--guild", guild_raw, custom_help=f"{server_error}{_(_GUILD_HELP)}"
@@ -270,10 +271,10 @@ class ScopeParser(commands.Converter):
             try:
                 target_user = await global_unique_user_finder(ctx, user_raw, guild=target_guild)
                 specified_user = True
-            except TooManyMatches as err:
-                user_error = f"{err}\n"
-            except NoMatchesFound as err:
-                user_error = f"{err}\n"
+            except TooManyMatches as exc:
+                user_error = f"{exc}\n"
+            except NoMatchesFound as exc:
+                user_error = f"{exc}\n"
 
             if target_user is None:
                 raise commands.ArgParserFailure(
@@ -302,7 +303,6 @@ class ComplexScopeParser(commands.Converter):
         Optional[discord.Guild],
         bool,
     ]:
-
         target_scope: Optional[str] = None
         target_user: Optional[Union[discord.Member, discord.User]] = None
         target_guild: Optional[discord.Guild] = None
@@ -386,10 +386,10 @@ class ComplexScopeParser(commands.Converter):
             to_guild_raw = " ".join(to_guild).strip()
             try:
                 target_guild = await global_unique_guild_finder(ctx, to_guild_raw)
-            except TooManyMatches as err:
-                target_server_error = f"{err}\n"
-            except NoMatchesFound as err:
-                target_server_error = f"{err}\n"
+            except TooManyMatches as exc:
+                target_server_error = f"{exc}\n"
+            except NoMatchesFound as exc:
+                target_server_error = f"{exc}\n"
             if target_guild is None:
                 raise commands.ArgParserFailure(
                     "--to-guild",
@@ -412,10 +412,10 @@ class ComplexScopeParser(commands.Converter):
             from_guild_raw = " ".join(from_guild).strip()
             try:
                 source_guild = await global_unique_guild_finder(ctx, from_guild_raw)
-            except TooManyMatches as err:
-                source_server_error = f"{err}\n"
-            except NoMatchesFound as err:
-                source_server_error = f"{err}\n"
+            except TooManyMatches as exc:
+                source_server_error = f"{exc}\n"
+            except NoMatchesFound as exc:
+                source_server_error = f"{exc}\n"
             if source_guild is None:
                 raise commands.ArgParserFailure(
                     "--from-guild",
@@ -441,10 +441,10 @@ class ComplexScopeParser(commands.Converter):
             try:
                 target_user = await global_unique_user_finder(ctx, to_user_raw, guild=target_guild)
                 specified_target_user = True
-            except TooManyMatches as err:
-                target_user_error = f"{err}\n"
-            except NoMatchesFound as err:
-                target_user_error = f"{err}\n"
+            except TooManyMatches as exc:
+                target_user_error = f"{exc}\n"
+            except NoMatchesFound as exc:
+                target_user_error = f"{exc}\n"
             if target_user is None:
                 raise commands.ArgParserFailure(
                     "--to-author", to_user_raw, custom_help=f"{target_user_error}{_(_USER_HELP)}"
@@ -466,10 +466,10 @@ class ComplexScopeParser(commands.Converter):
                     ctx, from_user_raw, guild=target_guild
                 )
                 specified_target_user = True
-            except TooManyMatches as err:
-                source_user_error = f"{err}\n"
-            except NoMatchesFound as err:
-                source_user_error = f"{err}\n"
+            except TooManyMatches as exc:
+                source_user_error = f"{exc}\n"
+            except NoMatchesFound as exc:
+                source_user_error = f"{exc}\n"
             if source_user is None:
                 raise commands.ArgParserFailure(
                     "--from-author",

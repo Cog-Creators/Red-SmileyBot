@@ -3,7 +3,7 @@ from redbot.core.bot import Red
 from .core import Audio
 
 
-def setup(bot: Red):
+async def setup(bot: Red) -> None:
     cog = Audio(bot)
-    bot.add_cog(cog)
+    await bot.add_cog(cog)
     cog.start_up_task()

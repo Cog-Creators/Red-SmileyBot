@@ -68,7 +68,7 @@ be replaced by the first argument of your alias:
     # this alias will execute the following command:
     [p]ban Slime#3160 7 Spam bot.
 
-For a more detailed explaination, read :ref:`this <alias-command-alias-add>`.
+For a more detailed explanation, read :ref:`this <alias-command-alias-add>`.
 
 .. _alias-commands:
 

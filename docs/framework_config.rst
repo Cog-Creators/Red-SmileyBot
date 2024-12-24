@@ -25,7 +25,7 @@ Basic Usage
 
     class MyCog(commands.Cog):
         def __init__(self):
-            self.config = Config.get_conf(self, identifier=1234567890)
+            self.config = Config.get_conf(self, identifier=1234567890, force_registration=True)
 
             self.config.register_global(
                 foo=True
@@ -55,15 +55,19 @@ Then, in the class's :code:`__init__` function, you need to get a config instanc
 
     class MyCog(commands.Cog):
         def __init__(self):
-            self.config = Config.get_conf(self, identifier=1234567890)
+            self.config = Config.get_conf(self, identifier=1234567890, force_registration=True)
 
 The ``identifier`` in :py:meth:`Config.get_conf` is used to keep your cog's data separate
 from that of another cog, and thus should be unique to your cog. For example: if we
 have two cogs named :code:`MyCog` and their identifier is different, each will have
-its own data without overwriting the other's data. Note that it is also possible
-to force registration of a data key before allowing you to get and set data for
-that key by adding :code:`force_registration=True` after identifier (that defaults
-to :code:`False` though)
+its own data without overwriting the other's data.
+
+Note that, as shown by most of the examples in this document, it is also possible to
+force registration of a data key before allowing you to get and set data for that key
+by adding :code:`force_registration=True` after identifier.
+When this is set to :code:`False` (the default), the default value for any key that isn't registered
+will be :code:`None`. When this is set to :code:`True` (as shown in this document), attempting
+to read from or write to any key that isn't registered will raise an :exc:`AttributeError`.
 
 After we've gotten that, we need to register default values:
 
@@ -71,7 +75,7 @@ After we've gotten that, we need to register default values:
 
     class MyCog(commands.Cog):
         def __init__(self):
-            self.config = Config.get_conf(self, identifier=1234567890)
+            self.config = Config.get_conf(self, identifier=1234567890, force_registration=True)
             default_global = {
                 "foobar": True,
                 "foo": {
@@ -98,13 +102,13 @@ in various ways:
 .. code-block:: python
 
     @commands.command()
-    @checks.admin_or_permissions(manage_guild=True)
+    @commands.admin_or_permissions(manage_guild=True)
     async def setbaz(self, ctx, new_value):
         await self.config.guild(ctx.guild).baz.set(new_value)
         await ctx.send("Value of baz has been changed!")
 
     @commands.command()
-    @checks.is_owner()
+    @commands.is_owner()
     async def setfoobar(self, ctx, new_value):
         await self.config.foobar.set(new_value)
 
@@ -128,7 +132,7 @@ Notice a few things in the above examples:
     self.config.<insert scope here, or nothing if global>.variable_name.set(new_value)
 
 It is also possible to use :code:`async with` syntax to get and set config
-values. When entering the statement, the config value is retreived, and on exit,
+values. When entering the statement, the config value is retrieved, and on exit,
 it is saved. This puts a safeguard on any code within the :code:`async with`
 block such that if it breaks from the block in any way (whether it be from
 :code:`return`, :code:`break`, :code:`continue` or an exception), the value will
@@ -161,7 +165,7 @@ Here is an example of the :code:`async with` syntax:
     * :py:meth:`Config.member` which takes :py:class:`discord.Member`.
     * :py:meth:`Config.user` which takes :py:class:`discord.User`.
     * :py:meth:`Config.role` which takes :py:class:`discord.Role`.
-    * :py:meth:`Config.channel` which takes :py:class:`discord.TextChannel`.
+    * :py:meth:`Config.channel` which takes :py:class:`discord.abc.GuildChannel` or :py:class:`discord.Thread`.
 
 If you need to wipe data from the config, you want to look at :py:meth:`Group.clear`, or :py:meth:`Config.clear_all`
 and similar methods, such as :py:meth:`Config.clear_all_guilds`.
@@ -213,7 +217,7 @@ Tutorial example.
 
     class MyCog(commands.Cog):
         def __init__(self):
-            self.config = Config.get_conf(self, identifier=1234567890)
+            self.config = Config.get_conf(self, identifier=1234567890, force_registration=True)
             default_guild = {
                 "blah": [],
                 "baz": 1234567890
@@ -259,12 +263,12 @@ Now let's see an example that uses multiple identifiers:
 
 .. code-block:: python
 
-    from redbot.core import Config, commands, checks
+    from redbot.core import Config, commands
 
 
-    class ChannelAccesss(commands.Cog):
+    class ChannelAccess(commands.Cog):
         def __init__(self):
-            self.config = Config.get_conf(self, identifier=1234567890)
+            self.config = Config.get_conf(self, identifier=1234567890, force_registration=True)
             default_access = {
                 "allowed": False
             }
@@ -273,7 +277,7 @@ Now let's see an example that uses multiple identifiers:
             self.config.register_custom("ChannelAccess", **default_access)
 
         @commands.command()
-        @checks.is_owner()
+        @commands.is_owner()
         async def grantaccess(self, ctx, channel: discord.TextChannel, member: discord.Member):
             await self.config.custom("ChannelAccess", channel.id, member.id).allowed.set(True)
             await ctx.send("Member has been granted access to that channel")
@@ -304,7 +308,7 @@ the built-in Economy credits::
 
     class Pets(commands.Cog):
         def __init__(self):
-            self.config = Config.get_conf(self, 1234567890)
+            self.config = Config.get_conf(self, 1234567890, force_registration=True)
 
             # Here we'll assign some default costs for the pets
             self.config.register_global(
@@ -467,7 +471,7 @@ much the same way they would in V2. The following examples will demonstrate how 
     async def setup(bot):
         cog = ExampleCog()
         await cog.load_data()
-        bot.add_cog(cog)
+        await bot.add_cog(cog)
 
 ************************************
 Best practices and performance notes
@@ -509,7 +513,7 @@ API Reference
     includes keys within a `dict` when one is being set, as well as keys in  nested dictionaries
     within that `dict`. For example::
 
-        >>> config = Config.get_conf(self, identifier=999)
+        >>> config = Config.get_conf(self, identifier=999, force_registration=True)
         >>> config.register_global(foo={})
         >>> await config.foo.set_raw(123, value=True)
         >>> await config.foo()
@@ -540,30 +544,14 @@ Value
     :members:
     :special-members: __call__
 
+IdentifierData
+^^^^^^^^^^^^^^
 
-****************
-Driver Reference
-****************
-
-.. autofunction:: redbot.core.drivers.get_driver
-
-.. autoclass:: redbot.core.drivers.BackendType
+.. autoclass:: IdentifierData
     :members:
 
-.. autoclass:: redbot.core.drivers.ConfigCategory
-    :members:
+ConfigCategory
+^^^^^^^^^^^^^^
 
-Base Driver
-^^^^^^^^^^^
-.. autoclass:: redbot.core.drivers.BaseDriver
-    :members:
-
-JSON Driver
-^^^^^^^^^^^
-.. autoclass:: redbot.core.drivers.JsonDriver
-    :members:
-
-Postgres Driver
-^^^^^^^^^^^^^^^
-.. autoclass:: redbot.core.drivers.PostgresDriver
+.. autoclass:: ConfigCategory
     :members:

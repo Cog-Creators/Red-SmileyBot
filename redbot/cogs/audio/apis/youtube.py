@@ -1,10 +1,10 @@
 import json
-import logging
 from pathlib import Path
 
 from typing import TYPE_CHECKING, Mapping, Optional, Union
 
 import aiohttp
+from red_commons.logging import getLogger
 
 from redbot.core import Config
 from redbot.core.bot import Red
@@ -16,7 +16,7 @@ from ..errors import YouTubeApiError
 if TYPE_CHECKING:
     from .. import Audio
 
-log = logging.getLogger("red.cogs.Audio.api.YouTube")
+log = getLogger("red.cogs.Audio.api.YouTube")
 _ = Translator("Audio", Path(__file__))
 SEARCH_ENDPOINT = "https://www.googleapis.com/youtube/v3/search"
 

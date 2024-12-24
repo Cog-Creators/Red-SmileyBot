@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2021-04-05 20:17+0000\n"
+"POT-Creation-Date: 2022-02-21 15:22+0000\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=4; plural=((n%10==1 && n%100!=11) ? 0 : ((n%10 >= 2 && n%10 <=4 && (n%100 < 12 || n%100 > 14)) ? 1 : ((n%10 == 0 || (n%10 >= 5 && n%10 <=9)) || (n%100 >= 11 && n%100 <= 14)) ? 2 : 3));\n"
 "X-Crowdin-Project: red-discordbot\n"
 "X-Crowdin-Project-ID: 289505\n"
@@ -25,7 +25,9 @@ msgstr "Команды, связанные с изображениями."
 msgid "Retrieve pictures from Imgur.\n\n"
 "        Make sure to set the Client ID using `[p]imgurcreds`.\n"
 "        "
-msgstr ""
+msgstr "Получить изображения из Imgur.\n\n"
+"        Обязательно установите ID клиента с помощью `[p]imgurcreds`.\n"
+"        "
 
 #: redbot/cogs/image/image.py:52
 #, docstring
@@ -33,11 +35,14 @@ msgid "Search Imgur for the specified term.\n\n"
 "        - `[count]`: How many images should be returned (maximum 5). Defaults to 1.\n"
 "        - `<terms...>`: The terms used to search Imgur.\n"
 "        "
-msgstr ""
+msgstr "Поиск в Imgur по указанному термину.\n\n"
+"        - `[count]`: Сколько изображений должно быть возвращено (максимум 5). По умолчанию 1.\n"
+"        - `<terms...>`: Термины, используемые для поиска Imgur.\n"
+"        "
 
 #: redbot/cogs/image/image.py:58 redbot/cogs/image/image.py:107
 msgid "Image count has to be between 1 and 5."
-msgstr ""
+msgstr "Количество изображений должно быть от 1 до 5."
 
 #: redbot/cogs/image/image.py:65 redbot/cogs/image/image.py:127
 msgid "A Client ID has not been set! Please set one with `{prefix}imgurcreds`."
@@ -63,7 +68,12 @@ msgid "Get images from a subreddit.\n\n"
 "        - `[sort_type]`: New, or top results. Defaults to top.\n"
 "        - `[window]`: The timeframe, can be the past day, week, month, year or all. Defaults to day.\n"
 "        "
-msgstr ""
+msgstr "Получайте изображения из sub_reddit.\n\n"
+"        - `<subreddit>`: Sub_reddit, чтобы получить изображения.\n"
+"        - `[count]`: Количество возвращенных изображений (максимум 5). По умолчанию 1.\n"
+"        - `[sort_type]`: Новые или топ-результаты. По умолчанию верх.\n"
+"        - `[window]`: Временная рамка, может быть прошедший день, неделю, месяц, год или все. По умолчанию день.\n"
+"        "
 
 #: redbot/cogs/image/image.py:117
 msgid "Only 'new' and 'top' are a valid sort type."
@@ -77,7 +87,7 @@ msgstr "Результаты не найдены."
 #: redbot/cogs/image/image.py:159
 #, docstring
 msgid "Explain how to set imgur API tokens."
-msgstr ""
+msgstr "Объясните, как установить токены API imgur."
 
 #: redbot/cogs/image/image.py:161
 msgid "To get an Imgur Client ID:\n"
@@ -91,18 +101,29 @@ msgid "To get an Imgur Client ID:\n"
 "8. Check the captcha box and click next.\n"
 "9. Your Client ID will be on the next page.\n"
 "10. Run the command `{prefix}set api imgur client_id <your_client_id_here>`.\n"
-msgstr ""
+msgstr "Чтобы получить идентификатор клиента Imgur:\n"
+"1. Войдите в аккаунт Imgur.. Посетите эту страницу https://api.imgur.com/oauth2/addclient.\n"
+"3. Введите имя для вашего приложения.\n"
+"4. Выберите *Анонимное использование без разрешения пользователя* для типа авторизации.\n"
+"5. Установите URL обратного вызова авторизации в `https://localhost`.\n"
+"6. Оставьте сайт приложения пустым.\n"
+"7. Введите действительный адрес электронной почты и описание.\n"
+"8. Проверьте поле captcha и нажмите далее.\n"
+"Ваш идентификатор клиента будет на следующей странице.\n"
+"10. Выполните команду `{prefix}установите api imgur client_id <your_client_id_here>`. \n"
 
 #: redbot/cogs/image/image.py:180
 #, docstring
 msgid "Retrieve the first search result from Giphy.\n\n"
 "        - `<keywords...>`: The keywords used to search Giphy.\n"
 "        "
-msgstr ""
+msgstr "Получить первый результат поиска от Giphy.\n\n"
+"        - `<keywords...>`: Ключевые слова, используемые для поиска Giphy.\n"
+"        "
 
 #: redbot/cogs/image/image.py:187 redbot/cogs/image/image.py:214
 msgid "An API key has not been set! Please set one with `{prefix}giphycreds`."
-msgstr ""
+msgstr "API ключ не был установлен! Пожалуйста, установите его с `{prefix}giphy_creds`."
 
 #: redbot/cogs/image/image.py:202
 msgid "Error contacting the Giphy API."
@@ -113,7 +134,9 @@ msgstr "Ошибка связи с Giphy API."
 msgid "Retrieve a random GIF from a Giphy search.\n\n"
 "        - `<keywords...>`: The keywords used to generate a random GIF.\n"
 "        "
-msgstr ""
+msgstr "Получить случайный GIF от GIPHY.\n\n"
+"        - `<keywords...>`: Ключевые слова, используемые для создания случайного GIF.\n"
+"        "
 
 #: redbot/cogs/image/image.py:229
 msgid "Error contacting the API."
@@ -122,7 +145,7 @@ msgstr "Ошибка при обращении к API."
 #: redbot/cogs/image/image.py:234
 #, docstring
 msgid "Explains how to set GIPHY API tokens."
-msgstr ""
+msgstr "Объяснить, как установить GIPHY API tokens."
 
 #: redbot/cogs/image/image.py:236
 msgid "To get a GIPHY API Key:\n"
@@ -135,9 +158,18 @@ msgid "To get a GIPHY API Key:\n"
 "7. Click *Create App*. You'll need to agree to the GIPHY API Terms.\n"
 "8. Copy the API Key.\n"
 "9. In Discord, run the command {command}.\n"
-msgstr ""
+msgstr "Чтобы получить GIPHY API ключ:\n"
+"1. Войдите в (или создать) GIPHY аккаунт.\n"
+"2. Посетите эту страницу: https://developers.giphy.com/dashboard.\n"
+"3. Нажмите *Создать приложение*.\n"
+"4. Нажмите *Выберите API*, затем *Следующий шаг*.\n"
+"5. Добавьте имя приложения, например *Red*.\n"
+"6. Добавьте описание приложения, например *Используется для имидж-ког*.\n"
+"7. Нажмите *Создать приложение*. Вам нужно согласиться с условиями API GIPHY.\n"
+"8. Скопируйте ключ API.\n"
+"В Discord запустите команду {command}.\n"
 
 #: redbot/cogs/image/image.py:249
 msgid "<your_api_key_here>"
-msgstr ""
+msgstr "<your_api_key_here>"
 

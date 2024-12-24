@@ -20,7 +20,7 @@ window like this:
 
 .. image:: .resources/red-console.png
 
-.. _gettings-started-invite:
+.. _getting-started-invite:
 
 -------------------------
 Invite Red to your server
@@ -134,7 +134,7 @@ Red is built with cogs, a fancy term for plugins. They are
 modules that add functionality to Red. They contain
 commands to use.
 
-Red comes with 19 cogs containing the basic features, such
+Red comes with 18 cogs containing the basic features, such
 as moderation, utility, music, streams...
 
 You can see your loaded and unloaded cogs with the ``[p]cogs``
@@ -216,7 +216,7 @@ or system files.
 Server owner
 ~~~~~~~~~~~~
 
-The server owner can access all commands on his guild, except the global
+The server owner can access all commands on their guild, except the global
 ones or those that can interact with system files (available for the
 bot owner).
 
@@ -282,7 +282,7 @@ If you want to do it, follow these steps.
 2. **Install Linux**
 
   Most of the VPS providers have tools for installing Linux automatically. If
-  you're a beginner, we recommend **Ubuntu 20.04 LTS**.
+  you're a beginner, we recommend **Ubuntu 24.04 LTS**.
 
   For Raspberry Pi users, just install `Raspbian
   <https://www.raspberrypi.org/software/>`_ on a micro-SD card.

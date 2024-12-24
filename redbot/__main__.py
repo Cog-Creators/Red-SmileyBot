@@ -1,4 +1,7 @@
-#!/usr/bin/env python
+from redbot import _early_init
+
+# this needs to be called as early as possible
+_early_init()
 
 import asyncio
 import functools
@@ -7,7 +10,6 @@ import json
 import logging
 import os
 import pip
-import pkg_resources
 import platform
 import shutil
 import signal
@@ -15,23 +17,18 @@ import sys
 from argparse import Namespace
 from copy import deepcopy
 from pathlib import Path
-from typing import NoReturn
+from typing import Any, Awaitable, Callable, NoReturn, Optional, Union
 
 import discord
 import rich
 
-# Set the event loop policies here so any subsequent `new_event_loop()`
-# calls, in particular those as a result of the following imports,
-# return the correct loop object.
-from redbot import _early_init, __version__
-
-_early_init()
-
 import redbot.logging
+from redbot import __version__
 from redbot.core.bot import Red, ExitCodes, _NoOwnerSet
-from redbot.core.cli import interactive_config, confirm, parse_cli_flags
+from redbot.core._cli import interactive_config, confirm, parse_cli_flags
 from redbot.setup import get_data_dir, get_name, save_config
-from redbot.core import data_manager, drivers
+from redbot.core import data_manager, _drivers
+from redbot.core._debuginfo import DebugInfo
 from redbot.core._sharedlibdeprecation import SharedLibImportWarner
 
 
@@ -56,51 +53,18 @@ def list_instances():
             "No instances have been configured! Configure one "
             "using `redbot-setup` before trying to run the bot!"
         )
-        sys.exit(1)
+        sys.exit(ExitCodes.CONFIGURATION_ERROR)
     else:
         text = "Configured Instances:\n\n"
         for instance_name in _get_instance_names():
             text += "{}\n".format(instance_name)
         print(text)
-        sys.exit(0)
+        sys.exit(ExitCodes.SHUTDOWN)
 
 
-def debug_info():
+async def debug_info(red: Optional[Red] = None, *args: Any) -> None:
     """Shows debug information useful for debugging."""
-    if sys.platform == "linux":
-        import distro  # pylint: disable=import-error
-
-    IS_WINDOWS = os.name == "nt"
-    IS_MAC = sys.platform == "darwin"
-    IS_LINUX = sys.platform == "linux"
-
-    pyver = sys.version
-    pipver = pip.__version__
-    redver = __version__
-    dpy_version = discord.__version__
-    if IS_WINDOWS:
-        os_info = platform.uname()
-        osver = "{} {} (version {})".format(os_info.system, os_info.release, os_info.version)
-    elif IS_MAC:
-        os_info = platform.mac_ver()
-        osver = "Mac OSX {} {}".format(os_info[0], os_info[2])
-    else:
-        osver = f"{distro.name()} {distro.version()}".strip()
-    user_who_ran = getpass.getuser()
-    info = (
-        "Debug Info for Red\n\n"
-        + "Red version: {}\n".format(redver)
-        + "Python version: {}\n".format(pyver)
-        + "Python executable: {}\n".format(sys.executable)
-        + "Discord.py version: {}\n".format(dpy_version)
-        + "Pip version: {}\n".format(pipver)
-        + "OS version: {}\n".format(osver)
-        + "System arch: {}\n".format(platform.machine())
-        + "User: {}\n".format(user_who_ran)
-        + "Metadata file: {}\n".format(data_manager.config_file)
-    )
-    print(info)
-    sys.exit(0)
+    print(await DebugInfo(red).get_cli_text())
 
 
 async def edit_instance(red, cli_flags):
@@ -116,10 +80,10 @@ async def edit_instance(red, cli_flags):
 
     if data_path is None and copy_data:
         print("--copy-data can't be used without --edit-data-path argument")
-        sys.exit(1)
+        sys.exit(ExitCodes.INVALID_CLI_USAGE)
     if new_name is None and confirm_overwrite:
         print("--overwrite-existing-instance can't be used without --edit-instance-name argument")
-        sys.exit(1)
+        sys.exit(ExitCodes.INVALID_CLI_USAGE)
     if (
         no_prompt
         and all(to_change is None for to_change in (token, owner, new_name, data_path))
@@ -130,7 +94,7 @@ async def edit_instance(red, cli_flags):
             " Available arguments (check help for more information):"
             " --edit-instance-name, --edit-data-path, --copy-data, --owner, --token, --prefix"
         )
-        sys.exit(1)
+        sys.exit(ExitCodes.INVALID_CLI_USAGE)
 
     await _edit_token(red, token, no_prompt)
     await _edit_prefix(red, prefix, no_prompt)
@@ -172,6 +136,11 @@ async def _edit_prefix(red, prefix, no_prompt):
             prefixes = input("> ").strip().split()
             if not prefixes:
                 print("You need to pass at least one prefix!")
+                continue
+            if any(prefix.startswith("/") for prefix in prefixes):
+                print(
+                    "Prefixes cannot start with '/', as it conflicts with Discord's slash commands."
+                )
                 continue
             prefixes = sorted(prefixes, reverse=True)
             await red._config.prefix.set(prefixes)
@@ -222,7 +191,7 @@ def _edit_instance_name(old_name, new_name, confirm_overwrite, no_prompt):
                 " run this command with --overwrite-existing-instance flag."
             )
     elif not no_prompt and confirm("Would you like to change the instance name?", default=False):
-        name = get_name()
+        name = get_name("")
         if name in _get_instance_names():
             print(
                 "WARNING: An instance already exists with this name. "
@@ -270,7 +239,9 @@ def _edit_data_path(data, instance_name, data_path, copy_data, no_prompt):
             print("Can't copy data to non-empty location. Data location will remain unchanged.")
             data["DATA_PATH"] = data_manager.basic_config["DATA_PATH"]
     elif not no_prompt and confirm("Would you like to change the data location?", default=False):
-        data["DATA_PATH"] = get_data_dir(instance_name)
+        data["DATA_PATH"] = get_data_dir(
+            instance_name=instance_name, data_path=None, interactive=True
+        )
         if confirm("Do you want to copy the data from old location?", default=True):
             if not _copy_data(data):
                 print("Can't copy the data to non-empty location.")
@@ -294,27 +265,36 @@ def _copy_data(data):
     return True
 
 
-def handle_edit(cli_flags: Namespace):
+def early_exit_runner(
+    cli_flags: Namespace,
+    func: Union[Callable[[], Awaitable[Any]], Callable[[Red, Namespace], Awaitable[Any]]],
+) -> NoReturn:
     """
     This one exists to not log all the things like it's a full run of the bot.
     """
     loop = asyncio.new_event_loop()
     asyncio.set_event_loop(loop)
-    data_manager.load_basic_configuration(cli_flags.instance_name)
-    red = Red(cli_flags=cli_flags, description="Red V3", dm_help=None)
     try:
-        driver_cls = drivers.get_driver_class()
+        if not cli_flags.instance_name:
+            loop.run_until_complete(func())
+            sys.exit(ExitCodes.SHUTDOWN)
+            return
+
+        data_manager.load_basic_configuration(cli_flags.instance_name)
+        red = Red(cli_flags=cli_flags, description="Red V3", dm_help=None)
+        driver_cls = _drivers.get_driver_class()
         loop.run_until_complete(driver_cls.initialize(**data_manager.storage_details()))
-        loop.run_until_complete(edit_instance(red, cli_flags))
+        loop.run_until_complete(func(red, cli_flags))
         loop.run_until_complete(driver_cls.teardown())
     except (KeyboardInterrupt, EOFError):
         print("Aborted!")
     finally:
-        loop.run_until_complete(asyncio.sleep(1))
+        # note: sleep is unnecessary since we're not making any network connections
         asyncio.set_event_loop(None)
         loop.stop()
         loop.close()
-        sys.exit(0)
+
+    sys.exit(ExitCodes.SHUTDOWN)
 
 
 async def run_bot(red: Red, cli_flags: Namespace) -> None:
@@ -330,7 +310,7 @@ async def run_bot(red: Red, cli_flags: Namespace) -> None:
     need additional handling in this function.
     """
 
-    driver_cls = drivers.get_driver_class()
+    driver_cls = _drivers.get_driver_class()
 
     await driver_cls.initialize(**data_manager.storage_details())
 
@@ -357,7 +337,9 @@ async def run_bot(red: Red, cli_flags: Namespace) -> None:
         # `sys.path`, you must invoke the appropriate methods on the `working_set` instance
         # to keep it in sync."
         # Source: https://setuptools.readthedocs.io/en/latest/pkg_resources.html#workingset-objects
-        pkg_resources.working_set.add_entry(str(LIB_PATH))
+        pkg_resources = sys.modules.get("pkg_resources")
+        if pkg_resources is not None:
+            pkg_resources.working_set.add_entry(str(LIB_PATH))
     sys.meta_path.insert(0, SharedLibImportWarner())
 
     if cli_flags.token:
@@ -378,13 +360,13 @@ async def run_bot(red: Red, cli_flags: Namespace) -> None:
                 token = new_token
         else:
             log.critical("Token and prefix must be set in order to login.")
-            sys.exit(1)
+            sys.exit(ExitCodes.CONFIGURATION_ERROR)
 
     if cli_flags.dry_run:
-        await red.http.close()
-        sys.exit(0)
+        sys.exit(ExitCodes.SHUTDOWN)
     try:
-        await red.start(token, bot=True)
+        # `async with red:` is unnecessary here because we call red.close() in shutdown handler
+        await red.start(token)
     except discord.LoginFailure:
         log.critical("This token doesn't seem to be valid.")
         db_token = await red._config.token()
@@ -392,8 +374,8 @@ async def run_bot(red: Red, cli_flags: Namespace) -> None:
             if confirm("\nDo you want to reset the token?"):
                 await red._config.token.set("")
                 print("Token has been reset.")
-                sys.exit(0)
-        sys.exit(1)
+                sys.exit(ExitCodes.SHUTDOWN)
+        sys.exit(ExitCodes.CONFIGURATION_ERROR)
     except discord.PrivilegedIntentsRequired:
         console = rich.get_console()
         console.print(
@@ -402,7 +384,7 @@ async def run_bot(red: Red, cli_flags: Namespace) -> None:
             "https://docs.discord.red/en/stable/bot_application_guide.html#enabling-privileged-intents",
             style="red",
         )
-        sys.exit(1)
+        sys.exit(ExitCodes.CONFIGURATION_ERROR)
     except _NoOwnerSet:
         print(
             "Bot doesn't have any owner set!\n"
@@ -415,12 +397,13 @@ async def run_bot(red: Red, cli_flags: Namespace) -> None:
             "With that out of the way, depending on who you want to be considered as owner,"
             " you can:\n"
             "a) pass --team-members-are-owners when launching Red"
-            " - in this case Red will treat all members of the bot application's team as owners\n"
+            " - in this case Red will treat members of the bot application's team as owners,"
+            " if their team role is Owner, Admin, or Developer\n"
             f"b) set owner manually with `redbot --edit {cli_flags.instance_name}`\n"
             "c) pass owner ID(s) when launching Red with --owner"
             " (and --co-owner if you need more than one) flag\n"
         )
-        sys.exit(1)
+        sys.exit(ExitCodes.CONFIGURATION_ERROR)
 
     return None
 
@@ -431,17 +414,17 @@ def handle_early_exit_flags(cli_flags: Namespace):
     elif cli_flags.version:
         print("Red V3")
         print("Current Version: {}".format(__version__))
-        sys.exit(0)
+        sys.exit(ExitCodes.SHUTDOWN)
     elif cli_flags.debuginfo:
-        debug_info()
+        early_exit_runner(cli_flags, debug_info)
     elif not cli_flags.instance_name and (not cli_flags.no_instance or cli_flags.edit):
         print("Error: No instance name was provided!")
-        sys.exit(1)
+        sys.exit(ExitCodes.INVALID_CLI_USAGE)
 
 
 async def shutdown_handler(red, signal_type=None, exit_code=None):
     if signal_type:
-        log.info("%s received. Quitting...", signal_type)
+        log.info("%s received. Quitting...", signal_type.name)
         # Do not collapse the below line into other logic
         # We need to renter this function
         # after it interrupts the event loop.
@@ -454,7 +437,8 @@ async def shutdown_handler(red, signal_type=None, exit_code=None):
         red._shutdown_mode = exit_code
 
     try:
-        await red.close()
+        if not red.is_closed():
+            await red.close()
     finally:
         # Then cancels all outstanding tasks other than ourselves
         pending = [t for t in asyncio.all_tasks() if t is not asyncio.current_task()]
@@ -470,14 +454,7 @@ def global_exception_handler(red, loop, context):
     # These will get handled later when it *also* kills loop.run_forever
     if exc is not None and isinstance(exc, (KeyboardInterrupt, SystemExit)):
         return
-    # Maybe in the future we should handle some of the other things
-    # that the default exception handler handles, but this should work fine for now.
-    log.critical(
-        "Caught unhandled exception in %s:\n%s",
-        context.get("future", "event loop"),
-        context["message"],
-        exc_info=exc,
-    )
+    loop.default_exception_handler(context)
 
 
 def red_exception_handler(red, red_task: asyncio.Future):
@@ -496,7 +473,7 @@ def red_exception_handler(red, red_task: asyncio.Future):
     except Exception as exc:
         log.critical("The main bot task didn't handle an exception and has crashed", exc_info=exc)
         log.warning("Attempting to die as gracefully as possible...")
-        red.loop.create_task(shutdown_handler(red))
+        asyncio.create_task(shutdown_handler(red))
 
 
 def main():
@@ -504,7 +481,7 @@ def main():
     cli_flags = parse_cli_flags(sys.argv[1:])
     handle_early_exit_flags(cli_flags)
     if cli_flags.edit:
-        handle_edit(cli_flags)
+        early_exit_runner(cli_flags, edit_instance)
         return
     try:
         loop = asyncio.new_event_loop()
@@ -552,7 +529,12 @@ def main():
         # We also have to catch this one here. Basically any exception which normally
         # Kills the python interpreter (Base Exceptions minus asyncio.cancelled)
         # We need to do something with prior to having the loop close
-        log.info("Shutting down with exit code: %s", exc.code)
+        exit_code = int(exc.code)
+        try:
+            exit_code_name = ExitCodes(exit_code).name
+        except ValueError:
+            exit_code_name = "UNKNOWN"
+        log.info("Shutting down with exit code: %s (%s)", exit_code, exit_code_name)
         if red is not None:
             loop.run_until_complete(shutdown_handler(red, None, exc.code))
     except Exception as exc:  # Non standard case.
@@ -573,8 +555,8 @@ def main():
         asyncio.set_event_loop(None)
         loop.stop()
         loop.close()
-        exit_code = red._shutdown_mode if red is not None else 1
-        sys.exit(exit_code)
+    exit_code = red._shutdown_mode if red is not None else ExitCodes.CRITICAL
+    sys.exit(exit_code)
 
 
 if __name__ == "__main__":

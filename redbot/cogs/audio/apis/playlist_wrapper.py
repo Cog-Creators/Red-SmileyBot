@@ -1,10 +1,11 @@
 import concurrent
 import json
-import logging
 from pathlib import Path
 
 from types import SimpleNamespace
 from typing import List, MutableMapping, Optional
+
+from red_commons.logging import getLogger
 
 from redbot.core import Config
 from redbot.core.bot import Red
@@ -12,7 +13,6 @@ from redbot.core.i18n import Translator
 from redbot.core.utils import AsyncIter
 from redbot.core.utils.dbtools import APSWConnectionWrapper
 
-from ..audio_logging import debug_exc_log
 from ..sql_statements import (
     HANDLE_DISCORD_DATA_DELETION_QUERY,
     PLAYLIST_CREATE_INDEX,
@@ -34,7 +34,7 @@ from ..sql_statements import (
 from ..utils import PlaylistScope
 from .api_utils import PlaylistFetchResult
 
-log = logging.getLogger("red.cogs.Audio.api.Playlists")
+log = getLogger("red.cogs.Audio.api.Playlists")
 _ = Translator("Audio", Path(__file__))
 
 
@@ -84,7 +84,9 @@ class PlaylistWrapper:
             table = 2
         return table
 
-    async def fetch(self, scope: str, playlist_id: int, scope_id: int) -> PlaylistFetchResult:
+    async def fetch(
+        self, scope: str, playlist_id: int, scope_id: int
+    ) -> Optional[PlaylistFetchResult]:
         """Fetch a single playlist."""
         scope_type = self.get_scope_type(scope)
 
@@ -107,7 +109,8 @@ class PlaylistWrapper:
                 try:
                     row_result = future.result()
                 except Exception as exc:
-                    debug_exc_log(log, exc, "Failed to completed playlist fetch from database")
+                    log.verbose("Failed to complete playlist fetch from database", exc_info=exc)
+                    return None
             row = row_result.fetchone()
             if row:
                 row = PlaylistFetchResult(*row)
@@ -139,7 +142,9 @@ class PlaylistWrapper:
                     try:
                         row_result = future.result()
                     except Exception as exc:
-                        debug_exc_log(log, exc, "Failed to completed playlist fetch from database")
+                        log.verbose(
+                            "Failed to complete playlist fetch from database", exc_info=exc
+                        )
                         return []
             else:
                 for future in concurrent.futures.as_completed(
@@ -154,7 +159,9 @@ class PlaylistWrapper:
                     try:
                         row_result = future.result()
                     except Exception as exc:
-                        debug_exc_log(log, exc, "Failed to completed playlist fetch from database")
+                        log.verbose(
+                            "Failed to complete playlist fetch from database", exc_info=exc
+                        )
                         return []
         async for row in AsyncIter(row_result):
             output.append(PlaylistFetchResult(*row))
@@ -168,7 +175,7 @@ class PlaylistWrapper:
         try:
             playlist_id = int(playlist_id)
         except Exception as exc:
-            debug_exc_log(log, exc, "Failed converting playlist_id to int")
+            log.trace("Failed converting playlist_id to int", exc_info=exc)
             playlist_id = -1
 
         output = []
@@ -191,7 +198,8 @@ class PlaylistWrapper:
                 try:
                     row_result = future.result()
                 except Exception as exc:
-                    debug_exc_log(log, exc, "Failed to completed fetch from database")
+                    log.verbose("Failed to complete fetch from database", exc_info=exc)
+                    return []
 
             async for row in AsyncIter(row_result):
                 output.append(PlaylistFetchResult(*row))

@@ -1,5 +1,7 @@
+from redbot.core.bot import Red
+
 from .general import General
 
 
-def setup(bot):
-    bot.add_cog(General())
+async def setup(bot: Red) -> None:
+    await bot.add_cog(General(bot))

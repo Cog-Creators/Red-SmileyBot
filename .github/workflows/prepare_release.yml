@@ -16,9 +16,9 @@ jobs:
     needs: pr_stable_bump
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.8'
       - name: Install dependencies
@@ -26,8 +26,8 @@ jobs:
           curl https://artifacts.crowdin.com/repo/GPG-KEY-crowdin | sudo apt-key add -
           echo "deb https://artifacts.crowdin.com/repo/deb/ /" | sudo tee -a /etc/apt/sources.list
           sudo apt-get update -qq
-          sudo apt-get install -y crowdin
-          pip install redgettext==3.3
+          sudo apt-get install -y crowdin3
+          pip install redgettext==3.4.2
 
       - name: Generate source files
         run: |
@@ -36,26 +36,26 @@ jobs:
         run: |
           make download_translations
         env:
-          CROWDIN_API_KEY: ${{ secrets.crowdin_token}}
-          CROWDIN_PROJECT_ID: ${{ secrets.crowdin_identifier }}
+          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
+          CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_IDENTIFIER }}
 
       - name: Create Pull Request
         id: cpr_crowdin
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Automated Crowdin downstream
-          title: "[i18n] Automated Crowdin downstream"
+          title: "Automated Crowdin downstream"
           body: |
             This is an automated PR that is part of Prepare Release automated workflow (2 out of 2).
             Please ensure that there are no errors or invalid files are in the PR.
-          labels: "Automated PR, Category: i18n, Changelog Entry: Skipped"
+          labels: "Automated PR, Changelog Entry: Skipped"
           branch: "automated/i18n"
           author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
           milestone: ${{ needs.pr_stable_bump.outputs.milestone_number }}
 
       - name: Close and reopen the PR with different token to trigger CI
-        uses: actions/github-script@v3
+        uses: actions/github-script@v6
         env:
           PR_NUMBER: ${{ steps.cpr_crowdin.outputs.pull-request-number }}
           PR_OPERATION: ${{ steps.cpr_crowdin.outputs.pull-request-operation }}
@@ -73,9 +73,9 @@ jobs:
       milestone_number: ${{ steps.get_milestone_number.outputs.result }}
     steps:
       # Checkout repository and install Python
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
         with:
           python-version: '3.8'
 
@@ -91,7 +91,7 @@ jobs:
       # Get milestone number of the milestone for the new stable version
       - name: Get milestone number
         id: get_milestone_number
-        uses: actions/github-script@v3
+        uses: actions/github-script@v6
         env:
           MILESTONE_TITLE: ${{ steps.bump_version_stable.outputs.new_version }}
         with:
@@ -103,7 +103,7 @@ jobs:
 
       - name: Create Pull Request
         id: cpr_bump_stable
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Version bump to ${{ steps.bump_version_stable.outputs.new_version }}
@@ -117,7 +117,7 @@ jobs:
           milestone: ${{ steps.get_milestone_number.outputs.result }}
 
       - name: Close and reopen the PR with different token to trigger CI
-        uses: actions/github-script@v3
+        uses: actions/github-script@v6
         env:
           PR_NUMBER: ${{ steps.cpr_bump_stable.outputs.pull-request-number }}
           PR_OPERATION: ${{ steps.cpr_bump_stable.outputs.pull-request-operation }}

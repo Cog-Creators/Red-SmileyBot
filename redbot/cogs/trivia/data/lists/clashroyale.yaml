@@ -1,4 +1,5 @@
 AUTHOR: Tajniak96
+DESCRIPTION: "A trivia about Clash Royale: a free-to-play real-time strategy video game developed and published by Supercell."
 "\"Roses are red, ....... are blue, they can fly, and will crush you!\" Who is this about?":
 - Minions
 - minion
@@ -9,33 +10,32 @@ A pile of bones?:
 - skellies
 - skeleton
 - skelly
-Annnnnd...?:
-- Fireball!
-- fireball
 At which Arena can you unlock Balloon?:
 - Arena 6
 - 6
 - Builder's Workshop
 At which Arena can you unlock Fire Spirits?:
-- Arena 5
-- 5
-- Spell Valley
+- Arena 4
+- 4
+- P.E.K.K.A.'s Playhouse
+- P.E.K.K.A's Playhouse
+- PEKKA's Playhouse
 At which Arena can you unlock Fireball?:
 - Arena 0
 - 0
 - Training Camp
 At which Arena can you unlock Furnace?:
-- Arena 5
-- Spell Valley
-- 5
+- Arena 10
+- Hog Mountain
+- 10
 At which Arena can you unlock Golem?:
-- Arena 3
-- 3
-- Barbarian Bowl
+- Arena 10
+- 10
+- Hog Mountain
 At which Arena can you unlock Hog Rider?:
-- Arena 1
-- 1
-- Goblin Stadium
+- Arena 5
+- 5
+- Spell Valley
 At which Arena can you unlock Ice Spirit?:
 - Arena 8
 - 8
@@ -179,7 +179,7 @@ How much Gold does a Wagon of Gold contain?:
 - 100 thousand
 How much damage does a tournament level Freeze deal?:
 - 95
-- ninty five
+- ninety five
 - 34
 - thirty four
 How much gold does a Pouch of Gold contain?:
@@ -196,7 +196,6 @@ Larry, Harry, Gerry, Terry, Mary, etc. together make a...?:
 - skarmy
 Miner doesn't use magic, but a...?:
 - Shovel
-- shovel
 Name one Legendary card that is unlocked at Builder's Workshop.:
 - Sparky
 - The Log
@@ -224,7 +223,6 @@ What does the hog say?:
 - Hog Riderr
 What is The Log seeking for?:
 - Revenge
-- revenge
 What is The Log's favourite song?:
 - They see me rollin'
 - they see me rollin
@@ -241,27 +239,27 @@ What is the Royal Giant's passion?:
 What is the best distraction for the Mini P.E.K.K.A?:
 - A Butterfly
 - Butterfly
-What is the creepiest building according to its descripton?:
+What is the creepiest building according to its description?:
 - Tombstone
 - tomb
 - tombst
 - tmbstne
 - tstone
 What is the max level of Common Cards?:
-- 13
-- thirteen
+- 14
+- fourteen
 What is the max level of Epic Cards?:
-- 13
-- thirteen
+- 14
+- fourteen
 What is the max level of Legendary cards?:
-- 13
-- thirteen
+- 14
+- fourteen
 What is the max level of Rare Cards?:
-- 13
-- thirteen
+- 14
+- fourteen
 What is the max level of the King?:
-- 13
-- thirteen
+- 14
+- fourteen
 What is the motto of the Ice Spirit?:
 - Stay frosty
 What is the name of the first Arena?:
@@ -297,28 +295,17 @@ Where you shouldn't look inside?:
 - Goblin Hut
 - gob hut
 What is one Legendary card unlocked at Frozen Peak?:
-- Lumberjack
-- lj
 - Ice Wizard
 - icewizard
 - iw
 What is one Legendary card unlocked at P.E.K.K.A's Playhouse?:
-- Lava Hound
-- lavahound
-- lh
 - Miner
 What is one Legendary card unlocked at Royal Arena?:
-- Princess
 - Mega Knight
 - megaknight
 - mk
 What is one Legendary card unlocked at Spell Valley?:
-- Magic Archer
-- magicarcher
-- ma
-- Knight Witch
-- knightwitch
-- kw
+- Princess
 Who are the Guards without their shields?:
 - Three ruthless bone brothers
 Who carries around a drink on the Arena?:

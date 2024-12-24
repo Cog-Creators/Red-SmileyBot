@@ -1,0 +1,277 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: red-discordbot\n"
+"POT-Creation-Date: 2024-07-10 18:37+0000\n"
+"Last-Translator: \n"
+"Language-Team: Croatian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.4.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Crowdin-Project: red-discordbot\n"
+"X-Crowdin-Project-ID: 289505\n"
+"X-Crowdin-Language: hr\n"
+"X-Crowdin-File-ID: 35\n"
+"Language: hr_HR\n"
+
+#: redbot/cogs/filter/filter.py:19
+#, docstring
+msgid "This cog is designed for \"filtering\" unwanted words and phrases from a server.\n\n"
+"    It provides tools to manage a list of words or sentences, and to customize automatic actions to be taken against users who use those words in channels or in their name/nickname.\n\n"
+"    This can be used to prevent inappropriate language, off-topic discussions, invite links, and more.\n"
+"    "
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:85
+#, docstring
+msgid "Base command to manage filter settings."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:90
+#, docstring
+msgid "Set the nickname for users with a filtered name.\n\n"
+"        Note that this has no effect if filtering names is disabled\n"
+"        (to toggle, run `[p]filter names`).\n\n"
+"        The default name used is *John Doe*.\n\n"
+"        Example:\n"
+"        - `[p]filterset defaultname Missingno`\n\n"
+"        **Arguments:**\n\n"
+"        - `<name>` The new nickname to assign.\n"
+"        "
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:106
+msgid "The name to use on filtered names has been set."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:110
+#, docstring
+msgid "Set the filter's autoban conditions.\n\n"
+"        Users will be banned if they send `<count>` filtered words in\n"
+"        `<timeframe>` seconds.\n\n"
+"        Set both to zero to disable autoban.\n\n"
+"        Examples:\n"
+"        - `[p]filterset ban 5 5` - Ban users who say 5 filtered words in 5 seconds.\n"
+"        - `[p]filterset ban 2 20` - Ban users who say 2 filtered words in 20 seconds.\n\n"
+"        **Arguments:**\n\n"
+"        - `<count>` The amount of filtered words required to trigger a ban.\n"
+"        - `<timeframe>` The period of time in which too many filtered words will trigger a ban.\n"
+"        "
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:128
+msgid "Count and timeframe either both need to be 0 or both need to be greater than 0!"
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:138
+msgid "Autoban disabled."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:143
+msgid "Count and time have been set."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:149
+#, docstring
+msgid "Base command to add or remove words from the server filter.\n\n"
+"        Use double quotes to add or remove sentences.\n"
+"        "
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:157
+#, docstring
+msgid "Clears this server's filter list."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:162
+msgid "The filter list for this server is empty."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:164
+msgid "Are you sure you want to clear this server's filter list?"
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:170 redbot/cogs/filter/filter.py:227
+msgid "You took too long to respond."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:175
+msgid "Server filter cleared."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:177 redbot/cogs/filter/filter.py:234
+msgid "No changes have been made."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:181
+#, docstring
+msgid "Send a list of this server's filtered words."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:186
+msgid "There are no current words setup to be filtered in this server."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:189
+msgid "Filtered in this server:"
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:194 redbot/cogs/filter/filter.py:251
+msgid "I can't send direct messages to you."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:198
+#, docstring
+msgid "Base command to add or remove words from the channel filter.\n\n"
+"        Use double quotes to add or remove sentences.\n"
+"        "
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:206
+#, docstring
+msgid "Clears this channel's filter list."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:210
+msgid "Threads can't have a filter list set up. If you want to clear this list for the parent channel, send the command in that channel."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:219
+msgid "The filter list for this channel is empty."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:221
+msgid "Are you sure you want to clear this channel's filter list?"
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:232
+msgid "Channel filter cleared."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:238
+#, docstring
+msgid "Send a list of the channel's filtered words."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:243
+msgid "There are no current words setup to be filtered in this channel."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:246
+msgid "Filtered in this channel:"
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:262
+#, docstring
+msgid "Add words to the filter.\n\n"
+"        Use double quotes to add sentences.\n\n"
+"        Examples:\n"
+"        - `[p]filter channel add #channel word1 word2 word3`\n"
+"        - `[p]filter channel add #channel \"This is a sentence\"`\n\n"
+"        **Arguments:**\n\n"
+"        - `<channel>` The text, voice, stage, or forum channel to add filtered words to.\n"
+"        - `[words...]` The words or sentences to filter.\n"
+"        "
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:278
+msgid "Words added to filter."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:280
+msgid "Words already in the filter."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:291
+#, docstring
+msgid "Remove words from the filter.\n\n"
+"        Use double quotes to remove sentences.\n\n"
+"        Examples:\n"
+"        - `[p]filter channel remove #channel word1 word2 word3`\n"
+"        - `[p]filter channel remove #channel \"This is a sentence\"`\n\n"
+"        **Arguments:**\n\n"
+"        - `<channel>` The text, voice, stage, or forum channel to add filtered words to.\n"
+"        - `[words...]` The words or sentences to no longer filter.\n"
+"        "
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:306
+msgid "Words removed from filter."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:309 redbot/cogs/filter/filter.py:353
+msgid "Those words weren't in the filter."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:313
+#, docstring
+msgid "Add words to the filter.\n\n"
+"        Use double quotes to add sentences.\n\n"
+"        Examples:\n"
+"        - `[p]filter add word1 word2 word3`\n"
+"        - `[p]filter add \"This is a sentence\"`\n\n"
+"        **Arguments:**\n\n"
+"        - `[words...]` The words or sentences to filter.\n"
+"        "
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:329
+msgid "Words successfully added to filter."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:331
+msgid "Those words were already in the filter."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:335
+#, docstring
+msgid "Remove words from the filter.\n\n"
+"        Use double quotes to remove sentences.\n\n"
+"        Examples:\n"
+"        - `[p]filter remove word1 word2 word3`\n"
+"        - `[p]filter remove \"This is a sentence\"`\n\n"
+"        **Arguments:**\n\n"
+"        - `[words...]` The words or sentences to no longer filter.\n"
+"        "
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:351
+msgid "Words successfully removed from filter."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:357
+#, docstring
+msgid "Toggle name and nickname filtering.\n\n"
+"        This is disabled by default.\n"
+"        "
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:367
+msgid "Names and nicknames will no longer be filtered."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:369
+msgid "Names and nicknames will now be filtered."
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:535
+msgid "Filtered words used: {words}"
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:537
+msgid "Filtered word used: {word}"
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:551
+msgid "Autoban (too many filtered messages.)"
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:621
+msgid "Filtered nickname"
+msgstr ""
+
+#: redbot/cogs/filter/filter.py:621
+msgid "Filtered name"
+msgstr ""
+

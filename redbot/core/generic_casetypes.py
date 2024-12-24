@@ -3,6 +3,26 @@ Contains generic mod action casetypes for use in Red and 3rd party cogs.
 These do not need to be registered to the modlog, as it is done for you.
 """
 
+__all__ = (
+    "ban",
+    "kick",
+    "hackban",
+    "tempban",
+    "softban",
+    "unban",
+    "voiceban",
+    "voiceunban",
+    "voicemute",
+    "channelmute",
+    "servermute",
+    "voiceunmute",
+    "channelunmute",
+    "serverunmute",
+    "voicekick",
+    "warning",
+    "all_generics",
+)
+
 ban = {"name": "ban", "default_setting": True, "image": "\N{HAMMER}", "case_str": "Ban"}
 
 kick = {"name": "kick", "default_setting": True, "image": "\N{WOMANS BOOTS}", "case_str": "Kick"}

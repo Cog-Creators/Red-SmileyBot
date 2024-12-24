@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2021-05-18 22:56+0000\n"
+"POT-Creation-Date: 2022-03-16 16:42+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: red-discordbot\n"
 "X-Crowdin-Project-ID: 289505\n"
@@ -15,51 +15,51 @@ msgstr ""
 "X-Crowdin-File-ID: 698\n"
 "Language: zh_TW\n"
 
-#: redbot/cogs/audio/apis/interface.py:276
-#: redbot/cogs/audio/apis/interface.py:606
+#: redbot/cogs/audio/apis/interface.py:270
+#: redbot/cogs/audio/apis/interface.py:600
 msgid "Failing to get tracks, skipping remaining."
 msgstr "無法取得歌曲，跳過剩餘的歌曲。"
 
-#: redbot/cogs/audio/apis/interface.py:309
+#: redbot/cogs/audio/apis/interface.py:303
 #: redbot/cogs/audio/apis/spotify.py:175
 msgid "The Spotify API key or client secret has not been set properly. \n"
 "Use `{prefix}audioset spotifyapi` for instructions."
 msgstr "Spotify API key 或 client secret 未正確設定。\n"
 "請使用`{prefix} audioset spotifyapi`取得指示。"
 
-#: redbot/cogs/audio/apis/interface.py:351
+#: redbot/cogs/audio/apis/interface.py:345
 msgid "This doesn't seem to be a valid Spotify playlist/album URL or code."
 msgstr "這似乎不是有效的 Spotify 播放清單/專輯 URL 或代碼。"
 
-#: redbot/cogs/audio/apis/interface.py:477
+#: redbot/cogs/audio/apis/interface.py:471
 msgid "This doesn't seem to be a supported Spotify URL or code."
 msgstr "這似乎不是支援的 Spotify URL 或代碼。"
 
-#: redbot/cogs/audio/apis/interface.py:567
+#: redbot/cogs/audio/apis/interface.py:561
 msgid "The connection was reset while loading the playlist."
 msgstr "載入播放清單時重設了連線。"
 
-#: redbot/cogs/audio/apis/interface.py:578
+#: redbot/cogs/audio/apis/interface.py:572
 msgid "Player timeout, skipping remaining tracks."
 msgstr "播放器逾時，跳過剩餘歌曲。"
 
-#: redbot/cogs/audio/apis/interface.py:672
+#: redbot/cogs/audio/apis/interface.py:665
 msgid " {bad_tracks} tracks cannot be queued."
 msgstr " {bad_tracks} 首歌曲無法排入佇列。"
 
-#: redbot/cogs/audio/apis/interface.py:680
+#: redbot/cogs/audio/apis/interface.py:673
 msgid "Playlist Enqueued"
 msgstr "播放清單已加入佇列"
 
-#: redbot/cogs/audio/apis/interface.py:681
+#: redbot/cogs/audio/apis/interface.py:674
 msgid "Added {num} tracks to the queue.{maxlength_msg}"
 msgstr "已將 {num} 首歌曲加入佇列。{maxlength_msg}"
 
-#: redbot/cogs/audio/apis/interface.py:687
+#: redbot/cogs/audio/apis/interface.py:680
 msgid "{time} until start of playlist playback: starts at #{position} in queue"
 msgstr "{time} 後開始播放: 從佇列的第 #{position} 首開始"
 
-#: redbot/cogs/audio/apis/interface.py:698
+#: redbot/cogs/audio/apis/interface.py:691
 msgid "Nothing found.\n"
 "The YouTube API key may be invalid or you may be rate limited on YouTube's search service.\n"
 "Check the YouTube API key again and follow the instructions at `{prefix}audioset youtubeapi`."

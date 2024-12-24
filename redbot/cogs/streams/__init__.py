@@ -1,6 +1,7 @@
+from redbot.core.bot import Red
+
 from .streams import Streams
 
 
-def setup(bot):
-    cog = Streams(bot)
-    bot.add_cog(cog)
+async def setup(bot: Red) -> None:
+    await bot.add_cog(Streams(bot))

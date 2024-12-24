@@ -2,9 +2,9 @@ import asyncio
 import discord
 import re
 from datetime import timezone
-from typing import Union, Set, Literal
+from typing import Union, Set, Literal, Optional
 
-from redbot.core import checks, Config, modlog, commands
+from redbot.core import Config, modlog, commands
 from redbot.core.bot import Red
 from redbot.core.i18n import Translator, cog_i18n, set_contextual_locales_from_guild
 from redbot.core.utils.predicates import MessagePredicate
@@ -56,7 +56,7 @@ class Filter(commands.Cog):
             if user_id in guild_data:
                 await self.config.member_from_ids(guild_id, user_id).clear()
 
-    async def initialize(self) -> None:
+    async def cog_load(self) -> None:
         await self.register_casetypes()
 
     @staticmethod
@@ -80,7 +80,7 @@ class Filter(commands.Cog):
 
     @commands.group()
     @commands.guild_only()
-    @checks.admin_or_permissions(manage_guild=True)
+    @commands.admin_or_permissions(manage_guild=True)
     async def filterset(self, ctx: commands.Context):
         """Base command to manage filter settings."""
         pass
@@ -95,7 +95,7 @@ class Filter(commands.Cog):
         The default name used is *John Doe*.
 
         Example:
-            - `[p]filterset defaultname Missingno`
+        - `[p]filterset defaultname Missingno`
 
         **Arguments:**
 
@@ -115,8 +115,8 @@ class Filter(commands.Cog):
         Set both to zero to disable autoban.
 
         Examples:
-            - `[p]filterset ban 5 5` - Ban users who say 5 filtered words in 5 seconds.
-            - `[p]filterset ban 2 20` - Ban users who say 2 filtered words in 20 seconds.
+        - `[p]filterset ban 5 5` - Ban users who say 5 filtered words in 5 seconds.
+        - `[p]filterset ban 2 20` - Ban users who say 2 filtered words in 20 seconds.
 
         **Arguments:**
 
@@ -144,7 +144,7 @@ class Filter(commands.Cog):
 
     @commands.group(name="filter")
     @commands.guild_only()
-    @checks.mod_or_permissions(manage_messages=True)
+    @commands.mod_or_permissions(manage_messages=True)
     async def _filter(self, ctx: commands.Context):
         """Base command to add or remove words from the server filter.
 
@@ -205,6 +205,14 @@ class Filter(commands.Cog):
     async def _channel_clear(self, ctx: commands.Context):
         """Clears this channel's filter list."""
         channel = ctx.channel
+        if isinstance(channel, discord.Thread):
+            await ctx.send(
+                _(
+                    "Threads can't have a filter list set up. If you want to clear this list for"
+                    " the parent channel, send the command in that channel."
+                )
+            )
+            return
         author = ctx.author
         filter_list = await self.config.channel(channel).filter()
         if not filter_list:
@@ -228,7 +236,7 @@ class Filter(commands.Cog):
     @_filter_channel.command(name="list")
     async def _channel_list(self, ctx: commands.Context):
         """Send a list of the channel's filtered words."""
-        channel = ctx.channel
+        channel = ctx.channel.parent if isinstance(ctx.channel, discord.Thread) else ctx.channel
         author = ctx.author
         word_list = await self.config.channel(channel).filter()
         if not word_list:
@@ -243,20 +251,27 @@ class Filter(commands.Cog):
             await ctx.send(_("I can't send direct messages to you."))
 
     @_filter_channel.command(name="add", require_var_positional=True)
-    async def filter_channel_add(self, ctx: commands.Context, *words: str):
+    async def filter_channel_add(
+        self,
+        ctx: commands.Context,
+        channel: Union[
+            discord.TextChannel, discord.VoiceChannel, discord.StageChannel, discord.ForumChannel
+        ],
+        *words: str,
+    ):
         """Add words to the filter.
 
         Use double quotes to add sentences.
 
         Examples:
-            - `[p]filter channel add word1 word2 word3`
-            - `[p]filter channel add "This is a sentence"`
+        - `[p]filter channel add #channel word1 word2 word3`
+        - `[p]filter channel add #channel "This is a sentence"`
 
         **Arguments:**
 
+        - `<channel>` The text, voice, stage, or forum channel to add filtered words to.
         - `[words...]` The words or sentences to filter.
         """
-        channel = ctx.channel
         added = await self.add_to_filter(channel, words)
         if added:
             self.invalidate_cache(ctx.guild, ctx.channel)
@@ -265,20 +280,27 @@ class Filter(commands.Cog):
             await ctx.send(_("Words already in the filter."))
 
     @_filter_channel.command(name="delete", aliases=["remove", "del"], require_var_positional=True)
-    async def filter_channel_remove(self, ctx: commands.Context, *words: str):
+    async def filter_channel_remove(
+        self,
+        ctx: commands.Context,
+        channel: Union[
+            discord.TextChannel, discord.VoiceChannel, discord.StageChannel, discord.ForumChannel
+        ],
+        *words: str,
+    ):
         """Remove words from the filter.
 
         Use double quotes to remove sentences.
 
         Examples:
-            - `[p]filter channel remove word1 word2 word3`
-            - `[p]filter channel remove "This is a sentence"`
+        - `[p]filter channel remove #channel word1 word2 word3`
+        - `[p]filter channel remove #channel "This is a sentence"`
 
         **Arguments:**
 
+        - `<channel>` The text, voice, stage, or forum channel to add filtered words to.
         - `[words...]` The words or sentences to no longer filter.
         """
-        channel = ctx.channel
         removed = await self.remove_from_filter(channel, words)
         if removed:
             await ctx.send(_("Words removed from filter."))
@@ -293,8 +315,8 @@ class Filter(commands.Cog):
         Use double quotes to add sentences.
 
         Examples:
-            - `[p]filter add word1 word2 word3`
-            - `[p]filter add "This is a sentence"`
+        - `[p]filter add word1 word2 word3`
+        - `[p]filter add "This is a sentence"`
 
         **Arguments:**
 
@@ -315,8 +337,8 @@ class Filter(commands.Cog):
         Use double quotes to remove sentences.
 
         Examples:
-            - `[p]filter remove word1 word2 word3`
-            - `[p]filter remove "This is a sentence"`
+        - `[p]filter remove word1 word2 word3`
+        - `[p]filter remove "This is a sentence"`
 
         **Arguments:**
 
@@ -346,16 +368,35 @@ class Filter(commands.Cog):
         else:
             await ctx.send(_("Names and nicknames will now be filtered."))
 
-    def invalidate_cache(self, guild: discord.Guild, channel: discord.TextChannel = None):
-        """ Invalidate a cached pattern"""
-        self.pattern_cache.pop((guild, channel), None)
+    def invalidate_cache(
+        self,
+        guild: discord.Guild,
+        channel: Optional[
+            Union[
+                discord.TextChannel,
+                discord.VoiceChannel,
+                discord.StageChannel,
+                discord.ForumChannel,
+            ]
+        ] = None,
+    ) -> None:
+        """Invalidate a cached pattern"""
+        self.pattern_cache.pop((guild.id, channel and channel.id), None)
         if channel is None:
             for keyset in list(self.pattern_cache.keys()):  # cast needed, no remove
-                if guild in keyset:
+                if guild.id == keyset[0]:
                     self.pattern_cache.pop(keyset, None)
 
     async def add_to_filter(
-        self, server_or_channel: Union[discord.Guild, discord.TextChannel], words: list
+        self,
+        server_or_channel: Union[
+            discord.Guild,
+            discord.TextChannel,
+            discord.VoiceChannel,
+            discord.StageChannel,
+            discord.ForumChannel,
+        ],
+        words: list,
     ) -> bool:
         added = False
         if isinstance(server_or_channel, discord.Guild):
@@ -365,7 +406,7 @@ class Filter(commands.Cog):
                         cur_list.append(w.lower())
                         added = True
 
-        elif isinstance(server_or_channel, discord.TextChannel):
+        else:
             async with self.config.channel(server_or_channel).filter() as cur_list:
                 for w in words:
                     if w.lower() not in cur_list and w:
@@ -375,7 +416,15 @@ class Filter(commands.Cog):
         return added
 
     async def remove_from_filter(
-        self, server_or_channel: Union[discord.Guild, discord.TextChannel], words: list
+        self,
+        server_or_channel: Union[
+            discord.Guild,
+            discord.TextChannel,
+            discord.VoiceChannel,
+            discord.StageChannel,
+            discord.ForumChannel,
+        ],
+        words: list,
     ) -> bool:
         removed = False
         if isinstance(server_or_channel, discord.Guild):
@@ -385,7 +434,7 @@ class Filter(commands.Cog):
                         cur_list.remove(w.lower())
                         removed = True
 
-        elif isinstance(server_or_channel, discord.TextChannel):
+        else:
             async with self.config.channel(server_or_channel).filter() as cur_list:
                 for w in words:
                     if w.lower() in cur_list:
@@ -395,20 +444,30 @@ class Filter(commands.Cog):
         return removed
 
     async def filter_hits(
-        self, text: str, server_or_channel: Union[discord.Guild, discord.TextChannel]
+        self,
+        server_or_channel: Union[
+            discord.Guild,
+            discord.TextChannel,
+            discord.VoiceChannel,
+            discord.StageChannel,
+            discord.Thread,
+        ],
+        *texts: str,
     ) -> Set[str]:
-
-        try:
-            guild = server_or_channel.guild
-            channel = server_or_channel
-        except AttributeError:
+        if isinstance(server_or_channel, discord.Guild):
             guild = server_or_channel
             channel = None
+        else:
+            guild = server_or_channel.guild
+            if isinstance(server_or_channel, discord.Thread):
+                channel = server_or_channel.parent
+            else:
+                channel = server_or_channel
 
         hits: Set[str] = set()
 
         try:
-            pattern = self.pattern_cache[(guild, channel)]
+            pattern = self.pattern_cache[(guild.id, channel and channel.id)]
         except KeyError:
             word_list = set(await self.config.guild(guild).filter())
             if channel:
@@ -421,10 +480,11 @@ class Filter(commands.Cog):
             else:
                 pattern = None
 
-            self.pattern_cache[(guild, channel)] = pattern
+            self.pattern_cache[(guild.id, channel and channel.id)] = pattern
 
         if pattern:
-            hits |= set(pattern.findall(text))
+            for text in texts:
+                hits |= set(pattern.findall(text))
         return hits
 
     async def check_filter(self, message: discord.Message):
@@ -436,7 +496,7 @@ class Filter(commands.Cog):
         filter_time = guild_data["filterban_time"]
         user_count = member_data["filter_count"]
         next_reset_time = member_data["next_reset_time"]
-        created_at = message.created_at.replace(tzinfo=timezone.utc)
+        created_at = message.created_at
 
         if filter_count > 0 and filter_time > 0:
             if created_at.timestamp() >= next_reset_time:
@@ -447,13 +507,27 @@ class Filter(commands.Cog):
                         user_count = 0
                         member_data["filter_count"] = user_count
 
-        hits = await self.filter_hits(message.content, message.channel)
+        texts = [message.content]
+        poll = message.poll
+        if poll is not None:
+            texts.append(poll.question or "")
+            for answer in poll.answers:
+                texts.append(answer.text or "")
+        for attachment in message.attachments:
+            texts.append(attachment.description or "")
+        hits = await self.filter_hits(message.channel, *texts)
 
         if hits:
+            # modlog doesn't accept PartialMessageable
+            channel = (
+                None
+                if isinstance(message.channel, discord.PartialMessageable)
+                else message.channel
+            )
             await modlog.create_case(
                 bot=self.bot,
                 guild=guild,
-                created_at=message.created_at.replace(tzinfo=timezone.utc),
+                created_at=created_at,
                 action_type="filterhit",
                 user=author,
                 moderator=guild.me,
@@ -462,7 +536,7 @@ class Filter(commands.Cog):
                     if len(hits) > 1
                     else _("Filtered word used: {word}").format(word=list(hits)[0])
                 ),
-                channel=message.channel,
+                channel=channel,
             )
             try:
                 await message.delete()
@@ -483,7 +557,7 @@ class Filter(commands.Cog):
                             await modlog.create_case(
                                 self.bot,
                                 guild,
-                                message.created_at.replace(tzinfo=timezone.utc),
+                                message.created_at,
                                 "filterban",
                                 author,
                                 guild.me,
@@ -526,7 +600,6 @@ class Filter(commands.Cog):
         await self.maybe_filter_name(member)
 
     async def maybe_filter_name(self, member: discord.Member):
-
         guild = member.guild
         if (not guild) or await self.bot.cog_disabled_in_guild(self, guild):
             return
@@ -543,7 +616,7 @@ class Filter(commands.Cog):
 
         await set_contextual_locales_from_guild(self.bot, guild)
 
-        if await self.filter_hits(member.display_name, member.guild):
+        if await self.filter_hits(member.guild, member.display_name):
             name_to_use = guild_data["filter_default_name"]
             reason = _("Filtered nickname") if member.nick else _("Filtered name")
             try:

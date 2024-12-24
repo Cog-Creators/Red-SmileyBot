@@ -1,68 +1,15 @@
 import asyncio
 import pytest
+import operator
 import random
-import textwrap
 from redbot.core.utils import (
-    chat_formatting,
     bounded_gather,
     bounded_gather_iter,
     deduplicate_iterables,
     common_filters,
 )
-
-
-def test_bordered_symmetrical():
-    expected = textwrap.dedent(
-        """\
-    ┌──────────────┐    ┌─────────────┐
-    │one           │    │four         │
-    │two           │    │five         │
-    │three         │    │six          │
-    └──────────────┘    └─────────────┘"""
-    )
-    col1, col2 = ["one", "two", "three"], ["four", "five", "six"]
-    assert chat_formatting.bordered(col1, col2) == expected
-
-
-def test_bordered_asymmetrical():
-    expected = textwrap.dedent(
-        """\
-    ┌──────────────┐    ┌──────────────┐
-    │one           │    │four          │
-    │two           │    │five          │
-    │three         │    │six           │
-    └──────────────┘    │seven         │
-                        └──────────────┘"""
-    )
-    col1, col2 = ["one", "two", "three"], ["four", "five", "six", "seven"]
-    assert chat_formatting.bordered(col1, col2) == expected
-
-
-def test_bordered_asymmetrical_2():
-    expected = textwrap.dedent(
-        """\
-    ┌──────────────┐    ┌─────────────┐
-    │one           │    │five         │
-    │two           │    │six          │
-    │three         │    └─────────────┘
-    │four          │                   
-    └──────────────┘                   """
-    )
-    col1, col2 = ["one", "two", "three", "four"], ["five", "six"]
-    assert chat_formatting.bordered(col1, col2) == expected
-
-
-def test_bordered_ascii():
-    expected = textwrap.dedent(
-        """\
-    +--------------+    +-------------+
-    |one           |    |four         |
-    |two           |    |five         |
-    |three         |    |six          |
-    +--------------+    +-------------+"""
-    )
-    col1, col2 = ["one", "two", "three"], ["four", "five", "six"]
-    assert chat_formatting.bordered(col1, col2, ascii_border=True) == expected
+from redbot.core.utils.chat_formatting import pagify
+from typing import List
 
 
 def test_deduplicate_iterables():
@@ -71,7 +18,6 @@ def test_deduplicate_iterables():
     assert deduplicate_iterables(*inputs) == expected
 
 
-@pytest.mark.asyncio
 async def test_bounded_gather():
     status = [0, 0]  # num_running, max_running
 
@@ -101,14 +47,13 @@ async def test_bounded_gather():
         if isinstance(result, RuntimeError):
             num_failed += 1
         else:
-            assert result == i  # verify_permissions original orde
+            assert result == i  # verify_permissions original order
             assert 0 <= result < num_tasks
 
     assert 0 < status[1] <= num_concurrent
     assert num_fail == num_failed
 
 
-@pytest.mark.asyncio
 async def test_bounded_gather_iter():
     status = [0, 0]  # num_running, max_running
 
@@ -147,7 +92,6 @@ async def test_bounded_gather_iter():
 
 
 @pytest.mark.skip(reason="spams logs with pending task warnings")
-@pytest.mark.asyncio
 async def test_bounded_gather_iter_cancel():
     status = [0, 0, 0]  # num_running, max_running, num_ran
 
@@ -196,3 +140,121 @@ async def test_bounded_gather_iter_cancel():
 def test_normalize_smartquotes():
     assert common_filters.normalize_smartquotes("Should\u2018 normalize") == "Should' normalize"
     assert common_filters.normalize_smartquotes("Same String") == "Same String"
+
+
+@pytest.mark.parametrize(
+    "text,pages,page_length",
+    (
+        # base case
+        (
+            "Line 1\nA longer line 2\n'tis a veeeeery long line numero tres\nand the last line",
+            [
+                "Line 1\nA",
+                " longer line 2",
+                "\n'tis a",
+                " veeeeery long",
+                " line numero",
+                " tres\nand the",
+                " last line",
+            ],
+            15,
+        ),
+        # mid-word split
+        (
+            "Interdisciplinary collaboration improves the quality\nof care.",
+            ["Interdisciplinar", "y collaboration", " improves the", " quality\nof", " care."],
+            16,
+        ),
+        # off-by-one errors
+        ("Lorem ipsum dolor sit amet.", ["Lorem", " ipsum", " dolor", " sit", " amet."], 6),
+        (
+            "Lorem ipsum dolor sit amet.",
+            # TODO: "r" and " sit" can fit together but current logic doesn't support it properly
+            ["Lorem", " ipsu", "m", " dolo", "r", " sit", " amet", "."],
+            5,
+        ),
+        (
+            "Lorem ipsum dolor sit amet.",
+            ["Lore", "m", " ips", "um", " dol", "or", " sit", " ame", "t."],
+            4,
+        ),
+        # mass mentions
+        (
+            "@everyone listen to me!",
+            # TODO: off-by-one: " listen" and " to me!" should have been " listen to" and " me!"
+            ["@\u200beveryone", " listen", " to me!"],
+            10,
+        ),
+        (
+            "@everyone listen to me!",
+            ["@everyon", "e listen", " to me!"],
+            9,
+        ),
+        (
+            "@everyone listen to me!",
+            ["@everyon", "e", " listen", " to me!"],
+            8,
+        ),
+        ("Is anyone @here?", ["Is anyone", " @\u200bhere?"], 10),
+        # whitespace-only page skipping (`\n` skipped)
+        ("Split:\n Long-word", ["Split:", " Long-", "word"], 6),
+    ),
+)
+def test_pagify(text: str, pages: List[str], page_length: int):
+    result = []
+    for page in pagify(text, ("\n", " "), shorten_by=0, page_length=page_length):
+        # sanity check
+        assert len(page) <= page_length
+        result.append(page)
+
+    assert pages == result
+
+
+@pytest.mark.parametrize(
+    "text,pages,page_length",
+    (
+        # base case
+        (
+            "Line 1\nA longer line 2\n'tis a veeeeery long line numero tres\nand the last line",
+            [
+                "Line 1",
+                "\nA longer line",
+                " 2",
+                "\n'tis a",
+                " veeeeery long",
+                " line numero",
+                " tres",
+                "\nand the last",
+                " line",
+            ],
+            15,
+        ),
+        # mid-word split
+        (
+            "Interdisciplinary collaboration improves the quality\nof care.",
+            ["Interdisciplinar", "y collaboration", " improves the", " quality", "\nof care."],
+            16,
+        ),
+    ),
+)
+def test_pagify_priority(text: str, pages: List[str], page_length: int):
+    result = []
+    for page in pagify(text, ("\n", " "), priority=True, shorten_by=0, page_length=page_length):
+        # sanity check
+        assert len(page) <= page_length
+        result.append(page)
+
+    assert pages == result
+
+
+def test_pagify_length_hint():
+    it = pagify("A" * 100, shorten_by=0, page_length=10)
+    remaining = 100 // 10
+
+    assert operator.length_hint(it) == remaining
+
+    for page in it:
+        remaining -= 1
+        assert operator.length_hint(it) == remaining
+
+    assert operator.length_hint(it) == 0

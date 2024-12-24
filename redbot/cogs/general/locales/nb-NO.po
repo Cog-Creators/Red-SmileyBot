@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2021-05-26 09:24+0000\n"
+"POT-Creation-Date: 2024-03-03 21:57+0000\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian Bokmal\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: red-discordbot\n"
 "X-Crowdin-Project-ID: 289505\n"
@@ -15,105 +15,109 @@ msgstr ""
 "X-Crowdin-File-ID: 17\n"
 "Language: nb_NO\n"
 
-#: redbot/cogs/general/general.py:47
+#: redbot/cogs/general/general.py:48
 #, docstring
 msgid "General commands."
 msgstr "Generelle kommandoer."
 
-#: redbot/cogs/general/general.py:52
+#: redbot/cogs/general/general.py:53
 msgid "As I see it, yes"
 msgstr "Slik jeg ser det, ja"
 
-#: redbot/cogs/general/general.py:53
+#: redbot/cogs/general/general.py:54
 msgid "It is certain"
 msgstr "Det er sikkert"
 
-#: redbot/cogs/general/general.py:54
+#: redbot/cogs/general/general.py:55
 msgid "It is decidedly so"
 msgstr "Det er desidert slik"
 
-#: redbot/cogs/general/general.py:55
+#: redbot/cogs/general/general.py:56
 msgid "Most likely"
 msgstr "Mest sannsynlig"
 
-#: redbot/cogs/general/general.py:56
+#: redbot/cogs/general/general.py:57
 msgid "Outlook good"
 msgstr "Fremtiden er bra"
 
-#: redbot/cogs/general/general.py:57
+#: redbot/cogs/general/general.py:58
 msgid "Signs point to yes"
 msgstr "Tegn peker til Ja"
 
-#: redbot/cogs/general/general.py:58
+#: redbot/cogs/general/general.py:59
 msgid "Without a doubt"
 msgstr "Uten tvil"
 
-#: redbot/cogs/general/general.py:59
+#: redbot/cogs/general/general.py:60
 msgid "Yes"
 msgstr "Ja"
 
-#: redbot/cogs/general/general.py:60
+#: redbot/cogs/general/general.py:61
 msgid "Yes – definitely"
 msgstr "Ja-definitivt"
 
-#: redbot/cogs/general/general.py:61
+#: redbot/cogs/general/general.py:62
 msgid "You may rely on it"
 msgstr "Du kan stole på det"
 
-#: redbot/cogs/general/general.py:62
+#: redbot/cogs/general/general.py:63
 msgid "Reply hazy, try again"
 msgstr "Svar uklart, prøv på nytt"
 
-#: redbot/cogs/general/general.py:63
+#: redbot/cogs/general/general.py:64
 msgid "Ask again later"
 msgstr "Spør senere"
 
-#: redbot/cogs/general/general.py:64
+#: redbot/cogs/general/general.py:65
 msgid "Better not tell you now"
 msgstr "Bedre å ikke fortelle deg nå"
 
-#: redbot/cogs/general/general.py:65
+#: redbot/cogs/general/general.py:66
 msgid "Cannot predict now"
 msgstr "Kan ikke forutsi nå"
 
-#: redbot/cogs/general/general.py:66
+#: redbot/cogs/general/general.py:67
 msgid "Concentrate and ask again"
 msgstr "Konsentrer og spør igjen"
 
-#: redbot/cogs/general/general.py:67
+#: redbot/cogs/general/general.py:68
 msgid "Don't count on it"
 msgstr "Ikke stol ikke på"
 
-#: redbot/cogs/general/general.py:68
+#: redbot/cogs/general/general.py:69
 msgid "My reply is no"
 msgstr "Mitt svar er nei"
 
-#: redbot/cogs/general/general.py:69
+#: redbot/cogs/general/general.py:70
 msgid "My sources say no"
 msgstr "Mine kilder sier nei"
 
-#: redbot/cogs/general/general.py:70
+#: redbot/cogs/general/general.py:71
 msgid "Outlook not so good"
 msgstr "Fremtiden ser ikke så bra ut"
 
-#: redbot/cogs/general/general.py:71
+#: redbot/cogs/general/general.py:72
 msgid "Very doubtful"
 msgstr "Veldig tvilsomt"
 
-#: redbot/cogs/general/general.py:85
+#: redbot/cogs/general/general.py:87
 #, docstring
 msgid "Choose between multiple options.\n\n"
 "        There must be at least 2 options to pick from.\n"
 "        Options are separated by spaces.\n\n"
 "        To denote options which include whitespace, you should enclose the options in double quotes.\n"
 "        "
-msgstr ""
+msgstr "Velg mellom flere alternativer.\n\n"
+"        Det må være minst 2 alternativer å velge mellom.\n"
+"        Alternativer er separert med mellomrom.\n\n"
+"        For å avstemme alternativer som inkluderer «mellomrom», bør du legge ved alternativene i dobbelt tilbud.\n"
+"        "
 
-#: redbot/cogs/general/general.py:94
+#: redbot/cogs/general/general.py:96
 msgid "Not enough options to pick from."
 msgstr "Har ikke nok valgmuligheter å velge mellom."
 
-#: redbot/cogs/general/general.py:100
+#: redbot/cogs/general/general.py:102
 #, docstring
 msgid "Roll a random number.\n\n"
 "        The result will be between 1 and `<number>`.\n\n"
@@ -124,15 +128,15 @@ msgstr "Rull et tilfeldig tall.\n\n"
 "        `<number>standard 100.\n"
 "        "
 
-#: redbot/cogs/general/general.py:115
+#: redbot/cogs/general/general.py:117
 msgid "{author.mention} Maybe higher than 1? ;P"
 msgstr "{author.mention} Kanskje høyere enn 1? ;P"
 
-#: redbot/cogs/general/general.py:118
+#: redbot/cogs/general/general.py:120
 msgid "{author.mention} Max allowed number is {maxamount}."
 msgstr "{author.mention} Maks tillatt nummer er {maxamount}."
 
-#: redbot/cogs/general/general.py:125
+#: redbot/cogs/general/general.py:127
 #, docstring
 msgid "Flip a coin... or a user.\n\n"
 "        Defaults to a coin.\n"
@@ -141,46 +145,46 @@ msgstr "Vend en mynt... eller en bruker.\n\n"
 "        Standard til en mynt.\n"
 "        "
 
-#: redbot/cogs/general/general.py:133
+#: redbot/cogs/general/general.py:135
 msgid "Nice try. You think this is funny?\n"
 " How about *this* instead:\n\n"
 msgstr "Godt forsøk. Tror du dette er morsomt?\n"
 " Hva med *this* i stedet:\n\n"
 
-#: redbot/cogs/general/general.py:144
+#: redbot/cogs/general/general.py:146
 msgid "*flips a coin and... "
 msgstr "*vender en mynt og... "
 
-#: redbot/cogs/general/general.py:144
+#: redbot/cogs/general/general.py:146
 msgid "HEADS!*"
 msgstr "HODE!*"
 
-#: redbot/cogs/general/general.py:144
+#: redbot/cogs/general/general.py:146
 msgid "TAILS!*"
 msgstr "HALER!*"
 
-#: redbot/cogs/general/general.py:148
+#: redbot/cogs/general/general.py:150
 #, docstring
 msgid "Play Rock Paper Scissors."
 msgstr "Spill stein saks papir."
 
-#: redbot/cogs/general/general.py:153
+#: redbot/cogs/general/general.py:155
 msgid "This isn't a valid option. Try {r}, {p}, or {s}."
 msgstr "Dette er ikke et gyldig alternativ. Prøv {r}, {p}, eller {s}."
 
-#: redbot/cogs/general/general.py:174
+#: redbot/cogs/general/general.py:176
 msgid "{choice} You win {author.mention}!"
 msgstr "{choice} Du vinner {author.mention}!"
 
-#: redbot/cogs/general/general.py:180
+#: redbot/cogs/general/general.py:182
 msgid "{choice} You lose {author.mention}!"
 msgstr "{choice} Du taper {author.mention}!"
 
-#: redbot/cogs/general/general.py:186
+#: redbot/cogs/general/general.py:188
 msgid "{choice} We're square {author.mention}!"
 msgstr "{choice} Du vinner {author.mention}!"
 
-#: redbot/cogs/general/general.py:193
+#: redbot/cogs/general/general.py:195
 #, docstring
 msgid "Ask 8 ball a question.\n\n"
 "        Question must end with a question mark.\n"
@@ -189,29 +193,29 @@ msgstr "Still 8 ball et spørsmål.\n\n"
 "        Spørsmålet må slutte med et spørsmålstegn.\n"
 "        "
 
-#: redbot/cogs/general/general.py:200
+#: redbot/cogs/general/general.py:202
 msgid "That doesn't look like a question."
 msgstr "Det ser ikke ut som et spørsmål."
 
-#: redbot/cogs/general/general.py:204
+#: redbot/cogs/general/general.py:206
 #, docstring
 msgid "Start or stop the stopwatch."
 msgstr "Start eller stopp proppen."
 
-#: redbot/cogs/general/general.py:208
+#: redbot/cogs/general/general.py:210
 msgid " Stopwatch started!"
 msgstr " Stoppeklokken har startet!"
 
-#: redbot/cogs/general/general.py:213
+#: redbot/cogs/general/general.py:215
 msgid " Stopwatch stopped! Time: **{seconds}**"
 msgstr " Stoppeklokken stoppet! Tid: **{seconds}**"
 
-#: redbot/cogs/general/general.py:219
+#: redbot/cogs/general/general.py:221
 #, docstring
 msgid "Create a lmgtfy link."
 msgstr "Lag en lmgtfy lenke."
 
-#: redbot/cogs/general/general.py:226
+#: redbot/cogs/general/general.py:230
 #, docstring
 msgid "Because everyone likes hugs!\n\n"
 "        Up to 10 intensity levels.\n"
@@ -220,7 +224,7 @@ msgstr "Fordi alle liker klemmer!\n\n"
 "        Opp til 10 intensitetsnivåer.\n"
 "        "
 
-#: redbot/cogs/general/general.py:250
+#: redbot/cogs/general/general.py:254
 #, docstring
 msgid "\n"
 "        Show server information.\n\n"
@@ -233,281 +237,113 @@ msgstr "\n"
 "        Standard til False.\n"
 "        "
 
-#: redbot/cogs/general/general.py:258
-msgid "Created on {date}. That's over {num} days ago!"
-msgstr "Opprettet den {date}. Det er over {num} dager siden!"
+#: redbot/cogs/general/general.py:261
+msgid "Created on {date_and_time}. That's {relative_time}!"
+msgstr ""
 
-#: redbot/cogs/general/general.py:270
-msgid "Region"
-msgstr "Fylke"
-
-#: redbot/cogs/general/general.py:271
+#: redbot/cogs/general/general.py:275
 msgid "Users online"
 msgstr "Brukere pålogget"
 
-#: redbot/cogs/general/general.py:272
+#: redbot/cogs/general/general.py:276
+msgid "Not available"
+msgstr ""
+
+#: redbot/cogs/general/general.py:278
 msgid "Text Channels"
 msgstr "Tekstkanaler"
 
-#: redbot/cogs/general/general.py:273
+#: redbot/cogs/general/general.py:279
 msgid "Voice Channels"
 msgstr "Talekanaler"
 
-#: redbot/cogs/general/general.py:274
+#: redbot/cogs/general/general.py:280
 msgid "Roles"
 msgstr "Roller"
 
-#: redbot/cogs/general/general.py:275
+#: redbot/cogs/general/general.py:281
 msgid "Owner"
 msgstr "Eier"
 
-#: redbot/cogs/general/general.py:277
+#: redbot/cogs/general/general.py:283
 msgid "Server ID: "
 msgstr "Server ID: "
 
-#: redbot/cogs/general/general.py:279
+#: redbot/cogs/general/general.py:285
 msgid "  •  Use {command} for more info on the server."
 msgstr "  • Bruk {command} for mer informasjon på serveren."
 
-#: redbot/cogs/general/general.py:305
+#: redbot/cogs/general/general.py:311
 msgid "\n"
 "Shard ID: **{shard_id}/{shard_count}**"
 msgstr "\n"
 "Bart ID: **{shard_id}/{shard_count}**"
 
-#: redbot/cogs/general/general.py:314
+#: redbot/cogs/general/general.py:320
 msgid "Humans: "
 msgstr "Mennesker: "
 
-#: redbot/cogs/general/general.py:315
+#: redbot/cogs/general/general.py:321
 msgid " • Bots: "
 msgstr " • boter: "
 
-#: redbot/cogs/general/general.py:327
+#: redbot/cogs/general/general.py:333
 msgid "Users online: **{online}/{total_users}**\n"
 msgstr "Brukere på nettet: **{online}/{total_users}**\n"
 
-#: redbot/cogs/general/general.py:344
-msgid "__VIP__ US East "
-msgstr "__VIP__ Øst-USA "
-
-#: redbot/cogs/general/general.py:345
-msgid "__VIP__ US West "
-msgstr "__VIP__ Vest-USA "
-
-#: redbot/cogs/general/general.py:346
-msgid "__VIP__ Amsterdam "
-msgstr "__VIP__ Amsterdam "
-
-#: redbot/cogs/general/general.py:347
-msgid "EU West "
-msgstr "EU vest "
-
-#: redbot/cogs/general/general.py:348
-msgid "EU Central "
-msgstr "Midt-EU "
-
-#: redbot/cogs/general/general.py:349
-msgid "Europe "
-msgstr "Europa "
-
 #: redbot/cogs/general/general.py:350
-msgid "London "
-msgstr "London "
-
-#: redbot/cogs/general/general.py:351
-msgid "Frankfurt "
-msgstr "Frankfurt "
-
-#: redbot/cogs/general/general.py:352
-msgid "Amsterdam "
-msgstr "Amsterdam "
-
-#: redbot/cogs/general/general.py:353
-msgid "US West "
-msgstr "USA vest "
-
-#: redbot/cogs/general/general.py:354
-msgid "US East "
-msgstr "USA øst "
-
-#: redbot/cogs/general/general.py:355
-msgid "US South "
-msgstr "USA sør "
-
-#: redbot/cogs/general/general.py:356
-msgid "US Central "
-msgstr "Midt-USA "
-
-#: redbot/cogs/general/general.py:357
-msgid "Singapore "
-msgstr "Singapor "
-
-#: redbot/cogs/general/general.py:358
-msgid "Sydney "
-msgstr "Sydney "
-
-#: redbot/cogs/general/general.py:359
-msgid "Brazil "
-msgstr "Brasil "
-
-#: redbot/cogs/general/general.py:360
-msgid "Hong Kong "
-msgstr "Hong Kong "
-
-#: redbot/cogs/general/general.py:361
-msgid "Russia "
-msgstr "Russland "
-
-#: redbot/cogs/general/general.py:362
-msgid "Japan "
-msgstr "Japan "
-
-#: redbot/cogs/general/general.py:363
-msgid "South Africa "
-msgstr "Sør Afrika "
-
-#: redbot/cogs/general/general.py:364
-msgid "India "
-msgstr "India "
-
-#: redbot/cogs/general/general.py:365
-msgid "Dubai "
-msgstr "Dubai "
-
-#: redbot/cogs/general/general.py:366
-msgid "South Korea "
-msgstr "Sør Korea "
-
-#: redbot/cogs/general/general.py:369
 msgid "0 - None"
 msgstr "0 - Ingen"
 
-#: redbot/cogs/general/general.py:370
+#: redbot/cogs/general/general.py:351
 msgid "1 - Low"
 msgstr "1 - Lav"
 
-#: redbot/cogs/general/general.py:371
+#: redbot/cogs/general/general.py:352
 msgid "2 - Medium"
 msgstr "2 - Middels"
 
-#: redbot/cogs/general/general.py:372
+#: redbot/cogs/general/general.py:353
 msgid "3 - High"
 msgstr "3 - Høy"
 
-#: redbot/cogs/general/general.py:373
-msgid "4 - Extreme"
-msgstr "4 - Ekstrem"
+#: redbot/cogs/general/general.py:354
+msgid "4 - Highest"
+msgstr ""
 
-#: redbot/cogs/general/general.py:377
-msgid "Animated Icon"
-msgstr "Animert ikon"
-
-#: redbot/cogs/general/general.py:378
-msgid "Banner Image"
-msgstr "Banner bilde"
-
-#: redbot/cogs/general/general.py:379
-msgid "Commerce"
-msgstr "Handel"
-
-#: redbot/cogs/general/general.py:380
-msgid "Community"
-msgstr "Fellesskap"
-
-#: redbot/cogs/general/general.py:381
-msgid "Server Discovery"
-msgstr "Oppdagelse på tjener"
-
-#: redbot/cogs/general/general.py:382
-msgid "Featurable"
-msgstr "Nyhetsfordelbar"
-
-#: redbot/cogs/general/general.py:383
-msgid "Splash Invite"
-msgstr "Sprutende invitasjon"
-
-#: redbot/cogs/general/general.py:384
-msgid "Member list disabled"
-msgstr "Medlemsliste deaktivert"
-
-#: redbot/cogs/general/general.py:385
-msgid "Membership Screening enabled"
-msgstr "Medlemskapsoversikt aktivert"
-
-#: redbot/cogs/general/general.py:386
-msgid "More Emojis"
-msgstr "Mer Emojier"
-
-#: redbot/cogs/general/general.py:387
-msgid "News Channels"
-msgstr "Nyhets kanaler"
-
-#: redbot/cogs/general/general.py:388
-msgid "Partnered"
-msgstr "Partner"
-
-#: redbot/cogs/general/general.py:389
-msgid "Preview enabled"
-msgstr "Forhåndsvisning aktivert"
-
-#: redbot/cogs/general/general.py:390
-msgid "Public disabled"
-msgstr "Offentlig deaktivert"
-
-#: redbot/cogs/general/general.py:391
-msgid "Vanity URL"
-msgstr "Forfengelighet URL"
-
-#: redbot/cogs/general/general.py:392
-msgid "Verified"
-msgstr "Bekreftet"
-
-#: redbot/cogs/general/general.py:393
-msgid "VIP Voice Servers"
-msgstr "VIP stemmeservere"
-
-#: redbot/cogs/general/general.py:394
-msgid "Welcome Screen enabled"
-msgstr "Velkommen skjerm aktivert"
-
-#: redbot/cogs/general/general.py:402
+#: redbot/cogs/general/general.py:357
 msgid "{bot_name} joined this server on {bot_join}. That's over {since_join} days ago!"
 msgstr "{bot_name} ble med i denne serveren på {bot_join}. Det er over {since_join} dager siden!"
 
-#: redbot/cogs/general/general.py:424
+#: redbot/cogs/general/general.py:379
 msgid "Members:"
 msgstr "Medlemmer:"
 
-#: redbot/cogs/general/general.py:426
+#: redbot/cogs/general/general.py:381
 msgid "Channels:"
 msgstr "Kanaler:"
 
-#: redbot/cogs/general/general.py:427
+#: redbot/cogs/general/general.py:382
 msgid "💬 Text: {text}\n"
-"🔊 Voice: {voice}"
-msgstr "💬 Tekst: {text}\n"
-": speaker_high_volum: Stemme: {voice}"
+"🔊 Voice: {voice}\n"
+"🎙 Stage: {stage}"
+msgstr ""
 
-#: redbot/cogs/general/general.py:433
+#: redbot/cogs/general/general.py:393
 msgid "Utility:"
 msgstr "Bruker:"
 
-#: redbot/cogs/general/general.py:434
+#: redbot/cogs/general/general.py:394
 msgid "Owner: {owner}\n"
-"Voice region: {region}\n"
 "Verif. level: {verif}\n"
 "Server ID: {id}{shard_info}"
-msgstr "Eier: {owner}\n"
-"Stemmeområde: {region}\n"
-"Verif. level: {verif}\n"
-"Server ID: {id}{shard_info}"
+msgstr ""
 
-#: redbot/cogs/general/general.py:446
+#: redbot/cogs/general/general.py:405
 msgid "Misc:"
 msgstr "Misc:"
 
-#: redbot/cogs/general/general.py:447
+#: redbot/cogs/general/general.py:406
 msgid "AFK channel: {afk_chan}\n"
 "AFK timeout: {afk_timeout}\n"
 "Custom emojis: {emoji_count}\n"
@@ -517,15 +353,15 @@ msgstr "AFK-kanal: {afk_chan}\n"
 "Tilpasset emojis: {emoji_count}\n"
 "Roller: {role_count}"
 
-#: redbot/cogs/general/general.py:452
+#: redbot/cogs/general/general.py:411
 msgid "Not set"
 msgstr "Ikke angitt"
 
-#: redbot/cogs/general/general.py:460
+#: redbot/cogs/general/general.py:444
 msgid "Server features:"
 msgstr "Server funksjoner:"
 
-#: redbot/cogs/general/general.py:462
+#: redbot/cogs/general/general.py:451
 msgid "Tier {boostlevel} with {nitroboosters} boosts\n"
 "File size limit: {filelimit}\n"
 "Emoji limit: {emojis_limit}\n"
@@ -535,11 +371,11 @@ msgstr "Nivå {boostlevel} med {nitroboosters} boosts\n"
 "Emoji-grense: {emojis_limit}\n"
 "VCs maks bitrate: {bitrate}"
 
-#: redbot/cogs/general/general.py:474
+#: redbot/cogs/general/general.py:463
 msgid "Nitro Boost:"
 msgstr "Nitro Boost:"
 
-#: redbot/cogs/general/general.py:483
+#: redbot/cogs/general/general.py:472
 #, docstring
 msgid "Search the Urban Dictionary.\n\n"
 "        This uses the unofficial Urban Dictionary API.\n"
@@ -548,29 +384,29 @@ msgstr "Søk i byordlisten.\n\n"
 "        Dette bruker den uoffisielle urbane ordlisten API.\n"
 "        "
 
-#: redbot/cogs/general/general.py:501 redbot/cogs/general/general.py:570
+#: redbot/cogs/general/general.py:490 redbot/cogs/general/general.py:561
 msgid "No Urban Dictionary entries were found, or there was an error in the process."
 msgstr "Ingen urbane ordoppføringer ble funnet, eller det oppstod en feil i prosessen."
 
-#: redbot/cogs/general/general.py:507
+#: redbot/cogs/general/general.py:496
 msgid "No Urban Dictionary entries were found."
 msgstr "Ingen urbane ordoppføringer ble funnet."
 
-#: redbot/cogs/general/general.py:513
+#: redbot/cogs/general/general.py:502
 msgid "{word} by {author}"
 msgstr "{word} av {author}"
 
-#: redbot/cogs/general/general.py:521 redbot/cogs/general/general.py:552
+#: redbot/cogs/general/general.py:510 redbot/cogs/general/general.py:544
 msgid "{definition}\n\n"
 "**Example:** {example}"
 msgstr "{definition}\n\n"
 "**Eksempel:** {example}"
 
-#: redbot/cogs/general/general.py:527
+#: redbot/cogs/general/general.py:516
 msgid "{thumbs_down} Down / {thumbs_up} Up, Powered by Urban Dictionary."
 msgstr "{thumbs_down} Ned / {thumbs_up} Opp, drevet av Urban Dictionary."
 
-#: redbot/cogs/general/general.py:546
+#: redbot/cogs/general/general.py:534
 msgid "<{permalink}>\n"
 " {word} by {author}\n\n"
 "{description}\n\n"

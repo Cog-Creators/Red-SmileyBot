@@ -1,0 +1,40 @@
+# Since version 2.23 (released in August 2019), git-blame has a feature
+# to ignore or bypass certain commits.
+#
+# This file contains a list of commits that are not likely what you
+# are looking for in a blame, such as mass reformatting or renaming.
+# You can set this file as a default ignore file for blame by running
+# the following command.
+#
+# $ git config blame.ignoreRevsFile .git-blame-ignore-revs
+
+# [V3] Update code standards (black code format pass) (#1650)
+b88b5a2601f56bda985729352d24842f087a8ade
+
+# Black tests and setup.py (#1657)
+e01cdbb0912387749d9459e1d934f9ed393a9b51
+
+# Black formatting for generate_strings.py and docs/conf.py (#1658)
+1ecaf6f8d5f2af731bec3eb6ad3a9721ab7a2812
+
+# [V3 Travis] Update travis to not skip pipfile lock... (#1678)
+# additional black formatting pass to conform to black 18.5b
+d3f406a34a5cae6ea63664e76e8e74be43f9949f
+
+# [V3] Update black version and reformat (#1745)
+14cc701b25cea385fd0d537cdb6475d341c017c5
+
+# [V3] Clean up some ugly auto-formatted strings (#1753)
+622382f42588ac1d8a52bd3e39bf171c89ff0224
+
+# [CI] Improve automated checks (#2702)
+16443c8cc0c24cbc5b3dc7de858edb71b9ca6cd3
+
+# Bump black to 20.8b1 (and reformat) (#4371)
+85afe19455f91af21a0f603705eeb5d9599b45cc
+
+# Reformat with Black 22.1.0 (#5633)
+c69e8d31fdadbe10230ec0ea2ef35402e5c4cf43
+
+# Reformat with Black 2023 formatting changes
+226d8d734de43e1d5ea96a528a8e480641604db1

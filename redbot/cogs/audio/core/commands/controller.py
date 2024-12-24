@@ -1,7 +1,5 @@
 import asyncio
 import contextlib
-import datetime
-import logging
 import time
 from pathlib import Path
 
@@ -9,6 +7,8 @@ from typing import Optional, Union
 
 import discord
 import lavalink
+from lavalink import NodeNotFound
+from red_commons.logging import getLogger
 
 from redbot.core import commands
 from redbot.core.i18n import Translator
@@ -20,7 +20,7 @@ from redbot.core.utils.predicates import ReactionPredicate
 from ..abc import MixinMeta
 from ..cog_utils import CompositeMetaClass
 
-log = logging.getLogger("red.cogs.Audio.cog.Commands.player_controller")
+log = getLogger("red.cogs.Audio.cog.Commands.player_controller")
 _ = Translator("Audio", Path(__file__))
 
 
@@ -81,7 +81,8 @@ class PlayerControllerCommands(MixinMeta, metaclass=CompositeMetaClass):
 
     @commands.command(name="now")
     @commands.guild_only()
-    @commands.bot_has_permissions(embed_links=True, add_reactions=True)
+    @commands.bot_has_permissions(embed_links=True)
+    @commands.bot_can_react()
     async def command_now(self, ctx: commands.Context):
         """Now playing."""
         if not self._player_check(ctx):
@@ -302,7 +303,7 @@ class PlayerControllerCommands(MixinMeta, metaclass=CompositeMetaClass):
     @commands.guild_only()
     @commands.bot_has_permissions(embed_links=True)
     async def command_seek(self, ctx: commands.Context, seconds: Union[int, str]):
-        """Seek ahead or behind on a track by seconds or a to a specific time.
+        """Seek ahead or behind on a track by seconds or to a specific time.
 
         Accepts seconds or a value formatted like 00:00:00 (`hh:mm:ss`) or 00:00 (`mm:ss`).
         """
@@ -656,7 +657,7 @@ class PlayerControllerCommands(MixinMeta, metaclass=CompositeMetaClass):
             if not self._player_check(ctx):
                 player = await lavalink.connect(
                     ctx.author.voice.channel,
-                    deafen=await self.config.guild_from_id(ctx.guild.id).auto_deafen(),
+                    self_deaf=await self.config.guild_from_id(ctx.guild.id).auto_deafen(),
                 )
                 player.store("notify_channel", ctx.channel.id)
             else:
@@ -674,7 +675,7 @@ class PlayerControllerCommands(MixinMeta, metaclass=CompositeMetaClass):
                     )
                 await player.move_to(
                     ctx.author.voice.channel,
-                    deafen=await self.config.guild_from_id(ctx.guild.id).auto_deafen(),
+                    self_deaf=await self.config.guild_from_id(ctx.guild.id).auto_deafen(),
                 )
             await ctx.tick()
         except AttributeError:
@@ -684,12 +685,12 @@ class PlayerControllerCommands(MixinMeta, metaclass=CompositeMetaClass):
                 title=_("Unable To Join Voice Channel"),
                 description=_("Connect to a voice channel first."),
             )
-        except IndexError:
+        except NodeNotFound:
             ctx.command.reset_cooldown(ctx)
             return await self.send_embed_msg(
                 ctx,
                 title=_("Unable To Join Voice Channel"),
-                description=_("Connection to Lavalink has not yet been established."),
+                description=_("Connection to the Lavalink node has not yet been established."),
             )
 
     @commands.command(name="volume")

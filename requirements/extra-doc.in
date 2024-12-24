@@ -1,0 +1,6 @@
+-c base.txt
+
+Sphinx
+sphinx-prompt
+sphinx_rtd_theme>1
+sphinxcontrib-trio

@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2021-05-18 22:56+0000\n"
+"POT-Creation-Date: 2022-03-16 16:42+0000\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: red-discordbot\n"
 "X-Crowdin-Project-ID: 289505\n"
@@ -15,51 +15,51 @@ msgstr ""
 "X-Crowdin-File-ID: 698\n"
 "Language: fi_FI\n"
 
-#: redbot/cogs/audio/apis/interface.py:276
-#: redbot/cogs/audio/apis/interface.py:606
+#: redbot/cogs/audio/apis/interface.py:270
+#: redbot/cogs/audio/apis/interface.py:600
 msgid "Failing to get tracks, skipping remaining."
 msgstr "Kappaleiden hakeminen ei onnistu, ohitetaan jäljellä olevat."
 
-#: redbot/cogs/audio/apis/interface.py:309
+#: redbot/cogs/audio/apis/interface.py:303
 #: redbot/cogs/audio/apis/spotify.py:175
 msgid "The Spotify API key or client secret has not been set properly. \n"
 "Use `{prefix}audioset spotifyapi` for instructions."
 msgstr "Spotify API-avainta tai client secret -arvoa ei ole asetettu oikein. \n"
 "Käytä`{prefix}audioset spotifyapi` saadaksesi ohjeita."
 
-#: redbot/cogs/audio/apis/interface.py:351
+#: redbot/cogs/audio/apis/interface.py:345
 msgid "This doesn't seem to be a valid Spotify playlist/album URL or code."
 msgstr "Tuo ei näytä olevan kelvollinen soittolistan/albumin Spotify-osoite tai -koodi."
 
-#: redbot/cogs/audio/apis/interface.py:477
+#: redbot/cogs/audio/apis/interface.py:471
 msgid "This doesn't seem to be a supported Spotify URL or code."
 msgstr "Tuo ei näytä olevan kelvollinen Spotify-osoite tai -koodi."
 
-#: redbot/cogs/audio/apis/interface.py:567
+#: redbot/cogs/audio/apis/interface.py:561
 msgid "The connection was reset while loading the playlist."
 msgstr "Yhteys nollattiin soittolistaa ladatessa."
 
-#: redbot/cogs/audio/apis/interface.py:578
+#: redbot/cogs/audio/apis/interface.py:572
 msgid "Player timeout, skipping remaining tracks."
 msgstr "Toistimen aikakatkaisu, ohitetaan jäljellä olevat kappaleet."
 
-#: redbot/cogs/audio/apis/interface.py:672
+#: redbot/cogs/audio/apis/interface.py:665
 msgid " {bad_tracks} tracks cannot be queued."
 msgstr " {bad_tracks} kappaletta ei voida lisätä jonoon."
 
-#: redbot/cogs/audio/apis/interface.py:680
+#: redbot/cogs/audio/apis/interface.py:673
 msgid "Playlist Enqueued"
 msgstr "Soittolista lisätty jonoon"
 
-#: redbot/cogs/audio/apis/interface.py:681
+#: redbot/cogs/audio/apis/interface.py:674
 msgid "Added {num} tracks to the queue.{maxlength_msg}"
 msgstr "Lisättiin {num} kappaletta jonoon.{maxlength_msg}"
 
-#: redbot/cogs/audio/apis/interface.py:687
+#: redbot/cogs/audio/apis/interface.py:680
 msgid "{time} until start of playlist playback: starts at #{position} in queue"
 msgstr "{time} aikaa soittolistan toiston aloittamiseen: alkaa sijalla #{position} jonossa"
 
-#: redbot/cogs/audio/apis/interface.py:698
+#: redbot/cogs/audio/apis/interface.py:691
 msgid "Nothing found.\n"
 "The YouTube API key may be invalid or you may be rate limited on YouTube's search service.\n"
 "Check the YouTube API key again and follow the instructions at `{prefix}audioset youtubeapi`."

@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2021-05-24 11:04+0000\n"
+"POT-Creation-Date: 2023-06-14 02:57+0000\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=4; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 3;\n"
 "X-Crowdin-Project: red-discordbot\n"
 "X-Crowdin-Project-ID: 289505\n"
@@ -15,64 +15,64 @@ msgstr ""
 "X-Crowdin-File-ID: 42\n"
 "Language: cs_CZ\n"
 
-#: redbot/cogs/admin/admin.py:18
+#: redbot/cogs/admin/admin.py:20
 msgid "I attempted to do something that Discord denied me permissions for. Your command failed to successfully complete."
-msgstr "Pokusil jsem se udělat něco, co mi Discord odepřel. Tvůj příkaz se nepodažilo úspěšně dokončit."
+msgstr "Discord zamítl provedení akce. Tvůj příkaz nebyl úspěšně dokončen."
 
-#: redbot/cogs/admin/admin.py:23
+#: redbot/cogs/admin/admin.py:25
 msgid "I can not give {role.name} to {member.display_name} because that role is higher than or equal to my highest role in the Discord hierarchy."
 msgstr "Nemohu dát {role.name} uživateli {member.display_name}, protože tato role je vyšší nebo rovna mé nejvyšší roli v Discord hierarchii."
 
-#: redbot/cogs/admin/admin.py:29
+#: redbot/cogs/admin/admin.py:31
 msgid "I can not remove {role.name} from {member.display_name} because that role is higher than or equal to my highest role in the Discord hierarchy."
 msgstr "Nemohu odebrat {role.name} uživateli {member.display_name}, protože tato role je vyšší nebo rovna mé nejvyšší roli v Discord hierarchii."
 
-#: redbot/cogs/admin/admin.py:35
+#: redbot/cogs/admin/admin.py:37
 msgid "I can not edit {role.name} because that role is higher than my or equal to highest role in the Discord hierarchy."
 msgstr "Nemohu upravit {role.name}, protože tato role je vyšší, než moje nebo stejná jako nejvyšší role v Discord hierarchii."
 
-#: redbot/cogs/admin/admin.py:41
+#: redbot/cogs/admin/admin.py:43
 msgid "I can not let you give {role.name} to {member.display_name} because that role is higher than or equal to your highest role in the Discord hierarchy."
 msgstr "Nemohu ti dovolit dát {role.name} uživateli {member.display_name}, protože tato role je vyšší nebo rovna tvé nejvyšší roli v Discord hierarchii."
 
-#: redbot/cogs/admin/admin.py:47
+#: redbot/cogs/admin/admin.py:49
 msgid "I can not let you remove {role.name} from {member.display_name} because that role is higher than or equal to your highest role in the Discord hierarchy."
 msgstr "Nemohu ti dovolit odebrat {role.name} uživateli {member.display_name}, protože tato role je vyšší nebo rovna tvé nejvyšší roli v Discord hierarchii."
 
-#: redbot/cogs/admin/admin.py:53
+#: redbot/cogs/admin/admin.py:55
 msgid "I can not let you edit {role.name} because that role is higher than or equal to your highest role in the Discord hierarchy."
 msgstr "Nemohu ti dovolit upravit {role.name}, protože tato role je vyšší nebo rovna tvé nejvyšší roli v Discord hierarchii."
 
-#: redbot/cogs/admin/admin.py:59
-msgid "I need the \"Manage Roles\" permission to do that."
-msgstr ""
-
 #: redbot/cogs/admin/admin.py:61
+msgid "I need the \"Manage Roles\" permission to do that."
+msgstr "Potřebuji oprávnění \"Správa rolí\"."
+
+#: redbot/cogs/admin/admin.py:63
 msgid "I am already announcing something. If you would like to make a different announcement please use `{prefix}announce cancel` first."
 msgstr "Už něco oznamuji. Pokud bys rád provedl jiné oznámení, nejdříve použij `{prefix}announce cancel`."
 
-#: redbot/cogs/admin/admin.py:71
+#: redbot/cogs/admin/admin.py:73
 #, docstring
 msgid "A collection of server administration utilities."
 msgstr "Kolekce nástrojů pro správu serveru."
 
-#: redbot/cogs/admin/admin.py:164
+#: redbot/cogs/admin/admin.py:159
 msgid "{member.display_name} already has the role {role.name}."
 msgstr "{member.display_name} již má roli {role.name}."
 
-#: redbot/cogs/admin/admin.py:184
+#: redbot/cogs/admin/admin.py:180
 msgid "I successfully added {role.name} to {member.display_name}"
 msgstr "Úspěšně jsem přidal {role.name} k {member.display_name}"
 
-#: redbot/cogs/admin/admin.py:194
+#: redbot/cogs/admin/admin.py:190
 msgid "{member.display_name} does not have the role {role.name}."
-msgstr "{member.display_name} již má roli {role.name}."
+msgstr "Uživatel {member.display_name} nemá roli {role.name}."
 
-#: redbot/cogs/admin/admin.py:214
+#: redbot/cogs/admin/admin.py:211
 msgid "I successfully removed {role.name} from {member.display_name}"
 msgstr "Úspěšně jsem odstranil {role.name} od {member.display_name}"
 
-#: redbot/cogs/admin/admin.py:225
+#: redbot/cogs/admin/admin.py:226
 #, docstring
 msgid "\n"
 "        Add a role to a user.\n\n"
@@ -81,11 +81,11 @@ msgid "\n"
 "        "
 msgstr "\n"
 "        Přidá roli uživateli.\n\n"
-"        Pokud role obsahuje mezery, použijte dvojí uvozovky.\n"
-"        Ponecháte-li uživatel prázdný, výchozí hodnota autorovi příkazu.\n"
+"        Použijte dvojí uvozovky, pokud role obsahuje mezery.\n"
+"        Pokud je pole uživatele prázdné, bude nastaveno na autora příkazu.\n"
 "        "
 
-#: redbot/cogs/admin/admin.py:241
+#: redbot/cogs/admin/admin.py:244
 #, docstring
 msgid "\n"
 "        Remove a role from a user.\n\n"
@@ -94,16 +94,16 @@ msgid "\n"
 "        "
 msgstr "\n"
 "        Odebrat roli uživateli.\n\n"
-"        Pokud role obsahuje mezery, použijte dvojí uvozovky.\n"
-"        Ponecháte-li uživatel prázdný, výchozí hodnota autorovi příkazu.\n"
+"        Použijte dvojí uvozovky, pokud role obsahuje mezery.\n"
+"        Pokud je pole uživatele prázdné, bude nastaveno na autora příkazu.\n"
 "        "
 
-#: redbot/cogs/admin/admin.py:255
+#: redbot/cogs/admin/admin.py:256
 #, docstring
 msgid "Edit role settings."
 msgstr "Upraví nastavení role."
 
-#: redbot/cogs/admin/admin.py:262
+#: redbot/cogs/admin/admin.py:263
 #, docstring
 msgid "\n"
 "        Edit a role's colour.\n\n"
@@ -120,15 +120,19 @@ msgstr "\n"
 "        Barva musí být v hexadecimálním formátu.\n"
 "        [Výběr barev online](http://www.w3schools.com/colors/colors_picker.asp)\n\n"
 "        Příklady:\n"
-"            `[p]editrole colour \"Spravce\" #ff0000`\n"
+"            `[p]editrole colour \"Nejlepsi Spravce\" #ff0000`\n"
 "            `[p]editrole colour Spravce #ff9900`\n"
 "        "
 
-#: redbot/cogs/admin/admin.py:291 redbot/cogs/admin/admin.py:324
+#: redbot/cogs/admin/admin.py:275
+msgid "{author} ({author.id}) changed the colour of role '{role.name}'"
+msgstr "{author} ({author.id}) změnil barvu role '{role.name}'"
+
+#: redbot/cogs/admin/admin.py:294 redbot/cogs/admin/admin.py:327
 msgid "Done."
 msgstr "Hotovo."
 
-#: redbot/cogs/admin/admin.py:295
+#: redbot/cogs/admin/admin.py:298
 #, docstring
 msgid "\n"
 "        Edit a role's name.\n\n"
@@ -140,66 +144,68 @@ msgstr "\n"
 "        Upraví název role\n\n"
 "        Použijte dvojité uvozovky, pokud role nebo název obsahuje mezery.\n\n"
 "        Příklady:\n"
-"            `[p]editrole name \"Spravce\" Admin`\n"
+"            `[p]editrole name \"Nejlepsi Spravce\" Admin`\n"
 "        "
 
-#: redbot/cogs/admin/admin.py:329
+#: redbot/cogs/admin/admin.py:308
+msgid "{author} ({author.id}) changed the name of role '{old_name}' to '{name}'"
+msgstr "{author} ({author.id}) změnil jméno role '{old_name}' na '{name}'"
+
+#: redbot/cogs/admin/admin.py:332
 #, docstring
 msgid "Announce a message to all servers the bot is in."
-msgstr "Oznámit zprávu na všechny servery ve kterých je bot."
+msgstr "Oznámit zprávu na všechny servery, ve kterých bot je."
 
-#: redbot/cogs/admin/admin.py:336
+#: redbot/cogs/admin/admin.py:339
 msgid "The announcement has begun."
 msgstr "Oznámení začalo."
 
-#: redbot/cogs/admin/admin.py:343
+#: redbot/cogs/admin/admin.py:346
 #, docstring
 msgid "Cancel a running announce."
 msgstr "Zrušit běžící oznámení."
 
-#: redbot/cogs/admin/admin.py:345
+#: redbot/cogs/admin/admin.py:348
 msgid "There is no currently running announcement."
 msgstr "V současné době neexistuje žádné spuštěné oznámení."
 
-#: redbot/cogs/admin/admin.py:348
+#: redbot/cogs/admin/admin.py:351
 msgid "The current announcement has been cancelled."
-msgstr "Momentální oznámení bylo zrušeno."
+msgstr "Současné oznámení bylo zrušeno."
 
-#: redbot/cogs/admin/admin.py:354
+#: redbot/cogs/admin/admin.py:357
 #, docstring
 msgid "Change how announcements are sent in this guild."
 msgstr "Změňte způsob odesílání oznámení v tomto klanu."
 
-#: redbot/cogs/admin/admin.py:359
+#: redbot/cogs/admin/admin.py:367
 #, docstring
-msgid "\n"
-"        Change the channel where the bot will send announcements.\n\n"
-"        If channel is left blank it defaults to the current channel.\n"
-"        "
-msgstr "\n"
-" Změnit kanál, kam bot bude posílat oznámení.\n\n"
-" Pokud je kanál prázdný, nastaví aktuální kanál.\n"
-"        "
+msgid "Change the channel where the bot will send announcements."
+msgstr "Změnit kanál, kam bude bot zasílat oznámení."
 
-#: redbot/cogs/admin/admin.py:368
+#: redbot/cogs/admin/admin.py:370
 msgid "The announcement channel has been set to {channel.mention}"
 msgstr "Kanál pro oznámení byl nastaven na {channel.mention}"
 
-#: redbot/cogs/admin/admin.py:373
+#: redbot/cogs/admin/admin.py:375
 #, docstring
 msgid "Unsets the channel for announcements."
 msgstr "Zruší kanál pro oznámení."
 
-#: redbot/cogs/admin/admin.py:398
+#: redbot/cogs/admin/admin.py:400
 #, docstring
 msgid "\n"
 "        Add or remove a selfrole from yourself.\n\n"
 "        Server admins must have configured the role as user settable.\n"
 "        NOTE: The role is case sensitive!\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        Přidat nebo odebrat self-roli.\n\n"
+"        Administrátoři serveru musí povolit nastavení role uživatelům.\n"
+"        POZNÁMKA: Název role je citlivý na velká a malá písmena!\n"
+"        "
 
-#: redbot/cogs/admin/admin.py:411
+#: redbot/cogs/admin/admin.py:413
 #, docstring
 msgid "\n"
 "        Add a selfrole to yourself.\n\n"
@@ -208,11 +214,11 @@ msgid "\n"
 "        "
 msgstr "\n"
 "        Přidá vám self-roli.\n\n"
-"        Administrátoři serveru musí mít nastavenou roli podle nastaveného uživatele.\n"
-"        POZNÁMKA: Role je citlivá na malá a velká písmena!\n"
+"        Administrátoři serveru musí povolit přiřazení role uživatelům.\n"
+"        POZNÁMKA: Název role je citlivý na velká a malá písmena!\n"
 "        "
 
-#: redbot/cogs/admin/admin.py:422
+#: redbot/cogs/admin/admin.py:424
 #, docstring
 msgid "\n"
 "        Remove a selfrole from yourself.\n\n"
@@ -220,12 +226,12 @@ msgid "\n"
 "        NOTE: The role is case sensitive!\n"
 "        "
 msgstr "\n"
-"        Odstraní vámself-roli.\n\n"
-"        Administrátoři serveru musí mít nastavenou roli podle nastaveného uživatele.\n"
-"        POZNÁMKA: Role je citlivá na malá a velká písmena!\n"
+"        Odebere vám self-roli.\n\n"
+"        Administrátoři serveru musí povolit odebrání role uživatelům.\n"
+"        POZNÁMKA: Název role je citlivý na velká a malá písmena!\n"
 "        "
 
-#: redbot/cogs/admin/admin.py:433
+#: redbot/cogs/admin/admin.py:435
 #, docstring
 msgid "\n"
 "        Lists all available selfroles.\n"
@@ -234,85 +240,126 @@ msgstr "\n"
 "        Seznam všech dostupných self-rolí.\n"
 "        "
 
-#: redbot/cogs/admin/admin.py:443
+#: redbot/cogs/admin/admin.py:445
 msgid "Available Selfroles:\n"
 "{selfroles}"
 msgstr "Dostupné self-role:\n"
 "{selfroles}"
 
-#: redbot/cogs/admin/admin.py:449
+#: redbot/cogs/admin/admin.py:451
 #, docstring
 msgid "Manage selfroles."
 msgstr "Spravovat self-role."
 
-#: redbot/cogs/admin/admin.py:454
+#: redbot/cogs/admin/admin.py:456
 #, docstring
 msgid "\n"
-"        Add a role to the list of available selfroles.\n\n"
+"        Add a role, or a selection of roles, to the list of available selfroles.\n\n"
 "        NOTE: The role is case sensitive!\n"
 "        "
 msgstr "\n"
-"        Přidá roli do seznamu dostupných self-rolí.\n\n"
-"        POZNÁMKA: Role je citlivá na malá a velká písmena!\n"
+"        Přidat roli, nebo výběr rolí, do seznamu dostupných self-roli.\n\n"
+"        POZNÁMKA: Název role je citlivý na velká a malá písmena!\n"
 "        "
 
-#: redbot/cogs/admin/admin.py:461
+#: redbot/cogs/admin/admin.py:465
 msgid "I cannot let you add {role.name} as a selfrole because that role is higher than or equal to your highest role in the Discord hierarchy."
 msgstr "Nemohu ti dovolit odebrat {role.name} jako self-roli uživateli, protože tato role je vyšší nebo rovna tvé nejvyšší roli v Discord hierarchii."
 
-#: redbot/cogs/admin/admin.py:469
-msgid "Added."
-msgstr "Přidáno."
+#: redbot/cogs/admin/admin.py:475
+msgid "The role \"{role.name}\" is already a selfrole."
+msgstr "Role \"{role.name}\" již je self-rolí."
 
-#: redbot/cogs/admin/admin.py:472
-msgid "That role is already a selfrole."
-msgstr "Tato role je již self-rolí."
+#: redbot/cogs/admin/admin.py:481
+msgid "Added {count} selfroles."
+msgstr "Přidáno {count} self-rolí."
 
-#: redbot/cogs/admin/admin.py:476
+#: redbot/cogs/admin/admin.py:483
+msgid "Added 1 selfrole."
+msgstr "Přidána 1 self-role."
+
+#: redbot/cogs/admin/admin.py:489
 #, docstring
 msgid "\n"
-"        Remove a role from the list of available selfroles.\n\n"
+"        Remove a role, or a selection of roles, from the list of available selfroles.\n\n"
 "        NOTE: The role is case sensitive!\n"
 "        "
 msgstr "\n"
-"        Odstraní roli ze seznamu dostupných self-rolí.\n\n"
-"        POZNÁMKA: Role je citlivá na malá a velká písmena!\n"
+"        Odebrat roli, nebo výběr rolí, ze seznamu dostupných self-roli.\n\n"
+"        POZNÁMKA: Název role je citlivý na velká a malá písmena!\n"
 "        "
 
-#: redbot/cogs/admin/admin.py:483
+#: redbot/cogs/admin/admin.py:498
 msgid "I cannot let you remove {role.name} from being a selfrole because that role is higher than or equal to your highest role in the Discord hierarchy."
 msgstr "Nemohu ti dovolit odebrat {role.name} uživateli, protože tato role je vyšší nebo rovna tvé nejvyšší roli v Discord hierarchii."
 
-#: redbot/cogs/admin/admin.py:491
-msgid "Removed."
-msgstr "Odstraněno."
+#: redbot/cogs/admin/admin.py:508
+msgid "Removed {count} selfroles."
+msgstr "Odebráno {count} self-rolí."
 
-#: redbot/cogs/admin/admin.py:496
+#: redbot/cogs/admin/admin.py:510
+msgid "Removed 1 selfrole."
+msgstr "Odebrána 1 self-role."
+
+#: redbot/cogs/admin/admin.py:516
+#, docstring
+msgid "Clear the list of available selfroles for this server."
+msgstr "Vymazat seznam dostupných self-rolí pro tento server."
+
+#: redbot/cogs/admin/admin.py:520
+msgid "There are currently no selfroles."
+msgstr "V současné době neexistují žádné self-role."
+
+#: redbot/cogs/admin/admin.py:523
+msgid "Are you sure you want to clear this server's selfrole list?"
+msgstr "Určitě chcete vymazat seznam dostupných self-rolí pro tento server?"
+
+#: redbot/cogs/admin/admin.py:529
+msgid "You took too long to respond."
+msgstr "Reakce vám trvala příliš dlouho."
+
+#: redbot/cogs/admin/admin.py:538
+msgid "I cannot clear the selfroles because the selfrole '{role.name}' is higher than or equal to your highest role in the Discord hierarchy."
+msgstr "Nemohu vymazat seznam self-rolí, protože self-role '{role.name}' je vyšší nebo rovna tvé nejvyšší roli v Discord hierarchii."
+
+#: redbot/cogs/admin/admin.py:544
+msgid "Selfrole list cleared."
+msgstr "Seznam self-rolí byl vymazán."
+
+#: redbot/cogs/admin/admin.py:546
+msgid "No changes have been made."
+msgstr "Nebyly provedeny žádné změny."
+
+#: redbot/cogs/admin/admin.py:551
 #, docstring
 msgid "Lock a bot to its current servers only."
-msgstr "Uzamkne bota pouze na jeho aktuální servery."
+msgstr "Omezí bota pouze na jeho aktuální servery."
 
-#: redbot/cogs/admin/admin.py:501
+#: redbot/cogs/admin/admin.py:556
 msgid "The bot is no longer serverlocked."
 msgstr "Bot již není uzamčen na server."
 
-#: redbot/cogs/admin/admin.py:503
+#: redbot/cogs/admin/admin.py:558
 msgid "The bot is now serverlocked."
-msgstr "Bot je nyní serverem uzamčen."
+msgstr "Bot je nyní omezen na aktuální servery."
 
 #: redbot/cogs/admin/announcer.py:68
 msgid "I could not announce to the following server: "
-msgstr "Nemohu oznámit následujícímu serveru: "
+msgstr "Nemohu provést oznámení na tomto serveru: "
 
 #: redbot/cogs/admin/announcer.py:70
 msgid "I could not announce to the following servers: "
-msgstr "Nemohu oznámit následujícím serverům: "
+msgstr "Nemohu provést oznámení na těchto serverech: "
 
-#: redbot/cogs/admin/converters.py:12
+#: redbot/cogs/admin/converters.py:13
 msgid "The Admin cog is not loaded."
 msgstr "Admin cog není načten."
 
-#: redbot/cogs/admin/converters.py:20
-msgid "The provided role is not a valid selfrole."
-msgstr "Daná role není platná self-role."
+#: redbot/cogs/admin/converters.py:30
+msgid "The role \"{role_name}\" is not a valid selfrole."
+msgstr "Role \"{role_name}\" není validní self-rolí."
+
+#: redbot/cogs/admin/converters.py:36
+msgid "This selfrole has more than one case insensitive match. Please ask a moderator to resolve the ambiguity, or use the role ID to reference the role."
+msgstr "Tato self-role má více než jeden stejný název. Požádejte správce o výřešení těchto nejasností nebo použijte ID role."
 

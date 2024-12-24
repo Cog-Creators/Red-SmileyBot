@@ -1,4 +1,5 @@
 AUTHOR: JennJenn
+DESCRIPTION: A trivia about computers and their components.
 A compact disc containing permanently stored data that cannot be altered?:
 - Compact Disc Read-Only Memory
 - CD-ROM
@@ -301,7 +302,7 @@ Who invented the computer mouse?:
 "[Acronyms]What does VDU stand for?":
 - Visual Display Unit
 "[Acronyms]What does modem stand for?":
-- Modulator Demodulater
+- Modulator Demodulator
 "[Acronyms]What does www stand for?":
 - World Wide Web
 "[Input/Output]Digital Camera?":
@@ -360,7 +361,7 @@ Who invented the computer mouse?:
 - BASIC
 "[Programming Languages]One of the most popular programming languages, created by James Gosling at Sun Microsystems in 1995. It is platform independent and based upon C and C++.":
 - Java
-"[Programming Languages]One of the most widely used and influentual programming languages of all time. It is an imperative and compiled language, initially developed by Dennis Ritchie and Ken Thompson between 1969 and 1973 at AT&T Bell Labs.":
+"[Programming Languages]One of the most widely used and influential programming languages of all time. It is an imperative and compiled language, initially developed by Dennis Ritchie and Ken Thompson between 1969 and 1973 at AT&T Bell Labs.":
 - C
 "[Programming Languages]One of the oldest high-level programming languages in widespread use today. It was designed by John McCarthy in 1958 and quickly became a favored programming language for artificial intelligence":
 - LISP
@@ -370,13 +371,13 @@ Who invented the computer mouse?:
 - R
 "[Programming Languages]Programming language and web application development platform invented in 1995 and purchased by Adobe in 2006. It was originally designed to connect simple HTML pages to a database.":
 - ColdFusion
-"[Programming Languages]Purely functional programming language since 1990. It was named after US mathematician and logican H. Curry and uses the Greek letter lambda as its logo.":
+"[Programming Languages]Purely functional programming language since 1990. It was named after US mathematician and logician H. Curry and uses the Greek letter lambda as its logo.":
 - Haskell
 "[Programming Languages]Scripting and object-oriented programming language developed by John H. Thompson for use in Adobe Director":
 - Lingo
 "[Programming Languages]Server-side script engine that uses the VBScript or JScript languages for dynamically generated web pages. It was created by Microsoft in the mid 1990s and succeeded by a .NET version in 2002.":
 - ASP
-"[Programming Languages]The most widespread logic programming language, desgined by Alain Colmerauer in 1972. Unlike many programming languages, it's declarative.":
+"[Programming Languages]The most widespread logic programming language, designed by Alain Colmerauer in 1972. Unlike many programming languages, it's declarative.":
 - Prolog
 "[Programming Languages]Very popular general-purpose, imperative programming language in high-performance computing (e.g. scientific use and supercomputers). It was initiated by John Backus and IBM in 1957.":
 - Fortran

@@ -4,8 +4,10 @@ from datetime import datetime
 from redbot.core.utils.chat_formatting import pagify
 import io
 import weakref
-from typing import List, Optional
+from typing import List, Optional, Union
 from .common_filters import filter_mass_mentions
+
+__all__ = ("Tunnel",)
 
 _instances = weakref.WeakValueDictionary({})
 
@@ -57,14 +59,20 @@ class Tunnel(metaclass=TunnelMeta):
     ----------
     sender: `discord.Member`
         The person who opened the tunnel
-    origin: `discord.TextChannel`
+    origin: `discord.TextChannel`, `discord.VoiceChannel`, `discord.StageChannel`, or `discord.Thread`
         The channel in which it was opened
     recipient: `discord.User`
         The user on the other end of the tunnel
     """
 
     def __init__(
-        self, *, sender: discord.Member, origin: discord.TextChannel, recipient: discord.User
+        self,
+        *,
+        sender: discord.Member,
+        origin: Union[
+            discord.TextChannel, discord.VoiceChannel, discord.StageChannel, discord.Thread
+        ],
+        recipient: discord.User,
     ):
         self.sender = sender
         self.origin = origin
@@ -124,10 +132,7 @@ class Tunnel(metaclass=TunnelMeta):
         if content:
             for page in pagify(content):
                 rets.append(await destination.send(page, files=files, embed=embed))
-                if files:
-                    del files
-                if embed:
-                    del embed
+                files = embed = None
         elif embed or files:
             rets.append(await destination.send(files=files, embed=embed))
         return rets
@@ -157,20 +162,20 @@ class Tunnel(metaclass=TunnelMeta):
 
         """
         files = []
-        max_size = 8 * 1000 * 1000
+        max_size = 26214400
         if m.attachments and sum(a.size for a in m.attachments) <= max_size:
             for a in m.attachments:
                 if images_only and a.height is None:
                     # if this is None, it's not an image
                     continue
-                _fp = io.BytesIO()
                 try:
-                    await a.save(_fp, use_cached=use_cached)
+                    file = await a.to_file()
                 except discord.HTTPException as e:
                     # this is required, because animated webp files aren't cached
                     if not (e.status == 415 and images_only and use_cached):
                         raise
-                files.append(discord.File(_fp, filename=a.filename))
+                else:
+                    files.append(file)
         return files
 
     # Backwards-compatible typo fix (GH-2496)
@@ -178,7 +183,7 @@ class Tunnel(metaclass=TunnelMeta):
 
     async def close_because_disabled(self, close_message: str):
         """
-        Sends a mesage to both ends of the tunnel that the tunnel is now closed.
+        Sends a message to both ends of the tunnel that the tunnel is now closed.
 
         Parameters
         ----------
@@ -219,9 +224,9 @@ class Tunnel(metaclass=TunnelMeta):
             the bot can't upload at the origin channel
             or can't add reactions there.
         """
-        if message.channel == self.origin and message.author == self.sender:
+        if message.channel.id == self.origin.id and message.author == self.sender:
             send_to = self.recipient
-        elif message.author == self.recipient and isinstance(message.channel, discord.DMChannel):
+        elif message.author == self.recipient and message.guild is None:
             send_to = self.origin
         else:
             return None

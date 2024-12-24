@@ -2,5 +2,5 @@ from redbot.core.bot import Red
 from .economy import Economy
 
 
-def setup(bot: Red):
-    bot.add_cog(Economy(bot))
+async def setup(bot: Red) -> None:
+    await bot.add_cog(Economy(bot))

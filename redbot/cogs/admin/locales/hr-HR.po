@@ -1,0 +1,365 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: red-discordbot\n"
+"POT-Creation-Date: 2023-06-14 02:57+0000\n"
+"Last-Translator: \n"
+"Language-Team: Croatian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.4.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Crowdin-Project: red-discordbot\n"
+"X-Crowdin-Project-ID: 289505\n"
+"X-Crowdin-Language: hr\n"
+"X-Crowdin-File-ID: 42\n"
+"Language: hr_HR\n"
+
+#: redbot/cogs/admin/admin.py:20
+msgid "I attempted to do something that Discord denied me permissions for. Your command failed to successfully complete."
+msgstr "Pokušao sam učiniti nešto za što mi je Discord uskratio dozvole. Vaša naredba nije uspješno dovršena."
+
+#: redbot/cogs/admin/admin.py:25
+msgid "I can not give {role.name} to {member.display_name} because that role is higher than or equal to my highest role in the Discord hierarchy."
+msgstr "Ne mogu dati {role.name} korisniku {member.display_name} jer je ta uloga viša ili jednaka mojoj najvišoj ulozi u Discord hijerarhiji."
+
+#: redbot/cogs/admin/admin.py:31
+msgid "I can not remove {role.name} from {member.display_name} because that role is higher than or equal to my highest role in the Discord hierarchy."
+msgstr "Ne mogu ukloniti {role.name} od {member.display_name} jer je ta uloga viša ili jednaka mojoj najvišoj ulozi u Discord hijerarhiji."
+
+#: redbot/cogs/admin/admin.py:37
+msgid "I can not edit {role.name} because that role is higher than my or equal to highest role in the Discord hierarchy."
+msgstr "Ne mogu uređivati {role.name} jer je ta uloga viša od moje ili jednaka najvišoj ulozi u Discord hijerarhiji."
+
+#: redbot/cogs/admin/admin.py:43
+msgid "I can not let you give {role.name} to {member.display_name} because that role is higher than or equal to your highest role in the Discord hierarchy."
+msgstr "Ne mogu vam dopustiti da dodate {role.name} korisniku {member.display_name} jer je ta uloga viša ili jednaka vašoj najvišoj ulozi u Discord hijerarhiji."
+
+#: redbot/cogs/admin/admin.py:49
+msgid "I can not let you remove {role.name} from {member.display_name} because that role is higher than or equal to your highest role in the Discord hierarchy."
+msgstr "Ne mogu vam dopustiti da uklonite {role.name} od {member.display_name} jer je ta uloga viša ili jednaka vašoj najvišoj ulozi u Discord hijerarhiji."
+
+#: redbot/cogs/admin/admin.py:55
+msgid "I can not let you edit {role.name} because that role is higher than or equal to your highest role in the Discord hierarchy."
+msgstr "Ne mogu vam dopustiti da uređujete {role.name} jer je ta uloga viša ili jednaka vašoj najvišoj ulozi u Discord hijerarhiji."
+
+#: redbot/cogs/admin/admin.py:61
+msgid "I need the \"Manage Roles\" permission to do that."
+msgstr "Za to trebam \"Upravljanje ulogama\" dozvolu."
+
+#: redbot/cogs/admin/admin.py:63
+msgid "I am already announcing something. If you would like to make a different announcement please use `{prefix}announce cancel` first."
+msgstr "Već nešto najavljujem. Ako želite napraviti drugačiju najavu, prvo upotrijebite `{prefix}announce cancel`."
+
+#: redbot/cogs/admin/admin.py:73
+#, docstring
+msgid "A collection of server administration utilities."
+msgstr "Zbirka usluga za administraciju servera."
+
+#: redbot/cogs/admin/admin.py:159
+msgid "{member.display_name} already has the role {role.name}."
+msgstr "{member.display_name} već ima {role.name} ulogu."
+
+#: redbot/cogs/admin/admin.py:180
+msgid "I successfully added {role.name} to {member.display_name}"
+msgstr "Uspješno sam dodao {role.name} {member.display_name}"
+
+#: redbot/cogs/admin/admin.py:190
+msgid "{member.display_name} does not have the role {role.name}."
+msgstr "{member.display_name} nema {role.name} ulogu."
+
+#: redbot/cogs/admin/admin.py:211
+msgid "I successfully removed {role.name} from {member.display_name}"
+msgstr "Uspješno sam uklonio {role.name} s {member.display_name}"
+
+#: redbot/cogs/admin/admin.py:226
+#, docstring
+msgid "\n"
+"        Add a role to a user.\n\n"
+"        Use double quotes if the role contains spaces.\n"
+"        If user is left blank it defaults to the author of the command.\n"
+"        "
+msgstr "\n"
+"        Dodajte ulogu korisniku.\n\n"
+"        Koristite navodnike ako uloga sadrži razmake.\n"
+"        Ako je ime korisnika ostavljeno prazno, zadati će se autor naredbe.\n"
+"        "
+
+#: redbot/cogs/admin/admin.py:244
+#, docstring
+msgid "\n"
+"        Remove a role from a user.\n\n"
+"        Use double quotes if the role contains spaces.\n"
+"        If user is left blank it defaults to the author of the command.\n"
+"        "
+msgstr "\n"
+"        Uklonite ulogu s korisnika.\n\n"
+"        Koristite navodnike ako uloga sadrži razmake.\n"
+"        Ako je ime korisnika ostavljeno prazno, zadati će se autor naredbe.\n"
+"        "
+
+#: redbot/cogs/admin/admin.py:256
+#, docstring
+msgid "Edit role settings."
+msgstr "Uredite postavke uloge."
+
+#: redbot/cogs/admin/admin.py:263
+#, docstring
+msgid "\n"
+"        Edit a role's colour.\n\n"
+"        Use double quotes if the role contains spaces.\n"
+"        Colour must be in hexadecimal format.\n"
+"        [Online colour picker](http://www.w3schools.com/colors/colors_picker.asp)\n\n"
+"        Examples:\n"
+"            `[p]editrole colour \"The Transistor\" #ff0000`\n"
+"            `[p]editrole colour Test #ff9900`\n"
+"        "
+msgstr "\n"
+"        Uredite boju uloge.\n\n"
+"        Koristite navodnike ako uloga sadrži razmake.\n"
+"        Boja mora biti u heksadecimalnom formatu.\n"
+"        [Online odabir boja](http://www.w3schools.com/colors/colors_picker.asp)\n\n"
+"        Primjeri:\n"
+"            `[p]editrole colour \"The Transistor\" #ff0000`\n"
+"            `[p]editrole colour Test #ff9900`\n"
+"        "
+
+#: redbot/cogs/admin/admin.py:275
+msgid "{author} ({author.id}) changed the colour of role '{role.name}'"
+msgstr ""
+
+#: redbot/cogs/admin/admin.py:294 redbot/cogs/admin/admin.py:327
+msgid "Done."
+msgstr "Gotovo."
+
+#: redbot/cogs/admin/admin.py:298
+#, docstring
+msgid "\n"
+"        Edit a role's name.\n\n"
+"        Use double quotes if the role or the name contain spaces.\n\n"
+"        Example:\n"
+"            `[p]editrole name \"The Transistor\" Test`\n"
+"        "
+msgstr "\n"
+"        Uredite naziv uloge.\n\n"
+"        Koristite navodnike ako uloga ili naziv uloge sadrže razmake.\n\n"
+"        Primjer:\n"
+"            `[p]editrole name \"The Transistor\" Test`\n"
+"        "
+
+#: redbot/cogs/admin/admin.py:308
+msgid "{author} ({author.id}) changed the name of role '{old_name}' to '{name}'"
+msgstr ""
+
+#: redbot/cogs/admin/admin.py:332
+#, docstring
+msgid "Announce a message to all servers the bot is in."
+msgstr "Najavite poruku svim serverima u kojima se bot nalazi."
+
+#: redbot/cogs/admin/admin.py:339
+msgid "The announcement has begun."
+msgstr "Najava je počela."
+
+#: redbot/cogs/admin/admin.py:346
+#, docstring
+msgid "Cancel a running announce."
+msgstr "Otkažite aktivnu najavu."
+
+#: redbot/cogs/admin/admin.py:348
+msgid "There is no currently running announcement."
+msgstr "Trenutno nema aktivne najave."
+
+#: redbot/cogs/admin/admin.py:351
+msgid "The current announcement has been cancelled."
+msgstr "Trenutna najava je otkazana."
+
+#: redbot/cogs/admin/admin.py:357
+#, docstring
+msgid "Change how announcements are sent in this guild."
+msgstr "Promijenite način slanja najava u ovom serveru."
+
+#: redbot/cogs/admin/admin.py:367
+#, docstring
+msgid "Change the channel where the bot will send announcements."
+msgstr ""
+
+#: redbot/cogs/admin/admin.py:370
+msgid "The announcement channel has been set to {channel.mention}"
+msgstr "{channel.mention} je postavljen kao kanal za najave"
+
+#: redbot/cogs/admin/admin.py:375
+#, docstring
+msgid "Unsets the channel for announcements."
+msgstr "Poništava kanal za najave."
+
+#: redbot/cogs/admin/admin.py:400
+#, docstring
+msgid "\n"
+"        Add or remove a selfrole from yourself.\n\n"
+"        Server admins must have configured the role as user settable.\n"
+"        NOTE: The role is case sensitive!\n"
+"        "
+msgstr "\n"
+"        Dodajte ili uklonite samo-ulogu sa sebe.\n\n"
+"        Administratori servera moraju konfigurirati ulogu kao korisnički podesivu.\n"
+"        NAPOMENA: Uloga je osjetljiva na velika i mala slova!\n"
+"        "
+
+#: redbot/cogs/admin/admin.py:413
+#, docstring
+msgid "\n"
+"        Add a selfrole to yourself.\n\n"
+"        Server admins must have configured the role as user settable.\n"
+"        NOTE: The role is case sensitive!\n"
+"        "
+msgstr "\n"
+"        Dodajte si samo-ulogu.\n\n"
+"        Administratori servera moraju konfigurirati ulogu kao korisnički podesivu.\n"
+"        NAPOMENA: Uloga je osjetljiva na velika i mala slova!\n"
+"        "
+
+#: redbot/cogs/admin/admin.py:424
+#, docstring
+msgid "\n"
+"        Remove a selfrole from yourself.\n\n"
+"        Server admins must have configured the role as user settable.\n"
+"        NOTE: The role is case sensitive!\n"
+"        "
+msgstr "\n"
+"        Uklonite samo-ulogu sa sebe.\n\n"
+"        Administratori servera moraju konfigurirati ulogu kao korisnički podesivu.\n"
+"        NAPOMENA: Uloga je osjetljiva na velika i mala slova!\n"
+"        "
+
+#: redbot/cogs/admin/admin.py:435
+#, docstring
+msgid "\n"
+"        Lists all available selfroles.\n"
+"        "
+msgstr "\n"
+"        Navodi sve dostupne samo-uloge.\n"
+"        "
+
+#: redbot/cogs/admin/admin.py:445
+msgid "Available Selfroles:\n"
+"{selfroles}"
+msgstr "Dostupne samo-uloge:\n"
+"{selfroles}"
+
+#: redbot/cogs/admin/admin.py:451
+#, docstring
+msgid "Manage selfroles."
+msgstr "Upravljajte samo-ulogama."
+
+#: redbot/cogs/admin/admin.py:456
+#, docstring
+msgid "\n"
+"        Add a role, or a selection of roles, to the list of available selfroles.\n\n"
+"        NOTE: The role is case sensitive!\n"
+"        "
+msgstr "\n"
+"        Dodajte ulogu ili izbor uloga u popis dostupnih samo-uloga.\n\n"
+"        NAPOMENA: Uloga je osjetljiva na velika i mala slova!\n"
+"        "
+
+#: redbot/cogs/admin/admin.py:465
+msgid "I cannot let you add {role.name} as a selfrole because that role is higher than or equal to your highest role in the Discord hierarchy."
+msgstr "Ne mogu vam dopustiti da dodate {role.name} kao samo-ulogu jer je ta uloga viša ili jednaka vašoj najvišoj ulozi u Discord hijerarhiji."
+
+#: redbot/cogs/admin/admin.py:475
+msgid "The role \"{role.name}\" is already a selfrole."
+msgstr "Uloga \"{role.name}\" je već samo-uloga."
+
+#: redbot/cogs/admin/admin.py:481
+msgid "Added {count} selfroles."
+msgstr "Dodano {count} samo-uloga."
+
+#: redbot/cogs/admin/admin.py:483
+msgid "Added 1 selfrole."
+msgstr "Dodana jedna samo-uloga."
+
+#: redbot/cogs/admin/admin.py:489
+#, docstring
+msgid "\n"
+"        Remove a role, or a selection of roles, from the list of available selfroles.\n\n"
+"        NOTE: The role is case sensitive!\n"
+"        "
+msgstr "\n"
+"        Uklonite ulogu ili izbor uloga s popisa dostupnih samo-uloga.\n\n"
+"        NAPOMENA: Uloga je osjetljiva na velika i mala slova!\n"
+"        "
+
+#: redbot/cogs/admin/admin.py:498
+msgid "I cannot let you remove {role.name} from being a selfrole because that role is higher than or equal to your highest role in the Discord hierarchy."
+msgstr "Ne mogu vam dopustiti da uklonite {role.name} kao samo-ulogu jer je ta uloga viša ili jednaka vašoj najvišoj ulozi u Discord hijerarhiji."
+
+#: redbot/cogs/admin/admin.py:508
+msgid "Removed {count} selfroles."
+msgstr "Uklonjeno {count} samo-uloga."
+
+#: redbot/cogs/admin/admin.py:510
+msgid "Removed 1 selfrole."
+msgstr "Uklonjena jedna samo-uloga."
+
+#: redbot/cogs/admin/admin.py:516
+#, docstring
+msgid "Clear the list of available selfroles for this server."
+msgstr "Izbrišite popis dostupnih samo-uloga za ovaj server."
+
+#: redbot/cogs/admin/admin.py:520
+msgid "There are currently no selfroles."
+msgstr "Trenutno nema samo-uloga."
+
+#: redbot/cogs/admin/admin.py:523
+msgid "Are you sure you want to clear this server's selfrole list?"
+msgstr "Jeste li sigurni da želite izbrisati serverov popis samo-uloga?"
+
+#: redbot/cogs/admin/admin.py:529
+msgid "You took too long to respond."
+msgstr "Trebalo vam je predugo da odgovorite."
+
+#: redbot/cogs/admin/admin.py:538
+msgid "I cannot clear the selfroles because the selfrole '{role.name}' is higher than or equal to your highest role in the Discord hierarchy."
+msgstr "Ne mogu izbrisati samo-uloge jer je samo-uloga '{role.name}' viša ili jednaka vašoj najvišoj ulozi u Discord hijerarhiji."
+
+#: redbot/cogs/admin/admin.py:544
+msgid "Selfrole list cleared."
+msgstr "Popis samo-uloga je izbrisan."
+
+#: redbot/cogs/admin/admin.py:546
+msgid "No changes have been made."
+msgstr "Nisu napravljene ikakve promjene."
+
+#: redbot/cogs/admin/admin.py:551
+#, docstring
+msgid "Lock a bot to its current servers only."
+msgstr "Zaključaj bota samo na njegove trenutne servere."
+
+#: redbot/cogs/admin/admin.py:556
+msgid "The bot is no longer serverlocked."
+msgstr "Bot više nije zaključan na servere u kojima se nalazi."
+
+#: redbot/cogs/admin/admin.py:558
+msgid "The bot is now serverlocked."
+msgstr "Bot je sada zaključan na servere u kojima se nalazi."
+
+#: redbot/cogs/admin/announcer.py:68
+msgid "I could not announce to the following server: "
+msgstr "Nisam mogao objaviti sljedećem serveru: "
+
+#: redbot/cogs/admin/announcer.py:70
+msgid "I could not announce to the following servers: "
+msgstr "Nisam mogao objaviti sljedećim serverima: "
+
+#: redbot/cogs/admin/converters.py:13
+msgid "The Admin cog is not loaded."
+msgstr "Admin Cog nije učitan."
+
+#: redbot/cogs/admin/converters.py:30
+msgid "The role \"{role_name}\" is not a valid selfrole."
+msgstr "Uloga \"{role_name}\" nije važeća samo-uloga."
+
+#: redbot/cogs/admin/converters.py:36
+msgid "This selfrole has more than one case insensitive match. Please ask a moderator to resolve the ambiguity, or use the role ID to reference the role."
+msgstr ""
+

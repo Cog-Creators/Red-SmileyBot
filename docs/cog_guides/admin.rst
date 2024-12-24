@@ -389,7 +389,7 @@ announceset channel
 
 .. code-block:: none
 
-    [p]announceset channel [channel]
+    [p]announceset channel <channel>
 
 **Description**
 
@@ -397,8 +397,8 @@ Sets the channel where the bot owner announcements will be sent.
 
 **Arguments**
 
-* ``[channel]``: The channel that will be used for bot announcements.
-  |channel-input| Defaults to where you typed the command.
+* ``<channel>``: The channel that will be used for bot announcements.
+  |channel-input|
 
 .. _admin-command-announceset-clearchannel:
 

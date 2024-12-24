@@ -341,7 +341,7 @@ bankset maxbal
 
 Defines the maximum amount of money a user can have with the bot.
 
-If an user reaches this limit, he will be unable to gain more money.
+If a user reaches this limit, they will be unable to gain more money.
 
 **Arguments**
 
@@ -1173,7 +1173,7 @@ embedset channel
 
 .. code-block:: none
 
-    [p]embedset channel [enabled]
+    [p]embedset channel <channel> [enabled]
 
 **Description**
 
@@ -1187,10 +1187,12 @@ If enabled is left blank, the setting will be unset and the guild default will b
 To see full evaluation order of embed settings, run ``[p]help embedset``.
 
 **Examples:**
-    - ``[p]embedset channel False`` - Disables embeds in this channel.
-    - ``[p]embedset channel`` - Resets value to use guild default.
+    - ``[p]embedset channel #text-channel False`` - Disables embeds in the #text-channel.
+    - ``[p]embedset channel #forum-channel disable`` - Disables embeds in the #forum-channel.
+    - ``[p]embedset channel #text-channel`` - Resets value to use guild default in the #text-channel.
 
 **Arguments:**
+    - ``<channel>`` - The text, voice, stage, or forum channel to set embed setting for.
     - ``[enabled]`` - Whether to use embeds in this channel. Leave blank to reset to default.
 
 .. _core-command-embedset-command:
@@ -1274,7 +1276,7 @@ embedset command server
 
 **Description**
 
-Sets a commmand's embed setting for the current server.
+Sets a command's embed setting for the current server.
 
 If set, this is used instead of the server default to determine whether or not to use embeds.
 
@@ -1472,9 +1474,6 @@ helpset maxpages
 **Description**
 
 Set the maximum number of help pages sent in a server channel.
-
-.. Note:: This setting does not apply to menu help.
-
 
 If a help message contains more pages than this value, the help message will
 be sent to the command author via DM. This is to help reduce spam in server
@@ -1681,8 +1680,11 @@ Set the tagline to be used.
 The maximum tagline length is 2048 characters.
 This setting only applies to embedded help. If no tagline is specified, the default will be used instead.
 
+You can use ``[p]`` in your tagline, which will be replaced by the bot's prefix.
+
 **Examples:**
     - ``[p]helpset tagline Thanks for using the bot!``
+    - ``[p]helpset tagline Use [p]invite to add me to your server.``
     - ``[p]helpset tagline`` - Resets the tagline to the default.
 
 **Arguments:**
@@ -1698,24 +1700,26 @@ helpset usemenus
 
 .. code-block:: none
 
-    [p]helpset usemenus [use_menus]
+    [p]helpset usemenus <"buttons"|"reactions"|"select"|"selectonly"|"disable">
 
 **Description**
 
 Allows the help command to be sent as a paginated menu instead of separate
 messages.
 
-When enabled, ``[p]help`` will only show one page at a time and will use reactions to navigate between pages.
+When "reactions", "buttons", "select", or "selectonly" is passed, ``[p]help`` will
+only show one page at a time and will use the associated control scheme to navigate between pages.
 
-This defaults to False.
-Using this without a setting will toggle.
-
- **Examples:**
-    - ``[p]helpset usemenues True`` - Enables using menus.
-    - ``[p]helpset usemenues`` - Toggles the value.
+**Examples:**
+    - ``[p]helpset usemenus reactions`` - Enables using reaction menus.
+    - ``[p]helpset usemenus buttons`` - Enables using button menus.
+    - ``[p]helpset usemenus select`` - Enables buttons with a select menu.
+    - ``[p]helpset usemenus selectonly`` - Enables a select menu only on help.
+    - ``[p]helpset usemenus disable`` - Disables help menus.
 
 **Arguments:**
-    - ``[use_menus]`` - Whether to use menus. Leave blank to toggle.
+    - ``<"buttons"|"reactions"|"select"|"selectonly"|"disable">`` - Whether to use ``buttons``,
+      ``reactions``, ``select``, ``selectonly``, or no menus.
 
 .. _core-command-helpset-usetick:
 
@@ -1842,9 +1846,9 @@ ignore channel
 
 **Description**
 
-Ignore commands in the channel or category.
+Ignore commands in the channel, thread, or category.
 
-Defaults to the current channel.
+Defaults to the current thread or channel.
 
 .. Note:: Owners, Admins, and those with Manage Channel permissions override ignored channels.
 
@@ -1856,7 +1860,7 @@ Defaults to the current channel.
     - ``[p]ignore channel 356236713347252226`` - Also accepts IDs.
 
 **Arguments:**
-    - ``<channel>`` - The channel to ignore. Can be a category channel.
+    - ``<channel>`` - The channel to ignore. This can also be a thread or category channel.
 
 .. _core-command-ignore-list:
 
@@ -2348,11 +2352,15 @@ modlogset cases
 
 **Description**
 
-Enable or disable case creation for a mod action.
+Enable or disable case creation for a mod action, like disabling warnings, enabling bans, etc.
 
-**Arguments**
+**Examples:**
+    - ``[p]modlogset cases kick`` - Enables/disables modlog messages for kicks.
+    - ``[p]modlogset cases ban`` - Enables/disables modlog messages for bans.
 
-* ``[action]``: The action to enable or disable case creation for.
+**Arguments:**
+    - ``[action]`` - The type of mod action to be enabled/disabled for case creation.
+
 
 .. _core-command-modlogset-modlog:
 
@@ -2859,7 +2867,7 @@ Supports either an attachment or an image URL.
 **Examples:**
     - ``[p]set bot avatar`` - With an image attachment, this will set the avatar.
     - ``[p]set bot avatar`` - Without an attachment, this will show the command help.
-    - ``[p]set bot avatar https://links.flaree.xyz/k95`` - Sets the avatar to the provided url.
+    - ``[p]set bot avatar https://avatars.githubusercontent.com/u/23690422`` - Sets the avatar to the provided url.
 
 **Arguments:**
     - ``[url]`` - An image url to be used as an avatar. Leave blank when uploading an attachment.
@@ -2886,6 +2894,57 @@ Removes Red's avatar.
 
 **Example:**
     - ``[p]set bot avatar remove``
+
+.. _core-command-set-bot-banner:
+
+""""""""""""""
+set bot banner
+""""""""""""""
+
+.. note:: |owner-lock|
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]set bot banner [url]
+
+**Description**
+
+Sets Red's banner
+
+Supports either an attachment or an image URL.
+
+**Examples:**
+    - ``[p]set bot banner`` - With an image attachment, this will set the banner.
+    - ``[p]set bot banner`` - Without an attachment, this will show the command help.
+    - ``[p]set bot banner https://opengraph.githubassets.com`` - Sets the banner to the provided url.
+
+**Arguments:**
+    - ``[url]`` - An image url to be used as an banner. Leave blank when uploading an attachment.
+
+.. _core-command-set-bot-banner-remove:
+
+"""""""""""""""""""""
+set bot banner remove
+"""""""""""""""""""""
+
+.. note:: |owner-lock|
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]set bot banner remove
+
+.. tip:: Alias: ``set bot banner clear``
+
+**Description**
+
+Removes Red's banner.
+
+**Example:**
+    - ``[p]set bot banner remove``
 
 .. _core-command-set-bot-custominfo:
 
@@ -3073,6 +3132,35 @@ This is only applied to the current server and not globally.
 
 **Arguments:**
     - ``[time]`` - The seconds to wait before deleting the command message. Use -1 to disable.
+
+.. _core-command-set-errormsg:
+
+""""""""""""
+set errormsg
+""""""""""""
+
+.. note:: |owner-lock|
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]set errormsg [msg]
+
+**Description**
+
+Set the message that will be sent on uncaught bot errors.
+
+To include the command name in the message, use the ``{command}`` placeholder.
+
+If you omit the ``msg`` argument, the message will be reset to the default one.
+
+**Examples:**
+    - ``[p]set errormsg`` - Resets the error message back to the default: "Error in command '{command}'.". If the command invoker is one of the bot owners, the message will also include "Check your console or logs for details.".
+    - ``[p]set errormsg Oops, the command {command} has failed! Please try again later.`` - Sets the error message to a custom one.
+
+**Arguments:**
+    - ``[msg]`` - The custom error message. Must be less than 1000 characters. Omit to reset to the default one.
 
 .. _core-command-set-fuzzy:
 
@@ -3639,7 +3727,7 @@ set serverprefix
 
 .. code-block:: none
 
-    [p]set serverprefix [prefixes...]
+    [p]set serverprefix [server] [prefixes...]
 
 .. tip:: Alias: ``set serverprefixes``
 
@@ -3658,8 +3746,10 @@ Sets Red's server prefix(es).
     - ``[p]set serverprefix "! "`` - Quotes are needed to use spaces in prefixes.
     - ``[p]set serverprefix "@Red "`` - This uses a mention as the prefix.
     - ``[p]set serverprefix ! ? .`` - Sets multiple prefixes.
+    - ``[p]set serverprefix "Red - Discord Bot" ?`` - Sets the prefix for a specific server. Quotes are needed to use spaces in the server name.
 
 **Arguments:**
+    - ``[server]`` - The server to set the prefix for. Defaults to current server.
     - ``[prefixes...]`` - The prefixes the bot will respond to on this server. Leave blank to clear server prefixes.
 
 .. _core-command-set-showsettings:
@@ -3672,11 +3762,16 @@ set showsettings
 
 .. code-block:: none
 
-    [p]set showsettings 
+    [p]set showsettings [server]
 
 **Description**
 
 Show the current settings for Red.
+
+Accepts optional server parameter to allow prefix recovery.
+
+**Arguments:**
+    - ``[server]`` - The server to show the settings for. Defaults to current server, or no server in a DM context.
 
 .. _core-command-set-status:
 
@@ -3724,6 +3819,35 @@ Maximum length for a competing status is 128 characters.
 
 **Arguments:**
     - ``[competing]`` - The text to follow ``Competing in``. Leave blank to clear the current activity status.
+
+.. _core-command-set-status-custom:
+
+"""""""""""""""""
+set status custom
+"""""""""""""""""
+
+.. note:: |owner-lock|
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]set status custom [text]
+
+**Description**
+
+Sets Red's custom status.
+
+This will appear as ``<text>``.
+
+Maximum length for a custom status is 128 characters.
+
+**Examples:**
+    - ``[p]set status custom`` - Clears the activity status.
+    - ``[p]set status custom Running cogs...``
+
+**Arguments:**
+    - ``[text]`` - The custom status text. Leave blank to clear the current activity status.
 
 .. _core-command-set-status-dnd:
 
@@ -3953,6 +4077,33 @@ Otherwise, the colour used will be the colour of the bot's top role.
 
 **Example:**
     - ``[p]set usebotcolour``
+    
+.. _core-command-set-usebuttons:
+
+""""""""""""""
+set usebuttons
+""""""""""""""
+
+.. note:: |owner-lock|
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]set usebuttons [use_buttons]
+    
+**Description**
+
+Set a global bot variable for using buttons in menus. When enabled, all usage of
+cores menus API will use buttons instead of reactions. This defaults to False.
+Using this without a setting will toggle.
+
+**Examples:**
+- ``[p]set usebuttons True`` - Enables using buttons.
+- ``[p]helpset usebuttons`` - Toggles the value.
+
+**Arguments:**
+    - ``[use_buttons]`` - Whether to use buttons. Leave blank to toggle.
 
 .. _core-command-shutdown:
 
@@ -3982,6 +4133,159 @@ This is the recommended method for shutting down the bot.
 
 **Arguments:**
     - ``[silently]`` - Whether to skip sending the shutdown message. Defaults to False.
+
+.. _core-command-slash:
+
+^^^^^
+slash
+^^^^^
+
+.. note:: |owner-lock|
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]slash 
+
+**Description**
+
+Base command for managing what application commands are able to be used on Red.
+
+.. _core-command-slash-disable:
+
+"""""""""""""
+slash disable
+"""""""""""""
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]slash disable <command_name> [command_type]
+    
+**Description**
+
+Marks an application command as being disabled, preventing it from being added to the bot.
+See commands available to disable with ``[p]slash list``. This command does NOT sync the
+enabled commands with Discord, that must be done manually with ``[p]slash sync`` for
+commands to appear in users' clients.
+
+**Arguments:**
+    - ``<command_name>`` - The command name to disable. Only the top level name of a group command should be used.
+    - ``[command_type]`` - What type of application command to disable. Must be one of ``slash``, ``message``, or ``user``. Defaults to ``slash``.
+
+.. _core-command-slash-disablecog:
+
+""""""""""""""""
+slash disablecog
+""""""""""""""""
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]slash disablecog <cog_name>
+    
+**Description**
+
+Marks all application commands in a cog as being disabled, preventing them from being
+added to the bot. See a list of cogs with application commands with ``[p]slash list``.
+This command does NOT sync the enabled commands with Discord, that must be done manually
+with ``[p]slash sync`` for commands to appear in users' clients.
+
+**Arguments:**
+    - ``<cog_name>`` - The cog to disable commands from. This argument is case sensitive.
+
+.. _core-command-slash-enable:
+
+""""""""""""
+slash enable
+""""""""""""
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]slash enable <command_name> [command_type]
+    
+**Description**
+
+Marks an application command as being enabled, allowing it to be added to the bot.
+See commands available to enable with ``[p]slash list``. This command does NOT sync the
+enabled commands with Discord, that must be done manually with ``[p]slash sync`` for
+commands to appear in users' clients.
+
+**Arguments:**
+    - ``<command_name>`` - The command name to enable. Only the top level name of a group command should be used.
+    - ``[command_type]`` - What type of application command to enable. Must be one of ``slash``, ``message``, or ``user``. Defaults to ``slash``.
+
+.. _core-command-slash-enablecog:
+
+"""""""""""""""
+slash enablecog
+"""""""""""""""
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]slash enablecog <cog_name>
+    
+**Description**
+
+Marks all application commands in a cog as being enabled, allowing them to be
+added to the bot. See a list of cogs with application commands with ``[p]slash list``.
+This command does NOT sync the enabled commands with Discord, that must be done manually
+with ``[p]slash sync`` for commands to appear in users' clients.
+
+**Arguments:**
+    - ``<cog_name>`` - The cog to enable commands from. This argument is case sensitive.
+
+.. _core-command-slash-list:
+
+""""""""""
+slash list
+""""""""""
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]slash list
+    
+**Description**
+
+List the slash commands the bot can see, and whether or not they are enabled.
+
+This command shows the state that will be changed to when ``[p]slash sync`` is run.
+Commands from the same cog are grouped, with the cog name as the header.
+
+The prefix denotes the state of the command:
+- Commands starting with ``- `` have not yet been enabled.
+- Commands starting with ``+ `` have been manually enabled.
+- Commands starting with ``++`` have been enabled by the cog author, and cannot be disabled.
+
+.. _core-command-slash-sync:
+
+""""""""""
+slash sync
+""""""""""
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]slash sync [guild]
+    
+**Description**
+
+Syncs the slash settings to discord.
+Settings from ``[p]slash list`` will be synced with discord, changing what commands appear for users.
+This should be run sparingly, make all necessary changes before running this command.
+        
+**Arguments:**
+    - ``[guild]`` - If provided, syncs commands for that guild. Otherwise, syncs global commands.
 
 .. _core-command-traceback:
 
@@ -4045,9 +4349,9 @@ unignore channel
 
 **Description**
 
-Remove a channel or category from the ignore list.
+Remove a channel, thread, or category from the ignore list.
 
-Defaults to the current channel.
+Defaults to the current thread or channel.
 
 **Examples:**
     - ``[p]unignore channel #general`` - Unignores commands in the #general channel.
@@ -4056,7 +4360,7 @@ Defaults to the current channel.
     - ``[p]unignore channel 356236713347252226`` - Also accepts IDs. Use this method to unignore categories.
 
 **Arguments:**
-    - ``<channel>`` - The channel to unignore. This can be a category channel.
+    - ``<channel>`` - The channel to unignore. This can also be a thread or category channel.
 
 .. _core-command-unignore-server:
 

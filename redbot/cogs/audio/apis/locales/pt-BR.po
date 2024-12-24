@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2021-05-18 22:56+0000\n"
+"POT-Creation-Date: 2022-03-16 16:42+0000\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese, Brazilian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: red-discordbot\n"
 "X-Crowdin-Project-ID: 289505\n"
@@ -15,50 +15,51 @@ msgstr ""
 "X-Crowdin-File-ID: 698\n"
 "Language: pt_BR\n"
 
-#: redbot/cogs/audio/apis/interface.py:276
-#: redbot/cogs/audio/apis/interface.py:606
+#: redbot/cogs/audio/apis/interface.py:270
+#: redbot/cogs/audio/apis/interface.py:600
 msgid "Failing to get tracks, skipping remaining."
-msgstr "Falha ao obter as faixas; saltando as faixas restantes."
+msgstr "Falha ao obter as faixas; pulando as faixas restantes."
 
-#: redbot/cogs/audio/apis/interface.py:309
+#: redbot/cogs/audio/apis/interface.py:303
 #: redbot/cogs/audio/apis/spotify.py:175
 msgid "The Spotify API key or client secret has not been set properly. \n"
 "Use `{prefix}audioset spotifyapi` for instructions."
-msgstr ""
+msgstr "A chave de API do Spotify ou segredo do cliente não foram definidos corretamente. \n"
+"Use `{prefix}audioset spotifyapi` para mais instruções."
 
-#: redbot/cogs/audio/apis/interface.py:351
+#: redbot/cogs/audio/apis/interface.py:345
 msgid "This doesn't seem to be a valid Spotify playlist/album URL or code."
-msgstr ""
+msgstr "Esta não parece ser uma URL ou código válido de uma lista/álbum do Spotify."
 
-#: redbot/cogs/audio/apis/interface.py:477
+#: redbot/cogs/audio/apis/interface.py:471
 msgid "This doesn't seem to be a supported Spotify URL or code."
 msgstr "Isto não parece ser uma URL ou código do Spotify válido."
 
-#: redbot/cogs/audio/apis/interface.py:567
+#: redbot/cogs/audio/apis/interface.py:561
 msgid "The connection was reset while loading the playlist."
 msgstr "A conexão foi redefinida durante o carregamento da lista de reprodução."
 
-#: redbot/cogs/audio/apis/interface.py:578
+#: redbot/cogs/audio/apis/interface.py:572
 msgid "Player timeout, skipping remaining tracks."
-msgstr "Tempo limite do reprodutor atingido; saltando as faixas restantes."
+msgstr "Tempo limite do reprodutor atingido; pulando as faixas restantes."
 
-#: redbot/cogs/audio/apis/interface.py:672
+#: redbot/cogs/audio/apis/interface.py:665
 msgid " {bad_tracks} tracks cannot be queued."
-msgstr ""
+msgstr " {bad_tracks} faixas não puderam ser enfileiradas."
 
-#: redbot/cogs/audio/apis/interface.py:680
+#: redbot/cogs/audio/apis/interface.py:673
 msgid "Playlist Enqueued"
 msgstr "Lista de reprodução enfileirada"
 
-#: redbot/cogs/audio/apis/interface.py:681
+#: redbot/cogs/audio/apis/interface.py:674
 msgid "Added {num} tracks to the queue.{maxlength_msg}"
-msgstr "{num} faixas enfileiradas.{maxlength_msg}"
+msgstr "{num} faixas adicionadas à fila.{maxlength_msg}"
 
-#: redbot/cogs/audio/apis/interface.py:687
+#: redbot/cogs/audio/apis/interface.py:680
 msgid "{time} until start of playlist playback: starts at #{position} in queue"
 msgstr "{time} até o início da reprodução da lista: começa na posição #{position} da fila"
 
-#: redbot/cogs/audio/apis/interface.py:698
+#: redbot/cogs/audio/apis/interface.py:691
 msgid "Nothing found.\n"
 "The YouTube API key may be invalid or you may be rate limited on YouTube's search service.\n"
 "Check the YouTube API key again and follow the instructions at `{prefix}audioset youtubeapi`."
@@ -69,10 +70,13 @@ msgstr "Nada encontrado.\n"
 #: redbot/cogs/audio/apis/youtube.py:62
 msgid "Your YouTube Data API token is invalid.\n"
 "Check the YouTube API key again and follow the instructions at `{prefix}audioset youtubeapi`."
-msgstr ""
+msgstr "Seu token API de dados do YouTube é inválido.\n"
+"Verifique novamente a chave de API do YouTube e siga as instruções em `{prefix}audioset youtubeapi`."
 
 #: redbot/cogs/audio/apis/youtube.py:74
 msgid "YouTube API error code: 403\n"
 "Your YouTube API key may have reached the account's query limit for today. Please check <https://developers.google.com/youtube/v3/getting-started#quota> for more information."
-msgstr ""
+msgstr "YouTube API código do erro: 403\n"
+"Sua chave API do YouTube pode ter atingido o limite de buscas diário. Por favor, verifique\n"
+"<https://developers.google.com/youtube/v3/getting-started#quota> para mais informações."
 

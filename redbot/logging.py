@@ -10,7 +10,7 @@ from datetime import datetime  # This clearly never leads to confusion...
 from os import isatty
 
 import rich
-from pygments.styles.monokai import MonokaiStyle
+from pygments.styles.monokai import MonokaiStyle  # DEP-WARN
 from pygments.token import (
     Comment,
     Error,
@@ -22,16 +22,14 @@ from pygments.token import (
     Token,
 )
 from rich._log_render import LogRender  # DEP-WARN
-from rich.console import render_group
-from rich.containers import Renderables
+from rich.console import group
 from rich.highlighter import NullHighlighter
 from rich.logging import RichHandler
 from rich.style import Style
-from rich.syntax import ANSISyntaxTheme, PygmentsSyntaxTheme
-from rich.table import Table
+from rich.syntax import ANSISyntaxTheme, PygmentsSyntaxTheme  # DEP-WARN
 from rich.text import Text
 from rich.theme import Theme
-from rich.traceback import PathHighlighter, Traceback
+from rich.traceback import PathHighlighter, Traceback  # DEP-WARN
 
 
 MAX_OLD_LOGS = 8
@@ -151,7 +149,8 @@ class FixedMonokaiStyle(MonokaiStyle):
 
 
 class RedTraceback(Traceback):
-    @render_group()
+    # DEP-WARN
+    @group()
     def _render_stack(self, stack):
         for obj in super()._render_stack.__wrapped__(self, stack):
             if obj != "":
@@ -282,13 +281,10 @@ class RedRichHandler(RichHandler):
 
 def init_logging(level: int, location: pathlib.Path, cli_flags: argparse.Namespace) -> None:
     root_logger = logging.getLogger()
-
-    base_logger = logging.getLogger("red")
-    base_logger.setLevel(level)
+    root_logger.setLevel(level)
+    # DEBUG logging for discord.py is a bit too ridiculous :)
     dpy_logger = logging.getLogger("discord")
-    dpy_logger.setLevel(logging.WARNING)
-    warnings_logger = logging.getLogger("py.warnings")
-    warnings_logger.setLevel(logging.WARNING)
+    dpy_logger.setLevel(logging.INFO)
 
     rich_console = rich.get_console()
     rich.reconfigure(tab_size=4)
@@ -298,6 +294,8 @@ def init_logging(level: int, location: pathlib.Path, cli_flags: argparse.Namespa
                 "log.time": Style(dim=True),
                 "logging.level.warning": Style(color="yellow"),
                 "logging.level.critical": Style(color="white", bgcolor="red"),
+                "logging.level.verbose": Style(color="magenta", italic=True, dim=True),
+                "logging.level.trace": Style(color="white", italic=True, dim=True),
                 "repr.number": Style(color="cyan"),
                 "repr.url": Style(underline=True, italic=True, bold=False, color="cyan"),
             }

@@ -4,7 +4,7 @@ from typing import Optional
 import aiohttp
 
 from redbot.core.i18n import Translator, cog_i18n
-from redbot.core import checks, Config, commands
+from redbot.core import Config, commands
 from redbot.core.commands import UserInputOptional
 
 _ = Translator("Image", __file__)
@@ -24,20 +24,20 @@ class Image(commands.Cog):
         self.session = aiohttp.ClientSession()
         self.imgur_base_url = "https://api.imgur.com/3/"
 
-    def cog_unload(self):
-        self.session.detach()
-
-    async def red_delete_data_for_user(self, **kwargs):
-        """ Nothing to delete """
-        return
-
-    async def initialize(self) -> None:
+    async def cog_load(self) -> None:
         """Move the API keys from cog stored config to core bot config if they exist."""
         imgur_token = await self.config.imgur_client_id()
         if imgur_token is not None:
             if not await self.bot.get_shared_api_tokens("imgur"):
                 await self.bot.set_shared_api_tokens("imgur", client_id=imgur_token)
             await self.config.imgur_client_id.clear()
+
+    async def cog_unload(self):
+        await self.session.close()
+
+    async def red_delete_data_for_user(self, **kwargs):
+        """Nothing to delete"""
+        return
 
     @commands.group(name="imgur")
     async def _imgur(self, ctx):
@@ -153,7 +153,7 @@ class Image(commands.Cog):
                 _("Something went wrong. Error code is {code}.").format(code=data["status"])
             )
 
-    @checks.is_owner()
+    @commands.is_owner()
     @commands.command()
     async def imgurcreds(self, ctx):
         """Explain how to set imgur API tokens."""
@@ -228,7 +228,7 @@ class Image(commands.Cog):
             else:
                 await ctx.send(_("Error contacting the API."))
 
-    @checks.is_owner()
+    @commands.is_owner()
     @commands.command()
     async def giphycreds(self, ctx):
         """Explains how to set GIPHY API tokens."""

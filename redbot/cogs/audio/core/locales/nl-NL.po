@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2021-02-11 12:29+0000\n"
+"POT-Creation-Date: 2022-03-28 15:24+0000\n"
 "Last-Translator: \n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: red-discordbot\n"
 "X-Crowdin-Project-ID: 289505\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Crowdin-File-ID: 692\n"
 "Language: nl_NL\n"
 
-#: redbot/cogs/audio/core/__init__.py:34
+#: redbot/cogs/audio/core/__init__.py:40
 #, docstring
 msgid "Play audio through voice channels."
 msgstr "Speel audio af via spraakkanalen."

@@ -1,0 +1,65 @@
+{
+  "$id": "https://raw.githubusercontent.com/Cog-Creators/Red-DiscordBot/V3/develop/schema/trivia.schema.json",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Red-DiscordBot Trivia List file",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "format": "uri"
+    },
+    "AUTHOR": {
+      "type": "string",
+      "description": "Author of the Trivia list."
+    },
+    "DESCRIPTION": {
+      "type": "string",
+      "description": "Brief description of the Trivia list."
+    },
+    "CONFIG": {
+      "type": "object",
+      "description": "The configuration for a trivia session.",
+      "properties": {
+        "bot_plays": {
+          "type": "boolean",
+          "description": "Whether or not the bot gains points during the session."
+        },
+        "delay": {
+          "type": "number",
+          "description": "The maximum number of seconds permitted to answer a question, must be a positive number greater than or equal to 4.0.",
+          "minimum": 4.0
+        },
+        "max_score": {
+          "type": "integer",
+          "description": "Number of points required in order to win the trivia, must be a positive integer.",
+          "exclusiveMinimum": 0
+        },
+        "payout_multiplier": {
+          "type": "number",
+          "description": "The payout multiplier, must be a positive number or zero.",
+          "minimum": 0
+        },
+        "reveal_answer": {
+          "type": "boolean",
+          "description": "Whether or not to reveal the answer when the question times out."
+        },
+        "timeout": {
+          "type": "number",
+          "description": "Number of seconds that need to pass until trivia stops due to no response, must be a positive number greater than 0.0.",
+          "exclusiveMinimum": 0
+        },
+        "use_spoilers": {
+          "type": "boolean",
+          "description": "Whether to hide the answers in spoilers when revealing the question's answers."
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": {
+    "type": "array",
+    "items": {
+      "type": "string"
+    }
+  }
+}

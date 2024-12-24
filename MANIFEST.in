@@ -2,6 +2,12 @@
 include LICENSE
 recursive-include redbot *.LICENSE
 
+# include requirements files
+include requirements/base.in
+include requirements/base.txt
+include requirements/extra-*.in
+include requirements/extra-*.txt
+
 # include locale files
 recursive-include redbot locales/*.po
 
@@ -15,7 +21,7 @@ recursive-include redbot *.export
 recursive-include redbot py.typed
 
 # include *.sql files from postgres driver
-recursive-include redbot/core/drivers/postgres *.sql
+recursive-include redbot/core/_drivers/postgres *.sql
 
 # include tests
 graft tests

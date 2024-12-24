@@ -2,6 +2,8 @@ import discord
 
 import random
 
+__all__ = ("randomize_colour", "randomize_color")
+
 
 def randomize_colour(embed: discord.Embed) -> discord.Embed:
     """

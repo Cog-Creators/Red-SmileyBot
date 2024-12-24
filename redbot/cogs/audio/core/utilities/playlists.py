@@ -2,7 +2,6 @@ import asyncio
 import contextlib
 import datetime
 import json
-import logging
 import math
 import random
 import time
@@ -13,7 +12,8 @@ from typing import List, MutableMapping, Optional, Tuple, Union
 import aiohttp
 import discord
 import lavalink
-from discord.embeds import EmptyEmbed
+from lavalink import NodeNotFound
+from red_commons.logging import getLogger
 
 from redbot.core import commands
 from redbot.core.i18n import Translator
@@ -24,15 +24,14 @@ from redbot.core.utils.predicates import ReactionPredicate
 
 from ...apis.playlist_interface import Playlist, PlaylistCompat23, create_playlist
 from ...audio_dataclasses import _PARTIALLY_SUPPORTED_MUSIC_EXT, Query
-from ...audio_logging import debug_exc_log
 from ...errors import TooManyMatches, TrackEnqueueError
 from ...utils import Notifier, PlaylistScope
 from ..abc import MixinMeta
 from ..cog_utils import CompositeMetaClass
 
-log = logging.getLogger("red.cogs.Audio.cog.Utilities.playlists")
+log = getLogger("red.cogs.Audio.cog.Utilities.playlists")
 _ = Translator("Audio", Path(__file__))
-CURRATED_DATA = (
+CURATED_DATA = (
     "https://gist.githubusercontent.com/aikaterna/4b5de6c420cd6f12b83cb895ca2de16a/raw/json"
 )
 
@@ -263,9 +262,9 @@ class PlaylistUtilities(MixinMeta, metaclass=CompositeMetaClass):
             colour=await context.embed_colour(),
         )
         msg = await context.send(embed=embed)
-        avaliable_emojis = ReactionPredicate.NUMBER_EMOJIS[1:]
-        avaliable_emojis.append("🔟")
-        emojis = avaliable_emojis[: len(correct_scope_matches)]
+        available_emojis = list(ReactionPredicate.NUMBER_EMOJIS[1:])
+        available_emojis.append("🔟")
+        emojis = available_emojis[: len(correct_scope_matches)]
         emojis.append("\N{CROSS MARK}")
         start_adding_reactions(msg, emojis)
         pred = ReactionPredicate.with_emojis(emojis, msg, user=context.author)
@@ -399,7 +398,7 @@ class PlaylistUtilities(MixinMeta, metaclass=CompositeMetaClass):
         self,
         ctx: commands.Context,
         uploaded_track_list,
-        player: lavalink.player_manager.Player,
+        player: lavalink.player.Player,
         playlist_url: str,
         uploaded_playlist_name: str,
         scope: str,
@@ -425,7 +424,7 @@ class PlaylistUtilities(MixinMeta, metaclass=CompositeMetaClass):
                         ctx,
                         title=_("Unable to Get Track"),
                         description=_(
-                            "I'm unable to get a track from Lavalink at the moment, "
+                            "I'm unable to get a track from the Lavalink node at the moment, "
                             "try again in a few minutes."
                         ),
                     )
@@ -434,15 +433,15 @@ class PlaylistUtilities(MixinMeta, metaclass=CompositeMetaClass):
                     raise e
 
                 track = result.tracks[0]
-            except Exception as err:
-                debug_exc_log(log, err, "Failed to get track for %r", song_url)
+            except Exception as exc:
+                log.verbose("Failed to get track for %r", song_url, exc_info=exc)
                 continue
             try:
                 track_obj = self.get_track_json(player, other_track=track)
                 track_list.append(track_obj)
                 successful_count += 1
-            except Exception as err:
-                debug_exc_log(log, err, "Failed to create track for %r", track)
+            except Exception as exc:
+                log.verbose("Failed to create track for %r", track, exc_info=exc)
                 continue
             if (track_count % 2 == 0) or (track_count == len(uploaded_track_list)):
                 await notifier.notify_user(
@@ -481,7 +480,7 @@ class PlaylistUtilities(MixinMeta, metaclass=CompositeMetaClass):
         await playlist_msg.edit(embed=embed3)
 
     async def _maybe_update_playlist(
-        self, ctx: commands.Context, player: lavalink.player_manager.Player, playlist: Playlist
+        self, ctx: commands.Context, player: lavalink.player.Player, playlist: Playlist
     ) -> Tuple[List[lavalink.Track], List[lavalink.Track], Playlist]:
         if getattr(playlist, "id", 0) == 42069:
             _, updated_tracks = await self._get_bundled_playlist_tracks()
@@ -524,8 +523,8 @@ class PlaylistUtilities(MixinMeta, metaclass=CompositeMetaClass):
     async def _playlist_check(self, ctx: commands.Context) -> bool:
         if not self._player_check(ctx):
             if self.lavalink_connection_aborted:
-                msg = _("Connection to Lavalink has failed")
-                desc = EmptyEmbed
+                msg = _("Connection to Lavalink node has failed")
+                desc = None
                 if await self.bot.is_owner(ctx.author):
                     desc = _("Please check your console or logs for details.")
                 await self.send_embed_msg(ctx, title=msg, description=desc)
@@ -546,13 +545,13 @@ class PlaylistUtilities(MixinMeta, metaclass=CompositeMetaClass):
                     return False
                 await lavalink.connect(
                     ctx.author.voice.channel,
-                    deafen=await self.config.guild_from_id(ctx.guild.id).auto_deafen(),
+                    self_deaf=await self.config.guild_from_id(ctx.guild.id).auto_deafen(),
                 )
-            except IndexError:
+            except NodeNotFound:
                 await self.send_embed_msg(
                     ctx,
                     title=_("Unable To Get Playlists"),
-                    description=_("Connection to Lavalink has not yet been established."),
+                    description=_("Connection to Lavalink node has not yet been established."),
                 )
                 return False
             except AttributeError:
@@ -580,7 +579,7 @@ class PlaylistUtilities(MixinMeta, metaclass=CompositeMetaClass):
     async def fetch_playlist_tracks(
         self,
         ctx: commands.Context,
-        player: lavalink.player_manager.Player,
+        player: lavalink.player.Player,
         query: Query,
         skip_cache: bool = False,
     ) -> Union[discord.Message, None, List[MutableMapping]]:
@@ -626,7 +625,7 @@ class PlaylistUtilities(MixinMeta, metaclass=CompositeMetaClass):
                     ctx,
                     title=_("Unable to Get Track"),
                     description=_(
-                        "I'm unable to get a track from Lavalink at the moment, try again in a few "
+                        "I'm unable to get a track from Lavalink node at the moment, try again in a few "
                         "minutes."
                     ),
                 )
@@ -655,7 +654,7 @@ class PlaylistUtilities(MixinMeta, metaclass=CompositeMetaClass):
                     ctx,
                     title=_("Unable to Get Track"),
                     description=_(
-                        "I'm unable to get a track from Lavalink at the moment, try again in a few "
+                        "I'm unable to get a track from Lavalink node at the moment, try again in a few "
                         "minutes."
                     ),
                 )
@@ -677,7 +676,6 @@ class PlaylistUtilities(MixinMeta, metaclass=CompositeMetaClass):
     def humanize_scope(
         self, scope: str, ctx: Union[discord.Guild, discord.abc.User, str] = None, the: bool = None
     ) -> Optional[str]:
-
         if scope == PlaylistScope.GLOBAL.value:
             return _("the Global") if the else _("Global")
         elif scope == PlaylistScope.GUILD.value:
@@ -688,15 +686,17 @@ class PlaylistUtilities(MixinMeta, metaclass=CompositeMetaClass):
     async def _get_bundled_playlist_tracks(self):
         async with aiohttp.ClientSession(json_serialize=json.dumps) as session:
             async with session.get(
-                CURRATED_DATA + f"?timestamp={int(time.time())}",
+                CURATED_DATA + f"?timestamp={int(time.time())}",
                 headers={"content-type": "application/json"},
             ) as response:
                 if response.status != 200:
                     return 0, []
                 try:
                     data = json.loads(await response.read())
-                except Exception:
-                    log.exception("Curated playlist couldn't be parsed, report this error.")
+                except Exception as exc:
+                    log.error(
+                        "Curated playlist couldn't be parsed, report this error.", exc_info=exc
+                    )
                     data = {}
                 web_version = data.get("version", 0)
                 entries = data.get("entries", [])

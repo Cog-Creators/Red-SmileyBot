@@ -338,6 +338,22 @@ To set the Twitch API tokens, follow these steps:
 .. attention:: These tokens are sensitive and should only be 
                used in a private channel or in DM with the bot.
 
+.. _streams-command-streamset-usebuttons:
+
+^^^^^^^^^^^^^^^^^^^^
+streamset usebuttons
+^^^^^^^^^^^^^^^^^^^^
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]streamset usebuttons
+
+**Description**
+
+Toggle whether to use buttons for stream alerts.
+
 .. _streams-command-picarto:
 
 ^^^^^^^

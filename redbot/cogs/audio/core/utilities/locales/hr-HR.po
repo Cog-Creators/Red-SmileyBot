@@ -1,0 +1,493 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: red-discordbot\n"
+"POT-Creation-Date: 2024-08-07 20:36+0000\n"
+"Last-Translator: \n"
+"Language-Team: Croatian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.4.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Crowdin-Project: red-discordbot\n"
+"X-Crowdin-Project-ID: 289505\n"
+"X-Crowdin-Language: hr\n"
+"X-Crowdin-File-ID: 688\n"
+"Language: hr_HR\n"
+
+#: redbot/cogs/audio/core/utilities/formatting.py:74
+msgid "tracks"
+msgstr "pjesme"
+
+#: redbot/cogs/audio/core/utilities/formatting.py:84
+#: redbot/cogs/audio/core/utilities/formatting.py:272
+msgid "Page {page_num}/{total_pages}"
+msgstr "Stranica {page_num}/{total_pages}"
+
+#: redbot/cogs/audio/core/utilities/formatting.py:95
+#: redbot/cogs/audio/core/utilities/playlists.py:526
+msgid "Connection to Lavalink node has failed"
+msgstr "Veza s Lavalink čvorom nije uspjela"
+
+#: redbot/cogs/audio/core/utilities/formatting.py:98
+#: redbot/cogs/audio/core/utilities/player.py:591
+#: redbot/cogs/audio/core/utilities/playlists.py:529
+msgid "Please check your console or logs for details."
+msgstr "Provjerite konzolu ili zapisnike za detalje."
+
+#: redbot/cogs/audio/core/utilities/formatting.py:106
+#: redbot/cogs/audio/core/utilities/playlists.py:561
+msgid "Connect to a voice channel first."
+msgstr "Prvo se pridruži govornome kanalu."
+
+#: redbot/cogs/audio/core/utilities/formatting.py:109
+#: redbot/cogs/audio/core/utilities/playlists.py:554
+msgid "Connection to Lavalink node has not yet been established."
+msgstr "Veza s Lavalink čvorom još nije uspostavljena."
+
+#: redbot/cogs/audio/core/utilities/formatting.py:116
+#: redbot/cogs/audio/core/utilities/player.py:442
+#: redbot/cogs/audio/core/utilities/player.py:524
+msgid "Queue size limit reached."
+msgstr "Dostignuto ograničenje za red čekanja."
+
+#: redbot/cogs/audio/core/utilities/formatting.py:116
+msgid "Unable To Play Tracks"
+msgstr "Nije moguće reproducirati pjesme"
+
+#: redbot/cogs/audio/core/utilities/formatting.py:154
+#: redbot/cogs/audio/core/utilities/player.py:599
+msgid "Track Enqueued"
+msgstr "Pjesma dodana u red čekanja"
+
+#: redbot/cogs/audio/core/utilities/formatting.py:168
+#: redbot/cogs/audio/core/utilities/player.py:548
+msgid "This track is not allowed in this server."
+msgstr "Ova pjesma nije dopuštena na ovom serveru."
+
+#: redbot/cogs/audio/core/utilities/formatting.py:185
+#: redbot/cogs/audio/core/utilities/player.py:570
+msgid "Track exceeds maximum length."
+msgstr "Pjesma prelazi maksimalnu duljinu."
+
+#: redbot/cogs/audio/core/utilities/formatting.py:200
+#: redbot/cogs/audio/core/utilities/player.py:602
+msgid "{time} until track playback: #{position} in queue"
+msgstr "{time} do reprodukcije pjesme: #{position} u redu"
+
+#: redbot/cogs/audio/core/utilities/formatting.py:260
+msgid "Tracks Found:"
+msgstr "Pronađene pjesme:"
+
+#: redbot/cogs/audio/core/utilities/formatting.py:261
+msgid "search results"
+msgstr "rezultati pretrage"
+
+#: redbot/cogs/audio/core/utilities/formatting.py:263
+msgid "Folders Found:"
+msgstr "Pronađene mape:"
+
+#: redbot/cogs/audio/core/utilities/formatting.py:264
+msgid "local folders"
+msgstr "lokalne mape"
+
+#: redbot/cogs/audio/core/utilities/formatting.py:266
+msgid "Files Found:"
+msgstr "Pronađene datoteke:"
+
+#: redbot/cogs/audio/core/utilities/formatting.py:267
+msgid "local tracks"
+msgstr "lokalne pjesme"
+
+#: redbot/cogs/audio/core/utilities/formatting.py:379
+#: redbot/cogs/audio/core/utilities/playlists.py:240
+msgid "Unknown"
+msgstr "Nepoznato"
+
+#: redbot/cogs/audio/core/utilities/formatting.py:380
+msgid " - Name:   <{pname}>\n"
+" - Scope:  < {scope} >\n"
+" - ID:     < {pid} >\n"
+" - Tracks: < {ptracks} >\n"
+" - Author: < {author} >\n\n"
+msgstr " - Naziv:   <{pname}>\n"
+" - Opseg:  < {scope} >\n"
+" - ID:     < {pid} >\n"
+" - Pjesme: < {ptracks} >\n"
+" - Autor: < {author} >\n\n"
+
+#: redbot/cogs/audio/core/utilities/local_tracks.py:109
+#: redbot/cogs/audio/core/utilities/player.py:234
+#: redbot/cogs/audio/core/utilities/player.py:244
+#: redbot/cogs/audio/core/utilities/player.py:326
+#: redbot/cogs/audio/core/utilities/player.py:650
+msgid "Invalid Environment"
+msgstr "Neispravno Okruženje"
+
+#: redbot/cogs/audio/core/utilities/local_tracks.py:109
+msgid "No localtracks folder."
+msgstr "Nema localtracks mape."
+
+#: redbot/cogs/audio/core/utilities/miscellaneous.py:50
+msgid "Not enough {currency}"
+msgstr "Nema dovoljno {currency}"
+
+#: redbot/cogs/audio/core/utilities/miscellaneous.py:51
+msgid "{required_credits} {currency} required, but you have {bal}."
+msgstr "Potrebno je {required_credits} {currency}, ali imate {bal}."
+
+#: redbot/cogs/audio/core/utilities/player.py:78
+msgid "music in {} servers"
+msgstr "glazbu u {} servera"
+
+#: redbot/cogs/audio/core/utilities/player.py:135
+#: redbot/cogs/audio/core/utilities/player.py:139
+#: redbot/cogs/audio/core/utilities/player.py:144
+msgid "There's nothing in the queue."
+msgstr "Nema ništa u redu."
+
+#: redbot/cogs/audio/core/utilities/player.py:141
+msgid "Currently livestreaming {track}"
+msgstr "Trenutno uživo {track}"
+
+#: redbot/cogs/audio/core/utilities/player.py:146
+msgid "{time} left on {track}"
+msgstr "{time} preostalo na {track}"
+
+#: redbot/cogs/audio/core/utilities/player.py:154
+#: redbot/cogs/audio/core/utilities/player.py:189
+msgid "Track Skipped"
+msgstr "Pjesma je preskočena"
+
+#: redbot/cogs/audio/core/utilities/player.py:167
+msgid "Track number must be equal to or greater than 1."
+msgstr "Broj pjesme mora biti jednak ili veći od 1."
+
+#: redbot/cogs/audio/core/utilities/player.py:173
+msgid "There are only {queuelen} songs currently queued."
+msgstr "U redu čekanja je trenutno {queuelen} pjesama."
+
+#: redbot/cogs/audio/core/utilities/player.py:179
+msgid "{skip_to_track} Tracks Skipped"
+msgstr "Preskočeno {skip_to_track} pjesama"
+
+#: redbot/cogs/audio/core/utilities/player.py:235
+msgid "The owner needs to set the Spotify client ID and Spotify client secret, before Spotify URLs or codes can be used. \n"
+"See `{prefix}audioset spotifyapi` for instructions."
+msgstr "Vlasnik treba postaviti Spotify \"Client ID\" i \"Client Secret\" prije nego što se Spotify URL-ovi ili kodovi mogu koristiti.\n"
+"Pogledajte `{prefix}audioset spotifyapi` za upute."
+
+#: redbot/cogs/audio/core/utilities/player.py:245
+msgid "The owner needs to set the YouTube API key before Spotify URLs or codes can be used.\n"
+"See `{prefix}audioset youtubeapi` for instructions."
+msgstr "Vlasnik treba postaviti YouTube API ključ prije nego što se Spotify URL-ovi ili kodovi mogu koristiti.\n"
+"Pogledajte `{prefix}audioset youtubeapi` za upute."
+
+#: redbot/cogs/audio/core/utilities/player.py:254
+#: redbot/cogs/audio/core/utilities/player.py:363
+#: redbot/cogs/audio/core/utilities/playlists.py:594
+msgid "Unable To Get Tracks"
+msgstr "Nije moguće dobiti pjesme"
+
+#: redbot/cogs/audio/core/utilities/player.py:255
+#: redbot/cogs/audio/core/utilities/player.py:364
+#: redbot/cogs/audio/core/utilities/playlists.py:595
+msgid "Wait until the playlist has finished loading."
+msgstr "Pričekajte da se popis za reprodukciju učita."
+
+#: redbot/cogs/audio/core/utilities/player.py:266
+#: redbot/cogs/audio/core/utilities/player.py:308
+#: redbot/cogs/audio/core/utilities/player.py:408
+#: redbot/cogs/audio/core/utilities/playlists.py:605
+#: redbot/cogs/audio/core/utilities/playlists.py:638
+msgid "Nothing found."
+msgstr "Ništa nije pronađeno."
+
+#: redbot/cogs/audio/core/utilities/player.py:269
+#: redbot/cogs/audio/core/utilities/player.py:310
+#: redbot/cogs/audio/core/utilities/player.py:423
+#: redbot/cogs/audio/core/utilities/playlists.py:607
+#: redbot/cogs/audio/core/utilities/playlists.py:640
+msgid "Track is not playable."
+msgstr "Pjesma se ne može reproducirati."
+
+#: redbot/cogs/audio/core/utilities/player.py:270
+#: redbot/cogs/audio/core/utilities/player.py:311
+#: redbot/cogs/audio/core/utilities/player.py:425
+#: redbot/cogs/audio/core/utilities/playlists.py:608
+#: redbot/cogs/audio/core/utilities/playlists.py:641
+msgid "**{suffix}** is not a fully supported format and some tracks may not play."
+msgstr "**{suffix}** nije podržan format i neke se pjesme možda neće moći reproducirati."
+
+#: redbot/cogs/audio/core/utilities/player.py:300
+#: redbot/cogs/audio/core/utilities/player.py:393
+#: redbot/cogs/audio/core/utilities/player.py:657
+#: redbot/cogs/audio/core/utilities/playlists.py:425
+#: redbot/cogs/audio/core/utilities/playlists.py:626
+#: redbot/cogs/audio/core/utilities/playlists.py:655
+msgid "Unable to Get Track"
+msgstr "Nije moguće dobiti pjesmu"
+
+#: redbot/cogs/audio/core/utilities/player.py:301
+#: redbot/cogs/audio/core/utilities/playlists.py:426
+msgid "I'm unable to get a track from the Lavalink node at the moment, try again in a few minutes."
+msgstr "Trenutno ne mogu dobiti pjesmu od Lavalink čvora, pokušajte ponovno za par minuta."
+
+#: redbot/cogs/audio/core/utilities/player.py:327
+msgid "The Spotify API key or client secret has not been set properly. \n"
+"Use `{prefix}audioset spotifyapi` for instructions."
+msgstr "Spotify API ključ nije pravilno postavljen. \n"
+"Koristi `{prefix}audioset spotifyapi` za upute."
+
+#: redbot/cogs/audio/core/utilities/player.py:351
+msgid "Unable To Find Tracks"
+msgstr "Nije moguće pronaći pjesme"
+
+#: redbot/cogs/audio/core/utilities/player.py:352
+msgid "This doesn't seem to be a supported Spotify URL or code."
+msgstr "Čini se da ovo nije podržani Spotify URL ili kȏd."
+
+#: redbot/cogs/audio/core/utilities/player.py:378
+msgid "{query} is not an allowed query."
+msgstr "{query} nije dozvoljen upit."
+
+#: redbot/cogs/audio/core/utilities/player.py:394
+#: redbot/cogs/audio/core/utilities/playlists.py:627
+#: redbot/cogs/audio/core/utilities/playlists.py:656
+msgid "I'm unable to get a track from Lavalink node at the moment, try again in a few minutes."
+msgstr ""
+
+#: redbot/cogs/audio/core/utilities/player.py:416
+msgid "Local tracks will not work if the `Lavalink.jar` cannot see the track.\n"
+"This may be due to permissions or because Lavalink.jar is being run in a different machine than the local tracks."
+msgstr "Lokalne pjesme neće raditi ako `Lavalink.jar` ne može vidjeti pjesmu.\n"
+"To može biti zbog dozvola ili zato što se Lavalink.jar izvodi na drugom uređaju od lokalnih pjesama."
+
+#: redbot/cogs/audio/core/utilities/player.py:486
+msgid " {bad_tracks} tracks cannot be queued."
+msgstr " {bad_tracks} pjesama se ne može staviti u red čekanja."
+
+#: redbot/cogs/audio/core/utilities/player.py:492
+msgid "No Title"
+msgstr "Nema naslova"
+
+#: redbot/cogs/audio/core/utilities/player.py:494
+msgid "Playlist Enqueued"
+msgstr "Popis za reprodukciju dodan u red čekanja"
+
+#: redbot/cogs/audio/core/utilities/player.py:494
+msgid "Album Enqueued"
+msgstr ""
+
+#: redbot/cogs/audio/core/utilities/player.py:502
+msgid "Added {num} tracks to the queue.{maxlength_msg}"
+msgstr "Dodano {num} pjesama u red čekanja.{maxlength_msg}"
+
+#: redbot/cogs/audio/core/utilities/player.py:508
+msgid "{time} until start of playlist playback: starts at #{position} in queue"
+msgstr "{time} do reprodukcije popisa za reprodukciju: #{position} u redu čekanja"
+
+#: redbot/cogs/audio/core/utilities/player.py:588
+msgid "Nothing found"
+msgstr "Ništa nije pronađeno"
+
+#: redbot/cogs/audio/core/utilities/player.py:623
+msgid "Please wait, finding tracks..."
+msgstr "Pričekajte, tražim pjesme..."
+
+#: redbot/cogs/audio/core/utilities/player.py:629
+msgid "Getting track {num}/{total}..."
+msgstr "Dohvaćanje pjesme {num}/{total}..."
+
+#: redbot/cogs/audio/core/utilities/player.py:630
+msgid "Matching track {num}/{total}..."
+msgstr "Usklađivanje pjesme {num}/{total}..."
+
+#: redbot/cogs/audio/core/utilities/player.py:631
+#: redbot/cogs/audio/core/utilities/playlists.py:341
+#: redbot/cogs/audio/core/utilities/playlists.py:414
+msgid "Loading track {num}/{total}..."
+msgstr "Učitavanje pjesme {num}/{total}..."
+
+#: redbot/cogs/audio/core/utilities/player.py:632
+msgid "Approximate time remaining: {seconds}"
+msgstr "Preostalo je približno: {seconds}"
+
+#: redbot/cogs/audio/core/utilities/player.py:658
+msgid "I'm unable to get a track from Lavalink at the moment, try again in a few minutes."
+msgstr "Trenutno ne mogu dobiti pjesmu od Lavalinka, pokušajte ponovno za nekoliko minuta."
+
+#: redbot/cogs/audio/core/utilities/player.py:667
+msgid "The connection was reset while loading the playlist."
+msgstr "Veza je prekinuta prilikom učitavanja popisa za reprodukciju."
+
+#: redbot/cogs/audio/core/utilities/playlists.py:83
+msgid "You do not have the permissions to manage {name} (`{id}`) [**{scope}**]."
+msgstr "Nemate dozvolu za upravljanje {name} (`{id}`) [**{scope}**]."
+
+#: redbot/cogs/audio/core/utilities/playlists.py:101
+msgid "You do not have the permissions to manage that playlist in {guild}."
+msgstr "Nemate dozvolu za upravljanje tim popisom za reprodukciju u {guild}."
+
+#: redbot/cogs/audio/core/utilities/playlists.py:108
+msgid "You do not have the permissions to manage playlist owned by {user}."
+msgstr "Nemate dozvolu za upravljanje popisom za reprodukciju čiji je vlasnik {user}."
+
+#: redbot/cogs/audio/core/utilities/playlists.py:112
+msgid "You do not have the permissions to manage playlists in {scope} scope."
+msgstr "Nemate dozvolu za upravljanje popisima za reprodukciju u opsegu {scope}."
+
+#: redbot/cogs/audio/core/utilities/playlists.py:116
+msgid "No access to playlist."
+msgstr "Nemate pristup popisu za reprodukciju."
+
+#: redbot/cogs/audio/core/utilities/playlists.py:224
+msgid "{match_count} playlists match {original_input}: Please try to be more specific, or use the playlist ID."
+msgstr "{match_count} popisa za reprodukciju odgovaraju {original_input}: Pokušajte biti precizniji ili upotrijebite ID popisa za reprodukciju."
+
+#: redbot/cogs/audio/core/utilities/playlists.py:241
+msgid "{number}.    <{playlist.name}>\n"
+" - Scope:  < {scope} >\n"
+" - ID:     < {playlist.id} >\n"
+" - Tracks: < {tracks} >\n"
+" - Author: < {author} >\n\n"
+msgstr "{number}.    <{playlist.name}>\n"
+" - Opseg:  < {scope} >\n"
+" - ID:     < {playlist.id} >\n"
+" - Pjesme: < {tracks} >\n"
+" - Autor: < {author} >\n\n"
+
+#: redbot/cogs/audio/core/utilities/playlists.py:258
+msgid "{playlists} playlists found, which one would you like?"
+msgstr "Pronađeno {playlists} popisa za reprodukciju, koju biste željeli?"
+
+#: redbot/cogs/audio/core/utilities/playlists.py:277
+#: redbot/cogs/audio/core/utilities/playlists.py:283
+msgid "Too many matches found and you did not select which one you wanted."
+msgstr "Pronađeno je previše podudaranja, a niste odabrali koju želite."
+
+#: redbot/cogs/audio/core/utilities/playlists.py:308
+msgid "Playlists you can access in this server:"
+msgstr "Popisi za reprodukciju kojima možete pristupiti na ovom serveru:"
+
+#: redbot/cogs/audio/core/utilities/playlists.py:314
+msgid "Playlists for {scope}:"
+msgstr "Popisi za reprodukciju za {scope}:"
+
+#: redbot/cogs/audio/core/utilities/playlists.py:318
+msgid "Page {page_num}/{total_pages} | {num} playlists."
+msgstr "Stranica {page_num}/{total_pages} | {num} popisa za reprodukciju."
+
+#: redbot/cogs/audio/core/utilities/playlists.py:334
+#: redbot/cogs/audio/core/utilities/playlists.py:412
+msgid "Please wait, adding tracks..."
+msgstr "Pričekajte, dodajem pjesme..."
+
+#: redbot/cogs/audio/core/utilities/playlists.py:361
+#: redbot/cogs/audio/core/utilities/playlists.py:464
+msgid "Empty playlist {name} (`{id}`) [**{scope}**] created."
+msgstr "Stvoren je prazan popis za reprodukciju {name} (`{id}`) [**{scope}**]."
+
+#: redbot/cogs/audio/core/utilities/playlists.py:366
+#: redbot/cogs/audio/core/utilities/playlists.py:469
+msgid "Added {num} tracks from the {playlist_name} playlist. {num_bad} track(s) could not be loaded."
+msgstr "Dodano {num} pjesama s {playlist_name} popisa za reprodukciju. {num_bad} pjesama nije bilo moguće učitati."
+
+#: redbot/cogs/audio/core/utilities/playlists.py:371
+#: redbot/cogs/audio/core/utilities/playlists.py:474
+msgid "Added {num} tracks from the {playlist_name} playlist."
+msgstr "Dodano {num} pjesama s {playlist_name} popisa za reprodukciju."
+
+#: redbot/cogs/audio/core/utilities/playlists.py:375
+#: redbot/cogs/audio/core/utilities/playlists.py:478
+msgid "Playlist Saved"
+msgstr "Popis za reprodukciju je spremljen"
+
+#: redbot/cogs/audio/core/utilities/playlists.py:540
+#: redbot/cogs/audio/core/utilities/playlists.py:553
+#: redbot/cogs/audio/core/utilities/playlists.py:560
+#: redbot/cogs/audio/core/utilities/playlists.py:571
+msgid "Unable To Get Playlists"
+msgstr "Nije moguće dobiti popise za reprodukciju"
+
+#: redbot/cogs/audio/core/utilities/playlists.py:541
+msgid "I don't have permission to connect and speak in your channel."
+msgstr "Nemam dozvolu za povezivanje i govor u vašem kanalu."
+
+#: redbot/cogs/audio/core/utilities/playlists.py:572
+msgid "You must be in the voice channel to use the playlist command."
+msgstr "Morate biti u glasovnom kanalu da biste koristili naredbu za popise za reprodukciju."
+
+#: redbot/cogs/audio/core/utilities/playlists.py:680
+msgid "the Global"
+msgstr "globalni"
+
+#: redbot/cogs/audio/core/utilities/playlists.py:680
+msgid "Global"
+msgstr "Globalni"
+
+#: redbot/cogs/audio/core/utilities/playlists.py:682
+msgid "the Server"
+msgstr "server"
+
+#: redbot/cogs/audio/core/utilities/playlists.py:682
+msgid "Server"
+msgstr "Server"
+
+#: redbot/cogs/audio/core/utilities/playlists.py:684
+msgid "the User"
+msgstr "korisnik"
+
+#: redbot/cogs/audio/core/utilities/playlists.py:684
+msgid "User"
+msgstr "Korisnik"
+
+#: redbot/cogs/audio/core/utilities/queue.py:40
+msgid "__Too many songs in the queue, only showing the first 500__.\n\n"
+msgstr "__Previše pjesama u redu čekanja, prikazuje se samo prvih 500__.\n\n"
+
+#: redbot/cogs/audio/core/utilities/queue.py:57
+msgid "**Currently livestreaming:**\n"
+msgstr "**Trenutno prenosi uživo:**\n"
+
+#: redbot/cogs/audio/core/utilities/queue.py:59
+#: redbot/cogs/audio/core/utilities/queue.py:64
+msgid "Requested by: **{user}**"
+msgstr "Zatražio: **{user}**"
+
+#: redbot/cogs/audio/core/utilities/queue.py:62
+msgid "Playing: "
+msgstr "Pušta: "
+
+#: redbot/cogs/audio/core/utilities/queue.py:76
+msgid "requested by **{user}**\n"
+msgstr "zatražio **{user}**\n"
+
+#: redbot/cogs/audio/core/utilities/queue.py:80
+msgid "Queue for __{guild_name}__"
+msgstr "Red čekanja za __{guild_name}__"
+
+#: redbot/cogs/audio/core/utilities/queue.py:88
+msgid "Page {page_num}/{total_pages} | {num_tracks} tracks, {num_remaining} remaining\n"
+msgstr "Stranica {page_num}/{total_pages} | {num_tracks} pjesama, {num_remaining} preostalo\n"
+
+#: redbot/cogs/audio/core/utilities/queue.py:97
+msgid "Auto-Play"
+msgstr "Automatska reprodukcija"
+
+#: redbot/cogs/audio/core/utilities/queue.py:103
+msgid "Shuffle"
+msgstr "Nasumična reprodukcija"
+
+#: redbot/cogs/audio/core/utilities/queue.py:109
+msgid "Repeat"
+msgstr "Ponavljanje"
+
+#: redbot/cogs/audio/core/utilities/queue.py:161
+msgid "Matching Tracks:"
+msgstr "Odgovarajuće pjesme:"
+
+#: redbot/cogs/audio/core/utilities/queue.py:164
+msgid "Page {page_num}/{total_pages} | {num_tracks} tracks"
+msgstr "Stranica {page_num}/{total_pages} | {num_tracks} pjesama"
+

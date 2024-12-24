@@ -65,7 +65,6 @@ ancestor_rev = "c950fc05a540dd76b944719c2a3302da2e2f3090"
 descendant_rev = "fb99eb7d2d5bed514efc98fe6686b368f8425745"
 
 
-@pytest.mark.asyncio
 @pytest.mark.parametrize(
     "maybe_ancestor_rev,descendant_rev,returncode,expected",
     [(ancestor_rev, descendant_rev, 0, True), (descendant_rev, ancestor_rev, 1, False)],
@@ -86,7 +85,6 @@ async def test_is_ancestor(mocker, repo, maybe_ancestor_rev, descendant_rev, ret
     assert ret is expected
 
 
-@pytest.mark.asyncio
 async def test_is_ancestor_object_raise(mocker, repo):
     m = _mock_run(mocker, repo, 128, b"", b"fatal: Not a valid object name invalid1")
     with pytest.raises(UnknownRevision):
@@ -104,7 +102,6 @@ async def test_is_ancestor_object_raise(mocker, repo):
     )
 
 
-@pytest.mark.asyncio
 async def test_is_ancestor_commit_raise(mocker, repo):
     m = _mock_run(
         mocker,
@@ -130,7 +127,6 @@ async def test_is_ancestor_commit_raise(mocker, repo):
     )
 
 
-@pytest.mark.asyncio
 async def test_get_file_update_statuses(mocker, repo):
     old_rev = "c950fc05a540dd76b944719c2a3302da2e2f3090"
     new_rev = "fb99eb7d2d5bed514efc98fe6686b368f8425745"
@@ -160,7 +156,6 @@ async def test_get_file_update_statuses(mocker, repo):
     }
 
 
-@pytest.mark.asyncio
 async def test_is_module_modified(mocker, repo):
     old_rev = "c950fc05a540dd76b944719c2a3302da2e2f3090"
     new_rev = "fb99eb7d2d5bed514efc98fe6686b368f8425745"
@@ -184,7 +179,6 @@ async def test_is_module_modified(mocker, repo):
     assert ret is True
 
 
-@pytest.mark.asyncio
 async def test_get_full_sha1_success(mocker, repo):
     commit = "c950fc05a540dd76b944719c2a3302da2e2f3090"
     m = _mock_run(mocker, repo, 0, commit.encode())
@@ -196,7 +190,6 @@ async def test_get_full_sha1_success(mocker, repo):
     assert ret == commit
 
 
-@pytest.mark.asyncio
 async def test_get_full_sha1_notfound(mocker, repo):
     m = _mock_run(mocker, repo, 128, b"", b"fatal: Needed a single revision")
     with pytest.raises(UnknownRevision):
@@ -206,7 +199,6 @@ async def test_get_full_sha1_notfound(mocker, repo):
     )
 
 
-@pytest.mark.asyncio
 async def test_get_full_sha1_ambiguous(mocker, repo):
     m = _mock_run(
         mocker,
@@ -246,7 +238,6 @@ def test_update_available_modules(repo):
     )
 
 
-@pytest.mark.asyncio
 async def test_checkout(mocker, repo):
     commit = "c950fc05a540dd76b944719c2a3302da2e2f3090"
     m = _mock_run(mocker, repo, 0)
@@ -261,7 +252,6 @@ async def test_checkout(mocker, repo):
     )
 
 
-@pytest.mark.asyncio
 async def test_checkout_ctx_manager(mocker, repo):
     commit = "c950fc05a540dd76b944719c2a3302da2e2f3090"
     m = mocker.patch.object(repo, "_checkout", autospec=True, return_value=None)
@@ -273,7 +263,6 @@ async def test_checkout_ctx_manager(mocker, repo):
     m.assert_called_with(old_commit, force_checkout=False)
 
 
-@pytest.mark.asyncio
 async def test_checkout_await(mocker, repo):
     commit = "c950fc05a540dd76b944719c2a3302da2e2f3090"
     m = mocker.patch.object(repo, "_checkout", autospec=True, return_value=None)
@@ -282,7 +271,6 @@ async def test_checkout_await(mocker, repo):
     m.assert_called_once_with(commit, force_checkout=False)
 
 
-@pytest.mark.asyncio
 async def test_clone_with_branch(mocker, repo):
     branch = repo.branch = "dont_add_commits"
     commit = "a0ccc2390883c85a361f5a90c72e1b07958939fa"
@@ -300,7 +288,6 @@ async def test_clone_with_branch(mocker, repo):
     )
 
 
-@pytest.mark.asyncio
 async def test_clone_without_branch(mocker, repo):
     branch = "dont_add_commits"
     commit = "a0ccc2390883c85a361f5a90c72e1b07958939fa"
@@ -318,7 +305,6 @@ async def test_clone_without_branch(mocker, repo):
     )
 
 
-@pytest.mark.asyncio
 async def test_update(mocker, repo):
     old_commit = repo.commit
     new_commit = "a0ccc2390883c85a361f5a90c72e1b07958939fa"
@@ -335,7 +321,6 @@ async def test_update(mocker, repo):
 # old tests
 
 
-@pytest.mark.asyncio
 async def test_add_repo(monkeypatch, repo_manager):
     monkeypatch.setattr("redbot.cogs.downloader.repo_manager.Repo._run", fake_run_noprint)
     monkeypatch.setattr(
@@ -349,7 +334,6 @@ async def test_add_repo(monkeypatch, repo_manager):
     assert squid.available_modules == ()
 
 
-@pytest.mark.asyncio
 async def test_lib_install_requirements(monkeypatch, library_installable, repo, tmpdir):
     monkeypatch.setattr("redbot.cogs.downloader.repo_manager.Repo._run", fake_run_noprint)
     monkeypatch.setattr(
@@ -368,7 +352,6 @@ async def test_lib_install_requirements(monkeypatch, library_installable, repo, 
     assert len(failed) == 0
 
 
-@pytest.mark.asyncio
 async def test_remove_repo(monkeypatch, repo_manager):
     monkeypatch.setattr("redbot.cogs.downloader.repo_manager.Repo._run", fake_run_noprint)
     monkeypatch.setattr(
@@ -383,7 +366,6 @@ async def test_remove_repo(monkeypatch, repo_manager):
     assert repo_manager.get_repo("squid") is None
 
 
-@pytest.mark.asyncio
 async def test_existing_repo(mocker, repo_manager):
     repo_manager.does_repo_exist = mocker.MagicMock(return_value=True)
 

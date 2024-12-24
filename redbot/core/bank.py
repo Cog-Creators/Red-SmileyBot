@@ -20,15 +20,19 @@ if TYPE_CHECKING:
 
 _ = Translator("Bank API", __file__)
 
-__all__ = [
+__all__ = (
+    "is_owner_if_bank_global",
     "Account",
     "get_balance",
+    "can_spend",
     "set_balance",
     "withdraw_credits",
     "deposit_credits",
-    "can_spend",
     "transfer_credits",
     "wipe_bank",
+    "bank_prune",
+    "get_leaderboard",
+    "get_leaderboard_position",
     "get_account",
     "is_global",
     "set_global",
@@ -36,17 +40,15 @@ __all__ = [
     "set_bank_name",
     "get_currency_name",
     "set_currency_name",
-    "get_default_balance",
-    "set_default_balance",
     "get_max_balance",
     "set_max_balance",
-    "cost",
+    "get_default_balance",
+    "set_default_balance",
     "AbortPurchase",
-    "bank_prune",
-    "is_owner_if_bank_global",
-]
+    "cost",
+)
 
-_MAX_BALANCE = 2 ** 63 - 1
+_MAX_BALANCE = 2**63 - 1
 
 _SCHEMA_VERSION = 1
 
@@ -164,7 +166,7 @@ def is_owner_if_bank_global():
     .. code-block:: python
 
         @bank.is_owner_if_bank_global()
-        @checks.guildowner()
+        @commands.guildowner()
         @commands.group()
         async def bankset(self, ctx: commands.Context):
             \"""Base command for bank settings.\"""

@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2021-05-18 21:11+0000\n"
+"POT-Creation-Date: 2023-09-13 20:22+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: red-discordbot\n"
 "X-Crowdin-Project-ID: 289505\n"
@@ -15,136 +15,132 @@ msgstr ""
 "X-Crowdin-File-ID: 34\n"
 "Language: zh_TW\n"
 
-#: redbot/cogs/mod/converters.py:20
-msgid "{} doesn't look like a valid user ID."
-msgstr "{}看起來不是有效的使用者ID。"
-
-#: redbot/cogs/mod/events.py:56 redbot/cogs/mod/events.py:71
+#: redbot/cogs/mod/events.py:57 redbot/cogs/mod/events.py:72
 msgid "Mention spam (Autoban)"
-msgstr ""
+msgstr "提及垃圾郵件（Autoban）"
 
-#: redbot/cogs/mod/events.py:80
+#: redbot/cogs/mod/events.py:81
 msgid "Mention Spam (Autokick)"
-msgstr ""
+msgstr "提及垃圾郵件（Autokick）"
 
-#: redbot/cogs/mod/events.py:95
+#: redbot/cogs/mod/events.py:96
 msgid "Mention spam (Autokick)"
-msgstr ""
+msgstr "提及垃圾郵件（Autokick）"
 
-#: redbot/cogs/mod/events.py:104
+#: redbot/cogs/mod/events.py:105
 msgid "Please do not mass mention people!"
-msgstr ""
+msgstr "請不要大量提及成員！"
 
-#: redbot/cogs/mod/events.py:108
+#: redbot/cogs/mod/events.py:109
 msgid "{member}, Please do not mass mention people!"
-msgstr ""
+msgstr "{member}，請不要群發標記成員！"
 
-#: redbot/cogs/mod/events.py:127
+#: redbot/cogs/mod/events.py:128
 msgid "Mention spam (Autowarn)"
-msgstr ""
+msgstr "提及垃圾郵件（自動警告）"
 
-#: redbot/cogs/mod/kickban.py:93
+#: redbot/cogs/mod/kickban.py:82
 msgid "That user is not in a voice channel."
-msgstr ""
+msgstr "該用戶不在語音頻道中。"
 
-#: redbot/cogs/mod/kickban.py:100
+#: redbot/cogs/mod/kickban.py:89
 msgid "I require the {perms} permission(s) in that user's channel to do that."
-msgstr ""
+msgstr "我需要該用戶頻道中的 {perms} 權限才能執行此操作。"
 
-#: redbot/cogs/mod/kickban.py:110
+#: redbot/cogs/mod/kickban.py:99
 msgid "You must have the {perms} permission(s) in that user's channel to use this command."
-msgstr ""
+msgstr "您必須在該用戶的頻道中擁有 {perms} 權限才能使用此指令。"
 
-#: redbot/cogs/mod/kickban.py:132 redbot/cogs/mod/kickban.py:464
-#: redbot/cogs/mod/kickban.py:631
+#: redbot/cogs/mod/kickban.py:121 redbot/cogs/mod/kickban.py:463
+#: redbot/cogs/mod/kickban.py:636
 msgid "Invalid days. Must be between 0 and 7."
 msgstr "無效的天數，天數必須在0和7之間。"
 
-#: redbot/cogs/mod/kickban.py:138 redbot/cogs/mod/kickban.py:607
+#: redbot/cogs/mod/kickban.py:127 redbot/cogs/mod/kickban.py:610
 msgid "I cannot let you do that. Self-harm is bad {}"
-msgstr ""
+msgstr "我不能讓你那樣做。自殘是不好的{}"
 
-#: redbot/cogs/mod/kickban.py:143 redbot/cogs/mod/kickban.py:318
-#: redbot/cogs/mod/kickban.py:612 redbot/cogs/mod/kickban.py:691
-#: redbot/cogs/mod/kickban.py:771
+#: redbot/cogs/mod/kickban.py:132 redbot/cogs/mod/kickban.py:315
+#: redbot/cogs/mod/kickban.py:615 redbot/cogs/mod/kickban.py:696
+#: redbot/cogs/mod/kickban.py:782 redbot/cogs/mod/names.py:64
 msgid "I cannot let you do that. You are not higher than the user in the role hierarchy."
-msgstr ""
+msgstr "我不能讓你那樣做。您的身分組未高於該用戶身分組。"
 
-#: redbot/cogs/mod/kickban.py:150 redbot/cogs/mod/kickban.py:326
-#: redbot/cogs/mod/kickban.py:620
+#: redbot/cogs/mod/kickban.py:139 redbot/cogs/mod/kickban.py:323
+#: redbot/cogs/mod/kickban.py:623
 msgid "I cannot do that due to Discord hierarchy rules."
-msgstr ""
+msgstr "由於 Discord 層次結構規則，我不能這樣做。"
 
-#: redbot/cogs/mod/kickban.py:156
+#: redbot/cogs/mod/kickban.py:145
 msgid "You have been banned from {guild}."
 msgstr "您已被 {guild} 伺服器封鎖。"
 
-#: redbot/cogs/mod/kickban.py:160 redbot/cogs/mod/kickban.py:337
+#: redbot/cogs/mod/kickban.py:149 redbot/cogs/mod/kickban.py:334
 msgid "**Reason**"
 msgstr "**原因**"
 
-#: redbot/cogs/mod/kickban.py:161 redbot/cogs/mod/kickban.py:338
+#: redbot/cogs/mod/kickban.py:150 redbot/cogs/mod/kickban.py:335
 msgid "No reason was given."
 msgstr "未給出原因。"
 
-#: redbot/cogs/mod/kickban.py:179 redbot/cogs/mod/kickban.py:480
+#: redbot/cogs/mod/kickban.py:171 redbot/cogs/mod/kickban.py:480
 msgid "User with ID {user_id} is already banned."
-msgstr ""
+msgstr "ID 為 {user_id} 的用戶已被封鎖。"
 
-#: redbot/cogs/mod/kickban.py:192
+#: redbot/cogs/mod/kickban.py:182
 msgid "User with ID {user_id} was upgraded from a temporary to a permanent ban."
-msgstr ""
+msgstr "ID 為 {user_id} 的用戶已從臨時封禁升級為永久封禁。"
 
-#: redbot/cogs/mod/kickban.py:204 redbot/cogs/mod/kickban.py:365
+#: redbot/cogs/mod/kickban.py:198 redbot/cogs/mod/kickban.py:364
 msgid "Done. That felt good."
-msgstr "做完了。感覺很好。"
+msgstr "完成。感覺啵棒。"
 
-#: redbot/cogs/mod/kickban.py:206 redbot/cogs/mod/kickban.py:346
+#: redbot/cogs/mod/kickban.py:200 redbot/cogs/mod/kickban.py:343
 msgid "I'm not allowed to do that."
-msgstr ""
+msgstr "我不被允許那樣做。"
 
-#: redbot/cogs/mod/kickban.py:208 redbot/cogs/mod/kickban.py:551
+#: redbot/cogs/mod/kickban.py:202 redbot/cogs/mod/kickban.py:554
 msgid "User with ID {user_id} not found"
-msgstr ""
+msgstr "未找到 ID 為 {user_id} 的用戶"
 
-#: redbot/cogs/mod/kickban.py:215
+#: redbot/cogs/mod/kickban.py:212
 msgid "An unexpected error occurred."
-msgstr ""
+msgstr "發生一個預期外的錯誤。"
 
-#: redbot/cogs/mod/kickban.py:269
+#: redbot/cogs/mod/kickban.py:266
 msgid "Tempban finished"
-msgstr ""
+msgstr "模板完成"
 
-#: redbot/cogs/mod/kickban.py:294
+#: redbot/cogs/mod/kickban.py:291
 #, docstring
 msgid "\n"
 "        Kick a user.\n\n"
 "        Examples:\n"
-"           - `[p]kick 428675506947227648 wanted to be kicked.`\n"
-"            This will kick Twentysix from the server.\n"
-"           - `[p]kick @Twentysix wanted to be kicked.`\n"
+"        - `[p]kick 428675506947227648 wanted to be kicked.`\n"
+"            This will kick the user with ID 428675506947227648 from the server.\n"
+"        - `[p]kick @Twentysix wanted to be kicked.`\n"
 "            This will kick Twentysix from the server.\n\n"
 "        If a reason is specified, it will be the reason that shows up\n"
 "        in the audit log.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/mod/kickban.py:311 redbot/cogs/mod/kickban.py:684
+#: redbot/cogs/mod/kickban.py:308 redbot/cogs/mod/kickban.py:689
 msgid "I cannot let you do that. Self-harm is bad {emoji}"
-msgstr ""
+msgstr "我不能讓你那樣做。自殘是不好的 {emoji}"
 
-#: redbot/cogs/mod/kickban.py:333
+#: redbot/cogs/mod/kickban.py:330
 msgid "You have been kicked from {guild}."
-msgstr ""
+msgstr "你已被踢出{guild}。"
 
-#: redbot/cogs/mod/kickban.py:379
+#: redbot/cogs/mod/kickban.py:378
 #, docstring
 msgid "Ban a user from this server and optionally delete days of messages.\n\n"
 "        `days` is the amount of days of messages to cleanup on ban.\n\n"
 "        Examples:\n"
-"           - `[p]ban 428675506947227648 7 Continued to spam after told to stop.`\n"
-"            This will ban Twentysix and it will delete 7 days worth of messages.\n"
-"           - `[p]ban @Twentysix 7 Continued to spam after told to stop.`\n"
+"        - `[p]ban 428675506947227648 7 Continued to spam after told to stop.`\n"
+"            This will ban the user with ID 428675506947227648 and it will delete 7 days worth of messages.\n"
+"        - `[p]ban @Twentysix 7 Continued to spam after told to stop.`\n"
 "            This will ban Twentysix and it will delete 7 days worth of messages.\n\n"
 "        A user ID should be provided if the user is not a member of this server.\n"
 "        If days is not a number, it's treated as the first word of the reason.\n"
@@ -152,7 +148,7 @@ msgid "Ban a user from this server and optionally delete days of messages.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/mod/kickban.py:417
+#: redbot/cogs/mod/kickban.py:416
 #, docstring
 msgid "Mass bans user(s) from the server.\n\n"
 "        `days` is the amount of days of messages to cleanup on massban.\n\n"
@@ -162,484 +158,522 @@ msgid "Mass bans user(s) from the server.\n\n"
 "        User IDs need to be provided in order to ban\n"
 "        using this command.\n"
 "        "
-msgstr ""
+msgstr "大規模禁止用戶訪問服務器。\n\n"
+"        `days` 是在 massban 上清理消息的天數。\n\n"
+"        例子：\n"
+"           - `[p]massban 345628097929936898 57287406247743488 7 they broke all rules.`\n"
+"           這將禁止所有添加的用戶 ID 並刪除他們 7 天的消息。\n\n"
+"        需要提供用戶 ID 才能禁止\n"
+"        使用這個命令。\n"
+"        "
 
-#: redbot/cogs/mod/kickban.py:433
+#: redbot/cogs/mod/kickban.py:432
 msgid "Banned {num} users from the server."
-msgstr ""
+msgstr "從服務器封鎖 {num} 個用戶。"
 
-#: redbot/cogs/mod/kickban.py:437
+#: redbot/cogs/mod/kickban.py:436
 msgid "\n"
 "Errors:\n"
-msgstr ""
+msgstr "\n"
+"錯誤：\n"
 
-#: redbot/cogs/mod/kickban.py:440
+#: redbot/cogs/mod/kickban.py:439
 msgid "\n"
 "Following user IDs have been upgraded from a temporary to a permanent ban:\n"
-msgstr ""
+msgstr "\n"
+"以下用戶 ID 已從臨時封禁升級為永久封禁：\n"
 
-#: redbot/cogs/mod/kickban.py:468
+#: redbot/cogs/mod/kickban.py:467
 msgid "I lack the permissions to do this."
-msgstr ""
+msgstr "我沒有執行此操作的權限。"
 
 #: redbot/cogs/mod/kickban.py:519 redbot/cogs/mod/kickban.py:523
 msgid "Failed to ban user {user_id}: {reason}"
-msgstr ""
+msgstr "無法禁止用戶 {user_id}：{reason}"
 
-#: redbot/cogs/mod/kickban.py:556
+#: redbot/cogs/mod/kickban.py:559
 msgid "Could not ban user with ID {user_id}: missing permissions."
-msgstr ""
+msgstr "無法禁止 ID 為 {user_id} 的用戶：缺少權限。"
 
-#: redbot/cogs/mod/kickban.py:589
+#: redbot/cogs/mod/kickban.py:592
 #, docstring
 msgid "Temporarily ban a user from this server.\n\n"
 "        `duration` is the amount of time the user should be banned for.\n"
 "        `days` is the amount of days of messages to cleanup on tempban.\n\n"
 "        Examples:\n"
-"           - `[p]tempban @Twentysix Because I say so`\n"
+"        - `[p]tempban @Twentysix Because I say so`\n"
 "            This will ban Twentysix for the default amount of time set by an administrator.\n"
-"           - `[p]tempban @Twentysix 15m You need a timeout`\n"
+"        - `[p]tempban @Twentysix 15m You need a timeout`\n"
 "            This will ban Twentysix for 15 minutes.\n"
-"           - `[p]tempban 428675506947227648 1d2h15m 5 Evil person`\n"
-"            This will ban the user for 1 day 2 hours 15 minutes and will delete the last 5 days of their messages.\n"
+"        - `[p]tempban 428675506947227648 1d2h15m 5 Evil person`\n"
+"            This will ban the user with ID 428675506947227648 for 1 day 2 hours 15 minutes and will delete the last 5 days of their messages.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/mod/kickban.py:643
+#: redbot/cogs/mod/kickban.py:646
 msgid "You have been temporarily banned from {server_name} until {date}."
-msgstr ""
+msgstr "在 {date} 之前，您已被暫時禁止訪問 {server_name}。"
 
-#: redbot/cogs/mod/kickban.py:647
-msgid " Here is an invite for when your ban expires: {invite_link}"
-msgstr ""
+#: redbot/cogs/mod/kickban.py:650
+msgid "\n\n"
+"**Reason:** {reason}"
+msgstr "\n\n"
+"**原因：** {reason}"
 
-#: redbot/cogs/mod/kickban.py:657
+#: redbot/cogs/mod/kickban.py:652
+msgid "\n\n"
+"Here is an invite for when your ban expires: {invite_link}"
+msgstr "\n\n"
+"這是您的禁令到期時的邀請：{invite_link}"
+
+#: redbot/cogs/mod/kickban.py:662
 msgid "I can't do that for some reason."
-msgstr ""
+msgstr "出於某種原因我不能那樣做。"
 
-#: redbot/cogs/mod/kickban.py:659
+#: redbot/cogs/mod/kickban.py:664
 msgid "Something went wrong while banning."
-msgstr ""
+msgstr "封鎖時出了點問題。"
 
-#: redbot/cogs/mod/kickban.py:671
+#: redbot/cogs/mod/kickban.py:676
 msgid "Done. Enough chaos for now."
-msgstr ""
+msgstr "完成。現在不再混亂了。"
 
-#: redbot/cogs/mod/kickban.py:678
+#: redbot/cogs/mod/kickban.py:683
 #, docstring
 msgid "Kick a user and delete 1 day's worth of their messages."
-msgstr ""
+msgstr "踢出一個用戶並刪除他們 1 天的消息。"
 
-#: redbot/cogs/mod/kickban.py:707
+#: redbot/cogs/mod/kickban.py:710
 msgid "You have been banned and then unbanned as a quick way to delete your messages.\n"
 "You can now join the server again. {invite_link}"
-msgstr ""
+msgstr "您已被封鎖，刪除您的訊息是最快速解除封鎖方法。\n"
+"您現在可以再次加入服務器。 {invite_link}"
 
-#: redbot/cogs/mod/kickban.py:718
+#: redbot/cogs/mod/kickban.py:721
 msgid "My role is not high enough to softban that user."
-msgstr ""
+msgstr "我的身分組不足以軟封鎖該用戶。"
 
-#: redbot/cogs/mod/kickban.py:754
+#: redbot/cogs/mod/kickban.py:765
 msgid "Done. Enough chaos."
-msgstr ""
+msgstr "完成。現在不再混亂了。"
 
-#: redbot/cogs/mod/kickban.py:762
+#: redbot/cogs/mod/kickban.py:773
 #, docstring
 msgid "Kick a member from a voice channel."
-msgstr ""
+msgstr "從語音頻道中踢出成員。"
 
-#: redbot/cogs/mod/kickban.py:784
+#: redbot/cogs/mod/kickban.py:795
 msgid "I am unable to kick this member from the voice channel."
-msgstr ""
+msgstr "我無法將此成員踢出語音頻道。"
 
-#: redbot/cogs/mod/kickban.py:787
+#: redbot/cogs/mod/kickban.py:798
 msgid "Something went wrong while attempting to kick that member."
-msgstr ""
+msgstr "試圖踢出成員時出了點問題。"
 
-#: redbot/cogs/mod/kickban.py:808
+#: redbot/cogs/mod/kickban.py:812
+msgid "User has been kicked from the voice channel."
+msgstr "用戶已被踢出語音頻道。"
+
+#: redbot/cogs/mod/kickban.py:820
 #, docstring
 msgid "Unban a user from speaking and listening in the server's voice channels."
-msgstr ""
+msgstr "取消禁止用戶在伺服器的語音頻道中講話和收聽。"
 
-#: redbot/cogs/mod/kickban.py:827
+#: redbot/cogs/mod/kickban.py:839
 msgid "That user isn't muted or deafened by the server."
-msgstr ""
+msgstr "該用戶不會被服務器靜音或禁聽。"
 
-#: redbot/cogs/mod/kickban.py:843
+#: redbot/cogs/mod/kickban.py:855
 msgid "User is now allowed to speak and listen in voice channels."
-msgstr ""
+msgstr "現在允許用戶在語音通道中講話和收聽。"
 
-#: redbot/cogs/mod/kickban.py:849
+#: redbot/cogs/mod/kickban.py:861
 #, docstring
 msgid "Ban a user from speaking and listening in the server's voice channels."
-msgstr ""
+msgstr "禁止用戶在伺服器的語音通道中講話和收聽。"
 
-#: redbot/cogs/mod/kickban.py:870
+#: redbot/cogs/mod/kickban.py:882
 msgid "That user is already muted and deafened server-wide."
-msgstr ""
+msgstr "該用戶已經在伺服器範圍內靜音和禁聽。"
 
-#: redbot/cogs/mod/kickban.py:884
+#: redbot/cogs/mod/kickban.py:896
 msgid "User has been banned from speaking or listening in voice channels."
-msgstr ""
+msgstr "用戶已被禁止在語音頻道中講話或收聽。"
 
-#: redbot/cogs/mod/kickban.py:891
+#: redbot/cogs/mod/kickban.py:905
 #, docstring
 msgid "Unban a user from this server.\n\n"
 "        Requires specifying the target user's ID. To find this, you may either:\n"
-"         1. Copy it from the mod log case (if one was created), or\n"
-"         2. enable developer mode, go to Bans in this server's settings, right-\n"
-"        click the user and select 'Copy ID'."
+"        1. Copy it from the mod log case (if one was created), or\n"
+"        2. Enable Developer Mode, go to Bans in this server's settings, right-click the user and select 'Copy ID'.\n"
+"        "
 msgstr ""
 
-#: redbot/cogs/mod/kickban.py:904
+#: redbot/cogs/mod/kickban.py:917
 msgid "It seems that user isn't banned!"
-msgstr ""
+msgstr "看來該用戶沒有被封鎖！"
 
-#: redbot/cogs/mod/kickban.py:909
+#: redbot/cogs/mod/kickban.py:922
 msgid "Something went wrong while attempting to unban that user."
-msgstr ""
+msgstr "嘗試取消對該用戶的封鎖時出了點問題。"
 
-#: redbot/cogs/mod/kickban.py:923
+#: redbot/cogs/mod/kickban.py:936
 msgid "Unbanned that user from this server."
-msgstr ""
+msgstr "將該用戶從該服務器中解除封鎖。"
 
-#: redbot/cogs/mod/kickban.py:929
+#: redbot/cogs/mod/kickban.py:942
 msgid "I don't share another server with this user. I can't reinvite them."
-msgstr ""
+msgstr "我不與該用戶共享另一台服務器。我不能重新邀請他們。"
 
-#: redbot/cogs/mod/kickban.py:937
+#: redbot/cogs/mod/kickban.py:950
 msgid "You've been unbanned from {server}.\n"
 "Here is an invite for that server: {invite_link}"
-msgstr ""
+msgstr "您已被解除 {server} 的封鎖。\n"
+"這是該服務器的邀請：{invite_link}"
 
-#: redbot/cogs/mod/kickban.py:944
+#: redbot/cogs/mod/kickban.py:957
 msgid "I failed to send an invite to that user. Perhaps you may be able to send it for me?\n"
 "Here's the invite link: {invite_link}"
-msgstr ""
+msgstr "我未能向該用戶發送邀請。也許你可以幫我寄過來？\n"
+"這是邀請鏈接：{invite_link}"
 
-#: redbot/cogs/mod/kickban.py:952
-msgid "Something went wrong when attempting to send that useran invite. Here's the link so you can try: {invite_link}"
-msgstr ""
+#: redbot/cogs/mod/kickban.py:965
+msgid "Something went wrong when attempting to send that user an invite. Here's the link so you can try: {invite_link}"
+msgstr "嘗試向該用戶發送邀請時出現問題。這是鏈接，您可以嘗試：{invite_link}"
 
-#: redbot/cogs/mod/mod.py:45
+#: redbot/cogs/mod/mod.py:44
 #, docstring
 msgid "Moderation tools."
-msgstr ""
+msgstr "版主工具。"
 
-#: redbot/cogs/mod/mod.py:142 redbot/cogs/mod/mod.py:152
-msgid "Ignored guilds and channels have been moved. Please use `[p]moveignoredchannels` to migrate the old settings."
-msgstr ""
+#: redbot/cogs/mod/mod.py:135 redbot/cogs/mod/mod.py:145
+msgid "Ignored guilds and channels have been moved. Please use {command} to migrate the old settings."
+msgstr "忽略的公會和頻道已被移動。請使用 {command} 遷移舊設置。"
 
-#: redbot/cogs/mod/mod.py:164
-msgid "Delete delay settings have been moved. Please use `[p]movedeletedelay` to migrate the old settings."
-msgstr ""
+#: redbot/cogs/mod/mod.py:155
+msgid "Delete delay settings have been moved. Please use {command} to migrate the old settings."
+msgstr "刪除延遲設置已被移動。 請使用 {command} 遷移舊設置。"
 
-#: redbot/cogs/mod/mod.py:185
+#: redbot/cogs/mod/mod.py:176
 #, docstring
 msgid "Move ignored channels and servers to core"
-msgstr ""
+msgstr "將忽略的頻道和服務器移至核心"
 
-#: redbot/cogs/mod/mod.py:194
+#: redbot/cogs/mod/mod.py:185
 msgid "Ignored channels and guilds restored."
-msgstr ""
+msgstr "忽略的頻道和群組已恢復。"
 
-#: redbot/cogs/mod/mod.py:199
+#: redbot/cogs/mod/mod.py:190
 #, docstring
 msgid "\n"
 "        Move deletedelay settings to core\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        將刪除的延遲設置移至核心\n"
+"        "
 
-#: redbot/cogs/mod/mod.py:208
+#: redbot/cogs/mod/mod.py:199
 msgid "Delete delay settings restored."
-msgstr ""
+msgstr "刪除延遲設置恢復。"
 
-#: redbot/cogs/mod/names.py:36
+#: redbot/cogs/mod/names.py:38
 #, docstring
-msgid "Change a member's nickname.\n\n"
-"        Leaving the nickname empty will remove it.\n"
+msgid "Change a member's server nickname.\n\n"
+"        Leaving the nickname argument empty will remove it.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/mod/names.py:45
+#: redbot/cogs/mod/names.py:47
 msgid "Nicknames must be between 2 and 32 characters long."
-msgstr ""
+msgstr "暱稱的長度必須介於 2 到 32 個字符之間。"
 
-#: redbot/cogs/mod/names.py:53
+#: redbot/cogs/mod/names.py:55
 msgid "I do not have permission to rename that member. They may be higher than or equal to me in the role hierarchy."
-msgstr ""
+msgstr "我無權重命名該成員。 他們在身分組層次上可能高於或等於我。"
 
-#: redbot/cogs/mod/names.py:63
+#: redbot/cogs/mod/names.py:75
 msgid "I do not have permission to rename that member."
-msgstr ""
+msgstr "我無權限重命名該成員。"
 
-#: redbot/cogs/mod/names.py:66
+#: redbot/cogs/mod/names.py:78
 msgid "That nickname is invalid."
-msgstr ""
+msgstr "該暱稱無效。"
 
-#: redbot/cogs/mod/names.py:68
-msgid "An unexpected error has occured."
-msgstr ""
+#: redbot/cogs/mod/names.py:80
+msgid "An unexpected error has occurred."
+msgstr "發生非預期的錯誤。"
 
-#: redbot/cogs/mod/names.py:70
+#: redbot/cogs/mod/names.py:82
 msgid "Done."
 msgstr "完成。"
 
-#: redbot/cogs/mod/names.py:81
+#: redbot/cogs/mod/names.py:93
 msgid "Custom: {emoji} {name}"
 msgstr "自訂狀態: {emoji} {name}"
 
-#: redbot/cogs/mod/names.py:83
+#: redbot/cogs/mod/names.py:95
 msgid "Custom: {emoji}"
 msgstr "自訂狀態: {emoji}"
 
-#: redbot/cogs/mod/names.py:85
+#: redbot/cogs/mod/names.py:97
 msgid "Custom: {name}"
 msgstr "自訂狀態: {name}"
 
-#: redbot/cogs/mod/names.py:93
+#: redbot/cogs/mod/names.py:105
 msgid "Playing: {name}"
 msgstr "正在玩遊戲: {name}"
 
-#: redbot/cogs/mod/names.py:102
+#: redbot/cogs/mod/names.py:114
 msgid "Streaming: [{name}{sep}{game}]({url})"
 msgstr "實況中: [{name}{sep}{game}]({url})"
 
-#: redbot/cogs/mod/names.py:109
+#: redbot/cogs/mod/names.py:121
 msgid "Streaming: {name}"
 msgstr "實況中: {name}"
 
-#: redbot/cogs/mod/names.py:118
+#: redbot/cogs/mod/names.py:130
 msgid "Listening: [{title}{sep}{artist}]({url})"
 msgstr "收聽中: [{title}{sep}{artist}]({url})"
 
-#: redbot/cogs/mod/names.py:125
+#: redbot/cogs/mod/names.py:137
 msgid "Listening: {title}"
 msgstr "收聽中: {title}"
 
-#: redbot/cogs/mod/names.py:133
+#: redbot/cogs/mod/names.py:145
 msgid "Watching: {name}"
 msgstr "觀看中: {name}"
 
-#: redbot/cogs/mod/names.py:141
+#: redbot/cogs/mod/names.py:153
 msgid "Competing in: {competing}"
-msgstr ""
+msgstr "參加比賽：{competing}"
 
-#: redbot/cogs/mod/names.py:164
+#: redbot/cogs/mod/names.py:176
 #, docstring
 msgid "Show information about a member.\n\n"
 "        This includes fields for status, discord join date, server\n"
-"        join date, voice state and previous names/nicknames.\n\n"
-"        If the member has no roles, previous names or previous nicknames,\n"
+"        join date, voice state and previous usernames/global display names/nicknames.\n\n"
+"        If the member has no roles, previous usernames, global display names, or server nicknames,\n"
 "        these fields will be omitted.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/mod/names.py:192
+#: redbot/cogs/mod/names.py:219
 msgid "Unknown"
 msgstr "未知"
 
-#: redbot/cogs/mod/names.py:202 redbot/cogs/mod/names.py:203
-msgid "{}\n"
-"({} days ago)"
-msgstr "{}\n"
-"({} 天前)"
-
-#: redbot/cogs/mod/names.py:215
+#: redbot/cogs/mod/names.py:231
 msgid "Chilling in {} status"
 msgstr "目前狀態 {}"
 
-#: redbot/cogs/mod/names.py:229
+#: redbot/cogs/mod/names.py:244
 msgid "and {numeric_number} more roles not displayed due to embed limits."
 msgstr "和 {numeric_number} 由於嵌入的限制，無法顯示更多身分組。"
 
-#: redbot/cogs/mod/names.py:256
+#: redbot/cogs/mod/names.py:271
 msgid "Joined Discord on"
 msgstr "加入Discord於"
 
-#: redbot/cogs/mod/names.py:257
+#: redbot/cogs/mod/names.py:272
 msgid "Joined this server on"
 msgstr "加入這個伺服器於"
 
-#: redbot/cogs/mod/names.py:260
+#: redbot/cogs/mod/names.py:275
 msgid "Roles"
 msgstr "身分組"
 
-#: redbot/cogs/mod/names.py:260
+#: redbot/cogs/mod/names.py:275
 msgid "Role"
+msgstr "身分組"
+
+#: redbot/cogs/mod/names.py:278
+msgid "Previous Username"
 msgstr ""
 
-#: redbot/cogs/mod/names.py:266
-msgid "Previous Names"
-msgstr "以前的名字"
-
-#: redbot/cogs/mod/names.py:266
-msgid "Previous Name"
+#: redbot/cogs/mod/names.py:278
+msgid "Previous Usernames"
 msgstr ""
 
-#: redbot/cogs/mod/names.py:274
-msgid "Previous Nicknames"
-msgstr "以前的暱稱"
+#: redbot/cogs/mod/names.py:279
+msgid "Previous Global Display Name"
+msgstr ""
 
-#: redbot/cogs/mod/names.py:274
-msgid "Previous Nickname"
+#: redbot/cogs/mod/names.py:279
+msgid "Previous Global Display Names"
 msgstr ""
 
 #: redbot/cogs/mod/names.py:280
+msgid "Previous Server Nickname"
+msgstr ""
+
+#: redbot/cogs/mod/names.py:280
+msgid "Previous Server Nicknames"
+msgstr ""
+
+#: redbot/cogs/mod/names.py:290
 msgid "Current voice channel"
 msgstr "目前的語音頻道"
 
-#: redbot/cogs/mod/names.py:284
+#: redbot/cogs/mod/names.py:294
 msgid "Member #{} | User ID: {}"
 msgstr "成員 #{} | 使用者ID: {}"
 
-#: redbot/cogs/mod/names.py:298
-#, docstring
-msgid "Show previous names and nicknames of a member."
-msgstr ""
-
-#: redbot/cogs/mod/names.py:302
-msgid "**Past 20 names**:"
-msgstr "**過去的20個名字**:"
-
 #: redbot/cogs/mod/names.py:308
-msgid "**Past 20 nicknames**:"
-msgstr "**過去的20個暱稱**:"
-
-#: redbot/cogs/mod/names.py:315
-msgid "That member doesn't have any recorded name or nickname change."
+#, docstring
+msgid "Show previous usernames, global display names, and server nicknames of a member."
 msgstr ""
 
-#: redbot/cogs/mod/settings.py:23
+#: redbot/cogs/mod/names.py:312
+msgid "Past 20 usernames:"
+msgstr ""
+
+#: redbot/cogs/mod/names.py:313
+msgid "Past 20 global display names:"
+msgstr ""
+
+#: redbot/cogs/mod/names.py:314
+msgid "Past 20 server nicknames:"
+msgstr ""
+
+#: redbot/cogs/mod/names.py:324
+msgid "That member doesn't have any recorded name or nickname change."
+msgstr "該成員沒有任何記錄的姓名或暱稱更改。"
+
+#: redbot/cogs/mod/settings.py:22
 #, docstring
 msgid "Manage server administration settings."
-msgstr ""
+msgstr "管理伺服器管理員設置。"
 
-#: redbot/cogs/mod/settings.py:27
+#: redbot/cogs/mod/settings.py:26
 #, docstring
 msgid "Show the current server administration settings."
-msgstr ""
+msgstr "顯示當前的伺服器管理員設置。"
 
-#: redbot/cogs/mod/settings.py:31
+#: redbot/cogs/mod/settings.py:30
 msgid "Track name changes: {yes_or_no}\n"
-msgstr ""
+msgstr "曲目名稱更改：{yes_or_no}\n"
 
-#: redbot/cogs/mod/settings.py:32 redbot/cogs/mod/settings.py:55
-#: redbot/cogs/mod/settings.py:83 redbot/cogs/mod/settings.py:91
-#: redbot/cogs/mod/settings.py:94
+#: redbot/cogs/mod/settings.py:31 redbot/cogs/mod/settings.py:54
+#: redbot/cogs/mod/settings.py:82 redbot/cogs/mod/settings.py:90
+#: redbot/cogs/mod/settings.py:93
 msgid "Yes"
 msgstr "是"
 
-#: redbot/cogs/mod/settings.py:32 redbot/cogs/mod/settings.py:55
-#: redbot/cogs/mod/settings.py:60 redbot/cogs/mod/settings.py:65
-#: redbot/cogs/mod/settings.py:70 redbot/cogs/mod/settings.py:75
-#: redbot/cogs/mod/settings.py:83 redbot/cogs/mod/settings.py:91
-#: redbot/cogs/mod/settings.py:94
+#: redbot/cogs/mod/settings.py:31 redbot/cogs/mod/settings.py:54
+#: redbot/cogs/mod/settings.py:59 redbot/cogs/mod/settings.py:64
+#: redbot/cogs/mod/settings.py:69 redbot/cogs/mod/settings.py:74
+#: redbot/cogs/mod/settings.py:82 redbot/cogs/mod/settings.py:90
+#: redbot/cogs/mod/settings.py:93
 msgid "No"
-msgstr ""
+msgstr "否"
 
-#: redbot/cogs/mod/settings.py:53
+#: redbot/cogs/mod/settings.py:52
 msgid "Overridden by another setting"
-msgstr ""
+msgstr "被其他設置覆蓋"
+
+#: redbot/cogs/mod/settings.py:55
+msgid "Track nickname changes: {yes_or_no}\n"
+msgstr "跟蹤暱稱更改：{yes_or_no}\n"
 
 #: redbot/cogs/mod/settings.py:56
-msgid "Track nickname changes: {yes_or_no}\n"
-msgstr ""
+msgid "Delete repeats: {num_repeats}\n"
+msgstr "刪除重複：{num_repeats}\n"
 
 #: redbot/cogs/mod/settings.py:57
-msgid "Delete repeats: {num_repeats}\n"
-msgstr ""
-
-#: redbot/cogs/mod/settings.py:58
 msgid "after {num} repeats"
-msgstr ""
+msgstr "{num} 次重複後"
 
-#: redbot/cogs/mod/settings.py:62
+#: redbot/cogs/mod/settings.py:61
 msgid "Warn mention spam: {num_mentions}\n"
-msgstr ""
+msgstr "警告提及垃圾郵件：{num_mentions}\n"
 
-#: redbot/cogs/mod/settings.py:63 redbot/cogs/mod/settings.py:68
-#: redbot/cogs/mod/settings.py:73
+#: redbot/cogs/mod/settings.py:62 redbot/cogs/mod/settings.py:67
+#: redbot/cogs/mod/settings.py:72
 msgid "{num} mentions"
 msgstr "{num}個提及"
 
-#: redbot/cogs/mod/settings.py:67
+#: redbot/cogs/mod/settings.py:66
 msgid "Kick mention spam: {num_mentions}\n"
-msgstr ""
+msgstr "踢出提及垃圾郵件：{num_mentions}\n"
 
-#: redbot/cogs/mod/settings.py:72
+#: redbot/cogs/mod/settings.py:71
 msgid "Ban mention spam: {num_mentions}\n"
-msgstr ""
+msgstr "封鎖提及垃圾郵件：{num_mentions}\n"
 
-#: redbot/cogs/mod/settings.py:78
+#: redbot/cogs/mod/settings.py:77
 msgid "Mention Spam Strict: All mentions will count including duplicates\n"
-msgstr ""
+msgstr "嚴格提及垃圾郵件：所有提及都將計算在內，包括重複項\n"
 
-#: redbot/cogs/mod/settings.py:80
+#: redbot/cogs/mod/settings.py:79
 msgid "Mention Spam Strict: Only unique mentions will count\n"
-msgstr ""
+msgstr "嚴格提及垃圾郵件：只有獨特的提及才算數\n"
 
-#: redbot/cogs/mod/settings.py:82
+#: redbot/cogs/mod/settings.py:81
 msgid "Respects hierarchy: {yes_or_no}\n"
-msgstr ""
+msgstr "尊重等級制度：{yes_or_no}\n"
+
+#: redbot/cogs/mod/settings.py:84
+msgid "Delete delay: {num_seconds}\n"
+msgstr "刪除延遲：{num_seconds}\n"
 
 #: redbot/cogs/mod/settings.py:85
-msgid "Delete delay: {num_seconds}\n"
-msgstr ""
-
-#: redbot/cogs/mod/settings.py:86
 msgid "{num} seconds"
-msgstr ""
+msgstr "{num} 秒"
 
-#: redbot/cogs/mod/settings.py:88
+#: redbot/cogs/mod/settings.py:87
 msgid "None"
 msgstr "無"
 
-#: redbot/cogs/mod/settings.py:90
+#: redbot/cogs/mod/settings.py:89
 msgid "Reinvite on unban: {yes_or_no}\n"
-msgstr ""
+msgstr "解封重新邀請：{yes_or_no}\n"
 
-#: redbot/cogs/mod/settings.py:93
+#: redbot/cogs/mod/settings.py:92
 msgid "Send message to users on kick/ban: {yes_or_no}\n"
-msgstr ""
+msgstr "向用戶發送關於踢出/封鎖的訊息：{yes_or_no}\n"
 
-#: redbot/cogs/mod/settings.py:97
+#: redbot/cogs/mod/settings.py:96
 msgid "Default message history delete on ban: Previous {num_days} days\n"
-msgstr ""
+msgstr "禁止刪除默認消息歷史記錄：前 {num_days} 天\n"
+
+#: redbot/cogs/mod/settings.py:100
+msgid "Default message history delete on ban: Don't delete any\n"
+msgstr "禁止刪除默認消息歷史記錄：不刪除任何訊息\n"
 
 #: redbot/cogs/mod/settings.py:101
-msgid "Default message history delete on ban: Don't delete any\n"
-msgstr ""
-
-#: redbot/cogs/mod/settings.py:102
 msgid "Default tempban duration: {duration}"
-msgstr ""
+msgstr "默認 tempban 持續時間：{duration}"
 
-#: redbot/cogs/mod/settings.py:110
+#: redbot/cogs/mod/settings.py:109
 #, docstring
 msgid "Toggle role hierarchy check for mods and admins.\n\n"
 "        **WARNING**: Disabling this setting will allow mods to take\n"
 "        actions on users above them in the role hierarchy!\n\n"
 "        This is enabled by default.\n"
 "        "
-msgstr ""
+msgstr "切換 mods 和 admins 的角色層次結構檢查。\n\n"
+"        **警告**：禁用此設置將允許模組採取\n"
+"        在角色層次結構中對高於他們的用戶執行操作！\n\n"
+"        這是默認啟用的。\n"
+"        "
 
-#: redbot/cogs/mod/settings.py:122
+#: redbot/cogs/mod/settings.py:121
 msgid "Role hierarchy will be checked when moderation commands are issued."
-msgstr ""
+msgstr "發布審核命令時將檢查身分組層次結構。"
 
-#: redbot/cogs/mod/settings.py:127
+#: redbot/cogs/mod/settings.py:126
 msgid "Role hierarchy will be ignored when moderation commands are issued."
-msgstr ""
+msgstr "發布審核命令時，身分組層次結構將被忽略。"
 
-#: redbot/cogs/mod/settings.py:133
+#: redbot/cogs/mod/settings.py:132
 #, docstring
 msgid "\n"
 "        Manage the automoderation settings for mentionspam.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        管理提及垃圾郵件的自動審核設置。\n"
+"        "
 
-#: redbot/cogs/mod/settings.py:140
+#: redbot/cogs/mod/settings.py:139
 #, docstring
 msgid "\n"
 "        Setting to account for duplicate mentions.\n\n"
@@ -647,25 +681,30 @@ msgid "\n"
 "        If disabled only unique mentions will count.\n\n"
 "        Use this command without any parameter to see current setting.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"設置以考慮重複提及。\n\n"
+"        如果啟用，所有提及都將計算在內，包括重複提及。\n"
+"        如果禁用，只有獨特的提及將被計算在內。\n\n"
+"        使用不帶任何參數的命令查看當前設置。\n"
+"        "
 
-#: redbot/cogs/mod/settings.py:152
+#: redbot/cogs/mod/settings.py:151
 msgid "Mention spam currently accounts for multiple mentions of the same user."
-msgstr ""
+msgstr "提及垃圾郵件目前會導致多次提及同一用戶。"
 
-#: redbot/cogs/mod/settings.py:154
+#: redbot/cogs/mod/settings.py:153
 msgid "Mention spam currently only accounts for mentions of different users."
-msgstr ""
+msgstr "提及垃圾郵件目前只考慮不同用戶的提及。"
 
-#: redbot/cogs/mod/settings.py:159
+#: redbot/cogs/mod/settings.py:158
 msgid "Mention spam will now account for multiple mentions of the same user."
-msgstr ""
+msgstr "提及垃圾郵件現在將考慮對同一用戶的多次提及。"
 
-#: redbot/cogs/mod/settings.py:161
+#: redbot/cogs/mod/settings.py:160
 msgid "Mention spam will only account for mentions of different users."
-msgstr ""
+msgstr "提及垃圾郵件只會考慮不同用戶的提及。"
 
-#: redbot/cogs/mod/settings.py:168
+#: redbot/cogs/mod/settings.py:167
 #, docstring
 msgid "\n"
 "        Sets the autowarn conditions for mention spam.\n\n"
@@ -673,36 +712,44 @@ msgid "\n"
 "        `<max_mentions>` mentions.\n\n"
 "        `<max_mentions>` Must be 0 or greater. Set to 0 to disable this feature.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"設置提及垃圾郵件的自動警告條件。\n\n"
+"        如果用戶發送任何包含超過\n"
+"        `<max_mentions>` 次提及。\n\n"
+"        `<max_mentions>` 必須為 0 或更大。 設置為 0 以禁用此功能。\n"
+"        "
 
-#: redbot/cogs/mod/settings.py:179
+#: redbot/cogs/mod/settings.py:178
 msgid "Autowarn for mention spam is already disabled."
-msgstr ""
+msgstr "提及垃圾郵件的自動警告已被禁用。"
 
-#: redbot/cogs/mod/settings.py:181
+#: redbot/cogs/mod/settings.py:180
 msgid "Autowarn for mention spam disabled."
-msgstr ""
+msgstr "禁用提及垃圾郵件的自動警告。"
 
-#: redbot/cogs/mod/settings.py:184
+#: redbot/cogs/mod/settings.py:183
 msgid "`<max_mentions>` must be 1 or higher to autowarn."
-msgstr ""
+msgstr "`<max_mentions>` 必須為 1 或更高才能自動警告。"
 
-#: redbot/cogs/mod/settings.py:190
+#: redbot/cogs/mod/settings.py:189
 msgid "\n"
 "Autowarn is equal to or higher than autokick."
-msgstr ""
+msgstr "\n"
+"Autowarn 等於或高於 autokick。"
 
-#: redbot/cogs/mod/settings.py:194
+#: redbot/cogs/mod/settings.py:193
 msgid "\n"
 "Autowarn is equal to or higher than autoban."
-msgstr ""
+msgstr "\n"
+"Autowarn 等於或高於 autoban。"
 
-#: redbot/cogs/mod/settings.py:198
+#: redbot/cogs/mod/settings.py:197
 msgid "Autowarn for mention spam enabled. Anyone mentioning {max_mentions} or more people in a single message will be autowarned.\n"
 "{mismatch_message}"
-msgstr ""
+msgstr "啟用提及垃圾郵件的自動警告。 任何在單條消息中提及 {max_mentions} 或更多人的人都會收到自動警告。\n"
+"{mismatch_message}"
 
-#: redbot/cogs/mod/settings.py:208
+#: redbot/cogs/mod/settings.py:207
 #, docstring
 msgid "\n"
 "        Sets the autokick conditions for mention spam.\n\n"
@@ -710,147 +757,173 @@ msgid "\n"
 "        `<max_mentions>` mentions.\n\n"
 "        `<max_mentions>` Must be 0 or greater. Set to 0 to disable this feature.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"設置提及垃圾郵件的自動踢條件。\n\n"
+"        如果用戶發送任何包含超過\n"
+"        `<max_mentions>` 次提及。\n\n"
+"        `<max_mentions>` 必須為 0 或更大。 設置為 0 以禁用此功能。\n"
+"        "
 
-#: redbot/cogs/mod/settings.py:219
+#: redbot/cogs/mod/settings.py:218
 msgid "Autokick for mention spam is already disabled."
-msgstr ""
+msgstr "提及垃圾郵件的 Autokick 已被禁用。"
 
-#: redbot/cogs/mod/settings.py:221
+#: redbot/cogs/mod/settings.py:220
 msgid "Autokick for mention spam disabled."
-msgstr ""
+msgstr "禁用提及垃圾郵件的自動踢出。"
 
-#: redbot/cogs/mod/settings.py:224
+#: redbot/cogs/mod/settings.py:223
 msgid "`<max_mentions>` must be 1 or higher to autokick."
-msgstr ""
+msgstr "`<max_mentions>` 必須為 1 或更高才能自動踢出。"
 
-#: redbot/cogs/mod/settings.py:230
+#: redbot/cogs/mod/settings.py:229
 msgid "\n"
 "Autokick is equal to or lower than autowarn."
-msgstr ""
+msgstr "\n"
+"Autokick 等於或低於 autowarn。"
 
-#: redbot/cogs/mod/settings.py:234
+#: redbot/cogs/mod/settings.py:233
 msgid "\n"
 "Autokick is equal to or higher than autoban."
-msgstr ""
+msgstr "\n"
+"Autokick 等於或高於 autoban。"
 
-#: redbot/cogs/mod/settings.py:238
+#: redbot/cogs/mod/settings.py:237
 msgid "Autokick for mention spam enabled. Anyone mentioning {max_mentions} or more people in a single message will be autokicked.\n"
 "{mismatch_message}"
-msgstr ""
+msgstr "Autokick 提及垃圾郵件啟用。 任何在一條消息中提及 {max_mentions} 或更多人的人都將被自動踢出。\n"
+"{mismatch_message}"
 
-#: redbot/cogs/mod/settings.py:248
+#: redbot/cogs/mod/settings.py:247
 #, docstring
 msgid "Set the autoban conditions for mention spam.\n\n"
 "        Users will be banned if they send any message which contains more than\n"
 "        `<max_mentions>` mentions.\n\n"
 "        `<max_mentions>` Must be 0 or greater. Set to 0 to disable this feature.\n"
 "        "
-msgstr ""
+msgstr "設置提及垃圾郵件的自動禁止條件。\n\n"
+"        如果用戶發送任何包含超過\n"
+"        `<max_mentions>` 次提及。\n\n"
+"        `<max_mentions>` 必須為 0 或更大。 設置為 0 以禁用此功能。\n"
+"        "
 
-#: redbot/cogs/mod/settings.py:258
+#: redbot/cogs/mod/settings.py:257
 msgid "Autoban for mention spam is already disabled."
-msgstr ""
+msgstr "提及垃圾郵件的自動封鎖已被禁用。"
 
-#: redbot/cogs/mod/settings.py:260
+#: redbot/cogs/mod/settings.py:259
 msgid "Autoban for mention spam disabled."
-msgstr ""
+msgstr "自動禁止提及垃圾郵件已禁用。"
 
-#: redbot/cogs/mod/settings.py:263
+#: redbot/cogs/mod/settings.py:262
 msgid "`<max_mentions>` must be 1 or higher to autoban."
-msgstr ""
+msgstr "`<max_mentions>` 必須為 1 或更高才能自動封鎖。"
 
-#: redbot/cogs/mod/settings.py:269
+#: redbot/cogs/mod/settings.py:268
 msgid "\n"
 "Autoban is equal to or lower than autowarn."
-msgstr ""
+msgstr "\n"
+"Autoban 等於或低於autowarn。"
 
-#: redbot/cogs/mod/settings.py:273
+#: redbot/cogs/mod/settings.py:272
 msgid "\n"
 "Autoban is equal to or lower than autokick."
-msgstr ""
+msgstr "\n"
+"Autoban 等於或低於 autokick。"
 
-#: redbot/cogs/mod/settings.py:277
+#: redbot/cogs/mod/settings.py:276
 msgid "Autoban for mention spam enabled. Anyone mentioning {max_mentions} or more people in a single message will be autobanned.\n"
 "{mismatch_message}"
-msgstr ""
+msgstr "自動禁止提及垃圾郵件。 任何在一條消息中提及 {max_mentions} 或更多人的人都將被自動禁止。\n"
+"{mismatch_message}"
 
-#: redbot/cogs/mod/settings.py:287
+#: redbot/cogs/mod/settings.py:286
 #, docstring
 msgid "Enable auto-deletion of repeated messages.\n\n"
 "        Must be between 2 and 20.\n\n"
 "        Set to -1 to disable this feature.\n"
 "        "
-msgstr ""
+msgstr "啟用自動刪除重複消息。\n\n"
+"        必須介於 2 和 20 之間。\n\n"
+"        設置為 -1 以禁用此功能。\n"
+"        "
 
-#: redbot/cogs/mod/settings.py:298 redbot/cogs/mod/settings.py:324
+#: redbot/cogs/mod/settings.py:297 redbot/cogs/mod/settings.py:323
 msgid "Repeated messages will be ignored."
-msgstr ""
+msgstr "重複的消息將被忽略。"
 
-#: redbot/cogs/mod/settings.py:304
+#: redbot/cogs/mod/settings.py:303
 msgid "Messages repeated up to {num} times will be deleted."
-msgstr ""
+msgstr "重複最多 {num} 次的消息將被刪除。"
 
-#: redbot/cogs/mod/settings.py:308
+#: redbot/cogs/mod/settings.py:307
 msgid "Number of repeats must be between 2 and 20 or equal to -1 if you want to disable this feature!"
-msgstr ""
+msgstr "如果要禁用此功能，重複次數必須在 2 到 20 之間或等於 -1！"
 
-#: redbot/cogs/mod/settings.py:317
+#: redbot/cogs/mod/settings.py:316
 msgid "Bot will delete repeated messages after {num} repeats. Set this value to -1 to ignore repeated messages"
-msgstr ""
+msgstr "機器人將在 {num} 次重複後刪除重複的消息。 將此值設置為 -1 以忽略重複的消息"
 
-#: redbot/cogs/mod/settings.py:329
+#: redbot/cogs/mod/settings.py:328
 #, docstring
 msgid "Toggle whether an invite will be sent to a user when unbanned.\n\n"
 "        If this is True, the bot will attempt to create and send a single-use invite\n"
 "        to the newly-unbanned user.\n"
 "        "
-msgstr ""
+msgstr "切換是否在取消禁止後向用戶發送邀請。\n\n"
+"        如果這是事實，機器人將嘗試創建並發送一次性邀請\n"
+"        給新解除禁令的用戶。\n"
+"        "
 
-#: redbot/cogs/mod/settings.py:339
-msgid "Users unbanned with `{command}` will be reinvited."
-msgstr ""
+#: redbot/cogs/mod/settings.py:338
+msgid "Users unbanned with {command} will be reinvited."
+msgstr "使用 {command} 封鎖的用戶將被邀請。"
 
-#: redbot/cogs/mod/settings.py:346
-msgid "Users unbanned with `{command}` will not be reinvited."
-msgstr ""
+#: redbot/cogs/mod/settings.py:345
+msgid "Users unbanned with {command} will not be reinvited."
+msgstr "使用 {command} 解除封鎖的用戶將不會被重新邀請。"
 
-#: redbot/cogs/mod/settings.py:354
+#: redbot/cogs/mod/settings.py:353
 #, docstring
 msgid "Toggle whether a message should be sent to a user when they are kicked/banned.\n\n"
 "        If this option is enabled, the bot will attempt to DM the user with the guild name\n"
 "        and reason as to why they were kicked/banned.\n"
 "        "
-msgstr ""
+msgstr "切換是否應在用戶被踢/禁止時向用戶發送消息。\n\n"
+"        如果啟用此選項，機器人將嘗試使用公會名稱向用戶發送 DM\n"
+"        以及他們被踢/禁的原因。\n"
+"        "
 
-#: redbot/cogs/mod/settings.py:363
+#: redbot/cogs/mod/settings.py:362
 msgid "DM when kicked/banned is currently set to: {setting}"
-msgstr ""
+msgstr "踢出/禁止時的 DM 當前設置為：{setting}"
 
-#: redbot/cogs/mod/settings.py:368
+#: redbot/cogs/mod/settings.py:367
 msgid "Bot will now attempt to send a DM to user before kick and ban."
-msgstr ""
+msgstr "Bot 現在將嘗試在踢出和封鎖之前向用戶發送 DM。"
 
-#: redbot/cogs/mod/settings.py:371
+#: redbot/cogs/mod/settings.py:370
 msgid "Bot will no longer attempt to send a DM to user before kick and ban."
-msgstr ""
+msgstr "Bot 將不再嘗試在踢出和封鎖之前向用戶發送 DM。"
 
-#: redbot/cogs/mod/settings.py:377
+#: redbot/cogs/mod/settings.py:376
 #, docstring
 msgid "Set the default number of days worth of messages to be deleted when a user is banned.\n\n"
 "        The number of days must be between 0 and 7.\n"
 "        "
-msgstr ""
+msgstr "設置當用戶被禁止時要刪除的消息的默認天數。\n\n"
+"        天數必須介於 0 到 7 之間。\n"
+"        "
 
-#: redbot/cogs/mod/settings.py:383
+#: redbot/cogs/mod/settings.py:382
 msgid "Invalid number of days. Must be between 0 and 7."
-msgstr ""
+msgstr "數值無效。必須介於 0 和 7 之間。"
 
-#: redbot/cogs/mod/settings.py:386
+#: redbot/cogs/mod/settings.py:385
 msgid "{days} days worth of messages will be deleted when a user is banned."
-msgstr ""
+msgstr "當用戶被禁止時，將刪除 {days} 天的消息。"
 
-#: redbot/cogs/mod/settings.py:401
+#: redbot/cogs/mod/settings.py:400
 #, docstring
 msgid "Set the default time to be used when a user is tempbanned.\n\n"
 "        Accepts: seconds, minutes, hours, days, weeks\n"
@@ -859,94 +932,107 @@ msgid "Set the default time to be used when a user is tempbanned.\n\n"
 "            `[p]modset defaultduration 7d12h10m`\n"
 "            `[p]modset defaultduration 7 days 12 hours 10 minutes`\n"
 "        "
-msgstr ""
+msgstr "設置用戶被臨時封鎖時使用的默認時間。\n\n"
+"        接受：秒、分鐘、小時、天、週\n"
+"        `duration` 必須大於零。\n\n"
+"        例子：\n"
+"            `[p]modset defaultduration 7d12h10m`\n"
+"            `[p]modset defaultduration 7 days 12 hours 10 minutes`\n"
+"        "
 
-#: redbot/cogs/mod/settings.py:413
+#: redbot/cogs/mod/settings.py:412
 msgid "The default duration for tempbanning a user is now {duration}."
-msgstr ""
+msgstr "臨時封鎖用戶的默認持續時間現在是 {duration}。"
 
-#: redbot/cogs/mod/settings.py:421
+#: redbot/cogs/mod/settings.py:420
 #, docstring
 msgid "\n"
-"        Toggle whether nickname changes should be tracked.\n\n"
+"        Toggle whether server nickname changes should be tracked.\n\n"
 "        This setting will be overridden if trackallnames is disabled.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/mod/settings.py:430
+#: redbot/cogs/mod/settings.py:429
 msgid "Nickname changes are currently being tracked."
-msgstr ""
+msgstr "目前正在跟蹤暱稱更改。"
 
-#: redbot/cogs/mod/settings.py:432
+#: redbot/cogs/mod/settings.py:431
 msgid "Nickname changes are not currently being tracked."
-msgstr ""
+msgstr "當前未跟蹤暱稱更改。"
 
-#: redbot/cogs/mod/settings.py:437
+#: redbot/cogs/mod/settings.py:436
 msgid "Nickname changes will now be tracked."
-msgstr ""
+msgstr "現在將跟蹤暱稱更改。"
 
-#: redbot/cogs/mod/settings.py:439
+#: redbot/cogs/mod/settings.py:438
 msgid "Nickname changes will no longer be tracked."
-msgstr ""
+msgstr "暱稱更改將不再被跟蹤。"
 
-#: redbot/cogs/mod/settings.py:446
+#: redbot/cogs/mod/settings.py:445
 #, docstring
 msgid "\n"
 "        Toggle whether all name changes should be tracked.\n\n"
 "        Toggling this off also overrides the tracknicknames setting.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        切換是否應跟蹤所有名稱更改。\n\n"
+"        關閉此選項也會覆蓋暱稱設置。\n"
+"        "
 
-#: redbot/cogs/mod/settings.py:454
+#: redbot/cogs/mod/settings.py:453
 msgid "Name changes are currently being tracked."
-msgstr ""
+msgstr "目前正在跟蹤名稱更改。"
 
-#: redbot/cogs/mod/settings.py:456
+#: redbot/cogs/mod/settings.py:455
 msgid "All name changes are currently not being tracked."
-msgstr ""
+msgstr "當前未跟蹤所有名稱更改。"
 
-#: redbot/cogs/mod/settings.py:461
+#: redbot/cogs/mod/settings.py:460
 msgid "Name changes will now be tracked."
-msgstr ""
+msgstr "現在將跟蹤名稱更改。"
 
-#: redbot/cogs/mod/settings.py:463
+#: redbot/cogs/mod/settings.py:462
 msgid "All name changes will no longer be tracked.\n"
 "To delete existing name data, use {command}."
-msgstr ""
+msgstr "將不再跟蹤所有名稱更改。\n"
+"要刪除現有名稱數據，請使用 {command}。"
 
-#: redbot/cogs/mod/settings.py:474
+#: redbot/cogs/mod/settings.py:473
 #, docstring
-msgid "Delete all stored usernames and nicknames.\n\n"
+msgid "Delete all stored usernames, global display names, and server nicknames.\n\n"
 "        Examples:\n"
-"            - `[p]modset deletenames` - Did not confirm. Shows the help message.\n"
-"            - `[p]modset deletenames yes` - Deletes all stored usernames and nicknames.\n\n"
+"        - `[p]modset deletenames` - Did not confirm. Shows the help message.\n"
+"        - `[p]modset deletenames yes` - Deletes all stored usernames, global display names, and server nicknames.\n\n"
 "        **Arguments**\n\n"
 "        - `<confirmation>` This will default to false unless specified.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/mod/settings.py:486
-msgid "This will delete all stored usernames and nicknames the bot has stored.\n"
+#: redbot/cogs/mod/settings.py:485
+msgid "This will delete all stored usernames, global display names, and server nicknames the bot has stored.\n"
 "If you're sure, type {command}"
 msgstr ""
 
-#: redbot/cogs/mod/settings.py:527
-msgid "Usernames and nicknames have been deleted from Mod config."
+#: redbot/cogs/mod/settings.py:529
+msgid "Usernames, global display names, and server nicknames have been deleted from Mod config."
 msgstr ""
 
-#: redbot/cogs/mod/slowmode.py:27
+#: redbot/cogs/mod/slowmode.py:28
 #, docstring
-msgid "Changes channel's slowmode setting.\n\n"
+msgid "Changes thread's or text channel's slowmode setting.\n\n"
 "        Interval can be anything from 0 seconds to 6 hours.\n"
 "        Use without parameters to disable.\n"
 "        "
-msgstr ""
+msgstr "更改線程或文字頻道的慢速模式設置。\n\n"
+"        間隔可以是 0 秒到 6 小時之間的任何值。\n"
+"        使用不帶參數禁用。\n"
+"        "
 
-#: redbot/cogs/mod/slowmode.py:36
+#: redbot/cogs/mod/slowmode.py:37
 msgid "Slowmode interval is now {interval}."
-msgstr ""
+msgstr "慢速模式間隔現在是 {interval}。"
 
-#: redbot/cogs/mod/slowmode.py:41
+#: redbot/cogs/mod/slowmode.py:42
 msgid "Slowmode has been disabled."
-msgstr ""
+msgstr "慢速模式已被禁用。"
 

@@ -1,19 +1,78 @@
 import asyncio
 import contextlib
-import logging
+import math
+import platform
+import re
+import sys
 import time
 
 from enum import Enum, unique
 from pathlib import Path
-from typing import MutableMapping
+from typing import Any, MutableMapping, Tuple, Union
 
 import discord
+import psutil
+from red_commons.logging import getLogger
 
 from redbot.core import commands
+from redbot.core.bot import Red
 from redbot.core.i18n import Translator
 
-log = logging.getLogger("red.cogs.Audio.task.callback")
+from .managed_node.ll_server_config import DEFAULT_LAVALINK_YAML, change_dict_naming_convention
+
+log = getLogger("red.cogs.Audio.task.callback")
 _ = Translator("Audio", Path(__file__))
+
+
+def get_max_allocation_size(exec) -> Tuple[int, bool]:
+    if platform.architecture(exec)[0] == "64bit":
+        max_heap_allowed = psutil.virtual_memory().total
+        thinks_is_64_bit = True
+    else:
+        max_heap_allowed = min(4 * 1024**3, psutil.virtual_memory().total)
+        thinks_is_64_bit = False
+    return max_heap_allowed, thinks_is_64_bit
+
+
+def get_jar_ram_defaults() -> Tuple[str, str]:
+    min_ram = 64 * 1024**2
+    # We don't know the java executable at this stage - not worth the extra work required here
+    max_allocation, is_64bit = get_max_allocation_size(sys.executable)
+    max_ram_allowed = min(max_allocation, psutil.virtual_memory().total * 0.5)
+    max_ram = max(min_ram, max_ram_allowed)
+    size_name = ("", "K", "M", "G", "T")
+    i = int(math.floor(math.log(min_ram, 1024)))
+    p = math.pow(1024, i)
+    s = int(min_ram // p)
+    min_ram = f"{s}{size_name[i]}"
+
+    i = int(math.floor(math.log(max_ram, 1024)))
+    p = math.pow(1024, i)
+    s = int(max_ram // p)
+    max_ram = f"{s}{size_name[i]}"
+
+    return min_ram, max_ram
+
+
+MIN_JAVA_RAM, MAX_JAVA_RAM = get_jar_ram_defaults()
+
+DEFAULT_LAVALINK_SETTINGS = {
+    "host": DEFAULT_LAVALINK_YAML["yaml__server__address"],
+    "rest_port": DEFAULT_LAVALINK_YAML["yaml__server__port"],
+    "ws_port": DEFAULT_LAVALINK_YAML["yaml__server__port"],
+    "password": DEFAULT_LAVALINK_YAML["yaml__lavalink__server__password"],
+    "secured_ws": False,
+    "java__Xms": MIN_JAVA_RAM,
+    "java__Xmx": MAX_JAVA_RAM,
+}
+
+
+def sizeof_fmt(num: Union[float, int]) -> str:
+    for unit in ["", "K", "M", "G", "T", "P", "E", "Z"]:
+        if abs(num) < 1024.0:
+            return f"{num:3.1f}{unit}"
+        num /= 1024.0
+    return f"{num:.1f}Y"
 
 
 class CacheLevel:
@@ -216,15 +275,28 @@ class PlaylistScope(Enum):
         return list(map(lambda c: c.value, PlaylistScope))
 
 
-def task_callback(task: asyncio.Task) -> None:
-    with contextlib.suppress(asyncio.CancelledError, asyncio.InvalidStateError):
-        if exc := task.exception():
-            log.exception("%s raised an Exception", task.get_name(), exc_info=exc)
-
-
-def has_internal_server():
+def has_managed_server():
     async def pred(ctx: commands.Context):
+        if ctx.cog is None:
+            return True
         external = await ctx.cog.config.use_external_lavalink()
         return not external
 
     return commands.check(pred)
+
+
+def has_unmanaged_server():
+    async def pred(ctx: commands.Context):
+        if ctx.cog is None:
+            return True
+        external = await ctx.cog.config.use_external_lavalink()
+        return external
+
+    return commands.check(pred)
+
+
+async def replace_p_with_prefix(bot: Red, message: str) -> str:
+    """Replaces [p] with the bot prefix"""
+    prefixes = await bot.get_valid_prefixes()
+    prefix = re.sub(rf"<@!?{bot.user.id}>", f"@{bot.user.name}".replace("\\", r"\\"), prefixes[0])
+    return message.replace("[p]", prefix)

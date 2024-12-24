@@ -29,7 +29,7 @@ Global rules (set by the owner) are checked first, then rules set for servers. I
 
 1. Rules about a user.
 2. Rules about the voice channel a user is in.
-3. Rules about the text channel a command was issued in.
+3. Rules about the text channel or a parent of the thread a command was issued in.
 4. Rules about a role the user has (The highest role they have with a rule will be used).
 5. Rules about the server a user is in (Global rules only).
 

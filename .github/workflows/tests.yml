@@ -27,8 +27,11 @@ jobs:
               python_version: "3.9"
               friendly_name: Python 3.9 - Tests
             - tox_env: py310
-              python_version: "3.10-dev"
-              friendly_name: Python 3.10-dev - Tests
+              python_version: "3.10"
+              friendly_name: Python 3.10 - Tests
+            - tox_env: py311
+              python_version: "3.11"
+              friendly_name: Python 3.11 - Tests
             - tox_env: style
               friendly_name: Style
             - tox_env: docs
@@ -36,11 +39,11 @@ jobs:
         fail-fast: false
       name: Tox - ${{ matrix.friendly_name }}
       steps:
-        - uses: actions/checkout@v2
+        - uses: actions/checkout@v3
           with:
             ref: ${{ env.ref }}
         - name: Set up Python
-          uses: actions/setup-python@v2
+          uses: actions/setup-python@v4
           with:
             python-version: ${{ matrix.python_version }}
         - name: Install tox
@@ -59,7 +62,8 @@ jobs:
           python_version:
             - "3.8"
             - "3.9"
-            - "3.10-dev"
+            - "3.10"
+            - "3.11"
         fail-fast: false
       name: Tox - Postgres
       services:
@@ -72,11 +76,11 @@ jobs:
             POSTGRES_PASSWORD: postgres
             POSTGRES_USER: postgres
       steps:
-        - uses: actions/checkout@v2
+        - uses: actions/checkout@v3
           with:
             ref: ${{ env.ref }}
         - name: Set up Python
-          uses: actions/setup-python@v2
+          uses: actions/setup-python@v4
           with:
             python-version: ${{ matrix.python_version }}
         - name: Install tox
@@ -91,3 +95,13 @@ jobs:
             PGPASSWORD: postgres
             PGPORT: 5432
           run: tox
+        - name: Verify no errors in PostgreSQL logs.
+          run: |
+            logs="$(docker logs "${{ job.services.postgresql.id }}" 2>&1)"
+            echo "---- PostgreSQL logs ----"
+            echo "$logs"
+            echo "---- PostgreSQL logs ----"
+            error_count="$(echo "$logs" | { grep -c 'ERROR: ' || true; })"
+            if [[ $error_count -gt 0 ]]; then
+              exit 1
+            fi

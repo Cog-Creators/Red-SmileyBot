@@ -2,7 +2,5 @@ from redbot.core.bot import Red
 from .mod import Mod
 
 
-async def setup(bot: Red):
-    cog = Mod(bot)
-    bot.add_cog(cog)
-    await cog.initialize()
+async def setup(bot: Red) -> None:
+    await bot.add_cog(Mod(bot))

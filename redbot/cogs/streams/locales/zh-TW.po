@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2021-05-25 08:33+0000\n"
+"POT-Creation-Date: 2024-04-04 07:32+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: red-discordbot\n"
 "X-Crowdin-Project-ID: 289505\n"
@@ -15,102 +15,116 @@ msgstr ""
 "X-Crowdin-File-ID: 48\n"
 "Language: zh_TW\n"
 
-#: redbot/cogs/streams/streams.py:40
+#: redbot/cogs/streams/streams.py:43
 #, docstring
 msgid "Various commands relating to streaming platforms.\n\n"
 "    You can check if a Twitch, YouTube or Picarto stream is\n"
 "    currently live.\n"
 "    "
-msgstr ""
+msgstr "直播媒體與平台相關的各種指令。\n\n"
+"    您可以檢查 Twitch、YouTube 或 Picarto 流是否\n"
+"    正在直播。\n"
+"    "
 
-#: redbot/cogs/streams/streams.py:141
+#: redbot/cogs/streams/streams.py:123
 msgid "You need a client secret key if you want to use the Twitch API on this cog.\n"
 "Follow these steps:\n"
-"1. Go to this page: https://dev.twitch.tv/console/apps.\n"
+"1. Go to this page: {link}.\n"
 "2. Click \"Manage\" on your application.\n"
 "3. Click on \"New secret\".\n"
 "5. Copy your client ID and your client secret into:\n"
 "{command}\n\n"
 "Note: These tokens are sensitive and should only be used in a private channel or in DM with the bot."
-msgstr ""
+msgstr "如果您想在此 cog 上使用 Twitch API，則需要一個客戶端密鑰。\n"
+"按著這些次序：\n"
+"1. 轉到此頁面：{link}。\n"
+"2. 在您的應用程序上單擊“管理”。\n"
+"3. 點擊“新建密碼”。\n"
+"5. 將您的客戶端 ID 和客戶端密碼複製到：\n"
+"{command}\n\n"
+"注意：這些令牌是敏感的，只能在私人頻道或與機器人的 DM 中使用。"
 
-#: redbot/cogs/streams/streams.py:154 redbot/cogs/streams/streams.py:488
+#: redbot/cogs/streams/streams.py:138 redbot/cogs/streams/streams.py:534
 msgid "<your_client_id_here>"
-msgstr ""
+msgstr "<your_client_id_here>"
 
-#: redbot/cogs/streams/streams.py:154 redbot/cogs/streams/streams.py:488
+#: redbot/cogs/streams/streams.py:138 redbot/cogs/streams/streams.py:534
 msgid "<your_client_secret_here>"
-msgstr ""
+msgstr "<your_client_secret_here>"
 
 #: redbot/cogs/streams/streams.py:208
 #, docstring
 msgid "Check if a Twitch channel is live."
-msgstr ""
+msgstr "檢查 Twitch 頻道是否正在直播。"
 
 #: redbot/cogs/streams/streams.py:223
 #, docstring
 msgid "Check if a YouTube channel is live."
-msgstr ""
+msgstr "檢查 YouTube 頻道是否正在直播。"
 
 #: redbot/cogs/streams/streams.py:241
 #, docstring
 msgid "Check if a Picarto channel is live."
-msgstr ""
+msgstr "檢查 Picarto 頻道是否正在直播。"
 
 #: redbot/cogs/streams/streams.py:253 redbot/cogs/streams/streams.py:289
 msgid "That user is offline."
-msgstr ""
+msgstr "該用戶尚未直播。"
 
-#: redbot/cogs/streams/streams.py:255 redbot/cogs/streams/streams.py:447
-msgid "That channel doesn't seem to exist."
-msgstr ""
+#: redbot/cogs/streams/streams.py:255 redbot/cogs/streams/streams.py:491
+msgid "That user doesn't seem to exist."
+msgstr "該用戶似乎不存在。"
 
-#: redbot/cogs/streams/streams.py:258 redbot/cogs/streams/streams.py:415
+#: redbot/cogs/streams/streams.py:258 redbot/cogs/streams/streams.py:459
 msgid "The Twitch token is either invalid or has not been set. See {command}."
-msgstr ""
+msgstr "Twitch 令牌無效或尚未設置。請見{command}。"
 
-#: redbot/cogs/streams/streams.py:264 redbot/cogs/streams/streams.py:422
+#: redbot/cogs/streams/streams.py:264 redbot/cogs/streams/streams.py:466
 msgid "The YouTube API key is either invalid or has not been set. See {command}."
-msgstr ""
+msgstr "YouTube API 密鑰無效或尚未設置。 請見{command}。"
 
-#: redbot/cogs/streams/streams.py:270 redbot/cogs/streams/streams.py:430
+#: redbot/cogs/streams/streams.py:270 redbot/cogs/streams/streams.py:474
 msgid "YouTube quota has been exceeded. Try again later or contact the owner if this continues."
-msgstr ""
+msgstr "已超出 YouTube 配額。 稍後再試，如果這種情況繼續存在，請聯繫擁有者。"
 
-#: redbot/cogs/streams/streams.py:282 redbot/cogs/streams/streams.py:442
+#: redbot/cogs/streams/streams.py:282 redbot/cogs/streams/streams.py:486
 msgid "Something went wrong whilst trying to contact the stream service's API."
-msgstr ""
+msgstr "嘗試聯繫該直播服務的 API 時出現問題。"
 
-#: redbot/cogs/streams/streams.py:299
+#: redbot/cogs/streams/streams.py:301 redbot/cogs/streams/streams.py:810
+msgid "Watch the stream"
+msgstr "觀看直播"
+
+#: redbot/cogs/streams/streams.py:310
 #, docstring
 msgid "Manage automated stream alerts."
-msgstr ""
+msgstr "管理直播自動通知。"
 
-#: redbot/cogs/streams/streams.py:304
+#: redbot/cogs/streams/streams.py:322
 #, docstring
 msgid "Manage Twitch stream notifications."
-msgstr ""
+msgstr "管理 Twitch 直播通知。"
 
-#: redbot/cogs/streams/streams.py:309
+#: redbot/cogs/streams/streams.py:334
 #, docstring
-msgid "Toggle alerts in this channel for a Twitch stream."
-msgstr ""
+msgid "Toggle alerts in this or the given channel for a Twitch stream."
+msgstr "在 Twitch 直播的這個或給定的頻道中切換是否通知。"
 
-#: redbot/cogs/streams/streams.py:312
+#: redbot/cogs/streams/streams.py:337
 msgid "Please supply the name of a *Twitch* channel, not a Discord channel."
-msgstr ""
+msgstr "請提供 *Twitch* 頻道的名稱，而不是 Discord 頻道。"
 
-#: redbot/cogs/streams/streams.py:319
+#: redbot/cogs/streams/streams.py:351
 #, docstring
 msgid "Toggle alerts in this channel for a YouTube stream."
-msgstr ""
+msgstr "在此頻道中切換 YouTube 直播的提醒。"
 
-#: redbot/cogs/streams/streams.py:324
+#: redbot/cogs/streams/streams.py:363
 #, docstring
 msgid "Toggle alerts in this channel for a Picarto stream."
-msgstr ""
+msgstr "在此頻道中切換 Picarto 直播的通知。"
 
-#: redbot/cogs/streams/streams.py:329
+#: redbot/cogs/streams/streams.py:368
 #, docstring
 msgid "Disable all stream alerts in this channel or server.\n\n"
 "        `[p]streamalert stop` will disable this channel's stream\n"
@@ -118,88 +132,110 @@ msgid "Disable all stream alerts in this channel or server.\n\n"
 "        Do `[p]streamalert stop yes` to disable all stream alerts in\n"
 "        this server.\n"
 "        "
-msgstr ""
+msgstr "禁用此頻道或伺服器中的所有直播通知。\n\n"
+"        `[p]streamalert stop` 將禁用該頻道的直播\n"
+"        通知。\n\n"
+"        執行 `[p]streamalert stop yes` 以禁用所有直播警報\n"
+"        這個伺服器。\n"
+"        "
 
-#: redbot/cogs/streams/streams.py:359
+#: redbot/cogs/streams/streams.py:398
 msgid "All the stream alerts in this server have been disabled."
-msgstr ""
+msgstr "此伺服器中的所有直播通知已被禁用。"
 
-#: redbot/cogs/streams/streams.py:361
+#: redbot/cogs/streams/streams.py:400
 msgid "All the stream alerts in this channel have been disabled."
-msgstr ""
+msgstr "此頻道中的所有直播通知已被禁用。"
 
-#: redbot/cogs/streams/streams.py:367
+#: redbot/cogs/streams/streams.py:406
 #, docstring
 msgid "List all active stream alerts in this server."
-msgstr ""
+msgstr "列出此伺服器中的所有活動直播通知。"
 
-#: redbot/cogs/streams/streams.py:370
+#: redbot/cogs/streams/streams.py:409
 msgid "Active alerts:\n\n"
-msgstr ""
+msgstr "活動通知：\n\n"
 
-#: redbot/cogs/streams/streams.py:378
+#: redbot/cogs/streams/streams.py:417
 msgid "There are no active alerts in this server."
-msgstr ""
+msgstr "此伺服器中沒有活動通知。"
 
-#: redbot/cogs/streams/streams.py:455
+#: redbot/cogs/streams/streams.py:499
 #, docstring
 msgid "Manage stream alert settings."
-msgstr ""
+msgstr "管理直播通知設置。"
 
-#: redbot/cogs/streams/streams.py:461
+#: redbot/cogs/streams/streams.py:505
 #, docstring
 msgid "Set stream check refresh time."
-msgstr ""
+msgstr "設置直播檢查刷新時間。"
 
-#: redbot/cogs/streams/streams.py:463
+#: redbot/cogs/streams/streams.py:507
 msgid "You cannot set the refresh timer to less than 60 seconds"
-msgstr ""
+msgstr "您不能將刷新計時器設置為小於 60 秒"
 
-#: redbot/cogs/streams/streams.py:473
+#: redbot/cogs/streams/streams.py:517
 #, docstring
 msgid "Explain how to set the twitch token."
-msgstr ""
+msgstr "說明如何設置 twitch 令牌。"
 
-#: redbot/cogs/streams/streams.py:474
+#: redbot/cogs/streams/streams.py:518
 msgid "To set the twitch API tokens, follow these steps:\n"
-"1. Go to this page: https://dev.twitch.tv/dashboard/apps.\n"
+"1. Go to this page: {link}.\n"
 "2. Click *Register Your Application*.\n"
-"3. Enter a name, set the OAuth Redirect URI to `http://localhost`, and select an Application Category of your choosing.\n"
+"3. Enter a name, set the OAuth Redirect URI to {localhost}, and select an Application Category of your choosing.\n"
 "4. Click *Register*.\n"
 "5. Copy your client ID and your client secret into:\n"
 "{command}\n\n"
 "Note: These tokens are sensitive and should only be used in a private channel\n"
 "or in DM with the bot.\n"
-msgstr ""
+msgstr "要設置 twitch API 令牌，請按照下列步驟操作：\n"
+"1. 轉到此頁面：{link}。\n"
+"2. 單擊*註冊您的應用程序*。\n"
+"3. 輸入名稱，將 OAuth 重定向 URI 設置為 {localhost}，然後選擇您選擇的應用程序類別。\n"
+"4. 點擊*註冊*。\n"
+"5. 將您的客戶端 ID 和客戶端密碼複製到：\n"
+"{command}\n\n"
+"注意：這些令牌是敏感的，只能在私人頻道中使用\n"
+"或與機器人在 DM 中。\n"
 
-#: redbot/cogs/streams/streams.py:497
+#: redbot/cogs/streams/streams.py:543
 #, docstring
 msgid "Explain how to set the YouTube token."
-msgstr ""
+msgstr "說明如何設置 YouTube 令牌。"
 
-#: redbot/cogs/streams/streams.py:499
+#: redbot/cogs/streams/streams.py:545
 msgid "To get one, do the following:\n"
 "1. Create a project\n"
-"(see https://support.google.com/googleapi/answer/6251787 for details)\n"
+"(see {link1} for details)\n"
 "2. Enable the YouTube Data API v3 \n"
-"(see https://support.google.com/googleapi/answer/6158841 for instructions)\n"
+"(see {link2} for instructions)\n"
 "3. Set up your API key \n"
-"(see https://support.google.com/googleapi/answer/6158862 for instructions)\n"
+"(see {link3} for instructions)\n"
 "4. Copy your API key and run the command {command}\n\n"
 "Note: These tokens are sensitive and should only be used in a private channel\n"
 "or in DM with the bot.\n"
-msgstr ""
+msgstr "要獲得一個，請執行以下操作：\n"
+"1. 創建項目\n"
+"（有關詳細信息，請參閱{link1}）\n"
+"2. 啟用 YouTube 數據 API v3\n"
+"（有關說明，請參閱{link2}）\n"
+"3. 設置您的 API 密鑰\n"
+"（有關說明，請參閱{link3}）\n"
+"4. 複製您的 API 密鑰並運行命令 {command}\n\n"
+"注意：這些令牌是敏感的，只能在私人頻道中使用\n"
+"或與機器人在 DM 中。\n"
 
-#: redbot/cogs/streams/streams.py:513
+#: redbot/cogs/streams/streams.py:562
 msgid "<your_api_key_here>"
-msgstr ""
+msgstr "<your_api_key_here>"
 
-#: redbot/cogs/streams/streams.py:522
+#: redbot/cogs/streams/streams.py:571
 #, docstring
 msgid "Manage custom messages for stream alerts."
-msgstr ""
+msgstr "管理直播通知的自定義消息。"
 
-#: redbot/cogs/streams/streams.py:528
+#: redbot/cogs/streams/streams.py:577
 #, docstring
 msgid "Set stream alert message when mentions are enabled.\n\n"
 "        Use `{mention}` in the message to insert the selected mentions.\n"
@@ -207,172 +243,194 @@ msgid "Set stream alert message when mentions are enabled.\n\n"
 "        Use `{stream.display_name}` in the message to insert the channel's display name (on Twitch, this may be different from `{stream}`).\n\n"
 "        For example: `[p]streamset message mention {mention}, {stream.display_name} is live!`\n"
 "        "
-msgstr ""
+msgstr "啟用提及時設置流警報消息。\n\n"
+"        在消息中使用 `{mention}` 插入選定的提及。\n"
+"        在消息中使用“{stream}”來插入頻道或用戶名。\n"
+"        在消息中使用“{stream.display_name}”來插入頻道的顯示名稱（在 Twitch 上，這可能與“{stream}”不同）。\n\n"
+"        例如：`[p]streamset message mention {mention}, {stream.display_name} is live!`\n"
+"        "
 
-#: redbot/cogs/streams/streams.py:538 redbot/cogs/streams/streams.py:552
+#: redbot/cogs/streams/streams.py:587 redbot/cogs/streams/streams.py:601
 msgid "Stream alert message set!"
-msgstr ""
+msgstr "直播通知訊息已設定！"
 
-#: redbot/cogs/streams/streams.py:543
+#: redbot/cogs/streams/streams.py:592
 #, docstring
 msgid "Set stream alert message when mentions are disabled.\n\n"
 "        Use `{stream}` in the message to insert the channel or username.\n"
 "        Use `{stream.display_name}` in the message to insert the channel's display name (on Twitch, this may be different from `{stream}`).\n\n"
 "        For example: `[p]streamset message nomention {stream.display_name} is live!`\n"
 "        "
-msgstr ""
+msgstr "禁用提及時設置流警報消息。\n\n"
+"        在消息中使用“{stream}”來插入頻道或用戶名。\n"
+"        在消息中使用“{stream.display_name}”來插入頻道的顯示名稱（在 Twitch 上，這可能與“{stream}”不同）。\n\n"
+"        例如：`[p]streamset message nomention {stream.display_name} 已上線！`\n"
+"        "
 
-#: redbot/cogs/streams/streams.py:557
+#: redbot/cogs/streams/streams.py:606
 #, docstring
 msgid "Reset the stream alert messages in this server."
-msgstr ""
+msgstr "重置此伺服器中的直播通知訊息。"
 
-#: redbot/cogs/streams/streams.py:561
+#: redbot/cogs/streams/streams.py:610
 msgid "Stream alerts in this server will now use the default alert message."
-msgstr ""
+msgstr "此伺服器中的直播通知現在將使用默認通知訊息。"
 
-#: redbot/cogs/streams/streams.py:566
+#: redbot/cogs/streams/streams.py:615
 #, docstring
 msgid "Manage mention settings for stream alerts."
-msgstr ""
+msgstr "管理直播通知的提及設置。"
 
-#: redbot/cogs/streams/streams.py:572
+#: redbot/cogs/streams/streams.py:621
 #, docstring
 msgid "Toggle the `@​everyone` mention."
-msgstr ""
-
-#: redbot/cogs/streams/streams.py:577
-msgid "`@​everyone` will no longer be mentioned for stream alerts."
-msgstr ""
-
-#: redbot/cogs/streams/streams.py:580
-msgid "When a stream is live, `@​everyone` will be mentioned."
-msgstr ""
-
-#: redbot/cogs/streams/streams.py:585
-#, docstring
-msgid "Toggle the `@​here` mention."
-msgstr ""
-
-#: redbot/cogs/streams/streams.py:590
-msgid "`@​here` will no longer be mentioned for stream alerts."
-msgstr ""
-
-#: redbot/cogs/streams/streams.py:593
-msgid "When a stream is live, `@​here` will be mentioned."
-msgstr ""
-
-#: redbot/cogs/streams/streams.py:598
-#, docstring
-msgid "Toggle a role mention."
-msgstr ""
-
-#: redbot/cogs/streams/streams.py:603
-msgid "`@​{role.name}` will no longer be mentioned for stream alerts."
-msgstr ""
-
-#: redbot/cogs/streams/streams.py:609
-msgid "When a stream or community is live, `@​{role.name}` will be mentioned."
-msgstr ""
-
-#: redbot/cogs/streams/streams.py:613
-msgid "Since the role is not mentionable, it will be momentarily made mentionable when announcing a streamalert. Please make sure I have the correct permissions to manage this role, or else members of this role won't receive a notification."
-msgstr ""
-
-#: redbot/cogs/streams/streams.py:624
-#, docstring
-msgid "Toggle alert deletion for when streams go offline."
-msgstr ""
+msgstr "切換`@everyone`提及。"
 
 #: redbot/cogs/streams/streams.py:627
-msgid "The notifications will be deleted once streams go offline."
-msgstr ""
-
-#: redbot/cogs/streams/streams.py:629
-msgid "Notifications will no longer be deleted."
-msgstr ""
+msgid "{everyone} will no longer be mentioned for stream alerts."
+msgstr "{everyone} 將不再被直播提醒提及。"
 
 #: redbot/cogs/streams/streams.py:634
-#, docstring
-msgid "Toggle excluding rerun streams from alerts."
-msgstr ""
-
-#: redbot/cogs/streams/streams.py:639
-msgid "Streams of type 'rerun' will be included in alerts."
-msgstr ""
+msgid "When a stream is live, {everyone} will be mentioned."
+msgstr "當開始直播時，{everyone} 將被提及。"
 
 #: redbot/cogs/streams/streams.py:642
-msgid "Streams of type 'rerun' will no longer send an alert."
-msgstr ""
-
-#: redbot/cogs/streams/streams.py:647
 #, docstring
-msgid "Toggle excluding YouTube streams schedules from alerts."
-msgstr ""
+msgid "Toggle the `@​here` mention."
+msgstr "切換 `@ here` 提及。"
 
-#: redbot/cogs/streams/streams.py:652
-msgid "Streams schedules will be included in alerts."
-msgstr ""
+#: redbot/cogs/streams/streams.py:648
+msgid "{here} will no longer be mentioned for stream alerts."
+msgstr "直播開始時將不再提及{here}。"
 
 #: redbot/cogs/streams/streams.py:655
-msgid "Streams schedules will no longer send an alert."
-msgstr ""
+msgid "When a stream is live, {here} will be mentioned."
+msgstr "開始直播時，{here} 會被提及。"
 
 #: redbot/cogs/streams/streams.py:663
-msgid "I'll now send a notification in this channel when {stream.name} is live."
-msgstr ""
+#, docstring
+msgid "Toggle a role mention."
+msgstr "切換身分組提及。"
 
-#: redbot/cogs/streams/streams.py:672
-msgid "I won't send notifications about {stream.name} in this channel anymore."
-msgstr ""
+#: redbot/cogs/streams/streams.py:668
+msgid "{role} will no longer be mentioned for stream alerts."
+msgstr "{role} 將不再在直播通知中提及。"
 
-#: redbot/cogs/streams/streams.py:819
+#: redbot/cogs/streams/streams.py:674
+msgid "When a stream or community is live, {role} will be mentioned."
+msgstr "當直播或社區直播時，{role} 將被提及。"
+
+#: redbot/cogs/streams/streams.py:678
+msgid "Since the role is not mentionable, it will be momentarily made mentionable when announcing a streamalert. Please make sure I have the correct permissions to manage this role, or else members of this role won't receive a notification."
+msgstr "由於該身分組不可提及，因此在宣布 streamalert 時會暫時提及。 請確保我擁有管理此身分組的正確權限，否則此身分組的成員將不會收到通知。"
+
+#: redbot/cogs/streams/streams.py:689
+#, docstring
+msgid "Toggle alert deletion for when streams go offline."
+msgstr "切換結束直播時是否刪除通知。"
+
+#: redbot/cogs/streams/streams.py:692
+msgid "The notifications will be deleted once streams go offline."
+msgstr "一旦直播結束，原通知將被刪除。"
+
+#: redbot/cogs/streams/streams.py:694
+msgid "Notifications will no longer be deleted."
+msgstr "通知將不再被刪除。"
+
+#: redbot/cogs/streams/streams.py:699
+#, docstring
+msgid "Toggle excluding rerun streams from alerts."
+msgstr "切換從通知中排除重新運行流。"
+
+#: redbot/cogs/streams/streams.py:704
+msgid "Streams of type 'rerun' will be included in alerts."
+msgstr "`重新運行`類型的直播將包含在通知中。"
+
+#: redbot/cogs/streams/streams.py:707
+msgid "Streams of type 'rerun' will no longer send an alert."
+msgstr "`重新運行`類型的流將不再發送通知。"
+
+#: redbot/cogs/streams/streams.py:712
+#, docstring
+msgid "Toggle excluding YouTube streams schedules from alerts."
+msgstr "切換從通知中排除 YouTube 直播時間表。"
+
+#: redbot/cogs/streams/streams.py:717
+msgid "Streams schedules will be included in alerts."
+msgstr "直播時間表將包含在通知中。"
+
+#: redbot/cogs/streams/streams.py:720
+msgid "Streams schedules will no longer send an alert."
+msgstr "Streams 時間表將不再發送通知。"
+
+#: redbot/cogs/streams/streams.py:725
+#, docstring
+msgid "Toggle whether to use buttons for stream alerts."
+msgstr "切換是否將按鈕用於直播通知。"
+
+#: redbot/cogs/streams/streams.py:730
+msgid "I will no longer use buttons in stream alerts."
+msgstr "我將不在直播通知中使用按鈕。"
+
+#: redbot/cogs/streams/streams.py:733
+msgid "I will use buttons in stream alerts."
+msgstr "我將在直播通知中使用按鈕。"
+
+#: redbot/cogs/streams/streams.py:741
+msgid "I'll now send a notification in the {channel.mention} channel when {stream.name} is live."
+msgstr "當 {stream.name} 直播時，我現在會在 {channel.mention} 頻道中發送通知。"
+
+#: redbot/cogs/streams/streams.py:751
+msgid "I won't send notifications about {stream.name} in the {channel.mention} channel anymore"
+msgstr "我不會再在 {channel.mention} 頻道發送有關 {stream.name} 的通知"
+
+#: redbot/cogs/streams/streams.py:914
 msgid "{mention}, {display_name} is live!"
-msgstr ""
+msgstr "{mention}，{display_name} 正在直播！"
 
-#: redbot/cogs/streams/streams.py:841
+#: redbot/cogs/streams/streams.py:934
 msgid "{display_name} is live!"
+msgstr "{display_name} 正在直播！"
+
+#: redbot/cogs/streams/streamtypes.py:227
+msgid "This stream will start <t:{time}:R>"
 msgstr ""
 
-#: redbot/cogs/streams/streamtypes.py:219
-msgid "This stream will start in {time}"
-msgstr ""
-
-#: redbot/cogs/streams/streamtypes.py:225
-msgid "This stream was scheduled for {min} minutes ago"
-msgstr ""
-
-#: redbot/cogs/streams/streamtypes.py:435
-msgid "Untitled broadcast"
-msgstr ""
-
-#: redbot/cogs/streams/streamtypes.py:437
-msgid " - Rerun"
-msgstr ""
-
-#: redbot/cogs/streams/streamtypes.py:440
-#: redbot/cogs/streams/streamtypes.py:485
-msgid "Followers"
-msgstr ""
-
-#: redbot/cogs/streams/streamtypes.py:441
-#: redbot/cogs/streams/streamtypes.py:486
-msgid "Total views"
+#: redbot/cogs/streams/streamtypes.py:231
+msgid "This stream was scheduled for <t:{time}:R>"
 msgstr ""
 
 #: redbot/cogs/streams/streamtypes.py:446
+msgid "Untitled broadcast"
+msgstr "無標題broadcast"
+
+#: redbot/cogs/streams/streamtypes.py:448
+msgid " - Rerun"
+msgstr " - Rerun"
+
+#: redbot/cogs/streams/streamtypes.py:451
+#: redbot/cogs/streams/streamtypes.py:497
+msgid "Followers"
+msgstr "跟隨者"
+
+#: redbot/cogs/streams/streamtypes.py:452
+#: redbot/cogs/streams/streamtypes.py:498
+msgid "Total views"
+msgstr "總瀏覽次數"
+
+#: redbot/cogs/streams/streamtypes.py:457
 msgid "Playing: "
 msgstr "正在播放: "
 
-#: redbot/cogs/streams/streamtypes.py:491
+#: redbot/cogs/streams/streamtypes.py:503
 msgid "None"
 msgstr "無"
 
-#: redbot/cogs/streams/streamtypes.py:494
+#: redbot/cogs/streams/streamtypes.py:506
 msgid "NSFW | "
-msgstr ""
+msgstr "NSFW | "
 
-#: redbot/cogs/streams/streamtypes.py:498
+#: redbot/cogs/streams/streamtypes.py:510
 msgid "{adult}Category: {category} | Tags: {tags}"
-msgstr ""
+msgstr "{adult}類別：{category} | 標籤：{tags}"
 

@@ -1,7 +1,7 @@
+from redbot.core.bot import Red
+
 from .image import Image
 
 
-async def setup(bot):
-    cog = Image(bot)
-    await cog.initialize()
-    bot.add_cog(cog)
+async def setup(bot: Red) -> None:
+    await bot.add_cog(Image(bot))

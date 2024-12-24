@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2021-04-05 20:17+0000\n"
+"POT-Creation-Date: 2022-02-21 15:22+0000\n"
 "Last-Translator: \n"
 "Language-Team: Hindi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Crowdin-Project: red-discordbot\n"
 "X-Crowdin-Project-ID: 289505\n"
@@ -18,14 +18,17 @@ msgstr ""
 #: redbot/cogs/image/image.py:15
 #, docstring
 msgid "Image related commands."
-msgstr ""
+msgstr "छवि संबंधित आदेश।"
 
 #: redbot/cogs/image/image.py:44
 #, docstring
 msgid "Retrieve pictures from Imgur.\n\n"
 "        Make sure to set the Client ID using `[p]imgurcreds`.\n"
 "        "
-msgstr ""
+msgstr "Imgur से चित्र प्राप्त करें।\n"
+"      \n"
+"       का उपयोग करके क्लाइंट आईडी सेट करना सुनिश्चित करें `[p]imgurcreds`\n"
+"        "
 
 #: redbot/cogs/image/image.py:52
 #, docstring

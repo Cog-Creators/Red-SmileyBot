@@ -12,7 +12,7 @@ Here are some things to consider to help make your upgrade as smooth as possible
 
 .. note::
 
-    If you're developing for Red, you should also look for "Breaking changes" sections in release notes for each minor (X.Y.0) version that's been released since you last updated Red.
+    If you're developing for Red, you should also look for "Breaking changes" sections in release notes for each minor (X.Y.0) version that's been released since you last updated Red. To make the migration process easier, we also provide an extensive `incompatible_changes/index` document explaining the breaking changes we've made in more detail.
 
 .. important::
 
@@ -25,45 +25,40 @@ Updating differs depending on the version you currently have. Next sections will
     :depth: 1
 
 
-Red 3.2.0 or newer
+Red 3.5.0 or newer
 ******************
 
 Windows
 -------
 
-If you have Red 3.2.0 or newer, you can upgrade by following these 4 easy steps:
+If you have Red 3.5.0 or newer, you can upgrade by following these steps:
 
-1. Shut your bot down.
-
-2. Activate your venv with the following command:
+#. Shut your bot down.
+#. Activate your venv with the following command:
 
     .. prompt:: batch
 
         "%userprofile%\redenv\Scripts\activate.bat"
-
-3. Update Red with this command:
+#. Update Red with this command:
 
     .. prompt:: batch
         :prompts: (redenv) C:\\>
 
         python -m pip install -U Red-DiscordBot
 
-.. attention::
+    .. attention::
 
-    If you're using PostgreSQL data backend, replace ``Red-DiscordBot`` in the second command with ``Red-DiscordBot[postgres]``
-
-4. Start your bot.
-
-5. If you have any 3rd-party cogs installed, we highly recommend you update them with this command in Discord: ``[p]cog update`` (``[p]`` is considered as your prefix)
+        If you're using PostgreSQL data backend, replace ``Red-DiscordBot`` in the second command with ``Red-DiscordBot[postgres]``
+#. Start your bot.
+#. If you have any 3rd-party cogs installed, we highly recommend you update them with this command in Discord: ``[p]cog update`` (``[p]`` is considered as your prefix)
 
 Linux & Mac
 -----------
 
-If you have Red 3.2.0 or newer, you can upgrade by following these 4 easy steps:
+If you have Red 3.5.0 or newer, you can upgrade by following these steps:
 
-1. Shut your bot down.
-
-2. Activate your virtual environment.
+#. Shut your bot down.
+#. Activate your virtual environment.
   
     If you used ``venv`` for your virtual environment, use:
 
@@ -71,26 +66,97 @@ If you have Red 3.2.0 or newer, you can upgrade by following these 4 easy steps:
 
         source ~/redenv/bin/activate
 
-    If you used ``pyenv`` for your virtual environment, use:
-
-    .. prompt:: bash
-
-        pyenv shell <name>
-
-3. Update Red with this command:
+#. Update Red with this command:
 
     .. prompt:: bash
         :prompts: (redenv) $
 
         python -m pip install -U Red-DiscordBot
 
-.. attention::
+    .. attention::
 
-    If you're using PostgreSQL data backend, replace ``Red-DiscordBot`` in the second command with ``Red-DiscordBot[postgres]``
+        If you're using PostgreSQL data backend, replace ``Red-DiscordBot`` in the second command with ``Red-DiscordBot[postgres]``
+#. Start your bot.
+#. If you have any 3rd-party cogs installed, we highly recommend you update them with this command in Discord: ``[p]cog update`` (``[p]`` is considered as your prefix)
 
-4. Start your bot.
+Red 3.2.0-3.4.19
+****************
 
-5. If you have any 3rd-party cogs installed, we highly recommend you update them with this command in Discord: ``[p]cog update`` (``[p]`` is considered as your prefix)
+Windows
+-------
+
+If you have a Red version between 3.2.0 and 3.4.19, you can upgrade by following these steps:
+
+#. Shut your bot down.
+#. Activate your venv with the following command:
+
+    .. prompt:: batch
+
+        "%userprofile%\redenv\Scripts\activate.bat"
+#. Update Red with this command:
+
+    .. prompt:: batch
+        :prompts: (redenv) C:\\>
+
+        python -m pip install -U Red-DiscordBot
+
+    .. attention::
+
+        If you're using PostgreSQL data backend, replace ``Red-DiscordBot`` in the second command with ``Red-DiscordBot[postgres]``
+#. If you're using **any** 3rd-party cogs:
+
+    #. Start your bot with ``--no-cogs --load-cogs downloader`` flags, for example:
+
+        .. prompt:: batch
+
+            :prompts: (redenv) C:\\>
+
+            redbot <your instance name> --no-cogs --load-cogs downloader
+
+    #. Wait for the bot to start.
+    #. Run the ``[p]cog update`` command on Discord.
+    #. Wait for the bot to stop typing and send a response. This step may take a while.
+    #. Shutdown the bot with the ``[p]shutdown`` command.
+#. Start your bot as you normally do.
+
+Linux & Mac
+-----------
+
+If you have a Red version between 3.2.0 and 3.4.19, you can upgrade by following these steps:
+
+#. Shut your bot down.
+#. Activate your virtual environment.
+  
+    If you used ``venv`` for your virtual environment, use:
+
+    .. prompt:: bash
+
+        source ~/redenv/bin/activate
+
+#. Update Red with this command:
+
+    .. prompt:: bash
+        :prompts: (redenv) $
+
+        python -m pip install -U Red-DiscordBot
+
+    .. attention::
+
+        If you're using PostgreSQL data backend, replace ``Red-DiscordBot`` in the second command with ``Red-DiscordBot[postgres]``
+#. **If you're using any 3rd-party cogs:**
+
+    #. Start your bot with ``--no-cogs --load-cogs downloader`` flags, for example:
+
+        .. prompt:: bash
+            :prompts: (redenv) $
+
+            redbot <your instance name> --no-cogs --load-cogs downloader
+
+    #. Wait for the bot to start.
+    #. Run the ``[p]cog update`` command on Discord.
+    #. Wait for the bot to stop typing and send a response. This step may take a while.
+    #. Shutdown the bot with the ``[p]shutdown`` command.
+#. Start your bot as you normally do.
 
 Red 3.1.X
 *********

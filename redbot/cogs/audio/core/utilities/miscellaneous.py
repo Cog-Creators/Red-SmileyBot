@@ -3,7 +3,6 @@ import contextlib
 import datetime
 import functools
 import json
-import logging
 import re
 import struct
 from pathlib import Path
@@ -11,20 +10,20 @@ from typing import Any, Final, Mapping, MutableMapping, Pattern, Union, cast
 
 import discord
 import lavalink
-from discord.embeds import EmptyEmbed
+from red_commons.logging import getLogger
 
 from redbot.core import bank, commands
 from redbot.core.commands import Context
 from redbot.core.i18n import Translator
-from redbot.core.utils import AsyncIter
+from redbot.core.utils import AsyncIter, can_user_send_messages_in
 from redbot.core.utils.chat_formatting import humanize_number
 
 from ...apis.playlist_interface import get_all_playlist_for_migration23
-from ...utils import PlaylistScope, task_callback
+from ...utils import PlaylistScope
 from ..abc import MixinMeta
 from ..cog_utils import CompositeMetaClass, DataReader
 
-log = logging.getLogger("red.cogs.Audio.cog.Utilities.miscellaneous")
+log = getLogger("red.cogs.Audio.cog.Utilities.miscellaneous")
 _ = Translator("Audio", Path(__file__))
 _RE_TIME_CONVERTER: Final[Pattern] = re.compile(r"(?:(\d+):)?([0-5]?[0-9]):([0-5][0-9])")
 _prefer_lyrics_cache = {}
@@ -35,9 +34,7 @@ class MiscellaneousUtilities(MixinMeta, metaclass=CompositeMetaClass):
         self, message: discord.Message, emoji: MutableMapping = None
     ) -> asyncio.Task:
         """Non blocking version of clear_react."""
-        task = self.bot.loop.create_task(self.clear_react(message, emoji))
-        task.add_done_callback(task_callback)
-        return task
+        return asyncio.create_task(self.clear_react(message, emoji))
 
     async def maybe_charge_requester(self, ctx: commands.Context, jukebox_price: int) -> bool:
         jukebox = await self.config.guild(ctx.guild).jukebox()
@@ -67,10 +64,10 @@ class MiscellaneousUtilities(MixinMeta, metaclass=CompositeMetaClass):
         self, ctx: commands.Context, author: Mapping[str, str] = None, **kwargs
     ) -> discord.Message:
         colour = kwargs.get("colour") or kwargs.get("color") or await self.bot.get_embed_color(ctx)
-        title = kwargs.get("title", EmptyEmbed) or EmptyEmbed
+        title = kwargs.get("title") or None
         _type = kwargs.get("type", "rich") or "rich"
-        url = kwargs.get("url", EmptyEmbed) or EmptyEmbed
-        description = kwargs.get("description", EmptyEmbed) or EmptyEmbed
+        url = kwargs.get("url") or None
+        description = kwargs.get("description") or None
         timestamp = kwargs.get("timestamp")
         footer = kwargs.get("footer")
         thumbnail = kwargs.get("thumbnail")
@@ -83,10 +80,12 @@ class MiscellaneousUtilities(MixinMeta, metaclass=CompositeMetaClass):
             embed = {}
         colour = embed.get("color") if embed.get("color") else colour
         contents.update(embed)
-        if timestamp and isinstance(timestamp, datetime.datetime):
-            contents["timestamp"] = timestamp
         embed = discord.Embed.from_dict(contents)
         embed.color = colour
+        if timestamp and isinstance(timestamp, datetime.datetime):
+            embed.timestamp = timestamp
+        else:
+            embed.timestamp = datetime.datetime.now(tz=datetime.timezone.utc)
         if footer:
             embed.set_footer(text=footer)
         if thumbnail:
@@ -100,9 +99,14 @@ class MiscellaneousUtilities(MixinMeta, metaclass=CompositeMetaClass):
                 embed.set_author(name=name)
         return await ctx.send(embed=embed)
 
-    def _has_notify_perms(self, channel: discord.TextChannel) -> bool:
+    def _has_notify_perms(
+        self,
+        channel: Union[
+            discord.TextChannel, discord.VoiceChannel, discord.StageChannel, discord.Thread
+        ],
+    ) -> bool:
         perms = channel.permissions_for(channel.guild.me)
-        return all((perms.send_messages, perms.embed_links))
+        return all((can_user_send_messages_in(channel.guild.me, channel), perms.embed_links))
 
     async def maybe_run_pending_db_tasks(self, ctx: commands.Context) -> None:
         if self.api_interface is not None:
@@ -125,8 +129,8 @@ class MiscellaneousUtilities(MixinMeta, metaclass=CompositeMetaClass):
     async def update_external_status(self) -> bool:
         external = await self.config.use_external_lavalink()
         if not external:
-            if self.player_manager is not None:
-                await self.player_manager.shutdown()
+            if self.managed_node_controller is not None:
+                await self.managed_node_controller.shutdown()
             await self.config.use_external_lavalink.set(True)
             return True
         else:
@@ -258,7 +262,7 @@ class MiscellaneousUtilities(MixinMeta, metaclass=CompositeMetaClass):
         return msg.format(d, h, m, s)
 
     def format_time(self, time: int) -> str:
-        """ Formats the given time into DD:HH:MM:SS """
+        """Formats the given time into DD:HH:MM:SS"""
         seconds = time / 1000
         days, seconds = divmod(seconds, 24 * 60 * 60)
         hours, seconds = divmod(seconds, 60 * 60)
@@ -339,6 +343,25 @@ class MiscellaneousUtilities(MixinMeta, metaclass=CompositeMetaClass):
                     await p.save()
                 await self.config.custom(scope).clear()
             await self.config.schema_version.set(3)
+        if from_version < 4 <= to_version:
+            # At the time of the introduction of this schema migration,
+            # none of these were settable by users even though they're registered in Config
+            # so this shouldn't have ever been set but there's no real harm in doing this
+            # and schema migrations are a good practice.
+            global_data = await self.config.all()
+            # We're intentionally not setting entire `global_data` to
+            # avoid storing the default values when they were not already set.
+            logging_data = global_data.get("yaml", {}).get("logging", {})
+            max_history = logging_data.get("file", {}).pop("max_history", ...)
+            if max_history is not ...:
+                await self.config.yaml.logging.logback.rollingpolicy.max_history.set(max_history)
+            max_size = logging_data.get("file", {}).pop("max_size", ...)
+            if max_size is not ...:
+                await self.config.yaml.logging.logback.rollingpolicy.max_size.set(max_size)
+            path = logging_data.pop("path", ...)
+            if path is not ...:
+                await self.config.yaml.logging.file.path.set(path)
+            await self.config.schema_version.set(4)
 
         if database_entries:
             await self.api_interface.local_cache_api.lavalink.insert(database_entries)

@@ -8,6 +8,7 @@ from redbot.core import bank, errors
 from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import box, bold, humanize_list, humanize_number
 from redbot.core.utils.common_filters import normalize_smartquotes
+from .converters import MAX_VALUE
 from .log import LOG
 
 __all__ = ["TriviaSession"]
@@ -61,6 +62,7 @@ class TriviaSession:
          - ``bot_plays`` (`bool`)
          - ``allow_override`` (`bool`)
          - ``payout_multiplier`` (`float`)
+         - ``use_spoilers`` (`bool`)
     scores : `collections.Counter`
         A counter with the players as keys, and their scores as values. The
         players are of type `discord.Member`.
@@ -103,8 +105,7 @@ class TriviaSession:
 
         """
         session = cls(ctx, question_list, settings)
-        loop = ctx.bot.loop
-        session._task = loop.create_task(session.run())
+        session._task = asyncio.create_task(session.run())
         session._task.add_done_callback(session._error_handler)
         return session
 
@@ -118,13 +119,12 @@ class TriviaSession:
             self.stop()
         except Exception as exc:
             LOG.error("A trivia session has encountered an error.\n", exc_info=exc)
-            asyncio.create_task(
-                self.ctx.send(
-                    _(
-                        "An unexpected error occurred in the trivia session.\nCheck your console or logs for details."
-                    )
+            msg = _("An unexpected error occurred in the trivia session.")
+            if self.ctx.author.id in self.ctx.bot.owner_ids:
+                msg = _(
+                    "An unexpected error occurred in the trivia session.\nCheck your console or logs for details."
                 )
-            )
+            asyncio.create_task(self.ctx.send(msg))
             self.stop()
 
     async def run(self):
@@ -250,7 +250,9 @@ class TriviaSession:
         answers = tuple(s.lower() for s in answers)
 
         def _pred(message: discord.Message):
-            early_exit = message.channel != self.ctx.channel or message.author == self.ctx.guild.me
+            early_exit = (
+                message.channel.id != self.ctx.channel.id or message.author == self.ctx.guild.me
+            )
             if early_exit:
                 return False
 
@@ -278,10 +280,10 @@ class TriviaSession:
 
     async def send_table(self):
         """Send a table of scores to the session's channel."""
-        table = "+ Results: \n\n"
+        table = "Results:\n\n"
         for user, score in self.scores.most_common():
             table += "+ {}\t{}\n".format(user, score)
-        await self.ctx.send(box(table, lang="diff"))
+        await self.ctx.send(box(table, lang="markdown"))
 
     def stop(self):
         """Stop the trivia session, without showing scores."""
@@ -311,7 +313,7 @@ class TriviaSession:
         top_score = self.scores.most_common(1)[0][1]
         winners = []
         num_humans = 0
-        for (player, score) in self.scores.items():
+        for player, score in self.scores.items():
             if not player.bot:
                 if score == top_score:
                     winners.append(player)
@@ -319,10 +321,11 @@ class TriviaSession:
         if not winners or num_humans < 3:
             return
         payout = int(top_score * multiplier / len(winners))
+        payout = MAX_VALUE if payout > MAX_VALUE else payout
         if payout <= 0:
             return
         for winner in winners:
-            LOG.debug("Paying trivia winner: %d credits --> %s", payout, winner.name)
+            LOG.debug("Paying trivia winner: %d credits --> %s", payout, winner)
             try:
                 await bank.deposit_credits(winner, payout)
             except errors.BalanceTooHigh as e:

@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2021-05-27 12:48+0000\n"
+"POT-Creation-Date: 2023-12-24 00:24+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: red-discordbot\n"
 "X-Crowdin-Project-ID: 289505\n"
@@ -15,32 +15,36 @@ msgstr ""
 "X-Crowdin-File-ID: 20\n"
 "Language: zh_TW\n"
 
-#: redbot/cogs/downloader/checks.py:12
+#: redbot/cogs/downloader/checks.py:20
 msgid "You're about to add a 3rd party repository. The creator of Red and its community have no responsibility for any potential damage that the content of 3rd party repositories might cause.\n\n"
-"By typing '**I agree**' you declare that you have read and fully understand the above message. This message won't be shown again until the next reboot.\n\n"
+"By typing '{confirmation_message}' you declare that you have read and fully understand the above message. This message won't be shown again until the next reboot.\n\n"
 "You have **30** seconds to reply to this message."
-msgstr ""
+msgstr "您將要添加第 3 方存儲庫。Red 的創建者及其社區對第三方存儲庫的內容可能造成的任何潛在損害不承擔任何責任。\n\n"
+"通過輸入“{confirmation_message}”，您聲明您已閱讀並完全理解上述信息。 在下次重新啟動之前，不會再次顯示此消息。\n\n"
+"您有 **30** 秒的時間回覆此消息。"
 
-#: redbot/cogs/downloader/checks.py:36
+#: redbot/cogs/downloader/checks.py:38
 msgid "Your response has timed out, please try again."
-msgstr ""
+msgstr "您的回覆已超時，請重試。"
 
 #: redbot/cogs/downloader/converters.py:14
 #: redbot/cogs/downloader/repo_manager.py:176
 msgid "No Downloader cog found."
-msgstr ""
+msgstr "未找到要下載的cog。"
 
 #: redbot/cogs/downloader/converters.py:19
 msgid "Cog `{cog_name}` is not installed."
-msgstr ""
+msgstr "Cog `{cog_name}` 未安裝。"
 
-#: redbot/cogs/downloader/downloader.py:30
+#: redbot/cogs/downloader/downloader.py:31
 msgid "\n"
 "**WARNING:** The following repos are using shared libraries which are marked for removal in the future: {repo_list}.\n"
 " You should inform maintainers of these repos about this message."
-msgstr ""
+msgstr "\n"
+"**警告**：以下 repo 正在使用標記為將來刪除的共享庫：{repo_list}。\n"
+" 您應該將此消息通知 repo 的維護者。"
 
-#: redbot/cogs/downloader/downloader.py:39
+#: redbot/cogs/downloader/downloader.py:40
 #, docstring
 msgid "Install community cogs made by Cog Creators.\n\n"
 "    Community cogs, also called third party cogs, are not included\n"
@@ -50,49 +54,56 @@ msgid "Install community cogs made by Cog Creators.\n\n"
 "    using the `[p]repo` command before you can install one or more\n"
 "    cogs from the creator.\n"
 "    "
-msgstr ""
+msgstr "安裝由 Cog Creators 製作的社區 cog。\n\n"
+"    社區齒輪，也稱為第三方齒輪，不包括\n"
+"    默認的紅色安裝在內。\n\n"
+"    社區齒輪來自存儲庫。 Repos協議是一組齒輪\n"
+"    你可以安裝。 您始終需要添加創建者的存儲庫\n"
+"    在安裝一個或多個之前使用 `[p]repo` 指令\n"
+"    來自創作者的齒輪。\n"
+"    "
 
-#: redbot/cogs/downloader/downloader.py:484
+#: redbot/cogs/downloader/downloader.py:490
 #, docstring
 msgid "\n"
 "        Install a group of dependencies using pip.\n\n"
 "        Examples:\n"
-"            - `[p]pipinstall bs4`\n"
-"            - `[p]pipinstall py-cpuinfo psutil`\n\n"
+"        - `[p]pipinstall bs4`\n"
+"        - `[p]pipinstall py-cpuinfo psutil`\n\n"
 "        Improper usage of this command can break your bot, be careful.\n\n"
 "        **Arguments**\n\n"
 "        - `<deps...>` The package or packages you wish to install.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:502
+#: redbot/cogs/downloader/downloader.py:508
 msgid "Libraries installed."
-msgstr ""
+msgstr "多個資料庫已安裝。"
 
-#: redbot/cogs/downloader/downloader.py:502
+#: redbot/cogs/downloader/downloader.py:508
 msgid "Library installed."
-msgstr ""
+msgstr "資料庫已安裝。"
 
-#: redbot/cogs/downloader/downloader.py:505
+#: redbot/cogs/downloader/downloader.py:511
 msgid "Some libraries failed to install. Please check your logs for a complete list."
-msgstr ""
+msgstr "一些資料庫安裝失敗。請檢查您的日誌以獲取完整資訊。"
 
-#: redbot/cogs/downloader/downloader.py:510
+#: redbot/cogs/downloader/downloader.py:516
 msgid "The library failed to install. Please check your logs for a complete list."
-msgstr ""
+msgstr "資料庫安裝失敗。請檢查您的日誌以獲取完整資訊。"
 
-#: redbot/cogs/downloader/downloader.py:518
+#: redbot/cogs/downloader/downloader.py:524
 #, docstring
 msgid "Base command for repository management."
-msgstr ""
+msgstr "存儲庫的基本管理命令。"
 
-#: redbot/cogs/downloader/downloader.py:525
+#: redbot/cogs/downloader/downloader.py:531
 #, docstring
 msgid "Add a new repo.\n\n"
 "        Examples:\n"
-"            - `[p]repo add 26-Cogs https://github.com/Twentysix26/x26-Cogs`\n"
-"            - `[p]repo add Laggrons-Dumb-Cogs https://github.com/retke/Laggrons-Dumb-Cogs v3`\n\n"
-"        Repo names can only contain characters A-z, numbers, underscores, and hyphens.\n"
+"        - `[p]repo add 26-Cogs https://github.com/Twentysix26/x26-Cogs`\n"
+"        - `[p]repo add Laggrons-Dumb-Cogs https://github.com/retke/Laggrons-Dumb-Cogs v3`\n\n"
+"        Repo names can only contain characters A-z, numbers, underscores, hyphens, and dots (but they cannot start or end with a dot).\n\n"
 "        The branch will be the default branch if not specified.\n\n"
 "        **Arguments**\n\n"
 "        - `<name>` The name given to the repo.\n"
@@ -101,138 +112,149 @@ msgid "Add a new repo.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:545
-msgid "Repo names can only contain characters A-z, numbers, underscores, and hyphens."
-msgstr ""
+#: redbot/cogs/downloader/downloader.py:551
+msgid "Repo names cannot start or end with a dot."
+msgstr "Repo名稱不能以點開頭或結尾。"
 
-#: redbot/cogs/downloader/downloader.py:554
+#: redbot/cogs/downloader/downloader.py:555
+msgid "Repo names can only contain characters A-z, numbers, underscores, hyphens, and dots."
+msgstr "Repo名稱只能包含字符 A-z、數字、下劃線、連字符和點。"
+
+#: redbot/cogs/downloader/downloader.py:567
 msgid "The repo name you provided is already in use. Please choose another name."
+msgstr "您提供的存儲庫名稱已被使用。請選擇其他名稱。"
+
+#: redbot/cogs/downloader/downloader.py:571
+msgid "Failed to authenticate or repository does not exist. See logs for more information."
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:558
+#: redbot/cogs/downloader/downloader.py:585
 msgid "Something went wrong during the cloning process. See logs for more information."
-msgstr ""
+msgstr "Cloning 中出了點問題。有關詳細信息，請參閱日誌。"
 
-#: redbot/cogs/downloader/downloader.py:576
+#: redbot/cogs/downloader/downloader.py:603
 msgid "Something went wrong trying to add that repo. See logs for more information."
-msgstr ""
+msgstr "嘗試添加該repo協議時出錯。有關詳細信息，請參閱日誌。"
 
-#: redbot/cogs/downloader/downloader.py:582
+#: redbot/cogs/downloader/downloader.py:609
 msgid "Repo `{name}` successfully added."
-msgstr ""
+msgstr "Repo“{name}”已成功添加。"
 
-#: redbot/cogs/downloader/downloader.py:588
+#: redbot/cogs/downloader/downloader.py:615
 #, docstring
 msgid "\n"
 "        Remove repos and their files.\n\n"
 "        Examples:\n"
-"            - `[p]repo delete 26-Cogs`\n"
-"            - `[p]repo delete 26-Cogs Laggrons-Dumb-Cogs`\n\n"
+"        - `[p]repo delete 26-Cogs`\n"
+"        - `[p]repo delete 26-Cogs Laggrons-Dumb-Cogs`\n\n"
 "        **Arguments**\n\n"
 "        - `<repos...>` The repo or repos to remove.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:604
+#: redbot/cogs/downloader/downloader.py:631
 msgid "Successfully deleted repos: "
-msgstr ""
+msgstr "成功刪除以下repo： "
 
-#: redbot/cogs/downloader/downloader.py:606
+#: redbot/cogs/downloader/downloader.py:633
 msgid "Successfully deleted the repo: "
-msgstr ""
+msgstr "已成功刪除repo： "
 
-#: redbot/cogs/downloader/downloader.py:613
+#: redbot/cogs/downloader/downloader.py:640
 #, docstring
 msgid "List all installed repos."
-msgstr ""
+msgstr "列出所有已安裝的repos協議。"
 
-#: redbot/cogs/downloader/downloader.py:617
+#: redbot/cogs/downloader/downloader.py:644
 msgid "There are no repos installed."
+msgstr "沒有已安裝repo協議。"
+
+#: redbot/cogs/downloader/downloader.py:647
+msgid "# Installed Repos\n"
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:620
-msgid "Installed Repos:\n\n"
+#: redbot/cogs/downloader/downloader.py:649
+msgid "# Installed Repo\n"
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:622
-msgid "Installed Repo:\n\n"
-msgstr ""
-
-#: redbot/cogs/downloader/downloader.py:631
+#: redbot/cogs/downloader/downloader.py:658
 #, docstring
 msgid "Show information about a repo.\n\n"
 "        Example:\n"
-"            - `[p]repo info 26-Cogs`\n\n"
+"        - `[p]repo info 26-Cogs`\n\n"
 "        **Arguments**\n\n"
 "        - `<repo>` The name of the repo to show info about.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:640
-#: redbot/cogs/downloader/downloader.py:1363
-#: redbot/cogs/downloader/downloader.py:1718
+#: redbot/cogs/downloader/downloader.py:667
+#: redbot/cogs/downloader/downloader.py:1413
+#: redbot/cogs/downloader/downloader.py:1776
 msgid "Missing from info.json"
 msgstr "在info.json中找不到"
 
-#: redbot/cogs/downloader/downloader.py:642
+#: redbot/cogs/downloader/downloader.py:669
 msgid "Repo url: {repo_url}\n"
-msgstr ""
+msgstr "Repo網址：{repo_url}\n"
 
-#: redbot/cogs/downloader/downloader.py:644
+#: redbot/cogs/downloader/downloader.py:671
 msgid "Branch: {branch_name}\n"
-msgstr ""
+msgstr "分支：{branch_name}\n"
 
-#: redbot/cogs/downloader/downloader.py:645
+#: redbot/cogs/downloader/downloader.py:672
 msgid "Made by: {author}\n"
 "Description:\n"
 "{description}"
-msgstr ""
+msgstr "製作者：{author}\n"
+"描述：\n"
+"{description}"
 
-#: redbot/cogs/downloader/downloader.py:649
+#: redbot/cogs/downloader/downloader.py:676
 msgid "Information on {repo_name} repo:{information}"
-msgstr ""
+msgstr "Repo {repo_name} 的資訊：{information}"
 
-#: redbot/cogs/downloader/downloader.py:657
+#: redbot/cogs/downloader/downloader.py:684
 #, docstring
 msgid "Update all repos, or ones of your choosing.\n\n"
 "        This will *not* update the cogs installed from those repos.\n\n"
 "        Examples:\n"
-"            - `[p]repo update`\n"
-"            - `[p]repo update 26-Cogs`\n"
-"            - `[p]repo update 26-Cogs Laggrons-Dumb-Cogs`\n\n"
+"        - `[p]repo update`\n"
+"        - `[p]repo update 26-Cogs`\n"
+"        - `[p]repo update 26-Cogs Laggrons-Dumb-Cogs`\n\n"
 "        **Arguments**\n\n"
 "        - `[repos...]` The name or names of repos to update. If omitted, all repos are updated.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:677
+#: redbot/cogs/downloader/downloader.py:704
 msgid "Repo update completed successfully."
-msgstr ""
+msgstr "Repo已成功更新完成。"
 
-#: redbot/cogs/downloader/downloader.py:678
-#: redbot/cogs/downloader/downloader.py:1580
+#: redbot/cogs/downloader/downloader.py:705
+#: redbot/cogs/downloader/downloader.py:1630
 msgid "\n"
 "Updated: "
-msgstr ""
+msgstr "\n"
+"已更新： "
 
-#: redbot/cogs/downloader/downloader.py:680
+#: redbot/cogs/downloader/downloader.py:707
 msgid "All installed repos are already up to date."
-msgstr ""
+msgstr "所有已安裝的repo都已經是最新的版本。"
 
-#: redbot/cogs/downloader/downloader.py:683
+#: redbot/cogs/downloader/downloader.py:710
 msgid "These repos are already up to date."
-msgstr ""
+msgstr "這些repo已經是最新的版本了。"
 
-#: redbot/cogs/downloader/downloader.py:685
+#: redbot/cogs/downloader/downloader.py:712
 msgid "This repo is already up to date."
-msgstr ""
+msgstr "這個repo已經是最新的了。"
 
-#: redbot/cogs/downloader/downloader.py:695
+#: redbot/cogs/downloader/downloader.py:722
 #, docstring
 msgid "Base command for cog installation management commands."
-msgstr ""
+msgstr "安裝cog指令的基本管理命令。"
 
-#: redbot/cogs/downloader/downloader.py:700
+#: redbot/cogs/downloader/downloader.py:727
 #, docstring
 msgid "\n"
 "        This command should not be used unless Red specifically asks for it.\n\n"
@@ -240,58 +262,65 @@ msgid "\n"
 "        Red might ask the owner to use this when it clears contents of the lib folder\n"
 "        because of change in minor version of Python.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        除非 Red 開發團隊有特別要求，否則不應使用此命令。\n\n"
+"        此命令將為所有已安裝的 cog 重新安裝 cog 要求和共享庫。\n\n"
+"        Red 在清除 lib 文件夾的內容時可能會要求所有者使用它\n"
+"        由於 Python 次要版本的更新。\n"
+"        "
 
-#: redbot/cogs/downloader/downloader.py:730
-#: redbot/cogs/downloader/downloader.py:1560
+#: redbot/cogs/downloader/downloader.py:757
+#: redbot/cogs/downloader/downloader.py:1610
 msgid "Failed to install requirements: "
-msgstr ""
+msgstr "要求安裝失敗： "
 
-#: redbot/cogs/downloader/downloader.py:732
-#: redbot/cogs/downloader/downloader.py:1562
+#: redbot/cogs/downloader/downloader.py:759
+#: redbot/cogs/downloader/downloader.py:1612
 msgid "Failed to install the requirement: "
-msgstr ""
+msgstr "要求無法安裝： "
 
-#: redbot/cogs/downloader/downloader.py:737
-#: redbot/cogs/downloader/downloader.py:1622
+#: redbot/cogs/downloader/downloader.py:764
+#: redbot/cogs/downloader/downloader.py:1678
 msgid "\n"
 "Failed to install shared libraries: "
-msgstr ""
+msgstr "\n"
+"安裝共享庫失敗： "
 
-#: redbot/cogs/downloader/downloader.py:739
-#: redbot/cogs/downloader/downloader.py:1624
+#: redbot/cogs/downloader/downloader.py:766
+#: redbot/cogs/downloader/downloader.py:1680
 msgid "\n"
 "Failed to install shared library: "
-msgstr ""
+msgstr "\n"
+"安裝共享庫失敗： "
 
-#: redbot/cogs/downloader/downloader.py:744
+#: redbot/cogs/downloader/downloader.py:771
 msgid "Cog requirements and shared libraries for all installed cogs have been reinstalled but there were some errors:\n"
-msgstr ""
+msgstr "已重新安裝所有已安裝的 cog，Cog 要求共享資料庫，但存在一些錯誤：\n"
 
-#: redbot/cogs/downloader/downloader.py:752
+#: redbot/cogs/downloader/downloader.py:779
 msgid "Cog requirements and shared libraries for all installed cogs have been reinstalled."
-msgstr ""
+msgstr "已重新安裝所有已安裝的 cog，和Cog的共享資料庫。"
 
-#: redbot/cogs/downloader/downloader.py:760
+#: redbot/cogs/downloader/downloader.py:787
 #, docstring
 msgid "Install a cog from the given repo.\n\n"
 "        Examples:\n"
-"            - `[p]cog install 26-Cogs defender`\n"
-"            - `[p]cog install Laggrons-Dumb-Cogs say roleinvite`\n\n"
+"        - `[p]cog install 26-Cogs defender`\n"
+"        - `[p]cog install Laggrons-Dumb-Cogs say roleinvite`\n\n"
 "        **Arguments**\n\n"
 "        - `<repo>` The name of the repo to install cogs from.\n"
 "        - `<cogs...>` The cog or cogs to install.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:779
+#: redbot/cogs/downloader/downloader.py:806
 #, docstring
 msgid "Install a cog from the specified revision of given repo.\n\n"
 "        Revisions are \"commit ids\" that point to the point in the code when a specific change was made.\n"
 "        The latest revision can be found in the URL bar for any GitHub repo by [pressing \"y\" on that repo](https://docs.github.com/en/free-pro-team@latest/github/managing-files-in-a-repository/getting-permanent-links-to-files#press-y-to-permalink-to-a-file-in-a-specific-commit).\n\n"
 "        Older revisions can be found in the URL bar by [viewing the commit history of any repo](https://cdn.discordapp.com/attachments/133251234164375552/775760247787749406/unknown.png)\n\n"
 "        Example:\n"
-"            - `[p]cog installversion Broken-Repo e798cc268e199612b1316a3d1f193da0770c7016 cog_name`\n\n"
+"        - `[p]cog installversion Broken-Repo e798cc268e199612b1316a3d1f193da0770c7016 cog_name`\n\n"
 "        **Arguments**\n\n"
 "        - `<repo>` The name of the repo to install cogs from.\n"
 "        - `<revision>` The revision to install from.\n"
@@ -299,554 +328,641 @@ msgid "Install a cog from the specified revision of given repo.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:806
-#: redbot/cogs/downloader/downloader.py:1193
-msgid "Error: short sha1 `{rev}` is ambiguous. Possible candidates:\n"
-msgstr ""
-
-#: redbot/cogs/downloader/downloader.py:818
-#: redbot/cogs/downloader/downloader.py:1204
-msgid "Error: there is no revision `{rev}` in repo `{repo.name}`"
-msgstr ""
-
 #: redbot/cogs/downloader/downloader.py:833
+#: redbot/cogs/downloader/downloader.py:1242
+msgid "Error: short sha1 `{rev}` is ambiguous. Possible candidates:\n"
+msgstr "錯誤：short sha1 `{rev}` 不明確。可能的候選人：\n"
+
+#: redbot/cogs/downloader/downloader.py:845
+#: redbot/cogs/downloader/downloader.py:1253
+msgid "Error: there is no revision `{rev}` in repo `{repo.name}`"
+msgstr "錯誤：repo `{repo.name}` 中沒有該修訂版 `{rev}`"
+
+#: redbot/cogs/downloader/downloader.py:860
 msgid "\n"
 "Failed to install requirements: "
-msgstr ""
+msgstr "\n"
+"安裝要求失敗： "
 
-#: redbot/cogs/downloader/downloader.py:835
+#: redbot/cogs/downloader/downloader.py:862
 msgid "\n"
 "Failed to install the requirement: "
-msgstr ""
+msgstr "\n"
+"無法安裝要求： "
 
-#: redbot/cogs/downloader/downloader.py:856
+#: redbot/cogs/downloader/downloader.py:883
 msgid "\n"
 "Failed to install shared libraries for `{repo.name}` repo: "
-msgstr ""
+msgstr "\n"
+"無法為“{repo.name}”資料庫安裝共享庫： "
 
-#: redbot/cogs/downloader/downloader.py:858
+#: redbot/cogs/downloader/downloader.py:885
 msgid "\n"
 "Failed to install shared library for `{repo.name}` repo: "
-msgstr ""
+msgstr "\n"
+"無法為“{repo.name}”資料庫安裝共享庫： "
 
-#: redbot/cogs/downloader/downloader.py:867
+#: redbot/cogs/downloader/downloader.py:894
 msgid "\n"
 "Failed to install cogs: "
-msgstr ""
+msgstr "\n"
+"安裝 cogs 失敗： "
 
-#: redbot/cogs/downloader/downloader.py:869
+#: redbot/cogs/downloader/downloader.py:896
 msgid "\n"
 "Failed to install the cog: "
-msgstr ""
+msgstr "\n"
+"安裝 cog 失敗： "
 
-#: redbot/cogs/downloader/downloader.py:878
+#: redbot/cogs/downloader/downloader.py:905
 msgid "Successfully installed cogs: "
-msgstr ""
+msgstr "成功安裝 cogs： "
 
-#: redbot/cogs/downloader/downloader.py:880
+#: redbot/cogs/downloader/downloader.py:907
 msgid "Successfully installed the cog: "
-msgstr ""
+msgstr "成功安裝 cog： "
 
-#: redbot/cogs/downloader/downloader.py:884
+#: redbot/cogs/downloader/downloader.py:911
 msgid "\n"
 "These cogs are now pinned and won't get updated automatically. To change this, use `{prefix}cog unpin <cog>`"
-msgstr ""
+msgstr "\n"
+"這些齒輪現在已固定，不會自動更新。 要更改此設置，請使用 `{prefix}cog unpin <cog>`"
 
-#: redbot/cogs/downloader/downloader.py:891
+#: redbot/cogs/downloader/downloader.py:918
 msgid "\n"
 "You can load them using {command_1}. To see end user data statements, you can use {command_2}."
-msgstr ""
+msgstr "\n"
+"您可以使用 {command_1} 加載它們。 要查看最終用戶數據報表，您可以使用 {command_2}。"
 
-#: redbot/cogs/downloader/downloader.py:908
+#: redbot/cogs/downloader/downloader.py:935
 #, docstring
 msgid "Uninstall cogs.\n\n"
 "        You may only uninstall cogs which were previously installed\n"
 "        by Downloader.\n\n"
 "        Examples:\n"
-"            - `[p]cog uninstall defender`\n"
-"            - `[p]cog uninstall say roleinvite`\n\n"
+"        - `[p]cog uninstall defender`\n"
+"        - `[p]cog uninstall say roleinvite`\n\n"
 "        **Arguments**\n\n"
 "        - `<cogs...>` The cog or cogs to uninstall.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:941
+#: redbot/cogs/downloader/downloader.py:968
 msgid "Successfully uninstalled cogs: "
 msgstr "已成功移除齒輪： "
 
-#: redbot/cogs/downloader/downloader.py:943
+#: redbot/cogs/downloader/downloader.py:970
 msgid "Successfully uninstalled the cog: "
-msgstr ""
+msgstr "成功卸載 cog： "
 
-#: redbot/cogs/downloader/downloader.py:948
+#: redbot/cogs/downloader/downloader.py:975
 msgid "\n"
 "Downloader has removed these cogs from the installed cogs list but it wasn't able to find their files: "
-msgstr ""
+msgstr "\n"
+"下載器已從已安裝的 cogs 列表中刪除了這些 cogs，但無法找到它們的文件： "
 
-#: redbot/cogs/downloader/downloader.py:953
+#: redbot/cogs/downloader/downloader.py:980
 msgid "\n"
 "They were most likely removed without using {command_1}.\n"
 "You may need to remove those files manually if the cogs are still usable. If so, ensure the cogs have been unloaded with {command_2}."
-msgstr ""
+msgstr "\n"
+"它們很可能在未使用 {command_1} 的情況下被刪除。\n"
+"如果齒輪仍然可用，您可能需要手動刪除這些文件。 如果是這樣，請確保已使用 {command_2} 卸載齒輪。"
 
-#: redbot/cogs/downloader/downloader.py:964
+#: redbot/cogs/downloader/downloader.py:991
 msgid "\n"
 "Downloader has removed this cog from the installed cogs list but it wasn't able to find its files: "
-msgstr ""
+msgstr "\n"
+"下載器已從已安裝的 cogs 列表中刪除此 cog，但無法找到其文件： "
 
-#: redbot/cogs/downloader/downloader.py:969
+#: redbot/cogs/downloader/downloader.py:996
 msgid "\n"
 "It was most likely removed without using {command_1}.\n"
 "You may need to remove those files manually if the cog is still usable. If so, ensure the cog has been unloaded with {command_2}."
-msgstr ""
+msgstr "\n"
+"它很可能是在未使用 {command_1} 的情況下被刪除的。\n"
+"如果 cog 仍然可用，您可能需要手動刪除這些文件。 如果是這樣，請確保已使用 {command_2} 卸載齒輪。"
 
-#: redbot/cogs/downloader/downloader.py:982
+#: redbot/cogs/downloader/downloader.py:1009
 #, docstring
 msgid "Pin cogs - this will lock cogs on their current version.\n\n"
 "        Examples:\n"
-"            - `[p]cog pin defender`\n"
-"            - `[p]cog pin outdated_cog1 outdated_cog2`\n\n"
+"        - `[p]cog pin defender`\n"
+"        - `[p]cog pin outdated_cog1 outdated_cog2`\n\n"
 "        **Arguments**\n\n"
 "        - `<cogs...>` The cog or cogs to pin. Must already be installed.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:1005
+#: redbot/cogs/downloader/downloader.py:1032
 msgid "Pinned cogs: "
-msgstr ""
+msgstr "已固定的cogs： "
 
-#: redbot/cogs/downloader/downloader.py:1005
+#: redbot/cogs/downloader/downloader.py:1032
 msgid "Pinned cog: "
-msgstr ""
+msgstr "已固定的cog： "
 
-#: redbot/cogs/downloader/downloader.py:1009
+#: redbot/cogs/downloader/downloader.py:1036
 msgid "\n"
 "These cogs were already pinned: "
-msgstr ""
+msgstr "\n"
+"這些cogs已經固定： "
 
-#: redbot/cogs/downloader/downloader.py:1011
+#: redbot/cogs/downloader/downloader.py:1038
 msgid "\n"
 "This cog was already pinned: "
-msgstr ""
+msgstr "\n"
+"該cog已被固定： "
 
-#: redbot/cogs/downloader/downloader.py:1017
+#: redbot/cogs/downloader/downloader.py:1044
 #, docstring
 msgid "Unpin cogs - this will remove the update lock from those cogs.\n\n"
 "        Examples:\n"
-"            - `[p]cog unpin defender`\n"
-"            - `[p]cog unpin updated_cog1 updated_cog2`\n\n"
+"        - `[p]cog unpin defender`\n"
+"        - `[p]cog unpin updated_cog1 updated_cog2`\n\n"
 "        **Arguments**\n\n"
 "        - `<cogs...>` The cog or cogs to unpin. Must already be installed and pinned."
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:1039
+#: redbot/cogs/downloader/downloader.py:1066
 msgid "Unpinned cogs: "
-msgstr ""
+msgstr "未固定的cogs： "
 
-#: redbot/cogs/downloader/downloader.py:1039
+#: redbot/cogs/downloader/downloader.py:1066
 msgid "Unpinned cog: "
-msgstr ""
+msgstr "未固定的cog： "
 
-#: redbot/cogs/downloader/downloader.py:1043
+#: redbot/cogs/downloader/downloader.py:1070
 msgid "\n"
 "These cogs weren't pinned: "
-msgstr ""
+msgstr "\n"
+"這些cogs沒有固定： "
 
-#: redbot/cogs/downloader/downloader.py:1045
+#: redbot/cogs/downloader/downloader.py:1072
 msgid "\n"
 "This cog was already not pinned: "
-msgstr ""
+msgstr "\n"
+"該cog尚未固定： "
 
-#: redbot/cogs/downloader/downloader.py:1051
+#: redbot/cogs/downloader/downloader.py:1078
 #, docstring
 msgid "List currently pinned cogs."
-msgstr ""
+msgstr "列出當前固定的cogs。"
 
-#: redbot/cogs/downloader/downloader.py:1057
+#: redbot/cogs/downloader/downloader.py:1085
+msgid "unknown"
+msgstr "未知"
+
+#: redbot/cogs/downloader/downloader.py:1088
 msgid "None."
-msgstr ""
+msgstr "無"
 
-#: redbot/cogs/downloader/downloader.py:1061
+#: redbot/cogs/downloader/downloader.py:1092
 msgid "(continued)"
-msgstr ""
+msgstr "(繼續)"
 
-#: redbot/cogs/downloader/downloader.py:1061
+#: redbot/cogs/downloader/downloader.py:1092
 msgid "Pinned Cogs:"
-msgstr ""
+msgstr "已固定的cogs："
 
-#: redbot/cogs/downloader/downloader.py:1071
+#: redbot/cogs/downloader/downloader.py:1098
 msgid "Pinned Cogs: \n"
-msgstr ""
+msgstr "已固定的cogs：\n"
 
-#: redbot/cogs/downloader/downloader.py:1076
+#: redbot/cogs/downloader/downloader.py:1103
 #, docstring
 msgid "\n"
 "        Check for available cog updates (including pinned cogs).\n\n"
 "        This command doesn't update cogs, it only checks for updates.\n"
 "        Use `[p]cog update` to update cogs.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        檢查可用的 cog 更新(包括固定的 cog)。\n\n"
+"        此命令不更新齒輪，它只檢查更新。\n"
+"        使用 `[p]cog update` 更新齒輪。\n"
+"        "
 
-#: redbot/cogs/downloader/downloader.py:1092
+#: redbot/cogs/downloader/downloader.py:1119
 msgid "These cogs can be updated: "
-msgstr ""
+msgstr "這些cog可以更新： "
 
-#: redbot/cogs/downloader/downloader.py:1094
+#: redbot/cogs/downloader/downloader.py:1121
 msgid "This cog can be updated: "
-msgstr ""
+msgstr "這個 cog 可以更新： "
 
-#: redbot/cogs/downloader/downloader.py:1099
+#: redbot/cogs/downloader/downloader.py:1126
 msgid "\n"
 "These shared libraries can be updated: "
-msgstr ""
+msgstr "\n"
+"可以更新這些共享庫： "
 
-#: redbot/cogs/downloader/downloader.py:1101
+#: redbot/cogs/downloader/downloader.py:1128
 msgid "\n"
 "This shared library can be updated: "
-msgstr ""
+msgstr "\n"
+"這個共享庫可以更新： "
 
-#: redbot/cogs/downloader/downloader.py:1104
+#: redbot/cogs/downloader/downloader.py:1131
 msgid "No cogs can be updated."
-msgstr ""
+msgstr "沒有cog可以更新。"
 
-#: redbot/cogs/downloader/downloader.py:1108
+#: redbot/cogs/downloader/downloader.py:1135
 msgid "All installed cogs are up to date."
-msgstr ""
+msgstr "所有已安裝的cog都是最新的。"
 
-#: redbot/cogs/downloader/downloader.py:1117
+#: redbot/cogs/downloader/downloader.py:1146
 #, docstring
 msgid "Update all cogs, or ones of your choosing.\n\n"
 "        Examples:\n"
-"            - `[p]cog update`\n"
-"            - `[p]cog update defender`\n\n"
+"        - `[p]cog update`\n"
+"        - `[p]cog update True`\n"
+"        - `[p]cog update defender`\n"
+"        - `[p]cog update True defender`\n\n"
 "        **Arguments**\n\n"
+"        - `[reload]` Whether to reload cogs immediately after update or not.\n"
 "        - `[cogs...]` The cog or cogs to update. If omitted, all cogs are updated.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:1131
+#: redbot/cogs/downloader/downloader.py:1167
 #, docstring
 msgid "Update all cogs from repos of your choosing.\n\n"
 "        Examples:\n"
-"            - `[p]cog updateallfromrepos 26-Cogs`\n"
-"            - `[p]cog updateallfromrepos Laggrons-Dumb-Cogs 26-Cogs`\n\n"
+"        - `[p]cog updateallfromrepos 26-Cogs`\n"
+"        - `[p]cog updateallfromrepos True 26-Cogs`\n"
+"        - `[p]cog updateallfromrepos Laggrons-Dumb-Cogs 26-Cogs`\n\n"
 "        **Arguments**\n\n"
+"        - `[reload]` Whether to reload cogs immediately after update or not.\n"
 "        - `<repos...>` The repo or repos to update all cogs from.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:1147
+#: redbot/cogs/downloader/downloader.py:1192
 #, docstring
 msgid "Update all cogs, or ones of your choosing to chosen revision of one repo.\n\n"
 "        Note that update doesn't mean downgrade and therefore `revision`\n"
 "        has to be newer than the version that cog currently has installed. If you want to\n"
 "        downgrade the cog, uninstall and install it again.\n\n"
 "        See `[p]cog installversion` for an explanation of `revision`.\n\n"
-"        Example:\n"
-"            - `[p]cog updatetoversion Broken-Repo e798cc268e199612b1316a3d1f193da0770c7016 cog_name`\n\n"
+"        Examples:\n"
+"        - `[p]cog updatetoversion Broken-Repo e798cc268e199612b1316a3d1f193da0770c7016 cog_name`\n"
+"        - `[p]cog updatetoversion True Broken-Repo 6107c0770ad391f1d3a6131b216991e862cc897e cog_name`\n\n"
 "        **Arguments**\n\n"
+"        - `[reload]` Whether to reload cogs immediately after update or not.\n"
 "        - `<repo>` The repo or repos to update all cogs from.\n"
 "        - `<revision>` The revision to update to.\n"
 "        - `[cogs...]` The cog or cogs to update.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:1225
+#: redbot/cogs/downloader/downloader.py:1274
 msgid "There were no cogs to check."
-msgstr ""
+msgstr "沒有cog需要檢查。"
 
-#: redbot/cogs/downloader/downloader.py:1229
-#: redbot/cogs/downloader/downloader.py:1265
+#: redbot/cogs/downloader/downloader.py:1278
+#: redbot/cogs/downloader/downloader.py:1314
 msgid "\n"
 "These cogs are pinned and therefore weren't checked: "
-msgstr ""
+msgstr "\n"
+"這些齒輪是固定的，因此沒有被檢查： "
 
-#: redbot/cogs/downloader/downloader.py:1231
-#: redbot/cogs/downloader/downloader.py:1267
+#: redbot/cogs/downloader/downloader.py:1280
+#: redbot/cogs/downloader/downloader.py:1316
 msgid "\n"
 "This cog is pinned and therefore wasn't checked: "
-msgstr ""
+msgstr "\n"
+"此cog已固定，因此未被檢查： "
 
-#: redbot/cogs/downloader/downloader.py:1245
+#: redbot/cogs/downloader/downloader.py:1294
 msgid "Cogs from provided repos are already up to date."
-msgstr ""
+msgstr "來自提供的repo協議的cog已經是最新的。"
 
-#: redbot/cogs/downloader/downloader.py:1248
+#: redbot/cogs/downloader/downloader.py:1297
 msgid "Provided cogs are already up to date with this revision."
-msgstr ""
+msgstr "前提是 cog 已經是最新版本。"
 
-#: redbot/cogs/downloader/downloader.py:1252
+#: redbot/cogs/downloader/downloader.py:1301
 msgid "Cogs from provided repo are already up to date with this revision."
-msgstr ""
+msgstr "來自提供的 repo 的 Cogs 已經與此修訂版保持同步。"
 
-#: redbot/cogs/downloader/downloader.py:1257
+#: redbot/cogs/downloader/downloader.py:1306
 msgid "Provided cogs are already up to date."
-msgstr ""
+msgstr "提供的cog已經是最新的。"
 
-#: redbot/cogs/downloader/downloader.py:1259
+#: redbot/cogs/downloader/downloader.py:1308
 msgid "All installed cogs are already up to date."
-msgstr ""
+msgstr "所有安裝的cogs都已經是最新的。"
 
-#: redbot/cogs/downloader/downloader.py:1289
+#: redbot/cogs/downloader/downloader.py:1338
 #, docstring
 msgid "List all available cogs from a single repo.\n\n"
 "        Example:\n"
-"            - `[p]cog list 26-Cogs`\n\n"
+"        - `[p]cog list 26-Cogs`\n\n"
 "        **Arguments**\n\n"
 "        - `<repo>` The repo to list cogs from.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:1306
-msgid "Installed Cogs:\n"
+#: redbot/cogs/downloader/downloader.py:1356
+msgid "# Installed Cogs\n"
 "{text}"
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:1308
-msgid "Installed Cog:\n"
+#: redbot/cogs/downloader/downloader.py:1358
+msgid "# Installed Cog\n"
 "{text}"
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:1319
-msgid "Available Cogs:\n"
+#: redbot/cogs/downloader/downloader.py:1369
+msgid "> Available Cogs\n"
 "No cogs are available."
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:1321
-msgid "Available Cogs:\n"
+#: redbot/cogs/downloader/downloader.py:1371
+msgid "> Available Cogs\n"
 "{text}"
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:1323
-msgid "Available Cog:\n"
+#: redbot/cogs/downloader/downloader.py:1373
+msgid "> Available Cog\n"
 "{text}"
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:1330
+#: redbot/cogs/downloader/downloader.py:1380
 #, docstring
 msgid "List information about a single cog.\n\n"
 "        Example:\n"
-"            - `[p]cog info 26-Cogs defender`\n\n"
+"        - `[p]cog info 26-Cogs defender`\n\n"
 "        **Arguments**\n\n"
 "        - `<repo>` The repo to get cog info from.\n"
 "        - `<cog>` The cog to get info on.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:1343
+#: redbot/cogs/downloader/downloader.py:1393
 msgid "There is no cog `{cog_name}` in the repo `{repo.name}`"
-msgstr ""
+msgstr "Repo `{repo.name}` 中沒有 cog `{cog_name}`"
 
-#: redbot/cogs/downloader/downloader.py:1349
+#: redbot/cogs/downloader/downloader.py:1399
 msgid "Information on {cog_name}:\n"
 "{description}\n\n"
 "End user data statement:\n"
 "{end_user_data_statement}\n\n"
 "Made by: {author}\n"
 "Requirements: {requirements}"
-msgstr ""
+msgstr "{cog_name} 的資訊：\n"
+"{description}\n\n"
+"最終用戶數據聲明：\n"
+"{end_user_data_statement}\n\n"
+"製作者：{author}\n"
+"要求：{requirements}"
 
-#: redbot/cogs/downloader/downloader.py:1361
+#: redbot/cogs/downloader/downloader.py:1411
 msgid "Author of the cog didn't provide end user data statement."
-msgstr ""
+msgstr "Cog 的作者沒有提供最終用戶數據聲明。"
 
-#: redbot/cogs/downloader/downloader.py:1430
+#: redbot/cogs/downloader/downloader.py:1480
 msgid "\n"
 "Couldn't find these cogs in {repo.name}: "
-msgstr ""
+msgstr "\n"
+"在 {repo.name} 中找不到這些cogs： "
 
-#: redbot/cogs/downloader/downloader.py:1432
+#: redbot/cogs/downloader/downloader.py:1482
 msgid "\n"
 "Couldn't find this cog in {repo.name}: "
-msgstr ""
+msgstr "\n"
+"在 {repo.name} 中找不到這個 cog： "
 
-#: redbot/cogs/downloader/downloader.py:1436
+#: redbot/cogs/downloader/downloader.py:1486
 msgid "\n"
 "These cogs were already installed: "
-msgstr ""
+msgstr "\n"
+"這些cogs已經安裝： "
 
-#: redbot/cogs/downloader/downloader.py:1438
+#: redbot/cogs/downloader/downloader.py:1488
 msgid "\n"
 "This cog was already installed: "
-msgstr ""
+msgstr "\n"
+"此cog已安裝： "
 
-#: redbot/cogs/downloader/downloader.py:1442
+#: redbot/cogs/downloader/downloader.py:1492
 msgid "\n"
 "Some cogs with these names are already installed from different repos: "
-msgstr ""
+msgstr "\n"
+"一些具有這些名稱的 cogs 已經從不同的 repos 安裝： "
 
-#: redbot/cogs/downloader/downloader.py:1444
-msgid "Cog with this name is already installed from a different repo."
-msgstr ""
+#: redbot/cogs/downloader/downloader.py:1494
+msgid "\n"
+"Cog with this name is already installed from a different repo: "
+msgstr "\n"
+"具有此名稱的 Cog 已從不同的 repo 安裝： "
 
-#: redbot/cogs/downloader/downloader.py:1461
+#: redbot/cogs/downloader/downloader.py:1511
 msgid " (Minimum: {min_version})"
-msgstr ""
+msgstr " (最低需求：{min_version})"
 
-#: redbot/cogs/downloader/downloader.py:1474
+#: redbot/cogs/downloader/downloader.py:1524
 msgid " (Minimum: {min_version}"
-msgstr ""
+msgstr " (最低需求：{min_version}"
 
-#: redbot/cogs/downloader/downloader.py:1478
+#: redbot/cogs/downloader/downloader.py:1528
 msgid ", at most: {max_version}"
-msgstr ""
+msgstr "，最高需求：{max_version}"
 
-#: redbot/cogs/downloader/downloader.py:1487
+#: redbot/cogs/downloader/downloader.py:1537
 msgid "\n"
 "These cogs require higher python version than you have: "
-msgstr ""
+msgstr "\n"
+"這些齒輪需要比您擁有的更高的 python 版本： "
 
-#: redbot/cogs/downloader/downloader.py:1489
-msgid "This cog requires higher python version than you have: "
-msgstr ""
+#: redbot/cogs/downloader/downloader.py:1539
+msgid "\n"
+"This cog requires higher python version than you have: "
+msgstr "\n"
+"這個 cog 需要比你擁有的更高的 python 版本： "
 
-#: redbot/cogs/downloader/downloader.py:1493
+#: redbot/cogs/downloader/downloader.py:1543
 msgid "\n"
 "These cogs require different Red version than you currently have ({current_version}): "
-msgstr ""
+msgstr "\n"
+"這些齒輪需要與您當前擁有的不同的Red版本 ({current_version})： "
 
-#: redbot/cogs/downloader/downloader.py:1498
-msgid "This cog requires different Red version than you currently have ({current_version}): "
-msgstr ""
+#: redbot/cogs/downloader/downloader.py:1548
+msgid "\n"
+"This cog requires different Red version than you currently have ({current_version}): "
+msgstr "\n"
+"此 cog 需要與您當前擁有的不同的Red版本 ({current_version})： "
 
-#: redbot/cogs/downloader/downloader.py:1569
+#: redbot/cogs/downloader/downloader.py:1619
 msgid "Cog update completed successfully."
 msgstr "已成功更新齒輪。"
 
-#: redbot/cogs/downloader/downloader.py:1584
+#: redbot/cogs/downloader/downloader.py:1634
 msgid "\n"
 "End user data statements of these cogs have changed: "
-msgstr ""
-
-#: redbot/cogs/downloader/downloader.py:1586
-msgid "\n"
-"You can use {command} to see the updated statements.\n"
-msgstr ""
-
-#: redbot/cogs/downloader/downloader.py:1592
-msgid "End user data statement of this cog has changed:"
-msgstr ""
-
-#: redbot/cogs/downloader/downloader.py:1594
-msgid "\n"
-"You can use {command} to see the updated statement.\n"
-msgstr ""
-
-#: redbot/cogs/downloader/downloader.py:1601
-msgid "\n"
-"Failed to update cogs: "
-msgstr ""
-
-#: redbot/cogs/downloader/downloader.py:1603
-msgid "\n"
-"Failed to update cog: "
-msgstr ""
-
-#: redbot/cogs/downloader/downloader.py:1606
-msgid "No cogs were updated."
-msgstr ""
-
-#: redbot/cogs/downloader/downloader.py:1609
-msgid "\n"
-"Some shared libraries were updated, you should restart the bot to bring the changes into effect."
-msgstr ""
-
-#: redbot/cogs/downloader/downloader.py:1614
-msgid "\n"
-"A shared library was updated, you should restart the bot to bring the changes into effect."
-msgstr ""
-
-#: redbot/cogs/downloader/downloader.py:1631
-msgid "None of the updated cogs were previously loaded. Update complete."
-msgstr ""
+msgstr "\n"
+"這些 cog 的最終用戶數據聲明已更改： "
 
 #: redbot/cogs/downloader/downloader.py:1636
-msgid "Would you like to reload the updated cogs?"
-msgstr ""
+msgid "\n"
+"You can use {command} to see the updated statements.\n"
+msgstr "\n"
+"您可以使用 {command} 查看更新後的語句。\n"
 
-#: redbot/cogs/downloader/downloader.py:1638
-msgid "Would you like to reload the updated cog?"
-msgstr ""
+#: redbot/cogs/downloader/downloader.py:1642
+msgid "\n"
+"End user data statement of this cog has changed:"
+msgstr "\n"
+"此 cog 的最終用戶數據聲明已更改："
+
+#: redbot/cogs/downloader/downloader.py:1644
+msgid "\n"
+"You can use {command} to see the updated statement.\n"
+msgstr "\n"
+"您可以使用 {command} 查看更新後的語句。\n"
+
+#: redbot/cogs/downloader/downloader.py:1651
+msgid "\n"
+"You may need to resync your slash commands with `{prefix}slash sync`."
+msgstr "\n"
+"您可能需要使用 `{prefix}slash sync` 來重新同步您的斜線指令。"
+
+#: redbot/cogs/downloader/downloader.py:1657
+msgid "\n"
+"Failed to update cogs: "
+msgstr "\n"
+"無法更新cogs： "
+
+#: redbot/cogs/downloader/downloader.py:1659
+msgid "\n"
+"Failed to update cog: "
+msgstr "\n"
+"更新 cog 失敗： "
 
 #: redbot/cogs/downloader/downloader.py:1662
-msgid "OK then."
-msgstr ""
+msgid "No cogs were updated."
+msgstr "沒有cog已被更新。"
+
+#: redbot/cogs/downloader/downloader.py:1665
+msgid "\n"
+"Some shared libraries were updated, you should restart the bot to bring the changes into effect."
+msgstr "\n"
+"一些共享庫已更新，您需重新啟動機器人以使更改生效。"
+
+#: redbot/cogs/downloader/downloader.py:1670
+msgid "\n"
+"A shared library was updated, you should restart the bot to bring the changes into effect."
+msgstr "\n"
+"共享庫已更新，您應該重新啟動機器人以使更改生效。"
+
+#: redbot/cogs/downloader/downloader.py:1687
+msgid "None of the updated cogs were previously loaded. Update complete."
+msgstr "之前沒有加載任何更新的齒輪。更新完成。"
 
 #: redbot/cogs/downloader/downloader.py:1692
+msgid "Would you like to reload the updated cogs?"
+msgstr "您想重新加載已更新的cogs嗎？"
+
+#: redbot/cogs/downloader/downloader.py:1694
+msgid "Would you like to reload the updated cog?"
+msgstr "您想重新加載已更新的cog嗎？"
+
+#: redbot/cogs/downloader/downloader.py:1720
+msgid "OK then."
+msgstr "OK then."
+
+#: redbot/cogs/downloader/downloader.py:1750
 #, docstring
 msgid "Find which cog a command comes from.\n\n"
 "        This will only work with loaded cogs.\n\n"
 "        Example:\n"
-"            - `[p]findcog ping`\n\n"
+"        - `[p]findcog ping`\n\n"
 "        **Arguments**\n\n"
 "        - `<command_name>` The command to search for.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/downloader/downloader.py:1706
+#: redbot/cogs/downloader/downloader.py:1764
 msgid "That command doesn't seem to exist."
 msgstr "這個命令似乎不存在。"
 
-#: redbot/cogs/downloader/downloader.py:1721
+#: redbot/cogs/downloader/downloader.py:1779
+#: redbot/cogs/downloader/downloader.py:1784
 msgid "Missing from installed repos"
-msgstr ""
+msgstr "已安裝的repo中丟失"
 
-#: redbot/cogs/downloader/downloader.py:1731
+#: redbot/cogs/downloader/downloader.py:1799
+#: redbot/cogs/downloader/downloader.py:1801
 msgid "Unknown"
 msgstr "未知"
 
-#: redbot/cogs/downloader/downloader.py:1732
+#: redbot/cogs/downloader/downloader.py:1800
 msgid "None - this cog wasn't installed via downloader"
-msgstr ""
+msgstr "無 - 這個 cog 不是通過下載器安裝的"
 
-#: redbot/cogs/downloader/downloader.py:1735
+#: redbot/cogs/downloader/downloader.py:1804
 msgid "This command is not provided by a cog."
-msgstr ""
+msgstr "Cog 不提供此命令。"
 
-#: redbot/cogs/downloader/downloader.py:1741
+#: redbot/cogs/downloader/downloader.py:1810
 msgid "Command:"
-msgstr ""
+msgstr "指令："
 
-#: redbot/cogs/downloader/downloader.py:1742
-msgid "Cog Name:"
-msgstr ""
+#: redbot/cogs/downloader/downloader.py:1811
+msgid "Cog package name:"
+msgstr "Cog package名稱："
 
-#: redbot/cogs/downloader/downloader.py:1743
+#: redbot/cogs/downloader/downloader.py:1812
+msgid "Cog name:"
+msgstr "Cog 名稱："
+
+#: redbot/cogs/downloader/downloader.py:1813
 msgid "Made by:"
-msgstr ""
+msgstr "製作由："
 
-#: redbot/cogs/downloader/downloader.py:1744
+#: redbot/cogs/downloader/downloader.py:1814
+msgid "Repo name:"
+msgstr "Repo 的名稱："
+
+#: redbot/cogs/downloader/downloader.py:1815
 msgid "Repo URL:"
-msgstr ""
+msgstr "Repo 網址："
 
-#: redbot/cogs/downloader/downloader.py:1747
+#: redbot/cogs/downloader/downloader.py:1818
 msgid "Repo branch:"
-msgstr ""
+msgstr "Repo 分支："
 
-#: redbot/cogs/downloader/downloader.py:1752
-msgid "Command: {command}\n"
-"Cog name: {cog}\n"
-"Made by: {author}\n"
-"Repo URL: {repo_url}\n"
-msgstr ""
+#: redbot/cogs/downloader/downloader.py:1823
+msgid "Command:          {command}\n"
+"Cog package name: {cog_pkg}\n"
+"Cog name:         {cog}\n"
+"Made by:          {author}\n"
+"Repo name:        {repo_name}\n"
+"Repo URL:         {repo_url}\n"
+msgstr "指令：{command}\n"
+"Cog 包名稱：{cog_pkg}\n"
+"Cog 名稱：{cog}\n"
+"製作者：{author}\n"
+"Repo 名稱：{repo_name}\n"
+"Repo 網址：{repo_url}\n"
 
-#: redbot/cogs/downloader/downloader.py:1756
+#: redbot/cogs/downloader/downloader.py:1839
 msgid "Repo branch: {branch_name}\n"
-msgstr ""
+msgstr "Repo 分支：{branch_name}\n"
 
-#: redbot/cogs/downloader/downloader.py:1777
+#: redbot/cogs/downloader/downloader.py:1860
 msgid "Failed to update the following repositories:"
-msgstr ""
+msgstr "無法更新以下存儲庫："
 
-#: redbot/cogs/downloader/downloader.py:1779
+#: redbot/cogs/downloader/downloader.py:1862
 msgid "Failed to update the following repository:"
-msgstr ""
+msgstr "無法更新以下存儲庫："
 
-#: redbot/cogs/downloader/downloader.py:1782
+#: redbot/cogs/downloader/downloader.py:1865
 msgid "The repository's branch might have been removed or the repository is no longer accessible at set url. See logs for more information."
-msgstr ""
+msgstr "存儲庫的分支可能已被刪除，或者無法再通過設置的 url 訪問存儲庫。 有關詳細信息，請參閱日誌。"
 
 #: redbot/cogs/downloader/repo_manager.py:183
 msgid "Repo by the name \"{repo_name}\" does not exist."
-msgstr ""
+msgstr "名稱為“{repo_name}”的repo不存在。"
 

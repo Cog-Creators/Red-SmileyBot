@@ -7,6 +7,7 @@ from asyncio.futures import isfuture
 from itertools import chain
 from pathlib import Path
 from typing import (
+    TYPE_CHECKING,
     Any,
     AsyncIterator,
     AsyncIterable,
@@ -15,29 +16,52 @@ from typing import (
     Iterable,
     Iterator,
     List,
+    Literal,
+    NoReturn,
     Optional,
     Tuple,
     TypeVar,
     Union,
     Generator,
     Coroutine,
+    overload,
 )
 
+import discord
+from discord.ext import commands as dpy_commands
 from discord.utils import maybe_coroutine
 
+from redbot.core import commands
+
+if TYPE_CHECKING:
+    GuildMessageable = Union[
+        commands.GuildContext,
+        discord.TextChannel,
+        discord.VoiceChannel,
+        discord.StageChannel,
+        discord.Thread,
+    ]
+    DMMessageable = Union[commands.DMContext, discord.Member, discord.User, discord.DMChannel]
+
 __all__ = (
+    "async_filter",
+    "async_enumerate",
     "bounded_gather",
     "bounded_gather_iter",
     "deduplicate_iterables",
     "AsyncIter",
     "get_end_user_data_statement",
     "get_end_user_data_statement_or_raise",
+    "can_user_send_messages_in",
+    "can_user_manage_channel",
+    "can_user_react_in",
 )
 
 log = logging.getLogger("red.core.utils")
 
 _T = TypeVar("_T")
 _S = TypeVar("_S")
+
 
 # Benchmarked to be the fastest method.
 def deduplicate_iterables(*iterables):
@@ -516,6 +540,27 @@ def get_end_user_data_statement(file: Union[Path, str]) -> Optional[str]:
     This function attempts to get the ``end_user_data_statement`` key from cog's ``info.json``.
     This will log the reason if ``None`` is returned.
 
+    Example
+    -------
+
+    You can use this function in cog package's top-level ``__init__.py``
+    to conveniently reuse end user data statement from ``info.json`` file
+    placed in the same directory:
+
+    .. code-block:: python
+
+        from redbot.core.utils import get_end_user_data_statement
+
+        __red_end_user_data_statement__ = get_end_user_data_statement(__file__)
+
+
+        async def setup(bot):
+            ...
+
+    To help detect issues with the ``info.json`` file while still allowing the cog to load,
+    this function logs an error if ``info.json`` file doesn't exist, can't be parsed,
+    or doesn't have an ``end_user_data_statement`` key.
+
     Parameters
     ----------
     file: Union[pathlib.Path, str]
@@ -526,14 +571,6 @@ def get_end_user_data_statement(file: Union[Path, str]) -> Optional[str]:
     Optional[str]
         The end user data statement found in the info.json
         or ``None`` if there was an issue finding one.
-
-    Examples
-    --------
-    >>> # In cog's `__init__.py`
-    >>> from redbot.core.utils import get_end_user_data_statement
-    >>> __red_end_user_data_statement__  = get_end_user_data_statement(__file__)
-    >>> def setup(bot):
-    ...     ...
     """
     try:
         file = Path(file).parent.absolute()
@@ -561,6 +598,27 @@ def get_end_user_data_statement(file: Union[Path, str]) -> Optional[str]:
 def get_end_user_data_statement_or_raise(file: Union[Path, str]) -> str:
     """
     This function attempts to get the ``end_user_data_statement`` key from cog's ``info.json``.
+
+    Example
+    -------
+
+    You can use this function in cog package's top-level ``__init__.py``
+    to conveniently reuse end user data statement from ``info.json`` file
+    placed in the same directory:
+
+    .. code-block:: python
+
+        from redbot.core.utils import get_end_user_data_statement_or_raise
+
+        __red_end_user_data_statement__ = get_end_user_data_statement_or_raise(__file__)
+
+
+        async def setup(bot):
+            ...
+
+    In order to ensure that you won't end up with no end user data statement,
+    this function raises if ``info.json`` file doesn't exist, can't be parsed,
+    or doesn't have an ``end_user_data_statement`` key.
 
     Parameters
     ----------
@@ -590,3 +648,209 @@ def get_end_user_data_statement_or_raise(file: Union[Path, str]) -> str:
     info_json = file / "info.json"
     with info_json.open(encoding="utf-8") as fp:
         return json.load(fp)["end_user_data_statement"]
+
+
+@overload
+def can_user_send_messages_in(
+    obj: discord.abc.User, messageable: discord.PartialMessageable, /
+) -> NoReturn:
+    ...
+
+
+@overload
+def can_user_send_messages_in(obj: discord.Member, messageable: GuildMessageable, /) -> bool:
+    ...
+
+
+@overload
+def can_user_send_messages_in(obj: discord.User, messageable: DMMessageable, /) -> Literal[True]:
+    ...
+
+
+def can_user_send_messages_in(
+    obj: discord.abc.User, messageable: discord.abc.Messageable, /
+) -> bool:
+    """
+    Checks if a user/member can send messages in the given messageable.
+
+    This function properly resolves the permissions for `discord.Thread` as well.
+
+    .. note::
+
+        Without making an API request, it is not possible to reliably detect
+        whether a guild member (who is NOT current bot user) can send messages in a private thread.
+
+        If it's essential for you to reliably detect this, you will need to
+        try fetching the thread member:
+
+        .. code::
+
+            can_send_messages = can_user_send_messages_in(member, thread)
+            if thread.is_private() and not thread.permissions_for(member).manage_threads:
+                try:
+                    await thread.fetch_member(member.id)
+                except discord.NotFound:
+                    can_send_messages = False
+
+    Parameters
+    ----------
+    obj: discord.abc.User
+        The user or member to check permissions for.
+        If passed ``messageable`` resolves to a guild channel/thread,
+        this needs to be an instance of `discord.Member`.
+    messageable: discord.abc.Messageable
+        The messageable object to check permissions for.
+        If this resolves to a DM/group channel, this function will return ``True``.
+
+    Returns
+    -------
+    bool
+        Whether the user can send messages in the given messageable.
+
+    Raises
+    ------
+    TypeError
+        When the passed channel is of type `discord.PartialMessageable`.
+    """
+    channel = messageable.channel if isinstance(messageable, dpy_commands.Context) else messageable
+    if isinstance(channel, discord.PartialMessageable):
+        # If we have a partial messageable, we sadly can't do much...
+        raise TypeError("Can't check permissions for PartialMessageable.")
+
+    if isinstance(channel, discord.abc.User):
+        # Unlike DMChannel, abc.User subclasses do not have `permissions_for()`.
+        return True
+
+    perms = channel.permissions_for(obj)
+    if isinstance(channel, discord.Thread):
+        return (
+            perms.send_messages_in_threads
+            and (not channel.locked or perms.manage_threads)
+            # For private threads, the only way to know if user can send messages would be to check
+            # if they're a member of it which we cannot reliably do without an API request.
+            #
+            # and (not channel.is_private() or "obj is thread member" or perms.manage_threads)
+        )
+
+    return perms.send_messages
+
+
+def can_user_manage_channel(
+    obj: discord.Member,
+    channel: Union[discord.abc.GuildChannel, discord.Thread],
+    /,
+    allow_thread_owner: bool = False,
+) -> bool:
+    """
+    Checks if a guild member can manage the given channel.
+
+    This function properly resolves the permissions for `discord.Thread` as well.
+
+    Parameters
+    ----------
+    obj: discord.Member
+        The guild member to check permissions for.
+        If passed ``messageable`` resolves to a guild channel/thread,
+        this needs to be an instance of `discord.Member`.
+    channel: Union[discord.abc.GuildChannel, discord.Thread]
+        The messageable object to check permissions for.
+        If this resolves to a DM/group channel, this function will return ``True``.
+    allow_thread_owner: bool
+        If ``True``, the function will also return ``True`` if the given member is a thread owner.
+        This can, for example, be useful to check if the member can edit a channel/thread's name
+        as that, in addition to members with manage channel/threads permission,
+        can also be done by the thread owner.
+
+    Returns
+    -------
+    bool
+        Whether the user can manage the given channel.
+    """
+    perms = channel.permissions_for(obj)
+    if isinstance(channel, discord.Thread):
+        return perms.manage_threads or (allow_thread_owner and channel.owner_id == obj.id)
+
+    return perms.manage_channels
+
+
+@overload
+def can_user_react_in(
+    obj: discord.abc.User, messageable: discord.PartialMessageable, /
+) -> NoReturn:
+    ...
+
+
+@overload
+def can_user_react_in(obj: discord.Member, messageable: GuildMessageable, /) -> bool:
+    ...
+
+
+@overload
+def can_user_react_in(obj: discord.User, messageable: DMMessageable, /) -> Literal[True]:
+    ...
+
+
+def can_user_react_in(obj: discord.abc.User, messageable: discord.abc.Messageable, /) -> bool:
+    """
+    Checks if a user/guild member can react in the given messageable.
+
+    This function properly resolves the permissions for `discord.Thread` as well.
+
+    .. note::
+
+        Without making an API request, it is not possible to reliably detect
+        whether a guild member (who is NOT current bot user) can react in a private thread.
+
+        If it's essential for you to reliably detect this, you will need to
+        try fetching the thread member:
+
+        .. code::
+
+            can_react = can_user_react_in(member, thread)
+            if thread.is_private() and not thread.permissions_for(member).manage_threads:
+                try:
+                    await thread.fetch_member(member.id)
+                except discord.NotFound:
+                    can_react = False
+
+    Parameters
+    ----------
+    obj: discord.abc.User
+        The user or member to check permissions for.
+        If passed ``messageable`` resolves to a guild channel/thread,
+        this needs to be an instance of `discord.Member`.
+    messageable: discord.abc.Messageable
+        The messageable object to check permissions for.
+        If this resolves to a DM/group channel, this function will return ``True``.
+
+    Returns
+    -------
+    bool
+        Whether the user can send messages in the given messageable.
+
+    Raises
+    ------
+    TypeError
+        When the passed channel is of type `discord.PartialMessageable`.
+    """
+    channel = messageable.channel if isinstance(messageable, dpy_commands.Context) else messageable
+    if isinstance(channel, discord.PartialMessageable):
+        # If we have a partial messageable, we sadly can't do much...
+        raise TypeError("Can't check permissions for PartialMessageable.")
+
+    if isinstance(channel, discord.abc.User):
+        # Unlike DMChannel, abc.User subclasses do not have `permissions_for()`.
+        return True
+
+    perms = channel.permissions_for(obj)
+    if isinstance(channel, discord.Thread):
+        return (
+            (perms.read_message_history and perms.add_reactions)
+            and not channel.archived
+            # For private threads, the only way to know if user can send messages would be to check
+            # if they're a member of it which we cannot reliably do without an API request.
+            #
+            # and (not channel.is_private() or perms.manage_threads or "obj is thread member")
+        )
+
+    return perms.read_message_history and perms.add_reactions

@@ -1,6 +1,5 @@
 import datetime
 import json
-import logging
 from collections import namedtuple
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -8,6 +7,7 @@ from typing import List, MutableMapping, Optional, Union
 
 import discord
 import lavalink
+from red_commons.logging import getLogger
 
 from redbot.core.bot import Red
 from redbot.core.i18n import Translator
@@ -16,7 +16,7 @@ from redbot.core.utils.chat_formatting import humanize_list
 from ..errors import InvalidPlaylistScope, MissingAuthor, MissingGuild
 from ..utils import PlaylistScope
 
-log = logging.getLogger("red.cogs.Audio.api.utils")
+log = getLogger("red.cogs.Audio.api.utils")
 _ = Translator("Audio", Path(__file__))
 
 

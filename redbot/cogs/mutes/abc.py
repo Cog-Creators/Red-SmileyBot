@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import List, Tuple, Optional, Dict, Union
+from typing import Optional, Dict, Union
 from datetime import datetime
 
 import discord

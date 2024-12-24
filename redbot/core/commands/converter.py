@@ -3,15 +3,16 @@ commands.converter
 ==================
 This module contains useful functions and classes for command argument conversion.
 
-Some of the converters within are included provisionally and are marked as such.
+Some of the converters within are included `provisionally <developer-guarantees-exclusions>`
+and are marked as such.
 """
 import functools
+import math
 import re
 from datetime import timedelta
 from dateutil.relativedelta import relativedelta
 from typing import (
     TYPE_CHECKING,
-    Generic,
     Optional,
     Optional as NoParseOptional,
     Tuple,
@@ -19,11 +20,9 @@ from typing import (
     Dict,
     Type,
     TypeVar,
-    Literal as Literal,
     Union as UserInputOptional,
 )
 
-import discord
 from discord.ext import commands as dpy_commands
 from discord.ext.commands import BadArgument
 
@@ -40,36 +39,42 @@ __all__ = [
     "NoParseOptional",
     "RelativedeltaConverter",
     "TimedeltaConverter",
+    "finite_float",
     "get_dict_converter",
     "get_timedelta_converter",
     "parse_relativedelta",
     "parse_timedelta",
-    "Literal",
+    "positive_int",
     "CommandConverter",
     "CogConverter",
 ]
 
 _ = Translator("commands.converter", __file__)
 
-ID_REGEX = re.compile(r"([0-9]{15,20})")
-USER_MENTION_REGEX = re.compile(r"<@!?([0-9]{15,21})>$")
+# You'd think that Discord's documentation showing an example of 2 ** 64 - 1 snowflake would mean that
+# this is going to be accepted by everything in their API but nope... Let's assume 2 ** 63 - 1 as the max instead.
+ID_REGEX = re.compile(r"([0-9]{15,19})")
+USER_MENTION_REGEX = re.compile(r"<@!?([0-9]{15,19})>$")
+_MAX_ID = 2**63 - 1
 
 
 # Taken with permission from
 # https://github.com/mikeshardmind/SinbadCogs/blob/816f3bc2ba860243f75112904b82009a8a9e1f99/scheduler/time_utils.py#L9-L19
-TIME_RE_STRING = r"\s?".join(
-    [
-        r"((?P<years>\d+?)\s?(years?|y))?",
-        r"((?P<months>\d+?)\s?(months?|mo))?",
-        r"((?P<weeks>\d+?)\s?(weeks?|w))?",
-        r"((?P<days>\d+?)\s?(days?|d))?",
-        r"((?P<hours>\d+?)\s?(hours?|hrs|hr?))?",
-        r"((?P<minutes>\d+?)\s?(minutes?|mins?|m(?!o)))?",  # prevent matching "months"
-        r"((?P<seconds>\d+?)\s?(seconds?|secs?|s))?",
-    ]
+# with modifications
+TIME_RE = re.compile(
+    r"""
+        (\s?(  # match deliminators here to make word border below unambiguous
+            (?P<years>[\+-]?\d+)\s?(years?|y)
+          | (?P<months>[\+-]?\d+)\s?(months?|mo)
+          | (?P<weeks>[\+-]?\d+)\s?(weeks?|w)
+          | (?P<days>[\+-]?\d+)\s?(days?|d)
+          | (?P<hours>[\+-]?\d+)\s?(hours?|hrs|hr?)
+          | (?P<minutes>[\+-]?\d+)\s?(minutes?|mins?|m)
+          | (?P<seconds>[\+-]?\d+)\s?(seconds?|secs?|s)
+        ))+\b
+    """,
+    flags=re.IGNORECASE | re.VERBOSE,
 )
-
-TIME_RE = re.compile(TIME_RE_STRING, re.I)
 
 
 def _parse_and_match(string_to_match: str, allowed_units: List[str]) -> Optional[Dict[str, int]]:
@@ -92,13 +97,13 @@ def parse_timedelta(
     argument: str,
     *,
     maximum: Optional[timedelta] = None,
-    minimum: Optional[timedelta] = None,
+    minimum: Optional[timedelta] = timedelta(seconds=0),
     allowed_units: Optional[List[str]] = None,
 ) -> Optional[timedelta]:
     """
     This converts a user provided string into a timedelta
 
-    The units should be in order from largest to smallest.
+    If a unit is specified multiple times, only the last is considered.
     This works with or without whitespace.
 
     Parameters
@@ -109,6 +114,7 @@ def parse_timedelta(
         If provided, any parsed value higher than this will raise an exception
     minimum : Optional[datetime.timedelta]
         If provided, any parsed value lower than this will raise an exception
+        Defaults to 0 seconds, pass `datetime.timedelta.min` explicitly to allow negative values
     allowed_units : Optional[List[str]]
         If provided, you can constrain a user to expressing the amount of time
         in specific units. The units you can chose to provide are the same as the
@@ -132,6 +138,10 @@ def parse_timedelta(
         "minutes",
         "seconds",
     ]
+    if minimum is None:
+        minimum = timedelta(seconds=0)
+    if maximum is None:
+        maximum = timedelta.max
     params = _parse_and_match(argument, allowed_units)
     if params:
         try:
@@ -140,17 +150,23 @@ def parse_timedelta(
             raise BadArgument(
                 _("The time set is way too high, consider setting something reasonable.")
             )
-        if maximum and maximum < delta:
+        if maximum < delta:
             raise BadArgument(
                 _(
                     "This amount of time is too large for this command. (Maximum: {maximum})"
-                ).format(maximum=humanize_timedelta(timedelta=maximum))
+                ).format(
+                    maximum=humanize_timedelta(seconds=math.floor(maximum.total_seconds()))
+                    or _("0 seconds")
+                )
             )
-        if minimum and delta < minimum:
+        if delta < minimum:
             raise BadArgument(
                 _(
                     "This amount of time is too small for this command. (Minimum: {minimum})"
-                ).format(minimum=humanize_timedelta(timedelta=minimum))
+                ).format(
+                    minimum=humanize_timedelta(seconds=math.ceil(minimum.total_seconds()))
+                    or _("0 seconds")
+                )
             )
         return delta
     return None
@@ -162,7 +178,7 @@ def parse_relativedelta(
     """
     This converts a user provided string into a datetime with offset from NOW
 
-    The units should be in order from largest to smallest.
+    If a unit is specified multiple times, only the last is considered.
     This works with or without whitespace.
 
     Parameters
@@ -226,8 +242,16 @@ class RawUserIdConverter(dpy_commands.Converter):
         # are most likely not in the guild.
         # Mentions are supported, but most likely won't ever be in cache.
 
-        if match := ID_REGEX.match(argument) or USER_MENTION_REGEX.match(argument):
-            return int(match.group(1))
+        if match := ID_REGEX.fullmatch(argument) or USER_MENTION_REGEX.fullmatch(argument):
+            user_id = int(match.group(1))
+
+            # Validate user ID range
+            if user_id > _MAX_ID:
+                raise BadArgument(
+                    f"The ID '{argument}' is too large to be a valid Discord user ID."
+                )
+
+            return user_id
 
         raise BadArgument(_("'{input}' doesn't look like a valid user ID.").format(input=argument))
 
@@ -236,6 +260,27 @@ class RawUserIdConverter(dpy_commands.Converter):
 # These are used for command conversion purposes. Please refer to the portion
 # which is *not* for type checking for the actual implementation
 # and ensure the lies stay correct for how the object should look as a typehint
+
+#: This converts a user provided string into a positive (>=0) integer.
+positive_int = dpy_commands.Range[int, 0, None]
+
+
+if TYPE_CHECKING:
+    finite_float = float
+else:
+
+    def finite_float(arg: str) -> float:
+        """
+        This converts a user provided string into a finite float.
+        """
+        try:
+            ret = float(arg)
+        except ValueError:
+            raise BadArgument(_("`{arg}` is not a number.").format(arg=arg))
+        if not math.isfinite(ret):
+            raise BadArgument(_("`{arg}` is not a finite number.").format(arg=ret))
+        return ret
+
 
 if TYPE_CHECKING:
     DictConverter = Dict[str, str]
@@ -256,13 +301,13 @@ else:
             args = self.pattern.split(argument)
 
             if len(args) % 2 != 0:
-                raise BadArgument()
+                raise BadArgument(_("Missing a key or value."))
 
             iterator = iter(args)
 
             for key in iterator:
                 if self.expected_keys and key not in self.expected_keys:
-                    raise BadArgument(_("Unexpected key {key}").format(key=key))
+                    raise BadArgument(_("Unexpected key `{key}`.").format(key=key))
 
                 ret[key] = next(iterator)
 
@@ -274,7 +319,6 @@ if TYPE_CHECKING:
     def get_dict_converter(*expected_keys: str, delims: Optional[List[str]] = None) -> Type[dict]:
         ...
 
-
 else:
 
     def get_dict_converter(*expected_keys: str, delims: Optional[List[str]] = None) -> Type[dict]:
@@ -282,7 +326,7 @@ else:
         Returns a typechecking safe `DictConverter` suitable for use with discord.py
         """
 
-        class PartialMeta(type):
+        class PartialMeta(type(DictConverter)):
             __call__ = functools.partialmethod(
                 type(DictConverter).__call__, *expected_keys, delims=delims
             )
@@ -311,6 +355,7 @@ else:
             If provided, any parsed value higher than this will raise an exception
         minimum : Optional[datetime.timedelta]
             If provided, any parsed value lower than this will raise an exception
+            Defaults to 0 seconds, pass `datetime.timedelta.min` explicitly to allow negative values
         allowed_units : Optional[List[str]]
             If provided, you can constrain a user to expressing the amount of time
             in specific units. The units you can choose to provide are the same as the
@@ -321,7 +366,14 @@ else:
             apply.
         """
 
-        def __init__(self, *, minimum=None, maximum=None, allowed_units=None, default_unit=None):
+        def __init__(
+            self,
+            *,
+            minimum=timedelta(seconds=0),
+            maximum=None,
+            allowed_units=None,
+            default_unit=None,
+        ):
             self.allowed_units = allowed_units
             self.default_unit = default_unit
             self.minimum = minimum
@@ -349,11 +401,10 @@ if TYPE_CHECKING:
         *,
         default_unit: Optional[str] = None,
         maximum: Optional[timedelta] = None,
-        minimum: Optional[timedelta] = None,
+        minimum: Optional[timedelta] = timedelta(seconds=0),
         allowed_units: Optional[List[str]] = None,
     ) -> Type[timedelta]:
         ...
-
 
 else:
 
@@ -361,7 +412,7 @@ else:
         *,
         default_unit: Optional[str] = None,
         maximum: Optional[timedelta] = None,
-        minimum: Optional[timedelta] = None,
+        minimum: Optional[timedelta] = timedelta(seconds=0),
         allowed_units: Optional[List[str]] = None,
     ) -> Type[timedelta]:
         """
@@ -376,6 +427,7 @@ else:
             If provided, any parsed value higher than this will raise an exception
         minimum : Optional[datetime.timedelta]
             If provided, any parsed value lower than this will raise an exception
+            Defaults to 0 seconds, pass `datetime.timedelta.min` explicitly to allow negative values
         allowed_units : Optional[List[str]]
             If provided, you can constrain a user to expressing the amount of time
             in specific units. The units you can choose to provide are the same as the
@@ -391,7 +443,7 @@ else:
             The converter class, which will be a subclass of `TimedeltaConverter`
         """
 
-        class PartialMeta(type):
+        class PartialMeta(type(DictConverter)):
             __call__ = functools.partialmethod(
                 type(DictConverter).__call__,
                 allowed_units=allowed_units,
@@ -474,46 +526,8 @@ if not TYPE_CHECKING:
     #: multiple types, but such usage is not supported and will fail at runtime
     #:
     #: .. warning::
-    #:    This converter class is still provisional.
+    #:    This converter class is still `provisional <developer-guarantees-exclusions>`.
     UserInputOptional = Optional
-
-
-if not TYPE_CHECKING:
-
-    class Literal(dpy_commands.Converter):
-        """
-        This can be used as a converter for `typing.Literal`.
-
-        In a type checking context it is `typing.Literal`.
-        In a runtime context, it's a converter which only matches the literals it was given.
-
-
-        .. warning::
-            This converter class is still provisional.
-        """
-
-        def __init__(self, valid_names: Tuple[str]):
-            self.valid_names = valid_names
-
-        def __call__(self, ctx, arg):
-            # Callable's are treated as valid types:
-            # https://github.com/python/cpython/blob/3.8/Lib/typing.py#L148
-            # Without this, ``typing.Union[Literal["clear"], bool]`` would fail
-            return self.convert(ctx, arg)
-
-        async def convert(self, ctx, arg):
-            if arg in self.valid_names:
-                return arg
-            raise BadArgument(_("Expected one of: {}").format(humanize_list(self.valid_names)))
-
-        def __class_getitem__(cls, k):
-            if not k:
-                raise ValueError("Need at least one value for Literal")
-            if isinstance(k, tuple):
-                return cls(k)
-            else:
-                return cls((k,))
-
 
 if TYPE_CHECKING:
     CommandConverter = dpy_commands.Command

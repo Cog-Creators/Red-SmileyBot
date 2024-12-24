@@ -1,0 +1,196 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: red-discordbot\n"
+"POT-Creation-Date: 2024-01-09 00:35+0000\n"
+"Last-Translator: \n"
+"Language-Team: Croatian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.4.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Crowdin-Project: red-discordbot\n"
+"X-Crowdin-Project-ID: 289505\n"
+"X-Crowdin-Language: hr\n"
+"X-Crowdin-File-ID: 8\n"
+"Language: hr_HR\n"
+
+#: redbot/cogs/alias/alias.py:35
+#, docstring
+msgid "Create aliases for commands.\n\n"
+"    Aliases are alternative names/shortcuts for commands. They\n"
+"    can act as both a lambda (storing arguments for repeated use)\n"
+"    or as simply a shortcut to saying \"x y z\".\n\n"
+"    When run, aliases will accept any additional arguments\n"
+"    and append them to the stored alias.\n"
+"    "
+msgstr "Napravite nadimke za naredbe.\n\n"
+"    Nadimci su alternativni nazivi/prečaci za naredbe. Mogu\n"
+"    djelovati i kao lambda (pohranjivanje argumenata za ponovnu\n"
+"    upotrebu) ili kao prečac za izgovaranje \"x y z\".\n\n"
+"    Prilikom pokretanja, nadimci će prihvatiti sve dodatne\n"
+"    argumente i dodati ih pohranjenom nadimku.\n"
+"    "
+
+#: redbot/cogs/alias/alias.py:190
+msgid "Aliases:\n"
+msgstr "Nadimci:\n"
+
+#: redbot/cogs/alias/alias.py:192
+msgid "\n\n"
+"Page {page}/{total}"
+msgstr "\n\n"
+"Stranica {page}/{total}"
+
+#: redbot/cogs/alias/alias.py:202
+#, docstring
+msgid "Manage command aliases."
+msgstr "Upravljajte nadimcima naredbi."
+
+#: redbot/cogs/alias/alias.py:207
+#, docstring
+msgid "Manage global aliases."
+msgstr "Upravljajte globalnim nadimcima."
+
+#: redbot/cogs/alias/alias.py:214
+#, docstring
+msgid "Add an alias for a command."
+msgstr "Dodajte nadimak za naredbu."
+
+#: redbot/cogs/alias/alias.py:219
+msgid "You attempted to create a new alias with the name {name} but that name is already a command on this bot."
+msgstr "Pokušali ste stvoriti novi nadimak s nazivom {name}, ali to ime je već naredba na ovom botu."
+
+#: redbot/cogs/alias/alias.py:230
+msgid "You attempted to create a new alias with the name {name} but that alias already exists."
+msgstr "Pokušali ste stvoriti novi nadimak s nazivom {name}, ali taj nadimak već postoji."
+
+#: redbot/cogs/alias/alias.py:241
+msgid "You attempted to create a new alias with the name {name} but that name is an invalid alias name. Alias names may not contain spaces."
+msgstr "Pokušali ste stvoriti novi nadimak s nazivom {name}, ali je to ime nevažeće. Nazivi nadimaka ne smiju sadržavati razmake."
+
+#: redbot/cogs/alias/alias.py:253 redbot/cogs/alias/alias.py:312
+msgid "You attempted to create a new alias for a command that doesn't exist."
+msgstr "Pokušali ste stvoriti novi nadimak za naredbu koja ne postoji."
+
+#: redbot/cogs/alias/alias.py:267
+msgid "A new alias with the trigger `{name}` has been created."
+msgstr "Stvoren je novi nadimak s imenom `{name}`."
+
+#: redbot/cogs/alias/alias.py:273
+#, docstring
+msgid "Add a global alias for a command."
+msgstr "Dodajte globalni nadimak za naredbu."
+
+#: redbot/cogs/alias/alias.py:278
+msgid "You attempted to create a new global alias with the name {name} but that name is already a command on this bot."
+msgstr "Pokušali ste stvoriti novi globalni nadimak s nazivom {name}, ali to ime je već naredba na ovom botu."
+
+#: redbot/cogs/alias/alias.py:289
+msgid "You attempted to create a new global alias with the name {name} but that alias already exists."
+msgstr "Pokušali ste stvoriti novi globalni nadimak s nazivom {name}, ali taj nadimak već postoji."
+
+#: redbot/cogs/alias/alias.py:300
+msgid "You attempted to create a new global alias with the name {name} but that name is an invalid alias name. Alias names may not contain spaces."
+msgstr "Pokušali ste stvoriti novi globalni nadimak s nazivom {name}, ali je to ime nevažeće. Nazivi nadimaka ne smiju sadržavati razmake."
+
+#: redbot/cogs/alias/alias.py:323
+msgid "A new global alias with the trigger `{name}` has been created."
+msgstr "Stvoren je novi globalni nadimak s imenom `{name}`."
+
+#: redbot/cogs/alias/alias.py:332
+#, docstring
+msgid "Edit an existing alias in this server."
+msgstr "Uredite postojeći nadimak na ovom serveru."
+
+#: redbot/cogs/alias/alias.py:337 redbot/cogs/alias/alias.py:372
+msgid "The alias with the name {name} does not exist."
+msgstr "Nadimak s imenom {name} ne postoji."
+
+#: redbot/cogs/alias/alias.py:343 redbot/cogs/alias/alias.py:378
+msgid "You attempted to edit an alias to a command that doesn't exist."
+msgstr "Pokušali ste urediti nadimak za naredbu koja ne postoji."
+
+#: redbot/cogs/alias/alias.py:352 redbot/cogs/alias/alias.py:385
+msgid "The alias with the trigger `{name}` has been edited successfully."
+msgstr ""
+
+#: redbot/cogs/alias/alias.py:359 redbot/cogs/alias/alias.py:392
+msgid "Alias with the name `{name}` was not found."
+msgstr "Nadimak s imenom `{name}` nije pronađen."
+
+#: redbot/cogs/alias/alias.py:367
+#, docstring
+msgid "Edit an existing global alias."
+msgstr "Uredite postojeći globalni nadimak."
+
+#: redbot/cogs/alias/alias.py:399
+#, docstring
+msgid "Try to execute help for the base command of the alias."
+msgstr "Pokušajte izvršiti pomoć za naredbu nadimaka."
+
+#: redbot/cogs/alias/alias.py:404
+msgid "No such alias exists."
+msgstr "Takav nadimak ne postoji."
+
+#: redbot/cogs/alias/alias.py:408
+#, docstring
+msgid "Show what command the alias executes."
+msgstr "Pokažite koju naredbu nadimak izvršava."
+
+#: redbot/cogs/alias/alias.py:413
+msgid "The `{alias_name}` alias will execute the command `{command}`"
+msgstr "Nadimak `{alias_name}` će izvršiti naredbu `{command}`"
+
+#: redbot/cogs/alias/alias.py:418
+msgid "There is no alias with the name `{name}`"
+msgstr "Ne postoji nadimak s imenom `{name}`"
+
+#: redbot/cogs/alias/alias.py:424
+#, docstring
+msgid "Delete an existing alias on this server."
+msgstr "Izbrišite postojeći nadimak na ovom serveru."
+
+#: redbot/cogs/alias/alias.py:426 redbot/cogs/alias/alias.py:458
+msgid "There are no aliases on this server."
+msgstr "Na ovom serveru nema nadimaka."
+
+#: redbot/cogs/alias/alias.py:431 redbot/cogs/alias/alias.py:446
+msgid "Alias with the name `{name}` was successfully deleted."
+msgstr "Nadimak s imenom `{name}` uspješno je izbrisan."
+
+#: redbot/cogs/alias/alias.py:434 redbot/cogs/alias/alias.py:449
+msgid "Alias with name `{name}` was not found."
+msgstr "Nadimak s imenom `{name}` nije pronađen."
+
+#: redbot/cogs/alias/alias.py:439
+#, docstring
+msgid "Delete an existing global alias."
+msgstr "Izbrišite postojeći globalni nadimak."
+
+#: redbot/cogs/alias/alias.py:441
+msgid "There are no global aliases on this bot."
+msgstr "Na ovom botu nema globalnih nadimaka."
+
+#: redbot/cogs/alias/alias.py:455
+#, docstring
+msgid "List the available aliases on this server."
+msgstr "Navedite dostupne nadimke na ovom serveru."
+
+#: redbot/cogs/alias/alias.py:464
+#, docstring
+msgid "List the available global aliases on this bot."
+msgstr "Navedite dostupne globalne nadimke na ovom botu."
+
+#: redbot/cogs/alias/alias.py:467
+msgid "There are no global aliases."
+msgstr "Nema globalnih nadimaka."
+
+#: redbot/cogs/alias/alias_entry.py:196
+msgid "Arguments must be specified with a number."
+msgstr "Argumenti se moraju navesti brojem."
+
+#: redbot/cogs/alias/alias_entry.py:203
+msgid "Arguments must be sequential. Missing arguments: "
+msgstr "Argumenti moraju biti uzastopni. Nedostajući argumenti: "
+

@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2021-05-19 11:28+0000\n"
+"POT-Creation-Date: 2024-04-20 22:28+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: redgettext 3.3\n"
+"Generated-By: redgettext 3.4.2\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Crowdin-Project: red-discordbot\n"
 "X-Crowdin-Project-ID: 289505\n"
@@ -15,52 +15,89 @@ msgstr ""
 "X-Crowdin-File-ID: 188\n"
 "Language: zh_CN\n"
 
-#: redbot/core/commands/commands.py:532
-msgid "\"{argument}\" is not a number."
-msgstr ""
-
-#: redbot/core/commands/converter.py:111
+#: redbot/core/commands/converter.py:87
 msgid "`{unit}` is not a valid unit of time for this command"
-msgstr ""
+msgstr "`{unit}` 不是此命令的有效时间"
 
-#: redbot/core/commands/converter.py:118
+#: redbot/core/commands/converter.py:148 redbot/core/commands/converter.py:216
 msgid "The time set is way too high, consider setting something reasonable."
-msgstr ""
+msgstr "设置的时间太长，考虑设置一些合理的"
 
-#: redbot/core/commands/converter.py:122
+#: redbot/core/commands/converter.py:152
 msgid "This amount of time is too large for this command. (Maximum: {maximum})"
+msgstr "这个时间对于这个命令太大。(最大: {maximum})"
+
+#: redbot/core/commands/converter.py:156 redbot/core/commands/converter.py:165
+msgid "0 seconds"
 msgstr ""
 
-#: redbot/core/commands/converter.py:128
+#: redbot/core/commands/converter.py:161
 msgid "This amount of time is too small for this command. (Minimum: {minimum})"
+msgstr "这个时间对于这个命令太小了  (最小： {minimum})"
+
+#: redbot/core/commands/converter.py:245
+msgid "'{input}' doesn't look like a valid user ID."
 msgstr ""
 
-#: redbot/core/commands/converter.py:208
-msgid "Unexpected key {key}"
+#: redbot/core/commands/converter.py:268
+msgid "`{arg}` is not a number."
 msgstr ""
 
-#: redbot/core/commands/converter.py:410
-msgid "Expected one of: {}"
+#: redbot/core/commands/converter.py:270
+msgid "`{arg}` is not a finite number."
 msgstr ""
 
-#: redbot/core/commands/help.py:105
+#: redbot/core/commands/converter.py:293
+msgid "Missing a key or value."
+msgstr ""
+
+#: redbot/core/commands/converter.py:299
+msgid "Unexpected key `{key}`."
+msgstr ""
+
+#: redbot/core/commands/converter.py:533
+msgid "Command \"{arg}\" not found."
+msgstr "未找到命令“{arg}”。请检查！"
+
+#: redbot/core/commands/converter.py:543
+msgid "Cog \"{arg}\" not found."
+msgstr "无法找到 cog\"{arg}\"。请检查！"
+
+#: redbot/core/commands/help.py:125 redbot/core/commands/help.py:144
 msgid "No"
-msgstr ""
+msgstr "否"
 
-#: redbot/core/commands/help.py:107
+#: redbot/core/commands/help.py:127
 msgid "Yes"
 msgstr "是"
 
-#: redbot/core/commands/help.py:113
+#: redbot/core/commands/help.py:133
 msgid "Disabled"
 msgstr "已禁用"
 
-#: redbot/core/commands/help.py:118
+#: redbot/core/commands/help.py:138
 msgid "\n"
 "Custom Tagline: {tag}"
+msgstr "\n"
+"自定义标语: {tag}"
+
+#: redbot/core/commands/help.py:145
+msgid "Yes, reactions"
 msgstr ""
 
-#: redbot/core/commands/help.py:124
+#: redbot/core/commands/help.py:146
+msgid "Yes, buttons"
+msgstr ""
+
+#: redbot/core/commands/help.py:147
+msgid "Yes, buttons with select menu"
+msgstr ""
+
+#: redbot/core/commands/help.py:148
+msgid "Yes, select menu only"
+msgstr ""
+
+#: redbot/core/commands/help.py:152
 msgid "Maximum characters per page: {page_char_limit}\n"
 "Maximum pages per guild (only used if menus are not used): {max_pages_in_guild}\n"
 "Help is a menu: {use_menus}\n"
@@ -69,92 +106,90 @@ msgid "Maximum characters per page: {page_char_limit}\n"
 "Help only shows commands which can be used: {verify_checks}\n"
 "Help shows unusable commands when asked directly: {verify_exists}\n"
 "Delete delay: {delete_delay}\n"
-"React with a checkmark when help is sent via DM: {use_tick}{tagline_info}"
+"React with a checkmark when help is sent via DM: {use_tick}\n"
+"Reaction timeout (only used if menus are used): {react_timeout} seconds{tagline_info}"
+msgstr "每页字符限制：{page_char_limit}\n"
+"页数限制（此项仅在菜单未使用时启用）：{max_pages_in_guild}\n"
+"帮助集仅显示一页：{use_menus}\n"
+"显示隐藏命令：{show_hidden}\n"
+"显示命令别名：{show_aliases}\n"
+"仅显示可以使用的命令：{verify_checks}\n"
+"显示无法使用的命令：{verify_exists}\n"
+"删除延迟：{delete_delay}\n"
+"使用标记做出发送私信信息反应：{use_tick}\n"
+"反应超时（此项仅在菜单使用时启用）：{react_timeout} 秒{tagline_info}"
+
+#: redbot/core/commands/help.py:303
+msgid "Type {command1} for more info on a command. You can also type {command2} for more info on a category."
 msgstr ""
 
-#: redbot/core/commands/help.py:274
-msgid "Type {ctx.clean_prefix}help <command> for more info on a command. You can also type {ctx.clean_prefix}help <category> for more info on a category."
-msgstr ""
-
-#: redbot/core/commands/help.py:318
+#: redbot/core/commands/help.py:355
 msgid "Syntax: {command_signature}"
-msgstr ""
+msgstr "句法: {command_signature}"
 
-#: redbot/core/commands/help.py:324
+#: redbot/core/commands/help.py:361
 msgid "Aliases"
-msgstr ""
+msgstr "别名"
 
-#: redbot/core/commands/help.py:324
+#: redbot/core/commands/help.py:361
 msgid "Alias"
-msgstr ""
+msgstr "别名"
 
-#: redbot/core/commands/help.py:345
+#: redbot/core/commands/help.py:382
 msgid "{aliases} and {number} more aliases."
-msgstr ""
+msgstr "{aliases} 和 {number} 个别名"
 
-#: redbot/core/commands/help.py:349
+#: redbot/core/commands/help.py:386
 msgid "{aliases} and one more alias."
-msgstr ""
+msgstr "{aliases} 和另一个别名"
 
-#: redbot/core/commands/help.py:391
-msgid "**__Subcommands:__**"
-msgstr ""
-
-#: redbot/core/commands/help.py:393
-msgid "**__Subcommands:__** (continued)"
-msgstr ""
-
-#: redbot/core/commands/help.py:404
+#: redbot/core/commands/help.py:433 redbot/core/commands/help.py:435
+#: redbot/core/commands/help.py:447
 msgid "Subcommands:"
+msgstr "子命令："
+
+#: redbot/core/commands/help.py:435 redbot/core/commands/help.py:613
+msgid " (continued)"
 msgstr ""
 
-#: redbot/core/commands/help.py:468 redbot/core/commands/help.py:723
-#: redbot/core/commands/help.py:736 redbot/core/commands/help.py:755
+#: redbot/core/commands/help.py:509 redbot/core/commands/help.py:769
+#: redbot/core/commands/help.py:784 redbot/core/commands/help.py:805
 msgid "{ctx.me.display_name} Help Menu"
-msgstr ""
+msgstr "{ctx.me.display_name} 帮助菜单"
 
-#: redbot/core/commands/help.py:515
+#: redbot/core/commands/help.py:556
 msgid "*Page {page_num} of {page_count}*\n"
 "{content_description}"
-msgstr ""
+msgstr "*第{page_num} 页，共 {page_count} 个*\n"
+"{content_description}"
 
-#: redbot/core/commands/help.py:566
-msgid "**__Commands:__**"
-msgstr ""
-
-#: redbot/core/commands/help.py:568
-msgid "**__Commands:__** (continued)"
-msgstr ""
-
-#: redbot/core/commands/help.py:578
+#: redbot/core/commands/help.py:611 redbot/core/commands/help.py:613
+#: redbot/core/commands/help.py:625
 msgid "Commands:"
-msgstr ""
+msgstr "命令："
 
-#: redbot/core/commands/help.py:620
-msgid "**__No Category:__**"
-msgstr ""
-
-#: redbot/core/commands/help.py:633
-msgid "{title} (continued)"
-msgstr ""
-
-#: redbot/core/commands/help.py:649 redbot/core/commands/help.py:663
+#: redbot/core/commands/help.py:664 redbot/core/commands/help.py:693
+#: redbot/core/commands/help.py:706
 msgid "No Category:"
+msgstr "无类别："
+
+#: redbot/core/commands/help.py:677
+msgid "{title} (continued)"
+msgstr "{title} (继续)"
+
+#: redbot/core/commands/help.py:780
+msgid "Help topic for {command_name} not found."
 msgstr ""
 
-#: redbot/core/commands/help.py:732
-msgid "Help topic for *{command_name}* not found."
+#: redbot/core/commands/help.py:799
+msgid "Command {command_name} has no subcommand named {not_found}."
 msgstr ""
 
-#: redbot/core/commands/help.py:749
-msgid "Command *{command_name}* has no subcommand named *{not_found}*."
-msgstr ""
-
-#: redbot/core/commands/help.py:828
+#: redbot/core/commands/help.py:904
 msgid "I couldn't send the help message to you in DM. Either you blocked me or you disabled DMs in this server."
-msgstr ""
+msgstr "我无法在DM中向你发送帮助消息。要么是你阻止了我，要么就是你禁用了这个服务器中的 DM"
 
-#: redbot/core/commands/help.py:867
+#: redbot/core/commands/help.py:940
 #, docstring
 msgid "\n"
 "    I need somebody\n"
@@ -162,5 +197,10 @@ msgid "\n"
 "    (Help) you know I need someone\n"
 "    (Help!)\n"
 "    "
-msgstr ""
+msgstr "\n"
+"    我需要某人\n"
+"    (Help) 而不仅仅是任何人\n"
+"    (Help) 你知道我需要一个人\n"
+"    (Help!)\n"
+"    "
 

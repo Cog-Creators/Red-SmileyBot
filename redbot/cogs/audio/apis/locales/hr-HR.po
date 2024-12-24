@@ -1,0 +1,81 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: red-discordbot\n"
+"POT-Creation-Date: 2022-03-16 16:42+0000\n"
+"Last-Translator: \n"
+"Language-Team: Croatian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.4.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Crowdin-Project: red-discordbot\n"
+"X-Crowdin-Project-ID: 289505\n"
+"X-Crowdin-Language: hr\n"
+"X-Crowdin-File-ID: 698\n"
+"Language: hr_HR\n"
+
+#: redbot/cogs/audio/apis/interface.py:270
+#: redbot/cogs/audio/apis/interface.py:600
+msgid "Failing to get tracks, skipping remaining."
+msgstr "Dobivanje glazbe nije uspjelo, preskačem preostale."
+
+#: redbot/cogs/audio/apis/interface.py:303
+#: redbot/cogs/audio/apis/spotify.py:175
+msgid "The Spotify API key or client secret has not been set properly. \n"
+"Use `{prefix}audioset spotifyapi` for instructions."
+msgstr "Spotify API ključ nije pravilno postavljen. \n"
+"Koristi `{prefix}audioset spotifyapi` za upute."
+
+#: redbot/cogs/audio/apis/interface.py:345
+msgid "This doesn't seem to be a valid Spotify playlist/album URL or code."
+msgstr "Čini se da ovo nije važeći URL ili kȏd Spotify albuma/popisa za reprodukciju."
+
+#: redbot/cogs/audio/apis/interface.py:471
+msgid "This doesn't seem to be a supported Spotify URL or code."
+msgstr "Čini se da ovo nije podržani Spotify URL ili kȏd."
+
+#: redbot/cogs/audio/apis/interface.py:561
+msgid "The connection was reset while loading the playlist."
+msgstr "Veza je prekinuta prilikom učitavanja popisa za reprodukciju."
+
+#: redbot/cogs/audio/apis/interface.py:572
+msgid "Player timeout, skipping remaining tracks."
+msgstr "Playeru je isteklo vrijeme, preskačem preostale pjesme."
+
+#: redbot/cogs/audio/apis/interface.py:665
+msgid " {bad_tracks} tracks cannot be queued."
+msgstr " {bad_tracks} pjesme se ne mogu staviti u red čekanja."
+
+#: redbot/cogs/audio/apis/interface.py:673
+msgid "Playlist Enqueued"
+msgstr "Popis za reprodukciju dodan u red čekanja"
+
+#: redbot/cogs/audio/apis/interface.py:674
+msgid "Added {num} tracks to the queue.{maxlength_msg}"
+msgstr "Dodano {num} pjesama u red čekanja.{maxlength_msg}"
+
+#: redbot/cogs/audio/apis/interface.py:680
+msgid "{time} until start of playlist playback: starts at #{position} in queue"
+msgstr "{time} do reprodukcije popisa za reprodukciju: #{position} u redu čekanja"
+
+#: redbot/cogs/audio/apis/interface.py:691
+msgid "Nothing found.\n"
+"The YouTube API key may be invalid or you may be rate limited on YouTube's search service.\n"
+"Check the YouTube API key again and follow the instructions at `{prefix}audioset youtubeapi`."
+msgstr "Ništa nije pronađeno.\n"
+"YouTube API ključ može biti nevažeći ili ste možda ograničeni na YouTube-ovoj usluzi pretraživanja.\n"
+"Ponovno provjerite YouTube API ključ i slijedite upute na `{prefix}audioset youtubeapi`."
+
+#: redbot/cogs/audio/apis/youtube.py:62
+msgid "Your YouTube Data API token is invalid.\n"
+"Check the YouTube API key again and follow the instructions at `{prefix}audioset youtubeapi`."
+msgstr "Vaš YouTube Data API token nije važeći.\n"
+"Ponovno provjerite YouTube API ključ i slijedite upute na `{prefix}audioset youtubeapi`."
+
+#: redbot/cogs/audio/apis/youtube.py:74
+msgid "YouTube API error code: 403\n"
+"Your YouTube API key may have reached the account's query limit for today. Please check <https://developers.google.com/youtube/v3/getting-started#quota> for more information."
+msgstr "Kôd pogreške YouTube API-a: 403\n"
+"Vaš YouTube API ključ je možda dosegao ograničenje upita za danas. Za više informacija provjerite <https://developers.google.com/youtube/v3/getting-started#quota>."
+

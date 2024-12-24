@@ -41,17 +41,16 @@ Any Cog Creator that does not follow these requirements will have their repo rem
 - Repo-wide ``info.json`` file with the keys
 
   - ``author``
-  - ``name``
   - ``short``
   - ``description``
 
 - Cog ``info.json`` files with the keys
 
   - ``author``
-  - ``name``
   - ``short``
   - ``requirements`` (if applicable)
   - ``description``
+  - ``min_python_version`` (if applicable)
 
   See `info-json-format` for more information on how to set up ``info.json`` files.
 
@@ -73,7 +72,7 @@ Any Cog Creator that does not follow these requirements will have their repo rem
 
   - Cogs that are more than what is able to be run in a simple eval.
   - Cogs that are more than just a simple API access request.
-  - Cogs that properly use Red utilities, including Config, checks, and any other utility functions.
+  - Cogs that properly use Red utilities, for example Config, or any other utility functions.
   - Cogs that use event listeners (bot.wait_for or cog-wide listeners) or custom tasks that are efficient and handle exceptions appropriately.
   - Cogs that handle errors properly.
   - Cogs that handle permissions properly.
@@ -84,7 +83,7 @@ Any Cog Creator that does not follow these requirements will have their repo rem
 - The default locale must be English.
 - The main cog class and every command must have a doc-string.
 - No cog allows for escalation of permissions. (e.g., sending a mass ping through the bot without having permission to do so)
-- Respect the role hierarchy. Don’t let a lower role have a way to grant a higher role.
+- Respect the role hierarchy. Don't let a lower role have a way to grant a higher role.
 - If your cog install comes with any pre-packaged data, use `bundled_data_path()` to access it.
 - If your cog install creates any non-config data, use `cog_data_path()` to store it.
 - Unless the cog is intentionally designed to listen to certain input from bots, cogs should ignore input from bots.
@@ -93,8 +92,6 @@ Any Cog Creator that does not follow these requirements will have their repo rem
 
   - If that's not possible, don't break anything in core or any other cog with your code.
   - If you have to use private methods, lock the cog to specific Red versions you can guarantee it works on without breaking anything using the ``min_bot_version`` and ``max_bot_version`` keys in that cog's ``info.json`` file.
-
-- Cog Creators must keep their cogs up-to-date with core Red or be delisted until cogs meet Red API changes. Repositories must be kept up to date with the latest version of Red within 3 months of its release.
 
 .. _recommendations-for-cog-creators:
 
@@ -138,7 +135,8 @@ While not required for approved Cog Creators, they are still recommended in orde
   - ``ctx.embed_color``
   - ``bot.is_automod_immune``
 
-- Use checks to limit command use when the bot needs special permissions.
+- Use decorators to limit command use, restrict usage, or define whether the bot needs special permissions.
+  You can find all of the permission and cooldown related decorators under the ``redbot.core.commands`` namespace.
 - Check against user input before doing things. Common things to check:
 
   - Resulting output is safe.
@@ -195,7 +193,12 @@ Other Details
 - The reviewer of your application has the final word.
 - Hidden cogs will not be explicitly reviewed, however they are not allowed to contain malicious or ToS breaking code.
 - QA reserves the right to revoke these roles and all privileges if you are found to be in gross negligence, malicious intent, or reckless abandonment of your repository.
-- If a Cog Creator's repository is not maintained and kept up to date, that repo will be removed from the approved repo listings until such issues are addressed.
+- Cogs must be functionally working to the quality of an approved cog on the latest minor version of Red to be listed on the Red Index. Cogs that are not updated within 1 month of initial breakage will be delisted from the index until they are updated. Examples of potential breakage include, but are not limited to:
+
+  - A dependency without version constraints receiving a breaking update
+  - An API changing the schema of its endpoints
+  - Red itself releasing a new minor version
+
 - Only 1 person is allowed to be the Cog Creator for a particular repo. Multiple people are allowed to maintain the repo, however the "main" owner (and the Cog Creator) is responsible for any code on the repo.
 - The Cog Creator status for a repo can be transferred to another user if the Cog Creator requests it.
 - An approved Cog Creator can ask QA to add additional repos they have created to the approved pool.

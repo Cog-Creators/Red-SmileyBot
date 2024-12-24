@@ -1,11 +1,12 @@
 import asyncio
 import logging
-from typing import Tuple
+from typing import Tuple, Union
 
 import discord
-from redbot.core import Config, checks, commands
+from redbot.core import Config, commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box
+from redbot.core.utils.mod import get_audit_reason
 from redbot.core.utils.predicates import MessagePredicate
 
 from .announcer import Announcer
@@ -84,19 +85,15 @@ class Admin(commands.Cog):
         )
 
         self.__current_announcer = None
-        self._ready = asyncio.Event()
-        asyncio.create_task(self.handle_migrations())
-        # As this is a data migration, don't store this for cancelation.
 
-    async def cog_before_invoke(self, ctx: commands.Context):
-        await self._ready.wait()
+    async def cog_load(self) -> None:
+        await self.handle_migrations()
 
     async def red_delete_data_for_user(self, **kwargs):
-        """ Nothing to delete """
+        """Nothing to delete"""
         return
 
     async def handle_migrations(self):
-
         lock = self.config.get_guilds_lock()
         async with lock:
             # This prevents the edge case of someone loading admin,
@@ -107,10 +104,7 @@ class Admin(commands.Cog):
                 await self.migrate_config_from_0_to_1()
                 await self.config.schema_version.set(1)
 
-        self._ready.set()
-
-    async def migrate_config_from_0_to_1(self):
-
+    async def migrate_config_from_0_to_1(self) -> None:
         all_guilds = await self.config.all_guilds()
 
         for guild_id, guild_data in all_guilds.items():
@@ -160,7 +154,7 @@ class Admin(commands.Cog):
     async def _addrole(
         self, ctx: commands.Context, member: discord.Member, role: discord.Role, *, check_user=True
     ):
-        if role in member.roles:
+        if member.get_role(role.id) is not None:
             await ctx.send(
                 _("{member.display_name} already has the role {role.name}.").format(
                     role=role, member=member
@@ -177,7 +171,8 @@ class Admin(commands.Cog):
             await ctx.send(_(NEED_MANAGE_ROLES))
             return
         try:
-            await member.add_roles(role)
+            reason = get_audit_reason(ctx.author)
+            await member.add_roles(role, reason=reason)
         except discord.Forbidden:
             await ctx.send(_(GENERIC_FORBIDDEN))
         else:
@@ -190,7 +185,7 @@ class Admin(commands.Cog):
     async def _removerole(
         self, ctx: commands.Context, member: discord.Member, role: discord.Role, *, check_user=True
     ):
-        if role not in member.roles:
+        if member.get_role(role.id) is None:
             await ctx.send(
                 _("{member.display_name} does not have the role {role.name}.").format(
                     role=role, member=member
@@ -207,7 +202,8 @@ class Admin(commands.Cog):
             await ctx.send(_(NEED_MANAGE_ROLES))
             return
         try:
-            await member.remove_roles(role)
+            reason = get_audit_reason(ctx.author)
+            await member.remove_roles(role, reason=reason)
         except discord.Forbidden:
             await ctx.send(_(GENERIC_FORBIDDEN))
         else:
@@ -219,9 +215,13 @@ class Admin(commands.Cog):
 
     @commands.command()
     @commands.guild_only()
-    @checks.admin_or_permissions(manage_roles=True)
+    @commands.admin_or_permissions(manage_roles=True)
     async def addrole(
-        self, ctx: commands.Context, rolename: discord.Role, *, user: discord.Member = None
+        self,
+        ctx: commands.Context,
+        rolename: discord.Role,
+        *,
+        user: discord.Member = commands.Author,
     ):
         """
         Add a role to a user.
@@ -229,15 +229,17 @@ class Admin(commands.Cog):
         Use double quotes if the role contains spaces.
         If user is left blank it defaults to the author of the command.
         """
-        if user is None:
-            user = ctx.author
         await self._addrole(ctx, user, rolename)
 
     @commands.command()
     @commands.guild_only()
-    @checks.admin_or_permissions(manage_roles=True)
+    @commands.admin_or_permissions(manage_roles=True)
     async def removerole(
-        self, ctx: commands.Context, rolename: discord.Role, *, user: discord.Member = None
+        self,
+        ctx: commands.Context,
+        rolename: discord.Role,
+        *,
+        user: discord.Member = commands.Author,
     ):
         """
         Remove a role from a user.
@@ -245,13 +247,11 @@ class Admin(commands.Cog):
         Use double quotes if the role contains spaces.
         If user is left blank it defaults to the author of the command.
         """
-        if user is None:
-            user = ctx.author
         await self._removerole(ctx, user, rolename)
 
     @commands.group()
     @commands.guild_only()
-    @checks.admin_or_permissions(manage_roles=True)
+    @commands.admin_or_permissions(manage_roles=True)
     async def editrole(self, ctx: commands.Context):
         """Edit role settings."""
         pass
@@ -272,7 +272,9 @@ class Admin(commands.Cog):
             `[p]editrole colour Test #ff9900`
         """
         author = ctx.author
-        reason = "{}({}) changed the colour of role '{}'".format(author.name, author.id, role.name)
+        reason = _("{author} ({author.id}) changed the colour of role '{role.name}'").format(
+            author=author, role=role
+        )
 
         if not self.pass_user_hierarchy_check(ctx, role):
             await ctx.send(_(ROLE_USER_HIERARCHY_ISSUE).format(role=role))
@@ -303,9 +305,9 @@ class Admin(commands.Cog):
         """
         author = ctx.message.author
         old_name = role.name
-        reason = "{}({}) changed the name of role '{}' to '{}'".format(
-            author.name, author.id, old_name, name
-        )
+        reason = _(
+            "{author} ({author.id}) changed the name of role '{old_name}' to '{name}'"
+        ).format(author=author, old_name=old_name, name=name)
 
         if not self.pass_user_hierarchy_check(ctx, role):
             await ctx.send(_(ROLE_USER_HIERARCHY_ISSUE).format(role=role))
@@ -325,7 +327,7 @@ class Admin(commands.Cog):
             await ctx.send(_("Done."))
 
     @commands.group(invoke_without_command=True)
-    @checks.is_owner()
+    @commands.is_owner()
     async def announce(self, ctx: commands.Context, *, message: str):
         """Announce a message to all servers the bot is in."""
         if not self.is_announcing():
@@ -350,20 +352,19 @@ class Admin(commands.Cog):
 
     @commands.group()
     @commands.guild_only()
-    @checks.guildowner_or_permissions(administrator=True)
+    @commands.guildowner_or_permissions(administrator=True)
     async def announceset(self, ctx):
         """Change how announcements are sent in this guild."""
         pass
 
     @announceset.command(name="channel")
-    async def announceset_channel(self, ctx, *, channel: discord.TextChannel = None):
-        """
-        Change the channel where the bot will send announcements.
-
-        If channel is left blank it defaults to the current channel.
-        """
-        if channel is None:
-            channel = ctx.channel
+    async def announceset_channel(
+        self,
+        ctx,
+        *,
+        channel: Union[discord.TextChannel, discord.VoiceChannel, discord.StageChannel],
+    ):
+        """Change the channel where the bot will send announcements."""
         await self.config.guild(ctx.guild).announce_channel.set(channel.id)
         await ctx.send(
             _("The announcement channel has been set to {channel.mention}").format(channel=channel)
@@ -402,7 +403,7 @@ class Admin(commands.Cog):
         Server admins must have configured the role as user settable.
         NOTE: The role is case sensitive!
         """
-        if selfrole in ctx.author.roles:
+        if ctx.author.get_role(selfrole.id) is not None:
             return await self._removerole(ctx, ctx.author, selfrole, check_user=False)
         else:
             return await self._addrole(ctx, ctx.author, selfrole, check_user=False)
@@ -445,12 +446,12 @@ class Admin(commands.Cog):
         await ctx.send(box(msg, "diff"))
 
     @commands.group()
-    @checks.admin_or_permissions(manage_roles=True)
+    @commands.admin_or_permissions(manage_roles=True)
     async def selfroleset(self, ctx: commands.Context):
         """Manage selfroles."""
         pass
 
-    @selfroleset.command(name="add")
+    @selfroleset.command(name="add", require_var_positional=True)
     async def selfroleset_add(self, ctx: commands.Context, *roles: discord.Role):
         """
         Add a role, or a selection of roles, to the list of available selfroles.
@@ -483,7 +484,7 @@ class Admin(commands.Cog):
 
         await ctx.send(message)
 
-    @selfroleset.command(name="remove")
+    @selfroleset.command(name="remove", require_var_positional=True)
     async def selfroleset_remove(self, ctx: commands.Context, *roles: SelfRole):
         """
         Remove a role, or a selection of roles, from the list of available selfroles.
@@ -545,7 +546,7 @@ class Admin(commands.Cog):
             await ctx.send(_("No changes have been made."))
 
     @commands.command()
-    @checks.is_owner()
+    @commands.is_owner()
     async def serverlock(self, ctx: commands.Context):
         """Lock a bot to its current servers only."""
         serverlocked = await self.config.serverlocked()

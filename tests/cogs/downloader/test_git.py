@@ -13,7 +13,6 @@ from redbot.pytest.downloader import (
 )
 
 
-@pytest.mark.asyncio
 async def test_git_clone_nobranch(git_repo, tmp_path):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -25,7 +24,6 @@ async def test_git_clone_nobranch(git_repo, tmp_path):
     assert p.returncode == 0
 
 
-@pytest.mark.asyncio
 async def test_git_clone_branch(git_repo, tmp_path):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -38,7 +36,6 @@ async def test_git_clone_branch(git_repo, tmp_path):
     assert p.returncode == 0
 
 
-@pytest.mark.asyncio
 async def test_git_clone_non_existent_branch(git_repo, tmp_path):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -51,7 +48,6 @@ async def test_git_clone_non_existent_branch(git_repo, tmp_path):
     assert p.returncode == 128
 
 
-@pytest.mark.asyncio
 async def test_git_clone_notgit_repo(git_repo, tmp_path):
     notgit_repo = tmp_path / "test_clone_folder"
     p = await git_repo._run(
@@ -62,7 +58,6 @@ async def test_git_clone_notgit_repo(git_repo, tmp_path):
     assert p.returncode == 128
 
 
-@pytest.mark.asyncio
 async def test_git_current_branch_master(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(git_repo.GIT_CURRENT_BRANCH, path=git_repo.folder_path)
@@ -71,7 +66,6 @@ async def test_git_current_branch_master(git_repo):
     assert p.stdout.decode().strip() == "master"
 
 
-@pytest.mark.asyncio
 async def test_git_current_branch_detached(git_repo):
     await git_repo._run(
         ProcessFormatter().format(
@@ -87,7 +81,6 @@ async def test_git_current_branch_detached(git_repo):
     assert p.stderr.decode().strip() == "fatal: ref HEAD is not a symbolic ref"
 
 
-@pytest.mark.asyncio
 async def test_git_current_commit_on_branch(git_repo):
     # HEAD on dont_add_commits (a0ccc2390883c85a361f5a90c72e1b07958939fa)
     # setup
@@ -105,7 +98,6 @@ async def test_git_current_commit_on_branch(git_repo):
     assert p.stdout.decode().strip() == "a0ccc2390883c85a361f5a90c72e1b07958939fa"
 
 
-@pytest.mark.asyncio
 async def test_git_current_commit_detached(git_repo):
     # detached HEAD state (c950fc05a540dd76b944719c2a3302da2e2f3090)
     await git_repo._run(
@@ -122,7 +114,6 @@ async def test_git_current_commit_detached(git_repo):
     assert p.stdout.decode().strip() == "c950fc05a540dd76b944719c2a3302da2e2f3090"
 
 
-@pytest.mark.asyncio
 async def test_git_latest_commit(git_repo):
     # HEAD on dont_add_commits (a0ccc2390883c85a361f5a90c72e1b07958939fa)
     p = await git_repo._run(
@@ -134,7 +125,6 @@ async def test_git_latest_commit(git_repo):
     assert p.stdout.decode().strip() == "a0ccc2390883c85a361f5a90c72e1b07958939fa"
 
 
-@pytest.mark.asyncio
 async def test_git_hard_reset(cloned_git_repo, tmp_path):
     staged_file = cloned_git_repo.folder_path / "staged_file.txt"
     staged_file.touch()
@@ -150,7 +140,6 @@ async def test_git_hard_reset(cloned_git_repo, tmp_path):
     assert staged_file.exists() is False
 
 
-@pytest.mark.asyncio
 async def test_git_pull(git_repo_with_remote, tmp_path):
     # setup
     staged_file = Path(git_repo_with_remote.url) / "staged_file.txt"
@@ -171,7 +160,6 @@ async def test_git_pull(git_repo_with_remote, tmp_path):
     assert (git_repo_with_remote.folder_path / "staged_file.txt").exists()
 
 
-@pytest.mark.asyncio
 async def test_git_diff_file_status(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -195,7 +183,6 @@ async def test_git_diff_file_status(git_repo):
 # might need to add test for test_git_log, but it's unused method currently
 
 
-@pytest.mark.asyncio
 async def test_git_discover_remote_url(cloned_git_repo, tmp_path):
     p = await cloned_git_repo._run(
         ProcessFormatter().format(
@@ -206,7 +193,6 @@ async def test_git_discover_remote_url(cloned_git_repo, tmp_path):
     assert p.stdout.decode().strip() == cloned_git_repo.url
 
 
-@pytest.mark.asyncio
 async def test_git_checkout_detached_head(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -218,7 +204,6 @@ async def test_git_checkout_detached_head(git_repo):
     assert p.returncode == 0
 
 
-@pytest.mark.asyncio
 async def test_git_checkout_branch(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -228,7 +213,6 @@ async def test_git_checkout_branch(git_repo):
     assert p.returncode == 0
 
 
-@pytest.mark.asyncio
 async def test_git_checkout_non_existent_branch(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -238,7 +222,6 @@ async def test_git_checkout_non_existent_branch(git_repo):
     assert p.returncode == 1
 
 
-@pytest.mark.asyncio
 async def test_git_get_full_sha1_from_branch_name(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -249,7 +232,6 @@ async def test_git_get_full_sha1_from_branch_name(git_repo):
     assert p.stdout.decode().strip() == "a0ccc2390883c85a361f5a90c72e1b07958939fa"
 
 
-@pytest.mark.asyncio
 async def test_git_get_full_sha1_from_full_hash(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -262,7 +244,6 @@ async def test_git_get_full_sha1_from_full_hash(git_repo):
     assert p.stdout.decode().strip() == "c950fc05a540dd76b944719c2a3302da2e2f3090"
 
 
-@pytest.mark.asyncio
 async def test_git_get_full_sha1_from_short_hash(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -273,7 +254,6 @@ async def test_git_get_full_sha1_from_short_hash(git_repo):
     assert p.stdout.decode().strip() == "c950fc05a540dd76b944719c2a3302da2e2f3090"
 
 
-@pytest.mark.asyncio
 async def test_git_get_full_sha1_from_too_short_hash(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(git_repo.GIT_GET_FULL_SHA1, path=git_repo.folder_path, rev="c95")
@@ -282,7 +262,6 @@ async def test_git_get_full_sha1_from_too_short_hash(git_repo):
     assert p.stderr.decode().strip() == "fatal: Needed a single revision"
 
 
-@pytest.mark.asyncio
 async def test_git_get_full_sha1_from_lightweight_tag(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -293,7 +272,6 @@ async def test_git_get_full_sha1_from_lightweight_tag(git_repo):
     assert p.stdout.decode().strip() == "fb99eb7d2d5bed514efc98fe6686b368f8425745"
 
 
-@pytest.mark.asyncio
 async def test_git_get_full_sha1_from_annotated_tag(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -304,7 +282,6 @@ async def test_git_get_full_sha1_from_annotated_tag(git_repo):
     assert p.stdout.decode().strip() == "a7120330cc179396914e0d6af80cfa282adc124b"
 
 
-@pytest.mark.asyncio
 async def test_git_get_full_sha1_from_invalid_ref(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -318,7 +295,6 @@ async def test_git_get_full_sha1_from_invalid_ref(git_repo):
 @pytest.mark.skipif(
     GIT_VERSION < (2, 31), reason="This is test for output from Git 2.31 and newer."
 )
-@pytest.mark.asyncio
 async def test_git_get_full_sha1_from_ambiguous_commits(git_repo):
     # 2 ambiguous refs:
     # branch ambiguous_1 - 95da0b576271cb5bee5f3e075074c03ee05fed05
@@ -339,10 +315,31 @@ async def test_git_get_full_sha1_from_ambiguous_commits(git_repo):
 
 
 @pytest.mark.skipif(
-    GIT_VERSION < (2, 31), reason="This is test for output from Git 2.31 and newer."
+    GIT_VERSION < (2, 36), reason="This is test for output from Git 2.36 and newer."
 )
-@pytest.mark.asyncio
 async def test_git_get_full_sha1_from_ambiguous_tag_and_commit(git_repo):
+    # 2 ambiguous refs:
+    # branch ambiguous_with_tag - c6f0e5ec04d99bdf8c6c78ff20d66d286eecb3ea
+    # tag ambiguous_tag_66387 - c6f0e5ec04d99bdf8c6c78ff20d66d286eecb3ea
+    p = await git_repo._run(
+        ProcessFormatter().format(
+            git_repo.GIT_GET_FULL_SHA1, path=git_repo.folder_path, rev="c6f0"
+        )
+    )
+    assert p.returncode == 128
+    assert p.stderr.decode().strip() == (
+        "error: short object ID c6f0 is ambiguous\n"
+        "hint: The candidates are:\n"
+        "hint:   c6f028f tag 2019-10-24 - ambiguous_tag_66387\n"
+        "hint:   c6f0e5e commit 2019-10-24 - Commit ambiguous with tag.\n"
+        "fatal: Needed a single revision"
+    )
+
+
+@pytest.mark.skipif(
+    not ((2, 31) <= GIT_VERSION < (2, 36)), reason="This is test for output from Git >=2.31,<2.36."
+)
+async def test_git_get_full_sha1_from_ambiguous_tag_and_commit_pre_2_36(git_repo):
     # 2 ambiguous refs:
     # branch ambiguous_with_tag - c6f0e5ec04d99bdf8c6c78ff20d66d286eecb3ea
     # tag ambiguous_tag_66387 - c6f0e5ec04d99bdf8c6c78ff20d66d286eecb3ea
@@ -364,7 +361,6 @@ async def test_git_get_full_sha1_from_ambiguous_tag_and_commit(git_repo):
 @pytest.mark.skipif(
     GIT_VERSION >= (2, 31), reason="This is test for output from Git older than 2.31."
 )
-@pytest.mark.asyncio
 async def test_git_get_full_sha1_from_ambiguous_commits_pre_2_31(git_repo):
     # 2 ambiguous refs:
     # branch ambiguous_1 - 95da0b576271cb5bee5f3e075074c03ee05fed05
@@ -387,7 +383,6 @@ async def test_git_get_full_sha1_from_ambiguous_commits_pre_2_31(git_repo):
 @pytest.mark.skipif(
     GIT_VERSION >= (2, 31), reason="This is test for output from Git older than 2.31."
 )
-@pytest.mark.asyncio
 async def test_git_get_full_sha1_from_ambiguous_tag_and_commit_pre_2_31(git_repo):
     # 2 ambiguous refs:
     # branch ambiguous_with_tag - c6f0e5ec04d99bdf8c6c78ff20d66d286eecb3ea
@@ -407,7 +402,6 @@ async def test_git_get_full_sha1_from_ambiguous_tag_and_commit_pre_2_31(git_repo
     )
 
 
-@pytest.mark.asyncio
 async def test_git_is_ancestor_true(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -420,7 +414,6 @@ async def test_git_is_ancestor_true(git_repo):
     assert p.returncode == 0
 
 
-@pytest.mark.asyncio
 async def test_git_is_ancestor_false(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -433,7 +426,6 @@ async def test_git_is_ancestor_false(git_repo):
     assert p.returncode == 1
 
 
-@pytest.mark.asyncio
 async def test_git_is_ancestor_invalid_object(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -447,7 +439,6 @@ async def test_git_is_ancestor_invalid_object(git_repo):
     assert p.stderr.decode().strip() == "fatal: Not a valid object name invalid1"
 
 
-@pytest.mark.asyncio
 async def test_git_is_ancestor_invalid_commit(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -463,7 +454,6 @@ async def test_git_is_ancestor_invalid_commit(git_repo):
     )
 
 
-@pytest.mark.asyncio
 async def test_git_check_if_module_exists_true(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -476,8 +466,28 @@ async def test_git_check_if_module_exists_true(git_repo):
     assert p.returncode == 0
 
 
-@pytest.mark.asyncio
+@pytest.mark.skipif(
+    GIT_VERSION < (2, 36), reason="This is test for output from Git 2.36 and newer."
+)
 async def test_git_check_if_module_exists_false(git_repo):
+    p = await git_repo._run(
+        ProcessFormatter().format(
+            git_repo.GIT_CHECK_IF_MODULE_EXISTS,
+            path=git_repo.folder_path,
+            rev="a7120330cc179396914e0d6af80cfa282adc124b",
+            module_name="mycog",
+        )
+    )
+    assert p.returncode == 128
+    assert p.stderr.decode().strip() == (
+        "fatal: path 'mycog/__init__.py' does not exist in 'a7120330cc179396914e0d6af80cfa282adc124b'"
+    )
+
+
+@pytest.mark.skipif(
+    GIT_VERSION >= (2, 36), reason="This is test for output from Git older than 2.31."
+)
+async def test_git_check_if_module_exists_false_pre_2_36(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(
             git_repo.GIT_CHECK_IF_MODULE_EXISTS,
@@ -492,7 +502,6 @@ async def test_git_check_if_module_exists_false(git_repo):
     )
 
 
-@pytest.mark.asyncio
 async def test_git_find_last_occurrence_existent(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(
@@ -507,7 +516,6 @@ async def test_git_find_last_occurrence_existent(git_repo):
     assert p.stdout.decode().strip() == "a7120330cc179396914e0d6af80cfa282adc124b"
 
 
-@pytest.mark.asyncio
 async def test_git_find_last_occurrence_non_existent(git_repo):
     p = await git_repo._run(
         ProcessFormatter().format(

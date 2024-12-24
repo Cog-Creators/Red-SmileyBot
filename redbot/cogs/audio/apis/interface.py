@@ -2,7 +2,6 @@ import asyncio
 import contextlib
 import datetime
 import json
-import logging
 import random
 import time
 
@@ -13,6 +12,7 @@ from typing import TYPE_CHECKING, Callable, List, MutableMapping, Optional, Tupl
 import aiohttp
 import discord
 import lavalink
+from red_commons.logging import getLogger
 
 from lavalink.rest_api import LoadResult, LoadType
 from redbot.core import Config, commands
@@ -23,7 +23,6 @@ from redbot.core.utils import AsyncIter
 from redbot.core.utils.dbtools import APSWConnectionWrapper
 
 from ..audio_dataclasses import Query
-from ..audio_logging import IS_DEBUG, debug_exc_log
 from ..errors import DatabaseError, SpotifyFetchError, TrackEnqueueError, YouTubeApiError
 from ..utils import CacheLevel, Notifier
 from .api_utils import LavalinkCacheFetchForGlobalResult
@@ -39,7 +38,7 @@ if TYPE_CHECKING:
     from .. import Audio
 
 _ = Translator("Audio", Path(__file__))
-log = logging.getLogger("red.cogs.Audio.api.AudioAPIInterface")
+log = getLogger("red.cogs.Audio.api.AudioAPIInterface")
 _TOP_100_US = "https://www.youtube.com/playlist?list=PL4fGSI1pDJn5rWitrRWFKdm-ulaFiIyoK"
 # TODO: Get random from global Cache
 
@@ -101,7 +100,7 @@ class AudioAPIInterface:
                 results = LoadResult(track)
                 track = random.choice(list(results.tracks))
         except Exception as exc:
-            debug_exc_log(log, exc, "Failed to fetch a random track from database")
+            log.trace("Failed to fetch a random track from database", exc_info=exc)
             track = {}
 
         if not track:
@@ -148,26 +147,23 @@ class AudioAPIInterface:
         lock_author = ctx.author if ctx else None
         async with self._lock:
             if lock_id in self._tasks:
-                if IS_DEBUG:
-                    log.debug("Running database writes for %d (%s)", lock_id, lock_author)
+                log.trace("Running database writes for %s (%s)", lock_id, lock_author)
                 try:
                     tasks = self._tasks[lock_id]
                     tasks = [self.route_tasks(a, tasks[a]) for a in tasks]
                     await asyncio.gather(*tasks, return_exceptions=False)
                     del self._tasks[lock_id]
                 except Exception as exc:
-                    debug_exc_log(
-                        log, exc, "Failed database writes for %d (%s)", lock_id, lock_author
+                    log.verbose(
+                        "Failed database writes for %s (%s)", lock_id, lock_author, exc_info=exc
                     )
                 else:
-                    if IS_DEBUG:
-                        log.debug("Completed database writes for %d (%s)", lock_id, lock_author)
+                    log.trace("Completed database writes for %s (%s)", lock_id, lock_author)
 
     async def run_all_pending_tasks(self) -> None:
         """Run all pending tasks left in the cache, called on cog_unload."""
         async with self._lock:
-            if IS_DEBUG:
-                log.debug("Running pending writes to database")
+            log.trace("Running pending writes to database")
             try:
                 tasks: MutableMapping = {"update": [], "insert": [], "global": []}
                 async for k, task in AsyncIter(self._tasks.items()):
@@ -179,10 +175,9 @@ class AudioAPIInterface:
                 await asyncio.gather(*coro_tasks, return_exceptions=False)
 
             except Exception as exc:
-                debug_exc_log(log, exc, "Failed database writes")
+                log.verbose("Failed database writes", exc_info=exc)
             else:
-                if IS_DEBUG:
-                    log.debug("Completed pending writes to database have finished")
+                log.trace("Completed pending writes to database have finished")
 
     def append_task(self, ctx: commands.Context, event: str, task: Tuple, _id: int = None) -> None:
         """Add a task to the cache to be run later."""
@@ -248,18 +243,17 @@ class AudioAPIInterface:
                             {"track": track_info}
                         )
                     except Exception as exc:
-                        debug_exc_log(
-                            log, exc, "Failed to fetch %r from YouTube table", track_info
+                        log.verbose(
+                            "Failed to fetch %r from YouTube table", track_info, exc_info=exc
                         )
-
                 if val is None:
                     try:
                         val = await self.fetch_youtube_query(
                             ctx, track_info, current_cache_level=current_cache_level
                         )
-                    except YouTubeApiError as err:
+                    except YouTubeApiError as exc:
                         val = None
-                        youtube_api_error = err.message
+                        youtube_api_error = exc.message
                 if youtube_cache and val:
                     task = ("update", ("youtube", {"track": track_info}))
                     self.append_task(ctx, *task)
@@ -387,8 +381,8 @@ class AudioAPIInterface:
                     {"uri": f"spotify:track:{uri}"}
                 )
             except Exception as exc:
-                debug_exc_log(
-                    log, exc, "Failed to fetch 'spotify:track:%s' from Spotify table", uri
+                log.verbose(
+                    "Failed to fetch 'spotify:track:%s' from Spotify table", uri, exc_info=exc
                 )
                 val = None
         else:
@@ -515,8 +509,8 @@ class AudioAPIInterface:
                             {"track": track_info}
                         )
                     except Exception as exc:
-                        debug_exc_log(
-                            log, exc, "Failed to fetch %r from YouTube table", track_info
+                        log.verbose(
+                            "Failed to fetch %r from YouTube table", track_info, exc_info=exc
                         )
                 should_query_global = globaldb_toggle and query_global and val is None
                 if should_query_global:
@@ -531,9 +525,9 @@ class AudioAPIInterface:
                         val = await self.fetch_youtube_query(
                             ctx, track_info, current_cache_level=current_cache_level
                         )
-                    except YouTubeApiError as err:
+                    except YouTubeApiError as exc:
                         val = None
-                        youtube_api_error = err.message
+                        youtube_api_error = exc.message
                         skip_youtube_api = True
                 if not youtube_api_error:
                     if youtube_cache and val and llresponse is None:
@@ -624,8 +618,7 @@ class AudioAPIInterface:
                     query_obj=query,
                 ):
                     has_not_allowed = True
-                    if IS_DEBUG:
-                        log.debug("Query is not allowed in %r (%d)", ctx.guild.name, ctx.guild.id)
+                    log.debug("Query is not allowed in %r (%s)", ctx.guild.name, ctx.guild.id)
                     continue
                 track_list.append(single_track)
                 if enqueue:
@@ -752,13 +745,13 @@ class AudioAPIInterface:
             try:
                 (val, update) = await self.local_cache_api.youtube.fetch_one({"track": track_info})
             except Exception as exc:
-                debug_exc_log(log, exc, "Failed to fetch %r from YouTube table", track_info)
+                log.verbose("Failed to fetch %r from YouTube table", track_info, exc_info=exc)
         if val is None:
             try:
                 youtube_url = await self.fetch_youtube_query(
                     ctx, track_info, current_cache_level=current_cache_level
                 )
-            except YouTubeApiError as err:
+            except YouTubeApiError:
                 youtube_url = None
         else:
             if cache_enabled:
@@ -817,11 +810,10 @@ class AudioAPIInterface:
                     {"query": query_string}
                 )
             except Exception as exc:
-                debug_exc_log(log, exc, "Failed to fetch %r from Lavalink table", query_string)
+                log.verbose("Failed to fetch %r from Lavalink table", query_string, exc_info=exc)
 
             if val and isinstance(val, dict):
-                if IS_DEBUG:
-                    log.debug("Updating Local Database with %r", query_string)
+                log.trace("Updating Local Database with %r", query_string)
                 task = ("update", ("lavalink", {"query": query_string}))
                 self.append_task(ctx, *task)
             else:
@@ -854,8 +846,7 @@ class AudioAPIInterface:
                 ]:
                     valid_global_entry = True
                 if valid_global_entry:
-                    if IS_DEBUG:
-                        log.debug("Querying Global DB api for %r", query)
+                    log.trace("Querying Global DB api for %r", query)
                     results, called_api = results, False
         if valid_global_entry:
             pass
@@ -873,8 +864,7 @@ class AudioAPIInterface:
                 results, called_api = await self.fetch_track(ctx, player, query, forced=True)
             valid_global_entry = False
         else:
-            if IS_DEBUG:
-                log.debug("Querying Lavalink api for %r", query_string)
+            log.trace("Querying Lavalink api for %r", query_string)
             called_api = True
             try:
                 results = await player.load_tracks(query_string)
@@ -924,11 +914,10 @@ class AudioAPIInterface:
                     )
                     self.append_task(ctx, *task)
             except Exception as exc:
-                debug_exc_log(
-                    log,
-                    exc,
+                log.verbose(
                     "Failed to enqueue write task for %r to Lavalink table",
                     query_string,
+                    exc_info=exc,
                 )
         return results, called_api
 
@@ -952,7 +941,7 @@ class AudioAPIInterface:
                 )
                 tracks = playlist.tracks_obj
             except Exception as exc:
-                debug_exc_log(log, exc, "Failed to fetch playlist for autoplay")
+                log.verbose("Failed to fetch playlist for autoplay", exc_info=exc)
 
         if not tracks or not getattr(playlist, "tracks", None):
             if cache_enabled:
@@ -984,17 +973,16 @@ class AudioAPIInterface:
                     and not query.local_track_path.exists()
                 ):
                     continue
-                notify_channel = self.bot.get_channel(notify_channel_id)
+                notify_channel = player.guild.get_channel_or_thread(notify_channel_id)
                 if not await self.cog.is_query_allowed(
                     self.config,
                     notify_channel,
                     f"{track.title} {track.author} {track.uri} {query}",
                     query_obj=query,
                 ):
-                    if IS_DEBUG:
-                        log.debug(
-                            "Query is not allowed in %r (%d)", player.guild.name, player.guild.id
-                        )
+                    log.debug(
+                        "Query is not allowed in %r (%s)", player.guild.name, player.guild.id
+                    )
                     continue
                 valid = True
             track.extras.update(

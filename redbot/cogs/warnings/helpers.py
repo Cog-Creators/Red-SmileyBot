@@ -2,7 +2,7 @@ from copy import copy
 import asyncio
 import discord
 
-from redbot.core import Config, checks, commands
+from redbot.core import Config, commands
 from redbot.core.commands.requires import PrivilegeLevel
 from redbot.core.i18n import Translator
 from redbot.core.utils.predicates import MessagePredicate

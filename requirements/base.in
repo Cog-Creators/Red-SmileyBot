@@ -1,0 +1,23 @@
+aiohttp<3.10
+aiohttp-json-rpc
+apsw
+babel
+Brotli
+click
+discord.py
+markdown
+orjson
+packaging
+platformdirs
+psutil
+python-dateutil
+PyYAML
+rapidfuzz
+Red-Commons
+Red-Lavalink
+rich
+schema
+typing_extensions
+yarl
+distro; sys_platform == "linux"
+uvloop; sys_platform != "win32" and platform_python_implementation == "CPython"

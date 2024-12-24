@@ -1,0 +1,174 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: red-discordbot\n"
+"POT-Creation-Date: 2023-05-02 23:06+0000\n"
+"Last-Translator: \n"
+"Language-Team: Croatian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.4.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Crowdin-Project: red-discordbot\n"
+"X-Crowdin-Project-ID: 289505\n"
+"X-Crowdin-Language: hr\n"
+"X-Crowdin-File-ID: 194\n"
+"Language: hr_HR\n"
+
+#: redbot/cogs/reports/reports.py:26
+#, docstring
+msgid "Create user reports that server staff can respond to.\n\n"
+"    Users can open reports using `[p]report`. These are then sent\n"
+"    to a channel in the server for staff, and the report creator\n"
+"    gets a DM. Both can be used to communicate.\n"
+"    "
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:104
+#, docstring
+msgid "Manage Reports."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:114
+#, docstring
+msgid "Set the channel where reports will be sent."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:116
+msgid "The report channel has been set."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:121
+#, docstring
+msgid "Enable or disable reporting for this server."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:126
+msgid "Reporting is now enabled"
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:128
+msgid "Reporting is now disabled."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:187
+msgid "You took too long to select. Try again later."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:194
+msgid "That wasn't a valid choice."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:216
+msgid "Report from {author}{maybe_nick}"
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:221
+msgid "Report #{}"
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:225
+msgid "Report from {author.mention} (Ticket #{number})"
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:244
+#, docstring
+msgid "Send a report.\n\n"
+"        Use without arguments for interactive reporting, or do\n"
+"        `[p]report [text]` to use it non-interactively.\n"
+"        "
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:253
+msgid "Select a server to make a report in by number."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:259
+msgid "Reporting has not been enabled for this server"
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:266
+msgid "You've sent too many reports recently. Please contact a server admin if this is important matter, or please wait and try again later."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:274
+msgid "Please finish making your prior report before trying to make an additional one!"
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:289
+msgid "Please respond to this message with your Report.\n"
+"Your report should be a single message"
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:295
+msgid "This requires DMs enabled."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:304
+msgid "You took too long. Try again later."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:312
+msgid "This server has no reports channel set up. Please contact a server admin."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:318
+msgid "There was an error sending your report, please contact a server admin."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:321
+msgid "Your report was submitted. (Ticket #{})"
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:357
+msgid "{closer} has closed the correspondence"
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:372
+msgid "Re: ticket# {ticket_number} in {guild.name}"
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:385
+msgid "Correspondence about ticket# {ticket_number} in {guild.name} has been ended due to reports being disabled in that server."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:396
+#, docstring
+msgid "Open a message tunnel.\n\n"
+"        This tunnel will forward things you say in this channel or thread\n"
+"        to the ticket opener's direct messages.\n\n"
+"        Tunnels do not persist across bot restarts.\n"
+"        "
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:410
+msgid "That ticket doesn't seem to exist"
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:413
+msgid "That user isn't here anymore."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:419
+msgid "Either you or the user you are trying to reach already has an open communication."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:425
+msgid " Anything you say or upload here (8MB file size limitation on uploads) will be forwarded to them until the communication is closed.\n"
+"You can close a communication at any point by reacting with the ❎ to the last message received.\n"
+"Any message successfully forwarded will be marked with ✅.\n"
+"Tunnels are not persistent across bot restarts."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:436
+msgid "A moderator in the server `{guild.name}` has opened a 2-way communication about ticket number {ticket_number}."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:445
+msgid "That user has DMs disabled."
+msgstr ""
+
+#: redbot/cogs/reports/reports.py:449
+msgid "You have opened a 2-way communication about ticket number {ticket_number}."
+msgstr ""
+

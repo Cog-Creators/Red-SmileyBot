@@ -1,0 +1,87 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: red-discordbot\n"
+"POT-Creation-Date: 2023-06-14 02:57+0000\n"
+"Last-Translator: \n"
+"Language-Team: Croatian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: redgettext 3.4.2\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Crowdin-Project: red-discordbot\n"
+"X-Crowdin-Project-ID: 289505\n"
+"X-Crowdin-Language: hr\n"
+"X-Crowdin-File-ID: 51\n"
+"Language: hr_HR\n"
+
+#: redbot/cogs/audio/converters.py:35
+msgid "\n"
+"Scope must be a valid version of one of the following:\n"
+"​ ​ ​ ​ Global\n"
+"​ ​ ​ ​ Guild\n"
+"​ ​ ​ ​ User\n"
+msgstr "\n"
+"Opseg mora biti valjana verzija jednog od sljedećih:\n"
+"​ ​ ​ ​ Global (Globalni)\n"
+"​ ​ ​ ​ Guild (Serverov)\n"
+"​ ​ ​ ​ User (Korisnikov)\n"
+
+#: redbot/cogs/audio/converters.py:43
+msgid "\n"
+"Author must be a valid version of one of the following:\n"
+"​ ​ ​ ​ User ID\n"
+"​ ​ ​ ​ User Mention\n"
+"​ ​ ​ ​ User Name#123\n"
+msgstr "\n"
+"Autor mora biti valjana verzija jednog od sljedećih:\n"
+"​ ​ ​ ​ Korisnikov ID\n"
+"​ ​ ​ ​ Spominjanje korisnika\n"
+"​ ​ ​ ​ Korisničko ime#123\n"
+
+#: redbot/cogs/audio/converters.py:51
+msgid "\n"
+"Guild must be a valid version of one of the following:\n"
+"​ ​ ​ ​ Guild ID\n"
+"​ ​ ​ ​ Exact guild name\n"
+msgstr "\n"
+"Server mora biti valjana verzija jednog od sljedećih:\n"
+"​ ​ ​ ​ Serverov ID\n"
+"​ ​ ​ ​ Točan naziv servera\n"
+
+#: redbot/cogs/audio/converters.py:87
+msgid "\"{arg}\" was not found. It must be the ID or complete name of a server which the bot can see."
+msgstr "\"{arg}\" nije pronađen. Mora biti ID ili potpuni naziv servera koji bot može vidjeti."
+
+#: redbot/cogs/audio/converters.py:96 redbot/cogs/audio/converters.py:138
+msgid "\"{arg}\" does not refer to a unique server. Please use the ID for the server you're trying to specify."
+msgstr "\"{arg}\" se ne odnosi na jedinstveni server. Molim koristite ID za server koji pokušavate navesti."
+
+#: redbot/cogs/audio/converters.py:129
+msgid "\"{arg}\" was not found. It must be the ID or name or mention a user which the bot can see."
+msgstr "\"{arg}\" nije pronađen. Mora biti ID, ime ili navesti korisnika kojeg bot može vidjeti."
+
+#: redbot/cogs/audio/converters.py:178
+msgid "Could not match '{}' to a playlist."
+msgstr "Nije moguće uskladiti '{}' s popisom za reprodukciju."
+
+#: redbot/cogs/audio/converters.py:242 redbot/cogs/audio/converters.py:264
+#: redbot/cogs/audio/converters.py:284 redbot/cogs/audio/converters.py:368
+#: redbot/cogs/audio/converters.py:380 redbot/cogs/audio/converters.py:405
+#: redbot/cogs/audio/converters.py:431 redbot/cogs/audio/converters.py:453
+#: redbot/cogs/audio/converters.py:480
+msgid "Nothing"
+msgstr "Ništa"
+
+#: redbot/cogs/audio/converters.py:262
+msgid "You cannot use `--guild`"
+msgstr "Ne možete koristiti `--guild`"
+
+#: redbot/cogs/audio/converters.py:402
+msgid "You cannot use `--to-server`"
+msgstr "Ne možete koristiti `--to-server`"
+
+#: redbot/cogs/audio/converters.py:428
+msgid "You cannot use `--from-server`"
+msgstr "Ne možete koristiti `--from-server`"
+

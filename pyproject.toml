@@ -1,14 +1,57 @@
 [build-system]
-    requires = ["setuptools", "wheel"]
-    build-backend = "setuptools.build_meta"
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Red-DiscordBot"
+description = "A highly customisable Discord bot"
+readme = "README.md"
+authors = [{ name = "Cog Creators" }]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Framework :: AsyncIO",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Natural Language :: English",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Communications :: Chat",
+]
+dynamic = ["version", "requires-python", "dependencies", "optional-dependencies"]
+
+[project.urls]
+"Homepage" = "https://github.com/Cog-Creators/Red-DiscordBot"
+"Discord Server" = "https://discord.gg/red"
+"Documentation" = "https://docs.discord.red"
+"Donate on Patreon" = "https://www.patreon.com/Red_Devs"
+"Issue Tracker" = "https://github.com/Cog-Creators/Red-DiscordBot/issues"
+"Source Code" = "https://github.com/Cog-Creators/Red-DiscordBot"
+"Changelog" = "https://docs.discord.red/en/stable/changelog.html"
+
+[project.scripts]
+redbot = "redbot.__main__:main"
+redbot-setup = "redbot.setup:run_cli"
+
+[project.entry-points.pytest11]
+red-discordbot = "redbot.pytest"
 
 [tool.black]
-    line-length = 99
-    target-version = ['py38']
-    include = '\.py$'
-    force-exclude = '''
-    /(
-        redbot\/vendored
-    )/
-    '''
+line-length = 99
+required-version = '23'
+target-version = ['py38']
+include = '\.py$'
+force-exclude = '''
+/(
+    redbot\/vendored
+)/
+'''
 
+[tool.pytest.ini_options]
+asyncio_mode = 'auto'

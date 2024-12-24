@@ -1,7 +1,9 @@
+from redbot.core.bot import Red
+
 from .permissions import Permissions
 
 
-async def setup(bot):
+async def setup(bot: Red) -> None:
     cog = Permissions(bot)
     await cog.initialize()
     # We should add the rules for the Permissions cog and its own commands *before* adding the cog.
@@ -9,4 +11,4 @@ async def setup(bot):
     await cog._on_cog_add(cog)
     for command in cog.__cog_commands__:
         await cog._on_command_add(command)
-    bot.add_cog(cog)
+    await bot.add_cog(cog)

@@ -1,0 +1,705 @@
+AUTHOR: Kreusada
+DESCRIPTION: A trivia about the FIFA World Cup.
+
+# Notices
+
+# The following are countries that can represent previous placements by former countries in answers:
+#   - Serbia -> Yugoslavia, and Serbia and Montenegro
+#   - Czech Republic (czechia) -> Czechoslovakia
+#   - Germany -> West Germany
+#   - Russia -> Soviet Union
+
+# Source responsible for most data: https://en.wikipedia.org/wiki/FIFA_World_Cup
+
+# Hosts
+
+Which country was the host of the 2022 World Cup?:
+- Qatar
+Which country was the host of the 2018 World Cup?:
+- Russia
+Which country was the host of the 2014 World Cup?:
+- Brazil
+Which country was the host of the 2010 World Cup?:
+- South Africa
+- Republic of South Africa
+Which country was the host of the 2006 World Cup?:
+- Germany
+Which two countries was the host of the 2002 World Cup?:
+- Japan and South Korea
+- South Korea and Japan
+- Japan, South Korea
+- South Korea, Japan
+Which country was the host of the 1998 World Cup?:
+- France
+Which country was the host of the 1994 World Cup?:
+- United States of America
+- USA
+- U.S.A
+- US
+- U.S.
+- United States
+Which country was the host of the 1990 World Cup?:
+- Italy
+Which country was the host of the 1986 World Cup?:
+- Mexico
+Which country was the host of the 1982 World Cup?:
+- Spain
+Which country was the host of the 1978 World Cup?:
+- Argentina
+Which country was the host of the 1974 World Cup?:
+- West Germany
+- Germany
+Which country was the host of the 1970 World Cup?:
+- Mexico
+Which country was the host of the 1966 World Cup?:
+- England
+Which country was the host of the 1962 World Cup?:
+- Chile
+Which country was the host of the 1958 World Cup?:
+- Sweden
+Which country was the host of the 1954 World Cup?:
+- Switzerland
+Which country was the host of the 1950 World Cup?:
+- Brazil
+Which country was the host of the 1938 World Cup?:
+- France
+Which country was the host of the 1934 World Cup?:
+- Italy
+Which country was the host of the 1930 World Cup?:
+- Uruguay
+
+# Champions
+
+Which country was the champion of the 2022 World Cup?:
+- Argentina
+Which country was the champion of the 2018 World Cup?:
+- France
+Which country was the champion of the 2014 World Cup?:
+- Germany
+Which country was the champion of the 2010 World Cup?:
+- Spain
+Which country was the champion of the 2006 World Cup?:
+- Italy
+Which country was the champion of the 2002 World Cup?:
+- Brazil
+Which country was the champion of the 1998 World Cup?:
+- France
+Which country was the champion of the 1994 World Cup?:
+- Brazil
+Which country was the champion of the 1990 World Cup?:
+- West Germany
+- Germany
+Which country was the champion of the 1986 World Cup?:
+- Argentina
+Which country was the champion of the 1982 World Cup?:
+- Italy
+Which country was the champion of the 1978 World Cup?:
+- Argentina
+Which country was the champion of the 1974 World Cup?:
+- West Germany
+- Germany
+Which country was the champion of the 1970 World Cup?:
+- Brazil
+Which country was the champion of the 1966 World Cup?:
+- England
+Which country was the champion of the 1962 World Cup?:
+- Brazil
+Which country was the champion of the 1958 World Cup?:
+- Brazil
+Which country was the champion of the 1954 World Cup?:
+- West Germany
+- Germany
+Which country was the champion of the 1950 World Cup?:
+- Uruguay
+Which country was the champion of the 1938 World Cup?:
+- Italy
+Which country was the champion of the 1934 World Cup?:
+- Italy
+Which country was the champion of the 1930 World Cup?:
+- Uruguay
+
+# Runner ups
+
+Which country was the runner up of the 2022 World Cup?:
+- France
+Which country was the runner up of the 2018 World Cup?:
+- Croatia
+Which country was the runner up of the 2014 World Cup?:
+- Argentina
+Which country was the runner up of the 2010 World Cup?:
+- The Netherlands
+- Netherlands
+- Holland
+Which country was the runner up of the 2006 World Cup?:
+- France
+Which country was the runner up of the 2002 World Cup?:
+- Germany
+Which country was the runner up of the 1998 World Cup?:
+- Brazil
+Which country was the runner up of the 1994 World Cup?:
+- Italy
+Which country was the runner up of the 1990 World Cup?:
+- Argentina
+Which country was the runner up of the 1986 World Cup?:
+- West Germany
+- Germany
+Which country was the runner up of the 1982 World Cup?:
+- West Germany
+- Germany
+Which country was the runner up of the 1978 World Cup?:
+- The Netherlands
+- Netherlands
+- Holland
+Which country was the runner up of the 1974 World Cup?:
+- The Netherlands
+- Netherlands
+- Holland
+Which country was the runner up of the 1970 World Cup?:
+- Italy
+Which country was the runner up of the 1966 World Cup?:
+- West Germany
+- Germany
+Which country was the runner up of the 1962 World Cup?:
+- Czechoslovakia
+- Czechia
+- Czech Republic
+Which country was the runner up of the 1958 World Cup?:
+- Sweden
+Which country was the runner up of the 1954 World Cup?:
+- Hungary
+Which country was the runner up of the 1950 World Cup?:
+- Brazil
+Which country was the runner up of the 1938 World Cup?:
+- Hungary
+Which country was the runner up of the 1934 World Cup?:
+- Czechoslovakia
+- Czechia
+- Czech Republic
+Which country was the runner up of the 1930 World Cup?:
+- Argentina
+
+# Third places
+
+Which country placed third in the 2022 World Cup?:
+- Croatia
+Which country placed third in the 2018 World Cup?:
+- Belgium
+Which country placed third in the 2014 World Cup?:
+- The Netherlands
+- Netherlands
+- Holland
+Which country placed third in the 2010 World Cup?:
+- Germany
+Which country placed third in the 2006 World Cup?:
+- Germany
+Which country placed third in the 2002 World Cup?:
+- Türkiye
+- Turkiye
+- Turkey
+Which country placed third in the 1998 World Cup?:
+- Croatia
+Which country placed third in the 1994 World Cup?:
+- Sweden
+Which country placed third in the 1990 World Cup?:
+- Italy
+Which country placed third in the 1986 World Cup?:
+- France
+Which country placed third in the 1982 World Cup?:
+- Poland
+Which country placed third in the 1978 World Cup?:
+- Brazil
+Which country placed third in the 1974 World Cup?:
+- Poland
+Which country placed third in the 1970 World Cup?:
+- West Germany
+- Germany
+Which country placed third in the 1966 World Cup?:
+- Portugal
+Which country placed third in the 1962 World Cup?:
+- Chile
+Which country placed third in the 1958 World Cup?:
+- France
+Which country placed third in the 1954 World Cup?:
+- Austria
+Which country placed third in the 1950 World Cup?:
+- Sweden
+Which country placed third in the 1938 World Cup?:
+- Brazil
+Which country placed third in the 1934 World Cup?:
+- Germany
+Which country placed third in the 1930 World Cup?:
+- United States of America
+- USA
+- U.S.A
+- US
+- U.S.
+- United States
+
+# Fourth Places
+
+Which country placed fourth in the 2022 World Cup?:
+- Morocco
+Which country placed fourth in the 2018 World Cup?:
+- England
+Which country placed fourth in the 2014 World Cup?:
+- Brazil
+Which country placed fourth in the 2010 World Cup?:
+- Uruguay
+Which country placed fourth in the 2006 World Cup?:
+- Portugal
+Which country placed fourth in the 2002 World Cup?:
+- South Korea
+Which country placed fourth in the 1998 World Cup?:
+- The Netherlands
+- Netherlands
+- Holland
+Which country placed fourth in the 1994 World Cup?:
+- Bulgaria
+Which country placed fourth in the 1990 World Cup?:
+- England
+Which country placed fourth in the 1986 World Cup?:
+- Belgium
+Which country placed fourth in the 1982 World Cup?:
+- France
+Which country placed fourth in the 1978 World Cup?:
+- Italy
+Which country placed fourth in the 1974 World Cup?:
+- Brazil
+Which country placed fourth in the 1970 World Cup?:
+- Uruguay
+Which country placed fourth in the 1966 World Cup?:
+- Soviet Union
+- Russia
+Which country placed fourth in the 1962 World Cup?:
+- Yugoslavia
+- Serbia
+Which country placed fourth in the 1958 World Cup?:
+- West Germany
+- Germany
+Which country placed fourth in the 1954 World Cup?:
+- Uruguay
+Which country placed fourth in the 1950 World Cup?:
+- Spain
+Which country placed fourth in the 1938 World Cup?:
+- Sweden
+Which country placed fourth in the 1934 World Cup?:
+- Austria
+Which country placed fourth in the 1930 World Cup?:
+- Yugoslavia
+- Serbia
+
+# Continental confederations of international association football or NGBs
+
+The continental confederation "CONCACAF" governs sport in which continent so that their member nations can qualify for the world cup?:
+- North America
+The continental confederation "CONMEBOL" governs sport in which continent so that their member nations can qualify for the world cup?:
+- South America
+The continental confederation "UEFA" governs sport in which continent so that their member nations can qualify for the world cup?:
+- Europe
+The continental confederation "CAF" governs sport in which continent so that their member nations can qualify for the world cup?:
+- Africa
+The continental confederation "AFC" governs sport in which continent so that their member nations can qualify for the world cup?:
+- Asia
+The continental confederation "OFC" governs sport in which continent so that their member nations can qualify for the world cup?:
+- Australasia and Oceania
+- Australasia
+- Oceania
+
+# Number of teams
+
+From 2026 into the foreseeable future, the tournaments will include how many teams?:
+- 48
+From 2002 to 2022, the tournaments included how many teams?:
+- 32
+From 1982 to 1994, the tournaments included how many teams?:
+- 24
+From 1954 to 1978, the tournaments included how many teams?:
+- 16
+How many teams were included in the 1950 World Cup hosted by Brazil?:
+- 13
+How many teams were included in the 1938 World Cup hosted by France?:
+- 15
+How many teams were included in the 1934 World Cup hosted by Italy?:
+- 16
+How many teams were included in the 1930 World Cup hosted by Uruguay?:
+- 13
+
+### VENUES
+
+Which Russian stadium hosted the 2018 FIFA World Cup final?:
+- Luzhniki Stadium
+- Luzhniki
+Which Brazilian stadium hosted the 2014 FIFA World Cup final?:
+- Maracanã
+- Maracana
+- Maracanã Stadium
+- Maracana Stadium
+- Estádio Jornalista Mário Filho
+- Estadio Jornalista Mario Filho
+Which South African stadium hosted the 2010 FIFA World Cup final?:
+- Soccer City
+- FNB Stadium
+- First National Bank Stadium
+- The Calabash
+- Calabash
+Which German stadium hosted the 2006 FIFA World Cup final?:
+- Olympiastadion
+Which Japanese stadium hosted the 2002 FIFA World Cup final?:
+- International Stadium
+- International
+- International Stadium Yokohama
+- Nissan Stadium
+- Nissan
+Which French stadium hosted the 1998 FIFA World Cup final?:
+- Stade de France
+Which USA stadium hosted the 1994 FIFA World Cup final?:
+- Rose Bowl
+Which Italian stadium hosted the 1990 FIFA World Cup final?:
+- Stadio Olympico
+- Olympico
+Which Mexican stadium hosted the 1986 FIFA World Cup final?:
+- Estadio Azteca
+- Azteca
+Which Spanish stadium hosted the 1982 FIFA World Cup final?:
+- Santiago Bernabéu
+- Santiago Bernabeu
+- Bernabeu
+Which Argentine stadium hosted the 1978 FIFA World Cup final?:
+- Monumental de Núñez
+- Monumental de Nunez
+- River Plate Stadium
+- River Plate
+- El Monumental
+- Monumental
+Which West German stadium hosted the 1974 FIFA World Cup final?:
+- Olympiastadion
+Which Mexican stadium hosted the 1970 FIFA World Cup final?:
+- Estadio Azteca
+- Azteca
+Which English stadium hosted the 1966 FIFA World Cup final?:
+- Wembley Stadium
+- Wembley
+- Empire Stadium
+Which Chilean stadium hosted the 1962 FIFA World Cup final?:
+- Estadio Nacional
+- Nacional
+- Estadio Nacional Julio Martínez Prádanos
+- Estadio Nacional Julio Martinez Pradanos
+Which Swedish stadium hosted the 1958 FIFA World Cup final?:
+- Råsundastadion
+- Rasundastadion
+- Råsunda Stadium
+- Rasunda Stadium
+- Råsunda Fotbollsstadion
+- Rasunda Fotbollsstadion
+- Råsunda Football Stadium
+- Rasunda Football Stadium
+- Råsunda
+- Rasunda
+Which Swiss stadium hosted the 1954 FIFA World Cup final?:
+- Wankdorfstadion
+Which Brazilian stadium hosted the 1950 FIFA World Cup final?:
+- Maracanã
+- Maracana
+- Maracanã Stadium
+- Maracana Stadium
+- Estádio Jornalista Mário Filho
+- Estadio Jornalista Mario Filho
+Which French stadium hosted the 1938 FIFA World Cup final?:
+- Stade de Colombes
+- Stade Yves-du-Manoir
+- Stade olympique Yves-du-Manoir
+- Stade olympique de Colombes
+- Colombes
+- Yves-du-Manoir
+Which Italian stadium hosted the 1934 FIFA World Cup final?:
+- Stadio Nazionale PNF
+- Stadio Nazionale
+- Nazionale
+Which Uruguayan stadium hosted the 1930 FIFA World Cup final?:
+- Estadio Centenario
+- Centenario
+
+#### GENERAL
+
+In which year was the World Cup founded?:
+- 1930
+By which organization is the World Cup governed by?:
+- FIFA
+Which country has the most World Cup titles?:
+- Brazil
+The World Cup has ran every four years since its inauguration, apart from the years ____ and ____ (due to World War Two).:
+- 1942 and 1946
+- 1946 and 1942
+- 1942, 1946
+- 1946, 1942
+- "1942 1946"
+- "1946 1942"
+The 2026 World Cup will be jointly hosted by ______, United States, and Mexico.:
+- Canada
+Which player captained the England National Team to their first and only World Cup victory in 1966?:
+- Bobby Moore
+Who is the all-time World Cup top goal scorer?:
+- Miroslav Klose
+- Klose
+Who is the only player to win the World Cup three times?:
+- Pelé
+- Pele
+Which country has scored the most goals in the World Cup since its inauguration in 1930?:
+- Brazil
+How many countries have won the World Cup at least once?:
+- 8
+In 2022, European champions Italy lose 1-0 to who, failing to qualify for the world cup for a *second* consecutive time?:
+- North Macedonia
+In 1994, France failed to qualify after losing to Israel and *who* in the group stages?:
+- Bulgaria
+In 2018, Italy failed to qualify after losing to *who* 1-0?:
+- Sweden
+In 2002, Netherlands failed to qualify after losing to the Republic of Ireland. What was the goal difference in this qualification decider?:
+- 1
+Which is the only African nation to reach the semi-finals of the World Cup?:
+- Morocco
+In 2022, Morocco beat Spain and *who* in the knockout stages, to reach the semi-final?:
+- Portugal
+Who has scored the most goals at a single World Cup? (13):
+- Just Fontaine
+- Fontaine
+During the penalty shootout of the 2022 final, who scored the final penalty that ensured victory over the French?:
+- Gonzalo Montiel
+- Montiel
+In 2022, Netherlands played Argentina in the quarter-finals. The game broke a record for the most yellow cards shown in a FIFA World Cup match. How many were shown?:
+- 18
+- Eighteen
+Who was Costa Rica's keeper when they lost 7-0 against Spain in 2022?:
+- Keylor Navas
+- Navas
+How many red cards have ever been given out in FIFA World Cup **finals**?:
+- 5
+- Five
+Prior to Kylian Mbappé's hatrick in the final of 2022, who was the only player to have scored a hattrick in a FIFA World Cup final?:
+- Geoff Hurst
+- Hurst
+
+#### APPEARANCES
+
+Which is the most northerly European nation who has never qualified for a FIFA World Cup?:
+- Finland
+Iceland has had only 1 FIFA World Cup appearance. In what year did they appear?:
+- 2018
+Bosnia and Herzegovina has had only 1 FIFA World Cup appearance. In what year did they appear?:
+- 2014
+Togo has had only 1 FIFA World Cup appearance. In what year did they appear?:
+- 2006
+China has had only 1 FIFA World Cup appearance. In what year did they appear?:
+- 2002
+Congo has had only 1 FIFA World Cup appearance. In what year did they appear?:
+- 1974
+Cuba has had only 1 FIFA World Cup appearance. In what year did they appear?:
+- 1938
+Which year did Romania last qualify for a FIFA World Cup?:
+- 1998
+Which country is the only country that has participated in every World Cup tournament?:
+- Brazil
+
+
+#### ALL TIME NATION STATS
+#### https://en.wikipedia.org/wiki/FIFA_World_Cup_records_and_statistics
+
+Which nation currently has the highest accumulative goal-difference in the history of the FIFA World Cup? (+129):
+- Brazil
+"Which nation currently has the lowest accumulative goal-difference in the history of the FIFA World Cup? (-39)\nNote: There are two possible answers for this question.":
+# This first answer is just for when the answer is revealed
+- South Korea or Mexico
+- South Korea
+- Mexico
+Which nation currently has the highest accumulative goals-for in the history of the FIFA World Cup? (237):
+- Brazil
+Name 1 of 4 nations who have never scored a goal in their FIFA World Cup campaigns.:
+# This first answer is just for when the answer is revealed
+- Trinidad and Tobago, Indonesia, China or DR Congo
+- Trinidad and Tobago
+- Indonesia
+- China
+- DR Congo
+- Congo
+- Democratic Republic of Congo
+- Democratic Republic of the Congo
+- DROC
+Which nation currently has the highest accumulative goals-against in the history of the FIFA World Cup? (130):
+- Germany
+Which nation currently has the lowest accumulative goals-against in the history of the FIFA World Cup? (2):
+- Angola
+Which nation currently has the most losses in the history of the FIFA World Cup? (28):
+- Mexico
+Which nation currently has the most draws in the history of the FIFA World Cup? (22):
+- England
+Which nation currently has the most wins in the history of the FIFA World Cup? (28):
+- Brazil
+Which nation currently has the highest number of games played in the history of the FIFA World Cup? (114):
+- Brazil
+Which nation currently has the lowest number of games played in the history of the FIFA World Cup? (1):
+- Indonesia
+
+
+#### MEMORABLE SCORES
+
+"What was the final score in the shock FIFA World Cup group stage tie between Argentina and Saudi Arabia in 2022?\nFormat: `<argentina>-<saudi arabia>`":
+- 1-2
+- 1 - 2
+"What was the final score in the shock FIFA World Cup group stage tie between South Korea and Germany in 2018?\nFormat: `<south korea>-<germany>`":
+- 2-0
+- 2 - 0
+"What was the final score in the shock FIFA World Cup group stage tie between Spain and Netherlands in 2014?\nFormat: `<spain>-<netherlands>`":
+- 1-5
+- 1 - 5
+"What was the final score in the shock FIFA World Cup group stage tie between Italy and North Korea in 1966?\nFormat: `<italy>-<north korea>`":
+- 0-1
+- 0 - 1
+"What was the final score in the shock FIFA World Cup group stage tie between Slovakia and Italy in 2010?\nFormat: `<slovakia>-<italy>`":
+- 3-2
+- 3 - 2
+"What was the final score in the shock FIFA World Cup group stage tie between England and USA in 1950?\nFormat: `<england>-<usa>`":
+- 0-1
+- 0 - 1
+"What was the final score in the shock FIFA World Cup quarter-final tie between Bulgaria and Germany in 1994?\nFormat: `<bulgaria>-<germany>`":
+- 2-1
+- 2 - 1
+"What was the final score in the shock FIFA World Cup group stage tie between France and Senegal in 2002?\nFormat: `<france>-<senegal>`":
+- 0-1
+- 0 - 1
+"What was the final score in the shock FIFA World Cup semi-final tie between Brazil and Germany in 2014?\nFormat: `<brazil>-<germany>`":
+- 1-7
+- 1 - 7
+"What was the final score in the shock FIFA World Cup group stage tie between Italy and Costa Rica in 2014?\nFormat: `<italy>-<costa rica>`":
+- 0-1
+- 0 - 1
+"What was the final score in the shock FIFA World Cup round of 16 tie between Korea Republic and Italy in 2002?\nFormat: `<korea republic>-<italy>`":
+- 2-1
+- 2 - 1
+"What was the final score in the shock FIFA World Cup group stage tie between Germany and Japan in 2022?\nFormat: `<germany>-<japan>`":
+- 1-2
+- 1 - 2
+"What was the final score in the shock FIFA World Cup group stage tie between Japan and Spain in 2022?\nFormat: `<japan>-<spain>`":
+- 2-1
+- 2 - 1
+"What was the score after extra time in the final of 2010 (Spain VS Netherlands)?\nFormat: `<spain>-<netherlands>`":
+- 1-0
+- 1 - 0
+"What was the score after extra time in the final of 2014 (Germany VS Argentina)?\nFormat: `<germany>-<argentina>`":
+- 1-0
+- 1 - 0
+"What was the score after extra time in the final of 2018 (France VS Croatia)?\nFormat: `<france>-<croatia>`":
+- 4-2
+- 4 - 2
+"What was the score after extra time in the final of 2022 (Argentina VS France)?\nFormat: `<argentina>-<france>`":
+- 3-3
+- 3 - 3
+
+
+
+#### INDIVIDUAL PLAYER AWARDS
+#### This will start from 2010
+
+# Golden Ball
+
+Who won the Golden Ball award in 2010 South Africa?:
+- Diego Forlán
+- Forlán
+- Forlan
+Who won the Golden Ball award in 2014 Brazil?:
+- Lionel Messi
+- Messi
+Who won the Golden Ball award in 2018 Russia?:
+- Luka Modrić
+- Modrić
+- Modric
+Who won the Golden Ball award in 2022 Qatar?:
+- Lionel Messi
+- Messi
+
+# Golden Boot
+
+Who won the Golden Boot award in 2010 South Africa?:
+- Thomas Müller
+- Müller
+- Muller
+Who won the Golden Boot award in 2014 Brazil?:
+- James Rodríguez
+- Rodríguez
+- Rodriguez
+Who won the Golden Boot award in 2018 Russia?:
+- Harry Kane
+- Kane
+Who won the Golden Boot award in 2022 Qatar?:
+- Kylian Mbappé
+- Mbappé
+- Mbappe
+
+# Golden Glove
+
+Who won the Golden Glove award in 2010 South Africa?:
+- Iker Casillas
+- Casillas
+Who won the Golden Glove award in 2014 Brazil?:
+- Manuel Neuer
+- Neuer
+Who won the Golden Glove award in 2018 Russia?:
+- Thibaut Courtois
+- Courtois
+Who won the Golden Glove award in 2022 Qatar?:
+- Emiliano Martínez
+- Martínez
+- Martinez
+
+# FIFA Young Player
+
+Who won the FIFA Young Player award in 2010 South Africa?:
+- Thomas Müller
+- Müller
+- Muller
+Who won the FIFA Young Player award in 2014 Brazil?:
+- Paul Pogba
+- Pogba
+Who won the FIFA Young Player award in 2018 Russia?:
+- Kylian Mbappé
+- Mbappé
+- Mbappe
+Who won the FIFA Young Player award in 2010 South Africa?:
+- Enzo Fernández
+- Fernández
+- Fernandez
+
+# FIFA Fair Play Trophy
+
+Which nation won the FIFA Fair Play Trophy in 2010 South Africa?:
+- Spain
+Which nation won the FIFA Fair Play Trophy in 2014 Brazil?:
+- Colombia
+Which nation won the FIFA Fair Play Trophy in 2018 Russia?:
+- Spain
+Which nation won the FIFA Fair Play Trophy in 2022 Qatar?:
+- England
+
+# Most POTM Awards
+
+Who collected the most Player Of The Match awards in 2010 South Africa (4)?:
+- Wesley Sneijder
+- Sneijder
+Who collected the most Player Of The Match awards in 2014 Brazil (4)?:
+- Lionel Messi
+- Messi
+Name one of the *four* players who collected the most Player Of The Match awards in 2018 Russia (3 each).:
+# This first answer is just for when the answer is revealed
+- Antoine Griezmann, Eden Hazard, Harry Kane or Luka Modrić
+- Antoine Griezmann
+- Griezmann
+- Eden Hazard
+- Hazard
+- Harry Kane
+- Kane
+- Luka Modrić
+- Modrić
+- Modric
+Who collected the most Player Of The Match awards in 2022 Qatar (5)?:
+- Lionel Messi
+- Messi

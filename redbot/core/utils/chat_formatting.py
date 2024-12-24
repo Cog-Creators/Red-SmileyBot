@@ -1,8 +1,11 @@
+from __future__ import annotations
+
 import datetime
 import itertools
+import math
 import textwrap
 from io import BytesIO, StringIO
-from typing import Any, Iterator, List, Optional, Sequence, SupportsInt, Union
+from typing import Any, Iterator, List, Literal, Optional, Sequence, SupportsInt, Union
 
 import discord
 from babel.lists import format_list as babel_list
@@ -11,7 +14,96 @@ from rich.console import Console
 
 from redbot.core.i18n import Translator, get_babel_locale, get_babel_regional_format
 
+__all__ = (
+    "error",
+    "warning",
+    "info",
+    "success",
+    "question",
+    "bold",
+    "box",
+    "header",
+    "hyperlink",
+    "inline",
+    "italics",
+    "spoiler",
+    "pagify",
+    "strikethrough",
+    "subtext",
+    "underline",
+    "quote",
+    "escape",
+    "humanize_list",
+    "format_perms_list",
+    "humanize_timedelta",
+    "humanize_number",
+    "text_to_file",
+)
+
 _ = Translator("UtilsChatFormatting", __file__)
+
+
+def hyperlink(text: str, url: str) -> str:
+    """Create hyperlink markdown with text and a URL.
+
+    Parameters
+    ----------
+    text : str
+        The text which will contain the link.
+    url : str
+        The URL used for the hyperlink.
+
+    Returns
+    -------
+    str
+        The new message.
+
+    """
+    return f"[{text}]({url})"
+
+
+def header(text: str, size: Literal["small", "medium", "large"]) -> str:
+    """Formats a header.
+
+    Parameters
+    ----------
+    text : str
+        The text for the header.
+    size : Literal['small', 'medium', 'large']
+        The size of the header ('small', 'medium' or 'large')
+
+    Returns
+    -------
+    str
+        The new message.
+
+    """
+    if size == "small":
+        multiplier = 3
+    elif size == "medium":
+        multiplier = 2
+    elif size == "large":
+        multiplier = 1
+    else:
+        raise ValueError(f"Invalid size '{size}'")
+    return "#" * multiplier + " " + text
+
+
+def subtext(text: str) -> str:
+    """Formats subtext from the given text.
+
+    Parameters
+    ----------
+    text : str
+        The text to format as subtext.
+
+    Returns
+    -------
+    str
+        The new message.
+
+    """
+    return "-# " + text
 
 
 def error(text: str) -> str:
@@ -201,81 +293,10 @@ def spoiler(text: str, escape_formatting: bool = True) -> str:
     return f"||{escape(text, formatting=escape_formatting)}||"
 
 
-def bordered(*columns: Sequence[str], ascii_border: bool = False) -> str:
-    """Get two blocks of text inside borders.
-
-    Note
-    ----
-    This will only work with a monospaced font.
-
-    Parameters
-    ----------
-    *columns : `sequence` of `str`
-        The columns of text, each being a list of lines in that column.
-    ascii_border : bool
-        Whether or not the border should be pure ASCII.
-
-    Returns
-    -------
-    str
-        The bordered text.
-
-    """
-    borders = {
-        "TL": "+" if ascii_border else "┌",  # Top-left
-        "TR": "+" if ascii_border else "┐",  # Top-right
-        "BL": "+" if ascii_border else "└",  # Bottom-left
-        "BR": "+" if ascii_border else "┘",  # Bottom-right
-        "HZ": "-" if ascii_border else "─",  # Horizontal
-        "VT": "|" if ascii_border else "│",  # Vertical
-    }
-
-    sep = " " * 4  # Separator between boxes
-    widths = tuple(max(len(row) for row in column) + 9 for column in columns)  # width of each col
-    colsdone = [False] * len(columns)  # whether or not each column is done
-    lines = [sep.join("{TL}" + "{HZ}" * width + "{TR}" for width in widths)]
-
-    for line in itertools.zip_longest(*columns):
-        row = []
-        for colidx, column in enumerate(line):
-            width = widths[colidx]
-            done = colsdone[colidx]
-            if column is None:
-                if not done:
-                    # bottom border of column
-                    column = "{HZ}" * width
-                    row.append("{BL}" + column + "{BR}")
-                    colsdone[colidx] = True  # mark column as done
-                else:
-                    # leave empty
-                    row.append(" " * (width + 2))
-            else:
-                column += " " * (width - len(column))  # append padded spaces
-                row.append("{VT}" + column + "{VT}")
-
-        lines.append(sep.join(row))
-
-    final_row = []
-    for width, done in zip(widths, colsdone):
-        if not done:
-            final_row.append("{BL}" + "{HZ}" * width + "{BR}")
-        else:
-            final_row.append(" " * (width + 2))
-    lines.append(sep.join(final_row))
-
-    return "\n".join(lines).format(**borders)
-
-
-def pagify(
-    text: str,
-    delims: Sequence[str] = ["\n"],
-    *,
-    priority: bool = False,
-    escape_mass_mentions: bool = True,
-    shorten_by: int = 8,
-    page_length: int = 2000,
-) -> Iterator[str]:
+class pagify(Iterator[str]):
     """Generate multiple pages from the given text.
+
+    The returned iterator supports length estimation with :func:`operator.length_hint()`.
 
     Note
     ----
@@ -310,33 +331,82 @@ def pagify(
         Pages of the given text.
 
     """
-    in_text = text
-    page_length -= shorten_by
-    while len(in_text) > page_length:
-        this_page_len = page_length
-        if escape_mass_mentions:
-            this_page_len -= in_text.count("@here", 0, page_length) + in_text.count(
-                "@everyone", 0, page_length
-            )
-        closest_delim = (in_text.rfind(d, 1, this_page_len) for d in delims)
-        if priority:
-            closest_delim = next((x for x in closest_delim if x > 0), -1)
-        else:
-            closest_delim = max(closest_delim)
-        closest_delim = closest_delim if closest_delim != -1 else this_page_len
-        if escape_mass_mentions:
-            to_send = escape(in_text[:closest_delim], mass_mentions=True)
-        else:
-            to_send = in_text[:closest_delim]
-        if len(to_send.strip()) > 0:
-            yield to_send
-        in_text = in_text[closest_delim:]
 
-    if len(in_text.strip()) > 0:
-        if escape_mass_mentions:
-            yield escape(in_text, mass_mentions=True)
-        else:
-            yield in_text
+    # when changing signature of this method, please update it in docs/framework_utils.rst as well
+    def __init__(
+        self,
+        text: str,
+        delims: Sequence[str] = ("\n",),
+        *,
+        priority: bool = False,
+        escape_mass_mentions: bool = True,
+        shorten_by: int = 8,
+        page_length: int = 2000,
+    ) -> None:
+        self._text = text
+        self._delims = delims
+        self._priority = priority
+        self._escape_mass_mentions = escape_mass_mentions
+        self._shorten_by = shorten_by
+        self._page_length = page_length - shorten_by
+
+        self._start = 0
+        self._end = len(text)
+
+    def __repr__(self) -> str:
+        text = self._text
+        if len(text) > 20:
+            text = f"{text[:19]}\N{HORIZONTAL ELLIPSIS}"
+        return (
+            "pagify("
+            f"{text!r},"
+            f" {self._delims!r},"
+            f" priority={self._priority!r},"
+            f" escape_mass_mentions={self._escape_mass_mentions!r},"
+            f" shorten_by={self._shorten_by!r},"
+            f" page_length={self._page_length + self._shorten_by!r}"
+            ")"
+        )
+
+    def __length_hint__(self) -> int:
+        return math.ceil((self._end - self._start) / self._page_length)
+
+    def __iter__(self) -> pagify:
+        return self
+
+    def __next__(self) -> str:
+        text = self._text
+        escape_mass_mentions = self._escape_mass_mentions
+        page_length = self._page_length
+        start = self._start
+        end = self._end
+
+        while (end - start) > page_length:
+            stop = start + page_length
+            if escape_mass_mentions:
+                stop -= text.count("@here", start, stop) + text.count("@everyone", start, stop)
+            closest_delim_it = (text.rfind(d, start + 1, stop) for d in self._delims)
+            if self._priority:
+                closest_delim = next((x for x in closest_delim_it if x > 0), -1)
+            else:
+                closest_delim = max(closest_delim_it)
+            stop = closest_delim if closest_delim != -1 else stop
+            if escape_mass_mentions:
+                to_send = escape(text[start:stop], mass_mentions=True)
+            else:
+                to_send = text[start:stop]
+            start = self._start = stop
+            if len(to_send.strip()) > 0:
+                return to_send
+
+        if len(text[start:end].strip()) > 0:
+            self._start = end
+            if escape_mass_mentions:
+                return escape(text[start:end], mass_mentions=True)
+            else:
+                return text[start:end]
+
+        raise StopIteration
 
 
 def strikethrough(text: str, escape_formatting: bool = True) -> str:
@@ -516,15 +586,21 @@ def format_perms_list(perms: discord.Permissions) -> str:
 
 
 def humanize_timedelta(
-    *, timedelta: Optional[datetime.timedelta] = None, seconds: Optional[SupportsInt] = None
+    *,
+    timedelta: Optional[datetime.timedelta] = None,
+    seconds: Optional[SupportsInt] = None,
+    negative_format: Optional[str] = None,
+    maximum_units: Optional[int] = None,
 ) -> str:
     """
     Get a locale aware human timedelta representation.
 
     This works with either a timedelta object or a number of seconds.
 
-    Fractional values will be omitted, and values less than 1 second
-    an empty string.
+    Fractional values will be omitted.
+
+    Values that are less than 1 second but greater than -1 second
+    will be an empty string.
 
     Parameters
     ----------
@@ -532,6 +608,11 @@ def humanize_timedelta(
         A timedelta object
     seconds: Optional[SupportsInt]
         A number of seconds
+    negative_format: Optional[str]
+        How to format negative timedeltas, using %-formatting rules.
+        Defaults to "negative %s"
+    maximum_units: Optional[int]
+        The maximum number of different units to output in the final string.
 
     Returns
     -------
@@ -541,15 +622,33 @@ def humanize_timedelta(
     Raises
     ------
     ValueError
-        The function was called with neither a number of seconds nor a timedelta object
+        The function was called with neither a number of seconds nor a timedelta object,
+        or with a maximum_units less than 1.
+
+    Examples
+    --------
+    .. testsetup::
+
+        from datetime import timedelta
+        from redbot.core.utils.chat_formatting import humanize_timedelta
+
+    .. doctest::
+
+        >>> humanize_timedelta(seconds=314)
+        '5 minutes, 14 seconds'
+        >>> humanize_timedelta(timedelta=timedelta(minutes=3.14), maximum_units=1)
+        '3 minutes'
+        >>> humanize_timedelta(timedelta=timedelta(days=-3.14), negative_format="%s ago", maximum_units=3)
+        '3 days, 3 hours, 21 minutes ago'
     """
 
     try:
         obj = seconds if seconds is not None else timedelta.total_seconds()
     except AttributeError:
         raise ValueError("You must provide either a timedelta or a number of seconds")
+    if maximum_units is not None and maximum_units < 1:
+        raise ValueError("maximum_units must be >= 1")
 
-    seconds = int(obj)
     periods = [
         (_("year"), _("years"), 60 * 60 * 24 * 365),
         (_("month"), _("months"), 60 * 60 * 24 * 30),
@@ -558,8 +657,17 @@ def humanize_timedelta(
         (_("minute"), _("minutes"), 60),
         (_("second"), _("seconds"), 1),
     ]
-
+    seconds = int(obj)
+    if seconds < 0:
+        seconds = -seconds
+        if negative_format and "%s" not in negative_format:
+            negative_format = negative_format + " %s"
+        else:
+            negative_format = negative_format or (_("negative") + " %s")
+    else:
+        negative_format = "%s"
     strings = []
+    maximum_units = maximum_units or len(periods)
     for period_name, plural_period_name, period_seconds in periods:
         if seconds >= period_seconds:
             period_value, seconds = divmod(seconds, period_seconds)
@@ -567,13 +675,15 @@ def humanize_timedelta(
                 continue
             unit = plural_period_name if period_value > 1 else period_name
             strings.append(f"{period_value} {unit}")
+            if len(strings) == maximum_units:
+                break
 
-    return ", ".join(strings)
+    return negative_format % humanize_list(strings, style="unit")
 
 
 def humanize_number(val: Union[int, float], override_locale=None) -> str:
     """
-    Convert an int or float to a str with digit separators based on bot locale
+    Convert an int or float to a str with digit separators based on bot locale.
 
     Parameters
     ----------
@@ -582,10 +692,15 @@ def humanize_number(val: Union[int, float], override_locale=None) -> str:
     override_locale: Optional[str]
         A value to override bot's regional format.
 
+    Raises
+    ------
+    decimals.InvalidOperation
+        If val is greater than 10 x 10^21 for some locales, 10 x 10^24 in others.
+
     Returns
     -------
     str
-        locale aware formatted number.
+        Locale-aware formatted number.
     """
     return format_decimal(val, locale=get_babel_regional_format(override_locale))
 

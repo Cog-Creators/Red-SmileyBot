@@ -2,7 +2,6 @@ import pytest
 from redbot.pytest.economy import *
 
 
-@pytest.mark.asyncio
 async def test_bank_register(bank, ctx):
     default_bal = await bank.get_default_balance(ctx.guild)
     assert default_bal == (await bank.get_account(ctx.author)).balance
@@ -15,7 +14,6 @@ async def has_account(member, bank):
     await bank.set_balance(member, balance)
 
 
-@pytest.mark.asyncio
 async def test_bank_transfer(bank, member_factory):
     mbr1 = member_factory.get()
     mbr2 = member_factory.get()
@@ -28,7 +26,6 @@ async def test_bank_transfer(bank, member_factory):
     assert bal2 + 50 == newbal2
 
 
-@pytest.mark.asyncio
 async def test_bank_set(bank, member_factory):
     mbr = member_factory.get()
     await bank.set_balance(mbr, 250)
@@ -36,7 +33,6 @@ async def test_bank_set(bank, member_factory):
     assert acc.balance == 250
 
 
-@pytest.mark.asyncio
 async def test_bank_can_spend(bank, member_factory):
     mbr = member_factory.get()
     canspend = await bank.can_spend(mbr, 50)
@@ -47,7 +43,6 @@ async def test_bank_can_spend(bank, member_factory):
     assert canspendnow
 
 
-@pytest.mark.asyncio
 async def test_set_bank_name(bank, guild_factory):
     guild = guild_factory.get()
     await bank.set_bank_name("Test Bank", guild)
@@ -55,7 +50,6 @@ async def test_set_bank_name(bank, guild_factory):
     assert name == "Test Bank"
 
 
-@pytest.mark.asyncio
 async def test_set_currency_name(bank, guild_factory):
     guild = guild_factory.get()
     await bank.set_currency_name("Coins", guild)
@@ -63,7 +57,6 @@ async def test_set_currency_name(bank, guild_factory):
     assert name == "Coins"
 
 
-@pytest.mark.asyncio
 async def test_set_default_balance(bank, guild_factory):
     guild = guild_factory.get()
     await bank.set_default_balance(500, guild)
@@ -71,7 +64,6 @@ async def test_set_default_balance(bank, guild_factory):
     assert default_bal == 500
 
 
-@pytest.mark.asyncio
 async def test_nonint_transaction_amount(bank, member_factory):
     mbr1 = member_factory.get()
     mbr2 = member_factory.get()

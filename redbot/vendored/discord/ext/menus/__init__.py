@@ -30,11 +30,15 @@ import discord
 import itertools
 import inspect
 import bisect
+import logging
 import re
 from collections import OrderedDict, namedtuple
 
 # Needed for the setup.py script
 __version__ = '1.0.0-a'
+
+# consistency with the `discord` namespaced logging
+log = logging.getLogger(__name__)
 
 class MenuError(Exception):
     pass
@@ -99,7 +103,7 @@ class First(Position):
     def __init__(self, number=0):
         super().__init__(number, bucket=0)
 
-_custom_emoji = re.compile(r'<?(?P<animated>a)?:?(?P<name>[A-Za-z0-9\_]+):(?P<id>[0-9]{13,21})>?')
+_custom_emoji = re.compile(r'<?(?P<animated>a)?:?(?P<name>[A-Za-z0-9\_]+):(?P<id>[0-9]{13,20})>?')
 
 def _cast_emoji(obj, *, _custom_emoji=_custom_emoji):
     if isinstance(obj, discord.PartialEmoji):
@@ -510,7 +514,14 @@ class Menu(metaclass=_MenuMeta):
         return len(self.buttons)
 
     def _verify_permissions(self, ctx, channel, permissions):
-        if not permissions.send_messages:
+        is_thread = isinstance(channel, discord.Thread)
+        if is_thread:
+            if (
+                not permissions.send_messages_in_threads
+                or (channel.locked and not permissions.manage_threads)
+            ):
+                raise CannotSendMessages()
+        elif not permissions.send_messages:
             raise CannotSendMessages()
 
         if self.check_embeds and not permissions.embed_links:
@@ -518,7 +529,7 @@ class Menu(metaclass=_MenuMeta):
 
         self._can_remove_reactions = permissions.manage_messages
         if self.should_add_reactions():
-            if not permissions.add_reactions:
+            if not permissions.add_reactions or (is_thread and channel.archived):
                 raise CannotAddReactions()
             if not permissions.read_message_history:
                 raise CannotReadMessageHistory()
@@ -549,13 +560,12 @@ class Menu(metaclass=_MenuMeta):
     async def _internal_loop(self):
         try:
             self.__timed_out = False
-            loop = self.bot.loop
             # Ensure the name exists for the cancellation handling
             tasks = []
             while self._running:
                 tasks = [
-                    asyncio.ensure_future(self.bot.wait_for('raw_reaction_add', check=self.reaction_check)),
-                    asyncio.ensure_future(self.bot.wait_for('raw_reaction_remove', check=self.reaction_check))
+                    asyncio.create_task(self.bot.wait_for('raw_reaction_add', check=self.reaction_check)),
+                    asyncio.create_task(self.bot.wait_for('raw_reaction_remove', check=self.reaction_check))
                 ]
                 done, pending = await asyncio.wait(tasks, timeout=self.timeout, return_when=asyncio.FIRST_COMPLETED)
                 for task in pending:
@@ -566,7 +576,7 @@ class Menu(metaclass=_MenuMeta):
 
                 # Exception will propagate if e.g. cancelled or timed out
                 payload = done.pop().result()
-                loop.create_task(self.update(payload))
+                asyncio.create_task(self.update(payload))
 
                 # NOTE: Removing the reaction ourselves after it's been done when
                 # mixed with the checks above is incredibly racy.
@@ -638,10 +648,25 @@ class Menu(metaclass=_MenuMeta):
                         await button(self, payload)
             else:
                 await button(self, payload)
-        except Exception:
-            # TODO: logging?
-            import traceback
-            traceback.print_exc()
+        except Exception as exc:
+            await self.on_menu_button_error(exc)
+
+    async def on_menu_button_error(self, exc):
+        """|coro|
+
+        Handles reporting of errors while updating the menu from events.
+        The default behaviour is to log the exception.
+
+        This may be overridden by subclasses.
+
+        Parameters
+        ----------
+        exc: :class:`Exception`
+            The exception which was raised during a menu update.
+        """
+        # some users may wish to take other actions during or beyond logging
+        # which would require awaiting, such as stopping an erroring menu.
+        log.exception("Unhandled exception during menu update.", exc_info=exc)
 
     async def start(self, ctx, *, channel=None, wait=False):
         """|coro|
@@ -677,8 +702,7 @@ class Menu(metaclass=_MenuMeta):
         self.ctx = ctx
         self._author_id = ctx.author.id
         channel = channel or ctx.channel
-        is_guild = isinstance(channel, discord.abc.GuildChannel)
-        me = ctx.guild.me if is_guild else ctx.bot.user
+        me = channel.guild.me if getattr(channel, 'guild', None) else ctx.bot.user
         permissions = channel.permissions_for(me)
         self.__me = discord.Object(id=me.id)
         self._verify_permissions(ctx, channel, permissions)
@@ -694,12 +718,12 @@ class Menu(metaclass=_MenuMeta):
             self.__tasks.clear()
 
             self._running = True
-            self.__tasks.append(bot.loop.create_task(self._internal_loop()))
+            self.__tasks.append(asyncio.create_task(self._internal_loop()))
 
             async def add_reactions_task():
                 for emoji in self.buttons:
                     await msg.add_reaction(emoji)
-            self.__tasks.append(bot.loop.create_task(add_reactions_task()))
+            self.__tasks.append(asyncio.create_task(add_reactions_task()))
 
             if wait:
                 await self._event.wait()
@@ -960,7 +984,7 @@ class MenuPages(Menu):
             pass
 
     async def show_current_page(self):
-        if self._source.paginating:
+        if self._source.is_paginating():
             await self.show_page(self.current_page)
 
     def _skip_double_triangle_buttons(self):

@@ -1,6 +1,7 @@
 import logging
 from datetime import timezone
 from collections import defaultdict, deque
+from typing import List, Optional
 
 import discord
 from redbot.core import i18n, modlog, commands
@@ -46,12 +47,12 @@ class Events(MixinMeta):
         mention_spam = await self.config.guild(guild).mention_spam.all()
 
         if mention_spam["strict"]:  # if strict is enabled
-            mentions = message.raw_mentions
+            mentions = len(message.raw_mentions) + len(message.raw_role_mentions)
         else:  # if not enabled
-            mentions = set(message.mentions)
+            mentions = len(set(message.mentions)) + len(set(message.role_mentions))
 
         if mention_spam["ban"]:
-            if len(mentions) >= mention_spam["ban"]:
+            if mentions >= mention_spam["ban"]:
                 try:
                     await guild.ban(author, reason=_("Mention spam (Autoban)"))
                 except discord.HTTPException:
@@ -64,7 +65,7 @@ class Events(MixinMeta):
                     await modlog.create_case(
                         self.bot,
                         guild,
-                        message.created_at.replace(tzinfo=timezone.utc),
+                        message.created_at,
                         "ban",
                         author,
                         guild.me,
@@ -75,7 +76,7 @@ class Events(MixinMeta):
                     return True
 
         if mention_spam["kick"]:
-            if len(mentions) >= mention_spam["kick"]:
+            if mentions >= mention_spam["kick"]:
                 try:
                     await guild.kick(author, reason=_("Mention Spam (Autokick)"))
                 except discord.HTTPException:
@@ -88,7 +89,7 @@ class Events(MixinMeta):
                     await modlog.create_case(
                         self.bot,
                         guild,
-                        message.created_at.replace(tzinfo=timezone.utc),
+                        message.created_at,
                         "kick",
                         author,
                         guild.me,
@@ -99,7 +100,7 @@ class Events(MixinMeta):
                     return True
 
         if mention_spam["warn"]:
-            if len(mentions) >= mention_spam["warn"]:
+            if mentions >= mention_spam["warn"]:
                 try:
                     await author.send(_("Please do not mass mention people!"))
                 except (discord.HTTPException, discord.Forbidden):
@@ -120,7 +121,7 @@ class Events(MixinMeta):
                 await modlog.create_case(
                     self.bot,
                     guild,
-                    message.created_at.replace(tzinfo=timezone.utc),
+                    message.created_at,
                     "warning",
                     author,
                     guild.me,
@@ -158,6 +159,17 @@ class Events(MixinMeta):
         if not deleted:
             await self.check_mention_spam(message)
 
+    @staticmethod
+    def _update_past_names(name: str, name_list: List[Optional[str]]) -> None:
+        while None in name_list:  # clean out null entries from a bug
+            name_list.remove(None)
+        if name in name_list:
+            # Ensure order is maintained without duplicates occurring
+            name_list.remove(name)
+        name_list.append(name)
+        while len(name_list) > 20:
+            name_list.pop(0)
+
     @commands.Cog.listener()
     async def on_user_update(self, before: discord.User, after: discord.User):
         if before.name != after.name:
@@ -165,14 +177,13 @@ class Events(MixinMeta):
             if not track_all_names:
                 return
             async with self.config.user(before).past_names() as name_list:
-                while None in name_list:  # clean out null entries from a bug
-                    name_list.remove(None)
-                if before.name in name_list:
-                    # Ensure order is maintained without duplicates occurring
-                    name_list.remove(before.name)
-                name_list.append(before.name)
-                while len(name_list) > 20:
-                    name_list.pop(0)
+                self._update_past_names(before.name, name_list)
+        if before.display_name != after.display_name:
+            track_all_names = await self.config.track_all_names()
+            if not track_all_names:
+                return
+            async with self.config.user(before).past_display_names() as name_list:
+                self._update_past_names(before.display_name, name_list)
 
     @commands.Cog.listener()
     async def on_member_update(self, before: discord.Member, after: discord.Member):
@@ -185,10 +196,4 @@ class Events(MixinMeta):
             if (not track_all_names) or (not track_nicknames):
                 return
             async with self.config.member(before).past_nicks() as nick_list:
-                while None in nick_list:  # clean out null entries from a bug
-                    nick_list.remove(None)
-                if before.nick in nick_list:
-                    nick_list.remove(before.nick)
-                nick_list.append(before.nick)
-                while len(nick_list) > 20:
-                    nick_list.pop(0)
+                self._update_past_names(before.nick, nick_list)

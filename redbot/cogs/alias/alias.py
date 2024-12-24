@@ -3,13 +3,13 @@ import logging
 from copy import copy
 from re import search
 from string import Formatter
-from typing import Dict, List, Literal
+from typing import List, Literal
 
 import discord
-from redbot.core import Config, commands, checks
+from redbot.core import Config, commands
 from redbot.core.i18n import Translator, cog_i18n
 from redbot.core.utils.chat_formatting import box, pagify
-from redbot.core.utils.menus import menu, DEFAULT_CONTROLS
+from redbot.core.utils.menus import menu
 
 from redbot.core.bot import Red
 from .alias_entry import AliasEntry, AliasCache, ArgParseError
@@ -50,7 +50,12 @@ class Alias(commands.Cog):
         self.config.register_global(entries=[], handled_string_creator=False)
         self.config.register_guild(entries=[])
         self._aliases: AliasCache = AliasCache(config=self.config, cache_enabled=True)
-        self._ready_event = asyncio.Event()
+
+    async def cog_load(self) -> None:
+        await self._maybe_handle_string_keys()
+
+        if not self._aliases._loaded:
+            await self._aliases.load_aliases()
 
     async def red_delete_data_for_user(
         self,
@@ -61,11 +66,7 @@ class Alias(commands.Cog):
         if requester != "discord_deleted_user":
             return
 
-        await self._ready_event.wait()
         await self._aliases.anonymize_aliases(user_id)
-
-    async def cog_before_invoke(self, ctx):
-        await self._ready_event.wait()
 
     async def _maybe_handle_string_keys(self):
         # This isn't a normal schema migration because it's being added
@@ -94,12 +95,10 @@ class Alias(commands.Cog):
         all_guild_aliases = await self.config.all_guilds()
 
         for guild_id, guild_data in all_guild_aliases.items():
-
             to_set = []
             modified = False
 
             for a in guild_data.get("entries", []):
-
                 for keyname in ("creator", "guild"):
                     if isinstance((val := a.get(keyname)), str):
                         try:
@@ -120,28 +119,6 @@ class Alias(commands.Cog):
             # hit.
 
         await self.config.handled_string_creator.set(True)
-
-    def sync_init(self):
-        t = asyncio.create_task(self._initialize())
-
-        def done_callback(fut: asyncio.Future):
-            try:
-                t.result()
-            except Exception as exc:
-                log.exception("Failed to load alias cog", exc_info=exc)
-                # Maybe schedule extension unloading with message to owner in future
-
-        t.add_done_callback(done_callback)
-
-    async def _initialize(self):
-        """ Should only ever be a task """
-
-        await self._maybe_handle_string_keys()
-
-        if not self._aliases._loaded:
-            await self._aliases.load_aliases()
-
-        self._ready_event.set()
 
     def is_command(self, alias_name: str) -> bool:
         """
@@ -173,6 +150,15 @@ class Alias(commands.Cog):
         raise ValueError("No prefix found.")
 
     async def call_alias(self, message: discord.Message, prefix: str, alias: AliasEntry):
+        new_message = self.translate_alias_message(message, prefix, alias)
+        await self.bot.process_commands(new_message)
+
+    def translate_alias_message(self, message: discord.Message, prefix: str, alias: AliasEntry):
+        """
+        Translates a discord message using an alias
+        for a command to a discord message using the
+        alias' base command.
+        """
         new_message = copy(message)
         try:
             args = alias.get_extra_args_from_alias(message, prefix)
@@ -186,7 +172,8 @@ class Alias(commands.Cog):
         new_message.content = "{}{} {}".format(
             prefix, command, " ".join(args[trackform.max + 1 :])
         ).strip()
-        await self.bot.process_commands(new_message)
+
+        return new_message
 
     async def paginate_alias_list(
         self, ctx: commands.Context, alias_list: List[AliasEntry]
@@ -208,7 +195,7 @@ class Alias(commands.Cog):
         if len(alias_list) == 1:
             await ctx.send(alias_list[0])
             return
-        await menu(ctx, alias_list, DEFAULT_CONTROLS)
+        await menu(ctx, alias_list)
 
     @commands.group()
     async def alias(self, ctx: commands.Context):
@@ -220,7 +207,7 @@ class Alias(commands.Cog):
         """Manage global aliases."""
         pass
 
-    @checks.mod_or_permissions(manage_guild=True)
+    @commands.mod_or_permissions(manage_guild=True)
     @alias.command(name="add")
     @commands.guild_only()
     async def _add_alias(self, ctx: commands.Context, alias_name: str, *, command):
@@ -280,7 +267,7 @@ class Alias(commands.Cog):
             _("A new alias with the trigger `{name}` has been created.").format(name=alias_name)
         )
 
-    @checks.is_owner()
+    @commands.is_owner()
     @global_.command(name="add")
     async def _add_global_alias(self, ctx: commands.Context, alias_name: str, *, command):
         """Add a global alias for a command."""
@@ -338,7 +325,7 @@ class Alias(commands.Cog):
             )
         )
 
-    @checks.mod_or_permissions(manage_guild=True)
+    @commands.mod_or_permissions(manage_guild=True)
     @alias.command(name="edit")
     @commands.guild_only()
     async def _edit_alias(self, ctx: commands.Context, alias_name: str, *, command):
@@ -362,7 +349,7 @@ class Alias(commands.Cog):
         try:
             if await self._aliases.edit_alias(ctx, alias_name, command):
                 await ctx.send(
-                    _("The alias with the trigger `{name}` has been edited sucessfully.").format(
+                    _("The alias with the trigger `{name}` has been edited successfully.").format(
                         name=alias_name
                     )
                 )
@@ -374,7 +361,7 @@ class Alias(commands.Cog):
         except ArgParseError as e:
             return await ctx.send(" ".join(e.args))
 
-    @checks.is_owner()
+    @commands.is_owner()
     @global_.command(name="edit")
     async def _edit_global_alias(self, ctx: commands.Context, alias_name: str, *, command):
         """Edit an existing global alias."""
@@ -395,7 +382,7 @@ class Alias(commands.Cog):
         try:
             if await self._aliases.edit_alias(ctx, alias_name, command, global_=True):
                 await ctx.send(
-                    _("The alias with the trigger `{name}` has been edited sucessfully.").format(
+                    _("The alias with the trigger `{name}` has been edited successfully.").format(
                         name=alias_name
                     )
                 )
@@ -430,7 +417,7 @@ class Alias(commands.Cog):
         else:
             await ctx.send(_("There is no alias with the name `{name}`").format(name=alias_name))
 
-    @checks.mod_or_permissions(manage_guild=True)
+    @commands.mod_or_permissions(manage_guild=True)
     @alias.command(name="delete", aliases=["del", "remove"])
     @commands.guild_only()
     async def _del_alias(self, ctx: commands.Context, alias_name: str):
@@ -446,7 +433,7 @@ class Alias(commands.Cog):
         else:
             await ctx.send(_("Alias with name `{name}` was not found.").format(name=alias_name))
 
-    @checks.is_owner()
+    @commands.is_owner()
     @global_.command(name="delete", aliases=["del", "remove"])
     async def _del_global_alias(self, ctx: commands.Context, alias_name: str):
         """Delete an existing global alias."""
@@ -463,7 +450,7 @@ class Alias(commands.Cog):
 
     @alias.command(name="list")
     @commands.guild_only()
-    @checks.bot_has_permissions(add_reactions=True)
+    @commands.bot_can_react()
     async def _list_alias(self, ctx: commands.Context):
         """List the available aliases on this server."""
         guild_aliases = await self._aliases.get_guild_aliases(ctx.guild)
@@ -472,7 +459,7 @@ class Alias(commands.Cog):
         await self.paginate_alias_list(ctx, guild_aliases)
 
     @global_.command(name="list")
-    @checks.bot_has_permissions(add_reactions=True)
+    @commands.bot_can_react()
     async def _list_global_alias(self, ctx: commands.Context):
         """List the available global aliases on this bot."""
         global_aliases = await self._aliases.get_global_aliases()
@@ -482,9 +469,6 @@ class Alias(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message_without_command(self, message: discord.Message):
-
-        await self._ready_event.wait()
-
         if message.guild is not None:
             if await self.bot.cog_disabled_in_guild(self, message.guild):
                 return

@@ -1,0 +1,90 @@
+aiohttp==3.9.5
+    # via
+    #   -r base.in
+    #   aiohttp-json-rpc
+    #   discord-py
+    #   red-lavalink
+aiohttp-json-rpc==0.13.3
+    # via -r base.in
+aiosignal==1.3.1
+    # via aiohttp
+apsw==3.46.1.0
+    # via -r base.in
+attrs==24.2.0
+    # via aiohttp
+babel==2.16.0
+    # via -r base.in
+brotli==1.1.0
+    # via -r base.in
+click==8.1.7
+    # via -r base.in
+discord-py==2.4.0
+    # via
+    #   -r base.in
+    #   red-lavalink
+frozenlist==1.4.1
+    # via
+    #   aiohttp
+    #   aiosignal
+idna==3.8
+    # via yarl
+markdown==3.7
+    # via -r base.in
+markdown-it-py==3.0.0
+    # via rich
+mdurl==0.1.2
+    # via markdown-it-py
+multidict==6.0.5
+    # via
+    #   aiohttp
+    #   yarl
+orjson==3.10.7
+    # via -r base.in
+packaging==24.1
+    # via -r base.in
+platformdirs==4.2.2
+    # via -r base.in
+psutil==6.0.0
+    # via -r base.in
+pygments==2.18.0
+    # via rich
+python-dateutil==2.9.0.post0
+    # via -r base.in
+pyyaml==6.0.2
+    # via -r base.in
+rapidfuzz==3.9.6
+    # via -r base.in
+red-commons==1.0.0
+    # via
+    #   -r base.in
+    #   red-lavalink
+red-lavalink==0.11.0
+    # via -r base.in
+rich==13.8.0
+    # via -r base.in
+schema==0.7.7
+    # via -r base.in
+six==1.16.0
+    # via python-dateutil
+typing-extensions==4.12.2
+    # via
+    #   -r base.in
+    #   rich
+yarl==1.9.4
+    # via
+    #   -r base.in
+    #   aiohttp
+async-timeout==4.0.3; python_version != "3.11"
+    # via aiohttp
+colorama==0.4.6; sys_platform == "win32"
+    # via click
+distro==1.9.0; sys_platform == "linux" and sys_platform == "linux"
+    # via -r base.in
+importlib-metadata==8.4.0; python_version != "3.10" and python_version != "3.11"
+    # via markdown
+pytz==2024.1; python_version == "3.8"
+    # via babel
+uvloop==0.20.0; (sys_platform != "win32" and platform_python_implementation == "CPython") and sys_platform != "win32"
+    # via -r base.in
+zipp==3.20.1; python_version != "3.10" and python_version != "3.11"
+    # via importlib-metadata

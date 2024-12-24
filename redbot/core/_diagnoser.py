@@ -10,6 +10,7 @@ from typing import TYPE_CHECKING, Awaitable, Callable, Iterable, List, Optional,
 import discord
 from redbot.core import commands
 from redbot.core.i18n import Translator
+from redbot.core.utils import can_user_send_messages_in
 from redbot.core.utils.chat_formatting import (
     bold,
     escape,
@@ -37,7 +38,9 @@ class IssueDiagnoserBase:
         self,
         bot: Red,
         original_ctx: commands.Context,
-        channel: discord.TextChannel,
+        channel: Union[
+            discord.TextChannel, discord.VoiceChannel, discord.StageChannel, discord.Thread
+        ],
         author: discord.Member,
         command: commands.Command,
     ) -> None:
@@ -59,6 +62,7 @@ class IssueDiagnoserBase:
         self.message.channel = self.channel
         self.message.content = self._original_ctx.prefix + self.command.qualified_name
         # clear the cached properties
+        # DEP-WARN
         for attr in self.message._CACHED_SLOTS:  # type: ignore[attr-defined]
             try:
                 delattr(self.message, attr)
@@ -117,46 +121,78 @@ class DetailedGlobalCallOnceChecksMixin(IssueDiagnoserBase):
 
     async def _check_can_bot_send_messages(self) -> CheckResult:
         label = _("Check if the bot can send messages in the given channel")
-        if self.channel.permissions_for(self.guild.me).send_messages:
-            return CheckResult(True, label)
-        return CheckResult(
-            False,
-            label,
-            _("Bot doesn't have permission to send messages in the given channel."),
-            _(
-                "To fix this issue, ensure that the permissions setup allows the bot"
-                " to send messages per Discord's role hierarchy:\n"
-                "https://support.discord.com/hc/en-us/articles/206141927"
-            ),
-        )
+        # This is checked by send messages check but this allows us to
+        # give more detailed information.
+        if not self.guild.me.guild_permissions.administrator and self.guild.me.is_timed_out():
+            return CheckResult(
+                False,
+                label,
+                _("Bot is timed out in the given channel."),
+                _("To fix this issue, remove timeout from the bot."),
+            )
+        if not can_user_send_messages_in(self.guild.me, self.channel):
+            return CheckResult(
+                False,
+                label,
+                _("Bot doesn't have permission to send messages in the given channel."),
+                _(
+                    "To fix this issue, ensure that the permissions setup allows the bot"
+                    " to send messages per Discord's role hierarchy:\n"
+                    "https://support.discord.com/hc/en-us/articles/206141927"
+                ),
+            )
+        return CheckResult(True, label)
 
     # While the following 2 checks could show even more precise error message,
     # it would require a usage of private attribute rather than the public API
-    # which increases maintanance burden for not that big of benefit.
+    # which increases maintenance burden for not that big of benefit.
     async def _check_ignored_issues(self) -> CheckResult:
         label = _("Check if the channel and the server aren't set to be ignored")
         if await self.bot.ignored_channel_or_guild(self.message):
             return CheckResult(True, label)
 
         if self.channel.category is None:
-            resolution = _(
-                "To fix this issue, check the list returned by the {command} command"
-                " and ensure that the {channel} channel and the server aren't a part of that list."
-            ).format(
-                command=self._format_command_name("ignore list"),
-                channel=self.channel.mention,
-            )
+            if isinstance(self.channel, discord.Thread):
+                resolution = _(
+                    "To fix this issue, check the list returned by the {command} command"
+                    " and ensure that the {thread} thread, its parent channel,"
+                    " and the server aren't a part of that list."
+                ).format(
+                    command=self._format_command_name("ignore list"),
+                    thread=self.channel.mention,
+                )
+            else:
+                resolution = _(
+                    "To fix this issue, check the list returned by the {command} command"
+                    " and ensure that the {channel} channel"
+                    " and the server aren't a part of that list."
+                ).format(
+                    command=self._format_command_name("ignore list"),
+                    channel=self.channel.mention,
+                )
         else:
-            resolution = _(
-                "To fix this issue, check the list returned by the {command} command"
-                " and ensure that the {channel} channel,"
-                " the channel category it belongs to ({channel_category}),"
-                " and the server aren't a part of that list."
-            ).format(
-                command=self._format_command_name("ignore list"),
-                channel=self.channel.mention,
-                channel_category=self.channel.category.mention,
-            )
+            if isinstance(self.channel, discord.Thread):
+                resolution = _(
+                    "To fix this issue, check the list returned by the {command} command"
+                    " and ensure that the {thread} thread, its parent channel,"
+                    " the channel category it belongs to ({channel_category}),"
+                    " and the server aren't a part of that list."
+                ).format(
+                    command=self._format_command_name("ignore list"),
+                    thread=self.channel.mention,
+                    channel_category=self.channel.category.mention,
+                )
+            else:
+                resolution = _(
+                    "To fix this issue, check the list returned by the {command} command"
+                    " and ensure that the {channel} channel,"
+                    " the channel category it belongs to ({channel_category}),"
+                    " and the server aren't a part of that list."
+                ).format(
+                    command=self._format_command_name("ignore list"),
+                    channel=self.channel.mention,
+                    channel_category=self.channel.category.mention,
+                )
 
         return CheckResult(
             False,
@@ -449,9 +485,7 @@ class DetailedCommandChecksMixin(IssueDiagnoserBase):
         return await self._check_requires(_("Permissions verification"), self.ctx.command)
 
     async def _check_requires_cog(self) -> CheckResult:
-        label = _("Permissions verification for {cog} cog").format(
-            cog=inline(self.ctx.cog.qualified_name)
-        )
+        label = _("Cog permissions verification")
         if self.ctx.cog is None:
             return CheckResult(True, label)
         return await self._check_requires(label, self.ctx.cog)
@@ -782,7 +816,7 @@ class RootDiagnosersMixin(
     async def _check_global_call_once_checks_issues(self) -> CheckResult:
         label = _("Global 'call once' checks")
         # To avoid running core's global checks twice, we just run them all regularly
-        # and if it turns out that invokation would end here, we go back and check each of
+        # and if it turns out that invocation would end here, we go back and check each of
         # core's global check individually to give more precise error message.
         try:
             can_run = await self.bot.can_run(self.ctx, call_once=True)
@@ -903,7 +937,7 @@ class IssueDiagnoser(RootDiagnosersMixin, IssueDiagnoserBase):
                 if subresult.success
                 else _("Failed") + " \N{NO ENTRY}\N{VARIATION SELECTOR-16}"
             )
-            lines.append(f"{prefix}{idx}. {subresult.label}: {status}")
+            lines.append(f"\u200b{prefix}{idx}. {subresult.label}: {status}")
             lines.extend(
                 self._get_message_from_check_result(subresult, prefix=f"  {prefix}{idx}.")
             )

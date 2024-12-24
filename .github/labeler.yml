@@ -1,181 +1,330 @@
-"Category: Admin":
+"Category: CI":
+  - .github/workflows/**/*
+
+
+"Category: Cogs - Admin":
   # Source
   - redbot/cogs/admin/*
   # Docs
   - docs/cog_guides/admin.rst
-"Category: Alias":
+  - docs/.resources/admin/**/*
+"Category: Cogs - Alias":
   # Source
   - redbot/cogs/alias/*
   # Docs
   - docs/cog_guides/alias.rst
-"Category: Audio Cog":
+  # Tests
+  - redbot/pytest/alias.py
+  - tests/cogs/test_alias.py
+  - docs/.resources/alias/**/*
+"Category: Cogs - Audio":
+  # Source
   - any:
       - redbot/cogs/audio/**/*
-    all:
       - "!redbot/cogs/audio/**/locales/*"
-"Category: Bank API":
-  # Source
-  - redbot/core/bank.py
   # Docs
-  - docs/framework_bank.rst
-"Category: Bot Core":
-  # Source
-  - redbot/*
-  - redbot/core/__init__.py
-  - redbot/core/_diagnoser.py
-  - redbot/core/_sharedlibdeprecation.py
-  - redbot/core/bot.py
-  - redbot/core/checks.py
-  - redbot/core/cli.py
-  - redbot/core/cog_manager.py
-  - redbot/core/core_commands.py
-  - redbot/core/data_manager.py
-  - redbot/core/errors.py
-  - redbot/core/events.py
-  - redbot/core/global_checks.py
-  - redbot/core/settings_caches.py
-  # Docs
-  - docs/framework_apikeys.rst
-  - docs/framework_bot.rst
-  - docs/framework_cogmanager.rst
-  - docs/framework_datamanager.rst
-  - docs/framework_events.rst
-  - docs/cog_guides/cog_manager_ui.rst
-  - docs/cog_guides/core.rst
-"Category: CI":
-  - .github/workflows/*
-"Category: Cleanup Cog":
+  - docs/cog_guides/audio.rst
+  # Tests
+  - tests/cogs/audio/**/*
+"Category: Cogs - Bank": []  # historical label for a removed cog
+"Category: Cogs - Cleanup":
   # Source
   - redbot/cogs/cleanup/*
   # Docs
   - docs/cog_guides/cleanup.rst
-"Category: Command Module":
-  # Source
-  - any:
-      # Source
-      - redbot/core/commands/*
-      # Docs
-      - docs/framework_checks.rst
-      - docs/framework_commands.rst
-    all:
-      - "!redbot/core/commands/help.py"
-"Category: Config":
-  # Source
-  - redbot/core/drivers/*
-  - redbot/core/config.py
-  # Docs
-  - docs/framework_config.rst
-"Category: CustomCom":
+"Category: Cogs - CustomCommands":
   # Source
   - redbot/cogs/customcom/*
   # Docs
   - docs/cog_customcom.rst
   - docs/cog_guides/customcommands.rst
-"Category: Dev Cog":
+"Category: Cogs - Dev":
+  # Source
   - redbot/core/dev_commands.py
-"Category: Docs":
-  - docs/**/*
-"Category: Downloader":
+  # Docs
+  - docs/cog_guides/dev.rst
+  # Tests
+  - tests/core/test_dev_commands.py
+"Category: Cogs - Downloader":
   # Source
   - redbot/cogs/downloader/*
   # Docs
   - docs/cog_guides/downloader.rst
-"Category: Economy Cog":
+  # Tests
+  - redbot/pytest/downloader.py
+  - redbot/pytest/downloader_testrepo.*
+  - tests/cogs/downloader/**/*
+"Category: Cogs - Economy":
   # Source
   - redbot/cogs/economy/*
   # Docs
   - docs/cog_guides/economy.rst
-"Category: Filter":
+  # Tests
+  - redbot/pytest/economy.py
+  - tests/cogs/test_economy.py
+"Category: Cogs - Filter":
   # Source
   - redbot/cogs/filter/*
   # Docs
   - docs/cog_guides/filter.rst
-"Category: General Cog":
+"Category: Cogs - General":
   # Source
   - redbot/cogs/general/*
   # Docs
   - docs/cog_guides/general.rst
-"Category: Help":
+"Category: Cogs - Image":
+  # Source
+  - redbot/cogs/image/*
+  # Docs
+  - docs/cog_guides/image.rst
+"Category: Cogs - Mod":
+  # Source
+  - redbot/cogs/mod/*
+  # Docs
+  - docs/cog_guides/mod.rst
+  # Tests
+  - redbot/pytest/mod.py
+  - tests/cogs/test_mod.py
+"Category: Cogs - Modlog":
+  # Source
+  - redbot/cogs/modlog/*
+  # Docs
+  - docs/cog_guides/modlog.rst
+"Category: Cogs - Mutes":
+  # Source
+  - redbot/cogs/mutes/*
+  # Docs
+  - docs/cog_guides/mutes.rst
+"Category: Cogs - Permissions":
+  # Source
+  - redbot/cogs/permissions/*
+  # Docs
+  - docs/cog_guides/permissions.rst
+  - docs/cog_permissions.rst
+  # Tests
+  - redbot/pytest/permissions.py
+  - tests/cogs/test_permissions.py
+"Category: Cogs - Reports":
+  # Source
+  - redbot/cogs/reports/*
+  # Docs
+  - docs/cog_guides/reports.rst
+"Category: Cogs - Streams":
+  # Source
+  - redbot/cogs/streams/*
+  # Docs
+  - docs/cog_guides/streams.rst
+"Category: Cogs - Trivia":
+  # Source
+  - redbot/cogs/trivia/*
+  # Docs
+  - docs/cog_guides/trivia.rst
+  - docs/guide_trivia_list_creation.rst
+  - docs/.resources/trivia/**/*
+  # Tests
+  - tests/cogs/test_trivia.py
+"Category: Cogs - Trivia - Lists":
+  - redbot/cogs/trivia/data/lists/*
+"Category: Cogs - Warnings":
+  # Source
+  - redbot/cogs/warnings/*
+  # Docs
+  - docs/cog_guides/warnings.rst
+
+
+"Category: Core - API - Audio": []  # potential future feature
+"Category: Core - API - Bank":
+  # Source
+  - redbot/core/bank.py
+  # Docs
+  - docs/framework_bank.rst
+"Category: Core - API - App Commands Package":
+  # Source
+  - redbot/core/app_commands/*
+  # Docs
+  - docs/framework_app_commands.rst
+  # Tests
+  - tests/core/test_app_commands.py
+"Category: Core - API - Commands Package":
+  # Source
+  - any:
+      - redbot/core/commands/*
+      - "!redbot/core/commands/help.py"
+  # this isn't in commands package but it just re-exports things from it
+  - redbot/core/checks.py
+  # Docs
+  - docs/framework_checks.rst
+  - docs/framework_commands.rst
+  # Tests
+  - tests/core/test_commands.py
+"Category: Core - API - Config":
+  # Source
+  - any:
+      - redbot/core/_drivers/**/*
+      - "!redbot/core/_drivers/**/locales/*"
+  - redbot/core/config.py
+  # Docs
+  - docs/framework_config.rst
+  # Tests
+  - tests/core/test_config.py
+"Category: Core - API - Other":
+  # Source
+  - redbot/__init__.py
+  - redbot/core/__init__.py
+  - redbot/core/data_manager.py
+  - redbot/core/errors.py
+  - redbot/core/tree.py
+  # Docs
+  - docs/framework_datamanager.rst
+  - docs/framework_tree.rst
+  # Tests
+  - redbot/pytest/data_manager.py
+  - tests/core/test_cog_manager.py
+  - tests/core/test_data_manager.py
+  - tests/core/test_version.py
+"Category: Core - API - Utils Package":
+  # Source
+  - any:
+    - redbot/core/utils/*
+    - "!redbot/core/utils/_internal_utils.py"
+  # Docs
+  - docs/framework_utils.rst
+  # Tests
+  - tests/core/test_utils.py
+"Category: Core - Bot Class":
+  # Source
+  - redbot/core/bot.py
+  # Docs
+  - docs/framework_apikeys.rst
+  - docs/framework_bot.rst
+"Category: Core - Bot Commands":
+  # Source
+  - redbot/core/core_commands.py
+  - redbot/core/_diagnoser.py
+  # Docs
+  - docs/.resources/cog_manager_ui/**/*
+  - docs/cog_guides/cog_manager_ui.rst
+  - docs/cog_guides/core.rst
+"Category: Core - Command-line Interfaces":
+  - redbot/__main__.py
+  - redbot/logging.py
+  - redbot/core/_cli.py
+  - redbot/core/_debuginfo.py
+  - redbot/setup.py
+"Category: Core - Help":
   - redbot/core/commands/help.py
-"Category: i18n":
+"Category: Core - i18n":
   # Source
   - redbot/core/i18n.py
   # Locale files
   - redbot/**/locales/*
   # Docs
   - docs/framework_i18n.rst
-"Category: Image":
-  # Source
-  - redbot/cogs/image/*
-  # Docs
-  - docs/cog_guides/image.rst
-"Category: Meta":
-  - ./*
-  - .github/*
-  - .github/ISSUE_TEMPLATE/*
-  - .github/PULL_REQUEST_TEMPLATE/*
-  - schema/*
-  - tools/*
-"Category: Mod Cog":
-  # Source
-  - redbot/cogs/mod/*
-  # Docs
-  - docs/cog_guides/mod.rst
-"Category: Modlog API":
+"Category: Core - Modlog":
   # Source
   - redbot/core/generic_casetypes.py
   - redbot/core/modlog.py
   # Docs
   - docs/framework_modlog.rst
-"Category: Modlog Cog":
+"Category: Core - Other Internals":
   # Source
-  - redbot/cogs/modlog/*
-  # Docs
-  - docs/cog_guides/modlog.rst
-"Category: Mutes Cog":
+  - redbot/core/_cog_manager.py
+  - redbot/core/_events.py
+  - redbot/core/_global_checks.py
+  - redbot/core/_settings_caches.py
+  - redbot/core/_sharedlibdeprecation.py
+  - redbot/core/utils/_internal_utils.py
+  # Tests
+  - redbot/pytest/__init__.py
+  - redbot/pytest/cog_manager.py
+  - redbot/pytest/core.py
+  - tests/core/test_installation.py
+"Category: Core - RPC/ZMQ":
   # Source
-  - redbot/cogs/mutes/*
-  # Docs
-  - docs/cog_guides/mutes.rst
-"Category: Permissions":
-  # Source
-  - redbot/cogs/permissions/*
-  # Docs
-  - docs/cog_guides/permissions.rst
-  - docs/cog_permissions.rst
-"Category: Reports Cog":
-  # Source
-  - redbot/cogs/reports/*
-  # Docs
-  - docs/cog_guides/reports.rst
-"Category: RPC/ZMQ API":
-  # Source
-  - redbot/core/rpc.py
+  - redbot/core/_rpc.py
   # Docs
   - docs/framework_rpc.rst
-"Category: Streams":
-  # Source
-  - redbot/cogs/streams/*
-  # Docs
-  - docs/cog_guides/streams.rst
-"Category: Tests":
-  - redbot/pytest/*
-  - tests/**/*
-"Category: Trivia Cog":
-  # Source
-  - redbot/cogs/trivia/*
-  # Docs
-  - docs/cog_guides/trivia.rst
-  - docs/guide_trivia_list_creation.rst
-"Category: Trivia Lists":
-  - redbot/cogs/trivia/data/lists/*
-"Category: Utility Functions":
-  # Source
-  - redbot/core/utils/*
-  # Docs
-  - docs/framework_utils.rst
-"Category: Warnings":
-  # Source
-  - redbot/cogs/warnings/*
-  # Docs
-  - docs/cog_guides/warnings.rst
+  # Tests
+  - redbot/pytest/rpc.py
+  - tests/core/test_rpc.py
+  - tests/rpc_test.html
+
+
+"Category: Docker": []  # potential future feature
+
+
+"Category: Docs - Changelogs":
+  - CHANGES.rst
+  - docs/changelog.rst
+  - docs/incompatible_changes/**/*
+"Category: Docs - For Developers":
+  - docs/framework_events.rst
+  - docs/guide_cog_creation.rst
+  - docs/guide_cog_creators.rst
+  - docs/guide_migration.rst
+  - docs/guide_publish_cogs.rst
+  - docs/guide_slash_and_interactions.rst
+"Category: Docs - Install Guides":
+  - docs/about_venv.rst
+  - docs/autostart_*.rst
+  - docs/.resources/bot-guide/**/*
+  - docs/bot_application_guide.rst
+  - docs/install_guides/**/*
+  - docs/update_red.rst
+"Category: Docs - Other":
+  - docs/host-list.rst
+  - docs/index.rst
+  - docs/version_guarantees.rst
+  - README.md
+"Category: Docs - User Guides":
+  - docs/getting_started.rst
+  - docs/intents.rst
+  - docs/red_core_data_statement.rst
+  # TODO: move these to `docs/.resources/getting_started` subfolder
+  - docs/.resources/red-console.png
+  - docs/.resources/code-grant.png
+  - docs/.resources/instances-ssh-button.png
+  - docs/.resources/ssh-output.png
+
+
+"Category: Meta":
+  # top-level files
+  - any:
+      - '*'
+      - '!README.md'
+      - '!CHANGES.rst'
+  # .gitattributes files
+  - '**/.gitattributes'
+  # GitHub configuration files, with the exception of CI configuration
+  - .github/*
+  - .github/ISSUE_TEMPLATE/*
+  - .github/PULL_REQUEST_TEMPLATE/*
+  # documentation configuration, extensions, scripts, templates, etc.
+  - docs/conf.py
+  - docs/_ext/**/*
+  - docs/_html/**/*
+  - docs/make.bat
+  - docs/Makefile
+  - docs/prolog.txt
+  - docs/_templates/**/*
+  # empty file
+  - redbot/cogs/__init__.py
+  # py.typed file
+  - redbot/py.typed
+  # requirements files
+  - requirements/*
+  # schema files
+  - schema/*
+  # tests configuration, global fixtures, etc.
+  - tests/conftest.py
+  - tests/__init__.py
+  - tests/*/__init__.py
+  # repository tools
+  - tools/*
+
+
+# "Category: RPC/ZMQ methods": []  # can't be matched by file patterns
+
+
+"Category: Vendored Packages":
+  - redbot/vendored/**/*

@@ -1,16 +1,27 @@
 name: Auto Labeler - PRs
 on:
   pull_request_target:
+    types:
+      - opened
+      - synchronize
+      - reopened
+      - labeled
+      - unlabeled
 
 permissions:
   pull-requests: write
 
 jobs:
-  build:
+  label_pull_requests:
     runs-on: ubuntu-latest
     steps:
       - name: Apply Type Label
-        uses: actions/labeler@v3
+        uses: actions/labeler@v4
         with:
           repo-token: "${{ secrets.GITHUB_TOKEN }}"
-          sync-labels: ""  # this is a temporary workaround, see #4844
+          sync-labels: true
+
+      - name: Label documentation-only changes.
+        uses: Jackenmen/label-doconly-changes@v1
+        env:
+          LDC_LABELS: Docs-only

@@ -24,7 +24,7 @@ goto:eof
 
 :newenv
 py -3.8 -m venv --clear .venv
-"%~dp0.venv\Scripts\python" -m pip install -U pip setuptools wheel
+"%~dp0.venv\Scripts\python" -m pip install -U pip wheel
 goto syncenv
 
 :syncenv

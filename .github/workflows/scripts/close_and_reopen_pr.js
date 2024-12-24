@@ -13,7 +13,7 @@ module.exports = (async function ({github, context}) {
         if (sleep_time)
             await new Promise(r => setTimeout(r, sleep_time));
 
-        github.issues.update({
+        github.rest.issues.update({
             issue_number: pr_number,
             owner: context.repo.owner,
             repo: context.repo.repo,

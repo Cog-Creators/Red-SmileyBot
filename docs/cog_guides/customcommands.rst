@@ -68,7 +68,7 @@ customcom cooldown
 
 Set, edit, or view the cooldown for a custom command.
 
-You may set cooldowns per member, channel, or guild. Multiple
+You may set cooldowns per member, thread/channel, or guild. Multiple
 cooldowns may be set. All cooldowns must be cooled to call the
 custom command.
 
@@ -80,8 +80,8 @@ Examples:
 **Arguments:**
 
 - ``<command>`` The custom command to check or set the cooldown.
-- ``<cooldown>`` The number of seconds to wait before allowing the command to be invoked again. If omitted, will instead return the current cooldown settings.
-- ``<per>`` The group to apply the cooldown on. Defaults to per member. Valid choices are server, guild, user, and member.
+- ``[cooldown]`` The number of seconds to wait before allowing the command to be invoked again. If omitted, will instead return the current cooldown settings.
+- ``[per]`` The group to apply the cooldown on. Defaults to per member. Valid choices are server / guild, user / member, and channel.
 
 .. _customcommands-command-customcom-create:
 
@@ -267,7 +267,7 @@ customcom search
 
 Searches through custom commands, according to the query.
 
-Uses fuzzywuzzy searching to find close matches.
+Uses fuzzy searching to find close matches.
 
 **Arguments:**
 

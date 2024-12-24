@@ -1,6 +1,5 @@
 import concurrent
 import json
-import logging
 import time
 from pathlib import Path
 
@@ -8,6 +7,7 @@ from types import SimpleNamespace
 from typing import TYPE_CHECKING, List, Union
 
 import lavalink
+from red_commons.logging import getLogger
 
 from redbot.core import Config
 from redbot.core.bot import Red
@@ -16,7 +16,6 @@ from redbot.core.i18n import Translator
 from redbot.core.utils import AsyncIter
 from redbot.core.utils.dbtools import APSWConnectionWrapper
 
-from ..audio_logging import debug_exc_log
 from ..sql_statements import (
     PERSIST_QUEUE_BULK_PLAYED,
     PERSIST_QUEUE_CREATE_INDEX,
@@ -34,7 +33,7 @@ from ..sql_statements import (
 )
 from .api_utils import QueueFetchResult
 
-log = logging.getLogger("red.cogs.Audio.api.PersistQueueWrapper")
+log = getLogger("red.cogs.Audio.api.PersistQueueWrapper")
 _ = Translator("Audio", Path(__file__))
 
 if TYPE_CHECKING:
@@ -90,7 +89,7 @@ class QueueInterface:
                 try:
                     row_result = future.result()
                 except Exception as exc:
-                    debug_exc_log(log, exc, "Failed to complete playlist fetch from database")
+                    log.verbose("Failed to complete playlist fetch from database", exc_info=exc)
                     return []
 
         async for index, row in AsyncIter(row_result).enumerate(start=1):

@@ -4,6 +4,8 @@
 Installing Red on Windows
 =========================
 
+.. include:: _includes/supported-arch-x64.rst
+
 -------------------------------
 Installing the pre-requirements
 -------------------------------
@@ -28,16 +30,16 @@ Then run each of the following commands:
 
     Set-ExecutionPolicy Bypass -Scope Process -Force
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072
-    iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+    iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
     choco upgrade git --params "/GitOnlyOnPath /WindowsTerminal" -y
-    choco upgrade visualstudio2019-workload-vctools -y
-    choco upgrade python3 -y --version 3.9.9
+    choco upgrade visualstudio2022-workload-vctools -y
+    choco upgrade python311 -y
 
 For Audio support, you should also run the following command before exiting:
 
 .. prompt:: powershell
 
-    choco upgrade temurin11 -y
+    choco upgrade temurin17 -y
 
 
 From here, exit the prompt then continue onto `creating-venv-windows`.
@@ -50,12 +52,12 @@ Manually installing dependencies
 
 .. attention:: There are additional configuration steps required which are
                not documented for installing dependencies manually.
-               These dependencies are only listed seperately here for
+               These dependencies are only listed separately here for
                reference purposes.
 
 * `MSVC Build tools <https://www.visualstudio.com/downloads/#build-tools-for-visual-studio-2019>`_
 
-* `Python 3.8.1 - 3.9.x <https://www.python.org/downloads/windows/>`_
+* `Python 3.8.1 - 3.11.x <https://www.python.org/downloads/windows/>`_
 
 .. attention:: Please make sure that the box to add Python to PATH is CHECKED, otherwise
                you may run into issues when trying to run Red.
@@ -64,7 +66,7 @@ Manually installing dependencies
 
 .. attention:: Please choose the option to "Git from the command line and also from 3rd-party software" in Git's setup.
 
-* `Java 11 <https://adoptium.net/?variant=openjdk11>`_ - needed for Audio
+* `Java 17 <https://adoptium.net/temurin/releases/?version=17>`_ - needed for Audio
 
 From here, continue onto `creating-venv-windows`.
 
@@ -102,7 +104,7 @@ Then create your virtual environment with the following command
 
 .. prompt:: batch
 
-    py -3.9 -m venv "%userprofile%\redenv"
+    py -3.11 -m venv "%userprofile%\redenv"
 
 And activate it with the following command
 
@@ -132,7 +134,7 @@ Run **one** of the following set of commands, depending on what extras you want 
     .. prompt:: batch
         :prompts: (redenv) C:\\>
 
-        python -m pip install -U pip setuptools wheel
+        python -m pip install -U pip wheel
         python -m pip install -U Red-DiscordBot
 
   * With PostgreSQL support:
@@ -140,7 +142,7 @@ Run **one** of the following set of commands, depending on what extras you want 
     .. prompt:: batch
         :prompts: (redenv) C:\\>
 
-        python -m pip install -U pip setuptools wheel
+        python -m pip install -U pip wheel
         python -m pip install -U Red-DiscordBot[postgres]
 
 --------------------------

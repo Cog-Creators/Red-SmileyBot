@@ -1,0 +1,810 @@
+.. _incompatible-changes-3.5:
+
+========================================
+Backward incompatible changes in Red 3.5
+========================================
+
+.. include:: _includes/preamble.rst
+
+.. contents::
+    :depth: 4
+    :local:
+
+For Users
+*********
+
+Removals
+~~~~~~~~
+
+redbot-launcher
+^^^^^^^^^^^^^^^
+
+.. deprecated:: 3.2.0
+
+The vast majority of functionality provided by ``redbot-launcher`` can already be
+achieved through other means.
+
+In Red 3.2.0, ``redbot-launcher`` has been stripped most of its functionality
+as it can already be done through other (better supported) means:
+
+- Updating Red (a proper way to update Red is now documented in `../update_red`)
+- Creating instances (as documented in install guides, it should be done through ``redbot-setup``)
+- Removing instances (available under ``redbot-setup delete``)
+- Removing all instances (no direct alternative, can be done through ``redbot-setup delete``)
+- Debug information (available under ``redbot --debuginfo`` and ``[p]debuginfo`` bot command)
+
+Currently, ``redbot-launcher`` only provides auto-restart functionality
+which we now document how to do properly on each of the supported systems.
+
+If you wish to continue using auto-restart functionality, we recommend following the instructions for setting up a service dedicated to your operating system:
+
+- `../autostart_windows`
+- `../autostart_mac`
+- `../autostart_systemd`
+
+Behavior changes
+~~~~~~~~~~~~~~~~
+
+x86-64 CPUs are now only supported if they support x86-64-v2 instruction set
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+On x86-64 systems, we now require that your CPU supports x86-64-v2 instruction set.
+This roughly translates to us dropping support for Intel CPUs that have been released before 2009
+and AMD CPUs that have been releasesd before 2012.
+
+This has been mostly dictated by one of our dependencies but some Linux distributions
+are already dropping support for it in their latest versions as well.
+
+Thread-related changes
+^^^^^^^^^^^^^^^^^^^^^^
+
+While many of these aren't breaking, we thought it is important to make it clear
+how Red approaches its features in regard to threads:
+
+- Red's command permission system doesn't have dedicated rules for threads and instead uses
+  that thread's parent channel rules
+- Channel embed settings (``[p]embedset``) cannot be set for threads and usage of embeds is based
+  on that thread's parent channel embed settings
+
+    - This also means that a forum channel can have its own embed settings
+- Using channel mute/unmute commands (e.g. ``[p]mutechannel`` from Mutes cog) in a thread
+  will mute that user in the thread's parent channel
+- Filter cog doesn't have a dedicated word list for threads and uses server's and parent channel's word lists
+
+    - This also means that a word list can now also be added for a forum channel
+- CustomCom's ``{channel}`` substitution parameter will now be a thread when the command is used in a thread
+- CustomCom's channel cooldowns are applied per thread
+- When used in a thread, ``[p]slowmode`` command from Mod cog will apply the slowmode to that thread
+- The logic for the ``[p]ignore``-related checks has changed for threads:
+
+    - ``[p]ignore channel`` accepts ignoring command in a specific thread
+    - When the command is sent in a thread, it first checks server-wide ignore settings and then runs if:
+
+        - the user has Manage Channel permission in the parent channel, or
+        - the parent channel is not ignored *and* the user has Manage Threads permission in the parent channel, or
+        - the thread channel and its parent aren't ignored
+    - This also means that a forum channel can now also be ignored
+- The Mutes cog now denies Send Messages in Threads, Create Public Threads,
+  and Create Private Threads permissions
+
+Commands for changing Bank and Modlog settings are now core commands
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+These commands allow users to change settings of core APIs that are always available
+(similarly to ``[p]autoimmune``, ``[p]allowlist``, or ``[p]blocklist``)
+so it makes sense to allow using them without having to load anything.
+
+The following commands have been moved to Core:
+
+- ``[p]modlogset``
+- ``[p]bankset``
+- ``[p]economyset registeramount`` (now named ``[p]bankset registeramount``)
+- ``[p]bank reset`` (now named ``[p]bankset reset``)
+- ``[p]bank prune`` (now named ``[p]bankset prune``)
+
+This has also resulted in the removal of the ``bank`` cog
+as it no longer contained any commands.
+
+If you have any custom settings for this cog or these commands,
+you may need to readd them with the new command names.
+
+Commands in the ``[p]set`` group have been reorganized
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The list of commands in the ``[p]set`` group has gotten quite long over the years
+so we decided to reorganize it.
+
+The following changes have been made:
+
+- Commands related to metadata about the bot have been moved to the ``[p]set bot`` subgroup:
+
+    - ``[p]set avatar`` is now ``[p]set bot avatar``
+    - ``[p]set custominfo`` is now ``[p]set bot custominfo``
+    - ``[p]set description`` is now ``[p]set bot description``
+    - ``[p]set nickname`` is now ``[p]set bot nickname``
+    - ``[p]set username`` is now ``[p]set bot username``
+- Commands related to server's admin and mod roles have been moved to the ``[p]set roles`` subgroup:
+
+    - ``[p]set addadminrole`` is now ``[p]set roles addadminrole``
+    - ``[p]set removeadminrole`` is now ``[p]set roles removeadminrole``
+    - ``[p]set addmodrole`` is now ``[p]set roles addmodrole``
+    - ``[p]set removemodrole`` is now ``[p]set roles removemodrole``
+- Commands related to bot user's activity and status have been moved to the ``[p]set status`` subgroup:
+
+    - ``[p]set status`` has been split into ``[p]set status online/idle/dnd/invisible`` subcommands
+    - ``[p]set competing`` is now ``[p]set status competing``
+    - ``[p]set listening`` is now ``[p]set status listening``
+    - ``[p]set playing`` is now ``[p]set status playing``
+    - ``[p]set streaming`` is now ``[p]set status streaming``
+    - ``[p]set watching`` is now ``[p]set status watching``
+- ``[p]set globallocale`` has been renamed to ``[p]set locale global``
+- ``[p]set locale`` is now also available under ``[p]set locale server``
+- ``[p]set globalregionalformat`` has been renamed to ``[p]set regionalformat global``
+- ``[p]set regionalformat`` is now also available under ``[p]set regionalformat server``
+
+If you have any custom settings for these commands,
+you may need to readd them with the new command names.
+
+Red requires to have at least one owner
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+There was never a reason to allow users to run the bot without having an owner set
+and it had been a point of confusion for new users that are trying to set up Red
+using a team application which, by default, doesn't have any owners set.
+
+If your instance does not have any owner set, Red will print an error message on startup
+and exit before connecting to Discord. This error message contains all
+the needed information on how to set a bot owner and the security implications of it.
+
+If, for some reason, you intentionally are running Red without any owner set,
+please make a feature request with your use case on
+`our issue tracker <https://github.com/Cog-Creators/Red-DiscordBot/issues/new/choose>`__.
+
+
+For Developers
+**************
+
+Removals
+~~~~~~~~
+
+``Config.driver`` and ``redbot.core.drivers`` package
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+These are Red's internal implementation details and as such they have been privatized.
+
+``redbot.core.data_manager.load_bundled_data()`` function
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. deprecated:: 3.0.0rc3
+
+This function has been deprecated basically forever and we have somehow never removed it.
+
+Use the `redbot.core.data_manager.bundled_data_path()` function directly instead.
+
+``is_mod_or_superior()``, ``is_admin_or_superior()``, and ``check_permissions()`` functions in ``redbot.core.checks``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. deprecated:: 3.0.0rc1
+
+These functions have been deprecated basically forever and we have somehow never removed them.
+
+Use the `redbot.core.utils.mod.is_mod_or_superior()`, `redbot.core.utils.mod.is_admin_or_superior()`,
+and `redbot.core.utils.mod.check_permissions()` functions instead.
+
+``bordered()`` function
+^^^^^^^^^^^^^^^^^^^^^^^
+
+This function was primarily used in Red's command-line code and had very limited use
+for 3rd-party cogs. Since we no longer use this function, it has been removed.
+
+``commands.DM_PERMS`` constant
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This was mostly used by the internal implementation and it isn't anymore now. Since this constant
+was a maintenance burden and hasn't really seen any usage in 3rd-party code, we decided to just
+remove it.
+
+``redbot.core.utils.caching`` and ``redbot.core.utils.safety`` modules
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+These modules contain utilities that were only really useful in Red's own code.
+We no longer use them for anything and have not seen any 3rd-party usage
+and as such we have removed these modules.
+
+``guild_id`` parameter to ``Red.allowed_by_whitelist_blacklist()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. deprecated:: 3.4.8
+
+``guild_id`` parameter to `Red.allowed_by_whitelist_blacklist()` has been removed as
+it is not possible to properly handle the local allowlist/blocklist logic with just
+the guild ID. Part of the local allowlist/blocklist handling is to check
+whether the provided user is a guild owner.
+
+Use the ``guild`` parameter instead.
+
+Example:
+
+.. code:: python
+
+    if await bot.allowed_by_whitelist(who_id=user_id, guild_id=guild.id, role_ids=role_ids):
+        ...
+
+Becomes:
+
+.. code:: python
+
+    if await bot.allowed_by_whitelist(who_id=user_id, guild=guild, role_ids=role_ids):
+        ...
+
+``redbot.core.commands.converter.GuildConverter``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. deprecated:: 3.4.8
+
+This is now included in the upstream discord.py library.
+
+Use `discord.Guild`/``redbot.core.commands.GuildConverter`` instead.
+
+Example:
+
+.. code:: python
+
+    from redbot.core import commands
+    from redbot.core.commands.converter import GuildConverter
+
+    class MyCog(commands.Cog):
+        @commands.command()
+        async def command(self, ctx, server: GuildConverter):
+            await ctx.send(f"You chose {server.name}!")
+
+Becomes:
+
+.. code:: python
+
+    import discord
+    from redbot.core import commands
+
+    class MyCog(commands.Cog):
+        @commands.command()
+        async def command(self, ctx, server: discord.Guild):
+            await ctx.send(f"You chose {server.name}!")
+
+``redbot.core.utils.mod.is_allowed_by_hierarchy()``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. deprecated:: 3.4.1
+
+This was an internal function that was never meant to be part of the public API.
+It was also not really possible to use it in a supported way as it required
+internal objects to be passed as parameters.
+
+If you have a use case for this function, you should be able to achieve the same result
+with this code:
+
+.. code:: python
+
+    async def is_allowed_by_hierarchy(guild, moderator, member):
+        is_special = moderator == guild.owner or await self.bot.is_owner(moderator)
+        return moderator.top_role > member.top_role or is_special
+
+
+Behavior changes
+~~~~~~~~~~~~~~~~
+
+Update to version guarantees and privatization of many APIs
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+With this release, we're limiting what changes we will consider breaking.
+`The new Developer Guarantees <developer-guarantees>` describe this in detail
+but the gist of it is that we will now only consider names included in ``__all__``
+of ``redbot`` and ``redbot.core`` modules and ``__all__`` of public submodules
+of ``redbot.core`` to be part of the public API that shouldn't be broken without notice.
+
+With this change, we introduced or updated ``__all__`` in all of those modules
+and added ``_`` prefix to private modules to specify what is actually part of the public API.
+This has resulted in the following being removed/privatized:
+
+- ``create_temp_config()``, ``load_basic_configuration()``, and ``core_data_path()`` in the ``redbot.core.data_manager`` module
+- ``set_locale()`` and ``reload_locales()`` in the ``redbot.core.i18n`` module
+- ``MIN_PYTHON_VERSION`` in the ``redbot`` module
+- ``redbot.core.cog_manager``, ``redbot.core.settings_caches``, ``redbot.core.global_checks``, ``redbot.core.events``, ``redbot.core.cli``, and ``redbot.core.rpc`` modules
+
+``redbot.core.data_manager.storage_details()`` returns a deep copy of underlying dict now
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Changing storage details during Red's runtime is not supported and as such,
+this function now returns a deep copy of the underlying dictionary to prevent changes.
+
+Changed the version order of final dev releases and dev pre-releases
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To be consistent with :pep:`440`, we've changed the order between final dev releases (e.g.
+``3.5.0.dev1``) and dev pre-releases (e.g. ``3.5.0a1.dev1``, ``3.5.0b1.dev1``, ``3.5.0rc1.dev1``).
+
+Here's an example of a list of versions sorted using the new order (oldest version first):
+
+- 3.5.0.dev1
+- 3.5.0.dev2
+- 3.5.0a1.dev1
+- 3.5.0a1
+- 3.5.0a2.dev1
+- 3.5.0b1.dev1
+- 3.5.0
+- 3.5.0.post1.dev1
+- 3.5.0.post1
+- 3.5.1
+
+``Red.get_owner_notification_destinations()`` may now return instances of ``discord.Voice/StageChannel``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+With the introduction of Text in Voice feature, we added the ability to add a voice/stage channel
+as an owner notifications destination. This means that `redbot.core.modlog.get_modlog_channel()`
+may now return instances of `discord.VoiceChannel` and `discord.StageChannel`.
+
+``modlog.get_modlog_channel()`` may now return instances of ``discord.Voice/StageChannel``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+With the introduction of Text in Voice feature, we added the ability to set a modlog
+channel to a voice/stage channel. This means that `redbot.core.modlog.get_modlog_channel()`
+may now return instances of `discord.VoiceChannel` and `discord.StageChannel`.
+
+``menus.DEFAULT_CONTROLS`` and ``ReactionPredicate.*_EMOJIS`` use immutable types now
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The type of `redbot.core.utils.menus.DEFAULT_CONTROLS` has been changed from `dict`
+to a `collections.abc.Mapping` while the type of `ReactionPredicate.ALPHABET_EMOJIS`
+and `ReactionPredicate.NUMBER_EMOJIS` has been changed from `list` to a `tuple`.
+
+This should prevent the developers from accidentally changing the provided constants
+instead of making a copy and changing that copy.
+
+This should be a transparent change in most cases but here is an example usage that is affected:
+
+.. code:: python
+
+    import copy
+    from redbot.core.utils import menus
+
+    # somewhere in your code...
+
+    controls = copy.copy(menus.DEFAULT_CONTROLS)
+    controls["\N{SMILING FACE WITH OPEN MOUTH}"] = custom_function
+    await menu(ctx, ["page 1", "page 2"], controls)
+
+To make this code work on Red 3.5 and higher, you can replace it with any of the following:
+
+.. code:: python
+
+    from redbot.core.utils import menus
+
+    # example 1
+
+    controls = {
+        **menus.DEFAULT_CONTROLS,
+        "\N{SMILING FACE WITH OPEN MOUTH}": custom_function,
+    }
+    await menu(ctx, ["page 1", "page 2"], controls)
+
+    # example 2
+
+    controls = menus.DEFAULT_CONTROLS.copy()
+    controls["\N{SMILING FACE WITH OPEN MOUTH}"] = custom_function
+    await menu(ctx, ["page 1", "page 2"], controls)
+
+    # example 3
+
+    controls = dict(menus.DEFAULT_CONTROLS)
+    controls["\N{SMILING FACE WITH OPEN MOUTH}"] = custom_function
+    await menu(ctx, ["page 1", "page 2"], controls)
+
+Similarly, if you copied lists before:
+
+.. code:: python
+
+    emojis = ReactionPredicate.NUMBER_EMOJIS.copy()
+    emojis.insert(0, "\N{DOG}")
+    emojis.append("\N{CAT}")
+
+You could use sequence unpacking instead:
+
+.. code:: python
+
+    emojis = ["\N{DOG}", *ReactionPredicate.NUMBER_EMOJIS, "\N{CAT}"]
+
+Permissions defined in ``@commands.*_permissions()`` decorators are always merged now
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This is mostly a bugfix but it means that the permissions in stacked decorators are now
+always merged instead of being *sometimes* overridden and *sometimes* merged.
+
+For example, this code has only checked for ``embed_links`` permission on 3.4
+but now checks for both ``add_reactions`` and ``embed_links`` permissions:
+
+.. code:: python
+
+    from redbot.core import commands
+
+    class MyCog(commands.Cog):
+        @commands.command()
+        @commands.bot_has_permissions(embed_links=True)
+        @commands.bot_has_permissions(add_reactions=True)
+        async def example(self, ctx):
+            msg = await ctx.send(embed=discord.Embed(description="Hello!"))
+            await msg.add_reaction("\N{SMILING FACE WITH OPEN MOUTH}")
+
+Note that stacking `@commands.has_permissions() <redbot.core.commands.has_permissions()>`
+with ``@commands.*_or_permissions()`` decorators still behaves differently depending on
+the decorator order.
+
+Some of the primary dependencies have been removed or replaced
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+While this may not technically fall under `our version guarantees <../version_guarantees>`,
+we recognize that this may affect some people.
+As such, below we list the noteworthy dependency replacements and removals (package names
+are PyPI distribution names):
+
+- ``appdirs`` package has been replaced with ``platformdirs``
+- ``chardet`` package has been replaced with ``charset-normalizer``
+- ``fuzzywuzzy`` package has been replaced with ``rapidfuzz``
+- Red no longers depends on ``aiosqlite``, ``PyNaCl``, and ``python-Levenshtein-wheels``
+
+discord.py version has been updated to 2.2.3
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To allow Red to continue operating *and* use the newer features (threads, text in voice/stage channels,
+buttons, application commands, and AutoMod, to name a few), we've updated discord.py from version
+1.7.3 to 2.2.3. Since this is a major upgrade, it will require you to update your code accordingly.
+discord.py's documentation has :dpy_docs:`a migration guide <migrating.html>` that you can follow in order to
+update your cogs.
+
+Red itself has already been updated to support all of these changes that happened over the years.
+In order to do so, we've also had to make a few breaking changes of our own. Those changes are
+normal sections in the current document so be sure to follow it in full and you should be able to
+perform all the necessary changes.
+
+To help support some of the newer features, we've also added a few things:
+
+- Utilities that allow to **properly** check whether a member can do something in threads (or channels)
+  for cases where it isn't as simple as checking permissions:
+
+    - Command check decorators: `bot_can_manage_channel()`, `bot_can_react()`
+    - Permission check decorators: `can_manage_channel()`, `guildowner_or_can_manage_channel()`,
+      `admin_or_can_manage_channel()`, `mod_or_can_manage_channel()`
+    - Functions: `can_user_send_messages_in()`, `can_user_manage_channel()`, `can_user_react_in()`
+
+- New module (`redbot.core.utils.views`) with useful `discord.ui.View` subclasses
+
+    - `SetApiModal`, `SetApiView`, `SimpleMenu`
+
+``Case.channel`` can now be a ``discord.Thread``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In order to properly support threads, `Case.channel` can now also be an instance of `discord.Thread`.
+New `Case.parent_channel` attribute will be set to the thread's parent text or forum channel,
+if the case's channel is a thread.
+
+``commands.BadArgument`` is no longer wrapped in ``commands.ConversionFailure`` containing parameter and its value
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We used to wrap `commands.BadArgument <discord.ext.commands.BadArgument>` exceptions
+in a ``commands.ConversionFailure`` containing, in addition to the actual exception,
+the `inspect.Parameter` instance and the passed value for the argument
+that failed the conversion.
+
+With discord.py 2.x, these are now exposed through the
+`commands.Context.current_parameter <discord.ext.commands.Context.current_parameter>`
+and `commands.Context.current_argument <discord.ext.commands.Context.current_argument>`
+making this wrapping no longer necessary.
+
+Some of the method arguments in the bot class and ``commands`` package have been made positional-only
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The following arguments have been positional-only to be consistent with the upstream discord.py package:
+
+- ``name`` in `Red.get_command()`
+- ``name`` in `Red.get_cog()`
+- ``coro`` in `Red.before_invoke()`
+- ``user`` in `Red.is_owner()`
+- ``message`` in ``Red.get_context()``
+- ``message`` in `Red.process_commands()`
+- ``cogname`` in `Red.remove_cog()`
+- ``cog`` in `Red.add_cog()`
+- ``command`` in `Red.add_command()`
+- ``command`` in `Red.remove_command()`
+- ``ctx`` in `redbot.core.commands.Command.can_run()`
+- ``ctx`` in ``redbot.core.commands.CogMixin.can_run()``
+- ``ctx`` in ``redbot.core.commands.CogMixin.can_see()``
+- ``error`` in `redbot.core.commands.Command.error()`
+
+``bot.add_cog()`` will now raise ``discord.ClientException`` instead of ``RuntimeError`` when cog is already loaded
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To make Red's bot class more consistent with the discord.py implementation that it overrides,
+the `discord.ClientException` is now being raised instead of `RuntimeError` when a cog
+with the same name is already loaded.
+
+Many functions and methods do not support ``discord.PartialMessageable`` objects
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This isn't technically breaking since they never did *but* since those objects may appear now,
+we think it is important to mention that due to the limited information that `discord.PartialMessageable`
+objects provide, they cannot be passed to the following methods directly:
+
+- `Red.ignored_channel_or_guild()`
+- `Red.embed_requested()`
+- `redbot.core.modlog.create_case()`
+- `redbot.core.modlog.Case.edit()`
+
+Additionally, the `Red.message_eligible_as_command()` will return ``False``
+if a `discord.PartialMessageable` object for a channel that isn't a DM is passed.
+
+If you *have to* use these, you should try fetching the full messageable object first
+or looking at the documentation to see whether there are any alternative solutions.
+
+Cog package (extension) and cog loading / unloading is now asynchronous
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This follows the changes that discord.py 2.x has introduced - we now **require** for
+the ``setup()`` and ``teardown()`` functions to be asynchronous and have made
+the `Red.add_cog()` and `Red.remove_cog()` methods asynchronous as well.
+
+``Red.embed_requested()``'s parameters and their default values have changed
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We have made a bunch of changes to the signature of `Red.embed_requested()`. This method now
+accepts only a single **positional** argument called ``channel``, making the ``command``
+keyword-only. The ``user`` argument has been removed as the ``channel`` argument now supports
+the `discord.abc.User` objects directly, dropping the support for `discord.DMChannel`
+in the process.
+
+These changes together allowed us to support checking whether an embed should be sent in a DM
+using only the `discord.abc.User` object - without the `discord.DMChannel` which is often
+not present in the cache. Furthermore, it means that a `discord.abc.User` object no longer needs
+to be passed unnecessarily when the method is used with a guild channel.
+
+We've also changed the default value of ``check_permissions`` to ``True``
+as it makes the typical usage of this method more ergonomic.
+
+Example:
+
+.. code:: python
+
+    import discord
+    from redbot.core import commands
+
+    class MyCog(commands.Cog):
+        @commands.guild_only()
+        @commands.command()
+        async def sayhello(self, ctx, recipient: discord.Member):
+            content = "Hello world!"
+            embed = discord.Embed(title="Message for you!", description=content)
+            try:
+                # try sending the message in DMs
+                if await ctx.bot.embed_requested(
+                    await recipient.create_dm(), recipient, ctx.command, check_permissions=True
+                ):
+                    await recipient.send(embed=embed)
+                else:
+                    await recipient.send(content)
+            except discord.Forbidden:
+                # DMs are closed, send a message in a moderator or current channel
+                channel = ctx.guild.public_updates_channel or ctx
+                if await ctx.bot.embed_requested(
+                    channel, ctx.author, ctx.command, check_permissions=True
+                ):
+                    await channel.send(embed=embed)
+                else:
+                    await channel.send(content)
+
+After:
+
+.. code:: python
+
+    import discord
+    from redbot.core import commands
+
+    class MyCog(commands.Cog):
+        @commands.guild_only()
+        @commands.command()
+        async def sayhello(self, ctx, recipient: discord.Member):
+            content = "Hello world!"
+            embed = discord.Embed(title="Message for you!", description=content)
+            try:
+                # try sending the message in DMs
+                if await ctx.bot.embed_requested(recipient, command=ctx.command):
+                    await recipient.send(embed=embed)
+                else:
+                    await recipient.send(content)
+            except discord.Forbidden:
+                # DMs are closed, send a message in a moderator or current channel
+                channel = ctx.guild.public_updates_channel or ctx
+                if await ctx.bot.embed_requested(channel, command=ctx.command):
+                    await channel.send(embed=embed)
+                else:
+                    await channel.send(content)
+
+``modlog.create_case()`` now raises instead of silently returning on error
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To help avoid passing invalid arguments, `modlog.create_case()` now raises:
+
+- `ValueError` when the ``action_type`` argument is not a valid action type
+- `RuntimeError` when the ``user`` argument is passed with the bot's user object/ID
+
+Proper usage of these methods is unlikely to be affected
+and this should mostly just help detect bugs earlier.
+
+.. _config-register-1:
+
+``Config``'s register methods now only accept JSON-castable types
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. seealso:: `config-register-2`
+
+This change has fixed the inconsistencies between what can be registered as a default value
+and what can be set through `Value.set()`. It mostly resulted in confusion when it was not
+possible to use the registered type in `Value.set()`.
+
+If you need to use custom types, you'll have to manually construct them *after* getting the
+"raw" value from `Config`.
+
+.. _config-register-2:
+
+``Config`` now always returns base JSON types, never subclasses
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. seealso:: `config-register-1`
+
+It used to be possible to register an instance of a subclass of `dict` such as
+`collections.Counter` and have the `redbot.core.config.Group` cast the returned value to that type
+before returning it. With this change, `redbot.core.config.Group` will now always return an instance of
+`dict` containing only base JSON types, without subclasses.
+
+``Config.*_from_id/*_from_ids()`` methods now raise when ``int`` is not passed
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To help avoid setting values under non-integer keys, we now raise an error
+when the passed argument is not an ``int``.
+
+We're not expecting any **proper** usage of these methods to be affected
+and this should only help detect bugs earlier.
+
+``Case.message`` can now be ``discord.PartialMessage``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This change allowed to us to make enormous performance improvements (subsecond durations
+compared to many minutes) to `modlog.get_all_cases()` and commands that use it
+such as the commonly used ``[p]casesfor`` command.
+
+With this change, we no longer fetch the whole `discord.Message` object for case's message
+and instead only construct a `discord.PartialMessage` object for it. This object is rarely if ever needed so it is unlikely to affect a lot of code. Additionally, this change doesn't apply to `modlog.create_case()` which will still return a `Case` object with `message <Case.message>` attribute set to an instance of `discord.Message` or ``None``.
+
+If you have a reason to use a full message object, you can use :meth:`discord.PartialMessage.fetch()`
+to fetch it.
+
+Example:
+
+.. code:: python
+
+    from redbot.core import commands
+
+    class MyCog(commands.Cog):
+        @commands.guild_only()
+        @commands.command()
+        async def command(self, ctx, case_number: int):
+            case = await modlog.get_case(case_number, ctx.guild, ctx.bot)
+            if case.message is None:
+                await ctx.send("No message is available for this case.")
+                return
+
+            await ctx.send(
+                "People reacted to this modlog case with: "
+                + ", ".join(case.message.reactions)
+            )
+
+After:
+
+.. code:: python
+
+    import discord
+    from redbot.core import commands
+
+    class MyCog(commands.Cog):
+        @commands.guild_only()
+        @commands.command()
+        async def command(self, ctx, case_number: int):
+            case = await modlog.get_case(case_number, ctx.guild, ctx.bot)
+            if case.message is None:
+                await ctx.send("No message is available for this case.")
+                return
+
+            try:
+                msg = await case.message.fetch()
+            except discord.NotFound:
+                await ctx.send("No message is available for this case.")
+            else:
+                await ctx.send(
+                    "People reacted to this modlog case with: "
+                    + ", ".join(msg.reactions)
+                )
+
+``redbot.core.bot.RedBase`` has been merged into ``redbot.core.bot.Red``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Historically, ``RedBase`` existed to allow using Red for self/user bots back when
+it was not against Discord's Terms of Service. Since this is no longer a concern,
+everything from ``RedBase`` have been moved directly to `Red` and ``RedBase`` class
+has been removed.
+
+If you were using ``RedBase`` for runtime type checking or type annotations,
+you should now use `Red` instead. Since both of these classes resided in the same
+module, it should be a matter of simple find&replace.
+
+``Context.maybe_send_embed()`` requires content with length of 1-2000 characters
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`Context.maybe_send_embed()` now requires the message's length to be
+between 1 and 2000 characters.
+
+Since the length limits for regular message content and embed's description are
+different, it is easy to miss an issue with inappropriate handling of length limits
+during development. This change should aid with early detection of such issue by
+consistently rejecting messages with length that can't be used with
+both embed and non-embed messages.
+
+This change only affects code that is already not guaranteed to work.
+You should make sure that your code properly handles message length limits.
+
+``menu()`` listens to both reaction add and remove
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Listening only to reaction add results in bad user experience.
+If the bot had Manage Messages permission, it removed the user's reaction
+so that they don't have to click twice but this comes with a noticeable delay.
+This issue is even more noticeable under load, when the bot ended up hitting
+Discord-imposed rate limits.
+
+If your calls to `menu()` are using the default controls (``redbot.core.utils.menus.DEFAULT_CONTROLS``),
+you don't have to do anything.
+
+Otherwise, you should ensure that your custom functions used for the menu controls
+do not depend on this behavior in some way. In particular, you should make sure that
+your functions do not automatically remove the author's reaction.
+
+Here's an example code that needs to be updated:
+
+.. code:: python
+
+    import contextlib
+
+    import discord
+    from redbot.core.utils.menus import close_menu, menu
+
+    CUSTOM_CONTROLS = {
+        "\N{CROSS MARK}": close_menu,
+        "\N{WAVING HAND SIGN}": custom_control,
+    }
+
+
+    async def custom_control(ctx, pages, controls, message, page, timeout, emoji):
+        perms = message.channel.permissions_for(ctx.me)
+        if perms.manage_messages:  # Can manage messages, so remove react
+            with contextlib.suppress(discord.NotFound):
+                await message.remove_reaction(emoji, ctx.author)
+
+        await ctx.send("Hello world!")
+        return await menu(ctx, pages, controls, message=message, page=page, timeout=timeout)
+
+
+    async def show_menu(ctx):
+        await menu(ctx, ["Click :wave: to say hi!"], CUSTOM_CONTROLS)
+
+To make this code work on Red 3.5 and higher, you need to update ``custom_control()`` function:
+
+.. code:: python
+
+    async def custom_control(ctx, pages, controls, message, page, timeout, emoji):
+        await ctx.send("Hello world!")
+        return await menu(ctx, pages, controls, message=message, page=page, timeout=timeout)

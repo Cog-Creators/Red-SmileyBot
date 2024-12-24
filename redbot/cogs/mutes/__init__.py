@@ -2,6 +2,7 @@ from redbot.core.bot import Red
 from .mutes import Mutes
 
 
-def setup(bot: Red):
+async def setup(bot: Red) -> None:
     cog = Mutes(bot)
-    bot.add_cog(cog)
+    await bot.add_cog(cog)
+    cog.create_init_task()

@@ -1,11 +1,12 @@
 import asyncio
 import contextlib
-import logging
 
 from typing import List
 
 import discord
 import lavalink
+from lavalink import NodeNotFound, PlayerNotFound
+from red_commons.logging import getLogger
 
 from redbot.core import commands
 from redbot.core.utils.chat_formatting import box
@@ -14,7 +15,7 @@ from ...equalizer import Equalizer
 from ..abc import MixinMeta
 from ..cog_utils import CompositeMetaClass
 
-log = logging.getLogger("red.cogs.Audio.cog.Utilities.equalizer")
+log = getLogger("red.cogs.Audio.cog.Utilities.equalizer")
 
 
 class EqualizerUtilities(MixinMeta, metaclass=CompositeMetaClass):
@@ -27,7 +28,7 @@ class EqualizerUtilities(MixinMeta, metaclass=CompositeMetaClass):
 
         try:
             await lavalink.get_player(guild_id).node.send({**const})
-        except (KeyError, IndexError):
+        except (NodeNotFound, PlayerNotFound):
             pass
 
     async def _apply_gains(self, guild_id: int, gains: List[float]) -> None:
@@ -39,7 +40,7 @@ class EqualizerUtilities(MixinMeta, metaclass=CompositeMetaClass):
 
         try:
             await lavalink.get_player(guild_id).node.send({**const})
-        except (KeyError, IndexError):
+        except (NodeNotFound, PlayerNotFound):
             pass
 
     async def _eq_check(self, ctx: commands.Context, player: lavalink.Player) -> None:

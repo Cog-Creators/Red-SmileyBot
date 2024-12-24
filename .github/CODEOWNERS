@@ -1,25 +1,25 @@
 # Cogs
 /redbot/cogs/audio/** @aikaterna @PredaaA
-/redbot/cogs/downloader/* @jack1142
+/redbot/cogs/downloader/* @Jackenmen
 /redbot/cogs/streams/* @palmtree5
 /redbot/cogs/mutes/* @TrustyJAID
 
 # Docs - Install and update guides
-/docs/install_guides/** @jack1142
-/docs/update_red.rst @jack1142
+/docs/install_guides/** @Jackenmen
+/docs/update_red.rst @Jackenmen
 
 # Docs - Version guarantees
-/docs/version_guarantees.rst @jack1142
+/docs/version_guarantees.rst @Jackenmen
 
 # Trivia Lists
 /redbot/cogs/trivia/data/lists/whosthatpokemon*.yaml @aikaterna
 
 # Tests
-/redbot/pytest/downloader* @jack1142
-/tests/cogs/downloader/* @jack1142
+/redbot/pytest/downloader* @Jackenmen
+/tests/cogs/downloader/* @Jackenmen
 
 # Schemas
-/schema/* @jack1142
+/schema/* @Jackenmen
 
 # CI
 /.travis.yml @Kowlin
