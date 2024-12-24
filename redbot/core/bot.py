@@ -891,7 +891,7 @@ class Red(
         else:
             # `permissions` attribute will use permissions from the interaction when possible,
             # or `ctx.channel.permissions_for(author)` for non-interaction contexts.
-        	perms = ctx.permissions
+            perms = ctx.permissions
         surpass_ignore = (
             is_private
             or perms.manage_guild
