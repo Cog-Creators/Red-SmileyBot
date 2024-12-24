@@ -617,7 +617,7 @@ class KickBanMixin(MixinMeta):
         author = ctx.author
 
         if reason is None and await self.config.guild(guild).require_reason():
-            await ctx.send(_("You must provide a reason for the tempban."))
+            await ctx.send(_("You must provide a reason for the temporary ban."))
             return
 
         if author == member:
@@ -791,7 +791,7 @@ class KickBanMixin(MixinMeta):
     ):
         """Kick a member from a voice channel."""
         if reason is None and await self.config.guild(ctx.guild).require_reason():
-            await ctx.send(_("You must provide a reason for the voicekick."))
+            await ctx.send(_("You must provide a reason for the voice kick."))
             return
 
         author = ctx.author
@@ -842,7 +842,7 @@ class KickBanMixin(MixinMeta):
     ):
         """Unban a user from speaking and listening in the server's voice channels."""
         if reason is None and await self.config.guild(ctx.guild).require_reason():
-            await ctx.send(_("You must provide a reason for the voiceunban."))
+            await ctx.send(_("You must provide a reason for the voice unban."))
             return
 
         user_voice_state = member.voice
@@ -887,7 +887,7 @@ class KickBanMixin(MixinMeta):
     async def voiceban(self, ctx: commands.Context, member: discord.Member, *, reason: str = None):
         """Ban a user from speaking and listening in the server's voice channels."""
         if reason is None and await self.config.guild(ctx.guild).require_reason():
-            await ctx.send(_("You must provide a reason for the voiceban."))
+            await ctx.send(_("You must provide a reason for the voice ban."))
             return
 
         user_voice_state: discord.VoiceState = member.voice
