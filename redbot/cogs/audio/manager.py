@@ -365,6 +365,7 @@ class ServerManager:
 
     async def _partial_shutdown(self) -> None:
         self.ready.clear()
+        self.downloaded.clear()
         if self._shutdown is True:
             # For convenience, calling this method more than once or calling it before starting it
             # does nothing.
@@ -479,7 +480,6 @@ class ServerManager:
     async def maybe_download_jar(self):
         if not self.lavalink_jar_file.exists():
             log.info("Triggering first-time download of Lavalink...")
-            self.downloaded.clear()
             await self._download_jar()
             return
 
@@ -487,7 +487,6 @@ class ServerManager:
             up_to_date = await self._is_up_to_date()
         except ValueError as exc:
             log.warning("Failed to get Lavalink version: %s\nTriggering update...", exc)
-            self.downloaded.clear()
             await self._download_jar()
             return
 
@@ -497,7 +496,6 @@ class ServerManager:
                 self._lavalink_version,
                 managed_node.JAR_VERSION,
             )
-            self.downloaded.clear()
             await self._download_jar()
         else:
             self.downloaded.set()
@@ -517,6 +515,7 @@ class ServerManager:
                 self._shutdown = False
                 if self._proc is None or self._proc.returncode is not None:
                     self.ready.clear()
+                    self.downloaded.clear()
                     await self._start(java_path=java_path)
                 while True:
                     await self.wait_until_ready(timeout=self.timeout)
