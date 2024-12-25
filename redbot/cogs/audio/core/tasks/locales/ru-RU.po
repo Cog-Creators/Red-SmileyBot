@@ -25,5 +25,5 @@ msgstr "Не удается получить трек"
 
 #: redbot/cogs/audio/core/tasks/startup.py:282
 msgid "I'm unable to get a track from the Lavalink node at the moment, try again in a few minutes."
-msgstr ""
+msgstr "Я не могу получить трек от Lavalink, повторите попытку через несколько минут."
 
