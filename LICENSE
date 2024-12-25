@@ -675,10 +675,10 @@ the library.  If this is what you want to do, use the GNU Lesser General
 Public License instead of this License.  But first, please read
 <http://www.gnu.org/philosophy/why-not-lgpl.html>.
 
-The Red-DiscordBot project contains subcomponents in audio.py that have a 
-separate copyright notice and license terms. Your use of the source code for 
-these subcomponents is subject to the terms and conditions of the following 
-licenses.
+The Red-DiscordBot project contains subcomponents in the Audio module that 
+have a separate copyright notice and license terms. Your use of the source 
+code for these subcomponents is subject to the terms and conditions of the 
+following licenses.
 
 This product bundles methods from https://github.com/Just-Some-Bots/MusicBot/
 blob/master/musicbot/spotify.py which are available under an MIT license.

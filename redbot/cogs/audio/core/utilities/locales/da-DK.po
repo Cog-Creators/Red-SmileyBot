@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-01-23 19:39+0000\n"
+"POT-Creation-Date: 2024-08-07 20:36+0000\n"
 "Last-Translator: \n"
 "Language-Team: Danish\n"
 "MIME-Version: 1.0\n"
@@ -46,13 +46,13 @@ msgid "Connection to Lavalink node has not yet been established."
 msgstr ""
 
 #: redbot/cogs/audio/core/utilities/formatting.py:116
-msgid "Unable To Play Tracks"
-msgstr ""
-
-#: redbot/cogs/audio/core/utilities/formatting.py:116
 #: redbot/cogs/audio/core/utilities/player.py:442
 #: redbot/cogs/audio/core/utilities/player.py:524
 msgid "Queue size limit reached."
+msgstr ""
+
+#: redbot/cogs/audio/core/utilities/formatting.py:116
+msgid "Unable To Play Tracks"
 msgstr ""
 
 #: redbot/cogs/audio/core/utilities/formatting.py:154
@@ -471,11 +471,11 @@ msgstr ""
 msgid "Repeat"
 msgstr ""
 
-#: redbot/cogs/audio/core/utilities/queue.py:159
+#: redbot/cogs/audio/core/utilities/queue.py:161
 msgid "Matching Tracks:"
 msgstr ""
 
-#: redbot/cogs/audio/core/utilities/queue.py:162
+#: redbot/cogs/audio/core/utilities/queue.py:164
 msgid "Page {page_num}/{total_pages} | {num_tracks} tracks"
 msgstr ""
 

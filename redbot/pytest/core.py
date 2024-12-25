@@ -23,7 +23,9 @@ __all__ = [
     "empty_role",
     "empty_user",
     "member_factory",
+    "newline_message",
     "user_factory",
+    "prefix",
     "ctx",
 ]
 
@@ -140,6 +142,18 @@ def empty_user(user_factory):
 def empty_message():
     mock_msg = namedtuple("Message", "content")
     return mock_msg("No content.")
+
+
+@pytest.fixture(scope="module")
+def newline_message():
+    mock_msg = type("", (), {})()
+    mock_msg.content = "!test a\nb\nc"
+    return mock_msg
+
+
+@pytest.fixture(scope="module")
+def prefix():
+    return "!"
 
 
 @pytest.fixture()

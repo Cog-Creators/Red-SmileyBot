@@ -18,5 +18,5 @@ msgstr ""
 #: redbot/cogs/audio/core/__init__.py:40
 #, docstring
 msgid "Play audio through voice channels."
-msgstr ""
+msgstr "Reproduz áudio através de canais de voz."
 

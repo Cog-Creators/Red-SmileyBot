@@ -11,7 +11,7 @@ from redbot.core.commands.converter import get_dict_converter
 if TYPE_CHECKING:
     from redbot.core.commands import Context
 
-__all__ = ("SimpleMenu", "SetApiModal", "SetApiView")
+__all__ = ("SimpleMenu", "SetApiModal", "SetApiView", "ConfirmView")
 
 _ = Translator("UtilsViews", __file__)
 
@@ -66,9 +66,10 @@ class _StopButton(discord.ui.Button):
     async def callback(self, interaction: discord.Interaction):
         self.view.stop()
         if interaction.message.flags.ephemeral:
-            await interaction.response.edit_message(view=None)
-            return
-        await interaction.message.delete()
+            await interaction.response.defer(thinking=False)
+            await interaction.delete_original_response()
+        else:
+            await interaction.message.delete()
 
 
 class SimpleMenu(discord.ui.View):
@@ -106,6 +107,17 @@ class SimpleMenu(discord.ui.View):
         under the select menu in this instance.
         Defaults to False.
 
+    Attributes
+    ----------
+    select_menu: `discord.ui.Select`
+        A select menu with a list of pages. The usage of this attribute is discouraged
+        as it may store different instances throughout the menu's lifetime.
+
+        .. deprecated-removed:: 3.5.14 60
+            Any behaviour enabled by the usage of this attribute should no longer be depended on.
+            If you need this for something and cannot replace it with the other functionality,
+            create an issue on Red's issue tracker.
+
     Examples
     --------
         You can provide a list of strings::
@@ -136,6 +148,7 @@ class SimpleMenu(discord.ui.View):
         super().__init__(
             timeout=timeout,
         )
+        self._fallback_author_to_ctx = True
         self.author: Optional[discord.abc.User] = None
         self.message: Optional[discord.Message] = None
         self._source = _SimplePageSource(items=pages)
@@ -192,15 +205,32 @@ class SimpleMenu(discord.ui.View):
     def source(self):
         return self._source
 
+    @property
+    def author(self) -> Optional[discord.abc.User]:
+        if self._author is not None:
+            return self._author
+        if self._fallback_author_to_ctx:
+            return getattr(self.ctx, "author", None)
+        return None
+
+    @author.setter
+    def author(self, value: Optional[discord.abc.User]) -> None:
+        self._fallback_author_to_ctx = False
+        self._author = value
+
     async def on_timeout(self):
-        if self.delete_after_timeout and not self.message.flags.ephemeral:
-            await self.message.delete()
-        elif self.disable_after_timeout:
-            for child in self.children:
-                child.disabled = True
-            await self.message.edit(view=self)
-        else:
-            await self.message.edit(view=None)
+        try:
+            if self.delete_after_timeout:
+                await self.message.delete()
+            elif self.disable_after_timeout:
+                for child in self.children:
+                    child.disabled = True
+                await self.message.edit(view=self)
+            else:
+                await self.message.edit(view=None)
+        except discord.HTTPException:
+            # message could no longer be there or we may not be able to edit/delete it anymore
+            pass
 
     def _get_select_menu(self):
         # handles modifying the select menu if more than 25 pages are provided
@@ -221,22 +251,64 @@ class SimpleMenu(discord.ui.View):
             options = self.select_options[:25]
         return _SelectMenu(options)
 
-    async def start(self, ctx: Context, *, ephemeral: bool = False):
+    async def start(
+        self, ctx: Context, *, user: Optional[discord.abc.User] = None, ephemeral: bool = False
+    ):
         """
         Used to start the menu displaying the first page requested.
+
+        .. warning::
+
+            The ``user`` parameter is considered `provisional <developer-guarantees-exclusions>`.
+            If no issues arise, we plan on including it under developer guarantees
+            in the first release made after 2024-05-24.
 
         Parameters
         ----------
             ctx: `commands.Context`
                 The context to start the menu in.
+            user: discord.User
+                The user allowed to interact with the menu.
+                If this is ``None``, ``ctx.author`` will be able to interact with the menu.
+
+                .. warning::
+
+                    This parameter is `provisional <developer-guarantees-exclusions>`.
+                    If no issues arise, we plan on including it under developer guarantees
+                    in the first release made after 2024-05-24.
             ephemeral: `bool`
                 Send the message ephemerally. This only works
                 if the context is from a slash command interaction.
         """
-        self.author = ctx.author
+        if self.use_select_menu and self.source.is_paginating():
+            self.remove_item(self.select_menu)
+            # we added a default one in init so we want to remove it and add any changes here
+            self.select_menu = self._get_select_menu()
+            self.add_item(self.select_menu)
+        self._fallback_author_to_ctx = True
+        if user is not None:
+            self.author = user
         self.ctx = ctx
         kwargs = await self.get_page(self.current_page)
         self.message = await ctx.send(**kwargs, ephemeral=ephemeral)
+
+    async def start_dm(self, user: discord.User):
+        """
+        Used to start displaying the menu in a direct message.
+
+        Parameters
+        ----------
+            user: `discord.User`
+                The user that will be direct messaged by the bot.
+        """
+        if self.use_select_menu and self.source.is_paginating():
+            self.remove_item(self.select_menu)
+            # we added a default one in init so we want to remove it and add any changes here
+            self.select_menu = self._get_select_menu()
+            self.add_item(self.select_menu)
+        self.author = user
+        kwargs = await self.get_page(self.current_page)
+        self.message = await user.send(**kwargs)
 
     async def get_page(self, page_num: int) -> Dict[str, Optional[Any]]:
         try:
@@ -431,3 +503,195 @@ class SetApiView(discord.ui.View):
         return await interaction.response.send_modal(
             SetApiModal(self.default_service, self.default_keys)
         )
+
+
+class ConfirmView(discord.ui.View):
+    """
+    A simple `discord.ui.View` used for confirming something.
+
+    Parameters
+    ----------
+    author: Optional[discord.abc.User]
+        The user who you want to be interacting with the confirmation.
+        If this is omitted anyone can click yes or no.
+    timeout: float
+        The timeout of the view in seconds. Defaults to ``180`` seconds.
+    disable_buttons: bool
+        Whether to disable the buttons instead of removing them from the message after the timeout.
+        Defaults to ``False``.
+
+    Examples
+    --------
+    Using the view::
+
+        view = ConfirmView(ctx.author)
+        # attach the message to the view after sending it.
+        # This way, the view will be automatically removed
+        # from the message after the timeout.
+        view.message = await ctx.send("Are you sure you about that?", view=view)
+        await view.wait()
+        if view.result:
+            await ctx.send("Okay I will do that.")
+        else:
+            await ctx.send("I will not be doing that then.")
+
+    Auto-disable the buttons after timeout if nothing is pressed::
+
+        view = ConfirmView(ctx.author, disable_buttons=True)
+        view.message = await ctx.send("Are you sure you about that?", view=view)
+        await view.wait()
+        if view.result:
+            await ctx.send("Okay I will do that.")
+        else:
+            await ctx.send("I will not be doing that then.")
+
+    Attributes
+    ----------
+    result: Optional[bool]
+        The result of the confirm view.
+    author: Optional[discord.abc.User]
+        The author of the message who is allowed to press the buttons.
+    message: Optional[discord.Message]
+        The message the confirm view is sent on. This can be set while
+        sending the message. This can also be left as ``None`` in which case
+        nothing will happen in `on_timeout()`, if the view is never interacted with.
+    disable_buttons: bool
+        Whether to disable the buttons isntead of removing them on timeout
+        (if the `message` attribute has been set on the view).
+    """
+
+    def __init__(
+        self,
+        author: Optional[discord.abc.User] = None,
+        *,
+        timeout: float = 180.0,
+        disable_buttons: bool = False,
+    ):
+        if timeout is None:
+            raise TypeError("This view should not be used as a persistent view.")
+        super().__init__(timeout=timeout)
+        self.result: Optional[bool] = None
+        self.author: Optional[discord.abc.User] = author
+        self.message: Optional[discord.Message] = None
+        self.disable_buttons = disable_buttons
+
+    async def on_timeout(self):
+        """
+        A callback that is called by the provided (default) callbacks for `confirm_button`
+        and `dismiss_button` as well as when a view’s timeout elapses without being
+        explicitly stopped.
+
+        The default implementation will either disable the buttons
+        when `disable_buttons` is ``True``, or remove the view from the message otherwise.
+
+        .. note::
+
+            This will not do anything if `message` is ``None``.
+        """
+        if self.message is None:
+            # we can't do anything here if message is none
+            return
+
+        if self.disable_buttons:
+            self.confirm_button.disabled = True
+            self.dismiss_button.disabled = True
+            view = self
+        else:
+            view = None
+        try:
+            await self.message.edit(view=view)
+        except discord.HTTPException:
+            # message could no longer be there or we may not be able to edit it anymore
+            pass
+
+    @discord.ui.button(label=_("Yes"), style=discord.ButtonStyle.green)
+    async def confirm_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        # Warning: The Sphinx documentation for this method/attribute does not use this docstring.
+        """
+        A `discord.ui.Button` to confirm the message.
+
+        The button's callback will set `result` to ``True``, defer the response,
+        and call `on_timeout()` to clean up the view.
+
+        Example
+        -------
+        Changing the style and label of this `discord.ui.Button`::
+
+            view = ConfirmView(ctx.author)
+            view.confirm_button.style = discord.ButtonStyle.red
+            view.confirm_button.label = "Delete"
+            view.dismiss_button.label = "Cancel"
+            view.message = await ctx.send(
+                "Are you sure you want to remove #very-important-channel?", view=view
+            )
+            await view.wait()
+            if view.result:
+                await ctx.send("Channel #very-important-channel deleted.")
+            else:
+                await ctx.send("Canceled.")
+        """
+        self.result = True
+        self.stop()
+        # respond to the interaction so the user does not see "interaction failed".
+        await interaction.response.defer()
+        # call `on_timeout` explicitly here since it's not called when `stop()` is called.
+        await self.on_timeout()
+
+    @discord.ui.button(label=_("No"), style=discord.ButtonStyle.secondary)
+    async def dismiss_button(self, interaction: discord.Interaction, button: discord.ui.Button):
+        # Warning: The Sphinx documentation for this method/attribute does not use this docstring.
+        """
+        A `discord.ui.Button` to dismiss the message.
+
+        The button's callback will set `result` to ``False``, defer the response,
+        and call `on_timeout()` to clean up the view.
+
+        Example
+        -------
+        Changing the style and label of this `discord.ui.Button`::
+
+            view = ConfirmView(ctx.author)
+            view.confirm_button.style = discord.ButtonStyle.red
+            view.confirm_button.label = "Delete"
+            view.dismiss_button.label = "Cancel"
+            view.message = await ctx.send(
+                "Are you sure you want to remove #very-important-channel?", view=view
+            )
+            await view.wait()
+            if view.result:
+                await ctx.send("Channel #very-important-channel deleted.")
+            else:
+                await ctx.send("Canceled.")
+        """
+        self.result = False
+        self.stop()
+        # respond to the interaction so the user does not see "interaction failed".
+        await interaction.response.defer()
+        # call `on_timeout` explicitly here since it's not called when `stop()` is called.
+        await self.on_timeout()
+
+    async def interaction_check(self, interaction: discord.Interaction):
+        """
+        A callback that is called when an interaction happens within the view
+        that checks whether the view should process item callbacks for the interaction.
+
+        The default implementation of this will assign value of `discord.Interaction.message`
+        to the `message` attribute and either:
+
+        - send an ephemeral failure message and return ``False``,
+          if `author` is set and isn't the same as the interaction user, or
+        - return ``True``
+
+        .. seealso::
+
+            The documentation of the callback in the base class:
+            :meth:`discord.ui.View.interaction_check()`
+        """
+        if self.message is None:
+            self.message = interaction.message
+        if self.author and interaction.user.id != self.author.id:
+            await interaction.response.send_message(
+                content=_("You are not authorized to interact with this."), ephemeral=True
+            )
+            return False
+        return True

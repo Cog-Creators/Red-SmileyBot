@@ -12,6 +12,10 @@
       "type": "string",
       "description": "Author of the Trivia list."
     },
+    "DESCRIPTION": {
+      "type": "string",
+      "description": "Brief description of the Trivia list."
+    },
     "CONFIG": {
       "type": "object",
       "description": "The configuration for a trivia session.",

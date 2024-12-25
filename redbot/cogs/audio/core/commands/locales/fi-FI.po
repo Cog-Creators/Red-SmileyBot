@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-02-12 21:08+0000\n"
+"POT-Creation-Date: 2024-08-07 20:36+0000\n"
 "Last-Translator: \n"
 "Language-Team: Finnish\n"
 "MIME-Version: 1.0\n"
@@ -217,33 +217,33 @@ msgstr "Toista automaattisesti, kun jono loppuu: {true_or_false}."
 #: redbot/cogs/audio/core/commands/audioset.py:627
 #: redbot/cogs/audio/core/commands/audioset.py:675
 #: redbot/cogs/audio/core/commands/audioset.py:750
-#: redbot/cogs/audio/core/commands/audioset.py:898
-#: redbot/cogs/audio/core/commands/audioset.py:913
-#: redbot/cogs/audio/core/commands/audioset.py:933
-#: redbot/cogs/audio/core/commands/audioset.py:962
-#: redbot/cogs/audio/core/commands/audioset.py:978
-#: redbot/cogs/audio/core/commands/audioset.py:979
-#: redbot/cogs/audio/core/commands/audioset.py:980
-#: redbot/cogs/audio/core/commands/audioset.py:981
-#: redbot/cogs/audio/core/commands/audioset.py:982
-#: redbot/cogs/audio/core/commands/audioset.py:983
-#: redbot/cogs/audio/core/commands/audioset.py:1000
-#: redbot/cogs/audio/core/commands/audioset.py:1002
-#: redbot/cogs/audio/core/commands/audioset.py:1044
-#: redbot/cogs/audio/core/commands/audioset.py:1051
-#: redbot/cogs/audio/core/commands/audioset.py:1093
-#: redbot/cogs/audio/core/commands/audioset.py:1094
-#: redbot/cogs/audio/core/commands/audioset.py:1095
-#: redbot/cogs/audio/core/commands/audioset.py:1114
-#: redbot/cogs/audio/core/commands/audioset.py:1199
-#: redbot/cogs/audio/core/commands/audioset.py:1214
-#: redbot/cogs/audio/core/commands/audioset.py:1359
-#: redbot/cogs/audio/core/commands/audioset.py:1360
-#: redbot/cogs/audio/core/commands/audioset.py:1361
-#: redbot/cogs/audio/core/commands/audioset.py:1404
-#: redbot/cogs/audio/core/commands/audioset.py:1405
-#: redbot/cogs/audio/core/commands/audioset.py:1406
-#: redbot/cogs/audio/core/commands/audioset.py:1448
+#: redbot/cogs/audio/core/commands/audioset.py:906
+#: redbot/cogs/audio/core/commands/audioset.py:921
+#: redbot/cogs/audio/core/commands/audioset.py:941
+#: redbot/cogs/audio/core/commands/audioset.py:970
+#: redbot/cogs/audio/core/commands/audioset.py:986
+#: redbot/cogs/audio/core/commands/audioset.py:987
+#: redbot/cogs/audio/core/commands/audioset.py:988
+#: redbot/cogs/audio/core/commands/audioset.py:989
+#: redbot/cogs/audio/core/commands/audioset.py:990
+#: redbot/cogs/audio/core/commands/audioset.py:991
+#: redbot/cogs/audio/core/commands/audioset.py:1008
+#: redbot/cogs/audio/core/commands/audioset.py:1010
+#: redbot/cogs/audio/core/commands/audioset.py:1052
+#: redbot/cogs/audio/core/commands/audioset.py:1059
+#: redbot/cogs/audio/core/commands/audioset.py:1101
+#: redbot/cogs/audio/core/commands/audioset.py:1102
+#: redbot/cogs/audio/core/commands/audioset.py:1103
+#: redbot/cogs/audio/core/commands/audioset.py:1122
+#: redbot/cogs/audio/core/commands/audioset.py:1221
+#: redbot/cogs/audio/core/commands/audioset.py:1236
+#: redbot/cogs/audio/core/commands/audioset.py:1381
+#: redbot/cogs/audio/core/commands/audioset.py:1382
+#: redbot/cogs/audio/core/commands/audioset.py:1383
+#: redbot/cogs/audio/core/commands/audioset.py:1426
+#: redbot/cogs/audio/core/commands/audioset.py:1427
+#: redbot/cogs/audio/core/commands/audioset.py:1428
+#: redbot/cogs/audio/core/commands/audioset.py:1470
 #: redbot/cogs/audio/core/commands/controller.py:422
 #: redbot/cogs/audio/core/commands/controller.py:466
 #: redbot/cogs/audio/core/commands/controller.py:775
@@ -258,33 +258,33 @@ msgstr "Käytössä"
 #: redbot/cogs/audio/core/commands/audioset.py:627
 #: redbot/cogs/audio/core/commands/audioset.py:675
 #: redbot/cogs/audio/core/commands/audioset.py:750
-#: redbot/cogs/audio/core/commands/audioset.py:898
-#: redbot/cogs/audio/core/commands/audioset.py:913
-#: redbot/cogs/audio/core/commands/audioset.py:933
-#: redbot/cogs/audio/core/commands/audioset.py:962
-#: redbot/cogs/audio/core/commands/audioset.py:978
-#: redbot/cogs/audio/core/commands/audioset.py:979
-#: redbot/cogs/audio/core/commands/audioset.py:980
-#: redbot/cogs/audio/core/commands/audioset.py:981
-#: redbot/cogs/audio/core/commands/audioset.py:982
-#: redbot/cogs/audio/core/commands/audioset.py:983
-#: redbot/cogs/audio/core/commands/audioset.py:1000
-#: redbot/cogs/audio/core/commands/audioset.py:1002
-#: redbot/cogs/audio/core/commands/audioset.py:1044
-#: redbot/cogs/audio/core/commands/audioset.py:1051
-#: redbot/cogs/audio/core/commands/audioset.py:1093
-#: redbot/cogs/audio/core/commands/audioset.py:1094
-#: redbot/cogs/audio/core/commands/audioset.py:1095
-#: redbot/cogs/audio/core/commands/audioset.py:1116
-#: redbot/cogs/audio/core/commands/audioset.py:1199
-#: redbot/cogs/audio/core/commands/audioset.py:1214
-#: redbot/cogs/audio/core/commands/audioset.py:1359
-#: redbot/cogs/audio/core/commands/audioset.py:1360
-#: redbot/cogs/audio/core/commands/audioset.py:1361
-#: redbot/cogs/audio/core/commands/audioset.py:1404
-#: redbot/cogs/audio/core/commands/audioset.py:1405
-#: redbot/cogs/audio/core/commands/audioset.py:1406
-#: redbot/cogs/audio/core/commands/audioset.py:1448
+#: redbot/cogs/audio/core/commands/audioset.py:906
+#: redbot/cogs/audio/core/commands/audioset.py:921
+#: redbot/cogs/audio/core/commands/audioset.py:941
+#: redbot/cogs/audio/core/commands/audioset.py:970
+#: redbot/cogs/audio/core/commands/audioset.py:986
+#: redbot/cogs/audio/core/commands/audioset.py:987
+#: redbot/cogs/audio/core/commands/audioset.py:988
+#: redbot/cogs/audio/core/commands/audioset.py:989
+#: redbot/cogs/audio/core/commands/audioset.py:990
+#: redbot/cogs/audio/core/commands/audioset.py:991
+#: redbot/cogs/audio/core/commands/audioset.py:1008
+#: redbot/cogs/audio/core/commands/audioset.py:1010
+#: redbot/cogs/audio/core/commands/audioset.py:1052
+#: redbot/cogs/audio/core/commands/audioset.py:1059
+#: redbot/cogs/audio/core/commands/audioset.py:1101
+#: redbot/cogs/audio/core/commands/audioset.py:1102
+#: redbot/cogs/audio/core/commands/audioset.py:1103
+#: redbot/cogs/audio/core/commands/audioset.py:1124
+#: redbot/cogs/audio/core/commands/audioset.py:1221
+#: redbot/cogs/audio/core/commands/audioset.py:1236
+#: redbot/cogs/audio/core/commands/audioset.py:1381
+#: redbot/cogs/audio/core/commands/audioset.py:1382
+#: redbot/cogs/audio/core/commands/audioset.py:1383
+#: redbot/cogs/audio/core/commands/audioset.py:1426
+#: redbot/cogs/audio/core/commands/audioset.py:1427
+#: redbot/cogs/audio/core/commands/audioset.py:1428
+#: redbot/cogs/audio/core/commands/audioset.py:1470
 #: redbot/cogs/audio/core/commands/controller.py:422
 #: redbot/cogs/audio/core/commands/controller.py:466
 #: redbot/cogs/audio/core/commands/controller.py:775
@@ -317,23 +317,23 @@ msgstr "\n"
 #: redbot/cogs/audio/core/commands/audioset.py:725
 #: redbot/cogs/audio/core/commands/audioset.py:731
 #: redbot/cogs/audio/core/commands/audioset.py:748
-#: redbot/cogs/audio/core/commands/audioset.py:766
-#: redbot/cogs/audio/core/commands/audioset.py:772
-#: redbot/cogs/audio/core/commands/audioset.py:795
-#: redbot/cogs/audio/core/commands/audioset.py:852
-#: redbot/cogs/audio/core/commands/audioset.py:875
-#: redbot/cogs/audio/core/commands/audioset.py:880
-#: redbot/cogs/audio/core/commands/audioset.py:896
-#: redbot/cogs/audio/core/commands/audioset.py:911
-#: redbot/cogs/audio/core/commands/audioset.py:931
-#: redbot/cogs/audio/core/commands/audioset.py:1197
-#: redbot/cogs/audio/core/commands/audioset.py:1212
-#: redbot/cogs/audio/core/commands/audioset.py:1233
-#: redbot/cogs/audio/core/commands/audioset.py:1240
-#: redbot/cogs/audio/core/commands/audioset.py:1300
+#: redbot/cogs/audio/core/commands/audioset.py:774
+#: redbot/cogs/audio/core/commands/audioset.py:780
+#: redbot/cogs/audio/core/commands/audioset.py:803
+#: redbot/cogs/audio/core/commands/audioset.py:860
+#: redbot/cogs/audio/core/commands/audioset.py:883
+#: redbot/cogs/audio/core/commands/audioset.py:888
+#: redbot/cogs/audio/core/commands/audioset.py:904
+#: redbot/cogs/audio/core/commands/audioset.py:919
+#: redbot/cogs/audio/core/commands/audioset.py:939
+#: redbot/cogs/audio/core/commands/audioset.py:1219
+#: redbot/cogs/audio/core/commands/audioset.py:1234
+#: redbot/cogs/audio/core/commands/audioset.py:1255
+#: redbot/cogs/audio/core/commands/audioset.py:1262
 #: redbot/cogs/audio/core/commands/audioset.py:1322
-#: redbot/cogs/audio/core/commands/audioset.py:1430
-#: redbot/cogs/audio/core/commands/audioset.py:1446
+#: redbot/cogs/audio/core/commands/audioset.py:1344
+#: redbot/cogs/audio/core/commands/audioset.py:1452
+#: redbot/cogs/audio/core/commands/audioset.py:1468
 #: redbot/cogs/audio/core/commands/controller.py:420
 #: redbot/cogs/audio/core/commands/controller.py:464
 #: redbot/cogs/audio/core/commands/controller.py:782
@@ -342,28 +342,28 @@ msgstr "\n"
 #: redbot/cogs/audio/core/commands/llset.py:175
 #: redbot/cogs/audio/core/commands/llset.py:204
 #: redbot/cogs/audio/core/commands/llset.py:226
-#: redbot/cogs/audio/core/commands/llset.py:255
-#: redbot/cogs/audio/core/commands/llset.py:279
-#: redbot/cogs/audio/core/commands/llset.py:292
-#: redbot/cogs/audio/core/commands/llset.py:383
-#: redbot/cogs/audio/core/commands/llset.py:407
-#: redbot/cogs/audio/core/commands/llset.py:438
-#: redbot/cogs/audio/core/commands/llset.py:467
-#: redbot/cogs/audio/core/commands/llset.py:476
-#: redbot/cogs/audio/core/commands/llset.py:494
-#: redbot/cogs/audio/core/commands/llset.py:503
-#: redbot/cogs/audio/core/commands/llset.py:521
-#: redbot/cogs/audio/core/commands/llset.py:530
-#: redbot/cogs/audio/core/commands/llset.py:548
-#: redbot/cogs/audio/core/commands/llset.py:557
-#: redbot/cogs/audio/core/commands/llset.py:575
-#: redbot/cogs/audio/core/commands/llset.py:584
-#: redbot/cogs/audio/core/commands/llset.py:602
-#: redbot/cogs/audio/core/commands/llset.py:611
-#: redbot/cogs/audio/core/commands/llset.py:629
-#: redbot/cogs/audio/core/commands/llset.py:638
-#: redbot/cogs/audio/core/commands/llset.py:665
-#: redbot/cogs/audio/core/commands/llset.py:696
+#: redbot/cogs/audio/core/commands/llset.py:258
+#: redbot/cogs/audio/core/commands/llset.py:282
+#: redbot/cogs/audio/core/commands/llset.py:295
+#: redbot/cogs/audio/core/commands/llset.py:391
+#: redbot/cogs/audio/core/commands/llset.py:415
+#: redbot/cogs/audio/core/commands/llset.py:446
+#: redbot/cogs/audio/core/commands/llset.py:475
+#: redbot/cogs/audio/core/commands/llset.py:484
+#: redbot/cogs/audio/core/commands/llset.py:502
+#: redbot/cogs/audio/core/commands/llset.py:511
+#: redbot/cogs/audio/core/commands/llset.py:529
+#: redbot/cogs/audio/core/commands/llset.py:538
+#: redbot/cogs/audio/core/commands/llset.py:556
+#: redbot/cogs/audio/core/commands/llset.py:565
+#: redbot/cogs/audio/core/commands/llset.py:583
+#: redbot/cogs/audio/core/commands/llset.py:592
+#: redbot/cogs/audio/core/commands/llset.py:610
+#: redbot/cogs/audio/core/commands/llset.py:619
+#: redbot/cogs/audio/core/commands/llset.py:637
+#: redbot/cogs/audio/core/commands/llset.py:646
+#: redbot/cogs/audio/core/commands/llset.py:673
+#: redbot/cogs/audio/core/commands/llset.py:704
 msgid "Setting Changed"
 msgstr "Asetus muutettu"
 
@@ -396,25 +396,6 @@ msgid "Set a playlist to auto-play songs from.\n\n"
 msgstr ""
 
 #: redbot/cogs/audio/core/commands/audioset.py:497
-#: redbot/cogs/audio/core/commands/playlists.py:104
-#: redbot/cogs/audio/core/commands/playlists.py:265
-#: redbot/cogs/audio/core/commands/playlists.py:392
-#: redbot/cogs/audio/core/commands/playlists.py:469
-#: redbot/cogs/audio/core/commands/playlists.py:557
-#: redbot/cogs/audio/core/commands/playlists.py:690
-#: redbot/cogs/audio/core/commands/playlists.py:821
-#: redbot/cogs/audio/core/commands/playlists.py:942
-#: redbot/cogs/audio/core/commands/playlists.py:1095
-#: redbot/cogs/audio/core/commands/playlists.py:1203
-#: redbot/cogs/audio/core/commands/playlists.py:1319
-#: redbot/cogs/audio/core/commands/playlists.py:1443
-#: redbot/cogs/audio/core/commands/playlists.py:1619
-#: redbot/cogs/audio/core/commands/playlists.py:1788
-#: redbot/cogs/audio/core/commands/playlists.py:1952
-msgid "Playlists Are Not Available"
-msgstr "Soittolistat eivät ole saatavilla"
-
-#: redbot/cogs/audio/core/commands/audioset.py:498
 #: redbot/cogs/audio/core/commands/playlists.py:105
 #: redbot/cogs/audio/core/commands/playlists.py:266
 #: redbot/cogs/audio/core/commands/playlists.py:393
@@ -430,10 +411,10 @@ msgstr "Soittolistat eivät ole saatavilla"
 #: redbot/cogs/audio/core/commands/playlists.py:1620
 #: redbot/cogs/audio/core/commands/playlists.py:1789
 #: redbot/cogs/audio/core/commands/playlists.py:1953
-msgid "The playlist section of Audio is currently unavailable"
-msgstr "Soittolistaosio Audio:ssa ei ole juuri nyt saatavilla"
+msgid "Playlists Are Not Available"
+msgstr "Soittolistat eivät ole saatavilla"
 
-#: redbot/cogs/audio/core/commands/audioset.py:499
+#: redbot/cogs/audio/core/commands/audioset.py:498
 #: redbot/cogs/audio/core/commands/playlists.py:106
 #: redbot/cogs/audio/core/commands/playlists.py:267
 #: redbot/cogs/audio/core/commands/playlists.py:394
@@ -449,6 +430,25 @@ msgstr "Soittolistaosio Audio:ssa ei ole juuri nyt saatavilla"
 #: redbot/cogs/audio/core/commands/playlists.py:1621
 #: redbot/cogs/audio/core/commands/playlists.py:1790
 #: redbot/cogs/audio/core/commands/playlists.py:1954
+msgid "The playlist section of Audio is currently unavailable"
+msgstr "Soittolistaosio Audio:ssa ei ole juuri nyt saatavilla"
+
+#: redbot/cogs/audio/core/commands/audioset.py:499
+#: redbot/cogs/audio/core/commands/playlists.py:107
+#: redbot/cogs/audio/core/commands/playlists.py:268
+#: redbot/cogs/audio/core/commands/playlists.py:395
+#: redbot/cogs/audio/core/commands/playlists.py:472
+#: redbot/cogs/audio/core/commands/playlists.py:560
+#: redbot/cogs/audio/core/commands/playlists.py:693
+#: redbot/cogs/audio/core/commands/playlists.py:824
+#: redbot/cogs/audio/core/commands/playlists.py:945
+#: redbot/cogs/audio/core/commands/playlists.py:1098
+#: redbot/cogs/audio/core/commands/playlists.py:1206
+#: redbot/cogs/audio/core/commands/playlists.py:1322
+#: redbot/cogs/audio/core/commands/playlists.py:1446
+#: redbot/cogs/audio/core/commands/playlists.py:1622
+#: redbot/cogs/audio/core/commands/playlists.py:1791
+#: redbot/cogs/audio/core/commands/playlists.py:1955
 msgid "Check your logs."
 msgstr "Tarkista logisi."
 
@@ -458,8 +458,8 @@ msgid "No Playlist Found"
 msgstr "Soittolistaa ei löytynyt"
 
 #: redbot/cogs/audio/core/commands/audioset.py:515
-#: redbot/cogs/audio/core/commands/playlists.py:124
-#: redbot/cogs/audio/core/commands/playlists.py:1474
+#: redbot/cogs/audio/core/commands/playlists.py:125
+#: redbot/cogs/audio/core/commands/playlists.py:1475
 msgid "Could not match '{arg}' to a playlist"
 msgstr "Soittolistaa joka täsmäisi '{arg}' ei löydetty"
 
@@ -472,22 +472,22 @@ msgid "Playlist {name} has no tracks."
 msgstr "Soittolistalla {name} ei ole kappaleita."
 
 #: redbot/cogs/audio/core/commands/audioset.py:531
-#: redbot/cogs/audio/core/commands/playlists.py:1560
-#: redbot/cogs/audio/core/commands/playlists.py:1671
+#: redbot/cogs/audio/core/commands/playlists.py:1561
+#: redbot/cogs/audio/core/commands/playlists.py:1672
 msgid "Playlist {id} does not exist in {scope} scope."
 msgstr "Soittolistaa {id} ei löydy {scope}-tasolla."
 
 #: redbot/cogs/audio/core/commands/audioset.py:538
-#: redbot/cogs/audio/core/commands/playlists.py:1000
-#: redbot/cogs/audio/core/commands/playlists.py:1568
-#: redbot/cogs/audio/core/commands/playlists.py:1678
+#: redbot/cogs/audio/core/commands/playlists.py:1001
+#: redbot/cogs/audio/core/commands/playlists.py:1569
+#: redbot/cogs/audio/core/commands/playlists.py:1679
 msgid "Missing Arguments"
 msgstr "Argumentteja puuttuu"
 
 #: redbot/cogs/audio/core/commands/audioset.py:539
-#: redbot/cogs/audio/core/commands/playlists.py:1001
-#: redbot/cogs/audio/core/commands/playlists.py:1569
-#: redbot/cogs/audio/core/commands/playlists.py:1679
+#: redbot/cogs/audio/core/commands/playlists.py:1002
+#: redbot/cogs/audio/core/commands/playlists.py:1570
+#: redbot/cogs/audio/core/commands/playlists.py:1680
 msgid "You need to specify the Guild ID for the guild to lookup."
 msgstr "Sinun tulee antaa palvelimen ID sen tietojen etsimiseksi."
 
@@ -586,13 +586,13 @@ msgstr "Katkaise yhteys puhekanavaan kun botti on ollut sillä yksin x sekuntia,
 
 #: redbot/cogs/audio/core/commands/audioset.py:689
 #: redbot/cogs/audio/core/commands/audioset.py:718
-#: redbot/cogs/audio/core/commands/audioset.py:1225
+#: redbot/cogs/audio/core/commands/audioset.py:1247
 msgid "Invalid Time"
 msgstr "Virheellinen ajanmääre"
 
 #: redbot/cogs/audio/core/commands/audioset.py:689
 #: redbot/cogs/audio/core/commands/audioset.py:718
-#: redbot/cogs/audio/core/commands/audioset.py:1225
+#: redbot/cogs/audio/core/commands/audioset.py:1247
 msgid "Seconds can't be less than zero."
 msgstr "Sekuntien määrän tulee olla suurempi kuin nolla."
 
@@ -631,23 +631,28 @@ msgstr "Suosi kappaleita joissa on lyriikat: {true_or_false}."
 msgid "Set a price for queueing tracks for non-mods, 0 to disable."
 msgstr "Aseta hinta ei-moderaattorien kappaleiden lisäämiselle, 0 poistaaksesi ominaisuuden käytöstä."
 
-#: redbot/cogs/audio/core/commands/audioset.py:761
+#: redbot/cogs/audio/core/commands/audioset.py:762
+#: redbot/cogs/audio/core/commands/audioset.py:768
 msgid "Invalid Price"
 msgstr "Virheellinen hinta"
 
-#: redbot/cogs/audio/core/commands/audioset.py:761
+#: redbot/cogs/audio/core/commands/audioset.py:763
 msgid "Price can't be less than zero."
 msgstr "Hinta ei voi olla pienempi kuin nolla."
 
-#: redbot/cogs/audio/core/commands/audioset.py:766
+#: redbot/cogs/audio/core/commands/audioset.py:769
+msgid "Price can't be greater than 2^63 - 1."
+msgstr ""
+
+#: redbot/cogs/audio/core/commands/audioset.py:774
 msgid "Jukebox mode disabled."
 msgstr "Jukebox-tila poistettu käytöstä."
 
-#: redbot/cogs/audio/core/commands/audioset.py:773
+#: redbot/cogs/audio/core/commands/audioset.py:781
 msgid "Track queueing command price set to {price} {currency}."
 msgstr "Kappaleiden lisäämisen hinnaksi asetettiin {price} {currency}."
 
-#: redbot/cogs/audio/core/commands/audioset.py:785
+#: redbot/cogs/audio/core/commands/audioset.py:793
 #, docstring
 msgid "Set the localtracks path if the Lavalink.jar is not run from the Audio data folder.\n\n"
 "        Leave the path blank to reset the path to the default, the Audio data directory.\n"
@@ -656,11 +661,11 @@ msgstr "Aseta localtracks kohde jos Lavalink.jar ei ole suoritettu Audio data ka
 "        Jätä polku tyhjäksi palauttaaksesi polun oletusarvoon, Audio data hakemistoon.\n"
 "        "
 
-#: redbot/cogs/audio/core/commands/audioset.py:796
+#: redbot/cogs/audio/core/commands/audioset.py:804
 msgid "The localtracks path location has been reset to {localpath}"
 msgstr "Paikallisten kappaleiden tiedostopolku nollattiin arvoon {localpath}"
 
-#: redbot/cogs/audio/core/commands/audioset.py:801
+#: redbot/cogs/audio/core/commands/audioset.py:809
 msgid "This setting is only for bot owners to set a localtracks folder location In the example below, the full path for 'ParentDirectory' must be passed to this command.\n"
 "```\n"
 "ParentDirectory\n"
@@ -675,30 +680,30 @@ msgid "This setting is only for bot owners to set a localtracks folder location 
 "Do you want to continue to set the provided path for local tracks?"
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/audioset.py:833
+#: redbot/cogs/audio/core/commands/audioset.py:841
 msgid "Invalid Path"
 msgstr "Virheellinen polku"
 
-#: redbot/cogs/audio/core/commands/audioset.py:834
+#: redbot/cogs/audio/core/commands/audioset.py:842
 msgid "{local_path} does not seem like a valid path."
 msgstr "{local_path} ei vaikuta oikeanlaiselta polulta."
 
-#: redbot/cogs/audio/core/commands/audioset.py:840
+#: redbot/cogs/audio/core/commands/audioset.py:848
 msgid "`{localtracks}` does not exist. The path will still be saved, but please check the path and create a localtracks folder in `{localfolder}` before attempting to play local tracks."
 msgstr "`{localtracks}` ei ole olemassa. Polku tallennetaan joka tapauksessa, mutta tarkista polku ja luo localtracks -kansio sijaintiin`{localfolder}` ennen paikallisten kappaleiden toistamista."
 
-#: redbot/cogs/audio/core/commands/audioset.py:846
+#: redbot/cogs/audio/core/commands/audioset.py:854
 #: redbot/cogs/audio/core/commands/llset.py:74
 #: redbot/cogs/audio/core/commands/player.py:414
 #: redbot/cogs/audio/core/commands/player.py:424
 msgid "Invalid Environment"
 msgstr "Virheellinen ympäristö"
 
-#: redbot/cogs/audio/core/commands/audioset.py:853
+#: redbot/cogs/audio/core/commands/audioset.py:861
 msgid "The localtracks path location has been set to {localpath}"
 msgstr "Paikallisten kappaleiden sijainniksi asetettiin {localpath}"
 
-#: redbot/cogs/audio/core/commands/audioset.py:862
+#: redbot/cogs/audio/core/commands/audioset.py:870
 #, docstring
 msgid "Max length of a track to queue in seconds, 0 to disable.\n\n"
 "        Accepts seconds or a value formatted like 00:00:00 (`hh:mm:ss`) or 00:00 (`mm:ss`). Invalid\n"
@@ -709,41 +714,41 @@ msgstr "Kappaleen maksimipituus sekunteina, 0 poistaaksesi ominaisuuden käytös
 "       syöte poistaa maksipituuden käytöstä.\n"
 "        "
 
-#: redbot/cogs/audio/core/commands/audioset.py:871
+#: redbot/cogs/audio/core/commands/audioset.py:879
 msgid "Invalid length"
 msgstr "Virheellinen pituus"
 
-#: redbot/cogs/audio/core/commands/audioset.py:871
+#: redbot/cogs/audio/core/commands/audioset.py:879
 msgid "Length can't be less than zero."
 msgstr "Pituus ei voi olla pienempi kuin nolla."
 
-#: redbot/cogs/audio/core/commands/audioset.py:875
+#: redbot/cogs/audio/core/commands/audioset.py:883
 msgid "Track max length disabled."
 msgstr "Kappaleiden maksimipituus on poistettiin käytöstä."
 
-#: redbot/cogs/audio/core/commands/audioset.py:881
+#: redbot/cogs/audio/core/commands/audioset.py:889
 msgid "Track max length set to {seconds}."
 msgstr "Kappaleen maksimipituudeksi asetettiin {seconds}."
 
-#: redbot/cogs/audio/core/commands/audioset.py:891
+#: redbot/cogs/audio/core/commands/audioset.py:899
 #, docstring
 msgid "Toggle track announcement and other bot messages."
 msgstr "Vaihda kappaleiden ilmoitusten ja muiden botin viestien lähettämisen tilaa."
 
-#: redbot/cogs/audio/core/commands/audioset.py:897
+#: redbot/cogs/audio/core/commands/audioset.py:905
 msgid "Notify mode: {true_or_false}."
 msgstr "Ilmoitustila: {true_or_false}."
 
-#: redbot/cogs/audio/core/commands/audioset.py:906
+#: redbot/cogs/audio/core/commands/audioset.py:914
 #, docstring
 msgid "Toggle whether the bot will be auto deafened upon joining the voice channel."
 msgstr "Vaihda onko botti automaattisesti hiljennettynä liittyessään puhekanavalle."
 
-#: redbot/cogs/audio/core/commands/audioset.py:912
+#: redbot/cogs/audio/core/commands/audioset.py:920
 msgid "Auto Deafen: {true_or_false}."
 msgstr "Automaattinen hiljennys: {true_or_false}."
 
-#: redbot/cogs/audio/core/commands/audioset.py:921
+#: redbot/cogs/audio/core/commands/audioset.py:929
 #, docstring
 msgid "Toggle the domain restriction on Audio.\n\n"
 "        When toggled off, users will be able to play songs from non-commercial websites and links.\n"
@@ -752,69 +757,69 @@ msgid "Toggle the domain restriction on Audio.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/audioset.py:932
+#: redbot/cogs/audio/core/commands/audioset.py:940
 msgid "Commercial links only: {true_or_false}."
 msgstr "Vain kaupalliset linkit: {true_or_false}."
 
-#: redbot/cogs/audio/core/commands/audioset.py:941
+#: redbot/cogs/audio/core/commands/audioset.py:949
 #, docstring
 msgid "Set the role to use for DJ mode."
 msgstr "Aseta rooli jota käytetään DJ-tilassa."
 
-#: redbot/cogs/audio/core/commands/audioset.py:950
+#: redbot/cogs/audio/core/commands/audioset.py:958
 msgid "Settings Changed"
 msgstr "Asetukset muutettu"
 
-#: redbot/cogs/audio/core/commands/audioset.py:951
+#: redbot/cogs/audio/core/commands/audioset.py:959
 msgid "DJ role set to: {role.name}."
 msgstr "DJ-rooliksi asetettu: {role.name}."
 
-#: redbot/cogs/audio/core/commands/audioset.py:957
+#: redbot/cogs/audio/core/commands/audioset.py:965
 #, docstring
 msgid "Show the current settings."
 msgstr "Näytä nykyiset asetukset."
 
-#: redbot/cogs/audio/core/commands/audioset.py:996
+#: redbot/cogs/audio/core/commands/audioset.py:1004
 msgid "Server Settings"
 msgstr "Palvelimen asetukset"
 
-#: redbot/cogs/audio/core/commands/audioset.py:997
+#: redbot/cogs/audio/core/commands/audioset.py:1005
 msgid "Auto-deafen:      [{auto_deafen}]\n"
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/audioset.py:1000
+#: redbot/cogs/audio/core/commands/audioset.py:1008
 msgid "Auto-disconnect:  [{dc}]\n"
 msgstr "Automaattinen yhteyden katkaisu:  [{dc}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1001
+#: redbot/cogs/audio/core/commands/audioset.py:1009
 msgid "Auto-play:        [{autoplay}]\n"
 msgstr "Automaattinen toisto:        [{autoplay}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1005
+#: redbot/cogs/audio/core/commands/audioset.py:1013
 msgid "Disconnect timer: [{num_seconds}]\n"
 msgstr "Yhteyden katkaisun viive: [{num_seconds}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1009
+#: redbot/cogs/audio/core/commands/audioset.py:1017
 msgid "Auto Pause timer: [{num_seconds}]\n"
 msgstr "Automaattisen tauon viive: [{num_seconds}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1013
+#: redbot/cogs/audio/core/commands/audioset.py:1021
 msgid "DJ Role:          [{role.name}]\n"
 msgstr "DJ-rooli:          [{role.name}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1015
+#: redbot/cogs/audio/core/commands/audioset.py:1023
 msgid "Jukebox:          [{jukebox_name}]\n"
 msgstr "Jukebox-tila: [{jukebox_name}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1016
+#: redbot/cogs/audio/core/commands/audioset.py:1024
 msgid "Command price:    [{jukebox_price}]\n"
 msgstr "Komennon hinta:    [{jukebox_price}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1020
+#: redbot/cogs/audio/core/commands/audioset.py:1028
 msgid "Max track length: [{tracklength}]\n"
 msgstr "Kappaleen maksimipituus: [{tracklength}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1023
+#: redbot/cogs/audio/core/commands/audioset.py:1031
 msgid "Max volume:       [{max_volume}%]\n"
 "Persist queue:    [{persist_queue}]\n"
 "Repeat:           [{repeat}]\n"
@@ -825,110 +830,110 @@ msgid "Max volume:       [{max_volume}%]\n"
 "Spotify search:   [{countrycode}]\n"
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/audioset.py:1043
+#: redbot/cogs/audio/core/commands/audioset.py:1051
 msgid "Thumbnails:       [{0}]\n"
 msgstr "Pikkukuvat:       [{0}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1047
+#: redbot/cogs/audio/core/commands/audioset.py:1055
 msgid "Vote skip:        [{vote_enabled}]\n"
 "Skip percentage:  [{vote_percent}%]\n"
 msgstr "Ohitus äänestämällä:        [{vote_enabled}]\n"
 "Ohitusprosentti:  [{vote_percent}%]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1060
+#: redbot/cogs/audio/core/commands/audioset.py:1068
 msgid "Server"
 msgstr "Palvelin"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1062
+#: redbot/cogs/audio/core/commands/audioset.py:1070
 msgid "User"
 msgstr "Käyttäjä"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1064
-#: redbot/cogs/audio/core/commands/playlists.py:1009
+#: redbot/cogs/audio/core/commands/audioset.py:1072
+#: redbot/cogs/audio/core/commands/playlists.py:1010
 msgid "Global"
 msgstr "Globaali"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1066
-#: redbot/cogs/audio/core/commands/audioset.py:1067
-#: redbot/cogs/audio/core/commands/audioset.py:1068
+#: redbot/cogs/audio/core/commands/audioset.py:1074
+#: redbot/cogs/audio/core/commands/audioset.py:1075
+#: redbot/cogs/audio/core/commands/audioset.py:1076
 msgid "Cached"
 msgstr "Välimuistissa"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1070
-#: redbot/cogs/audio/core/commands/audioset.py:1071
-#: redbot/cogs/audio/core/commands/audioset.py:1072
+#: redbot/cogs/audio/core/commands/audioset.py:1078
+#: redbot/cogs/audio/core/commands/audioset.py:1079
+#: redbot/cogs/audio/core/commands/audioset.py:1080
 msgid "US Top 100"
 msgstr "US Top 100"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1075
+#: redbot/cogs/audio/core/commands/audioset.py:1083
 msgid "Auto-play Settings"
 msgstr "Automaattisen toiston asetukset"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1077
+#: redbot/cogs/audio/core/commands/audioset.py:1085
 msgid "Playlist name:    [{pname}]\n"
 msgstr "Soittolistan nimi:    [{pname}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1078
+#: redbot/cogs/audio/core/commands/audioset.py:1086
 msgid "Playlist ID:      [{pid}]\n"
 msgstr "Soittolistan ID:      [{pid}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1079
+#: redbot/cogs/audio/core/commands/audioset.py:1087
 msgid "Playlist scope:   [{pscope}]\n"
 msgstr "Soittolistan taso:   [{pscope}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1085
-#: redbot/cogs/audio/core/commands/audioset.py:1364
-#: redbot/cogs/audio/core/commands/audioset.py:1409
+#: redbot/cogs/audio/core/commands/audioset.py:1093
+#: redbot/cogs/audio/core/commands/audioset.py:1386
+#: redbot/cogs/audio/core/commands/audioset.py:1431
 msgid "Cache Settings"
 msgstr "Välimuistin asetukset"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1087
+#: redbot/cogs/audio/core/commands/audioset.py:1095
 msgid "Max age:                [{max_age}]\n"
 msgstr "Maksimi-ikä:                [{max_age}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1088
+#: redbot/cogs/audio/core/commands/audioset.py:1096
 msgid "Local Spotify cache:    [{spotify_status}]\n"
 msgstr "Paikallinen Spotify-välimuisti:    [{spotify_status}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1089
+#: redbot/cogs/audio/core/commands/audioset.py:1097
 msgid "Local Youtube cache:    [{youtube_status}]\n"
 msgstr "Paikallinen YouTube-välimuisti:    [{youtube_status}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1090
+#: redbot/cogs/audio/core/commands/audioset.py:1098
 msgid "Local Lavalink cache:   [{lavalink_status}]\n"
 msgstr "Paikallinen Lavalink-välimuisti:   [{lavalink_status}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1092
-#: redbot/cogs/audio/core/commands/audioset.py:1358
-#: redbot/cogs/audio/core/commands/audioset.py:1403
+#: redbot/cogs/audio/core/commands/audioset.py:1100
+#: redbot/cogs/audio/core/commands/audioset.py:1380
+#: redbot/cogs/audio/core/commands/audioset.py:1425
 msgid "days"
 msgstr "päivää"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1099
+#: redbot/cogs/audio/core/commands/audioset.py:1107
 msgid "User Settings"
 msgstr "Käyttäjäasetukset"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1101
+#: redbot/cogs/audio/core/commands/audioset.py:1109
 msgid "Spotify search:   [{country_code}]\n"
 msgstr "Spotify-haku: [{country_code}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1106
+#: redbot/cogs/audio/core/commands/audioset.py:1114
 msgid "Lavalink Settings"
 msgstr "Lavalink-asetukset"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1108
+#: redbot/cogs/audio/core/commands/audioset.py:1116
 msgid "Cog version:            [{version}]\n"
 msgstr "Cog-versio:            [{version}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1109
+#: redbot/cogs/audio/core/commands/audioset.py:1117
 msgid "Red-Lavalink:           [{lavalink_version}]\n"
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/audioset.py:1110
+#: redbot/cogs/audio/core/commands/audioset.py:1118
 msgid "External server:        [{use_external_lavalink}]\n"
 msgstr "Ulkoinen palvelin:        [{use_external_lavalink}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1123
+#: redbot/cogs/audio/core/commands/audioset.py:1131
 msgid "Lavalink version:       [{llversion}]\n"
 "Lavalink branch:        [{llbranch}]\n"
 "Release date:           [{build_time}]\n"
@@ -939,70 +944,74 @@ msgid "Lavalink version:       [{llversion}]\n"
 "Max Heapsize:           [{xmx}]\n"
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/audioset.py:1143
+#: redbot/cogs/audio/core/commands/audioset.py:1151
 msgid "Localtracks path:       [{localpath}]\n"
 msgstr "Paikallisten kappaleiden polku:       [{localpath}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1152
+#: redbot/cogs/audio/core/commands/audioset.py:1159
+msgid "Lavalink Plugin Versions"
+msgstr ""
+
+#: redbot/cogs/audio/core/commands/audioset.py:1174
 #, docstring
 msgid "Sends the managed Lavalink node logs to your DMs."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/audioset.py:1159
-#: redbot/cogs/audio/core/commands/audioset.py:1161
+#: redbot/cogs/audio/core/commands/audioset.py:1181
+#: redbot/cogs/audio/core/commands/audioset.py:1183
 msgid "No logs found in your data folder."
 msgstr "Logeja ei löytynyt datakansiostasi."
 
-#: redbot/cogs/audio/core/commands/audioset.py:1173
+#: redbot/cogs/audio/core/commands/audioset.py:1195
 msgid "Logs are too large, you can find them in {path}"
 msgstr "Logit ovat liian suuret, voit löytää ne täältä: {path}"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1183
+#: redbot/cogs/audio/core/commands/audioset.py:1205
 msgid "I need to be able to DM you to send you the logs."
 msgstr "Minun pitää pystyä lähettämään sinulle yksityisviestejä, jotta voin lähettää logit."
 
-#: redbot/cogs/audio/core/commands/audioset.py:1192
+#: redbot/cogs/audio/core/commands/audioset.py:1214
 #, docstring
 msgid "Enable/disable tracks' titles as status."
 msgstr "Ota käyttöön/Poista käyttöön kappaleiden nimet botin tilana."
 
-#: redbot/cogs/audio/core/commands/audioset.py:1198
+#: redbot/cogs/audio/core/commands/audioset.py:1220
 msgid "Song titles as status: {true_or_false}."
 msgstr "Kappaleiden nimet tilana: {true_or_false}."
 
-#: redbot/cogs/audio/core/commands/audioset.py:1207
+#: redbot/cogs/audio/core/commands/audioset.py:1229
 #, docstring
 msgid "Toggle displaying a thumbnail on audio messages."
 msgstr "Vaihda näytetäänkö pikkukuvat viesteissä."
 
-#: redbot/cogs/audio/core/commands/audioset.py:1213
+#: redbot/cogs/audio/core/commands/audioset.py:1235
 msgid "Thumbnail display: {true_or_false}."
 msgstr "Pikkukuvien näyttäminen: {true_or_false}."
 
-#: redbot/cogs/audio/core/commands/audioset.py:1222
+#: redbot/cogs/audio/core/commands/audioset.py:1244
 #, docstring
 msgid "Percentage needed for non-mods to skip tracks, 0 to disable."
 msgstr "Äänestysprosentti joka tarvitaan että ei-moderaattorit voivat ohittaa kappaleita, 0 poistaa ominaisuuden käytöstä."
 
-#: redbot/cogs/audio/core/commands/audioset.py:1234
+#: redbot/cogs/audio/core/commands/audioset.py:1256
 msgid "Voting disabled. All users can use queue management commands."
 msgstr "Äänestys on poistettu käytöstä. Kaikki käyttäjät voivat käyttää jononhallintakomentoja."
 
-#: redbot/cogs/audio/core/commands/audioset.py:1241
+#: redbot/cogs/audio/core/commands/audioset.py:1263
 msgid "Vote percentage set to {percent}%."
 msgstr "Tarvittavaksi ääniprosentiksi asetettiin {percent}%."
 
-#: redbot/cogs/audio/core/commands/audioset.py:1250
+#: redbot/cogs/audio/core/commands/audioset.py:1272
 #, docstring
 msgid "Instructions to set the YouTube API key."
 msgstr "Ohjeet YouTube API -avaimen asettamiseksi."
 
-#: redbot/cogs/audio/core/commands/audioset.py:1269
+#: redbot/cogs/audio/core/commands/audioset.py:1291
 #, docstring
 msgid "Instructions to set the Spotify API tokens."
 msgstr "Ohjeet Spotify API -tokenien asettamiseksi."
 
-#: redbot/cogs/audio/core/commands/audioset.py:1270
+#: redbot/cogs/audio/core/commands/audioset.py:1292
 msgid "1. Go to Spotify developers and log in with your Spotify account.\n"
 "(https://developer.spotify.com/dashboard/applications)\n"
 "2. Click \"Create An App\".\n"
@@ -1020,28 +1029,28 @@ msgstr "1. Mene Spotify kehittäjäsivustolle ja kirjaudu sisään.\n"
 "6. Kopioi client ID ja client secret komentoon:\n"
 "`{prefix}set api spotify client_id <your_client_id_here> client_secret <your_client_secret_here>`"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1287
 #: redbot/cogs/audio/core/commands/audioset.py:1309
+#: redbot/cogs/audio/core/commands/audioset.py:1331
 #, docstring
 msgid "Set the country code for Spotify searches."
 msgstr "Aseta Spotify-hauissa käytettävä maakoodi."
 
-#: redbot/cogs/audio/core/commands/audioset.py:1291
 #: redbot/cogs/audio/core/commands/audioset.py:1313
+#: redbot/cogs/audio/core/commands/audioset.py:1335
 msgid "Invalid Country Code"
 msgstr "Virheellinen maakoodi"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1292
 #: redbot/cogs/audio/core/commands/audioset.py:1314
+#: redbot/cogs/audio/core/commands/audioset.py:1336
 msgid "Please use an official [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) code."
 msgstr "Käytäthän virallista [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) maakoodia."
 
-#: redbot/cogs/audio/core/commands/audioset.py:1301
 #: redbot/cogs/audio/core/commands/audioset.py:1323
+#: redbot/cogs/audio/core/commands/audioset.py:1345
 msgid "Country Code set to {country}."
 msgstr "Maakoodiksi asetettiin {country}."
 
-#: redbot/cogs/audio/core/commands/audioset.py:1331
+#: redbot/cogs/audio/core/commands/audioset.py:1353
 #, docstring
 msgid "Sets the caching level.\n\n"
 "        Level can be one of the following:\n\n"
@@ -1062,27 +1071,27 @@ msgstr "Asettaa välimuistin tason.\n\n"
 "        Jos haluat poistaa tietyn välimuistin käytöstä, käytä negatiivista numeroa.\n"
 "        "
 
-#: redbot/cogs/audio/core/commands/audioset.py:1353
-#: redbot/cogs/audio/core/commands/audioset.py:1398
+#: redbot/cogs/audio/core/commands/audioset.py:1375
+#: redbot/cogs/audio/core/commands/audioset.py:1420
 msgid "Max age:          [{max_age}]\n"
 msgstr "Maksimi-ikä:          [{max_age}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1354
-#: redbot/cogs/audio/core/commands/audioset.py:1399
+#: redbot/cogs/audio/core/commands/audioset.py:1376
+#: redbot/cogs/audio/core/commands/audioset.py:1421
 msgid "Spotify cache:    [{spotify_status}]\n"
 msgstr "Spotify-välimuisti: [{spotify_status}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1355
-#: redbot/cogs/audio/core/commands/audioset.py:1400
+#: redbot/cogs/audio/core/commands/audioset.py:1377
+#: redbot/cogs/audio/core/commands/audioset.py:1422
 msgid "Youtube cache:    [{youtube_status}]\n"
 msgstr "Youtube-välimuisti: [{youtube_status}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1356
-#: redbot/cogs/audio/core/commands/audioset.py:1401
+#: redbot/cogs/audio/core/commands/audioset.py:1378
+#: redbot/cogs/audio/core/commands/audioset.py:1423
 msgid "Lavalink cache:   [{lavalink_status}]\n"
 msgstr "Lavalink-välimuisti: [{lavalink_status}]\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1416
+#: redbot/cogs/audio/core/commands/audioset.py:1438
 #, docstring
 msgid "Sets the cache max age.\n\n"
 "        This commands allows you to set the max number of days before an entry in the cache becomes\n"
@@ -1093,15 +1102,15 @@ msgstr "Asettaa välimuistin maksimi-iän.\n\n"
 "        kelvoton.\n"
 "        "
 
-#: redbot/cogs/audio/core/commands/audioset.py:1423
+#: redbot/cogs/audio/core/commands/audioset.py:1445
 msgid "Cache age cannot be less than 7 days. If you wish to disable it run {prefix}audioset cache.\n"
 msgstr "Välimuistin pituus ei voi olla alle seitsemää päivää. Jos haluat poistaa välimuistin käytöstä aja komento {prefix}audioset cache.\n"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1428
+#: redbot/cogs/audio/core/commands/audioset.py:1450
 msgid "I've set the cache age to {age} days"
 msgstr "Välimuistin pituus asetettiin {age} päivään"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1435
+#: redbot/cogs/audio/core/commands/audioset.py:1457
 #, docstring
 msgid "Toggle persistent queues.\n\n"
 "        Persistent queues allows the current queue to be restored when the queue closes.\n"
@@ -1110,57 +1119,57 @@ msgstr "Vaihda säilyvien jonojen tilaa.\n\n"
 "        Säilyvät jonot mahdollistavat jonon palautuksen sen sulkemisen jälkeen.\n"
 "        "
 
-#: redbot/cogs/audio/core/commands/audioset.py:1447
+#: redbot/cogs/audio/core/commands/audioset.py:1469
 msgid "Persisting queues: {true_or_false}."
 msgstr "Jonojen säilytys: {true_or_false}."
 
-#: redbot/cogs/audio/core/commands/audioset.py:1455
+#: redbot/cogs/audio/core/commands/audioset.py:1477
 #, docstring
 msgid "Restarts the lavalink connection."
 msgstr "Käynnistää Lavalink-yhteyden uudelleen."
 
-#: redbot/cogs/audio/core/commands/audioset.py:1463
-#: redbot/cogs/audio/core/commands/llset.py:726
+#: redbot/cogs/audio/core/commands/audioset.py:1485
+#: redbot/cogs/audio/core/commands/llset.py:734
 msgid "Failed To Shutdown Lavalink Node"
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/audioset.py:1464
+#: redbot/cogs/audio/core/commands/audioset.py:1486
 #: redbot/cogs/audio/core/commands/llset.py:187
-#: redbot/cogs/audio/core/commands/llset.py:727
+#: redbot/cogs/audio/core/commands/llset.py:735
 msgid "Please reload Audio (`{prefix}reload audio`)."
 msgstr "Lataathan Audion uudelleen (`{prefix}reload audio`)."
 
-#: redbot/cogs/audio/core/commands/audioset.py:1471
+#: redbot/cogs/audio/core/commands/audioset.py:1493
 msgid "Restarting Lavalink"
 msgstr "Käynnistetetään Lavalink uudelleen"
 
-#: redbot/cogs/audio/core/commands/audioset.py:1472
+#: redbot/cogs/audio/core/commands/audioset.py:1494
 msgid "It can take a couple of minutes for Lavalink to fully start up."
 msgstr "Lavalinkin käynnistyminen voi kestää muutaman minuutin."
 
-#: redbot/cogs/audio/core/commands/audioset.py:1479
+#: redbot/cogs/audio/core/commands/audioset.py:1501
 #, docstring
 msgid "Set the maximum volume allowed in this server."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/audioset.py:1483
+#: redbot/cogs/audio/core/commands/audioset.py:1505
 msgid "Error"
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/audioset.py:1484
+#: redbot/cogs/audio/core/commands/audioset.py:1506
 msgid "Music without sound isn't music at all. Try setting the volume higher then 0%."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/audioset.py:1492
-#: redbot/cogs/audio/core/commands/audioset.py:1500
+#: redbot/cogs/audio/core/commands/audioset.py:1514
+#: redbot/cogs/audio/core/commands/audioset.py:1522
 msgid "Setting changed"
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/audioset.py:1493
+#: redbot/cogs/audio/core/commands/audioset.py:1515
 msgid "The maximum volume has been limited to 150%, be easy on your ears."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/audioset.py:1501
+#: redbot/cogs/audio/core/commands/audioset.py:1523
 msgid "The maximum volume has been limited to {max_volume}%."
 msgstr ""
 
@@ -1191,7 +1200,7 @@ msgstr "Katkaise yhteys puhekanavaan."
 #: redbot/cogs/audio/core/commands/equalizer.py:318
 #: redbot/cogs/audio/core/commands/miscellaneous.py:72
 #: redbot/cogs/audio/core/commands/miscellaneous.py:103
-#: redbot/cogs/audio/core/commands/playlists.py:1124
+#: redbot/cogs/audio/core/commands/playlists.py:1125
 msgid "Nothing playing."
 msgstr "Mitään ei toisteta."
 
@@ -1344,7 +1353,7 @@ msgstr "Sinulla pitää olla DJ-rooli tai sinun tulee olla kappaleen lisääjä,
 #: redbot/cogs/audio/core/commands/player.py:737
 #: redbot/cogs/audio/core/commands/player.py:743
 #: redbot/cogs/audio/core/commands/player.py:805
-#: redbot/cogs/audio/core/commands/playlists.py:1457
+#: redbot/cogs/audio/core/commands/playlists.py:1458
 msgid "Unable To Play Tracks"
 msgstr "Kappaleiden toisto ei onnistu"
 
@@ -1846,7 +1855,7 @@ msgstr ""
 msgid "Change your Java executable path.\n\n"
 "        This command shouldn't need to be used most of the time, and is only useful if the host machine has conflicting Java versions.\n\n"
 "        If changing this make sure that the Java executable you set is supported by Audio.\n"
-"        The current supported version is Java 11.\n\n"
+"        The current supported versions are Java 17 and 11.\n\n"
 "        Enter nothing or \"java\" to reset it back to default.\n"
 "        "
 msgstr ""
@@ -1889,7 +1898,7 @@ msgid "Heap-size must be at least 64M, however it is recommended to have it set 
 msgstr ""
 
 #: redbot/cogs/audio/core/commands/llset.py:126
-msgid "Heap-size must be less than your system RAM, You currently have {ram_in_bytes} of RAM available."
+msgid "Heap-size must be less than your system RAM. You currently have {ram_in_bytes} of RAM available."
 msgstr ""
 
 #: redbot/cogs/audio/core/commands/llset.py:133
@@ -1943,120 +1952,125 @@ msgstr ""
 #, docstring
 msgid "Set the Lavalink node port.\n\n"
 "        This command sets the connection port which Audio will use to connect to an unmanaged Lavalink node.\n"
+"        Set port to -1 to disable the port and connect to the specified host via ports 80/443\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:249
-#: redbot/cogs/audio/core/commands/llset.py:431
-#: redbot/cogs/audio/core/commands/llset.py:659
-#: redbot/cogs/audio/core/commands/llset.py:690
+#: redbot/cogs/audio/core/commands/llset.py:252
+#: redbot/cogs/audio/core/commands/llset.py:439
+#: redbot/cogs/audio/core/commands/llset.py:667
+#: redbot/cogs/audio/core/commands/llset.py:698
 msgid "Setting Not Changed"
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:250
-msgid "A port must be between 0 and 65535 "
+#: redbot/cogs/audio/core/commands/llset.py:253
+msgid "A port must be between 0 and 65535."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:256
+#: redbot/cogs/audio/core/commands/llset.py:259
 msgid "Unmanaged Lavalink node port set to {port}. Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:269
+#: redbot/cogs/audio/core/commands/llset.py:272
 #, docstring
 msgid "Set the Lavalink node connection to secured.\n\n"
 "        This toggle sets the connection type to secured or unsecured when connecting to an unmanaged Lavalink node.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:280
+#: redbot/cogs/audio/core/commands/llset.py:283
 msgid "Unmanaged Lavalink node will now connect using the secured {secured_protocol} protocol.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:293
-msgid "Unmanaged Lavalink node will no longer connect using the secured {secured_protocol} protocol and wil use {unsecured_protocol} instead .\n\n"
+#: redbot/cogs/audio/core/commands/llset.py:296
+msgid "Unmanaged Lavalink node will no longer connect using the secured {secured_protocol} protocol and will use {unsecured_protocol} instead.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:304
+#: redbot/cogs/audio/core/commands/llset.py:310
 #, docstring
 msgid "Display Lavalink connection settings."
 msgstr "Näytä Lavalink-yhteysasetukset."
 
-#: redbot/cogs/audio/core/commands/llset.py:308
+#: redbot/cogs/audio/core/commands/llset.py:314
 msgid "Connection Settings"
 msgstr "Yhteysasetukset"
 
-#: redbot/cogs/audio/core/commands/llset.py:309
-#: redbot/cogs/audio/core/commands/llset.py:316
+#: redbot/cogs/audio/core/commands/llset.py:315
+#: redbot/cogs/audio/core/commands/llset.py:324
 msgid "Host:             [{host}]\n"
 msgstr "Osoite:             [{host}]\n"
 
-#: redbot/cogs/audio/core/commands/llset.py:310
-#: redbot/cogs/audio/core/commands/llset.py:319
+#: redbot/cogs/audio/core/commands/llset.py:316
+#: redbot/cogs/audio/core/commands/llset.py:327
 msgid "Port:             [{port}]\n"
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:311
-#: redbot/cogs/audio/core/commands/llset.py:320
+#: redbot/cogs/audio/core/commands/llset.py:317
+msgid "Default HTTP/HTTPS port"
+msgstr ""
+
+#: redbot/cogs/audio/core/commands/llset.py:319
+#: redbot/cogs/audio/core/commands/llset.py:328
 msgid "Password:         [{password}]\n"
 msgstr "Salasana:         [{password}]\n"
 
-#: redbot/cogs/audio/core/commands/llset.py:312
+#: redbot/cogs/audio/core/commands/llset.py:320
 msgid "Secured:          [{state}]\n"
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:315
+#: redbot/cogs/audio/core/commands/llset.py:323
 msgid "Lavalink Node Settings"
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:323
+#: redbot/cogs/audio/core/commands/llset.py:331
 msgid "Initial Heapsize: [{xms}]\n"
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:324
+#: redbot/cogs/audio/core/commands/llset.py:332
 msgid "Max Heapsize:     [{xmx}]\n"
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:325
+#: redbot/cogs/audio/core/commands/llset.py:333
 msgid "Java exec:        [{java_exc_path}]\n"
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:333
-#: redbot/cogs/audio/core/commands/llset.py:355
+#: redbot/cogs/audio/core/commands/llset.py:341
+#: redbot/cogs/audio/core/commands/llset.py:363
 msgid "I need to be able to DM you to send you this info."
 msgstr "Minun tulee pystyä lähettämään sinulle yksityisviestejä, jotta voin lähettää nämä tiedot."
 
-#: redbot/cogs/audio/core/commands/llset.py:338
+#: redbot/cogs/audio/core/commands/llset.py:346
 #, docstring
 msgid "Uploads a copy of the application.yml file used by the managed Lavalink node."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:362
+#: redbot/cogs/audio/core/commands/llset.py:370
 #, docstring
 msgid "Configure the managed Lavalink node runtime options.\n\n"
 "        All settings under this group will likely cause Audio to malfunction if changed from their defaults, only change settings here if you have been advised to by support.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:369
+#: redbot/cogs/audio/core/commands/llset.py:377
 #, docstring
 msgid "Configure the managed node authorization and connection settings."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:375
+#: redbot/cogs/audio/core/commands/llset.py:383
 #, docstring
 msgid "`Dangerous command` Set the managed Lavalink node's binding IP address.\n\n"
 "        This value by default is `localhost` which will restrict the server to only localhost apps by default, changing this will likely break the managed Lavalink node if you don't know what you are doing.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:384
+#: redbot/cogs/audio/core/commands/llset.py:392
 msgid "Managed node will now accept connection on {host}.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:399
+#: redbot/cogs/audio/core/commands/llset.py:407
 #, docstring
 msgid "Set the managed Lavalink node's connection password.\n\n"
 "        This is the password required for Audio to connect to the managed Lavalink node.\n"
@@ -2064,12 +2078,12 @@ msgid "Set the managed Lavalink node's connection password.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:408
+#: redbot/cogs/audio/core/commands/llset.py:416
 msgid "Managed node will now accept {password} as the authorization token.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:422
+#: redbot/cogs/audio/core/commands/llset.py:430
 #, docstring
 msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        This port is the port the managed Lavalink node binds to, you should only change this if there is a conflict with the default port because you already have an application using port 2333 on this device.\n\n"
@@ -2077,170 +2091,170 @@ msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:432
+#: redbot/cogs/audio/core/commands/llset.py:440
 msgid "The port must be between 1024 and 49151."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:439
+#: redbot/cogs/audio/core/commands/llset.py:447
 msgid "Managed node will now accept connections on {port}.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:451
+#: redbot/cogs/audio/core/commands/llset.py:459
 #, docstring
 msgid "`Dangerous command` Toggle audio sources on/off.\n\n"
 "        By default, all sources are enabled, you should only use commands here to disable a specific source if you have been advised to, disabling sources without background knowledge can cause Audio to break.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:458
+#: redbot/cogs/audio/core/commands/llset.py:466
 #, docstring
 msgid "Toggle HTTP direct URL usage on or off.\n\n"
 "        This source is used to allow playback from direct HTTP streams (this does not affect direct URL playback for the other sources).\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:468
+#: redbot/cogs/audio/core/commands/llset.py:476
 msgid "Managed node will allow playback from direct URLs.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:477
+#: redbot/cogs/audio/core/commands/llset.py:485
 msgid "Managed node will not play from direct URLs anymore.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:485
+#: redbot/cogs/audio/core/commands/llset.py:493
 #, docstring
 msgid "Toggle Bandcamp source on or off.\n\n"
 "        This toggle controls the playback of all Bandcamp related content.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:495
+#: redbot/cogs/audio/core/commands/llset.py:503
 msgid "Managed node will allow playback from Bandcamp.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:504
+#: redbot/cogs/audio/core/commands/llset.py:512
 msgid "Managed node will not play from Bandcamp anymore.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:512
+#: redbot/cogs/audio/core/commands/llset.py:520
 #, docstring
 msgid "Toggle local file usage on or off.\n\n"
 "        This toggle controls the playback of all local track content, usually found inside the `localtracks` folder.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:522
+#: redbot/cogs/audio/core/commands/llset.py:530
 msgid "Managed node will allow playback from local files.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:531
+#: redbot/cogs/audio/core/commands/llset.py:539
 msgid "Managed node will not play from local files anymore.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:539
+#: redbot/cogs/audio/core/commands/llset.py:547
 #, docstring
 msgid "Toggle Soundcloud source on or off.\n\n"
 "        This toggle controls the playback of all SoundCloud related content.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:549
+#: redbot/cogs/audio/core/commands/llset.py:557
 msgid "Managed node will allow playback from Soundcloud.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:558
+#: redbot/cogs/audio/core/commands/llset.py:566
 msgid "Managed node will not play from Soundcloud anymore.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:566
+#: redbot/cogs/audio/core/commands/llset.py:574
 #, docstring
 msgid "`Dangerous command` Toggle YouTube source on or off (this includes Spotify).\n\n"
 "        This toggle controls the playback of all YouTube and Spotify related content.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:576
+#: redbot/cogs/audio/core/commands/llset.py:584
 msgid "Managed node will allow playback from YouTube.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:585
+#: redbot/cogs/audio/core/commands/llset.py:593
 msgid "Managed node will not play from YouTube anymore.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:593
+#: redbot/cogs/audio/core/commands/llset.py:601
 #, docstring
 msgid "Toggle Twitch source on or off.\n\n"
 "        This toggle controls the playback of all Twitch related content.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:603
+#: redbot/cogs/audio/core/commands/llset.py:611
 msgid "Managed node will allow playback from Twitch.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:612
+#: redbot/cogs/audio/core/commands/llset.py:620
 msgid "Managed node will not play from Twitch anymore.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:620
+#: redbot/cogs/audio/core/commands/llset.py:628
 #, docstring
 msgid "Toggle Vimeo source on or off.\n\n"
 "        This toggle controls the playback of all Vimeo related content.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:630
+#: redbot/cogs/audio/core/commands/llset.py:638
 msgid "Managed node will allow playback from Vimeo.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:639
+#: redbot/cogs/audio/core/commands/llset.py:647
 msgid "Managed node will not play from Vimeo anymore.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:652
+#: redbot/cogs/audio/core/commands/llset.py:660
 #, docstring
 msgid "`Dangerous command` Set the managed Lavalink node framebuffer size.\n\n"
 "        Only change this if you have been directly advised to, changing it can cause significant playback issues.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:660
+#: redbot/cogs/audio/core/commands/llset.py:668
 msgid "The lowest value the framebuffer can be set to is 100ms."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:666
-#: redbot/cogs/audio/core/commands/llset.py:697
+#: redbot/cogs/audio/core/commands/llset.py:674
+#: redbot/cogs/audio/core/commands/llset.py:705
 msgid "Managed node's bufferDurationMs set to {milliseconds}.\n\n"
 "Run `{p}{cmd}` for it to take effect."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:683
+#: redbot/cogs/audio/core/commands/llset.py:691
 #, docstring
 msgid "`Dangerous command`  Set the managed Lavalink node JDA-NAS buffer size.\n\n"
 "        Only change this if you have been directly advised to, changing it can cause significant playback issues.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:691
+#: redbot/cogs/audio/core/commands/llset.py:699
 msgid "The lowest value the buffer may be is 100ms."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/llset.py:709
+#: redbot/cogs/audio/core/commands/llset.py:717
 #, docstring
 msgid "Reset all `llset` changes back to their default values."
 msgstr ""
@@ -2325,8 +2339,8 @@ msgstr "Sivu {}/{}"
 msgid "Queue percentage."
 msgstr "Jonon prosenttiosuus."
 
-#: redbot/cogs/audio/core/commands/miscellaneous.py:127
-#: redbot/cogs/audio/core/commands/playlists.py:1129
+#: redbot/cogs/audio/core/commands/miscellaneous.py:125
+#: redbot/cogs/audio/core/commands/playlists.py:1130
 #: redbot/cogs/audio/core/commands/queue.py:67
 #: redbot/cogs/audio/core/commands/queue.py:164
 #: redbot/cogs/audio/core/commands/queue.py:183
@@ -2343,7 +2357,7 @@ msgstr "Jonon prosenttiosuus."
 msgid "There's nothing in the queue."
 msgstr "Jonossa ei ole mitään."
 
-#: redbot/cogs/audio/core/commands/miscellaneous.py:148
+#: redbot/cogs/audio/core/commands/miscellaneous.py:146
 msgid "Queued and playing tracks:"
 msgstr "Jonossa olevat ja soivat kappaleet:"
 
@@ -2525,7 +2539,7 @@ msgstr "Kelvollista kappaletta ei saatu."
 #: redbot/cogs/audio/core/commands/player.py:756
 #: redbot/cogs/audio/core/commands/player.py:775
 #: redbot/cogs/audio/core/commands/player.py:893
-#: redbot/cogs/audio/core/commands/playlists.py:1897
+#: redbot/cogs/audio/core/commands/playlists.py:1898
 msgid "Unable to Get Track"
 msgstr "Kappaletta ei voitu hakea"
 
@@ -2576,7 +2590,7 @@ msgstr "Paikalliset kappaleet eivät toimi jos `Lavalink.jar` ei voi nähdä nii
 "Tämä voi johtua tiedosto-oikeuksista tai siitä että Lavalink.jar ajetaan toisella tietokoneella kuin missä kappaleet ovat."
 
 #: redbot/cogs/audio/core/commands/player.py:853
-#: redbot/cogs/audio/core/commands/playlists.py:1526
+#: redbot/cogs/audio/core/commands/playlists.py:1527
 msgid " {bad_tracks} tracks cannot be queued."
 msgstr " {bad_tracks} kappaletta ei voida lisätä jonoon."
 
@@ -2596,7 +2610,7 @@ msgstr "haun"
 msgid "{time} until start of {type} playback: starts at #{position} in queue"
 msgstr "{time} aikaa {type} toistoon: sijalla #{position} jonossa"
 
-#: redbot/cogs/audio/core/commands/playlists.py:44
+#: redbot/cogs/audio/core/commands/playlists.py:45
 #, docstring
 msgid "Playlist configuration options.\n\n"
 "        Scope info:\n"
@@ -2612,7 +2626,7 @@ msgid "Playlist configuration options.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/playlists.py:69
+#: redbot/cogs/audio/core/commands/playlists.py:70
 #, docstring
 msgid "Add a track URL, playlist link, or quick search to a playlist.\n\n"
 "        The track(s) will be appended to the end of the playlist.\n\n"
@@ -2641,76 +2655,76 @@ msgid "Add a track URL, playlist link, or quick search to a playlist.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/playlists.py:123
-#: redbot/cogs/audio/core/commands/playlists.py:304
-#: redbot/cogs/audio/core/commands/playlists.py:486
-#: redbot/cogs/audio/core/commands/playlists.py:580
-#: redbot/cogs/audio/core/commands/playlists.py:709
-#: redbot/cogs/audio/core/commands/playlists.py:844
-#: redbot/cogs/audio/core/commands/playlists.py:981
-#: redbot/cogs/audio/core/commands/playlists.py:1015
-#: redbot/cogs/audio/core/commands/playlists.py:1024
-#: redbot/cogs/audio/core/commands/playlists.py:1223
-#: redbot/cogs/audio/core/commands/playlists.py:1473
-#: redbot/cogs/audio/core/commands/playlists.py:1559
-#: redbot/cogs/audio/core/commands/playlists.py:1640
-#: redbot/cogs/audio/core/commands/playlists.py:1670
-#: redbot/cogs/audio/core/commands/playlists.py:1982
+#: redbot/cogs/audio/core/commands/playlists.py:124
+#: redbot/cogs/audio/core/commands/playlists.py:305
+#: redbot/cogs/audio/core/commands/playlists.py:487
+#: redbot/cogs/audio/core/commands/playlists.py:581
+#: redbot/cogs/audio/core/commands/playlists.py:710
+#: redbot/cogs/audio/core/commands/playlists.py:845
+#: redbot/cogs/audio/core/commands/playlists.py:982
+#: redbot/cogs/audio/core/commands/playlists.py:1016
+#: redbot/cogs/audio/core/commands/playlists.py:1025
+#: redbot/cogs/audio/core/commands/playlists.py:1224
+#: redbot/cogs/audio/core/commands/playlists.py:1474
+#: redbot/cogs/audio/core/commands/playlists.py:1560
+#: redbot/cogs/audio/core/commands/playlists.py:1641
+#: redbot/cogs/audio/core/commands/playlists.py:1671
+#: redbot/cogs/audio/core/commands/playlists.py:1983
 msgid "Playlist Not Found"
 msgstr "Soittolistaa ei löytynyt"
 
-#: redbot/cogs/audio/core/commands/playlists.py:140
+#: redbot/cogs/audio/core/commands/playlists.py:141
 msgid "Could not find a track matching your query."
 msgstr "Hakuasi vastaavaa kappaletta ei löytynyt."
 
-#: redbot/cogs/audio/core/commands/playlists.py:161
+#: redbot/cogs/audio/core/commands/playlists.py:162
 msgid "Skipping track"
 msgstr "Ohitetaan kappale"
 
-#: redbot/cogs/audio/core/commands/playlists.py:162
+#: redbot/cogs/audio/core/commands/playlists.py:163
 msgid "{track} is already in {playlist} (`{id}`) [**{scope}**]."
 msgstr "{track} on jo soittolistalla {playlist} (`{id}`) [**{scope}**]."
 
-#: redbot/cogs/audio/core/commands/playlists.py:170
-#: redbot/cogs/audio/core/commands/playlists.py:212
+#: redbot/cogs/audio/core/commands/playlists.py:171
+#: redbot/cogs/audio/core/commands/playlists.py:213
 msgid "Playlist limit reached: Could not add track."
 msgstr "Soittolistan raja saavutettu: Kappaletta ei voitu lisätä."
 
-#: redbot/cogs/audio/core/commands/playlists.py:193
+#: redbot/cogs/audio/core/commands/playlists.py:194
 msgid "Track added"
 msgstr "Kappale lisätty"
 
-#: redbot/cogs/audio/core/commands/playlists.py:194
+#: redbot/cogs/audio/core/commands/playlists.py:195
 msgid "{track} appended to {playlist} (`{id}`) [**{scope}**]."
 msgstr "{track} lisättiin soittolistaan {playlist} (`{id}`) [**{scope}**]."
 
-#: redbot/cogs/audio/core/commands/playlists.py:199
+#: redbot/cogs/audio/core/commands/playlists.py:200
 msgid "{num} tracks appended to {playlist} (`{id}`) [**{scope}**]."
 msgstr "{num} kappaletta lisättiin soittolistaan {playlist} (`{id}`) [**{scope}**]."
 
-#: redbot/cogs/audio/core/commands/playlists.py:204
+#: redbot/cogs/audio/core/commands/playlists.py:205
 msgid "\n"
 "{existing} {plural} already in the playlist and were skipped."
 msgstr "\n"
 "{existing} {plural} jo soittolistalla ja ohitettiin."
 
-#: redbot/cogs/audio/core/commands/playlists.py:206
+#: redbot/cogs/audio/core/commands/playlists.py:207
 msgid "tracks are"
 msgstr "kappaleet ovat"
 
-#: redbot/cogs/audio/core/commands/playlists.py:206
+#: redbot/cogs/audio/core/commands/playlists.py:207
 msgid "track is"
 msgstr "kappale on"
 
-#: redbot/cogs/audio/core/commands/playlists.py:208
-#: redbot/cogs/audio/core/commands/playlists.py:617
-#: redbot/cogs/audio/core/commands/playlists.py:1253
-#: redbot/cogs/audio/core/commands/playlists.py:1267
-#: redbot/cogs/audio/core/commands/playlists.py:1999
+#: redbot/cogs/audio/core/commands/playlists.py:209
+#: redbot/cogs/audio/core/commands/playlists.py:618
+#: redbot/cogs/audio/core/commands/playlists.py:1254
+#: redbot/cogs/audio/core/commands/playlists.py:1268
+#: redbot/cogs/audio/core/commands/playlists.py:2000
 msgid "Playlist Modified"
 msgstr "Soittolistaa muokattu"
 
-#: redbot/cogs/audio/core/commands/playlists.py:228
+#: redbot/cogs/audio/core/commands/playlists.py:229
 #, docstring
 msgid "Copy a playlist from one scope to another.\n\n"
 "        **Usage**:\n"
@@ -2741,31 +2755,31 @@ msgid "Copy a playlist from one scope to another.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/playlists.py:305
-#: redbot/cogs/audio/core/commands/playlists.py:487
-#: redbot/cogs/audio/core/commands/playlists.py:581
-#: redbot/cogs/audio/core/commands/playlists.py:710
-#: redbot/cogs/audio/core/commands/playlists.py:845
-#: redbot/cogs/audio/core/commands/playlists.py:1224
-#: redbot/cogs/audio/core/commands/playlists.py:1641
-#: redbot/cogs/audio/core/commands/playlists.py:1983
+#: redbot/cogs/audio/core/commands/playlists.py:306
+#: redbot/cogs/audio/core/commands/playlists.py:488
+#: redbot/cogs/audio/core/commands/playlists.py:582
+#: redbot/cogs/audio/core/commands/playlists.py:711
+#: redbot/cogs/audio/core/commands/playlists.py:846
+#: redbot/cogs/audio/core/commands/playlists.py:1225
+#: redbot/cogs/audio/core/commands/playlists.py:1642
+#: redbot/cogs/audio/core/commands/playlists.py:1984
 msgid "Could not match '{arg}' to a playlist."
 msgstr "'{arg}' ei voitu yhdistää soittolistaan."
 
-#: redbot/cogs/audio/core/commands/playlists.py:328
-#: redbot/cogs/audio/core/commands/playlists.py:335
+#: redbot/cogs/audio/core/commands/playlists.py:329
+#: redbot/cogs/audio/core/commands/playlists.py:336
 msgid "the Global"
 msgstr "Globaalille"
 
-#: redbot/cogs/audio/core/commands/playlists.py:343
+#: redbot/cogs/audio/core/commands/playlists.py:344
 msgid "Playlist Copied"
 msgstr "Soittolista kopioitu"
 
-#: redbot/cogs/audio/core/commands/playlists.py:344
+#: redbot/cogs/audio/core/commands/playlists.py:345
 msgid "Playlist {name} (`{from_id}`) copied from {from_scope} to {to_scope} (`{to_id}`)."
 msgstr "Soittolista {name} (`{from_id}`) kopioitiin tasolta {from_scope} tasolle {to_scope} (`{to_id}`)."
 
-#: redbot/cogs/audio/core/commands/playlists.py:359
+#: redbot/cogs/audio/core/commands/playlists.py:360
 #, docstring
 msgid "Create an empty playlist.\n\n"
 "        **Usage**:\n"
@@ -2793,31 +2807,31 @@ msgid "Create an empty playlist.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/playlists.py:411
-#: redbot/cogs/audio/core/commands/playlists.py:1116
-#: redbot/cogs/audio/core/commands/playlists.py:1339
-#: redbot/cogs/audio/core/commands/playlists.py:1965
-msgid "Invalid Playlist Name"
-msgstr "Virheellinen soittolistan nimi"
-
 #: redbot/cogs/audio/core/commands/playlists.py:412
 #: redbot/cogs/audio/core/commands/playlists.py:1117
 #: redbot/cogs/audio/core/commands/playlists.py:1340
 #: redbot/cogs/audio/core/commands/playlists.py:1966
+msgid "Invalid Playlist Name"
+msgstr "Virheellinen soittolistan nimi"
+
+#: redbot/cogs/audio/core/commands/playlists.py:413
+#: redbot/cogs/audio/core/commands/playlists.py:1118
+#: redbot/cogs/audio/core/commands/playlists.py:1341
+#: redbot/cogs/audio/core/commands/playlists.py:1967
 msgid "Playlist names must be a single word (up to 32 characters) and not numbers only."
 msgstr "Soittolistojen nimien tulee olla yksittäisiä sanoja (enintään 32 kirjainta) eivätkä ne saa olla vain numeroista koostuvia."
 
-#: redbot/cogs/audio/core/commands/playlists.py:422
-#: redbot/cogs/audio/core/commands/playlists.py:1149
-#: redbot/cogs/audio/core/commands/playlists.py:1374
+#: redbot/cogs/audio/core/commands/playlists.py:423
+#: redbot/cogs/audio/core/commands/playlists.py:1150
+#: redbot/cogs/audio/core/commands/playlists.py:1375
 msgid "Playlist Created"
 msgstr "Soittolista luotu"
 
-#: redbot/cogs/audio/core/commands/playlists.py:423
+#: redbot/cogs/audio/core/commands/playlists.py:424
 msgid "Empty playlist {name} (`{id}`) [**{scope}**] created."
 msgstr "Tyhjä soittolista {name} (`{id}`) [**{scope}**] luotu."
 
-#: redbot/cogs/audio/core/commands/playlists.py:436
+#: redbot/cogs/audio/core/commands/playlists.py:437
 #, docstring
 msgid "Delete a saved playlist.\n\n"
 "        **Usage**:\n"
@@ -2845,15 +2859,15 @@ msgid "Delete a saved playlist.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/playlists.py:507
+#: redbot/cogs/audio/core/commands/playlists.py:508
 msgid "Playlist Deleted"
 msgstr "Soittolista poistettu"
 
-#: redbot/cogs/audio/core/commands/playlists.py:508
+#: redbot/cogs/audio/core/commands/playlists.py:509
 msgid "{name} (`{id}`) [**{scope}**] playlist deleted."
 msgstr "{name} (`{id}`) [**{scope}**] soittolista poistettu."
 
-#: redbot/cogs/audio/core/commands/playlists.py:524
+#: redbot/cogs/audio/core/commands/playlists.py:525
 #, docstring
 msgid "Remove duplicate tracks from a saved playlist.\n\n"
 "        **Usage**:\n"
@@ -2881,20 +2895,20 @@ msgid "Remove duplicate tracks from a saved playlist.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/playlists.py:618
+#: redbot/cogs/audio/core/commands/playlists.py:619
 msgid "Removed {track_diff} duplicated tracks from {name} (`{id}`) [**{scope}**] playlist."
 msgstr "Poistettiin {track_diff} moneen kertaan esiintynyttä kappaletta {name} (`{id}`) [**{scope}**] soittolistalta."
 
-#: redbot/cogs/audio/core/commands/playlists.py:631
-#: redbot/cogs/audio/core/commands/playlists.py:1739
+#: redbot/cogs/audio/core/commands/playlists.py:632
+#: redbot/cogs/audio/core/commands/playlists.py:1740
 msgid "Playlist Has Not Been Modified"
 msgstr "Soittolistaa ei ole muokattu"
 
-#: redbot/cogs/audio/core/commands/playlists.py:632
+#: redbot/cogs/audio/core/commands/playlists.py:633
 msgid "{name} (`{id}`) [**{scope}**] playlist has no duplicate tracks."
 msgstr "Soittolistalla {name} (`{id}`) [**{scope}**] ei ole kappaleita moneen kertaan."
 
-#: redbot/cogs/audio/core/commands/playlists.py:653
+#: redbot/cogs/audio/core/commands/playlists.py:654
 #, docstring
 msgid "Download a copy of a playlist.\n\n"
 "        These files can be used with the `[p]playlist upload` command.\n"
@@ -2925,19 +2939,19 @@ msgid "Download a copy of a playlist.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/playlists.py:720
+#: redbot/cogs/audio/core/commands/playlists.py:721
 msgid "That playlist has no tracks."
 msgstr "Tuolla soittolistalla ei ole kappaleita."
 
-#: redbot/cogs/audio/core/commands/playlists.py:763
+#: redbot/cogs/audio/core/commands/playlists.py:764
 msgid "This playlist is too large to be send in this server."
 msgstr "Tämä soittolista on liian suuri lähetettäväksi tällä palvelimella."
 
-#: redbot/cogs/audio/core/commands/playlists.py:766
+#: redbot/cogs/audio/core/commands/playlists.py:767
 msgid "Playlist is too large, here is the compressed version."
 msgstr "Soittolista on liian suuri, tässä on pakattu versio."
 
-#: redbot/cogs/audio/core/commands/playlists.py:788
+#: redbot/cogs/audio/core/commands/playlists.py:789
 #, docstring
 msgid "Retrieve information from a saved playlist.\n\n"
 "        **Usage**:\n"
@@ -2965,26 +2979,26 @@ msgid "Retrieve information from a saved playlist.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/playlists.py:878
+#: redbot/cogs/audio/core/commands/playlists.py:879
 msgid "Playlist info for {playlist_name} (`{id}`) [**{scope}**]:\n"
 msgstr "Soittolistan {playlist_name} (`{id}`) [**{scope}**] tiedot:\n"
 
-#: redbot/cogs/audio/core/commands/playlists.py:882
+#: redbot/cogs/audio/core/commands/playlists.py:883
 msgid "Playlist info for {playlist_name} (`{id}`) [**{scope}**]:\n"
 "URL: {url}"
 msgstr "Soittolistan {playlist_name} (`{id}`) [**{scope}**] tiedot:\n"
 "URL-osoite: {url}"
 
-#: redbot/cogs/audio/core/commands/playlists.py:895
-#: redbot/cogs/audio/core/commands/playlists.py:1040
+#: redbot/cogs/audio/core/commands/playlists.py:896
+#: redbot/cogs/audio/core/commands/playlists.py:1041
 msgid "Unknown"
 msgstr "Tuntematon"
 
-#: redbot/cogs/audio/core/commands/playlists.py:897
+#: redbot/cogs/audio/core/commands/playlists.py:898
 msgid "Page {page}/{pages} | Author: {author_name} | {num} track(s)"
 msgstr "Sivu {page}/{pages} | Tekijä: {author_name} | {num} kappale(tta)"
 
-#: redbot/cogs/audio/core/commands/playlists.py:909
+#: redbot/cogs/audio/core/commands/playlists.py:910
 #, docstring
 msgid "List saved playlists.\n\n"
 "        **Usage**:\n"
@@ -3012,35 +3026,35 @@ msgid "List saved playlists.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/playlists.py:982
+#: redbot/cogs/audio/core/commands/playlists.py:983
 msgid "No saved playlists available in this server."
 msgstr "Tällä palvelimella ei ole tallennettuja soittolistoja."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1016
+#: redbot/cogs/audio/core/commands/playlists.py:1017
 msgid "No saved playlists for {scope} created by {author}."
 msgstr "Ei tallennettuja soittolistoja tasolle {scope} joiden tekijä olisi {author}."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1025
+#: redbot/cogs/audio/core/commands/playlists.py:1026
 msgid "No saved playlists for {scope}."
 msgstr "Ei tallennettuja soittolistoja tasolla {scope}."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1035
+#: redbot/cogs/audio/core/commands/playlists.py:1036
 msgid "ID: {id}"
 msgstr "ID: {id}"
 
-#: redbot/cogs/audio/core/commands/playlists.py:1036
+#: redbot/cogs/audio/core/commands/playlists.py:1037
 msgid "Tracks: {num}"
 msgstr "Kappaleita: {num}"
 
-#: redbot/cogs/audio/core/commands/playlists.py:1037
+#: redbot/cogs/audio/core/commands/playlists.py:1038
 msgid "Author: {name}"
 msgstr "Tekijä: {name}"
 
-#: redbot/cogs/audio/core/commands/playlists.py:1042
+#: redbot/cogs/audio/core/commands/playlists.py:1043
 msgid "Scope: {scope}\n"
 msgstr "Taso: {scope}\n"
 
-#: redbot/cogs/audio/core/commands/playlists.py:1062
+#: redbot/cogs/audio/core/commands/playlists.py:1063
 #, docstring
 msgid "Save the queue to a playlist.\n\n"
 "        **Usage**:\n"
@@ -3068,16 +3082,16 @@ msgid "Save the queue to a playlist.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/playlists.py:1150
+#: redbot/cogs/audio/core/commands/playlists.py:1151
 msgid "Playlist {name} (`{id}`) [**{scope}**] saved from current queue: {num} tracks added."
 msgstr "Soittolista {name} (`{id}`) [**{scope}**] tallennettu nykyisestä jonosta: {num} kappaletta lisättiin."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1156
-#: redbot/cogs/audio/core/commands/playlists.py:1383
+#: redbot/cogs/audio/core/commands/playlists.py:1157
+#: redbot/cogs/audio/core/commands/playlists.py:1384
 msgid "Playlist limit reached: Could not add {} tracks."
 msgstr "Soittolistan raja saavutettu: Ei voitu lisätä {} kappaletta."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1170
+#: redbot/cogs/audio/core/commands/playlists.py:1171
 #, docstring
 msgid "Remove a track from a playlist by url.\n\n"
 "         **Usage**:\n"
@@ -3105,23 +3119,23 @@ msgid "Remove a track from a playlist by url.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/playlists.py:1234
+#: redbot/cogs/audio/core/commands/playlists.py:1235
 msgid "URL not in playlist."
 msgstr "URL-osoite ei ole soittolistalla."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1246
+#: redbot/cogs/audio/core/commands/playlists.py:1247
 msgid "No tracks left, removing playlist."
 msgstr "Ei kappaleita jäljellä, poistetaan soittolista."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1254
+#: redbot/cogs/audio/core/commands/playlists.py:1255
 msgid "{num} entries have been removed from the playlist {playlist_name} (`{id}`) [**{scope}**]."
 msgstr "{num} kappaletta poistettiin soittolistalta {playlist_name} (`{id}`) [**{scope}**]."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1268
+#: redbot/cogs/audio/core/commands/playlists.py:1269
 msgid "The track has been removed from the playlist: {playlist_name} (`{id}`) [**{scope}**]."
 msgstr "Kappale on poistettu soittolistalta: {playlist_name} (`{id}`) [**{scope}**]."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1286
+#: redbot/cogs/audio/core/commands/playlists.py:1287
 #, docstring
 msgid "Save a playlist from a url.\n\n"
 "        **Usage**:\n"
@@ -3149,19 +3163,19 @@ msgid "Save a playlist from a url.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/playlists.py:1375
+#: redbot/cogs/audio/core/commands/playlists.py:1376
 msgid "Playlist {name} (`{id}`) [**{scope}**] saved: {num} tracks added."
 msgstr "Soittolista {name} (`{id}`) [**{scope}**] tallennettu: {num} kappaletta lisätty."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1392
+#: redbot/cogs/audio/core/commands/playlists.py:1393
 msgid "Playlist Couldn't be created"
 msgstr "Soittolistaa ei voitu luoda"
 
-#: redbot/cogs/audio/core/commands/playlists.py:1393
+#: redbot/cogs/audio/core/commands/playlists.py:1394
 msgid "Unable to create your playlist."
 msgstr "Soittolistasi luominen ei onnistunut."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1410
+#: redbot/cogs/audio/core/commands/playlists.py:1411
 #, docstring
 msgid "Load a playlist into the queue.\n\n"
 "        **Usage**:\n"
@@ -3189,21 +3203,21 @@ msgid "Load a playlist into the queue.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/playlists.py:1458
+#: redbot/cogs/audio/core/commands/playlists.py:1459
 msgid "You need the DJ role to start playing playlists."
 msgstr "Tarvitset DJ-roolin aloittaaksesi soittolistojen toistamisen."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1539
+#: redbot/cogs/audio/core/commands/playlists.py:1540
 msgid "Playlist Enqueued"
 msgstr "Soittolista lisätty jonoon"
 
-#: redbot/cogs/audio/core/commands/playlists.py:1540
+#: redbot/cogs/audio/core/commands/playlists.py:1541
 msgid "{name} - (`{id}`) [**{scope}**]\n"
 "Added {num} tracks to the queue.{maxlength_msg}"
 msgstr "{name} - (`{id}`) [**{scope}**]\n"
 "Lisättiin {num} kappaletta jonoon.{maxlength_msg}"
 
-#: redbot/cogs/audio/core/commands/playlists.py:1586
+#: redbot/cogs/audio/core/commands/playlists.py:1587
 #, docstring
 msgid "Updates all tracks in a playlist.\n\n"
 "        **Usage**:\n"
@@ -3231,32 +3245,32 @@ msgid "Updates all tracks in a playlist.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/playlists.py:1663
+#: redbot/cogs/audio/core/commands/playlists.py:1664
 msgid "Invalid Playlist"
 msgstr "Virheellinen soittolista"
 
-#: redbot/cogs/audio/core/commands/playlists.py:1664
+#: redbot/cogs/audio/core/commands/playlists.py:1665
 msgid "Custom playlists cannot be updated."
 msgstr "Mukautettuja soittolistoja ei voi lähettää."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1705
+#: redbot/cogs/audio/core/commands/playlists.py:1706
 msgid "Tracks removed"
 msgstr "Kappaleet poistettu"
 
-#: redbot/cogs/audio/core/commands/playlists.py:1709
-#: redbot/cogs/audio/core/commands/playlists.py:1729
+#: redbot/cogs/audio/core/commands/playlists.py:1710
+#: redbot/cogs/audio/core/commands/playlists.py:1730
 msgid "Page {page_num}/{total_pages}"
 msgstr "Sivu {page_num}/{total_pages}"
 
-#: redbot/cogs/audio/core/commands/playlists.py:1727
+#: redbot/cogs/audio/core/commands/playlists.py:1728
 msgid "Tracks added"
 msgstr "Kappaleet lisätty"
 
-#: redbot/cogs/audio/core/commands/playlists.py:1740
+#: redbot/cogs/audio/core/commands/playlists.py:1741
 msgid "No changes for {name} (`{id}`) [**{scope}**]."
 msgstr "Ei muutoksia soittolistalle {name} (`{id}`) [**{scope}**]."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1752
+#: redbot/cogs/audio/core/commands/playlists.py:1753
 #, docstring
 msgid "Uploads a playlist file as a playlist for the bot.\n\n"
 "        V2 and old V3 playlist will be slow.\n"
@@ -3286,35 +3300,35 @@ msgid "Uploads a playlist file as a playlist for the bot.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/playlists.py:1807
+#: redbot/cogs/audio/core/commands/playlists.py:1808
 msgid "Please upload the playlist file. Any other message will cancel this operation."
 msgstr "Ole hyvä ja lähetä soittolistatiedosto. Mikä tahansa muu viesti peruuttaa tämän toiminnon."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1818
+#: redbot/cogs/audio/core/commands/playlists.py:1819
 msgid "No file detected, try again later."
 msgstr "Tiedostoa ei havaittu, yritä myöhemmin uudelleen."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1825
+#: redbot/cogs/audio/core/commands/playlists.py:1826
 msgid "Upload cancelled."
 msgstr "Lähetys peruutettu."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1829
+#: redbot/cogs/audio/core/commands/playlists.py:1830
 msgid "Only Red playlist files can be uploaded."
 msgstr "Vain Red-soittolistatiedostoja voi lähettää."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1837
+#: redbot/cogs/audio/core/commands/playlists.py:1838
 msgid "Not a valid playlist file."
 msgstr "Soittolistatiedosto on virheellinen."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1849
+#: redbot/cogs/audio/core/commands/playlists.py:1850
 msgid "This playlist is too large."
 msgstr "Tämä soittolista on liian suuri."
 
-#: redbot/cogs/audio/core/commands/playlists.py:1898
+#: redbot/cogs/audio/core/commands/playlists.py:1899
 msgid "I'm unable to get a track from Lavalink node at the moment, try again in a few minutes."
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/playlists.py:1919
+#: redbot/cogs/audio/core/commands/playlists.py:1920
 #, docstring
 msgid "Rename an existing playlist.\n\n"
 "        **Usage**:\n"
@@ -3342,7 +3356,7 @@ msgid "Rename an existing playlist.\n\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/audio/core/commands/playlists.py:1996
+#: redbot/cogs/audio/core/commands/playlists.py:1997
 msgid "'{old}' playlist has been renamed to '{new}' (`{id}`) [**{scope}**]"
 msgstr "'{old}' soittolistan uusi nimi on nyt '{new}' (`{id}`) [**{scope}**]"
 

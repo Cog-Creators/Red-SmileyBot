@@ -339,7 +339,7 @@ def _early_init():
 
 
 # This is bumped automatically by release workflow (`.github/workflows/scripts/bump_version.py`)
-_VERSION = "3.5.2.dev1"
+_VERSION = "3.5.14.dev1"
 
 __version__, version_info = VersionInfo._get_version()
 

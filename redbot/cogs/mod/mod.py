@@ -57,6 +57,7 @@ class Mod(
         "reinvite_on_unban": False,
         "current_tempbans": [],
         "dm_on_kickban": False,
+        "require_reason": False,
         "default_days": 0,
         "default_tempban_duration": 60 * 60 * 24,
         "track_nicknames": True,
@@ -66,7 +67,7 @@ class Mod(
 
     default_member_settings = {"past_nicks": [], "perms_cache": {}, "banned_until": False}
 
-    default_user_settings = {"past_names": []}
+    default_user_settings = {"past_names": [], "past_display_names": []}
 
     def __init__(self, bot: Red):
         super().__init__()

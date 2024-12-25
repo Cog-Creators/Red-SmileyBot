@@ -66,11 +66,6 @@ If you have Red 3.5.0 or newer, you can upgrade by following these steps:
 
         source ~/redenv/bin/activate
 
-    If you used ``pyenv`` for your virtual environment, use:
-
-    .. prompt:: bash
-
-        pyenv shell <name>
 #. Update Red with this command:
 
     .. prompt:: bash
@@ -138,11 +133,6 @@ If you have a Red version between 3.2.0 and 3.4.19, you can upgrade by following
 
         source ~/redenv/bin/activate
 
-    If you used ``pyenv`` for your virtual environment, use:
-
-    .. prompt:: bash
-
-        pyenv shell <name>
 #. Update Red with this command:
 
     .. prompt:: bash

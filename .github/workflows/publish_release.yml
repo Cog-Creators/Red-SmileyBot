@@ -2,7 +2,7 @@ name: Publish Release
 on:
   push:
     tags:
-      - "*"
+      - "3.[0-9]+.[0-9]+"
 
 jobs:
   release_information:
@@ -80,14 +80,43 @@ jobs:
           name: build-output
           path: ./dist
 
+  generate_default_ll_server_config:
+    name: Generate default application.yml
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+
+      - name: Install script's dependencies
+        run: python -m pip install PyYAML
+
+      - name: Generate default application.yml
+        env:
+          APP_YML_FILE: "Red-DiscordBot-${{ github.ref_name }}-default-lavalink-application.yml"
+        run: |
+          mkdir -p release_assets
+          python .github/workflows/scripts/get_default_ll_server_config.py "release_assets/$APP_YML_FILE"
+
+      - name: Upload default application.yml
+        uses: actions/upload-artifact@v3
+        with:
+          name: ll-default-server-config
+          path: ./release_assets
+
   release_to_pypi:
     needs:
       - release_information
       - build
+      - generate_default_ll_server_config
     environment: Release
     name: Release to PyPI
     runs-on: ubuntu-latest
     permissions:
+      contents: write
       id-token: write
     steps:
       - name: Download packaged distributions
@@ -95,6 +124,18 @@ jobs:
         with:
           name: build-output
           path: dist/
+
+      - name: Download default application.yml
+        uses: actions/download-artifact@v3
+        with:
+          name: ll-default-server-config
+          path: release_assets/
+
+      - name: Upload dists to GitHub Release
+        env:
+          GITHUB_TOKEN: "${{ github.token }}"
+        run: |
+          gh release upload "$GITHUB_REF_NAME" dist/* release_assets/* --repo "$GITHUB_REPOSITORY"
 
       - name: Publish package distributions to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1

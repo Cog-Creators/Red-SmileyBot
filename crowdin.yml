@@ -1,5 +1,5 @@
-api_key_env: CROWDIN_API_KEY
-project_identifier_env: CROWDIN_PROJECT_ID
+project_id_env: CROWDIN_PROJECT_ID
+api_token_env: CROWDIN_PERSONAL_TOKEN
 base_path: ./redbot/
 preserve_hierarchy: true
 files:

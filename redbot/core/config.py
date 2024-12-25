@@ -9,6 +9,7 @@ from typing import (
     AsyncContextManager,
     Awaitable,
     Dict,
+    Generator,
     MutableMapping,
     Optional,
     Tuple,
@@ -96,7 +97,7 @@ class _ValueCtxManager(Awaitable[_T], AsyncContextManager[_T]):  # pylint: disab
         self.__acquire_lock = acquire_lock
         self.__lock = self.value_obj.get_lock()
 
-    def __await__(self) -> _T:
+    def __await__(self) -> Generator[Any, None, _T]:
         return self.coro.__await__()
 
     async def __aenter__(self) -> _T:
@@ -621,8 +622,8 @@ class Config(metaclass=ConfigMeta):
         Unique identifier provided to differentiate cog data when name
         conflicts occur.
     force_registration : `bool`
-        Determines if Config should throw an error if a cog attempts to access
-        an attribute which has not been previously registered.
+        Determines whether `Config` should throw an error (`AttributeError`)
+        when attempting to access an attribute which has not been previously registered.
 
         Note
         ----

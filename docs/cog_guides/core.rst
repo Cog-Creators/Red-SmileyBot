@@ -1475,9 +1475,6 @@ helpset maxpages
 
 Set the maximum number of help pages sent in a server channel.
 
-.. Note:: This setting does not apply to menu help.
-
-
 If a help message contains more pages than this value, the help message will
 be sent to the command author via DM. This is to help reduce spam in server
 text channels.
@@ -1683,8 +1680,11 @@ Set the tagline to be used.
 The maximum tagline length is 2048 characters.
 This setting only applies to embedded help. If no tagline is specified, the default will be used instead.
 
+You can use ``[p]`` in your tagline, which will be replaced by the bot's prefix.
+
 **Examples:**
     - ``[p]helpset tagline Thanks for using the bot!``
+    - ``[p]helpset tagline Use [p]invite to add me to your server.``
     - ``[p]helpset tagline`` - Resets the tagline to the default.
 
 **Arguments:**
@@ -2867,7 +2867,7 @@ Supports either an attachment or an image URL.
 **Examples:**
     - ``[p]set bot avatar`` - With an image attachment, this will set the avatar.
     - ``[p]set bot avatar`` - Without an attachment, this will show the command help.
-    - ``[p]set bot avatar https://links.flaree.xyz/k95`` - Sets the avatar to the provided url.
+    - ``[p]set bot avatar https://avatars.githubusercontent.com/u/23690422`` - Sets the avatar to the provided url.
 
 **Arguments:**
     - ``[url]`` - An image url to be used as an avatar. Leave blank when uploading an attachment.
@@ -2894,6 +2894,57 @@ Removes Red's avatar.
 
 **Example:**
     - ``[p]set bot avatar remove``
+
+.. _core-command-set-bot-banner:
+
+""""""""""""""
+set bot banner
+""""""""""""""
+
+.. note:: |owner-lock|
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]set bot banner [url]
+
+**Description**
+
+Sets Red's banner
+
+Supports either an attachment or an image URL.
+
+**Examples:**
+    - ``[p]set bot banner`` - With an image attachment, this will set the banner.
+    - ``[p]set bot banner`` - Without an attachment, this will show the command help.
+    - ``[p]set bot banner https://opengraph.githubassets.com`` - Sets the banner to the provided url.
+
+**Arguments:**
+    - ``[url]`` - An image url to be used as an banner. Leave blank when uploading an attachment.
+
+.. _core-command-set-bot-banner-remove:
+
+"""""""""""""""""""""
+set bot banner remove
+"""""""""""""""""""""
+
+.. note:: |owner-lock|
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]set bot banner remove
+
+.. tip:: Alias: ``set bot banner clear``
+
+**Description**
+
+Removes Red's banner.
+
+**Example:**
+    - ``[p]set bot banner remove``
 
 .. _core-command-set-bot-custominfo:
 
@@ -3695,6 +3746,7 @@ Sets Red's server prefix(es).
     - ``[p]set serverprefix "! "`` - Quotes are needed to use spaces in prefixes.
     - ``[p]set serverprefix "@Red "`` - This uses a mention as the prefix.
     - ``[p]set serverprefix ! ? .`` - Sets multiple prefixes.
+    - ``[p]set serverprefix "Red - Discord Bot" ?`` - Sets the prefix for a specific server. Quotes are needed to use spaces in the server name.
 
 **Arguments:**
     - ``[server]`` - The server to set the prefix for. Defaults to current server.
@@ -3767,6 +3819,35 @@ Maximum length for a competing status is 128 characters.
 
 **Arguments:**
     - ``[competing]`` - The text to follow ``Competing in``. Leave blank to clear the current activity status.
+
+.. _core-command-set-status-custom:
+
+"""""""""""""""""
+set status custom
+"""""""""""""""""
+
+.. note:: |owner-lock|
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]set status custom [text]
+
+**Description**
+
+Sets Red's custom status.
+
+This will appear as ``<text>``.
+
+Maximum length for a custom status is 128 characters.
+
+**Examples:**
+    - ``[p]set status custom`` - Clears the activity status.
+    - ``[p]set status custom Running cogs...``
+
+**Arguments:**
+    - ``[text]`` - The custom status text. Leave blank to clear the current activity status.
 
 .. _core-command-set-status-dnd:
 
@@ -4104,7 +4185,7 @@ slash disablecog
 
 .. code-block:: none
 
-    [p]slash disablecog <cog_name>
+    [p]slash disablecog <cog_names...>
     
 **Description**
 
@@ -4114,7 +4195,7 @@ This command does NOT sync the enabled commands with Discord, that must be done 
 with ``[p]slash sync`` for commands to appear in users' clients.
 
 **Arguments:**
-    - ``<cog_name>`` - The cog to disable commands from. This argument is case sensitive.
+    - ``<cog_names>`` - The cogs to disable commands from. This argument is case sensitive.
 
 .. _core-command-slash-enable:
 
@@ -4149,7 +4230,7 @@ slash enablecog
 
 .. code-block:: none
 
-    [p]slash enablecog <cog_name>
+    [p]slash enablecog <cog_names...>
     
 **Description**
 
@@ -4159,7 +4240,7 @@ This command does NOT sync the enabled commands with Discord, that must be done 
 with ``[p]slash sync`` for commands to appear in users' clients.
 
 **Arguments:**
-    - ``<cog_name>`` - The cog to enable commands from. This argument is case sensitive.
+    - ``<cog_names>`` - The cogs to enable commands from. This argument is case sensitive.
 
 .. _core-command-slash-list:
 

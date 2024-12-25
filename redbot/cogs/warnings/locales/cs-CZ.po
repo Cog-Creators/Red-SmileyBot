@@ -77,15 +77,15 @@ msgstr "Vlastní důvody byly zakázány."
 #: redbot/cogs/warnings/warnings.py:132
 #, docstring
 msgid "Set whether warnings should be sent to users in DMs."
-msgstr ""
+msgstr "Nastav, zda mají být varování zasílána uživatelům v soukromé zprávě."
 
 #: redbot/cogs/warnings/warnings.py:135
 msgid "I will now try to send warnings to users DMs."
-msgstr ""
+msgstr "Nyní se budu pokoušet posílat varování uživatelům do soukromé zprávy."
 
 #: redbot/cogs/warnings/warnings.py:137
 msgid "Warnings will no longer be sent to users DMs."
-msgstr ""
+msgstr "Varování již nebudou posílána uživatelům do soukromé zprávy."
 
 #: redbot/cogs/warnings/warnings.py:142
 #, docstring
@@ -124,7 +124,7 @@ msgstr ""
 
 #: redbot/cogs/warnings/warnings.py:189
 msgid "Warnings will now be sent to {channel}."
-msgstr ""
+msgstr "Varování nyní budou odesílána do místnosti {channel}."
 
 #: redbot/cogs/warnings/warnings.py:194
 msgid "Toggle channel has been disabled."
@@ -269,11 +269,11 @@ msgstr "Nemůžeš varovat sám sebe."
 
 #: redbot/cogs/warnings/warnings.py:392
 msgid "You cannot warn other bots."
-msgstr ""
+msgstr "Nemůžeš varovat ostatní boty."
 
 #: redbot/cogs/warnings/warnings.py:394
 msgid "You cannot warn the server owner."
-msgstr ""
+msgstr "Nemůžeš poslat varování vlastníkovi serveru."
 
 #: redbot/cogs/warnings/warnings.py:397
 msgid "The person you're trying to warn is equal or higher than you in the discord hierarchy, you cannot warn them."
@@ -285,7 +285,7 @@ msgstr "To není registrovaný důvod!"
 
 #: redbot/cogs/warnings/warnings.py:410
 msgid "You cannot apply negative points."
-msgstr ""
+msgstr "Nemůžete použít záporné body."
 
 #: redbot/cogs/warnings/warnings.py:424
 msgid "Do `{prefix}warningset allowcustomreasons true` to enable custom reasons."
@@ -297,7 +297,7 @@ msgstr "Varování od {user}"
 
 #: redbot/cogs/warnings/warnings.py:447 redbot/cogs/warnings/warnings.py:480
 msgid "Warning"
-msgstr ""
+msgstr "Varování"
 
 #: redbot/cogs/warnings/warnings.py:454
 msgid "You have received a warning in {guild_name}."
@@ -305,11 +305,11 @@ msgstr "Obdrželi jste varování v {guild_name}."
 
 #: redbot/cogs/warnings/warnings.py:464
 msgid "A warning for {user} has been issued, but I wasn't able to send them a warn message."
-msgstr ""
+msgstr "Varování pro {user} bylo vydáno, ale nepodařilo se mi jemu poslat varovnou zprávu."
 
 #: redbot/cogs/warnings/warnings.py:490 redbot/cogs/warnings/warnings.py:499
 msgid "{user} has been warned."
-msgstr ""
+msgstr "Uživatel {user} byl varován."
 
 #: redbot/cogs/warnings/warnings.py:504
 msgid "{reason}\n\n"
@@ -334,7 +334,7 @@ msgstr "Tento uživatel nemá žádná varování!"
 
 #: redbot/cogs/warnings/warnings.py:548 redbot/cogs/warnings/warnings.py:584
 msgid "Deleted Moderator"
-msgstr ""
+msgstr "Smazaný moderátor"
 
 #: redbot/cogs/warnings/warnings.py:551 redbot/cogs/warnings/warnings.py:587
 msgid "Unknown Moderator ({})"

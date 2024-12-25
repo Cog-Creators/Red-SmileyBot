@@ -1,8 +1,9 @@
 import datetime
-from typing import cast
+from typing import List, Tuple, cast
 
 import discord
 from redbot.core import commands, i18n
+from redbot.core.utils.chat_formatting import bold, pagify
 from redbot.core.utils.common_filters import (
     filter_invites,
     filter_various_mentions,
@@ -20,23 +21,23 @@ class ModInfo(MixinMeta):
     Commands regarding names, userinfo, etc.
     """
 
-    async def get_names_and_nicks(self, user):
-        names = await self.config.user(user).past_names()
-        nicks = await self.config.member(user).past_nicks()
-        if names:
-            names = [escape_spoilers_and_mass_mentions(name) for name in names if name]
-        if nicks:
-            nicks = [escape_spoilers_and_mass_mentions(nick) for nick in nicks if nick]
-        return names, nicks
+    async def get_names(self, member: discord.Member) -> Tuple[List[str], List[str], List[str]]:
+        user_data = await self.config.user(member).all()
+        usernames, display_names = user_data["past_names"], user_data["past_display_names"]
+        nicks = await self.config.member(member).past_nicks()
+        usernames = list(map(escape_spoilers_and_mass_mentions, filter(None, usernames)))
+        display_names = list(map(escape_spoilers_and_mass_mentions, filter(None, display_names)))
+        nicks = list(map(escape_spoilers_and_mass_mentions, filter(None, nicks)))
+        return usernames, display_names, nicks
 
     @commands.command()
     @commands.guild_only()
     @commands.bot_has_permissions(manage_nicknames=True)
     @commands.admin_or_permissions(manage_nicknames=True)
     async def rename(self, ctx: commands.Context, member: discord.Member, *, nickname: str = ""):
-        """Change a member's nickname.
+        """Change a member's server nickname.
 
-        Leaving the nickname empty will remove it.
+        Leaving the nickname argument empty will remove it.
         """
         nickname = nickname.strip()
         me = cast(discord.Member, ctx.me)
@@ -175,9 +176,9 @@ class ModInfo(MixinMeta):
         """Show information about a member.
 
         This includes fields for status, discord join date, server
-        join date, voice state and previous names/nicknames.
+        join date, voice state and previous usernames/global display names/nicknames.
 
-        If the member has no roles, previous names or previous nicknames,
+        If the member has no roles, previous usernames, global display names, or server nicknames,
         these fields will be omitted.
         """
         author = ctx.author
@@ -191,7 +192,7 @@ class ModInfo(MixinMeta):
         is_special = member.id == 96130341705637888 and guild.id == 133049272517001216
 
         roles = member.roles[-1:0:-1]
-        names, nicks = await self.get_names_and_nicks(member)
+        usernames, display_names, nicks = await self.get_names(member)
 
         if is_special:
             joined_at = special_date
@@ -273,22 +274,17 @@ class ModInfo(MixinMeta):
             data.add_field(
                 name=_("Roles") if len(roles) > 1 else _("Role"), value=role_str, inline=False
             )
-        if names:
-            # May need sanitizing later, but mentions do not ping in embeds currently
-            val = filter_invites(", ".join(names))
-            data.add_field(
-                name=_("Previous Names") if len(names) > 1 else _("Previous Name"),
-                value=val,
-                inline=False,
-            )
-        if nicks:
-            # May need sanitizing later, but mentions do not ping in embeds currently
-            val = filter_invites(", ".join(nicks))
-            data.add_field(
-                name=_("Previous Nicknames") if len(nicks) > 1 else _("Previous Nickname"),
-                value=val,
-                inline=False,
-            )
+        for single_form, plural_form, names in (
+            (_("Previous Username"), _("Previous Usernames"), usernames),
+            (_("Previous Global Display Name"), _("Previous Global Display Names"), display_names),
+            (_("Previous Server Nickname"), _("Previous Server Nicknames"), nicks),
+        ):
+            if names:
+                data.add_field(
+                    name=plural_form if len(names) > 1 else single_form,
+                    value=filter_invites(", ".join(names)),
+                    inline=False,
+                )
         if voice_state and voice_state.channel:
             data.add_field(
                 name=_("Current voice channel"),
@@ -309,21 +305,20 @@ class ModInfo(MixinMeta):
 
     @commands.command()
     async def names(self, ctx: commands.Context, *, member: discord.Member):
-        """Show previous names and nicknames of a member."""
-        names, nicks = await self.get_names_and_nicks(member)
-        msg = ""
-        if names:
-            msg += _("**Past 20 names**:")
-            msg += "\n"
-            msg += ", ".join(names)
-        if nicks:
-            if msg:
-                msg += "\n\n"
-            msg += _("**Past 20 nicknames**:")
-            msg += "\n"
-            msg += ", ".join(nicks)
-        if msg:
-            msg = filter_various_mentions(msg)
-            await ctx.send(msg)
+        """Show previous usernames, global display names, and server nicknames of a member."""
+        usernames, display_names, nicks = await self.get_names(member)
+        parts = []
+        for header, names in (
+            (_("Past 20 usernames:"), usernames),
+            (_("Past 20 global display names:"), display_names),
+            (_("Past 20 server nicknames:"), nicks),
+        ):
+            if names:
+                parts.append(bold(header) + ", ".join(names))
+        if parts:
+            # each name can have 32 characters, we store 3*20 names which totals to
+            # 60*32=1920 characters which is quite close to the message length limit
+            for msg in pagify(filter_various_mentions("\n\n".join(parts))):
+                await ctx.send(msg)
         else:
             await ctx.send(_("That member doesn't have any recorded name or nickname change."))

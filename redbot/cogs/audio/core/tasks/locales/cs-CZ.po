@@ -17,13 +17,13 @@ msgstr ""
 
 #: redbot/cogs/audio/core/tasks/startup.py:273
 msgid "Couldn't get a valid track."
-msgstr ""
+msgstr "Nepodařilo se získat platnou skladbu."
 
 #: redbot/cogs/audio/core/tasks/startup.py:281
 msgid "Unable to Get Track"
-msgstr ""
+msgstr "Nelze získat skladbu"
 
 #: redbot/cogs/audio/core/tasks/startup.py:282
 msgid "I'm unable to get a track from the Lavalink node at the moment, try again in a few minutes."
-msgstr ""
+msgstr "Momentálně se mi nedaří získat skladbu z uzlu Lavalink, zkuste to za pár minut znovu."
 

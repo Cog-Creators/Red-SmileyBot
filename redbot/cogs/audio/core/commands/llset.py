@@ -51,7 +51,7 @@ class LavalinkSetupCommands(MixinMeta, metaclass=CompositeMetaClass):
         This command shouldn't need to be used most of the time, and is only useful if the host machine has conflicting Java versions.
 
         If changing this make sure that the Java executable you set is supported by Audio.
-        The current supported version is Java 11.
+        The current supported versions are Java 17 and 11.
 
         Enter nothing or "java" to reset it back to default.
         """
@@ -124,7 +124,7 @@ class LavalinkSetupCommands(MixinMeta, metaclass=CompositeMetaClass):
                 if meta[1]:
                     await ctx.send(
                         _(
-                            "Heap-size must be less than your system RAM, "
+                            "Heap-size must be less than your system RAM. "
                             "You currently have {ram_in_bytes} of RAM available."
                         ).format(ram_in_bytes=inline(sizeof_fmt(meta[0])))
                     )
@@ -242,12 +242,15 @@ class LavalinkSetupCommands(MixinMeta, metaclass=CompositeMetaClass):
         """Set the Lavalink node port.
 
         This command sets the connection port which Audio will use to connect to an unmanaged Lavalink node.
+        Set port to -1 to disable the port and connect to the specified host via ports 80/443
         """
-        if port < 0 or port > 65535:
+        if port < 0:
+            port = None
+        elif port > 65535:
             return await self.send_embed_msg(
                 ctx,
                 title=_("Setting Not Changed"),
-                description=_("A port must be between 0 and 65535 "),
+                description=_("A port must be between 0 and 65535."),
             )
         await self.config.ws_port.set(port)
         await self.send_embed_msg(
@@ -292,11 +295,14 @@ class LavalinkSetupCommands(MixinMeta, metaclass=CompositeMetaClass):
                 title=_("Setting Changed"),
                 description=_(
                     "Unmanaged Lavalink node will no longer connect using the secured "
-                    "{secured_protocol} protocol and wil use {unsecured_protocol} instead .\n\n"
+                    "{secured_protocol} protocol and will use {unsecured_protocol} instead.\n\n"
                     "Run `{p}{cmd}` for it to take effect."
-                ).format(p=ctx.prefix, cmd=self.command_audioset_restart.qualified_name),
-                unsecured_protocol=inline("ws://"),
-                secured_protocol=inline("wss://"),
+                ).format(
+                    p=ctx.prefix,
+                    cmd=self.command_audioset_restart.qualified_name,
+                    unsecured_protocol=inline("ws://"),
+                    secured_protocol=inline("wss://"),
+                ),
             )
 
     @command_llset.command(name="info", aliases=["settings"])
@@ -307,7 +313,9 @@ class LavalinkSetupCommands(MixinMeta, metaclass=CompositeMetaClass):
         if configs["use_external_lavalink"]:
             msg = "----" + _("Connection Settings") + "----        \n"
             msg += _("Host:             [{host}]\n").format(host=configs["host"])
-            msg += _("Port:             [{port}]\n").format(port=configs["ws_port"])
+            msg += _("Port:             [{port}]\n").format(
+                port=configs["ws_port"] or _("Default HTTP/HTTPS port")
+            )
             msg += _("Password:         [{password}]\n").format(password=configs["password"])
             msg += _("Secured:          [{state}]\n").format(state=configs["secured_ws"])
 

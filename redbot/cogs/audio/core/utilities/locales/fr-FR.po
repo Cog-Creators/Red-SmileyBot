@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-01-23 19:39+0000\n"
+"POT-Creation-Date: 2024-08-07 20:36+0000\n"
 "Last-Translator: \n"
 "Language-Team: French\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "Page {page_num}/{total_pages}"
 #: redbot/cogs/audio/core/utilities/formatting.py:95
 #: redbot/cogs/audio/core/utilities/playlists.py:526
 msgid "Connection to Lavalink node has failed"
-msgstr ""
+msgstr "La connexion à Lavalink a échoué"
 
 #: redbot/cogs/audio/core/utilities/formatting.py:98
 #: redbot/cogs/audio/core/utilities/player.py:591
@@ -43,17 +43,17 @@ msgstr "Rejoignez un salon vocal d'abord."
 #: redbot/cogs/audio/core/utilities/formatting.py:109
 #: redbot/cogs/audio/core/utilities/playlists.py:554
 msgid "Connection to Lavalink node has not yet been established."
-msgstr ""
-
-#: redbot/cogs/audio/core/utilities/formatting.py:116
-msgid "Unable To Play Tracks"
-msgstr "Impossible de jouer des pistes"
+msgstr "La connexion au nœud Lavalink n'a pas encore été établie."
 
 #: redbot/cogs/audio/core/utilities/formatting.py:116
 #: redbot/cogs/audio/core/utilities/player.py:442
 #: redbot/cogs/audio/core/utilities/player.py:524
 msgid "Queue size limit reached."
 msgstr "Limite de la file de lecture atteinte."
+
+#: redbot/cogs/audio/core/utilities/formatting.py:116
+msgid "Unable To Play Tracks"
+msgstr "Impossible de jouer des pistes"
 
 #: redbot/cogs/audio/core/utilities/formatting.py:154
 #: redbot/cogs/audio/core/utilities/player.py:599
@@ -231,7 +231,7 @@ msgstr "Impossible d'obtenir la piste"
 #: redbot/cogs/audio/core/utilities/player.py:301
 #: redbot/cogs/audio/core/utilities/playlists.py:426
 msgid "I'm unable to get a track from the Lavalink node at the moment, try again in a few minutes."
-msgstr ""
+msgstr "Je ne parviens actuellement pas à avoir une musique depuis Lavalink. Réessayez dans quelques minutes."
 
 #: redbot/cogs/audio/core/utilities/player.py:327
 msgid "The Spotify API key or client secret has not been set properly. \n"
@@ -255,7 +255,7 @@ msgstr "{query} n'est pas une requête autorisée."
 #: redbot/cogs/audio/core/utilities/playlists.py:627
 #: redbot/cogs/audio/core/utilities/playlists.py:656
 msgid "I'm unable to get a track from Lavalink node at the moment, try again in a few minutes."
-msgstr ""
+msgstr "Je ne parviens actuellement pas à me connecter à Lavalink pour l'instant. Réessayez dans quelques minutes."
 
 #: redbot/cogs/audio/core/utilities/player.py:416
 msgid "Local tracks will not work if the `Lavalink.jar` cannot see the track.\n"
@@ -277,7 +277,7 @@ msgstr "Playlist en file d’attente"
 
 #: redbot/cogs/audio/core/utilities/player.py:494
 msgid "Album Enqueued"
-msgstr ""
+msgstr "Album en attente"
 
 #: redbot/cogs/audio/core/utilities/player.py:502
 msgid "Added {num} tracks to the queue.{maxlength_msg}"
@@ -483,11 +483,11 @@ msgstr "Aléatoire"
 msgid "Repeat"
 msgstr "Répétition"
 
-#: redbot/cogs/audio/core/utilities/queue.py:159
+#: redbot/cogs/audio/core/utilities/queue.py:161
 msgid "Matching Tracks:"
 msgstr "Pistes correspondantes :"
 
-#: redbot/cogs/audio/core/utilities/queue.py:162
+#: redbot/cogs/audio/core/utilities/queue.py:164
 msgid "Page {page_num}/{total_pages} | {num_tracks} tracks"
 msgstr "Page {page_num}/{total_pages} | {num_tracks} pistes"
 

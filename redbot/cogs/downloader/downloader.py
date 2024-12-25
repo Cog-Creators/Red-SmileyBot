@@ -98,14 +98,19 @@ class Downloader(commands.Cog):
 
     def create_init_task(self):
         def _done_callback(task: asyncio.Task) -> None:
-            exc = task.exception()
-            if exc is not None:
+            try:
+                exc = task.exception()
+            except asyncio.CancelledError:
+                pass
+            else:
+                if exc is None:
+                    return
                 log.error(
                     "An unexpected error occurred during Downloader's initialization.",
                     exc_info=exc,
                 )
-                self._ready_raised = True
-                self._ready.set()
+            self._ready_raised = True
+            self._ready.set()
 
         self._init_task = asyncio.create_task(self.initialize())
         self._init_task.add_done_callback(_done_callback)
@@ -486,8 +491,8 @@ class Downloader(commands.Cog):
         Install a group of dependencies using pip.
 
         Examples:
-            - `[p]pipinstall bs4`
-            - `[p]pipinstall py-cpuinfo psutil`
+        - `[p]pipinstall bs4`
+        - `[p]pipinstall py-cpuinfo psutil`
 
         Improper usage of this command can break your bot, be careful.
 
@@ -526,8 +531,8 @@ class Downloader(commands.Cog):
         """Add a new repo.
 
         Examples:
-            - `[p]repo add 26-Cogs https://github.com/Twentysix26/x26-Cogs`
-            - `[p]repo add Laggrons-Dumb-Cogs https://github.com/retke/Laggrons-Dumb-Cogs v3`
+        - `[p]repo add 26-Cogs https://github.com/Twentysix26/x26-Cogs`
+        - `[p]repo add Laggrons-Dumb-Cogs https://github.com/retke/Laggrons-Dumb-Cogs v3`
 
         Repo names can only contain characters A-z, numbers, underscores, hyphens, and dots (but they cannot start or end with a dot).
 
@@ -561,6 +566,20 @@ class Downloader(commands.Cog):
             await ctx.send(
                 _("The repo name you provided is already in use. Please choose another name.")
             )
+        except errors.AuthenticationError as err:
+            await ctx.send(
+                _(
+                    "Failed to authenticate or repository does not exist."
+                    " See logs for more information."
+                )
+            )
+            log.exception(
+                "Something went wrong whilst cloning %s (to revision: %s)",
+                repo_url,
+                branch,
+                exc_info=err,
+            )
+
         except errors.CloningError as err:
             await ctx.send(
                 _(
@@ -589,7 +608,11 @@ class Downloader(commands.Cog):
         else:
             await ctx.send(_("Repo `{name}` successfully added.").format(name=name))
             if repo.install_msg:
-                await ctx.send(repo.install_msg.replace("[p]", ctx.clean_prefix))
+                await ctx.send(
+                    repo.install_msg.replace("[p]", ctx.clean_prefix).replace(
+                        "[botname]", ctx.me.display_name
+                    )
+                )
 
     @repo.command(name="delete", aliases=["remove", "del"], require_var_positional=True)
     async def _repo_del(self, ctx: commands.Context, *repos: Repo) -> None:
@@ -597,8 +620,8 @@ class Downloader(commands.Cog):
         Remove repos and their files.
 
         Examples:
-            - `[p]repo delete 26-Cogs`
-            - `[p]repo delete 26-Cogs Laggrons-Dumb-Cogs`
+        - `[p]repo delete 26-Cogs`
+        - `[p]repo delete 26-Cogs Laggrons-Dumb-Cogs`
 
         **Arguments**
 
@@ -625,21 +648,25 @@ class Downloader(commands.Cog):
             joined = _("There are no repos installed.")
         else:
             if len(repos) > 1:
-                joined = _("Installed Repos:\n\n")
+                joined = _("## Installed Repos\n")
             else:
-                joined = _("Installed Repo:\n\n")
+                joined = _("## Installed Repo\n")
             for repo in sorted_repos:
-                joined += "+ {}: {}\n".format(repo.name, repo.short or "")
+                joined += "- **{}:** {}\n  - {}\n".format(
+                    repo.name,
+                    repo.short or "",
+                    "<{}>".format(repo.url),
+                )
 
         for page in pagify(joined, ["\n"], shorten_by=16):
-            await ctx.send(box(page.lstrip(" "), lang="diff"))
+            await ctx.send(page)
 
     @repo.command(name="info")
     async def _repo_info(self, ctx: commands.Context, repo: Repo) -> None:
         """Show information about a repo.
 
         Example:
-            - `[p]repo info 26-Cogs`
+        - `[p]repo info 26-Cogs`
 
         **Arguments**
 
@@ -667,9 +694,9 @@ class Downloader(commands.Cog):
         This will *not* update the cogs installed from those repos.
 
         Examples:
-            - `[p]repo update`
-            - `[p]repo update 26-Cogs`
-            - `[p]repo update 26-Cogs Laggrons-Dumb-Cogs`
+        - `[p]repo update`
+        - `[p]repo update 26-Cogs`
+        - `[p]repo update 26-Cogs Laggrons-Dumb-Cogs`
 
         **Arguments**
 
@@ -768,8 +795,8 @@ class Downloader(commands.Cog):
         """Install a cog from the given repo.
 
         Examples:
-            - `[p]cog install 26-Cogs defender`
-            - `[p]cog install Laggrons-Dumb-Cogs say roleinvite`
+        - `[p]cog install 26-Cogs defender`
+        - `[p]cog install Laggrons-Dumb-Cogs say roleinvite`
 
         **Arguments**
 
@@ -792,7 +819,7 @@ class Downloader(commands.Cog):
         Older revisions can be found in the URL bar by [viewing the commit history of any repo](https://cdn.discordapp.com/attachments/133251234164375552/775760247787749406/unknown.png)
 
         Example:
-            - `[p]cog installversion Broken-Repo e798cc268e199612b1316a3d1f193da0770c7016 cog_name`
+        - `[p]cog installversion Broken-Repo e798cc268e199612b1316a3d1f193da0770c7016 cog_name`
 
         **Arguments**
 
@@ -909,7 +936,11 @@ class Downloader(commands.Cog):
         await self.send_pagified(ctx, f"{message}{deprecation_notice}\n---")
         for cog in installed_cogs:
             if cog.install_msg:
-                await ctx.send(cog.install_msg.replace("[p]", ctx.clean_prefix))
+                await ctx.send(
+                    cog.install_msg.replace("[p]", ctx.clean_prefix).replace(
+                        "[botname]", ctx.me.display_name
+                    )
+                )
 
     @cog.command(name="uninstall", require_var_positional=True)
     async def _cog_uninstall(self, ctx: commands.Context, *cogs: InstalledCog) -> None:
@@ -919,8 +950,8 @@ class Downloader(commands.Cog):
         by Downloader.
 
         Examples:
-            - `[p]cog uninstall defender`
-            - `[p]cog uninstall say roleinvite`
+        - `[p]cog uninstall defender`
+        - `[p]cog uninstall say roleinvite`
 
         **Arguments**
 
@@ -990,8 +1021,8 @@ class Downloader(commands.Cog):
         """Pin cogs - this will lock cogs on their current version.
 
         Examples:
-            - `[p]cog pin defender`
-            - `[p]cog pin outdated_cog1 outdated_cog2`
+        - `[p]cog pin defender`
+        - `[p]cog pin outdated_cog1 outdated_cog2`
 
         **Arguments**
 
@@ -1025,8 +1056,8 @@ class Downloader(commands.Cog):
         """Unpin cogs - this will remove the update lock from those cogs.
 
         Examples:
-            - `[p]cog unpin defender`
-            - `[p]cog unpin updated_cog1 updated_cog2`
+        - `[p]cog unpin defender`
+        - `[p]cog unpin updated_cog1 updated_cog2`
 
         **Arguments**
 
@@ -1127,10 +1158,10 @@ class Downloader(commands.Cog):
         """Update all cogs, or ones of your choosing.
 
         Examples:
-            - `[p]cog update`
-            - `[p]cog update True`
-            - `[p]cog update defender`
-            - `[p]cog update True defender`
+        - `[p]cog update`
+        - `[p]cog update True`
+        - `[p]cog update defender`
+        - `[p]cog update True defender`
 
         **Arguments**
 
@@ -1148,9 +1179,9 @@ class Downloader(commands.Cog):
         """Update all cogs from repos of your choosing.
 
         Examples:
-            - `[p]cog updateallfromrepos 26-Cogs`
-            - `[p]cog updateallfromrepos True 26-Cogs`
-            - `[p]cog updateallfromrepos Laggrons-Dumb-Cogs 26-Cogs`
+        - `[p]cog updateallfromrepos 26-Cogs`
+        - `[p]cog updateallfromrepos True 26-Cogs`
+        - `[p]cog updateallfromrepos Laggrons-Dumb-Cogs 26-Cogs`
 
         **Arguments**
 
@@ -1179,8 +1210,8 @@ class Downloader(commands.Cog):
         See `[p]cog installversion` for an explanation of `revision`.
 
         Examples:
-            - `[p]cog updatetoversion Broken-Repo e798cc268e199612b1316a3d1f193da0770c7016 cog_name`
-            - `[p]cog updatetoversion True Broken-Repo 6107c0770ad391f1d3a6131b216991e862cc897e cog_name`
+        - `[p]cog updatetoversion Broken-Repo e798cc268e199612b1316a3d1f193da0770c7016 cog_name`
+        - `[p]cog updatetoversion True Broken-Repo 6107c0770ad391f1d3a6131b216991e862cc897e cog_name`
 
         **Arguments**
 
@@ -1319,48 +1350,49 @@ class Downloader(commands.Cog):
         """List all available cogs from a single repo.
 
         Example:
-            - `[p]cog list 26-Cogs`
+        - `[p]cog list 26-Cogs`
 
         **Arguments**
 
         - `<repo>` The repo to list cogs from.
         """
+        sort_function = lambda x: x.name.lower()
         all_installed_cogs = await self.installed_cogs()
         installed_cogs_in_repo = [cog for cog in all_installed_cogs if cog.repo_name == repo.name]
         installed_str = "\n".join(
             "- {}{}".format(i.name, ": {}".format(i.short) if i.short else "")
-            for i in installed_cogs_in_repo
+            for i in sorted(installed_cogs_in_repo, key=sort_function)
         )
 
         if len(installed_cogs_in_repo) > 1:
-            installed_str = _("Installed Cogs:\n{text}").format(text=installed_str)
+            installed_str = _("# Installed Cogs\n{text}").format(text=installed_str)
         elif installed_cogs_in_repo:
-            installed_str = _("Installed Cog:\n{text}").format(text=installed_str)
+            installed_str = _("# Installed Cog\n{text}").format(text=installed_str)
 
         available_cogs = [
             cog for cog in repo.available_cogs if not (cog.hidden or cog in installed_cogs_in_repo)
         ]
         available_str = "\n".join(
             "+ {}{}".format(cog.name, ": {}".format(cog.short) if cog.short else "")
-            for cog in available_cogs
+            for cog in sorted(available_cogs, key=sort_function)
         )
 
         if not available_str:
-            cogs = _("Available Cogs:\nNo cogs are available.")
+            cogs = _("> Available Cogs\nNo cogs are available.")
         elif len(available_cogs) > 1:
-            cogs = _("Available Cogs:\n{text}").format(text=available_str)
+            cogs = _("> Available Cogs\n{text}").format(text=available_str)
         else:
-            cogs = _("Available Cog:\n{text}").format(text=available_str)
+            cogs = _("> Available Cog\n{text}").format(text=available_str)
         cogs = cogs + "\n\n" + installed_str
         for page in pagify(cogs, ["\n"], shorten_by=16):
-            await ctx.send(box(page.lstrip(" "), lang="diff"))
+            await ctx.send(box(page.lstrip(" "), lang="markdown"))
 
     @cog.command(name="info", usage="<repo> <cog>")
     async def _cog_info(self, ctx: commands.Context, repo: Repo, cog_name: str) -> None:
         """List information about a single cog.
 
         Example:
-            - `[p]cog info 26-Cogs defender`
+        - `[p]cog info 26-Cogs defender`
 
         **Arguments**
 
@@ -1732,7 +1764,7 @@ class Downloader(commands.Cog):
         This will only work with loaded cogs.
 
         Example:
-            - `[p]findcog ping`
+        - `[p]findcog ping`
 
         **Arguments**
 

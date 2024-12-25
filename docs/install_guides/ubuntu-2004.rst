@@ -18,7 +18,7 @@ with apt:
 .. prompt:: bash
 
     sudo apt update
-    sudo apt -y install python3.9 python3.9-dev python3.9-venv git openjdk-11-jre-headless build-essential nano
+    sudo apt -y install python3.9 python3.9-dev python3.9-venv git openjdk-17-jre-headless build-essential nano
 
 .. Include common instructions:
 

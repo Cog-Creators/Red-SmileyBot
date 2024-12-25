@@ -5,3 +5,7 @@
 
 # include commit/tag information in `.git_archive_info.txt` when packing with git-archive
 .git_archive_info.txt export-subst
+
+# hide diffs for .po files by default
+# https://docs.github.com/en/repositories/working-with-files/managing-files/customizing-how-changed-files-appear-on-github
+*.po linguist-generated

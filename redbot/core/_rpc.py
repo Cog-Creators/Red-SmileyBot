@@ -93,7 +93,14 @@ class RPC:
             self._started, _discard, self._site = (
                 True,
                 await self._runner.setup(),
-                web.TCPSite(self._runner, host="127.0.0.1", port=port, shutdown_timeout=0),
+                web.TCPSite(
+                    self._runner,
+                    host="127.0.0.1",
+                    port=port,
+                    shutdown_timeout=120
+                    # Give the RPC server 2 minutes to finish up, else slap it!
+                    # Seems like a reasonable time. See Red#6391
+                ),
             )
         except Exception as exc:
             log.exception("RPC setup failure", exc_info=exc)
@@ -156,7 +163,8 @@ class RPCMixin:
             The return value of handler methods must also be JSON serializable.
 
         .. important::
-            RPC support is included in Red on a provisional basis. Backwards incompatible changes (up to and including removal of the RPC) may occur if deemed necessary.
+            RPC support is included in Red on a `provisional <developer-guarantees-exclusions>` basis.
+            Backwards incompatible changes (up to and including removal of the RPC) may occur if deemed necessary.
 
         Parameters
         ----------
@@ -180,7 +188,8 @@ class RPCMixin:
         method is not previously registered.
 
         .. important::
-            RPC support is included in Red on a provisional basis. Backwards incompatible changes (up to and including removal of the RPC) may occur if deemed necessary.
+            RPC support is included in Red on a `provisional <developer-guarantees-exclusions>` basis.
+            Backwards incompatible changes (up to and including removal of the RPC) may occur if deemed necessary.
 
         Parameters
         ----------

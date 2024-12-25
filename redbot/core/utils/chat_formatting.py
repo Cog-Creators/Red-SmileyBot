@@ -4,12 +4,13 @@ import datetime
 import itertools
 import math
 import textwrap
-from io import BytesIO
-from typing import Iterator, List, Optional, Sequence, SupportsInt, Union
+from io import BytesIO, StringIO
+from typing import Any, Iterator, List, Literal, Optional, Sequence, SupportsInt, Union
 
 import discord
 from babel.lists import format_list as babel_list
 from babel.numbers import format_decimal
+from rich.console import Console
 
 from redbot.core.i18n import Translator, get_babel_locale, get_babel_regional_format
 
@@ -21,11 +22,14 @@ __all__ = (
     "question",
     "bold",
     "box",
+    "header",
+    "hyperlink",
     "inline",
     "italics",
     "spoiler",
     "pagify",
     "strikethrough",
+    "subtext",
     "underline",
     "quote",
     "escape",
@@ -37,6 +41,69 @@ __all__ = (
 )
 
 _ = Translator("UtilsChatFormatting", __file__)
+
+
+def hyperlink(text: str, url: str) -> str:
+    """Create hyperlink markdown with text and a URL.
+
+    Parameters
+    ----------
+    text : str
+        The text which will contain the link.
+    url : str
+        The URL used for the hyperlink.
+
+    Returns
+    -------
+    str
+        The new message.
+
+    """
+    return f"[{text}]({url})"
+
+
+def header(text: str, size: Literal["small", "medium", "large"]) -> str:
+    """Formats a header.
+
+    Parameters
+    ----------
+    text : str
+        The text for the header.
+    size : Literal['small', 'medium', 'large']
+        The size of the header ('small', 'medium' or 'large')
+
+    Returns
+    -------
+    str
+        The new message.
+
+    """
+    if size == "small":
+        multiplier = 3
+    elif size == "medium":
+        multiplier = 2
+    elif size == "large":
+        multiplier = 1
+    else:
+        raise ValueError(f"Invalid size '{size}'")
+    return "#" * multiplier + " " + text
+
+
+def subtext(text: str) -> str:
+    """Formats subtext from the given text.
+
+    Parameters
+    ----------
+    text : str
+        The text to format as subtext.
+
+    Returns
+    -------
+    str
+        The new message.
+
+    """
+    return "-# " + text
 
 
 def error(text: str) -> str:
@@ -519,15 +586,21 @@ def format_perms_list(perms: discord.Permissions) -> str:
 
 
 def humanize_timedelta(
-    *, timedelta: Optional[datetime.timedelta] = None, seconds: Optional[SupportsInt] = None
+    *,
+    timedelta: Optional[datetime.timedelta] = None,
+    seconds: Optional[SupportsInt] = None,
+    negative_format: Optional[str] = None,
+    maximum_units: Optional[int] = None,
 ) -> str:
     """
     Get a locale aware human timedelta representation.
 
     This works with either a timedelta object or a number of seconds.
 
-    Fractional values will be omitted, and values less than 1 second
-    an empty string.
+    Fractional values will be omitted.
+
+    Values that are less than 1 second but greater than -1 second
+    will be an empty string.
 
     Parameters
     ----------
@@ -535,6 +608,11 @@ def humanize_timedelta(
         A timedelta object
     seconds: Optional[SupportsInt]
         A number of seconds
+    negative_format: Optional[str]
+        How to format negative timedeltas, using %-formatting rules.
+        Defaults to "negative %s"
+    maximum_units: Optional[int]
+        The maximum number of different units to output in the final string.
 
     Returns
     -------
@@ -544,15 +622,33 @@ def humanize_timedelta(
     Raises
     ------
     ValueError
-        The function was called with neither a number of seconds nor a timedelta object
+        The function was called with neither a number of seconds nor a timedelta object,
+        or with a maximum_units less than 1.
+
+    Examples
+    --------
+    .. testsetup::
+
+        from datetime import timedelta
+        from redbot.core.utils.chat_formatting import humanize_timedelta
+
+    .. doctest::
+
+        >>> humanize_timedelta(seconds=314)
+        '5 minutes, 14 seconds'
+        >>> humanize_timedelta(timedelta=timedelta(minutes=3.14), maximum_units=1)
+        '3 minutes'
+        >>> humanize_timedelta(timedelta=timedelta(days=-3.14), negative_format="%s ago", maximum_units=3)
+        '3 days, 3 hours, 21 minutes ago'
     """
 
     try:
         obj = seconds if seconds is not None else timedelta.total_seconds()
     except AttributeError:
         raise ValueError("You must provide either a timedelta or a number of seconds")
+    if maximum_units is not None and maximum_units < 1:
+        raise ValueError("maximum_units must be >= 1")
 
-    seconds = int(obj)
     periods = [
         (_("year"), _("years"), 60 * 60 * 24 * 365),
         (_("month"), _("months"), 60 * 60 * 24 * 30),
@@ -561,8 +657,17 @@ def humanize_timedelta(
         (_("minute"), _("minutes"), 60),
         (_("second"), _("seconds"), 1),
     ]
-
+    seconds = int(obj)
+    if seconds < 0:
+        seconds = -seconds
+        if negative_format and "%s" not in negative_format:
+            negative_format = negative_format + " %s"
+        else:
+            negative_format = negative_format or (_("negative") + " %s")
+    else:
+        negative_format = "%s"
     strings = []
+    maximum_units = maximum_units or len(periods)
     for period_name, plural_period_name, period_seconds in periods:
         if seconds >= period_seconds:
             period_value, seconds = divmod(seconds, period_seconds)
@@ -570,13 +675,15 @@ def humanize_timedelta(
                 continue
             unit = plural_period_name if period_value > 1 else period_name
             strings.append(f"{period_value} {unit}")
+            if len(strings) == maximum_units:
+                break
 
-    return ", ".join(strings)
+    return negative_format % humanize_list(strings, style="unit")
 
 
 def humanize_number(val: Union[int, float], override_locale=None) -> str:
     """
-    Convert an int or float to a str with digit separators based on bot locale
+    Convert an int or float to a str with digit separators based on bot locale.
 
     Parameters
     ----------
@@ -585,10 +692,15 @@ def humanize_number(val: Union[int, float], override_locale=None) -> str:
     override_locale: Optional[str]
         A value to override bot's regional format.
 
+    Raises
+    ------
+    decimals.InvalidOperation
+        If val is greater than 10 x 10^21 for some locales, 10 x 10^24 in others.
+
     Returns
     -------
     str
-        locale aware formatted number.
+        Locale-aware formatted number.
     """
     return format_decimal(val, locale=get_babel_regional_format(override_locale))
 
@@ -618,3 +730,66 @@ def text_to_file(
     """
     file = BytesIO(text.encode(encoding))
     return discord.File(file, filename, spoiler=spoiler)
+
+
+def rich_markup(
+    *objects: Any,
+    crop: Optional[bool] = True,
+    emoji: Optional[bool] = True,
+    highlight: Optional[bool] = True,
+    justify: Optional[str] = None,
+    markup: Optional[bool] = True,
+    no_wrap: Optional[bool] = None,
+    overflow: Optional[str] = None,
+    width: Optional[int] = None,
+) -> str:
+    """Returns a codeblock with ANSI formatting for colour support.
+
+    This supports a limited set of Rich markup, and rich helper functions. (https://rich.readthedocs.io/en/stable/index.html)
+
+    Parameters
+    ----------
+    *objects: Any
+        The text to convert to ANSI formatting.
+    crop: Optional[bool]
+        Crop output to width of virtual terminal. Defaults to ``True``.
+    emoji: Optional[bool]
+        Enable emoji code. Defaults to ``True``.
+    highlight: Optional[bool]
+        Enable automated highlighting. Defaults to ``True``.
+    justify: Optional[str]
+        Justify method: "default", "left", "right", "center", or "full". Defaults to ``None``.
+    markup: Optional[bool]
+        Boolean to enable Console Markup. Defaults to ``True``.
+    no_wrap: Optional[bool]
+        Disables word wrapping. Defaults to ``None``.
+    overflow: Optional[str]
+        Overflow method: "ignore", "crop", "fold", or "ellipsis". Defaults to None.
+    width: Optional[int]
+        The width of the virtual terminal. Defaults to ``80`` characters long.
+
+
+    Returns
+    -------
+    str:
+        The ANSI formatted text in a codeblock.
+    """
+    temp_console = Console(  # Prevent messing with STDOUT's console
+        color_system="standard",  # Discord only supports 8-bit in colors
+        emoji=emoji,
+        file=StringIO(),
+        force_terminal=True,
+        force_interactive=False,
+        highlight=highlight,
+        markup=markup,
+        width=width if width is not None else 80,
+    )
+
+    temp_console.print(
+        *objects,
+        crop=crop,
+        justify=justify,
+        no_wrap=no_wrap,
+        overflow=overflow,
+    )
+    return box(temp_console.file.getvalue(), lang="ansi")

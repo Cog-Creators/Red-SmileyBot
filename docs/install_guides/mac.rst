@@ -28,8 +28,7 @@ one-by-one:
 
     brew install python@3.11
     brew install git
-    brew tap homebrew/cask-versions
-    brew install --cask temurin11
+    brew install temurin@17
 
 By default, Python installed through Homebrew is not added to the load path.
 To fix this, you should run these commands:

@@ -162,7 +162,7 @@ class Tunnel(metaclass=TunnelMeta):
 
         """
         files = []
-        max_size = 8 * 1000 * 1000
+        max_size = 26214400
         if m.attachments and sum(a.size for a in m.attachments) <= max_size:
             for a in m.attachments:
                 if images_only and a.height is None:

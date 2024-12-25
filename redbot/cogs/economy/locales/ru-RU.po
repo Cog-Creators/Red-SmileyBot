@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-05-01 22:55+0000\n"
+"POT-Creation-Date: 2023-06-14 02:57+0000\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -83,18 +83,12 @@ msgstr "Базовая команда для управления банком."
 #, docstring
 msgid "Show the user's account balance.\n\n"
 "        Example:\n"
-"            - `[p]bank balance`\n"
-"            - `[p]bank balance @Twentysix`\n\n"
+"        - `[p]bank balance`\n"
+"        - `[p]bank balance @Twentysix`\n\n"
 "        **Arguments**\n\n"
 "        - `<user>` The user to check the balance of. If omitted, defaults to your own balance.\n"
 "        "
-msgstr "Показать баланс счета пользователя.\n\n"
-"        Пример:\n"
-"            - `[p]bank balance`\n"
-"            - `[p]bank balance @Twentysix`\n\n"
-"        **Аргументы**\n\n"
-"        - `<user>` Пользователь, баланс которого необходимо проверить. Если опущен, то по умолчанию используется ваш собственный баланс.\n"
-"        "
+msgstr ""
 
 #: redbot/cogs/economy/economy.py:202
 msgid "{user}'s balance is {num} {currency}"
@@ -105,19 +99,12 @@ msgstr "Баланс пользователя {user}: {num} {currency}"
 msgid "Transfer currency to other users.\n\n"
 "        This will come out of your balance, so make sure you have enough.\n\n"
 "        Example:\n"
-"            - `[p]bank transfer @Twentysix 500`\n\n"
+"        - `[p]bank transfer @Twentysix 500`\n\n"
 "        **Arguments**\n\n"
 "        - `<to>` The user to give currency to.\n"
 "        - `<amount>` The amount of currency to give.\n"
 "        "
-msgstr "Переводите валюту другим пользователям.\n\n"
-"        Это будет происходить из вашего баланса, поэтому убедитесь, что у вас его достаточно.\n\n"
-"        Пример:\n"
-"            - `[p]bank transfer @Twentysix 500`\n\n"
-"        **Аргументы**\n\n"
-"        - `<to>` Пользователь, которому нужно передать валюту.\n"
-"        - `<amount>` Количество валюты для перевода.\n"
-"        "
+msgstr ""
 
 #: redbot/cogs/economy/economy.py:230
 msgid "{user} transferred {num} {currency} to {other_user}"
@@ -128,23 +115,14 @@ msgstr "{user} перевёл {other_user} {num} {currency}"
 msgid "Set the balance of a user's bank account.\n\n"
 "        Putting + or - signs before the amount will add/remove currency on the user's bank account instead.\n\n"
 "        Examples:\n"
-"            - `[p]bank set @Twentysix 26` - Sets balance to 26\n"
-"            - `[p]bank set @Twentysix +2` - Increases balance by 2\n"
-"            - `[p]bank set @Twentysix -6` - Decreases balance by 6\n\n"
+"        - `[p]bank set @Twentysix 26` - Sets balance to 26\n"
+"        - `[p]bank set @Twentysix +2` - Increases balance by 2\n"
+"        - `[p]bank set @Twentysix -6` - Decreases balance by 6\n\n"
 "        **Arguments**\n\n"
 "        - `<to>` The user to set the currency of.\n"
 "        - `<creds>` The amount of currency to set their balance to.\n"
 "        "
-msgstr "Устанавливает баланс банковского счета пользователя.\n\n"
-"        Если перед суммой поставить знаки + или -, то на банковском счете пользователя будет добавлена/удалена валюта.\n\n"
-"        Примеры:\n"
-"            - `[p]bank set @Twentysix 26` - Устанавливает баланс равным 26\n"
-"            - `[p]bank set @Twentysix +2` - Увеличивает баланс на 2\n"
-"            - `[p]bank set @Twentysix -6` - Уменьшает баланс на 6\n\n"
-"        **Аргументы**\n\n"
-"        - `<to>` Пользователь, для которого нужно установить валюту.\n"
-"        - `<creds>` Сумма валюты, на которую нужно установить баланс.\n"
-"        "
+msgstr ""
 
 #: redbot/cogs/economy/economy.py:262
 msgid "{author} added {num} {currency} to {user}'s account."
@@ -190,23 +168,14 @@ msgstr ""
 msgid "Print the leaderboard.\n\n"
 "        Defaults to top 10.\n\n"
 "        Examples:\n"
-"            - `[p]leaderboard`\n"
-"            - `[p]leaderboard 50` - Shows the top 50 instead of top 10.\n"
-"            - `[p]leaderboard 100 yes` - Shows the top 100 from all servers.\n\n"
+"        - `[p]leaderboard`\n"
+"        - `[p]leaderboard 50` - Shows the top 50 instead of top 10.\n"
+"        - `[p]leaderboard 100 yes` - Shows the top 100 from all servers.\n\n"
 "        **Arguments**\n\n"
 "        - `<top>` How many positions on the leaderboard to show. Defaults to 10 if omitted.\n"
 "        - `<show_global>` Whether to include results from all servers. This will default to false unless specified.\n"
 "        "
-msgstr "Вывести таблицу лидеров.\n\n"
-"        По умолчанию выводится 10 лучших.\n\n"
-"        Примеры:\n"
-"            - `[p]leaderboard`\n"
-"            - `[p]leaderboard 50` - Показывает топ-50 вместо топ-10.\n"
-"            - `[p]leaderboard 100 yes` - Показывает топ-100 со всех серверов.\n\n"
-"        **Аргументы**\n\n"
-"        - `<top>` Сколько позиций в таблице лидеров показывать. По умолчанию 10, если не указано.\n"
-"        - `<show_global>` Включать ли результаты со всех серверов. По умолчанию false, если не указано.\n"
-"        "
+msgstr ""
 
 #: redbot/cogs/economy/economy.py:427
 msgid "Page {page_num}/{page_len}."
@@ -216,84 +185,79 @@ msgstr "Страница {page_num}/{page_len}."
 msgid "Economy Leaderboard"
 msgstr "Таблица лидеров по экономики"
 
-#: redbot/cogs/economy/economy.py:450
+#: redbot/cogs/economy/economy.py:452
 msgid "There are no accounts in the bank."
 msgstr "В банке нет счетов."
 
-#: redbot/cogs/economy/economy.py:454
+#: redbot/cogs/economy/economy.py:456
 msgid "Name"
 msgstr "Имя"
 
-#: redbot/cogs/economy/economy.py:455
+#: redbot/cogs/economy/economy.py:457
 msgid "Score"
 msgstr "Счет"
 
-#: redbot/cogs/economy/economy.py:521
+#: redbot/cogs/economy/economy.py:523
 msgid "No balances found."
 msgstr "Балансы не найдены."
 
-#: redbot/cogs/economy/economy.py:526
+#: redbot/cogs/economy/economy.py:528
 #, docstring
 msgid "Show the payouts for the slot machine."
 msgstr "Показать выплаты слот-машины."
 
-#: redbot/cogs/economy/economy.py:530
+#: redbot/cogs/economy/economy.py:532
 msgid "I can't send direct messages to you."
 msgstr "Я не могу отправить вам личное сообщение."
 
-#: redbot/cogs/economy/economy.py:535
+#: redbot/cogs/economy/economy.py:537
 #, docstring
 msgid "Use the slot machine.\n\n"
 "        Example:\n"
-"            - `[p]slot 50`\n\n"
+"        - `[p]slot 50`\n\n"
 "        **Arguments**\n\n"
 "        - `<bid>` The amount to bet on the slot machine. Winning payouts are higher when you bet more.\n"
 "        "
-msgstr "Используйте игровой автомат.\n\n"
-"        Пример:\n"
-"            - `[p]slot 50`.\n\n"
-"        **Аргументы**\n\n"
-"        - `<bid>` Сумма ставки на игровом автомате. Выигрышные выплаты выше, если вы ставите больше.\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/economy/economy.py:562
+#: redbot/cogs/economy/economy.py:564
 msgid "You're on cooldown, try again in a bit."
 msgstr "Ты играешь слишком часто, попробуй чуть позже."
 
-#: redbot/cogs/economy/economy.py:565
+#: redbot/cogs/economy/economy.py:567
 msgid "That's an invalid bid amount, sorry :/"
 msgstr "К сожалению, это неправильная сумма ставки :/"
 
-#: redbot/cogs/economy/economy.py:568
+#: redbot/cogs/economy/economy.py:570
 msgid "You ain't got enough money, friend."
 msgstr "Слушай, у тебя нет столько денег."
 
-#: redbot/cogs/economy/economy.py:623
+#: redbot/cogs/economy/economy.py:625
 msgid "You've reached the maximum amount of {currency}! Please spend some more 😬\n"
 "{old_balance} -> {new_balance}!"
 msgstr "Вы достигли максимальной суммы {currency}! Пожалуйста, потратьте еще немного 😬\n"
 "{old_balance} -> {new_balance}!"
 
-#: redbot/cogs/economy/economy.py:638
+#: redbot/cogs/economy/economy.py:640
 msgid "Nothing!"
 msgstr "Ничего!"
 
-#: redbot/cogs/economy/economy.py:642
+#: redbot/cogs/economy/economy.py:644
 msgid "Your bid: {bid}"
 msgstr "Ваша ставка: {bid}"
 
-#: redbot/cogs/economy/economy.py:643
+#: redbot/cogs/economy/economy.py:645
 msgid "\n"
 "{old_balance} - {bid} (Your bid) + {pay} (Winnings) → {new_balance}!"
 msgstr "\n"
 "{old_balance} - {bid} (Ваша ставка) + {pay} (Выигрыш) → {new_balance}!"
 
-#: redbot/cogs/economy/economy.py:660
+#: redbot/cogs/economy/economy.py:662
 #, docstring
 msgid "Base command to manage Economy settings."
 msgstr "Базовая команда для управления настройками экономики."
 
-#: redbot/cogs/economy/economy.py:664
+#: redbot/cogs/economy/economy.py:666
 #, docstring
 msgid "\n"
 "        Shows the current economy settings\n"
@@ -302,7 +266,7 @@ msgstr "\n"
 "        Показывает текущие настройки экономии\n"
 "        "
 
-#: redbot/cogs/economy/economy.py:679
+#: redbot/cogs/economy/economy.py:681
 msgid "---Economy Settings---\n"
 "Minimum slot bid: {slot_min}\n"
 "Maximum slot bid: {slot_max}\n"
@@ -311,151 +275,122 @@ msgid "---Economy Settings---\n"
 "Payday cooldown: {payday_time}\n"
 msgstr ""
 
-#: redbot/cogs/economy/economy.py:696
+#: redbot/cogs/economy/economy.py:698
 msgid "---Role Payday Amounts---\n"
 msgstr ""
 
-#: redbot/cogs/economy/economy.py:700
+#: redbot/cogs/economy/economy.py:702
 #, docstring
 msgid "Set the minimum slot machine bid.\n\n"
 "        Example:\n"
-"            - `[p]economyset slotmin 10`\n\n"
+"        - `[p]economyset slotmin 10`\n\n"
 "        **Arguments**\n\n"
 "        - `<bid>` The new minimum bid for using the slot machine. Default is 5.\n"
 "        "
-msgstr "Установите минимальную ставку игрового автомата.\n\n"
-"        Пример:\n"
-"            - `[p]economyset slotmin 10`.\n\n"
-"        **Аргументы**\n\n"
-"        - `<bid>` Новая минимальная ставка для использования игрового автомата. По умолчанию 5.\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/economy/economy.py:717
+#: redbot/cogs/economy/economy.py:719
 msgid "Warning: Minimum bid is greater than the maximum bid ({max_bid}). Slots will not work."
 msgstr "Предупреждение: Минимальная ставка больше максимальной ставки ({max_bid}). Слоты не будут работать."
 
-#: redbot/cogs/economy/economy.py:728
+#: redbot/cogs/economy/economy.py:730
 msgid "Minimum bid is now {bid} {currency}."
 msgstr "Минимальная ставка сейчас {bid} {currency}."
 
-#: redbot/cogs/economy/economy.py:735
+#: redbot/cogs/economy/economy.py:737
 #, docstring
 msgid "Set the maximum slot machine bid.\n\n"
 "        Example:\n"
-"            - `[p]economyset slotmax 50`\n\n"
+"        - `[p]economyset slotmax 50`\n\n"
 "        **Arguments**\n\n"
 "        - `<bid>` The new maximum bid for using the slot machine. Default is 100.\n"
 "        "
-msgstr "Установите максимальную ставку игрового автомата.\n\n"
-"        Пример:\n"
-"            - `[p]economyset slotmax 50`.\n\n"
-"        **Аргументы**\n\n"
-"        - `<bid>` Новая максимальная ставка для использования игрового автомата. По умолчанию - 100.\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/economy/economy.py:752
+#: redbot/cogs/economy/economy.py:754
 msgid "Warning: Maximum bid is less than the minimum bid ({min_bid}). Slots will not work."
 msgstr "Предупреждение: Максимальная ставка меньше минимальной ставки ({min_bid}). Слоты не будут работать."
 
-#: redbot/cogs/economy/economy.py:763
+#: redbot/cogs/economy/economy.py:765
 msgid "Maximum bid is now {bid} {currency}."
 msgstr "Максимальная ставка сейчас {bid} {currency}."
 
-#: redbot/cogs/economy/economy.py:772
+#: redbot/cogs/economy/economy.py:774
 #, docstring
 msgid "Set the cooldown for the slot machine.\n\n"
 "        Examples:\n"
-"            - `[p]economyset slottime 10`\n"
-"            - `[p]economyset slottime 10m`\n\n"
+"        - `[p]economyset slottime 10`\n"
+"        - `[p]economyset slottime 10m`\n\n"
 "        **Arguments**\n\n"
 "        - `<duration>` The new duration to wait in between uses of the slot machine. Default is 5 seconds.\n"
 "        Accepts: seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr "Установите время охлаждения для игрового автомата.\n\n"
-"        Примеры:\n"
-"            - `[p]economyset slottime 10`\n"
-"            - `[p]economyset slottime 10m`\n\n"
-"        **Аргументы**\n\n"
-"        - `<duration>` Новая продолжительность восстановления между использованием игрового автомата. По умолчанию 5 секунд.\n"
-"        Принимает значения: секунды, минуты, часы, дни, недели (если единицы измерения не указаны, считается, что длительность задана в секундах)\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/economy/economy.py:789
+#: redbot/cogs/economy/economy.py:791
 msgid "Cooldown is now {num} seconds."
 msgstr "Перерыв между играми теперь {num} секунд."
 
-#: redbot/cogs/economy/economy.py:795
+#: redbot/cogs/economy/economy.py:797
 #, docstring
 msgid "Set the cooldown for the payday command.\n\n"
 "        Examples:\n"
-"            - `[p]economyset paydaytime 86400`\n"
-"            - `[p]economyset paydaytime 1d`\n\n"
+"        - `[p]economyset paydaytime 86400`\n"
+"        - `[p]economyset paydaytime 1d`\n\n"
 "        **Arguments**\n\n"
 "        - `<duration>` The new duration to wait in between uses of payday. Default is 5 minutes.\n"
 "        Accepts: seconds, minutes, hours, days, weeks (if no unit is specified, the duration is assumed to be given in seconds)\n"
 "        "
-msgstr "Установите время восстановления для команды payday.\n\n"
-"        Примеры:\n"
-"            - `[p]economyset paydaytime 86400`\n"
-"            - `[p]economyset paydaytime 1d`\n\n"
-"        **Аргументы**\n\n"
-"        - `<duration>` Новая продолжительность восстановления между использованием payday. По умолчанию 5 минут.\n"
-"        Принимает значения: секунды, минуты, часы, дни, недели (если единицы измерения не указаны, считается, что продолжительность задана в секундах)\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/economy/economy.py:813
+#: redbot/cogs/economy/economy.py:815
 msgid "Value modified. At least {num} seconds must pass between each payday."
 msgstr "Значение изменено. Теперь между выплатами должно пройти как минимум {num} секунд."
 
-#: redbot/cogs/economy/economy.py:820
+#: redbot/cogs/economy/economy.py:822
 #, docstring
 msgid "Set the amount earned each payday.\n\n"
 "        Example:\n"
-"            - `[p]economyset paydayamount 400`\n\n"
+"        - `[p]economyset paydayamount 400`\n\n"
 "        **Arguments**\n\n"
 "        - `<creds>` The new amount to give when using the payday command. Default is 120.\n"
 "        "
-msgstr "Установите сумму, получаемую за каждую зарплату.\n\n"
-"        Пример:\n"
-"            - `[p]economyset paydayamount 400`\n\n"
-"        **Аргументы**\n\n"
-"        - `<creds>` Новая сумма, которую нужно выдать при использовании команды payday. По умолчанию 120.\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/economy/economy.py:833
+#: redbot/cogs/economy/economy.py:835
 msgid "Amount must be greater than zero and less than {maxbal}."
 msgstr "Сумма должна быть больше нуля и меньше {maxbal}."
 
-#: redbot/cogs/economy/economy.py:843
+#: redbot/cogs/economy/economy.py:845
 msgid "Every payday will now give {num} {currency}."
 msgstr "Каждая выплата теперь дает {num}{currency}."
 
-#: redbot/cogs/economy/economy.py:850
+#: redbot/cogs/economy/economy.py:852
 #, docstring
 msgid "Set the amount earned each payday for a role.\n\n"
 "        Set to `0` to remove the payday amount you set for that role.\n\n"
 "        Only available when not using a global bank.\n\n"
 "        Example:\n"
-"            - `[p]economyset rolepaydayamount @Members 400`\n\n"
+"        - `[p]economyset rolepaydayamount @Members 400`\n\n"
 "        **Arguments**\n\n"
 "        - `<role>` The role to assign a custom payday amount to.\n"
 "        - `<creds>` The new amount to give when using the payday command.\n"
 "        "
 msgstr ""
 
-#: redbot/cogs/economy/economy.py:868
+#: redbot/cogs/economy/economy.py:870
 msgid "The bank requires that you set the payday to be less than its maximum balance of {maxbal}."
 msgstr "Банк требует, чтобы размер выплат был меньше, чем его максимальный баланс в {maxbal}."
 
-#: redbot/cogs/economy/economy.py:875
+#: redbot/cogs/economy/economy.py:877
 msgid "The bank must be per-server for per-role paydays to work."
 msgstr "Банк должен быть серверным, чтобы делать выплаты жалованья для ролей."
 
-#: redbot/cogs/economy/economy.py:881
+#: redbot/cogs/economy/economy.py:883
 msgid "The payday value attached to role has been removed. Users with this role will now receive the default pay of {num} {currency}."
 msgstr "Значение зарплаты, прикрепленное к роли, было удалено. Пользователи с этой ролью теперь будут получать зарплату по умолчанию {num} {currency}."
 
-#: redbot/cogs/economy/economy.py:890
+#: redbot/cogs/economy/economy.py:892
 msgid "Every payday will now give {num} {currency} to people with the role {role_name}."
 msgstr "Теперь каждый день выплаты будет давать {num} {currency} людям с ролью {role_name}."
 

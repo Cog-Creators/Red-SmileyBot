@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-01-23 19:39+0000\n"
+"POT-Creation-Date: 2024-08-07 20:36+0000\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
@@ -17,7 +17,7 @@ msgstr ""
 
 #: redbot/cogs/audio/core/utilities/formatting.py:74
 msgid "tracks"
-msgstr ""
+msgstr "skladby"
 
 #: redbot/cogs/audio/core/utilities/formatting.py:84
 #: redbot/cogs/audio/core/utilities/formatting.py:272
@@ -27,7 +27,7 @@ msgstr "Strana {page_num}/{total_pages}"
 #: redbot/cogs/audio/core/utilities/formatting.py:95
 #: redbot/cogs/audio/core/utilities/playlists.py:526
 msgid "Connection to Lavalink node has failed"
-msgstr ""
+msgstr "Spojení s Lavalink uzlem selhalo"
 
 #: redbot/cogs/audio/core/utilities/formatting.py:98
 #: redbot/cogs/audio/core/utilities/player.py:591
@@ -43,37 +43,37 @@ msgstr "Nejprve se připojte k hlasovému kanálu."
 #: redbot/cogs/audio/core/utilities/formatting.py:109
 #: redbot/cogs/audio/core/utilities/playlists.py:554
 msgid "Connection to Lavalink node has not yet been established."
-msgstr ""
-
-#: redbot/cogs/audio/core/utilities/formatting.py:116
-msgid "Unable To Play Tracks"
-msgstr ""
+msgstr "Spojení s Lavalink uzlem ještě nebylo navázáno."
 
 #: redbot/cogs/audio/core/utilities/formatting.py:116
 #: redbot/cogs/audio/core/utilities/player.py:442
 #: redbot/cogs/audio/core/utilities/player.py:524
 msgid "Queue size limit reached."
-msgstr ""
+msgstr "Dosaženo limitu velikosti fronty."
+
+#: redbot/cogs/audio/core/utilities/formatting.py:116
+msgid "Unable To Play Tracks"
+msgstr "Skladby Nelze Přehrát"
 
 #: redbot/cogs/audio/core/utilities/formatting.py:154
 #: redbot/cogs/audio/core/utilities/player.py:599
 msgid "Track Enqueued"
-msgstr ""
+msgstr "Skladba zařazena do fronty"
 
 #: redbot/cogs/audio/core/utilities/formatting.py:168
 #: redbot/cogs/audio/core/utilities/player.py:548
 msgid "This track is not allowed in this server."
-msgstr ""
+msgstr "Tato skladba není na tomto serveru povolena."
 
 #: redbot/cogs/audio/core/utilities/formatting.py:185
 #: redbot/cogs/audio/core/utilities/player.py:570
 msgid "Track exceeds maximum length."
-msgstr ""
+msgstr "Skladba překročila maximální délku."
 
 #: redbot/cogs/audio/core/utilities/formatting.py:200
 #: redbot/cogs/audio/core/utilities/player.py:602
 msgid "{time} until track playback: #{position} in queue"
-msgstr ""
+msgstr "{time} než bude skladba hrát: #{position} ve frontě"
 
 #: redbot/cogs/audio/core/utilities/formatting.py:260
 msgid "Tracks Found:"
@@ -110,7 +110,11 @@ msgid " - Name:   <{pname}>\n"
 " - ID:     < {pid} >\n"
 " - Tracks: < {ptracks} >\n"
 " - Author: < {author} >\n\n"
-msgstr ""
+msgstr " - Název:   <{pname}>\n"
+" - Rozsah:  < {scope} >\n"
+" - ID:     < {pid} >\n"
+" - Skladby: < {ptracks} >\n"
+" - Autor: < {author} >\n\n"
 
 #: redbot/cogs/audio/core/utilities/local_tracks.py:109
 #: redbot/cogs/audio/core/utilities/player.py:234
@@ -118,19 +122,19 @@ msgstr ""
 #: redbot/cogs/audio/core/utilities/player.py:326
 #: redbot/cogs/audio/core/utilities/player.py:650
 msgid "Invalid Environment"
-msgstr ""
+msgstr "Neplatné Prostředí"
 
 #: redbot/cogs/audio/core/utilities/local_tracks.py:109
 msgid "No localtracks folder."
-msgstr ""
+msgstr "Chybí složka na lokalní skladby."
 
 #: redbot/cogs/audio/core/utilities/miscellaneous.py:50
 msgid "Not enough {currency}"
-msgstr ""
+msgstr "Nedostatek {currency}"
 
 #: redbot/cogs/audio/core/utilities/miscellaneous.py:51
 msgid "{required_credits} {currency} required, but you have {bal}."
-msgstr ""
+msgstr "Je potřeba {required_credits} {currency}, ale vy máte {bal}."
 
 #: redbot/cogs/audio/core/utilities/player.py:78
 msgid "music in {} servers"
@@ -140,11 +144,11 @@ msgstr "hudba na {} serverech"
 #: redbot/cogs/audio/core/utilities/player.py:139
 #: redbot/cogs/audio/core/utilities/player.py:144
 msgid "There's nothing in the queue."
-msgstr ""
+msgstr "Ve frontě nic není."
 
 #: redbot/cogs/audio/core/utilities/player.py:141
 msgid "Currently livestreaming {track}"
-msgstr ""
+msgstr "Aktuaně živě streamuji {track}"
 
 #: redbot/cogs/audio/core/utilities/player.py:146
 msgid "{time} left on {track}"
@@ -157,37 +161,39 @@ msgstr "Skladba přeskočena"
 
 #: redbot/cogs/audio/core/utilities/player.py:167
 msgid "Track number must be equal to or greater than 1."
-msgstr ""
+msgstr "Číslo skladby musí být rovné nebo větší než 1."
 
 #: redbot/cogs/audio/core/utilities/player.py:173
 msgid "There are only {queuelen} songs currently queued."
-msgstr ""
+msgstr "Nyní tu je jen {queuelen} písní ve frontě."
 
 #: redbot/cogs/audio/core/utilities/player.py:179
 msgid "{skip_to_track} Tracks Skipped"
-msgstr ""
+msgstr "{skip_to_track} Skladeb Přeskočeno"
 
 #: redbot/cogs/audio/core/utilities/player.py:235
 msgid "The owner needs to set the Spotify client ID and Spotify client secret, before Spotify URLs or codes can be used. \n"
 "See `{prefix}audioset spotifyapi` for instructions."
-msgstr ""
+msgstr "Vlastník musí nastavit Spotify klientské ID a Spotify klientské tajemství, než Spotify URL nebo kódy mohou být použité.\n"
+"Napište `{prefix}audioset spotifyapi` pro zobrazení instrukcí."
 
 #: redbot/cogs/audio/core/utilities/player.py:245
 msgid "The owner needs to set the YouTube API key before Spotify URLs or codes can be used.\n"
 "See `{prefix}audioset youtubeapi` for instructions."
-msgstr ""
+msgstr "Vlastník musí nastavit YouTube API klíč, než Spotify URL nebo kódy mohou být použité.\n"
+"Napište `{prefix}audioset youtubeapi` pro zobrazení instrukcí."
 
 #: redbot/cogs/audio/core/utilities/player.py:254
 #: redbot/cogs/audio/core/utilities/player.py:363
 #: redbot/cogs/audio/core/utilities/playlists.py:594
 msgid "Unable To Get Tracks"
-msgstr ""
+msgstr "Nedaři Se Získat Skladby"
 
 #: redbot/cogs/audio/core/utilities/player.py:255
 #: redbot/cogs/audio/core/utilities/player.py:364
 #: redbot/cogs/audio/core/utilities/playlists.py:595
 msgid "Wait until the playlist has finished loading."
-msgstr ""
+msgstr "Počkejte než se dokončí načítání playlistu."
 
 #: redbot/cogs/audio/core/utilities/player.py:266
 #: redbot/cogs/audio/core/utilities/player.py:308
@@ -203,7 +209,7 @@ msgstr "Nic nenalezeno."
 #: redbot/cogs/audio/core/utilities/playlists.py:607
 #: redbot/cogs/audio/core/utilities/playlists.py:640
 msgid "Track is not playable."
-msgstr ""
+msgstr "Skladbu nelze přehrát."
 
 #: redbot/cogs/audio/core/utilities/player.py:270
 #: redbot/cogs/audio/core/utilities/player.py:311
@@ -211,7 +217,7 @@ msgstr ""
 #: redbot/cogs/audio/core/utilities/playlists.py:608
 #: redbot/cogs/audio/core/utilities/playlists.py:641
 msgid "**{suffix}** is not a fully supported format and some tracks may not play."
-msgstr ""
+msgstr "**{suffix}** není plně podporovaný formát, je možné že se nepodaří přehrát všechny skladby."
 
 #: redbot/cogs/audio/core/utilities/player.py:300
 #: redbot/cogs/audio/core/utilities/player.py:393
@@ -220,12 +226,12 @@ msgstr ""
 #: redbot/cogs/audio/core/utilities/playlists.py:626
 #: redbot/cogs/audio/core/utilities/playlists.py:655
 msgid "Unable to Get Track"
-msgstr ""
+msgstr "Nelze Získat Skladbu"
 
 #: redbot/cogs/audio/core/utilities/player.py:301
 #: redbot/cogs/audio/core/utilities/playlists.py:426
 msgid "I'm unable to get a track from the Lavalink node at the moment, try again in a few minutes."
-msgstr ""
+msgstr "Momentálně se mi nedaří získat skladbu z uzlu Lavalink, zkuste to za pár minut znovu."
 
 #: redbot/cogs/audio/core/utilities/player.py:327
 msgid "The Spotify API key or client secret has not been set properly. \n"
@@ -235,7 +241,7 @@ msgstr "Spotify API klíč nebo klientský tajný klíč nebyl správně nastave
 
 #: redbot/cogs/audio/core/utilities/player.py:351
 msgid "Unable To Find Tracks"
-msgstr ""
+msgstr "Skladby Nenalezeny"
 
 #: redbot/cogs/audio/core/utilities/player.py:352
 msgid "This doesn't seem to be a supported Spotify URL or code."
@@ -243,18 +249,19 @@ msgstr "Pravděpodobně se nejedná o podporovaný Spotify odkaz nebo kód."
 
 #: redbot/cogs/audio/core/utilities/player.py:378
 msgid "{query} is not an allowed query."
-msgstr ""
+msgstr "{query} není povolený dotaz."
 
 #: redbot/cogs/audio/core/utilities/player.py:394
 #: redbot/cogs/audio/core/utilities/playlists.py:627
 #: redbot/cogs/audio/core/utilities/playlists.py:656
 msgid "I'm unable to get a track from Lavalink node at the moment, try again in a few minutes."
-msgstr ""
+msgstr "Nyní nejsem schopný získat skladby z Lavalink uzlu, zkuste to znovu za pár minut."
 
 #: redbot/cogs/audio/core/utilities/player.py:416
 msgid "Local tracks will not work if the `Lavalink.jar` cannot see the track.\n"
 "This may be due to permissions or because Lavalink.jar is being run in a different machine than the local tracks."
-msgstr ""
+msgstr "Lokální skladby nebudou fungovat pokud 'Lavalink.jar' nemůže vidět skladbu.\n"
+"Toto se mohlo stát kvůli nastaveným právům nebo Lavalink.jar běží na jiném stroji než kde jsou lokálni skladby uloženy."
 
 #: redbot/cogs/audio/core/utilities/player.py:486
 msgid " {bad_tracks} tracks cannot be queued."
@@ -262,7 +269,7 @@ msgstr " {bad_tracks} skladby nemůžou být zařazeny do fronty."
 
 #: redbot/cogs/audio/core/utilities/player.py:492
 msgid "No Title"
-msgstr ""
+msgstr "Bez názvu"
 
 #: redbot/cogs/audio/core/utilities/player.py:494
 msgid "Playlist Enqueued"
@@ -270,7 +277,7 @@ msgstr "Playlist zařazen do fronty"
 
 #: redbot/cogs/audio/core/utilities/player.py:494
 msgid "Album Enqueued"
-msgstr ""
+msgstr "Album Bylo Zařazeno Do Fronty"
 
 #: redbot/cogs/audio/core/utilities/player.py:502
 msgid "Added {num} tracks to the queue.{maxlength_msg}"
@@ -282,33 +289,33 @@ msgstr "{time} do začátku přehrávání playlistu: je na #{position} pozici v
 
 #: redbot/cogs/audio/core/utilities/player.py:588
 msgid "Nothing found"
-msgstr ""
+msgstr "Nic nebylo nalezeno"
 
 #: redbot/cogs/audio/core/utilities/player.py:623
 msgid "Please wait, finding tracks..."
-msgstr ""
+msgstr "Počkejte prosím, hledám skladby..."
 
 #: redbot/cogs/audio/core/utilities/player.py:629
 msgid "Getting track {num}/{total}..."
-msgstr ""
+msgstr "Získávám skladby {num}/{total}..."
 
 #: redbot/cogs/audio/core/utilities/player.py:630
 msgid "Matching track {num}/{total}..."
-msgstr ""
+msgstr "Porovnávám skladbu {num}/{total}..."
 
 #: redbot/cogs/audio/core/utilities/player.py:631
 #: redbot/cogs/audio/core/utilities/playlists.py:341
 #: redbot/cogs/audio/core/utilities/playlists.py:414
 msgid "Loading track {num}/{total}..."
-msgstr ""
+msgstr "Načítám skladbu {num}/{total}..."
 
 #: redbot/cogs/audio/core/utilities/player.py:632
 msgid "Approximate time remaining: {seconds}"
-msgstr ""
+msgstr "Zbývá přibližně času: {seconds}"
 
 #: redbot/cogs/audio/core/utilities/player.py:658
 msgid "I'm unable to get a track from Lavalink at the moment, try again in a few minutes."
-msgstr ""
+msgstr "Nyní nejsem schopný získat skladbu z Lavalink uzlu, zkuste to znovu za pár minut."
 
 #: redbot/cogs/audio/core/utilities/player.py:667
 msgid "The connection was reset while loading the playlist."
@@ -316,27 +323,27 @@ msgstr "Připojení bylo obnoveno při načítání seznamu skladeb."
 
 #: redbot/cogs/audio/core/utilities/playlists.py:83
 msgid "You do not have the permissions to manage {name} (`{id}`) [**{scope}**]."
-msgstr ""
+msgstr "Nemáte práva k správě {name} (`{id}`) [**{scope}**]."
 
 #: redbot/cogs/audio/core/utilities/playlists.py:101
 msgid "You do not have the permissions to manage that playlist in {guild}."
-msgstr ""
+msgstr "Nemáte práva ke správě tohoto seznamu skladeb v {guild}."
 
 #: redbot/cogs/audio/core/utilities/playlists.py:108
 msgid "You do not have the permissions to manage playlist owned by {user}."
-msgstr ""
+msgstr "Nemáte práva ke správě tohoto seznamu skladeb vlastněným uživatelem {user}."
 
 #: redbot/cogs/audio/core/utilities/playlists.py:112
 msgid "You do not have the permissions to manage playlists in {scope} scope."
-msgstr ""
+msgstr "Nemáte práva ke správě tohoto seznamu skladeb v {scope} rozsahu."
 
 #: redbot/cogs/audio/core/utilities/playlists.py:116
 msgid "No access to playlist."
-msgstr ""
+msgstr "Nemáte přístup k tomuto seznamu skladeb."
 
 #: redbot/cogs/audio/core/utilities/playlists.py:224
 msgid "{match_count} playlists match {original_input}: Please try to be more specific, or use the playlist ID."
-msgstr ""
+msgstr "{match_count} seznamů skladeb se shoduje s {original_input}: Prosím pokuste se být přesnější nebo použíte ID seznamu skladeb."
 
 #: redbot/cogs/audio/core/utilities/playlists.py:241
 msgid "{number}.    <{playlist.name}>\n"
@@ -344,24 +351,28 @@ msgid "{number}.    <{playlist.name}>\n"
 " - ID:     < {playlist.id} >\n"
 " - Tracks: < {tracks} >\n"
 " - Author: < {author} >\n\n"
-msgstr ""
+msgstr "{number}.    <{playlist.name}>\n"
+" - Rozsah:  < {scope} >\n"
+" - ID:     < {playlist.id} >\n"
+" - Skladby: < {tracks} >\n"
+" - Autor: < {author} >\n\n"
 
 #: redbot/cogs/audio/core/utilities/playlists.py:258
 msgid "{playlists} playlists found, which one would you like?"
-msgstr ""
+msgstr "{playlists} seznamů skladeb nalezeno, který z nich chcete?"
 
 #: redbot/cogs/audio/core/utilities/playlists.py:277
 #: redbot/cogs/audio/core/utilities/playlists.py:283
 msgid "Too many matches found and you did not select which one you wanted."
-msgstr ""
+msgstr "Příliš mnoho shod nalezeno a nevybral jste, který jste přesně chtěl."
 
 #: redbot/cogs/audio/core/utilities/playlists.py:308
 msgid "Playlists you can access in this server:"
-msgstr ""
+msgstr "Seznamy skladeb, ke kterým máte na tomto serveru přístup:"
 
 #: redbot/cogs/audio/core/utilities/playlists.py:314
 msgid "Playlists for {scope}:"
-msgstr ""
+msgstr "Seznamy skladeb pro {scope}:"
 
 #: redbot/cogs/audio/core/utilities/playlists.py:318
 msgid "Page {page_num}/{total_pages} | {num} playlists."
@@ -472,11 +483,11 @@ msgstr "Náhodně"
 msgid "Repeat"
 msgstr "Opakovat"
 
-#: redbot/cogs/audio/core/utilities/queue.py:159
+#: redbot/cogs/audio/core/utilities/queue.py:161
 msgid "Matching Tracks:"
 msgstr "Odpovídající skladby:"
 
-#: redbot/cogs/audio/core/utilities/queue.py:162
+#: redbot/cogs/audio/core/utilities/queue.py:164
 msgid "Page {page_num}/{total_pages} | {num_tracks} tracks"
 msgstr ""
 

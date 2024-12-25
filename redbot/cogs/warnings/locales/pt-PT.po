@@ -17,11 +17,11 @@ msgstr ""
 
 #: redbot/cogs/warnings/helpers.py:73
 msgid "I could not find a command from that input!"
-msgstr ""
+msgstr "Eu não consegui encontrar um comando com essa informação!"
 
 #: redbot/cogs/warnings/helpers.py:79
 msgid "That command requires bot owner. I can't allow you to use that for an action"
-msgstr ""
+msgstr "Este comando requer que sejas o dono do bot. Eu não posso permitir que o uses para uma ação"
 
 #: redbot/cogs/warnings/helpers.py:88
 msgid "Enter the command to be run when the user **exceeds the points for this action to occur.**\n"

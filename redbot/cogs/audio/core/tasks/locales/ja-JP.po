@@ -17,13 +17,13 @@ msgstr ""
 
 #: redbot/cogs/audio/core/tasks/startup.py:273
 msgid "Couldn't get a valid track."
-msgstr ""
+msgstr "有効なトラックを取得できませんでした。"
 
 #: redbot/cogs/audio/core/tasks/startup.py:281
 msgid "Unable to Get Track"
-msgstr ""
+msgstr "トラックを取得できません"
 
 #: redbot/cogs/audio/core/tasks/startup.py:282
 msgid "I'm unable to get a track from the Lavalink node at the moment, try again in a few minutes."
-msgstr ""
+msgstr "現在、Lavalinkノードからトラックを取得できません。数分後にもう一度お試しください。"
 
