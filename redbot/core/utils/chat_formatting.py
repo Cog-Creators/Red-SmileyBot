@@ -38,6 +38,7 @@ __all__ = (
     "humanize_timedelta",
     "humanize_number",
     "text_to_file",
+    "rich_markup",
 )
 
 _ = Translator("UtilsChatFormatting", __file__)
