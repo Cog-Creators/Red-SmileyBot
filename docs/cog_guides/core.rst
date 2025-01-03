@@ -4185,7 +4185,7 @@ slash disablecog
 
 .. code-block:: none
 
-    [p]slash disablecog <cog_name>
+    [p]slash disablecog <cog_names...>
     
 **Description**
 
@@ -4195,7 +4195,7 @@ This command does NOT sync the enabled commands with Discord, that must be done 
 with ``[p]slash sync`` for commands to appear in users' clients.
 
 **Arguments:**
-    - ``<cog_name>`` - The cog to disable commands from. This argument is case sensitive.
+    - ``<cog_names>`` - The cogs to disable commands from. This argument is case sensitive.
 
 .. _core-command-slash-enable:
 
@@ -4230,7 +4230,7 @@ slash enablecog
 
 .. code-block:: none
 
-    [p]slash enablecog <cog_name>
+    [p]slash enablecog <cog_names...>
     
 **Description**
 
@@ -4240,7 +4240,7 @@ This command does NOT sync the enabled commands with Discord, that must be done 
 with ``[p]slash sync`` for commands to appear in users' clients.
 
 **Arguments:**
-    - ``<cog_name>`` - The cog to enable commands from. This argument is case sensitive.
+    - ``<cog_names>`` - The cogs to enable commands from. This argument is case sensitive.
 
 .. _core-command-slash-list:
 

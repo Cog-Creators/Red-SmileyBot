@@ -2081,9 +2081,9 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
             )
         )
 
-    @slash.command(name="enablecog")
+    @slash.command(name="enablecog", require_var_positional=True)
     @commands.max_concurrency(1, wait=True)
-    async def slash_enablecog(self, ctx: commands.Context, cog_name: str):
+    async def slash_enablecog(self, ctx: commands.Context, *cog_names: str):
         """Marks all application commands in a cog as being enabled, allowing them to be added to the bot.
 
         See a list of cogs with application commands with `[p]slash list`.
@@ -2091,32 +2091,42 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         This command does NOT sync the enabled commands with Discord, that must be done manually with `[p]slash sync` for commands to appear in users' clients.
 
         **Arguments:**
-            - `<cog_name>` - The cog to enable commands from. This argument is case sensitive.
+            - `<cog_names>` - The cogs to enable commands from. This argument is case sensitive.
         """
         enabled_commands = await self.bot.list_enabled_app_commands()
         to_add_slash = []
         to_add_message = []
         to_add_user = []
 
+        successful_cogs = set()
         # Fetch a list of command names to enable
         for name, com in self.bot.tree._disabled_global_commands.items():
-            if self._is_submodule(cog_name, com.module):
-                to_add_slash.append(name)
+            for cog_name in cog_names:
+                if self._is_submodule(cog_name, com.module):
+                    to_add_slash.append(name)
+                    successful_cogs.add(cog_name)
         for key, com in self.bot.tree._disabled_context_menus.items():
-            if self._is_submodule(cog_name, com.module):
-                name, guild_id, com_type = key
-                com_type = discord.AppCommandType(com_type)
-                if com_type is discord.AppCommandType.message:
-                    to_add_message.append(name)
-                elif com_type is discord.AppCommandType.user:
-                    to_add_user.append(name)
+            for cog_name in cog_names:
+                if self._is_submodule(cog_name, com.module):
+                    name, guild_id, com_type = key
+                    com_type = discord.AppCommandType(com_type)
+                    if com_type is discord.AppCommandType.message:
+                        to_add_message.append(name)
+                        successful_cogs.add(cog_name)
+                    elif com_type is discord.AppCommandType.user:
+                        to_add_user.append(name)
+                        successful_cogs.add(cog_name)
+        failed_cogs = set(cog_names) - successful_cogs
 
         # Check that we are going to enable at least one command, for user feedback
         if not (to_add_slash or to_add_message or to_add_user):
             await ctx.send(
                 _(
-                    "Couldn't find any disabled commands from the cog `{cog_name}`. Use `{prefix}slash list` to see all cogs with application commands."
-                ).format(cog_name=cog_name, prefix=ctx.prefix)
+                    "Couldn't find any disabled commands from {cog_names}. Use `{prefix}slash list` to see all cogs with application commands"
+                ).format(
+                    cog_names=humanize_list([inline(name) for name in failed_cogs]),
+                    prefix=ctx.clean_prefix,
+                )
             )
             return
 
@@ -2130,7 +2140,7 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         if total_slash > SLASH_CAP:
             await ctx.send(
                 _(
-                    "Enabling all application commands from that cog would enable a total of {count} "
+                    "Enabling all application commands from these cogs would enable a total of {count} "
                     "commands, exceeding the {cap} command limit for slash commands. "
                     "Disable some commands first."
                 ).format(count=total_slash, cap=SLASH_CAP)
@@ -2139,7 +2149,7 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         if total_message > CONTEXT_CAP:
             await ctx.send(
                 _(
-                    "Enabling all application commands from that cog would enable a total of {count} "
+                    "Enabling all application commands from these cogs would enable a total of {count} "
                     "commands, exceeding the {cap} command limit for message commands. "
                     "Disable some commands first."
                 ).format(count=total_message, cap=CONTEXT_CAP)
@@ -2148,7 +2158,7 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         if total_user > CONTEXT_CAP:
             await ctx.send(
                 _(
-                    "Enabling all application commands from that cog would enable a total of {count} "
+                    "Enabling all application commands from these cogs would enable a total of {count} "
                     "commands, exceeding the {cap} command limit for user commands. "
                     "Disable some commands first."
                 ).format(count=total_user, cap=CONTEXT_CAP)
@@ -2172,14 +2182,24 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         names.extend(to_add_message)
         names.extend(to_add_user)
         formatted_names = humanize_list([inline(name) for name in names])
-        await ctx.send(
-            _("Enabled {count} commands from `{cog_name}`:\n{names}").format(
-                count=count, cog_name=cog_name, names=formatted_names
-            )
-        )
+        formatted_successful_cogs = humanize_list([inline(name) for name in successful_cogs])
 
-    @slash.command(name="disablecog")
-    async def slash_disablecog(self, ctx: commands.Context, cog_name):
+        output = _("Enabled {count} commands from {cog_names}:\n{names}").format(
+            count=count, cog_names=formatted_successful_cogs, names=formatted_names
+        )
+        if failed_cogs:
+            output += "\n\n"
+            output += _(
+                "Couldn't find any disabled commands from {cog_names}. Use `{prefix}slash list` to see all cogs with application commands."
+            ).format(
+                cog_names=humanize_list([inline(name) for name in failed_cogs]),
+                prefix=ctx.clean_prefix,
+            )
+        for page in pagify(output):
+            await ctx.send(page)
+
+    @slash.command(name="disablecog", require_var_positional=True)
+    async def slash_disablecog(self, ctx: commands.Context, *cog_names: str):
         """Marks all application commands in a cog as being disabled, preventing them from being added to the bot.
 
         See a list of cogs with application commands with `[p]slash list`.
@@ -2187,32 +2207,55 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         This command does NOT sync the enabled commands with Discord, that must be done manually with `[p]slash sync` for commands to appear in users' clients.
 
         **Arguments:**
-            - `<cog_name>` - The cog to disable commands from. This argument is case sensitive.
+            - `<cog_names>` - The cogs to disable commands from. This argument is case sensitive.
         """
         removed = []
+        removed_cogs = set()
         for name, com in self.bot.tree._global_commands.items():
-            if self._is_submodule(cog_name, com.module):
-                await self.bot.disable_app_command(name, discord.AppCommandType.chat_input)
-                removed.append(name)
+            for cog_name in cog_names:
+                if self._is_submodule(cog_name, com.module):
+                    await self.bot.disable_app_command(name, discord.AppCommandType.chat_input)
+                    removed.append(name)
+                    removed_cogs.add(cog_name)
         for key, com in self.bot.tree._context_menus.items():
-            if self._is_submodule(cog_name, com.module):
-                name, guild_id, com_type = key
-                await self.bot.disable_app_command(name, discord.AppCommandType(com_type))
-                removed.append(name)
+            for cog_name in cog_names:
+                if self._is_submodule(cog_name, com.module):
+                    name, guild_id, com_type = key
+                    await self.bot.disable_app_command(name, discord.AppCommandType(com_type))
+                    removed.append(name)
+                    removed_cogs.add(cog_name)
+        failed_cogs = set(cog_names) - removed_cogs
+
         if not removed:
             await ctx.send(
                 _(
-                    "Couldn't find any enabled commands from the `{cog_name}` cog. Use `{prefix}slash list` to see all cogs with application commands."
-                ).format(cog_name=cog_name, prefix=ctx.prefix)
+                    "Couldn't find any enabled commands from {cog_names}. Use `{prefix}slash list` to see all cogs with application commands."
+                ).format(
+                    cog_names=humanize_list([inline(name) for name in failed_cogs]),
+                    prefix=ctx.clean_prefix,
+                )
             )
             return
+
         await self.bot.tree.red_check_enabled()
         formatted_names = humanize_list([inline(name) for name in removed])
-        await ctx.send(
-            _("Disabled {count} commands from `{cog_name}`:\n{names}").format(
-                count=len(removed), cog_name=cog_name, names=formatted_names
-            )
+        formatted_removed_cogs = humanize_list([inline(name) for name in removed_cogs])
+
+        output = _("Disabled {count} commands from {cog_names}:\n{names}").format(
+            count=len(removed),
+            cog_names=formatted_removed_cogs,
+            names=formatted_names,
         )
+        if failed_cogs:
+            output += "\n\n"
+            output += _(
+                "Couldn't find any enabled commands from {cog_names}. Use `{prefix}slash list` to see all cogs with application commands."
+            ).format(
+                cog_names=humanize_list([inline(name) for name in failed_cogs]),
+                prefix=ctx.clean_prefix,
+            )
+        for page in pagify(output):
+            await ctx.send(page)
 
     @slash.command(name="list")
     async def slash_list(self, ctx: commands.Context):
@@ -2375,6 +2418,11 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         """Custom cooldown error message."""
         if not isinstance(error, commands.CommandOnCooldown):
             return await ctx.bot.on_command_error(ctx, error, unhandled_by_cog=True)
+        if ctx.bot._bypass_cooldowns and ctx.author.id in ctx.bot.owner_ids:
+            ctx.command.reset_cooldown(ctx)
+            new_ctx = await ctx.bot.get_context(ctx.message)
+            await ctx.bot.invoke(new_ctx)
+            return
         await ctx.send(
             _(
                 "You seem to be attempting to sync after recently syncing. Discord does not like it "

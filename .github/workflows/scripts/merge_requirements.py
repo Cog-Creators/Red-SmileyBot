@@ -49,6 +49,8 @@ def get_requirements(fp: TextIO) -> List[RequirementData]:
             via_prefix = "via "
             if source.startswith(via_prefix):
                 source = source[len(via_prefix) :]
+            if source.startswith("-c ") and source != "-c base.txt":
+                continue
             current.comments.add(source)
         elif line and not line.startswith(("#", " ")):
             current = RequirementData(line)

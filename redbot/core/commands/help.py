@@ -352,11 +352,10 @@ class RedHelpFormatter(HelpFormatterABC):
         description = command.description or ""
 
         tagline = self.format_tagline(ctx, help_settings.tagline) or self.get_default_tagline(ctx)
-        signature = _("Syntax: {command_signature}").format(
-            command_signature=self.get_command_signature(ctx, command)
-        )
+        signature = self.get_command_signature(ctx, command)
 
         aliases = command.aliases
+        sig_description = bold(_("Syntax:\n")) + box(signature)
         if help_settings.show_aliases and aliases:
             alias_fmt = _("Aliases") if len(command.aliases) > 1 else _("Alias")
             aliases = sorted(aliases, key=len)
@@ -386,7 +385,7 @@ class RedHelpFormatter(HelpFormatterABC):
                     aliases_content = _("{aliases} and one more alias.").format(
                         aliases=aliases_formatted_list
                     )
-            signature += f"\n{alias_fmt}: {aliases_content}"
+            sig_description += bold(f"{alias_fmt}:") + box(f"{aliases_content}")
 
         subcommands = None
         if hasattr(command, "all_commands"):
@@ -400,7 +399,7 @@ class RedHelpFormatter(HelpFormatterABC):
                 emb["embed"]["title"] = f"*{description[:250]}*"
 
             emb["footer"]["text"] = tagline
-            emb["embed"]["description"] = box(signature)
+            emb["embed"]["description"] = sig_description
 
             command_help = command.format_help_for_context(ctx)
             if command_help:

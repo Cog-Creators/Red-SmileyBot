@@ -1,6 +1,2 @@
-async-timeout==4.0.3
-    # via
-    #   -c base.txt
-    #   asyncpg
-asyncpg==0.29.0
+asyncpg==0.30.0
     # via -r extra-postgres.in

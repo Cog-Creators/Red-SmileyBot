@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2024-07-18 21:36+0000\n"
+"POT-Creation-Date: 2024-12-25 04:21+0000\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "MIME-Version: 1.0\n"
@@ -15,55 +15,55 @@ msgstr ""
 "X-Crowdin-File-ID: 197\n"
 "Language: pt_PT\n"
 
-#: redbot/core/utils/chat_formatting.py:586
+#: redbot/core/utils/chat_formatting.py:654
 msgid "year"
 msgstr "ano"
 
-#: redbot/core/utils/chat_formatting.py:586
+#: redbot/core/utils/chat_formatting.py:654
 msgid "years"
 msgstr "anos"
 
-#: redbot/core/utils/chat_formatting.py:587
+#: redbot/core/utils/chat_formatting.py:655
 msgid "month"
 msgstr "mês"
 
-#: redbot/core/utils/chat_formatting.py:587
+#: redbot/core/utils/chat_formatting.py:655
 msgid "months"
 msgstr "meses"
 
-#: redbot/core/utils/chat_formatting.py:588
+#: redbot/core/utils/chat_formatting.py:656
 msgid "day"
 msgstr "dia"
 
-#: redbot/core/utils/chat_formatting.py:588
+#: redbot/core/utils/chat_formatting.py:656
 msgid "days"
 msgstr "dias"
 
-#: redbot/core/utils/chat_formatting.py:589
+#: redbot/core/utils/chat_formatting.py:657
 msgid "hour"
 msgstr "hora"
 
-#: redbot/core/utils/chat_formatting.py:589
+#: redbot/core/utils/chat_formatting.py:657
 msgid "hours"
 msgstr "horas"
 
-#: redbot/core/utils/chat_formatting.py:590
+#: redbot/core/utils/chat_formatting.py:658
 msgid "minute"
 msgstr "minuto"
 
-#: redbot/core/utils/chat_formatting.py:590
+#: redbot/core/utils/chat_formatting.py:658
 msgid "minutes"
 msgstr "minutos"
 
-#: redbot/core/utils/chat_formatting.py:591
+#: redbot/core/utils/chat_formatting.py:659
 msgid "second"
 msgstr "segundo"
 
-#: redbot/core/utils/chat_formatting.py:591
+#: redbot/core/utils/chat_formatting.py:659
 msgid "seconds"
 msgstr "segundos"
 
-#: redbot/core/utils/chat_formatting.py:599
+#: redbot/core/utils/chat_formatting.py:667
 msgid "negative"
 msgstr "negativo"
 
@@ -71,49 +71,49 @@ msgstr "negativo"
 msgid "Select a Page"
 msgstr "Selecione uma Página"
 
-#: redbot/core/utils/views.py:172
+#: redbot/core/utils/views.py:183
 msgid "Page {num}"
 msgstr "Página {num}"
 
-#: redbot/core/utils/views.py:317 redbot/core/utils/views.py:673
+#: redbot/core/utils/views.py:338 redbot/core/utils/views.py:694
 msgid "You are not authorized to interact with this."
 msgstr "Você não está autorizado a interagir com isso."
 
-#: redbot/core/utils/views.py:359
+#: redbot/core/utils/views.py:380
 msgid "Set API Keys"
 msgstr "Definir chaves da API"
 
-#: redbot/core/utils/views.py:360
+#: redbot/core/utils/views.py:381
 msgid "Keys and tokens"
 msgstr "Chaves e tokens"
 
-#: redbot/core/utils/views.py:362
+#: redbot/core/utils/views.py:383
 msgid "Set API Keys for {service}"
 msgstr "Definir chaves da API para {service}"
 
-#: redbot/core/utils/views.py:363
+#: redbot/core/utils/views.py:384
 msgid "Keys and tokens for {service}"
 msgstr "Chaves e tokens para {service}"
 
-#: redbot/core/utils/views.py:372
+#: redbot/core/utils/views.py:393
 msgid "Service"
 msgstr "Serviço"
 
-#: redbot/core/utils/views.py:409
+#: redbot/core/utils/views.py:430
 msgid "This modal is for bot owners only. Whoops!"
 msgstr "Este modal é apenas para donos de bots. Ops!"
 
-#: redbot/core/utils/views.py:422
+#: redbot/core/utils/views.py:443
 msgid "{error_message}\n"
 "Please try again."
 msgstr "{error_message}\n"
 "Por favor, tente novamente."
 
-#: redbot/core/utils/views.py:429 redbot/core/utils/views.py:436
+#: redbot/core/utils/views.py:450 redbot/core/utils/views.py:457
 msgid "`{service}` API tokens have been set."
 msgstr "Os tokens da API para {service} foram configurados."
 
-#: redbot/core/utils/views.py:472
+#: redbot/core/utils/views.py:493
 msgid "This button is for bot owners only, oh well."
 msgstr "Este botão é apenas para os proprietários dos bots, ó bem."
 

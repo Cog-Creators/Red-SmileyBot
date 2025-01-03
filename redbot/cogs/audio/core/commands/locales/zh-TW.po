@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2024-08-07 20:36+0000\n"
+"POT-Creation-Date: 2024-12-24 14:22+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -728,8 +728,8 @@ msgstr "`{localtracks}` 不存在。該路徑仍然會被儲存，但請確認�
 
 #: redbot/cogs/audio/core/commands/audioset.py:854
 #: redbot/cogs/audio/core/commands/llset.py:74
-#: redbot/cogs/audio/core/commands/player.py:414
-#: redbot/cogs/audio/core/commands/player.py:424
+#: redbot/cogs/audio/core/commands/player.py:416
+#: redbot/cogs/audio/core/commands/player.py:426
 msgid "Invalid Environment"
 msgstr "無效的環境。"
 
@@ -1368,43 +1368,43 @@ msgstr "您需要DJ身分組或是播放此歌曲的成員才能跳過歌曲。"
 
 #: redbot/cogs/audio/core/commands/controller.py:278
 #: redbot/cogs/audio/core/commands/player.py:52
-#: redbot/cogs/audio/core/commands/player.py:57
-#: redbot/cogs/audio/core/commands/player.py:63
-#: redbot/cogs/audio/core/commands/player.py:81
-#: redbot/cogs/audio/core/commands/player.py:93
-#: redbot/cogs/audio/core/commands/player.py:99
-#: redbot/cogs/audio/core/commands/player.py:109
-#: redbot/cogs/audio/core/commands/player.py:115
-#: redbot/cogs/audio/core/commands/player.py:122
-#: redbot/cogs/audio/core/commands/player.py:133
-#: redbot/cogs/audio/core/commands/player.py:160
-#: redbot/cogs/audio/core/commands/player.py:165
-#: redbot/cogs/audio/core/commands/player.py:171
-#: redbot/cogs/audio/core/commands/player.py:189
-#: redbot/cogs/audio/core/commands/player.py:201
-#: redbot/cogs/audio/core/commands/player.py:207
-#: redbot/cogs/audio/core/commands/player.py:217
-#: redbot/cogs/audio/core/commands/player.py:223
-#: redbot/cogs/audio/core/commands/player.py:230
-#: redbot/cogs/audio/core/commands/player.py:242
-#: redbot/cogs/audio/core/commands/player.py:251
-#: redbot/cogs/audio/core/commands/player.py:293
-#: redbot/cogs/audio/core/commands/player.py:315
-#: redbot/cogs/audio/core/commands/player.py:434
-#: redbot/cogs/audio/core/commands/player.py:452
-#: redbot/cogs/audio/core/commands/player.py:464
-#: redbot/cogs/audio/core/commands/player.py:470
-#: redbot/cogs/audio/core/commands/player.py:482
-#: redbot/cogs/audio/core/commands/player.py:530
-#: redbot/cogs/audio/core/commands/player.py:550
-#: redbot/cogs/audio/core/commands/player.py:568
-#: redbot/cogs/audio/core/commands/player.py:580
-#: redbot/cogs/audio/core/commands/player.py:586
-#: redbot/cogs/audio/core/commands/player.py:598
-#: redbot/cogs/audio/core/commands/player.py:603
-#: redbot/cogs/audio/core/commands/player.py:737
-#: redbot/cogs/audio/core/commands/player.py:743
-#: redbot/cogs/audio/core/commands/player.py:805
+#: redbot/cogs/audio/core/commands/player.py:59
+#: redbot/cogs/audio/core/commands/player.py:65
+#: redbot/cogs/audio/core/commands/player.py:83
+#: redbot/cogs/audio/core/commands/player.py:95
+#: redbot/cogs/audio/core/commands/player.py:101
+#: redbot/cogs/audio/core/commands/player.py:111
+#: redbot/cogs/audio/core/commands/player.py:117
+#: redbot/cogs/audio/core/commands/player.py:124
+#: redbot/cogs/audio/core/commands/player.py:135
+#: redbot/cogs/audio/core/commands/player.py:162
+#: redbot/cogs/audio/core/commands/player.py:167
+#: redbot/cogs/audio/core/commands/player.py:173
+#: redbot/cogs/audio/core/commands/player.py:191
+#: redbot/cogs/audio/core/commands/player.py:203
+#: redbot/cogs/audio/core/commands/player.py:209
+#: redbot/cogs/audio/core/commands/player.py:219
+#: redbot/cogs/audio/core/commands/player.py:225
+#: redbot/cogs/audio/core/commands/player.py:232
+#: redbot/cogs/audio/core/commands/player.py:244
+#: redbot/cogs/audio/core/commands/player.py:253
+#: redbot/cogs/audio/core/commands/player.py:295
+#: redbot/cogs/audio/core/commands/player.py:317
+#: redbot/cogs/audio/core/commands/player.py:436
+#: redbot/cogs/audio/core/commands/player.py:454
+#: redbot/cogs/audio/core/commands/player.py:466
+#: redbot/cogs/audio/core/commands/player.py:472
+#: redbot/cogs/audio/core/commands/player.py:484
+#: redbot/cogs/audio/core/commands/player.py:532
+#: redbot/cogs/audio/core/commands/player.py:552
+#: redbot/cogs/audio/core/commands/player.py:570
+#: redbot/cogs/audio/core/commands/player.py:582
+#: redbot/cogs/audio/core/commands/player.py:588
+#: redbot/cogs/audio/core/commands/player.py:600
+#: redbot/cogs/audio/core/commands/player.py:605
+#: redbot/cogs/audio/core/commands/player.py:739
+#: redbot/cogs/audio/core/commands/player.py:745
+#: redbot/cogs/audio/core/commands/player.py:807
 #: redbot/cogs/audio/core/commands/playlists.py:1458
 msgid "Unable To Play Tracks"
 msgstr "無法播放歌曲"
@@ -1585,11 +1585,11 @@ msgid "You need the DJ role to summon the bot."
 msgstr "您需要DJ身分組才能使Bot加入語音頻道。"
 
 #: redbot/cogs/audio/core/commands/controller.py:655
-#: redbot/cogs/audio/core/commands/player.py:82
-#: redbot/cogs/audio/core/commands/player.py:190
-#: redbot/cogs/audio/core/commands/player.py:453
-#: redbot/cogs/audio/core/commands/player.py:569
-#: redbot/cogs/audio/core/commands/player.py:694
+#: redbot/cogs/audio/core/commands/player.py:84
+#: redbot/cogs/audio/core/commands/player.py:192
+#: redbot/cogs/audio/core/commands/player.py:455
+#: redbot/cogs/audio/core/commands/player.py:571
+#: redbot/cogs/audio/core/commands/player.py:696
 #: redbot/cogs/audio/core/commands/queue.py:343
 msgid "I don't have permission to connect and speak in your channel."
 msgstr "權限不足，無法加入及在您的語音頻道中説話。"
@@ -1603,17 +1603,17 @@ msgid "I am already in your channel."
 msgstr "我已經在您的頻道裡了。"
 
 #: redbot/cogs/audio/core/commands/controller.py:686
-#: redbot/cogs/audio/core/commands/player.py:94
-#: redbot/cogs/audio/core/commands/player.py:202
-#: redbot/cogs/audio/core/commands/player.py:465
-#: redbot/cogs/audio/core/commands/player.py:581
-#: redbot/cogs/audio/core/commands/player.py:706
+#: redbot/cogs/audio/core/commands/player.py:96
+#: redbot/cogs/audio/core/commands/player.py:204
+#: redbot/cogs/audio/core/commands/player.py:467
+#: redbot/cogs/audio/core/commands/player.py:583
+#: redbot/cogs/audio/core/commands/player.py:708
 #: redbot/cogs/audio/core/commands/queue.py:355
 msgid "Connect to a voice channel first."
 msgstr "請先加入一個語音頻道。"
 
 #: redbot/cogs/audio/core/commands/controller.py:693
-#: redbot/cogs/audio/core/commands/player.py:100
+#: redbot/cogs/audio/core/commands/player.py:102
 msgid "Connection to the Lavalink node has not yet been established."
 msgstr "尚未建立與 Lavalink 節點的連接。"
 
@@ -1719,7 +1719,7 @@ msgstr "將編號歌曲移動到到播放清單頂部。"
 #: redbot/cogs/audio/core/commands/controller.py:879
 #: redbot/cogs/audio/core/commands/controller.py:885
 #: redbot/cogs/audio/core/commands/controller.py:891
-#: redbot/cogs/audio/core/commands/player.py:150
+#: redbot/cogs/audio/core/commands/player.py:152
 msgid "Unable To Bump Track"
 msgstr "無法將歌曲移動至佇列頂部。"
 
@@ -2040,7 +2040,7 @@ msgstr "設置未更變"
 
 #: redbot/cogs/audio/core/commands/llset.py:253
 msgid "A port must be between 0 and 65535."
-msgstr ""
+msgstr "端口必須介於 0 和 65535 之間。"
 
 #: redbot/cogs/audio/core/commands/llset.py:259
 msgid "Unmanaged Lavalink node port set to {port}. Run `{p}{cmd}` for it to take effect."
@@ -2514,192 +2514,196 @@ msgstr "播放指定的曲目或搜索接近的匹配項。\n\n"
 "        "
 
 #: redbot/cogs/audio/core/commands/player.py:53
-#: redbot/cogs/audio/core/commands/player.py:161
-#: redbot/cogs/audio/core/commands/player.py:738
-msgid "That URL is not allowed."
-msgstr "此URL不允許使用。"
+msgid "That URL is not allowed.\n\n"
+"The bot owner can remove this restriction by using ``{prefix}audioset restrict``."
+msgstr ""
 
-#: redbot/cogs/audio/core/commands/player.py:57
-#: redbot/cogs/audio/core/commands/player.py:165
-#: redbot/cogs/audio/core/commands/player.py:744
+#: redbot/cogs/audio/core/commands/player.py:59
+#: redbot/cogs/audio/core/commands/player.py:167
+#: redbot/cogs/audio/core/commands/player.py:746
 msgid "That track is not allowed."
 msgstr "此條軌道不允許使用。"
 
-#: redbot/cogs/audio/core/commands/player.py:64
-#: redbot/cogs/audio/core/commands/player.py:172
-#: redbot/cogs/audio/core/commands/player.py:435
-#: redbot/cogs/audio/core/commands/player.py:551
-#: redbot/cogs/audio/core/commands/player.py:806
+#: redbot/cogs/audio/core/commands/player.py:66
+#: redbot/cogs/audio/core/commands/player.py:174
+#: redbot/cogs/audio/core/commands/player.py:437
+#: redbot/cogs/audio/core/commands/player.py:553
+#: redbot/cogs/audio/core/commands/player.py:808
 msgid "You need the DJ role to queue tracks."
 msgstr "您需要 DJ 身分組才能對曲目進行編排。"
 
-#: redbot/cogs/audio/core/commands/player.py:68
-#: redbot/cogs/audio/core/commands/player.py:176
-#: redbot/cogs/audio/core/commands/player.py:439
-#: redbot/cogs/audio/core/commands/player.py:555
+#: redbot/cogs/audio/core/commands/player.py:70
+#: redbot/cogs/audio/core/commands/player.py:178
+#: redbot/cogs/audio/core/commands/player.py:441
+#: redbot/cogs/audio/core/commands/player.py:557
 msgid "Connection to Lavalink node has failed"
 msgstr "連接 Lavalink 節點失敗"
 
-#: redbot/cogs/audio/core/commands/player.py:71
-#: redbot/cogs/audio/core/commands/player.py:179
-#: redbot/cogs/audio/core/commands/player.py:442
-#: redbot/cogs/audio/core/commands/player.py:558
-#: redbot/cogs/audio/core/commands/player.py:683
+#: redbot/cogs/audio/core/commands/player.py:73
+#: redbot/cogs/audio/core/commands/player.py:181
+#: redbot/cogs/audio/core/commands/player.py:444
+#: redbot/cogs/audio/core/commands/player.py:560
+#: redbot/cogs/audio/core/commands/player.py:685
 msgid "Please check your console or logs for details."
 msgstr "請查看您的控制台或日誌以了解詳細信息。"
 
-#: redbot/cogs/audio/core/commands/player.py:110
-#: redbot/cogs/audio/core/commands/player.py:218
+#: redbot/cogs/audio/core/commands/player.py:112
+#: redbot/cogs/audio/core/commands/player.py:220
 msgid "You must be in the voice channel to use the play command."
 msgstr "您必須在語音頻道中才能使用播放指令。"
 
-#: redbot/cogs/audio/core/commands/player.py:116
-#: redbot/cogs/audio/core/commands/player.py:224
-#: redbot/cogs/audio/core/commands/player.py:252
+#: redbot/cogs/audio/core/commands/player.py:118
+#: redbot/cogs/audio/core/commands/player.py:226
+#: redbot/cogs/audio/core/commands/player.py:254
 msgid "No tracks found for `{query}`."
 msgstr "找不到名為“{query}”的曲目。"
 
-#: redbot/cogs/audio/core/commands/player.py:122
-#: redbot/cogs/audio/core/commands/player.py:230
-#: redbot/cogs/audio/core/commands/player.py:530
-#: redbot/cogs/audio/core/commands/player.py:603
+#: redbot/cogs/audio/core/commands/player.py:124
+#: redbot/cogs/audio/core/commands/player.py:232
+#: redbot/cogs/audio/core/commands/player.py:532
+#: redbot/cogs/audio/core/commands/player.py:605
 msgid "Queue size limit reached."
 msgstr "已達到隊列數量限制。"
 
-#: redbot/cogs/audio/core/commands/player.py:145
+#: redbot/cogs/audio/core/commands/player.py:147
 #, docstring
 msgid "Force play a URL or search for a track."
 msgstr "在播放清單頂部播放URL或搜索歌曲。"
 
-#: redbot/cogs/audio/core/commands/player.py:151
+#: redbot/cogs/audio/core/commands/player.py:153
 msgid "Only single tracks work with bump play."
 msgstr "只有單個曲目適用於bump播放。"
 
-#: redbot/cogs/audio/core/commands/player.py:208
-#: redbot/cogs/audio/core/commands/player.py:471
-#: redbot/cogs/audio/core/commands/player.py:587
-#: redbot/cogs/audio/core/commands/player.py:712
+#: redbot/cogs/audio/core/commands/player.py:163
+#: redbot/cogs/audio/core/commands/player.py:740
+msgid "That URL is not allowed."
+msgstr "此URL不允許使用。"
+
+#: redbot/cogs/audio/core/commands/player.py:210
+#: redbot/cogs/audio/core/commands/player.py:473
+#: redbot/cogs/audio/core/commands/player.py:589
+#: redbot/cogs/audio/core/commands/player.py:714
 #: redbot/cogs/audio/core/commands/queue.py:362
 msgid "Connection to Lavalink node has not yet been established."
 msgstr "尚未建立與 Lavalink 節點的連接。"
 
-#: redbot/cogs/audio/core/commands/player.py:255
+#: redbot/cogs/audio/core/commands/player.py:257
 msgid "Local tracks will not work if the managed Lavalink node cannot see the track.\n"
 "This may be due to permissions or you are using an external Lavalink node in a different machine than the bot and the local tracks."
 msgstr "如果託管的 Lavalink 節點看不到本地資料夾，則本地資料夾將無法使用。\n"
 "這可能是由於權限問題，或者您在與機器人和本地資料夾不同的機器上使用外部 Lavalink 節點。"
 
-#: redbot/cogs/audio/core/commands/player.py:262
-#: redbot/cogs/audio/core/commands/player.py:794
-#: redbot/cogs/audio/core/commands/player.py:913
+#: redbot/cogs/audio/core/commands/player.py:264
+#: redbot/cogs/audio/core/commands/player.py:796
+#: redbot/cogs/audio/core/commands/player.py:915
 msgid "Track is not playable."
 msgstr "此歌曲無法撥放。"
 
-#: redbot/cogs/audio/core/commands/player.py:264
-#: redbot/cogs/audio/core/commands/player.py:795
-#: redbot/cogs/audio/core/commands/player.py:914
+#: redbot/cogs/audio/core/commands/player.py:266
+#: redbot/cogs/audio/core/commands/player.py:797
+#: redbot/cogs/audio/core/commands/player.py:916
 msgid "**{suffix}** is not a fully supported format and some tracks may not play."
 msgstr "**{suffix}** 不是完全支援的格式，某些曲目可能無法播放。"
 
-#: redbot/cogs/audio/core/commands/player.py:294
+#: redbot/cogs/audio/core/commands/player.py:296
 msgid "This track is not allowed in this server."
 msgstr "此伺務器不允許使用此曲目。"
 
-#: redbot/cogs/audio/core/commands/player.py:316
+#: redbot/cogs/audio/core/commands/player.py:318
 msgid "Track exceeds maximum length."
 msgstr "軌道超過最大可播放長度。"
 
-#: redbot/cogs/audio/core/commands/player.py:337
+#: redbot/cogs/audio/core/commands/player.py:339
 msgid "{time} until track playback: #1 in queue"
 msgstr "{time}後開始播放: 在播放清單的第#1首歌"
 
-#: redbot/cogs/audio/core/commands/player.py:341
+#: redbot/cogs/audio/core/commands/player.py:343
 msgid "Track Enqueued"
 msgstr "已加入播放清單"
 
-#: redbot/cogs/audio/core/commands/player.py:355
+#: redbot/cogs/audio/core/commands/player.py:357
 #, docstring
 msgid "Pick a Spotify playlist from a list of categories to start playing."
 msgstr "從類別列表中選擇一個Spotify播放列表以開始播放。"
 
-#: redbot/cogs/audio/core/commands/player.py:415
+#: redbot/cogs/audio/core/commands/player.py:417
 msgid "The owner needs to set the Spotify client ID and Spotify client secret, before Spotify URLs or codes can be used. \n"
 "See `{prefix}audioset spotifyapi` for instructions."
 msgstr "在使用 Spotify URL 或代碼之前，所有者需要設置 Spotify client ID 和 Spotify client secret。\n"
 "有關詳細說明，請參閱`{prefix}audioset spotifyapi`。"
 
-#: redbot/cogs/audio/core/commands/player.py:425
+#: redbot/cogs/audio/core/commands/player.py:427
 msgid "The owner needs to set the YouTube API key before Spotify URLs or codes can be used.\n"
 "See `{prefix}audioset youtubeapi` for instructions."
 msgstr "所有者需要先設置 YouTube API key，然後才能使用 Spotify URL 或代碼。\n"
 "有關詳細說明，請參閱`{prefix}audioset youtubeapi`。"
 
-#: redbot/cogs/audio/core/commands/player.py:483
+#: redbot/cogs/audio/core/commands/player.py:485
 msgid "You must be in the voice channel to use the genre command."
 msgstr "您必須在語音頻道中才能使用 genre 指令。"
 
-#: redbot/cogs/audio/core/commands/player.py:490
+#: redbot/cogs/audio/core/commands/player.py:492
 msgid "No categories found"
 msgstr "未找到類別"
 
-#: redbot/cogs/audio/core/commands/player.py:494
-#: redbot/cogs/audio/core/commands/player.py:512
+#: redbot/cogs/audio/core/commands/player.py:496
+#: redbot/cogs/audio/core/commands/player.py:514
 msgid "No categories found, try again later."
 msgstr "未找到類別，請稍後重試。"
 
-#: redbot/cogs/audio/core/commands/player.py:499
+#: redbot/cogs/audio/core/commands/player.py:501
 msgid "Categories"
 msgstr "類別"
 
-#: redbot/cogs/audio/core/commands/player.py:505
+#: redbot/cogs/audio/core/commands/player.py:507
 msgid "No categories selected, try again later."
 msgstr "未選擇類別，請稍後重試。"
 
-#: redbot/cogs/audio/core/commands/player.py:520
+#: redbot/cogs/audio/core/commands/player.py:522
 msgid "Playlists for {friendly_name}"
 msgstr "{friendly_name} 的播放列表"
 
-#: redbot/cogs/audio/core/commands/player.py:527
+#: redbot/cogs/audio/core/commands/player.py:529
 msgid "No tracks to play."
 msgstr "沒有可播放的曲目。"
 
-#: redbot/cogs/audio/core/commands/player.py:537
+#: redbot/cogs/audio/core/commands/player.py:539
 msgid "Couldn't find tracks for the selected playlist."
 msgstr "找不到所選播放列表的曲目。"
 
-#: redbot/cogs/audio/core/commands/player.py:545
+#: redbot/cogs/audio/core/commands/player.py:547
 #, docstring
 msgid "Starts auto play."
 msgstr "開始自動播放。"
 
-#: redbot/cogs/audio/core/commands/player.py:599
+#: redbot/cogs/audio/core/commands/player.py:601
 msgid "You must be in the voice channel to use the autoplay command."
 msgstr "您必須在語音頻道中才能使用自動播放的指令。"
 
-#: redbot/cogs/audio/core/commands/player.py:613
+#: redbot/cogs/audio/core/commands/player.py:615
 msgid "Couldn't get a valid track."
 msgstr "無法取得有效的歌曲。"
 
-#: redbot/cogs/audio/core/commands/player.py:619
-#: redbot/cogs/audio/core/commands/player.py:756
-#: redbot/cogs/audio/core/commands/player.py:775
-#: redbot/cogs/audio/core/commands/player.py:893
+#: redbot/cogs/audio/core/commands/player.py:621
+#: redbot/cogs/audio/core/commands/player.py:758
+#: redbot/cogs/audio/core/commands/player.py:777
+#: redbot/cogs/audio/core/commands/player.py:895
 #: redbot/cogs/audio/core/commands/playlists.py:1898
 msgid "Unable to Get Track"
 msgstr "無法獲取歌曲。"
 
-#: redbot/cogs/audio/core/commands/player.py:620
-#: redbot/cogs/audio/core/commands/player.py:757
-#: redbot/cogs/audio/core/commands/player.py:776
-#: redbot/cogs/audio/core/commands/player.py:894
+#: redbot/cogs/audio/core/commands/player.py:622
+#: redbot/cogs/audio/core/commands/player.py:759
+#: redbot/cogs/audio/core/commands/player.py:778
+#: redbot/cogs/audio/core/commands/player.py:896
 msgid "I'm unable to get a track from Lavalink at the moment, try again in a few minutes."
 msgstr "我目前無法從 Lavalink 獲取曲目，請過幾分鐘再試。"
 
-#: redbot/cogs/audio/core/commands/player.py:634
+#: redbot/cogs/audio/core/commands/player.py:636
 msgid "Adding a track to queue."
 msgstr "正在新增歌曲至播放佇列。"
 
-#: redbot/cogs/audio/core/commands/player.py:641
+#: redbot/cogs/audio/core/commands/player.py:643
 #, docstring
 msgid "Pick a track with a search.\n\n"
 "        Use `[p]search list <search term>` to queue all tracks found on YouTube. Use `[p]search sc\n"
@@ -2710,51 +2714,51 @@ msgstr "通過搜尋選擇曲目。\n\n"
 "        <search term>` 在 SoundCloud 而不是 YouTube 上搜索。\n"
 "        "
 
-#: redbot/cogs/audio/core/commands/player.py:680
+#: redbot/cogs/audio/core/commands/player.py:682
 msgid "Connection to Lavalink has failed"
 msgstr "Lavalink連接失敗"
 
-#: redbot/cogs/audio/core/commands/player.py:693
-#: redbot/cogs/audio/core/commands/player.py:705
-#: redbot/cogs/audio/core/commands/player.py:711
-#: redbot/cogs/audio/core/commands/player.py:721
+#: redbot/cogs/audio/core/commands/player.py:695
+#: redbot/cogs/audio/core/commands/player.py:707
+#: redbot/cogs/audio/core/commands/player.py:713
+#: redbot/cogs/audio/core/commands/player.py:723
 msgid "Unable To Search For Tracks"
 msgstr "無法搜尋曲目。"
 
-#: redbot/cogs/audio/core/commands/player.py:722
+#: redbot/cogs/audio/core/commands/player.py:724
 msgid "You must be in the voice channel to enqueue tracks."
 msgstr "您必須在語音頻道中才能編排曲目列表。"
 
-#: redbot/cogs/audio/core/commands/player.py:785
-#: redbot/cogs/audio/core/commands/player.py:904
+#: redbot/cogs/audio/core/commands/player.py:787
+#: redbot/cogs/audio/core/commands/player.py:906
 msgid "Nothing found."
 msgstr "未找到任何東西。"
 
-#: redbot/cogs/audio/core/commands/player.py:787
-#: redbot/cogs/audio/core/commands/player.py:906
+#: redbot/cogs/audio/core/commands/player.py:789
+#: redbot/cogs/audio/core/commands/player.py:908
 msgid "Local tracks will not work if the `Lavalink.jar` cannot see the track.\n"
 "This may be due to permissions or because Lavalink.jar is being run in a different machine than the local tracks."
 msgstr "如果 `Lavalink.jar` 看不到音樂檔案，本地音樂將無法工作。\n"
 "這可能是由於權限或因為 Lavalink.jar 在與本地軌道不同的機器上運行。"
 
-#: redbot/cogs/audio/core/commands/player.py:853
+#: redbot/cogs/audio/core/commands/player.py:855
 #: redbot/cogs/audio/core/commands/playlists.py:1527
 msgid " {bad_tracks} tracks cannot be queued."
 msgstr " {bad_tracks} 首歌曲無法排入佇列。"
 
-#: redbot/cogs/audio/core/commands/player.py:859
+#: redbot/cogs/audio/core/commands/player.py:861
 msgid "Queued {num} track(s).{maxlength_msg}"
 msgstr "已加入 {num} 首曲目至待播清單。{maxlength_msg}"
 
-#: redbot/cogs/audio/core/commands/player.py:865
+#: redbot/cogs/audio/core/commands/player.py:867
 msgid "folder"
 msgstr "資料夾"
 
-#: redbot/cogs/audio/core/commands/player.py:867
+#: redbot/cogs/audio/core/commands/player.py:869
 msgid "search"
 msgstr "搜尋"
 
-#: redbot/cogs/audio/core/commands/player.py:870
+#: redbot/cogs/audio/core/commands/player.py:872
 msgid "{time} until start of {type} playback: starts at #{position} in queue"
 msgstr "直到 {time} 開始播放 {type}：從隊列中的第 #{position} 順位開始"
 

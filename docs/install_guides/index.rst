@@ -18,7 +18,6 @@ we recommend **Ubuntu 24.04 LTS**.
    amazon-linux-2023
    arch
    centos-stream-9
-   debian-11
    debian-12
    fedora
    opensuse-leap-15

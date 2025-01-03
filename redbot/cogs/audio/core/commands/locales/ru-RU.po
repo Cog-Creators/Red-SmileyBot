@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2024-08-07 20:36+0000\n"
+"POT-Creation-Date: 2024-12-24 14:22+0000\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -665,7 +665,7 @@ msgstr "Цена не может быть меньше нуля."
 
 #: redbot/cogs/audio/core/commands/audioset.py:769
 msgid "Price can't be greater than 2^63 - 1."
-msgstr ""
+msgstr "Цена не может быть больше 2^63 - 1."
 
 #: redbot/cogs/audio/core/commands/audioset.py:774
 msgid "Jukebox mode disabled."
@@ -728,8 +728,8 @@ msgstr "`{localtracks}` не существует. Путь по-прежнем�
 
 #: redbot/cogs/audio/core/commands/audioset.py:854
 #: redbot/cogs/audio/core/commands/llset.py:74
-#: redbot/cogs/audio/core/commands/player.py:414
-#: redbot/cogs/audio/core/commands/player.py:424
+#: redbot/cogs/audio/core/commands/player.py:416
+#: redbot/cogs/audio/core/commands/player.py:426
 msgid "Invalid Environment"
 msgstr "Неверное окружение"
 
@@ -987,7 +987,14 @@ msgid "Lavalink version:       [{llversion}]\n"
 "Java Executable:        [{jv_exec}]\n"
 "Initial Heapsize:       [{xms}]\n"
 "Max Heapsize:           [{xmx}]\n"
-msgstr ""
+msgstr "Версия Lavalink:      [{llversion}]\n"
+"Ветка Lavalink:         [{llbranch}]\n"
+"Дата релиза:            [{build_time}]\n"
+"Версия Lavaplayer:  [{lavaplayer}]\n"
+"Версия Java:             [{jvm}]\n"
+"Путь к Java:              [{jv_exec}]\n"
+"Initial Heapsize:        [{xms}]\n"
+"Max Heapsize:          [{xmx}]\n"
 
 #: redbot/cogs/audio/core/commands/audioset.py:1151
 msgid "Localtracks path:       [{localpath}]\n"
@@ -995,12 +1002,12 @@ msgstr "Путь к локальным трекам:       [{localpath}]\n"
 
 #: redbot/cogs/audio/core/commands/audioset.py:1159
 msgid "Lavalink Plugin Versions"
-msgstr ""
+msgstr "Версия плагинов Lavalink"
 
 #: redbot/cogs/audio/core/commands/audioset.py:1174
 #, docstring
 msgid "Sends the managed Lavalink node logs to your DMs."
-msgstr ""
+msgstr "Отправляет логи управляемого узла Lavalin в личные сообщения."
 
 #: redbot/cogs/audio/core/commands/audioset.py:1181
 #: redbot/cogs/audio/core/commands/audioset.py:1183
@@ -1176,7 +1183,7 @@ msgstr "Перезапуск соединение с lava link."
 #: redbot/cogs/audio/core/commands/audioset.py:1485
 #: redbot/cogs/audio/core/commands/llset.py:734
 msgid "Failed To Shutdown Lavalink Node"
-msgstr ""
+msgstr "Не удалось выключить узел Lavalink"
 
 #: redbot/cogs/audio/core/commands/audioset.py:1486
 #: redbot/cogs/audio/core/commands/llset.py:187
@@ -1361,43 +1368,43 @@ msgstr "Вам нужна роль DJ или быть инициатором т�
 
 #: redbot/cogs/audio/core/commands/controller.py:278
 #: redbot/cogs/audio/core/commands/player.py:52
-#: redbot/cogs/audio/core/commands/player.py:57
-#: redbot/cogs/audio/core/commands/player.py:63
-#: redbot/cogs/audio/core/commands/player.py:81
-#: redbot/cogs/audio/core/commands/player.py:93
-#: redbot/cogs/audio/core/commands/player.py:99
-#: redbot/cogs/audio/core/commands/player.py:109
-#: redbot/cogs/audio/core/commands/player.py:115
-#: redbot/cogs/audio/core/commands/player.py:122
-#: redbot/cogs/audio/core/commands/player.py:133
-#: redbot/cogs/audio/core/commands/player.py:160
-#: redbot/cogs/audio/core/commands/player.py:165
-#: redbot/cogs/audio/core/commands/player.py:171
-#: redbot/cogs/audio/core/commands/player.py:189
-#: redbot/cogs/audio/core/commands/player.py:201
-#: redbot/cogs/audio/core/commands/player.py:207
-#: redbot/cogs/audio/core/commands/player.py:217
-#: redbot/cogs/audio/core/commands/player.py:223
-#: redbot/cogs/audio/core/commands/player.py:230
-#: redbot/cogs/audio/core/commands/player.py:242
-#: redbot/cogs/audio/core/commands/player.py:251
-#: redbot/cogs/audio/core/commands/player.py:293
-#: redbot/cogs/audio/core/commands/player.py:315
-#: redbot/cogs/audio/core/commands/player.py:434
-#: redbot/cogs/audio/core/commands/player.py:452
-#: redbot/cogs/audio/core/commands/player.py:464
-#: redbot/cogs/audio/core/commands/player.py:470
-#: redbot/cogs/audio/core/commands/player.py:482
-#: redbot/cogs/audio/core/commands/player.py:530
-#: redbot/cogs/audio/core/commands/player.py:550
-#: redbot/cogs/audio/core/commands/player.py:568
-#: redbot/cogs/audio/core/commands/player.py:580
-#: redbot/cogs/audio/core/commands/player.py:586
-#: redbot/cogs/audio/core/commands/player.py:598
-#: redbot/cogs/audio/core/commands/player.py:603
-#: redbot/cogs/audio/core/commands/player.py:737
-#: redbot/cogs/audio/core/commands/player.py:743
-#: redbot/cogs/audio/core/commands/player.py:805
+#: redbot/cogs/audio/core/commands/player.py:59
+#: redbot/cogs/audio/core/commands/player.py:65
+#: redbot/cogs/audio/core/commands/player.py:83
+#: redbot/cogs/audio/core/commands/player.py:95
+#: redbot/cogs/audio/core/commands/player.py:101
+#: redbot/cogs/audio/core/commands/player.py:111
+#: redbot/cogs/audio/core/commands/player.py:117
+#: redbot/cogs/audio/core/commands/player.py:124
+#: redbot/cogs/audio/core/commands/player.py:135
+#: redbot/cogs/audio/core/commands/player.py:162
+#: redbot/cogs/audio/core/commands/player.py:167
+#: redbot/cogs/audio/core/commands/player.py:173
+#: redbot/cogs/audio/core/commands/player.py:191
+#: redbot/cogs/audio/core/commands/player.py:203
+#: redbot/cogs/audio/core/commands/player.py:209
+#: redbot/cogs/audio/core/commands/player.py:219
+#: redbot/cogs/audio/core/commands/player.py:225
+#: redbot/cogs/audio/core/commands/player.py:232
+#: redbot/cogs/audio/core/commands/player.py:244
+#: redbot/cogs/audio/core/commands/player.py:253
+#: redbot/cogs/audio/core/commands/player.py:295
+#: redbot/cogs/audio/core/commands/player.py:317
+#: redbot/cogs/audio/core/commands/player.py:436
+#: redbot/cogs/audio/core/commands/player.py:454
+#: redbot/cogs/audio/core/commands/player.py:466
+#: redbot/cogs/audio/core/commands/player.py:472
+#: redbot/cogs/audio/core/commands/player.py:484
+#: redbot/cogs/audio/core/commands/player.py:532
+#: redbot/cogs/audio/core/commands/player.py:552
+#: redbot/cogs/audio/core/commands/player.py:570
+#: redbot/cogs/audio/core/commands/player.py:582
+#: redbot/cogs/audio/core/commands/player.py:588
+#: redbot/cogs/audio/core/commands/player.py:600
+#: redbot/cogs/audio/core/commands/player.py:605
+#: redbot/cogs/audio/core/commands/player.py:739
+#: redbot/cogs/audio/core/commands/player.py:745
+#: redbot/cogs/audio/core/commands/player.py:807
 #: redbot/cogs/audio/core/commands/playlists.py:1458
 msgid "Unable To Play Tracks"
 msgstr "Не удается воспроизвести треки"
@@ -1578,11 +1585,11 @@ msgid "You need the DJ role to summon the bot."
 msgstr "Вам нужна роль DJ для приглашения бота."
 
 #: redbot/cogs/audio/core/commands/controller.py:655
-#: redbot/cogs/audio/core/commands/player.py:82
-#: redbot/cogs/audio/core/commands/player.py:190
-#: redbot/cogs/audio/core/commands/player.py:453
-#: redbot/cogs/audio/core/commands/player.py:569
-#: redbot/cogs/audio/core/commands/player.py:694
+#: redbot/cogs/audio/core/commands/player.py:84
+#: redbot/cogs/audio/core/commands/player.py:192
+#: redbot/cogs/audio/core/commands/player.py:455
+#: redbot/cogs/audio/core/commands/player.py:571
+#: redbot/cogs/audio/core/commands/player.py:696
 #: redbot/cogs/audio/core/commands/queue.py:343
 msgid "I don't have permission to connect and speak in your channel."
 msgstr "Перемешивать неровные треки: {true_or_false}."
@@ -1596,19 +1603,19 @@ msgid "I am already in your channel."
 msgstr "Я уже на вашем канале."
 
 #: redbot/cogs/audio/core/commands/controller.py:686
-#: redbot/cogs/audio/core/commands/player.py:94
-#: redbot/cogs/audio/core/commands/player.py:202
-#: redbot/cogs/audio/core/commands/player.py:465
-#: redbot/cogs/audio/core/commands/player.py:581
-#: redbot/cogs/audio/core/commands/player.py:706
+#: redbot/cogs/audio/core/commands/player.py:96
+#: redbot/cogs/audio/core/commands/player.py:204
+#: redbot/cogs/audio/core/commands/player.py:467
+#: redbot/cogs/audio/core/commands/player.py:583
+#: redbot/cogs/audio/core/commands/player.py:708
 #: redbot/cogs/audio/core/commands/queue.py:355
 msgid "Connect to a voice channel first."
 msgstr "Сначала подключитесь к голосовому каналу."
 
 #: redbot/cogs/audio/core/commands/controller.py:693
-#: redbot/cogs/audio/core/commands/player.py:100
+#: redbot/cogs/audio/core/commands/player.py:102
 msgid "Connection to the Lavalink node has not yet been established."
-msgstr ""
+msgstr "Соединение с узлом Lavalink еще не установлено."
 
 #: redbot/cogs/audio/core/commands/controller.py:700
 #, docstring
@@ -1712,7 +1719,7 @@ msgstr "Поднять номер дорожки в начало очереди.
 #: redbot/cogs/audio/core/commands/controller.py:879
 #: redbot/cogs/audio/core/commands/controller.py:885
 #: redbot/cogs/audio/core/commands/controller.py:891
-#: redbot/cogs/audio/core/commands/player.py:150
+#: redbot/cogs/audio/core/commands/player.py:152
 msgid "Unable To Bump Track"
 msgstr "Невозможность сбить трек"
 
@@ -1900,7 +1907,12 @@ msgid "`Dangerous commands` Manage Lavalink node configuration settings.\n\n"
 "        i.e. been told by someone in the Red-Discord Bot support server to do so.\n"
 "        All the commands in here have the potential to break the Audio cog.\n"
 "        "
-msgstr ""
+msgstr "`Опасные команды` Управление настройками конфигурации узла Lavalink.\n\n"
+"        Тут собраны все команды для настройки неуправляемого (обслуживаемого пользователем) или управляемого (обслуживаемого ботом) узла Lavalink.\n\n"
+"        Вы не должны вмешиваться ни в одну из этих команд, если у вас нет на то веских причин,\n"
+"        т.е. если вам разрешил это сделать кто-то из сервера поддержки ботов Red-Discord.\n"
+"        Все приведенные здесь команды могут привести к поломке Audio cog'а.\n"
+"        "
 
 #: redbot/cogs/audio/core/commands/llset.py:49
 #, docstring
@@ -1910,7 +1922,12 @@ msgid "Change your Java executable path.\n\n"
 "        The current supported versions are Java 17 and 11.\n\n"
 "        Enter nothing or \"java\" to reset it back to default.\n"
 "        "
-msgstr ""
+msgstr "Измение пути к исполняемому файлу Java.\n\n"
+"        В большинстве случаев эту команду использовать не нужно, она полезна только в том случае, если на хост-машине имеются конфликтующие версии Java.\n\n"
+"        При ее изменении убедитесь, что установленный вами исполняемый файл Java поддерживается Audio.\n"
+"        В настоящее время поддерживаются следующие версии: Java 17 и 11.\n\n"
+"        Введите \"java\" или оставьте пустым, чтобы вернуть значение по умолчанию.\n"
+"        "
 
 #: redbot/cogs/audio/core/commands/llset.py:62
 msgid "Java Executable Reset"
@@ -1918,7 +1935,7 @@ msgstr "Сброс исполняемого файла Java"
 
 #: redbot/cogs/audio/core/commands/llset.py:63
 msgid "Audio will now use `java` to run your managed Lavalink node. Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Теперь Audio будет использовать `java` для запуска вашего управляемого узла Lavalink. Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:75
 msgid "`{java_path}` is not a valid executable"
@@ -1930,7 +1947,7 @@ msgstr "Исполняемый файл Java изменен"
 
 #: redbot/cogs/audio/core/commands/llset.py:83
 msgid "Audio will now use `{exc}` to run your managed Lavalink node. Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Теперь Audio будет использовать `{exc}` для запуска вашего управляемого узла Lavalink. Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:96
 #, docstring
@@ -1939,40 +1956,45 @@ msgid "Set the managed Lavalink node maximum heap-size.\n\n"
 "        This value only represents the maximum amount of RAM allowed to be used at any given point, and does not mean that the managed Lavalink node will always use this amount of RAM.\n\n"
 "        To reset this value to the default, run the command without any input.\n"
 "        "
-msgstr ""
+msgstr "Установите максимальный размер кучи для управляемого узла Lavalink.\n\n"
+"        По умолчанию это значение равно 50% доступной оперативной памяти на хост-компьютере, представленной [1-1024][M|G] (например, 256M, 256G).\n\n"
+"        Это значение отражает только максимальный объем оперативной памяти, который может быть использован в любой момент, и не означает, что управляемый узел Lavalink всегда будет использовать этот объем оперативной памяти.\n\n"
+"        Чтобы вернуть это значение к значению по умолчанию, выполните команду без каких-либо вводных данных.        "
 
 #: redbot/cogs/audio/core/commands/llset.py:108
 msgid "Heap-size must be a valid measure of size, e.g. 256M, 256G"
-msgstr ""
+msgstr "Размер кучи должен быть допустимым показателем размера. Например: 256M, 256G"
 
 #: redbot/cogs/audio/core/commands/llset.py:115
 msgid "Heap-size must be at least 64M, however it is recommended to have it set to at least 1G."
-msgstr ""
+msgstr "Размер кучи должен быть не менее 64М, однако рекомендуется установить его равным не менее 1G."
 
 #: redbot/cogs/audio/core/commands/llset.py:126
 msgid "Heap-size must be less than your system RAM. You currently have {ram_in_bytes} of RAM available."
-msgstr ""
+msgstr "Размер кучи должен быть меньше, чем объем оперативной памяти вашей системы. В данный момент у вас доступно {ram_in_bytes} оперативной памяти."
 
 #: redbot/cogs/audio/core/commands/llset.py:133
 msgid "Heap-size must be less than {limit} due to your system limitations."
-msgstr ""
+msgstr "Размер кучи должен быть меньше {limit} из-за ограничений вашей системы."
 
 #: redbot/cogs/audio/core/commands/llset.py:147
 msgid "Managed node's heap-size set to {bytes}.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Размер кучи управляемого узла установлен на {bytes}.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:157
 #, docstring
 msgid "Toggle using external (unmanaged) Lavalink nodes - requires an existing Lavalink node for Audio to work, if enabled.\n\n"
 "        This command disables the managed Lavalink server. If you do not have another Lavalink node set up, you will be unable to use Audio while this is enabled.\n"
 "        "
-msgstr ""
+msgstr "Переключение с помощью внешних (неуправляемых) узлов Lavalink - для работы аудио требуется существующий узел Lavalink, если он включен.\n\n"
+"        Эта команда отключает управляемый сервер Lavalink. Если у вас не настроен другой узел Lavalink, вы не сможете использовать аудио, пока он включен.        "
 
 #: redbot/cogs/audio/core/commands/llset.py:167
 #: redbot/cogs/audio/core/commands/llset.py:176
 msgid "Unmanaged Lavalink server: {true_or_false}."
-msgstr ""
+msgstr "Неуправляемый сервер Lavalink: {true_or_false}."
 
 #: redbot/cogs/audio/core/commands/llset.py:186
 msgid "Failed To Shutdown Lavalink"
@@ -1983,22 +2005,24 @@ msgstr "Не удалось отключить Lava link"
 msgid "Set the Lavalink node host.\n\n"
 "        This command sets the connection host which Audio will use to connect to an unmanaged Lavalink node.\n"
 "        "
-msgstr ""
+msgstr "Задайте хост узла Lavalink.\n\n"
+"        Эта команда задает хост подключения, который Audio будет использовать для подключения к неуправляемому узлу Lavalink.        "
 
 #: redbot/cogs/audio/core/commands/llset.py:205
 msgid "Unmanaged Lavalink node host set to {host}. Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Хост неуправляемого узла Lavalink установлен на {host}. Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:218
 #, docstring
 msgid "Set the Lavalink node password.\n\n"
 "        This command sets the connection password which Audio will use to connect to an unmanaged Lavalink node.\n"
 "        "
-msgstr ""
+msgstr "Установите пароль для узла Lavalink.\n\n"
+"        Эта команда устанавливает пароль для подключения, который Audio будет использовать для подключения к неуправляемому узлу Lavalink.        "
 
 #: redbot/cogs/audio/core/commands/llset.py:227
 msgid "Unmanaged Lavalink node password set to {password}. Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Пароль неуправляемого узла Lavalink установлен на {password}. Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:242
 #, docstring
@@ -2006,39 +2030,46 @@ msgid "Set the Lavalink node port.\n\n"
 "        This command sets the connection port which Audio will use to connect to an unmanaged Lavalink node.\n"
 "        Set port to -1 to disable the port and connect to the specified host via ports 80/443\n"
 "        "
-msgstr ""
+msgstr "Set the Lavalink node port.\n\n"
+"        This command sets the connection port which Audio will use to connect to an unmanaged Lavalink node.\n"
+"        Set port to -1 to disable the port and connect to the specified host via ports 80/443\n"
+"        "
 
 #: redbot/cogs/audio/core/commands/llset.py:252
 #: redbot/cogs/audio/core/commands/llset.py:439
 #: redbot/cogs/audio/core/commands/llset.py:667
 #: redbot/cogs/audio/core/commands/llset.py:698
 msgid "Setting Not Changed"
-msgstr ""
+msgstr "Настройки не изменены"
 
 #: redbot/cogs/audio/core/commands/llset.py:253
 msgid "A port must be between 0 and 65535."
-msgstr ""
+msgstr "Порт должен быть в диапазоне от 0 до 65535."
 
 #: redbot/cogs/audio/core/commands/llset.py:259
 msgid "Unmanaged Lavalink node port set to {port}. Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Неуправляемый порт узла Lavalink установлен на {port}. Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:272
 #, docstring
 msgid "Set the Lavalink node connection to secured.\n\n"
 "        This toggle sets the connection type to secured or unsecured when connecting to an unmanaged Lavalink node.\n"
 "        "
-msgstr ""
+msgstr "Установить соединение Lavalink в защищенное.\n\n"
+"        Этот меняет устанавливать тип подключения с защищённого на незащищенный и наоборот. Используется при подключении к неуправляемому узлу Lavalink.\n"
+"        "
 
 #: redbot/cogs/audio/core/commands/llset.py:283
 msgid "Unmanaged Lavalink node will now connect using the secured {secured_protocol} protocol.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Неуправляемый узел Lavalink теперь будет подключаться по защищенному протоколу {secured_protocol}.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:296
 msgid "Unmanaged Lavalink node will no longer connect using the secured {secured_protocol} protocol and will use {unsecured_protocol} instead.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Неуправляемый узел Lavalink больше не будет подключаться по защищенному протоколу {secured_protocol} и будет использовать {unsecured_protocol} протокол.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:310
 #, docstring
@@ -2057,11 +2088,11 @@ msgstr "Host: [{host}]\n"
 #: redbot/cogs/audio/core/commands/llset.py:316
 #: redbot/cogs/audio/core/commands/llset.py:327
 msgid "Port:             [{port}]\n"
-msgstr ""
+msgstr "Порт:             [{port}]\n"
 
 #: redbot/cogs/audio/core/commands/llset.py:317
 msgid "Default HTTP/HTTPS port"
-msgstr ""
+msgstr "HTTP/HTTPS порт по умолчанию"
 
 #: redbot/cogs/audio/core/commands/llset.py:319
 #: redbot/cogs/audio/core/commands/llset.py:328
@@ -2070,23 +2101,23 @@ msgstr "Пароль: [{password}]\n"
 
 #: redbot/cogs/audio/core/commands/llset.py:320
 msgid "Secured:          [{state}]\n"
-msgstr ""
+msgstr "Защищён:       [{state}]\n"
 
 #: redbot/cogs/audio/core/commands/llset.py:323
 msgid "Lavalink Node Settings"
-msgstr ""
+msgstr "Настройки узла Lavalink"
 
 #: redbot/cogs/audio/core/commands/llset.py:331
 msgid "Initial Heapsize: [{xms}]\n"
-msgstr ""
+msgstr "Начальный размер кучи: [{xms}]\n"
 
 #: redbot/cogs/audio/core/commands/llset.py:332
 msgid "Max Heapsize:     [{xmx}]\n"
-msgstr ""
+msgstr "Максимальный размер кучи: [{xmx}]\n"
 
 #: redbot/cogs/audio/core/commands/llset.py:333
 msgid "Java exec:        [{java_exc_path}]\n"
-msgstr ""
+msgstr "Путь к Java:      [{java_exc_path}]\n"
 
 #: redbot/cogs/audio/core/commands/llset.py:341
 #: redbot/cogs/audio/core/commands/llset.py:363
@@ -2096,31 +2127,36 @@ msgstr "Я должен иметь возможность отправить в�
 #: redbot/cogs/audio/core/commands/llset.py:346
 #, docstring
 msgid "Uploads a copy of the application.yml file used by the managed Lavalink node."
-msgstr ""
+msgstr "Отправляет копию файла application.yml, используемого управляемым узлом Lavalink."
 
 #: redbot/cogs/audio/core/commands/llset.py:370
 #, docstring
 msgid "Configure the managed Lavalink node runtime options.\n\n"
 "        All settings under this group will likely cause Audio to malfunction if changed from their defaults, only change settings here if you have been advised to by support.\n"
 "        "
-msgstr ""
+msgstr "Настройка параметров запуска управляемого узла Lavalink.\n\n"
+"        Все настройки этой группы, скорее всего, вызовут неисправность звука, если звук будет изменен по умолчанию, изменить настройки только здесь, если вас посоветовала поддержка.\n"
+"        "
 
 #: redbot/cogs/audio/core/commands/llset.py:377
 #, docstring
 msgid "Configure the managed node authorization and connection settings."
-msgstr ""
+msgstr "Настройка параметров авторизации и подключения управляемого узла."
 
 #: redbot/cogs/audio/core/commands/llset.py:383
 #, docstring
 msgid "`Dangerous command` Set the managed Lavalink node's binding IP address.\n\n"
 "        This value by default is `localhost` which will restrict the server to only localhost apps by default, changing this will likely break the managed Lavalink node if you don't know what you are doing.\n"
 "        "
-msgstr ""
+msgstr "`Опасная команда` Установите IP-адрес привязки управляемого узла Lavalink.\n\n"
+"        По умолчанию это значение равно `localhost`, что ограничит работу сервера только приложениями localhost по умолчанию, изменение этого значения может привести к поломке управляемого узла Lavalink, если вы не знаете, что делаете.\n"
+"        "
 
 #: redbot/cogs/audio/core/commands/llset.py:392
 msgid "Managed node will now accept connection on {host}.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Управляемый узел теперь принимает подключение к {host}.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:407
 #, docstring
@@ -2128,12 +2164,16 @@ msgid "Set the managed Lavalink node's connection password.\n\n"
 "        This is the password required for Audio to connect to the managed Lavalink node.\n"
 "        The value by default is `youshallnotpass`.\n"
 "        "
-msgstr ""
+msgstr "Установите пароль подключения управляемого узла Lavalink.\n\n"
+"        Это пароль, необходимый Audio для подключения к управляемому узлу Lavalink.\n"
+"        По умолчанию используется значение `youshallnotpass`.\n"
+"        "
 
 #: redbot/cogs/audio/core/commands/llset.py:416
 msgid "Managed node will now accept {password} as the authorization token.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Управляемый узел теперь будет принимать {password} в качестве маркера авторизации.\n\n"
+"Выполните команду `{p}{cmd}`, чтобы она вступила в силу."
 
 #: redbot/cogs/audio/core/commands/llset.py:430
 #, docstring
@@ -2141,175 +2181,206 @@ msgid "`Dangerous command` Set the managed Lavalink node's connection port.\n\n"
 "        This port is the port the managed Lavalink node binds to, you should only change this if there is a conflict with the default port because you already have an application using port 2333 on this device.\n\n"
 "        The value by default is `2333`.\n"
 "        "
-msgstr ""
+msgstr "`Опасная команда` Установите порт подключения управляемого узла Lavalink.\n\n"
+"        Этот порт является портом, к которому привязывается управляемый узел Lavalink. Его следует изменять только в том случае, если порт по умолчанию конфликтует с портом по умолчанию, поскольку на этом устройстве уже есть приложение, использующее порт 2333.\n\n"
+"        По умолчанию используется значение `2333`.\n"
+"        "
 
 #: redbot/cogs/audio/core/commands/llset.py:440
 msgid "The port must be between 1024 and 49151."
-msgstr ""
+msgstr "Порт должен находиться в диапазоне от 1024 до 49151."
 
 #: redbot/cogs/audio/core/commands/llset.py:447
 msgid "Managed node will now accept connections on {port}.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Управляемый узел теперь будет принимать соединения через {port}.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:459
 #, docstring
 msgid "`Dangerous command` Toggle audio sources on/off.\n\n"
 "        By default, all sources are enabled, you should only use commands here to disable a specific source if you have been advised to, disabling sources without background knowledge can cause Audio to break.\n"
 "        "
-msgstr ""
+msgstr "Команда `Опасно` Включает/выключает источники звука.\n\n"
+"        По умолчанию все источники включены, вы должны использовать команды здесь для отключения конкретного источника только в том случае, если вам посоветовали это сделать, отключение источников без предварительных знаний может привести к поломке Audio.\n"
+"        "
 
 #: redbot/cogs/audio/core/commands/llset.py:466
 #, docstring
 msgid "Toggle HTTP direct URL usage on or off.\n\n"
 "        This source is used to allow playback from direct HTTP streams (this does not affect direct URL playback for the other sources).\n"
 "        "
-msgstr ""
+msgstr "Переключение использования прямого URL-адреса HTTP.\n\n"
+"        Этот источник используется для разрешения воспроизведения с прямых HTTP-потоков (это не влияет на воспроизведение прямых URL для других источников).\n"
+"        "
 
 #: redbot/cogs/audio/core/commands/llset.py:476
 msgid "Managed node will allow playback from direct URLs.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Управляемый узел разрешит воспроизведение с прямых URL.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:485
 msgid "Managed node will not play from direct URLs anymore.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Управляемый узел больше не будет воспроизводить прямые URL-адреса.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:493
 #, docstring
 msgid "Toggle Bandcamp source on or off.\n\n"
 "        This toggle controls the playback of all Bandcamp related content.\n"
 "        "
-msgstr ""
+msgstr "Включите или выключите источник Bandcamp.\n\n"
+"        Этот переключатель управляет воспроизведением всего контента, связанного с Bandcamp.        "
 
 #: redbot/cogs/audio/core/commands/llset.py:503
 msgid "Managed node will allow playback from Bandcamp.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Управляемый узел позволит воспроизводить файлы с Bandcamp.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:512
 msgid "Managed node will not play from Bandcamp anymore.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Управляемый узел больше не будет воспроизводить с Bandcamp.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:520
 #, docstring
 msgid "Toggle local file usage on or off.\n\n"
 "        This toggle controls the playback of all local track content, usually found inside the `localtracks` folder.\n"
 "        "
-msgstr ""
+msgstr "Включите или выключите использование локальных файлов.\n\n"
+"        Этот переключатель управляет воспроизведением всего содержимого локальных треков, которые обычно находится в папке `localtracks`.        "
 
 #: redbot/cogs/audio/core/commands/llset.py:530
 msgid "Managed node will allow playback from local files.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Управляемый узел позволит воспроизводить локальные файлы.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:539
 msgid "Managed node will not play from local files anymore.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Управляемый узел больше не будет воспроизводить локальные файлы.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:547
 #, docstring
 msgid "Toggle Soundcloud source on or off.\n\n"
 "        This toggle controls the playback of all SoundCloud related content.\n"
 "        "
-msgstr ""
+msgstr "Включите или выключите источник Soundcloud.\n\n"
+"        Этот переключатель управляет воспроизведением всего контента, связанного с Soundcloud.        "
 
 #: redbot/cogs/audio/core/commands/llset.py:557
 msgid "Managed node will allow playback from Soundcloud.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Управляемый узел будет воспроизводить музыку из Soundcloud.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:566
 msgid "Managed node will not play from Soundcloud anymore.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Управляемый узел больше не будет воспроизводить музыку из Soundcloud.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:574
 #, docstring
 msgid "`Dangerous command` Toggle YouTube source on or off (this includes Spotify).\n\n"
 "        This toggle controls the playback of all YouTube and Spotify related content.\n"
 "        "
-msgstr ""
+msgstr "`Опасная команда` Позволяет включать или выключать источник YouTube и Spotify.\n\n"
+"        Этот параметр управляет воспроизведением всего контента, связанного с YouTube и Spotify.        "
 
 #: redbot/cogs/audio/core/commands/llset.py:584
 msgid "Managed node will allow playback from YouTube.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Управляемый узел будет воспроизводить музыку из YouTube.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:593
 msgid "Managed node will not play from YouTube anymore.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Управляемый узел больше не будет воспроизводить музыку из YouTube.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:601
 #, docstring
 msgid "Toggle Twitch source on or off.\n\n"
 "        This toggle controls the playback of all Twitch related content.\n"
 "        "
-msgstr ""
+msgstr "Включите или выключите источник Twitch.\n\n"
+"        Этот переключатель управляет воспроизведением всего контента, связанного с Twitch.        "
 
 #: redbot/cogs/audio/core/commands/llset.py:611
 msgid "Managed node will allow playback from Twitch.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Управляемый узел будет воспроизводить музыку из Twitch.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:620
 msgid "Managed node will not play from Twitch anymore.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Управляемый узел больше не будет воспроизводить музыку из Twitch.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:628
 #, docstring
 msgid "Toggle Vimeo source on or off.\n\n"
 "        This toggle controls the playback of all Vimeo related content.\n"
 "        "
-msgstr ""
+msgstr "Включите или выключите источник Vimeo.\n\n"
+"        Этот переключатель управляет воспроизведением всего контента, связанного с Vimeo.        "
 
 #: redbot/cogs/audio/core/commands/llset.py:638
 msgid "Managed node will allow playback from Vimeo.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Управляемый узел будет воспроизводить музыку из Vimeo.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:647
 msgid "Managed node will not play from Vimeo anymore.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "Управляемый узел больше не будет воспроизводить музыку из Vimeo.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:660
 #, docstring
 msgid "`Dangerous command` Set the managed Lavalink node framebuffer size.\n\n"
 "        Only change this if you have been directly advised to, changing it can cause significant playback issues.\n"
 "        "
-msgstr ""
+msgstr "`Опасная команда` Устанавливает размер кадрового буфера управляемого узла Lavalink.\n\n"
+"        Изменяйте это значение только по прямому указанию, поскольку его изменение может привести к значительным проблемам с воспроизведением.        "
 
 #: redbot/cogs/audio/core/commands/llset.py:668
 msgid "The lowest value the framebuffer can be set to is 100ms."
-msgstr ""
+msgstr "Самое низкое значение, на которое может быть установлен кадровый буфер, составляет 100 мс."
 
 #: redbot/cogs/audio/core/commands/llset.py:674
 #: redbot/cogs/audio/core/commands/llset.py:705
 msgid "Managed node's bufferDurationMs set to {milliseconds}.\n\n"
 "Run `{p}{cmd}` for it to take effect."
-msgstr ""
+msgstr "bufferDurationMs управляемого узла установлен на {milliseconds}.\n\n"
+"Напишите `{p}{cmd}`, чтобы сохранить."
 
 #: redbot/cogs/audio/core/commands/llset.py:691
 #, docstring
 msgid "`Dangerous command`  Set the managed Lavalink node JDA-NAS buffer size.\n\n"
 "        Only change this if you have been directly advised to, changing it can cause significant playback issues.\n"
 "        "
-msgstr ""
+msgstr "`Опасная команда` Устанавливает размер буфера JDA-NAS для управляемого узла Lavalink.\n\n"
+"Изменяйте это значение только по прямому указанию, поскольку его изменение может привести к серьезным проблемам с воспроизведением.        "
 
 #: redbot/cogs/audio/core/commands/llset.py:699
 msgid "The lowest value the buffer may be is 100ms."
-msgstr ""
+msgstr "Наименьшее значение, которое может иметь буфер, равно 100 мс."
 
 #: redbot/cogs/audio/core/commands/llset.py:717
 #, docstring
 msgid "Reset all `llset` changes back to their default values."
-msgstr ""
+msgstr "Сбросьте все изменения в `llset` к их значениям по умолчанию."
 
 #: redbot/cogs/audio/core/commands/localtracks.py:27
 #, docstring
@@ -2440,191 +2511,196 @@ msgstr "Воспроизведение указанного трека или п
 "        "
 
 #: redbot/cogs/audio/core/commands/player.py:53
-#: redbot/cogs/audio/core/commands/player.py:161
-#: redbot/cogs/audio/core/commands/player.py:738
-msgid "That URL is not allowed."
-msgstr "Этот URL адрес не допускается."
+msgid "That URL is not allowed.\n\n"
+"The bot owner can remove this restriction by using ``{prefix}audioset restrict``."
+msgstr ""
 
-#: redbot/cogs/audio/core/commands/player.py:57
-#: redbot/cogs/audio/core/commands/player.py:165
-#: redbot/cogs/audio/core/commands/player.py:744
+#: redbot/cogs/audio/core/commands/player.py:59
+#: redbot/cogs/audio/core/commands/player.py:167
+#: redbot/cogs/audio/core/commands/player.py:746
 msgid "That track is not allowed."
 msgstr "Этот трек не разрешен."
 
-#: redbot/cogs/audio/core/commands/player.py:64
-#: redbot/cogs/audio/core/commands/player.py:172
-#: redbot/cogs/audio/core/commands/player.py:435
-#: redbot/cogs/audio/core/commands/player.py:551
-#: redbot/cogs/audio/core/commands/player.py:806
+#: redbot/cogs/audio/core/commands/player.py:66
+#: redbot/cogs/audio/core/commands/player.py:174
+#: redbot/cogs/audio/core/commands/player.py:437
+#: redbot/cogs/audio/core/commands/player.py:553
+#: redbot/cogs/audio/core/commands/player.py:808
 msgid "You need the DJ role to queue tracks."
 msgstr "Вам нужна роль диджея, чтобы ставить треки в очередь."
 
-#: redbot/cogs/audio/core/commands/player.py:68
-#: redbot/cogs/audio/core/commands/player.py:176
-#: redbot/cogs/audio/core/commands/player.py:439
-#: redbot/cogs/audio/core/commands/player.py:555
+#: redbot/cogs/audio/core/commands/player.py:70
+#: redbot/cogs/audio/core/commands/player.py:178
+#: redbot/cogs/audio/core/commands/player.py:441
+#: redbot/cogs/audio/core/commands/player.py:557
 msgid "Connection to Lavalink node has failed"
-msgstr ""
+msgstr "Не удалось подключиться к узлу Lavalink"
 
-#: redbot/cogs/audio/core/commands/player.py:71
-#: redbot/cogs/audio/core/commands/player.py:179
-#: redbot/cogs/audio/core/commands/player.py:442
-#: redbot/cogs/audio/core/commands/player.py:558
-#: redbot/cogs/audio/core/commands/player.py:683
+#: redbot/cogs/audio/core/commands/player.py:73
+#: redbot/cogs/audio/core/commands/player.py:181
+#: redbot/cogs/audio/core/commands/player.py:444
+#: redbot/cogs/audio/core/commands/player.py:560
+#: redbot/cogs/audio/core/commands/player.py:685
 msgid "Please check your console or logs for details."
 msgstr "Пожалуйста, проверьте вашу консоль или логи для получения более подробной информации."
 
-#: redbot/cogs/audio/core/commands/player.py:110
-#: redbot/cogs/audio/core/commands/player.py:218
+#: redbot/cogs/audio/core/commands/player.py:112
+#: redbot/cogs/audio/core/commands/player.py:220
 msgid "You must be in the voice channel to use the play command."
 msgstr "Вы должны быть в голосовом канале, чтобы использовать команду воспроизведения."
 
-#: redbot/cogs/audio/core/commands/player.py:116
-#: redbot/cogs/audio/core/commands/player.py:224
-#: redbot/cogs/audio/core/commands/player.py:252
+#: redbot/cogs/audio/core/commands/player.py:118
+#: redbot/cogs/audio/core/commands/player.py:226
+#: redbot/cogs/audio/core/commands/player.py:254
 msgid "No tracks found for `{query}`."
 msgstr "Не найдено треков для `{query}`."
 
-#: redbot/cogs/audio/core/commands/player.py:122
-#: redbot/cogs/audio/core/commands/player.py:230
-#: redbot/cogs/audio/core/commands/player.py:530
-#: redbot/cogs/audio/core/commands/player.py:603
+#: redbot/cogs/audio/core/commands/player.py:124
+#: redbot/cogs/audio/core/commands/player.py:232
+#: redbot/cogs/audio/core/commands/player.py:532
+#: redbot/cogs/audio/core/commands/player.py:605
 msgid "Queue size limit reached."
 msgstr "Достигнут предел размера очереди."
 
-#: redbot/cogs/audio/core/commands/player.py:145
+#: redbot/cogs/audio/core/commands/player.py:147
 #, docstring
 msgid "Force play a URL or search for a track."
 msgstr "Принудительно воспроизвести URL или найденный трек."
 
-#: redbot/cogs/audio/core/commands/player.py:151
+#: redbot/cogs/audio/core/commands/player.py:153
 msgid "Only single tracks work with bump play."
 msgstr "С bump play работают только одиночные треки."
 
-#: redbot/cogs/audio/core/commands/player.py:208
-#: redbot/cogs/audio/core/commands/player.py:471
-#: redbot/cogs/audio/core/commands/player.py:587
-#: redbot/cogs/audio/core/commands/player.py:712
+#: redbot/cogs/audio/core/commands/player.py:163
+#: redbot/cogs/audio/core/commands/player.py:740
+msgid "That URL is not allowed."
+msgstr "Этот URL адрес не допускается."
+
+#: redbot/cogs/audio/core/commands/player.py:210
+#: redbot/cogs/audio/core/commands/player.py:473
+#: redbot/cogs/audio/core/commands/player.py:589
+#: redbot/cogs/audio/core/commands/player.py:714
 #: redbot/cogs/audio/core/commands/queue.py:362
 msgid "Connection to Lavalink node has not yet been established."
-msgstr ""
+msgstr "Соединение с узлом Lavalink еще не установлено."
 
-#: redbot/cogs/audio/core/commands/player.py:255
+#: redbot/cogs/audio/core/commands/player.py:257
 msgid "Local tracks will not work if the managed Lavalink node cannot see the track.\n"
 "This may be due to permissions or you are using an external Lavalink node in a different machine than the bot and the local tracks."
-msgstr ""
+msgstr "Локальные треки не будут работать, если управляемый узел Lavalink не может видеть трек.\n"
+"Это может быть связано с правами или с тем, что вы используете внешний узел Lavalink на компьютере, отличном от бота и локальных треков."
 
-#: redbot/cogs/audio/core/commands/player.py:262
-#: redbot/cogs/audio/core/commands/player.py:794
-#: redbot/cogs/audio/core/commands/player.py:913
+#: redbot/cogs/audio/core/commands/player.py:264
+#: redbot/cogs/audio/core/commands/player.py:796
+#: redbot/cogs/audio/core/commands/player.py:915
 msgid "Track is not playable."
 msgstr "Трек не воспроизводится."
 
-#: redbot/cogs/audio/core/commands/player.py:264
-#: redbot/cogs/audio/core/commands/player.py:795
-#: redbot/cogs/audio/core/commands/player.py:914
+#: redbot/cogs/audio/core/commands/player.py:266
+#: redbot/cogs/audio/core/commands/player.py:797
+#: redbot/cogs/audio/core/commands/player.py:916
 msgid "**{suffix}** is not a fully supported format and some tracks may not play."
 msgstr "**{suffix}** не является полностью поддерживаемым форматом, и некоторые треки не могут воспроизводиться."
 
-#: redbot/cogs/audio/core/commands/player.py:294
+#: redbot/cogs/audio/core/commands/player.py:296
 msgid "This track is not allowed in this server."
 msgstr "Этот трек не разрешен на этом сервере."
 
-#: redbot/cogs/audio/core/commands/player.py:316
+#: redbot/cogs/audio/core/commands/player.py:318
 msgid "Track exceeds maximum length."
 msgstr "Этот трек превышает максимальную длину."
 
-#: redbot/cogs/audio/core/commands/player.py:337
+#: redbot/cogs/audio/core/commands/player.py:339
 msgid "{time} until track playback: #1 in queue"
 msgstr "{time} до воспроизведения трека: #1 в очереди"
 
-#: redbot/cogs/audio/core/commands/player.py:341
+#: redbot/cogs/audio/core/commands/player.py:343
 msgid "Track Enqueued"
 msgstr "Трек поставлен в очередь"
 
-#: redbot/cogs/audio/core/commands/player.py:355
+#: redbot/cogs/audio/core/commands/player.py:357
 #, docstring
 msgid "Pick a Spotify playlist from a list of categories to start playing."
 msgstr "Выберите плейлист Spotify из списка категорий, чтобы начать играть."
 
-#: redbot/cogs/audio/core/commands/player.py:415
+#: redbot/cogs/audio/core/commands/player.py:417
 msgid "The owner needs to set the Spotify client ID and Spotify client secret, before Spotify URLs or codes can be used. \n"
 "See `{prefix}audioset spotifyapi` for instructions."
 msgstr "Владелец должен установить идентификатор клиента Spotify и секрет клиента Spotify, прежде чем можно будет использовать URL-адреса или коды Spotify..\n"
 "Просмотрите `{prefix}audioset spotifyapi` для получения инструкций."
 
-#: redbot/cogs/audio/core/commands/player.py:425
+#: redbot/cogs/audio/core/commands/player.py:427
 msgid "The owner needs to set the YouTube API key before Spotify URLs or codes can be used.\n"
 "See `{prefix}audioset youtubeapi` for instructions."
 msgstr "Владелец должен установить ключ YouTube API перед использованием URL-адресов или кодов Spotify.\n"
 "Смотрите `{prefix}audioset youtubeapi` для получения инструкций."
 
-#: redbot/cogs/audio/core/commands/player.py:483
+#: redbot/cogs/audio/core/commands/player.py:485
 msgid "You must be in the voice channel to use the genre command."
 msgstr "Вы должны быть в голосовом канале, чтобы использовать команду жанра."
 
-#: redbot/cogs/audio/core/commands/player.py:490
+#: redbot/cogs/audio/core/commands/player.py:492
 msgid "No categories found"
 msgstr "Категории не найдены"
 
-#: redbot/cogs/audio/core/commands/player.py:494
-#: redbot/cogs/audio/core/commands/player.py:512
+#: redbot/cogs/audio/core/commands/player.py:496
+#: redbot/cogs/audio/core/commands/player.py:514
 msgid "No categories found, try again later."
 msgstr "Категории не найдены, повторите попытку позже."
 
-#: redbot/cogs/audio/core/commands/player.py:499
+#: redbot/cogs/audio/core/commands/player.py:501
 msgid "Categories"
 msgstr "Категории"
 
-#: redbot/cogs/audio/core/commands/player.py:505
+#: redbot/cogs/audio/core/commands/player.py:507
 msgid "No categories selected, try again later."
 msgstr "Категории не выбраны, повторите попытку позже."
 
-#: redbot/cogs/audio/core/commands/player.py:520
+#: redbot/cogs/audio/core/commands/player.py:522
 msgid "Playlists for {friendly_name}"
 msgstr "Плейлист для {friendly_name}"
 
-#: redbot/cogs/audio/core/commands/player.py:527
+#: redbot/cogs/audio/core/commands/player.py:529
 msgid "No tracks to play."
 msgstr "Нет треков для воспроизведения."
 
-#: redbot/cogs/audio/core/commands/player.py:537
+#: redbot/cogs/audio/core/commands/player.py:539
 msgid "Couldn't find tracks for the selected playlist."
 msgstr "Не удалось найти композиции для выбранного списка воспроизведения."
 
-#: redbot/cogs/audio/core/commands/player.py:545
+#: redbot/cogs/audio/core/commands/player.py:547
 #, docstring
 msgid "Starts auto play."
 msgstr "Начать автоматическое воспроизведение."
 
-#: redbot/cogs/audio/core/commands/player.py:599
+#: redbot/cogs/audio/core/commands/player.py:601
 msgid "You must be in the voice channel to use the autoplay command."
 msgstr "Вы должны быть в голосовом канале, чтобы использовать команду авто-воспроизведения."
 
-#: redbot/cogs/audio/core/commands/player.py:613
+#: redbot/cogs/audio/core/commands/player.py:615
 msgid "Couldn't get a valid track."
 msgstr "Не удалось получить правильный трек."
 
-#: redbot/cogs/audio/core/commands/player.py:619
-#: redbot/cogs/audio/core/commands/player.py:756
-#: redbot/cogs/audio/core/commands/player.py:775
-#: redbot/cogs/audio/core/commands/player.py:893
+#: redbot/cogs/audio/core/commands/player.py:621
+#: redbot/cogs/audio/core/commands/player.py:758
+#: redbot/cogs/audio/core/commands/player.py:777
+#: redbot/cogs/audio/core/commands/player.py:895
 #: redbot/cogs/audio/core/commands/playlists.py:1898
 msgid "Unable to Get Track"
 msgstr "Не удается получить трек"
 
-#: redbot/cogs/audio/core/commands/player.py:620
-#: redbot/cogs/audio/core/commands/player.py:757
-#: redbot/cogs/audio/core/commands/player.py:776
-#: redbot/cogs/audio/core/commands/player.py:894
+#: redbot/cogs/audio/core/commands/player.py:622
+#: redbot/cogs/audio/core/commands/player.py:759
+#: redbot/cogs/audio/core/commands/player.py:778
+#: redbot/cogs/audio/core/commands/player.py:896
 msgid "I'm unable to get a track from Lavalink at the moment, try again in a few minutes."
 msgstr "В данный момент я не могу получить трек от Lavalink, повторите попытку через несколько минут."
 
-#: redbot/cogs/audio/core/commands/player.py:634
+#: redbot/cogs/audio/core/commands/player.py:636
 msgid "Adding a track to queue."
 msgstr "Добавление трека в очередь."
 
-#: redbot/cogs/audio/core/commands/player.py:641
+#: redbot/cogs/audio/core/commands/player.py:643
 #, docstring
 msgid "Pick a track with a search.\n\n"
 "        Use `[p]search list <search term>` to queue all tracks found on YouTube. Use `[p]search sc\n"
@@ -2635,51 +2711,51 @@ msgstr "Выберите трек с помощью поиска.\n\n"
 "        <search term>` для поиска на SoundCloud вместо YouTube.\n"
 "        "
 
-#: redbot/cogs/audio/core/commands/player.py:680
+#: redbot/cogs/audio/core/commands/player.py:682
 msgid "Connection to Lavalink has failed"
 msgstr "Не удалось подключиться к Lava link"
 
-#: redbot/cogs/audio/core/commands/player.py:693
-#: redbot/cogs/audio/core/commands/player.py:705
-#: redbot/cogs/audio/core/commands/player.py:711
-#: redbot/cogs/audio/core/commands/player.py:721
+#: redbot/cogs/audio/core/commands/player.py:695
+#: redbot/cogs/audio/core/commands/player.py:707
+#: redbot/cogs/audio/core/commands/player.py:713
+#: redbot/cogs/audio/core/commands/player.py:723
 msgid "Unable To Search For Tracks"
 msgstr "Не удается найти треки"
 
-#: redbot/cogs/audio/core/commands/player.py:722
+#: redbot/cogs/audio/core/commands/player.py:724
 msgid "You must be in the voice channel to enqueue tracks."
 msgstr "Вы должны быть в голосовом канале, чтобы поставить в очередь треки."
 
-#: redbot/cogs/audio/core/commands/player.py:785
-#: redbot/cogs/audio/core/commands/player.py:904
+#: redbot/cogs/audio/core/commands/player.py:787
+#: redbot/cogs/audio/core/commands/player.py:906
 msgid "Nothing found."
 msgstr "Ничего не найдено."
 
-#: redbot/cogs/audio/core/commands/player.py:787
-#: redbot/cogs/audio/core/commands/player.py:906
+#: redbot/cogs/audio/core/commands/player.py:789
+#: redbot/cogs/audio/core/commands/player.py:908
 msgid "Local tracks will not work if the `Lavalink.jar` cannot see the track.\n"
 "This may be due to permissions or because Lavalink.jar is being run in a different machine than the local tracks."
 msgstr "Локальные треки не будут работать, если `Lavalink.jar` не будет видеть трек.\n"
 "Это может быть вызвано правами или потому что Lavalink.jar запускается на машине, отличной от локальных треков."
 
-#: redbot/cogs/audio/core/commands/player.py:853
+#: redbot/cogs/audio/core/commands/player.py:855
 #: redbot/cogs/audio/core/commands/playlists.py:1527
 msgid " {bad_tracks} tracks cannot be queued."
 msgstr " {bad_tracks} треков не могут быть поставлены в очередь."
 
-#: redbot/cogs/audio/core/commands/player.py:859
+#: redbot/cogs/audio/core/commands/player.py:861
 msgid "Queued {num} track(s).{maxlength_msg}"
 msgstr "В очереди {num} трек(и). {maxlength_msg}"
 
-#: redbot/cogs/audio/core/commands/player.py:865
+#: redbot/cogs/audio/core/commands/player.py:867
 msgid "folder"
 msgstr "папка"
 
-#: redbot/cogs/audio/core/commands/player.py:867
+#: redbot/cogs/audio/core/commands/player.py:869
 msgid "search"
 msgstr "поиск"
 
-#: redbot/cogs/audio/core/commands/player.py:870
+#: redbot/cogs/audio/core/commands/player.py:872
 msgid "{time} until start of {type} playback: starts at #{position} in queue"
 msgstr "{time} до начала воспроизведения {type}: начинается с #{position} в очереди"
 
@@ -2697,7 +2773,17 @@ msgid "Playlist configuration options.\n\n"
 "        ​ ​ ​ ​ ​ ​ ​ ​ Visible to all bot users, if --author is passed.\n"
 "        ​ ​ ​ ​ ​ ​ ​ ​ Editable by bot owner and the playlist creator.\n"
 "        "
-msgstr ""
+msgstr "Параметры настройки плейлиста.\n\n"
+"        Информация о области применения:\n"
+"        ​ ​ ​ ​ **Global**:\n"
+"        ​ ​ ​ ​ ​ ​ ​ ​ Доступен для просмотра всем пользователям этого бота.\n"
+"        ​ ​ ​ ​ ​ ​ ​ ​ Доступен для редактирования только владельцу бота.\n"
+"        ​ ​ ​ ​ **Guild**:\n"
+"        ​ ​ ​ ​ ​ ​ ​ ​ Доступен для просмотра всем пользователям этой гильдии.\n"
+"        ​ ​ ​ ​ ​ ​ ​ ​ Доступен для редактирования владельцу бота, владельцу гильдии, администраторам гильдии, модерам гильдии, роли диджея и создателю плейлиста.\n"
+"        ​ ​ ​ ​ **User**:\n"
+"        ​ ​ ​ ​ ​ ​ ​ ​ Виден всем пользователям бота, если указано значение --author.\n"
+"        ​ ​ ​ ​ ​ ​ ​ ​ Доступен для редактирования владельцем бота и создателем плейлиста.        "
 
 #: redbot/cogs/audio/core/commands/playlists.py:70
 #, docstring
@@ -2850,7 +2936,32 @@ msgid "Copy a playlist from one scope to another.\n\n"
 "        ​ ​ ​ ​ `[p]playlist copy MyGlobalPlaylist --from-scope Global --to-author Draper#6666 --to-scope User`\n"
 "        ​ ​ ​ ​ `[p]playlist copy MyPersonalPlaylist --from-scope user --to-author Draper#6666 --to-scope Guild --to-guild Red - Discord Bot`\n"
 "        "
-msgstr ""
+msgstr "Скопируйте плейлист из одной области в другую.\n\n"
+"        **Использование**:\n"
+"        ​ ​ ​ ​ `[p]playlist copy playlist_name_OR_id [args]`\n\n"
+"        **Аргументы**:\n"
+"        ​ ​ ​ ​ Все перечисленные ниже необязательны:\n"
+"        ​ ​ ​ ​ ​ ​ ​ ​ --from-scope <область действия>\n"
+"        ​ ​ ​ ​ ​ ​ ​  --from-author [user]\n"
+"        ​ ​ ​ ​ ​ ​ ​ ​ --from-guild [guild] **Только владелец бота может использовать это**\n\n"
+"        ​ ​ ​ ​ ​ ​ ​ ​ --to-scope <scope>\n"
+"        ​ ​ ​ ​ ​ ​ ​ ​ --to-author [user]\n"
+"        ​ ​ ​ ​ ​ ​ ​ ​ --to-guild [guild] **Только владелец бота может использовать это**\n\n"
+"        **Scope** является одной из следующих:\n"
+"        ​ ​ ​ ​ Global\n"
+"        ​ ​ ​ ​ Guild\n"
+"        ​ ​ ​ ​ User\n\n"
+"        **Author** может быть одним из следующих имен:\n"
+"        ​ ​ ​ ​ Идентификатор пользователя\n"
+"        ​ ​ ​ ​ Упоминание пользователя\n"
+"        ​ ​ ​ ​ Ник пользователя\n\n"
+"        **Guild** может быть одним из следующих имен:\n"
+"        ​ ​ ​ ​ Идентификатор гильдии\n"
+"        ​ ​ ​ ​ Точное название гильдии\n\n"
+"        Пример использования:\n"
+"        ​ ​ ​ ​ `[p]playlist copy MyGuildPlaylist --from-scope Guild --to-scope Global`\n"
+"        ​ ​ ​ ​ `[p]playlist copy MyGlobalPlaylist --from-scope Global --to-author Draper#6666 --to-scope User`\n"
+"        ​ ​ ​ ​ `[p]playlist copy MyPersonalPlaylist --from-scope user --to-author Draper#6666 --to-scope Guild --to-guild Red - Discord Bot`        "
 
 #: redbot/cogs/audio/core/commands/playlists.py:306
 #: redbot/cogs/audio/core/commands/playlists.py:488
@@ -3704,7 +3815,7 @@ msgstr "Этот плейлист слишком большой."
 
 #: redbot/cogs/audio/core/commands/playlists.py:1899
 msgid "I'm unable to get a track from Lavalink node at the moment, try again in a few minutes."
-msgstr ""
+msgstr "Я не могу получить трек от Lavalink, повторите попытку через несколько минут."
 
 #: redbot/cogs/audio/core/commands/playlists.py:1920
 #, docstring
