@@ -380,7 +380,11 @@ class SetApiModal(discord.ui.Modal):
         self.title = _("Set API Keys")
         self.keys_label = _("Keys and tokens")
         if self.default_service is not None:
-            truncated_service_name = (self.default_service[:20] + '…') if len(self.default_service) > 20 else self.default_service
+            truncated_service_name = (
+                (self.default_service[:20] + "…")
+                if len(self.default_service) > 20
+                else self.default_service
+            )
             self.keys_label = _("Keys and tokens for {service}").format(
                 service=truncated_service_name
             )
