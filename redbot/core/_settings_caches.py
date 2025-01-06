@@ -161,6 +161,8 @@ class IgnoreManager:
             discord.StageChannel,
             discord.ForumChannel,
             discord.Thread,
+            discord.Object,  # This is solely here for the purpose of User Installed Bots,
+            # See Red#6501 & ignored_channel_or_guild in redbot/core/bot.py for more details.
         ],
         check_category: bool = True,
     ) -> bool:
@@ -168,7 +170,9 @@ class IgnoreManager:
 
         cid: int = channel.id
         cat_id: Optional[int] = (
-            channel.category.id if check_category and channel.category else None
+            channel.category.id
+            if check_category and hasattr(channel, "category") and channel.category is not None
+            else None
         )
         if cid in self._cached_channels:
             chan_ret = self._cached_channels[cid]
