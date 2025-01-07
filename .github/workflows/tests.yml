@@ -39,7 +39,7 @@ jobs:
         fail-fast: false
       name: Tox - ${{ matrix.friendly_name }}
       steps:
-        - uses: actions/checkout@v3
+        - uses: actions/checkout@v4
           with:
             ref: ${{ env.ref }}
         - name: Set up Python
@@ -76,7 +76,7 @@ jobs:
             POSTGRES_PASSWORD: postgres
             POSTGRES_USER: postgres
       steps:
-        - uses: actions/checkout@v3
+        - uses: actions/checkout@v4
           with:
             ref: ${{ env.ref }}
         - name: Set up Python
