@@ -1,5 +1,4 @@
 import datetime
-import json
 from collections import namedtuple
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -9,6 +8,7 @@ import discord
 import lavalink
 from red_commons.logging import getLogger
 
+from redbot.core import _json
 from redbot.core.bot import Red
 from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import humanize_list
@@ -50,7 +50,7 @@ class LavalinkCacheFetchResult:
             self.updated_on: datetime.datetime = datetime.datetime.fromtimestamp(self.last_updated)
 
         if isinstance(self.query, str):
-            self.query = json.loads(self.query)
+            self.query = _json.loads(self.query)
 
 
 @dataclass
@@ -61,7 +61,7 @@ class LavalinkCacheFetchForGlobalResult:
     def __post_init__(self):
         if isinstance(self.data, str):
             self.data_string = str(self.data)
-            self.data = json.loads(self.data)
+            self.data = _json.loads(self.data)
 
 
 @dataclass
@@ -75,7 +75,7 @@ class PlaylistFetchResult:
 
     def __post_init__(self):
         if isinstance(self.tracks, str):
-            self.tracks = json.loads(self.tracks)
+            self.tracks = _json.loads(self.tracks)
 
 
 @dataclass
@@ -87,7 +87,7 @@ class QueueFetchResult:
 
     def __post_init__(self):
         if isinstance(self.track, str):
-            self.track = json.loads(self.track)
+            self.track = _json.loads(self.track)
         if self.track:
             self.track_object = lavalink.Track(self.track)
 

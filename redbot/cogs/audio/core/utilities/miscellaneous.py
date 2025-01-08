@@ -2,7 +2,6 @@ import asyncio
 import contextlib
 import datetime
 import functools
-import json
 import re
 import struct
 from pathlib import Path
@@ -12,7 +11,7 @@ import discord
 import lavalink
 from red_commons.logging import getLogger
 
-from redbot.core import bank, commands
+from redbot.core import bank, commands, _json
 from redbot.core.commands import Context
 from redbot.core.i18n import Translator
 from redbot.core.utils import AsyncIter, can_user_send_messages_in
@@ -310,7 +309,7 @@ class MiscellaneousUtilities(MixinMeta, metaclass=CompositeMetaClass):
                             uri = t.get("info", {}).get("uri")
                             if uri:
                                 t = {"loadType": "V2_COMPAT", "tracks": [t], "query": uri}
-                                data = json.dumps(t)
+                                data = _json.dumps(t)
                                 if all(
                                     k in data
                                     for k in ["loadType", "playlistInfo", "isSeekable", "isStream"]

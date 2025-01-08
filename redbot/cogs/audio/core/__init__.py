@@ -1,6 +1,5 @@
 import asyncio
 import datetime
-import json
 
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -9,7 +8,7 @@ from typing import Mapping, Dict
 import aiohttp
 import discord
 
-from redbot.core import Config
+from redbot.core import Config, _json
 from redbot.core.bot import Red
 from redbot.core.commands import Cog
 from redbot.core.data_manager import cog_data_path
@@ -78,7 +77,7 @@ class Audio(
             add_reactions=True,
         )
 
-        self.session = aiohttp.ClientSession(json_serialize=json.dumps)
+        self.session = aiohttp.ClientSession(json_serialize=_json.dumps)
         self.cog_ready_event = asyncio.Event()
         self._ws_resume = defaultdict(asyncio.Event)
         self._ws_op_codes = defaultdict(asyncio.LifoQueue)

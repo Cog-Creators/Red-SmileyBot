@@ -1,7 +1,6 @@
 import asyncio
 import contextlib
 import datetime
-import json
 import random
 import time
 
@@ -15,7 +14,7 @@ import lavalink
 from red_commons.logging import getLogger
 
 from lavalink.rest_api import LoadResult, LoadType
-from redbot.core import Config, commands
+from redbot.core import Config, commands, _json
 from redbot.core.bot import Red
 from redbot.core.commands import Cog, Context
 from redbot.core.i18n import Translator
@@ -896,7 +895,7 @@ class AudioAPIInterface:
         ):
             try:
                 time_now = int(datetime.datetime.now(datetime.timezone.utc).timestamp())
-                data = json.dumps(results._raw)
+                data = _json.dumps(results._raw)
                 if all(k in data for k in ["loadType", "playlistInfo", "isSeekable", "isStream"]):
                     task = (
                         "insert",

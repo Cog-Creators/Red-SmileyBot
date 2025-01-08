@@ -1,4 +1,3 @@
-import json
 from pathlib import Path
 
 from typing import TYPE_CHECKING, Mapping, Optional, Union
@@ -6,7 +5,7 @@ from typing import TYPE_CHECKING, Mapping, Optional, Union
 import aiohttp
 from red_commons.logging import getLogger
 
-from redbot.core import Config
+from redbot.core import Config, _json
 from redbot.core.bot import Red
 from redbot.core.commands import Cog
 from redbot.core.i18n import Translator
@@ -80,7 +79,7 @@ class YouTubeWrapper:
                     )
                 return None
             else:
-                search_response = await r.json(loads=json.loads)
+                search_response = await r.json(loads=_json.loads)
         for search_result in search_response.get("items", []):
             if search_result["id"]["kind"] == "youtube#video":
                 return f"https://www.youtube.com/watch?v={search_result['id']['videoId']}"

@@ -1,6 +1,5 @@
 import asyncio
 import collections.abc
-import json
 import logging
 import pickle
 import weakref
@@ -19,7 +18,7 @@ from typing import (
 )
 
 import discord
-
+from . import _json
 from ._drivers import BaseDriver, ConfigCategory, IdentifierData, get_driver
 
 __all__ = (
@@ -816,7 +815,7 @@ class Config(metaclass=ConfigMeta):
             self._defaults[key] = {}
 
         # this serves as a 'deep copy' and verification that the default is serializable to JSON
-        data = json.loads(json.dumps(kwargs))
+        data = _json.loads(_json.dumps(kwargs))
 
         for k, v in data.items():
             to_add = self._get_defaults_dict(k, v)

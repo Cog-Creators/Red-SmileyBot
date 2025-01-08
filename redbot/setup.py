@@ -4,7 +4,6 @@ from redbot import _early_init
 _early_init()
 
 import asyncio
-import json
 import logging
 import sys
 import re
@@ -20,7 +19,7 @@ from redbot.core.utils._internal_utils import (
     create_backup as red_create_backup,
     cli_level_to_log_level,
 )
-from redbot.core import config, data_manager, _drivers
+from redbot.core import config, data_manager, _drivers, _json
 from redbot.core._cli import ExitCodes
 from redbot.core.data_manager import appdir, config_dir, config_file
 from redbot.core._drivers import BackendType, IdentifierData
@@ -48,7 +47,7 @@ def save_config(name, data, remove=False):
         _config[name] = data
 
     with config_file.open("w", encoding="utf-8") as fs:
-        json.dump(_config, fs, indent=4)
+        _json.dump(_config, fs, indent=4)
 
 
 def get_data_dir(*, instance_name: str, data_path: Optional[Path], interactive: bool) -> str:

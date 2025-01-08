@@ -3,7 +3,6 @@ from __future__ import annotations
 import asyncio
 import collections.abc
 import contextlib
-import json
 import logging
 import os
 import re
@@ -38,7 +37,7 @@ from rich.progress_bar import ProgressBar
 from red_commons.logging import VERBOSE, TRACE
 
 from redbot import VersionInfo
-from redbot.core import data_manager
+from redbot.core import data_manager, _json
 from redbot.core.utils.chat_formatting import box
 
 if TYPE_CHECKING:
@@ -245,10 +244,10 @@ async def create_backup(dest: Path = Path.home()) -> Optional[Path]:
         repo_output.append({"url": repo.url, "name": repo.name, "branch": repo.branch})
     repos_file = data_path / "cogs" / "RepoManager" / "repos.json"
     with repos_file.open("w") as fs:
-        json.dump(repo_output, fs, indent=4)
+        _json.dump(repo_output, fs, indent=4)
     instance_file = data_path / "instance.json"
     with instance_file.open("w") as fs:
-        json.dump({data_manager.instance_name(): data_manager.basic_config}, fs, indent=4)
+        _json.dump({data_manager.instance_name(): data_manager.basic_config}, fs, indent=4)
     for f in data_path.glob("**/*"):
         if not any(ex in str(f) for ex in exclusions) and f.is_file():
             to_backup.append(f)

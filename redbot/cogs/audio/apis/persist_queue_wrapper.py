@@ -1,5 +1,4 @@
 import concurrent
-import json
 import time
 from pathlib import Path
 
@@ -9,7 +8,7 @@ from typing import TYPE_CHECKING, List, Union
 import lavalink
 from red_commons.logging import getLogger
 
-from redbot.core import Config
+from redbot.core import Config, _json
 from redbot.core.bot import Red
 from redbot.core.commands import Cog
 from redbot.core.i18n import Translator
@@ -129,7 +128,7 @@ class QueueInterface:
                     "room_id": int(room_id),
                     "played": False,
                     "time": enqueue_time,
-                    "track": json.dumps(track),
+                    "track": _json.dumps(track),
                     "track_id": track_identifier,
                 },
             )

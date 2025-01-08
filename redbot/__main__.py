@@ -6,7 +6,6 @@ _early_init()
 import asyncio
 import functools
 import getpass
-import json
 import logging
 import os
 import pip
@@ -27,7 +26,7 @@ from redbot import __version__
 from redbot.core.bot import Red, ExitCodes, _NoOwnerSet
 from redbot.core._cli import interactive_config, confirm, parse_cli_flags
 from redbot.setup import get_data_dir, get_name, save_config
-from redbot.core import data_manager, _drivers
+from redbot.core import data_manager, _drivers, _json
 from redbot.core._debuginfo import DebugInfo
 from redbot.core._sharedlibdeprecation import SharedLibImportWarner
 
@@ -43,7 +42,7 @@ log = logging.getLogger("red.main")
 
 def _get_instance_names():
     with data_manager.config_file.open(encoding="utf-8") as fs:
-        data = json.load(fs)
+        data = _json.load(fs)
     return sorted(data.keys())
 
 

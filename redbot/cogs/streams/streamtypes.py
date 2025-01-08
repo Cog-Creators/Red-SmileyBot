@@ -1,6 +1,5 @@
 import asyncio
 import contextlib
-import json
 import logging
 import time
 from dateutil.parser import parse as parse_time
@@ -21,6 +20,7 @@ from .errors import (
     StreamNotFound,
     YoutubeQuotaExceeded,
 )
+from redbot.core import _json
 from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import humanize_number, humanize_timedelta
 
@@ -472,7 +472,7 @@ class PicartoStream(Stream):
             async with session.get(url) as r:
                 data = await r.text(encoding="utf-8")
         if r.status == 200:
-            data = json.loads(data)
+            data = _json.loads(data)
             # Reset the retry count since we successfully got information about this
             # channel's streams
             self.retry_count = 0

@@ -1,5 +1,4 @@
 import inspect
-import json
 import logging
 import os
 import sys
@@ -10,7 +9,7 @@ from typing import Any, Dict
 
 import platformdirs
 
-from . import commands
+from . import commands, _json
 from ._cli import ExitCodes
 
 __all__ = (
@@ -66,7 +65,7 @@ def load_existing_config():
         return {}
 
     with config_file.open(encoding="utf-8") as fs:
-        return json.load(fs)
+        return _json.load(fs)
 
 
 def create_temp_config():
@@ -89,7 +88,7 @@ def create_temp_config():
     config[name] = default_dirs
 
     with config_file.open("w", encoding="utf-8") as fs:
-        json.dump(config, fs, indent=4)
+        _json.dump(config, fs, indent=4)
 
 
 def load_basic_configuration(instance_name_: str):
@@ -112,7 +111,7 @@ def load_basic_configuration(instance_name_: str):
 
     try:
         with config_file.open(encoding="utf-8") as fs:
-            config = json.load(fs)
+            config = _json.load(fs)
     except FileNotFoundError:
         print(
             "You need to configure the bot instance using `redbot-setup`"

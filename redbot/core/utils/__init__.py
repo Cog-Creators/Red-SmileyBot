@@ -1,6 +1,5 @@
 from __future__ import annotations
 import asyncio
-import json
 import logging
 from asyncio import as_completed, Semaphore
 from asyncio.futures import isfuture
@@ -31,7 +30,7 @@ import discord
 from discord.ext import commands as dpy_commands
 from discord.utils import maybe_coroutine
 
-from redbot.core import commands
+from redbot.core import commands, _json
 
 if TYPE_CHECKING:
     GuildMessageable = Union[
@@ -580,7 +579,7 @@ def get_end_user_data_statement(file: Union[Path, str]) -> Optional[str]:
         log.critical("'%s' does not exist.", str(info_json))
     except KeyError:
         log.critical("'%s' is missing an entry for 'end_user_data_statement'", str(info_json))
-    except json.JSONDecodeError as exc:
+    except _json.JSONDecodeError as exc:
         log.critical("'%s' is not a valid JSON file.", str(info_json), exc_info=exc)
     except UnicodeError as exc:
         log.critical("'%s' has a bad encoding.", str(info_json), exc_info=exc)
@@ -636,8 +635,8 @@ def get_end_user_data_statement_or_raise(file: Union[Path, str]) -> str:
         When ``info.json`` does not exist.
     KeyError
         When ``info.json`` does not have the ``end_user_data_statement`` key.
-    json.JSONDecodeError
-        When ``info.json`` can't be decoded with ``json.load()``
+    JSONDecodeError
+        When ``info.json`` can't be decoded with ``.load()``
     UnicodeError
         When ``info.json`` can't be decoded due to bad encoding.
     Exception
@@ -647,7 +646,7 @@ def get_end_user_data_statement_or_raise(file: Union[Path, str]) -> str:
     file = Path(file).parent.absolute()
     info_json = file / "info.json"
     with info_json.open(encoding="utf-8") as fp:
-        return json.load(fp)["end_user_data_statement"]
+        return _json.load(fp)["end_user_data_statement"]
 
 
 @overload

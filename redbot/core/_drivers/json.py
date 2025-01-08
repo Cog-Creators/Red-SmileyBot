@@ -1,5 +1,4 @@
 import asyncio
-import json
 import logging
 import os
 import pickle
@@ -9,7 +8,7 @@ from pathlib import Path
 from typing import Any, AsyncIterator, Dict, Optional, Tuple
 from uuid import uuid4
 
-from .. import data_manager, errors
+from .. import data_manager, errors, _json
 from .base import BaseDriver, IdentifierData, ConfigCategory
 
 __all__ = ["JsonDriver"]
@@ -113,11 +112,11 @@ class JsonDriver(BaseDriver):
 
         try:
             with self.data_path.open("r", encoding="utf-8") as fs:
-                self.data = json.load(fs)
+                self.data = _json.load(fs)
         except FileNotFoundError:
             self.data = {}
             with self.data_path.open("w", encoding="utf-8") as fs:
-                json.dump(self.data, fs)
+                _json.dump(self.data, fs)
 
     def migrate_identifier(self, raw_identifier: int):
         if self.unique_cog_identifier in self.data:
@@ -143,7 +142,7 @@ class JsonDriver(BaseDriver):
         full_identifiers = identifier_data.to_tuple()[1:]
         # This is both our deepcopy() and our way of making sure this value is actually JSON
         # serializable.
-        value_copy = json.loads(json.dumps(value))
+        value_copy = _json.loads(_json.dumps(value))
 
         async with self._lock:
             for i in full_identifiers[:-1]:
@@ -182,8 +181,8 @@ class JsonDriver(BaseDriver):
                 continue
             with fpath.open() as f:
                 try:
-                    data = json.load(f)
-                except json.JSONDecodeError:
+                    data = _json.load(f)
+                except _json.JSONDecodeError:
                     continue
             if not isinstance(data, dict):
                 continue
@@ -245,7 +244,7 @@ def _save_json(path: Path, data: Dict[str, Any]) -> None:
     tmp_file = "{}-{}.tmp".format(filename, uuid4().fields[0])
     tmp_path = path.parent / tmp_file
     with tmp_path.open(encoding="utf-8", mode="w") as fs:
-        json.dump(data, fs)
+        _json.dump(data, fs)
         fs.flush()  # This does get closed on context exit, ...
         os.fsync(fs.fileno())  # but that needs to happen prior to this line
 

@@ -1,5 +1,4 @@
 import asyncio
-import json
 import math
 import os
 import tarfile
@@ -14,7 +13,7 @@ import discord
 import lavalink
 from red_commons.logging import getLogger
 
-from redbot.core import commands
+from redbot.core import commands, _json
 from redbot.core.commands import UserInputOptional
 from redbot.core.data_manager import cog_data_path
 from redbot.core.i18n import Translator
@@ -742,7 +741,7 @@ class PlaylistCommands(MixinMeta, metaclass=CompositeMetaClass):
                 playlist_data["link"] = playlist.url
                 file_name = playlist.id
             playlist_data.update({"schema": schema, "version": version})
-            playlist_data = json.dumps(playlist_data).encode("utf-8")
+            playlist_data = _json.dumps(playlist_data).encode("utf-8")
             to_write = BytesIO()
             to_write.write(playlist_data)
             to_write.seek(0)
@@ -1832,7 +1831,7 @@ class PlaylistCommands(MixinMeta, metaclass=CompositeMetaClass):
             try:
                 async with self.session.request("GET", file_url) as r:
                     uploaded_playlist = await r.json(
-                        content_type="text/plain", encoding="utf-8", loads=json.loads
+                        content_type="text/plain", encoding="utf-8", loads=_json.loads
                     )
             except UnicodeDecodeError:
                 return await self.send_embed_msg(ctx, title=_("Not a valid playlist file."))

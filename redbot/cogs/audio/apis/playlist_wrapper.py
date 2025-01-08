@@ -1,5 +1,4 @@
 import concurrent
-import json
 from pathlib import Path
 
 from types import SimpleNamespace
@@ -7,7 +6,7 @@ from typing import List, MutableMapping, Optional
 
 from red_commons.logging import getLogger
 
-from redbot.core import Config
+from redbot.core import Config, _json
 from redbot.core.bot import Red
 from redbot.core.i18n import Translator
 from redbot.core.utils import AsyncIter
@@ -258,7 +257,7 @@ class PlaylistWrapper:
                     "scope_id": int(scope_id),
                     "author_id": int(author_id),
                     "playlist_url": playlist_url,
-                    "tracks": json.dumps(tracks),
+                    "tracks": _json.dumps(tracks),
                 },
             )
 

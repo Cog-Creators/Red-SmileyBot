@@ -1,6 +1,5 @@
 import asyncio
 import contextlib
-import json
 
 from copy import copy
 from pathlib import Path
@@ -10,7 +9,7 @@ import aiohttp
 from lavalink.rest_api import LoadResult
 from red_commons.logging import getLogger
 
-from redbot.core import Config
+from redbot.core import Config, _json
 from redbot.core.bot import Red
 from redbot.core.commands import Cog
 from redbot.core.i18n import Translator
@@ -74,7 +73,7 @@ class GlobalCacheWrapper:
                     headers={"Authorization": self.api_key, "X-Token": self._handshake_token},
                     params={"query": query},
                 ) as r:
-                    search_response = await r.json(loads=json.loads)
+                    search_response = await r.json(loads=_json.loads)
                     log.trace(
                         "GET || Ping %s || Status code %s || %s",
                         r.headers.get("x-process-time"),
@@ -105,7 +104,7 @@ class GlobalCacheWrapper:
                     headers={"Authorization": self.api_key, "X-Token": self._handshake_token},
                     params=params,
                 ) as r:
-                    search_response = await r.json(loads=json.loads)
+                    search_response = await r.json(loads=_json.loads)
                     log.trace(
                         "GET/spotify || Ping %s || Status code %s || %s - %s",
                         r.headers.get("x-process-time"),
@@ -175,13 +174,13 @@ class GlobalCacheWrapper:
         if (not is_enabled) or self.api_key is None:
             return global_api_user
         with contextlib.suppress(Exception):
-            async with aiohttp.ClientSession(json_serialize=json.dumps) as session:
+            async with aiohttp.ClientSession(json_serialize=_json.dumps) as session:
                 async with session.get(
                     f"{_API_URL}api/v2/users/me",
                     headers={"Authorization": self.api_key, "X-Token": self._handshake_token},
                 ) as resp:
                     if resp.status == 200:
-                        search_response = await resp.json(loads=json.loads)
+                        search_response = await resp.json(loads=_json.loads)
                         global_api_user["fetched"] = True
                         global_api_user["can_read"] = search_response.get("can_read", False)
                         global_api_user["can_post"] = search_response.get("can_post", False)

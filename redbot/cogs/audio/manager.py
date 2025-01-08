@@ -2,7 +2,6 @@ import asyncio
 import asyncio.subprocess  # disables for # https://github.com/PyCQA/pylint/issues/1469
 import contextlib
 import itertools
-import json
 import pathlib
 import platform
 import re
@@ -19,7 +18,7 @@ import yaml
 from discord.backoff import ExponentialBackoff
 from red_commons.logging import getLogger
 
-from redbot.core import data_manager, Config
+from redbot.core import data_manager, Config, _json
 from redbot.core.i18n import Translator
 
 from . import managed_node
@@ -380,7 +379,7 @@ class ServerManager:
 
     async def _download_jar(self) -> None:
         log.info("Downloading Lavalink.jar...")
-        async with aiohttp.ClientSession(json_serialize=json.dumps) as session:
+        async with aiohttp.ClientSession(json_serialize=_json.dumps) as session:
             async with session.get(self.LAVALINK_DOWNLOAD_URL) as response:
                 if response.status == 404:
                     # A 404 means our LAVALINK_DOWNLOAD_URL is invalid, so likely the jar version

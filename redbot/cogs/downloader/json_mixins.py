@@ -1,6 +1,7 @@
-import json
 from pathlib import Path
 from typing import Any, Dict, Tuple
+
+from redbot.core import _json
 
 from .info_schemas import REPO_SCHEMA, update_mixin
 from .log import log
@@ -26,8 +27,8 @@ class RepoJSONMixin:
         if self._info_file.exists():
             try:
                 with self._info_file.open(encoding="utf-8") as f:
-                    info = json.load(f)
-            except json.JSONDecodeError as e:
+                    info = _json.load(f)
+            except _json.JSONDecodeError as e:
                 log.error(
                     "Invalid JSON information file at path: %s\nError: %s", self._info_file, str(e)
                 )

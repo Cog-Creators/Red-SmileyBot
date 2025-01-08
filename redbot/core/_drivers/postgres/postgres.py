@@ -1,5 +1,4 @@
 import getpass
-import json
 import sys
 from pathlib import Path
 from typing import Optional, Any, AsyncIterator, Tuple, Union, Callable, List
@@ -10,7 +9,7 @@ try:
 except ModuleNotFoundError:
     asyncpg = None
 
-from ... import data_manager, errors
+from ... import data_manager, errors, _json
 from ..base import BaseDriver, IdentifierData, ConfigCategory
 from ..log import log
 
@@ -146,14 +145,14 @@ class PostgresDriver(BaseDriver):
             # The result is None both when postgres yields no results, or when it yields a NULL row
             # A 'null' JSON value would be returned as encoded JSON, i.e. the string 'null'
             raise KeyError
-        return json.loads(result)
+        return _json.loads(result)
 
     async def set(self, identifier_data: IdentifierData, value=None):
         try:
             await self._execute(
                 "SELECT red_config.set($1, $2::jsonb)",
                 encode_identifier_data(identifier_data),
-                json.dumps(value),
+                _json.dumps(value),
             )
         except asyncpg.ErrorInAssignmentError:
             raise errors.CannotSetSubfield

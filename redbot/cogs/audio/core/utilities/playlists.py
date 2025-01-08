@@ -1,7 +1,6 @@
 import asyncio
 import contextlib
 import datetime
-import json
 import math
 import random
 import time
@@ -15,7 +14,7 @@ import lavalink
 from lavalink import NodeNotFound
 from red_commons.logging import getLogger
 
-from redbot.core import commands
+from redbot.core import commands, _json
 from redbot.core.i18n import Translator
 from redbot.core.utils import AsyncIter
 from redbot.core.utils.chat_formatting import box
@@ -381,7 +380,7 @@ class PlaylistUtilities(MixinMeta, metaclass=CompositeMetaClass):
             uri = t.get("info", {}).get("uri")
             if uri:
                 t = {"loadType": "V2_COMPAT", "tracks": [t], "query": uri}
-                data = json.dumps(t)
+                data = _json.dumps(t)
                 if all(k in data for k in ["loadType", "playlistInfo", "isSeekable", "isStream"]):
                     database_entries.append(
                         {
@@ -684,7 +683,7 @@ class PlaylistUtilities(MixinMeta, metaclass=CompositeMetaClass):
             return str(ctx) if ctx else _("the User") if the else _("User")
 
     async def _get_bundled_playlist_tracks(self):
-        async with aiohttp.ClientSession(json_serialize=json.dumps) as session:
+        async with aiohttp.ClientSession(json_serialize=_json.dumps) as session:
             async with session.get(
                 CURATED_DATA + f"?timestamp={int(time.time())}",
                 headers={"content-type": "application/json"},
@@ -692,7 +691,7 @@ class PlaylistUtilities(MixinMeta, metaclass=CompositeMetaClass):
                 if response.status != 200:
                     return 0, []
                 try:
-                    data = json.loads(await response.read())
+                    data = _json.loads(await response.read())
                 except Exception as exc:
                     log.error(
                         "Curated playlist couldn't be parsed, report this error.", exc_info=exc
