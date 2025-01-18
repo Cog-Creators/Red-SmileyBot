@@ -1,0 +1,14 @@
+services:
+  red-bot:
+    image: red-bot
+    build:
+      context: .
+      dockerfile: Dockerfile.release
+      tags:
+        - red-bot
+    env_file: .env
+    volumes:
+      - data:/home/red/data
+
+volumes:
+  data:
