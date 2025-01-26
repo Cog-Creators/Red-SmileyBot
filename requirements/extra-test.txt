@@ -1,35 +1,31 @@
-astroid==2.15.4
+astroid==3.2.4
     # via pylint
-dill==0.3.6
+dill==0.3.9
     # via pylint
-exceptiongroup==1.1.1
-    # via pytest
 iniconfig==2.0.0
     # via pytest
-isort==5.12.0
+isort==5.13.2
     # via pylint
-lazy-object-proxy==1.9.0
-    # via astroid
 mccabe==0.7.0
     # via pylint
-pluggy==1.0.0
+pluggy==1.5.0
     # via pytest
-pylint==2.17.3
+pylint==3.2.7
     # via -r extra-test.in
-pytest==7.3.1
+pytest==7.4.4
     # via
     #   -r extra-test.in
     #   pytest-asyncio
     #   pytest-mock
-pytest-asyncio==0.21.0
+pytest-asyncio==0.21.2
     # via -r extra-test.in
-pytest-mock==3.10.0
+pytest-mock==3.14.0
     # via -r extra-test.in
-tomli==2.0.1
+tomlkit==0.13.2
+    # via pylint
+exceptiongroup==1.2.2; python_version != "3.11"
+    # via pytest
+tomli==2.2.1; python_version != "3.11"
     # via
     #   pylint
     #   pytest
-tomlkit==0.11.8
-    # via pylint
-wrapt==1.15.0
-    # via astroid

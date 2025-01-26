@@ -24,6 +24,8 @@
       - "!redbot/cogs/audio/**/locales/*"
   # Docs
   - docs/cog_guides/audio.rst
+  # Tests
+  - tests/cogs/audio/**/*
 "Category: Cogs - Bank": []  # historical label for a removed cog
 "Category: Cogs - Cleanup":
   # Source
@@ -139,6 +141,8 @@
 "Category: Core - API - App Commands Package":
   # Source
   - redbot/core/app_commands/*
+  # Docs
+  - docs/framework_app_commands.rst
   # Tests
   - tests/core/test_app_commands.py
 "Category: Core - API - Commands Package":

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-05-04 00:53+0000\n"
+"POT-Creation-Date: 2024-12-24 02:23+0000\n"
 "Last-Translator: \n"
 "Language-Team: Hungarian\n"
 "MIME-Version: 1.0\n"
@@ -15,47 +15,51 @@ msgstr ""
 "X-Crowdin-File-ID: 188\n"
 "Language: hu_HU\n"
 
-#: redbot/core/commands/converter.py:84
+#: redbot/core/commands/converter.py:90
 msgid "`{unit}` is not a valid unit of time for this command"
 msgstr "Az `{unit}` nem érvényes időegység e parancshoz"
 
-#: redbot/core/commands/converter.py:140 redbot/core/commands/converter.py:202
+#: redbot/core/commands/converter.py:151 redbot/core/commands/converter.py:219
 msgid "The time set is way too high, consider setting something reasonable."
 msgstr "Az idő nagyon magasra van állítva, fontold meg egy ésszerű érték megadását."
 
-#: redbot/core/commands/converter.py:144
+#: redbot/core/commands/converter.py:155
 msgid "This amount of time is too large for this command. (Maximum: {maximum})"
 msgstr "Ez az időegység túl nagy e parancshoz. (Maximum: {maximum})"
 
-#: redbot/core/commands/converter.py:150
+#: redbot/core/commands/converter.py:159 redbot/core/commands/converter.py:168
+msgid "0 seconds"
+msgstr ""
+
+#: redbot/core/commands/converter.py:164
 msgid "This amount of time is too small for this command. (Minimum: {minimum})"
 msgstr "Ez az időegység túl kicsi e parancshoz. (Minimum: {minimum})"
 
-#: redbot/core/commands/converter.py:231
+#: redbot/core/commands/converter.py:256
 msgid "'{input}' doesn't look like a valid user ID."
 msgstr ""
 
-#: redbot/core/commands/converter.py:254
+#: redbot/core/commands/converter.py:279
 msgid "`{arg}` is not a number."
 msgstr ""
 
-#: redbot/core/commands/converter.py:256
+#: redbot/core/commands/converter.py:281
 msgid "`{arg}` is not a finite number."
 msgstr ""
 
-#: redbot/core/commands/converter.py:279
+#: redbot/core/commands/converter.py:304
 msgid "Missing a key or value."
 msgstr ""
 
-#: redbot/core/commands/converter.py:285
+#: redbot/core/commands/converter.py:310
 msgid "Unexpected key `{key}`."
 msgstr ""
 
-#: redbot/core/commands/converter.py:510
+#: redbot/core/commands/converter.py:544
 msgid "Command \"{arg}\" not found."
 msgstr ""
 
-#: redbot/core/commands/converter.py:520
+#: redbot/core/commands/converter.py:554
 msgid "Cog \"{arg}\" not found."
 msgstr ""
 
@@ -110,73 +114,73 @@ msgstr ""
 msgid "Type {command1} for more info on a command. You can also type {command2} for more info on a category."
 msgstr ""
 
-#: redbot/core/commands/help.py:349
-msgid "Syntax: {command_signature}"
-msgstr "Használat: {command_signature}"
+#: redbot/core/commands/help.py:358
+msgid "Syntax:\n"
+msgstr ""
 
-#: redbot/core/commands/help.py:355
+#: redbot/core/commands/help.py:360
 msgid "Aliases"
 msgstr "Aliaszok"
 
-#: redbot/core/commands/help.py:355
+#: redbot/core/commands/help.py:360
 msgid "Alias"
 msgstr "Aliasz"
 
-#: redbot/core/commands/help.py:376
+#: redbot/core/commands/help.py:381
 msgid "{aliases} and {number} more aliases."
 msgstr "{aliases} és még {number} aliasz."
 
-#: redbot/core/commands/help.py:380
+#: redbot/core/commands/help.py:385
 msgid "{aliases} and one more alias."
 msgstr "{aliases} és még egy aliasz."
 
-#: redbot/core/commands/help.py:422 redbot/core/commands/help.py:424
-#: redbot/core/commands/help.py:436
+#: redbot/core/commands/help.py:432 redbot/core/commands/help.py:434
+#: redbot/core/commands/help.py:446
 msgid "Subcommands:"
 msgstr "Alparancsok:"
 
-#: redbot/core/commands/help.py:424 redbot/core/commands/help.py:597
+#: redbot/core/commands/help.py:434 redbot/core/commands/help.py:612
 msgid " (continued)"
 msgstr ""
 
-#: redbot/core/commands/help.py:498 redbot/core/commands/help.py:753
-#: redbot/core/commands/help.py:766 redbot/core/commands/help.py:785
+#: redbot/core/commands/help.py:508 redbot/core/commands/help.py:768
+#: redbot/core/commands/help.py:783 redbot/core/commands/help.py:804
 msgid "{ctx.me.display_name} Help Menu"
 msgstr "{ctx.me.display_name} Súgó Menü"
 
-#: redbot/core/commands/help.py:545
+#: redbot/core/commands/help.py:555
 msgid "*Page {page_num} of {page_count}*\n"
 "{content_description}"
 msgstr "*{page_num}/{page_count}. oldal*\n"
 "{content_description}"
 
-#: redbot/core/commands/help.py:595 redbot/core/commands/help.py:597
-#: redbot/core/commands/help.py:609
+#: redbot/core/commands/help.py:610 redbot/core/commands/help.py:612
+#: redbot/core/commands/help.py:624
 msgid "Commands:"
 msgstr "Parancsok:"
 
-#: redbot/core/commands/help.py:648 redbot/core/commands/help.py:677
-#: redbot/core/commands/help.py:690
+#: redbot/core/commands/help.py:663 redbot/core/commands/help.py:692
+#: redbot/core/commands/help.py:705
 msgid "No Category:"
 msgstr "Nincs kategória:"
 
-#: redbot/core/commands/help.py:661
+#: redbot/core/commands/help.py:676
 msgid "{title} (continued)"
 msgstr "{title} (folytatva)"
 
-#: redbot/core/commands/help.py:762
+#: redbot/core/commands/help.py:779
 msgid "Help topic for {command_name} not found."
 msgstr ""
 
-#: redbot/core/commands/help.py:779
+#: redbot/core/commands/help.py:798
 msgid "Command {command_name} has no subcommand named {not_found}."
 msgstr ""
 
-#: redbot/core/commands/help.py:873
+#: redbot/core/commands/help.py:903
 msgid "I couldn't send the help message to you in DM. Either you blocked me or you disabled DMs in this server."
 msgstr "Nem tudtam elküldeni a súgóüzenetet privát üzenetben. Letiltottál vagy kikapcsoltad a közvetlen üzeneteket ennek a szervernek a tagjaitól."
 
-#: redbot/core/commands/help.py:909
+#: redbot/core/commands/help.py:939
 #, docstring
 msgid "\n"
 "    I need somebody\n"

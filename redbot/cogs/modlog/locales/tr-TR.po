@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-04-13 18:17+0000\n"
+"POT-Creation-Date: 2024-03-05 19:45+0000\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -17,8 +17,8 @@ msgstr ""
 
 #: redbot/cogs/modlog/modlog.py:19
 #, docstring
-msgid "Browse and manage modlog cases."
-msgstr "Modlog vakalarına göz atın ve yönetin."
+msgid "Browse and manage modlog cases. To manage modlog settings, use `[p]modlogset`."
+msgstr ""
 
 #: redbot/cogs/modlog/modlog.py:32
 #, docstring

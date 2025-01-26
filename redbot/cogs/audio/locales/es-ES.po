@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2022-03-22 17:37+0000\n"
+"POT-Creation-Date: 2023-06-14 02:57+0000\n"
 "Last-Translator: \n"
 "Language-Team: Spanish\n"
 "MIME-Version: 1.0\n"
@@ -54,35 +54,35 @@ msgstr "\n"
 msgid "\"{arg}\" was not found. It must be the ID or complete name of a server which the bot can see."
 msgstr "\"{arg}\" no se ha encontrado. Debe ser el ID o el nombre completo de un servidor que el bot pueda ver."
 
-#: redbot/cogs/audio/converters.py:96 redbot/cogs/audio/converters.py:136
+#: redbot/cogs/audio/converters.py:96 redbot/cogs/audio/converters.py:138
 msgid "\"{arg}\" does not refer to a unique server. Please use the ID for the server you're trying to specify."
 msgstr "\"{arg}\" no se refiere a un servidor único. Por favor, utilice el ID del servidor que está intentando especificar."
 
-#: redbot/cogs/audio/converters.py:127
+#: redbot/cogs/audio/converters.py:129
 msgid "\"{arg}\" was not found. It must be the ID or name or mention a user which the bot can see."
 msgstr "\"{arg}\" no se ha encontrado. Debe ser el ID o nombre o mencionar a un usuario que el bot pueda ver."
 
-#: redbot/cogs/audio/converters.py:176
+#: redbot/cogs/audio/converters.py:178
 msgid "Could not match '{}' to a playlist."
 msgstr "No se pudo emparejar '{}' a una lista de reproducción."
 
-#: redbot/cogs/audio/converters.py:240 redbot/cogs/audio/converters.py:262
-#: redbot/cogs/audio/converters.py:282 redbot/cogs/audio/converters.py:366
-#: redbot/cogs/audio/converters.py:378 redbot/cogs/audio/converters.py:403
-#: redbot/cogs/audio/converters.py:429 redbot/cogs/audio/converters.py:451
-#: redbot/cogs/audio/converters.py:478
+#: redbot/cogs/audio/converters.py:242 redbot/cogs/audio/converters.py:264
+#: redbot/cogs/audio/converters.py:284 redbot/cogs/audio/converters.py:368
+#: redbot/cogs/audio/converters.py:380 redbot/cogs/audio/converters.py:405
+#: redbot/cogs/audio/converters.py:431 redbot/cogs/audio/converters.py:453
+#: redbot/cogs/audio/converters.py:480
 msgid "Nothing"
 msgstr "Nada"
 
-#: redbot/cogs/audio/converters.py:260
+#: redbot/cogs/audio/converters.py:262
 msgid "You cannot use `--guild`"
 msgstr "No puedes usar `--guild`"
 
-#: redbot/cogs/audio/converters.py:400
+#: redbot/cogs/audio/converters.py:402
 msgid "You cannot use `--to-server`"
 msgstr "No puedes usar `--to-server`"
 
-#: redbot/cogs/audio/converters.py:426
+#: redbot/cogs/audio/converters.py:428
 msgid "You cannot use `--from-server`"
 msgstr "No puedes usar `--from-server`"
 

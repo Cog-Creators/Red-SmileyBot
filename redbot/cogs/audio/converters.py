@@ -113,7 +113,9 @@ async def global_unique_user_finder(
             return user
 
     maybe_matches = []
-    async for user in AsyncIter(bot.users).filter(lambda u: u.name == arg or f"{u}" == arg):
+    async for user in AsyncIter(bot.users).filter(
+        lambda u: u.name == arg or u.global_name == arg or f"{u}" == arg
+    ):
         maybe_matches.append(user)
 
     if guild is not None:

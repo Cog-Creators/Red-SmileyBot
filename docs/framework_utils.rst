@@ -84,6 +84,65 @@ Utility UI
 
 .. automodule:: redbot.core.utils.views
     :members:
+    :exclude-members: ConfirmView
+
+    .. autoclass:: ConfirmView
+        :members:
+        :exclude-members: confirm_button, dismiss_button
+
+        .. autoattribute:: confirm_button
+            :no-value:
+
+            A `discord.ui.Button` to confirm the message.
+
+            The button's callback will set `result` to ``True``, defer the response,
+            and call `on_timeout()` to clean up the view.
+
+            .. rubric:: Example
+
+            Changing the style and label of this `discord.ui.Button`::
+
+                view = ConfirmView(ctx.author)
+                view.confirm_button.style = discord.ButtonStyle.red
+                view.confirm_button.label = "Delete"
+                view.dismiss_button.label = "Cancel"
+                view.message = await ctx.send(
+                    "Are you sure you want to remove #very-important-channel?", view=view
+                )
+                await view.wait()
+                if view.result:
+                    await ctx.send("Channel #very-important-channel deleted.")
+                else:
+                    await ctx.send("Canceled.")
+
+            :type: discord.ui.Button
+
+        .. autoattribute:: dismiss_button
+            :no-value:
+
+            A `discord.ui.Button` to dismiss the message.
+
+            The button's callback will set `result` to ``False``, defer the response,
+            and call `on_timeout()` to clean up the view.
+
+            .. rubric:: Example
+
+            Changing the style and label of this `discord.ui.Button`::
+
+                view = ConfirmView(ctx.author)
+                view.confirm_button.style = discord.ButtonStyle.red
+                view.confirm_button.label = "Delete"
+                view.dismiss_button.label = "Cancel"
+                view.message = await ctx.send(
+                    "Are you sure you want to remove #very-important-channel?", view=view
+                )
+                await view.wait()
+                if view.result:
+                    await ctx.send("Channel #very-important-channel deleted.")
+                else:
+                    await ctx.send("Canceled.")
+
+            :type: discord.ui.Button
 
 AntiSpam
 ========

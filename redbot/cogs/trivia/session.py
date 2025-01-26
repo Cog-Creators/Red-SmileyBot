@@ -8,6 +8,7 @@ from redbot.core import bank, errors
 from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import box, bold, humanize_list, humanize_number
 from redbot.core.utils.common_filters import normalize_smartquotes
+from .converters import MAX_VALUE
 from .log import LOG
 
 __all__ = ["TriviaSession"]
@@ -279,10 +280,10 @@ class TriviaSession:
 
     async def send_table(self):
         """Send a table of scores to the session's channel."""
-        table = "+ Results: \n\n"
+        table = "Results:\n\n"
         for user, score in self.scores.most_common():
             table += "+ {}\t{}\n".format(user, score)
-        await self.ctx.send(box(table, lang="diff"))
+        await self.ctx.send(box(table, lang="markdown"))
 
     def stop(self):
         """Stop the trivia session, without showing scores."""
@@ -320,10 +321,11 @@ class TriviaSession:
         if not winners or num_humans < 3:
             return
         payout = int(top_score * multiplier / len(winners))
+        payout = MAX_VALUE if payout > MAX_VALUE else payout
         if payout <= 0:
             return
         for winner in winners:
-            LOG.debug("Paying trivia winner: %d credits --> %s", payout, winner.name)
+            LOG.debug("Paying trivia winner: %d credits --> %s", payout, winner)
             try:
                 await bank.deposit_credits(winner, payout)
             except errors.BalanceTooHigh as e:

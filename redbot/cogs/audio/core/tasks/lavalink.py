@@ -56,7 +56,9 @@ class LavalinkTasks(MixinMeta, metaclass=CompositeMetaClass):
                 password = configs["yaml"]["lavalink"]["server"]["password"]
                 secured = False
                 # Make this timeout customizable for lower powered machines?
-                self.managed_node_controller = ServerManager(self.config, timeout=60, cog=self)
+                self.managed_node_controller = ServerManager(
+                    self.config, timeout=60, download_timeout=60 * 3, cog=self
+                )
                 try:
                     await self.managed_node_controller.start(java_exec)
                     # timeout is the same as ServerManager.timeout -
@@ -108,7 +110,7 @@ class LavalinkTasks(MixinMeta, metaclass=CompositeMetaClass):
                     password=password,
                     port=port,
                     timeout=timeout,
-                    resume_key=f"Red-Core-Audio-{self.bot.user.id}-{data_manager.instance_name}",
+                    resume_key=f"Red-Core-Audio-{self.bot.user.id}-{data_manager.instance_name()}",
                     secured=secured,
                 )
             except lavalink.AbortingNodeConnection:

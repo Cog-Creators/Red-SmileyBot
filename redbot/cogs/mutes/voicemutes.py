@@ -99,36 +99,38 @@ class VoiceMutes(MixinMeta):
                 if not can_move:
                     issue_list.append((user, perm_reason))
                     continue
-                duration = time_and_reason.get("duration", None)
+                until = time_and_reason.get("until", None)
                 reason = time_and_reason.get("reason", None)
                 time = ""
-                until = None
-                if duration:
-                    until = datetime.now(timezone.utc) + duration
-                    time = _(" for {duration}").format(
-                        duration=humanize_timedelta(timedelta=duration)
+                duration = None
+                if until:
+                    duration = time_and_reason.get("duration")
+                    length = humanize_timedelta(timedelta=duration)
+                    time = _(" for {length} until {duration}").format(
+                        length=length, duration=discord.utils.format_dt(until)
                     )
+
                 else:
                     default_duration = await self.config.guild(ctx.guild).default_time()
                     if default_duration:
-                        until = datetime.now(timezone.utc) + timedelta(seconds=default_duration)
-                        time = _(" for {duration}").format(
-                            duration=humanize_timedelta(
-                                timedelta=timedelta(seconds=default_duration)
-                            )
+                        duration = timedelta(seconds=default_duration)
+                        until = ctx.message.created_at + duration
+                        length = humanize_timedelta(seconds=default_duration)
+                        time = _(" for {length} until {duration}").format(
+                            length=length, duration=discord.utils.format_dt(until)
                         )
                 guild = ctx.guild
                 author = ctx.author
                 channel = user_voice_state.channel
                 audit_reason = get_audit_reason(author, reason, shorten=True)
 
-                success = await self.channel_mute_user(
+                result = await self.channel_mute_user(
                     guild, channel, author, user, until, audit_reason, voice_mute=True
                 )
 
-                if success["success"]:
-                    if "reason" in success and success["reason"]:
-                        issue_list.append((user, success["reason"]))
+                if result.success:
+                    if result.reason:
+                        issue_list.append((user, result.reason))
                     else:
                         success_list.append(user)
                     await modlog.create_case(
@@ -146,9 +148,9 @@ class VoiceMutes(MixinMeta):
                         user, author, guild, _("Voice mute"), reason, duration
                     )
                     async with self.config.member(user).perms_cache() as cache:
-                        cache[channel.id] = success["old_overs"]
+                        cache[channel.id] = result.old_overs
                 else:
-                    issue_list.append((user, success["reason"]))
+                    issue_list.append((user, result.reason))
 
         if success_list:
             msg = _("{users} has been muted in this channel{time}.")
@@ -198,13 +200,13 @@ class VoiceMutes(MixinMeta):
                 channel = user_voice_state.channel
                 audit_reason = get_audit_reason(author, reason, shorten=True)
 
-                success = await self.channel_unmute_user(
+                result = await self.channel_unmute_user(
                     guild, channel, author, user, audit_reason, voice_mute=True
                 )
 
-                if success["success"]:
-                    if "reason" in success and success["reason"]:
-                        issue_list.append((user, success["reason"]))
+                if result.success:
+                    if result.reason:
+                        issue_list.append((user, result.reason))
                     else:
                         success_list.append(user)
                     await modlog.create_case(
@@ -222,7 +224,7 @@ class VoiceMutes(MixinMeta):
                         user, author, guild, _("Voice unmute"), reason
                     )
                 else:
-                    issue_list.append((user, success["reason"]))
+                    issue_list.append((user, result.reason))
         if success_list:
             if channel.id in self._channel_mutes and self._channel_mutes[channel.id]:
                 await self.config.channel(channel).muted_users.set(self._channel_mutes[channel.id])

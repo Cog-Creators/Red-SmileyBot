@@ -1,11 +1,12 @@
 import sys
 import textwrap
+from typing import Any, Dict, Optional
 from unittest.mock import MagicMock
 
 import pytest
 
 from redbot.core import commands
-from redbot.core.dev_commands import DevOutput, cleanup_code
+from redbot.core.dev_commands import DevOutput, SourceCache, cleanup_code
 
 
 # the examples are based on how the markdown ends up being rendered by Discord
@@ -134,12 +135,20 @@ def test_cleanup_code(content: str, source: str) -> None:
     assert cleanup_code(content) == source
 
 
-def _get_dev_output(source: str) -> DevOutput:
+def _get_dev_output(
+    source: str,
+    *,
+    source_cache: Optional[SourceCache] = None,
+    env: Optional[Dict[str, Any]] = None,
+) -> DevOutput:
+    if source_cache is None:
+        source_cache = SourceCache()
     return DevOutput(
         MagicMock(spec=commands.Context),
+        source_cache=source_cache,
+        filename=f"<test run - snippet #{source_cache.take_next_index()}>",
         source=source,
-        filename="<test run>",
-        env={"__builtins__": __builtins__, "__name__": "__main__", "_": None},
+        env={"__builtins__": __builtins__, "__name__": "__main__", "_": None, **(env or {})},
     )
 
 
@@ -184,7 +193,7 @@ EXPRESSION_TESTS = {
         (
             lambda v: v < (3, 10),
             """\
-              File "<test run>", line 1
+              File "<test run - snippet #0>", line 1
                 12x
                   ^
             SyntaxError: invalid syntax
@@ -193,7 +202,7 @@ EXPRESSION_TESTS = {
         (
             lambda v: v >= (3, 10),
             """\
-              File "<test run>", line 1
+              File "<test run - snippet #0>", line 1
                 12x
                  ^
             SyntaxError: invalid decimal literal
@@ -204,7 +213,7 @@ EXPRESSION_TESTS = {
         (
             lambda v: v < (3, 10),
             """\
-              File "<test run>", line 1
+              File "<test run - snippet #0>", line 1
                 foo(x, z for z in range(10), t, w)
                        ^
             SyntaxError: Generator expression must be parenthesized
@@ -213,7 +222,7 @@ EXPRESSION_TESTS = {
         (
             lambda v: v >= (3, 10),
             """\
-              File "<test run>", line 1
+              File "<test run - snippet #0>", line 1
                 foo(x, z for z in range(10), t, w)
                        ^^^^^^^^^^^^^^^^^^^^
             SyntaxError: Generator expression must be parenthesized
@@ -226,7 +235,7 @@ EXPRESSION_TESTS = {
             lambda v: v < (3, 11),
             """\
             Traceback (most recent call last):
-              File "<test run>", line 1, in <module>
+              File "<test run - snippet #0>", line 1, in <module>
                 abs(1 / 0)
             ZeroDivisionError: division by zero
             """,
@@ -235,7 +244,7 @@ EXPRESSION_TESTS = {
             lambda v: v >= (3, 11),
             """\
             Traceback (most recent call last):
-              File "<test run>", line 1, in <module>
+              File "<test run - snippet #0>", line 1, in <module>
                 abs(1 / 0)
                     ~~^~~
             ZeroDivisionError: division by zero
@@ -252,7 +261,7 @@ STATEMENT_TESTS = {
         (
             lambda v: v < (3, 10),
             """\
-              File "<test run>", line 2
+              File "<test run - snippet #0>", line 2
                 12x
                   ^
             SyntaxError: invalid syntax
@@ -261,7 +270,7 @@ STATEMENT_TESTS = {
         (
             lambda v: v >= (3, 10),
             """\
-              File "<test run>", line 2
+              File "<test run - snippet #0>", line 2
                 12x
                  ^
             SyntaxError: invalid decimal literal
@@ -275,7 +284,7 @@ STATEMENT_TESTS = {
         (
             lambda v: v < (3, 10),
             """\
-              File "<test run>", line 2
+              File "<test run - snippet #0>", line 2
                 foo(x, z for z in range(10), t, w)
                        ^
             SyntaxError: Generator expression must be parenthesized
@@ -284,7 +293,7 @@ STATEMENT_TESTS = {
         (
             lambda v: v >= (3, 10),
             """\
-              File "<test run>", line 2
+              File "<test run - snippet #0>", line 2
                 foo(x, z for z in range(10), t, w)
                        ^^^^^^^^^^^^^^^^^^^^
             SyntaxError: Generator expression must be parenthesized
@@ -304,7 +313,7 @@ STATEMENT_TESTS = {
             """\
             123
             Traceback (most recent call last):
-              File "<test run>", line 3, in <module>
+              File "<test run - snippet #0>", line 3, in <module>
                 abs(1 / 0)
             ZeroDivisionError: division by zero
             """,
@@ -314,10 +323,136 @@ STATEMENT_TESTS = {
             """\
             123
             Traceback (most recent call last):
-              File "<test run>", line 3, in <module>
+              File "<test run - snippet #0>", line 3, in <module>
                 abs(1 / 0)
                     ~~^~~
             ZeroDivisionError: division by zero
+            """,
+        ),
+    ),
+    # exception chaining
+    """\
+    try:
+        1 / 0
+    except ZeroDivisionError as exc:
+        try:
+            raise RuntimeError("direct cause") from exc
+        except RuntimeError:
+            raise ValueError("indirect cause")
+    """: (
+        (
+            lambda v: v < (3, 11),
+            """\
+            Traceback (most recent call last):
+              File "<test run - snippet #0>", line 2, in <module>
+                1 / 0
+            ZeroDivisionError: division by zero
+
+            The above exception was the direct cause of the following exception:
+
+            Traceback (most recent call last):
+              File "<test run - snippet #0>", line 5, in <module>
+                raise RuntimeError("direct cause") from exc
+            RuntimeError: direct cause
+
+            During handling of the above exception, another exception occurred:
+
+            Traceback (most recent call last):
+              File "<test run - snippet #0>", line 7, in <module>
+                raise ValueError("indirect cause")
+            ValueError: indirect cause
+            """,
+        ),
+        (
+            lambda v: v >= (3, 11),
+            """\
+            Traceback (most recent call last):
+              File "<test run - snippet #0>", line 2, in <module>
+                1 / 0
+                ~~^~~
+            ZeroDivisionError: division by zero
+
+            The above exception was the direct cause of the following exception:
+
+            Traceback (most recent call last):
+              File "<test run - snippet #0>", line 5, in <module>
+                raise RuntimeError("direct cause") from exc
+            RuntimeError: direct cause
+
+            During handling of the above exception, another exception occurred:
+
+            Traceback (most recent call last):
+              File "<test run - snippet #0>", line 7, in <module>
+                raise ValueError("indirect cause")
+            ValueError: indirect cause
+            """,
+        ),
+    ),
+    # exception groups
+    """\
+    def f(v):
+        try:
+            1 / 0
+        except ZeroDivisionError:
+            try:
+                raise ValueError(v)
+            except ValueError as e:
+                return e
+    try:
+        raise ExceptionGroup("one", [f(1)])
+    except ExceptionGroup as e:
+        eg = e
+    try:
+        raise ExceptionGroup("two", [f(2), eg])
+    except ExceptionGroup as e:
+        raise RuntimeError("wrapping") from e
+    """: (
+        (
+            lambda v: v >= (3, 11),
+            """\
+              + Exception Group Traceback (most recent call last):
+              |   File "<test run - snippet #0>", line 14, in <module>
+              |     raise ExceptionGroup("two", [f(2), eg])
+              | ExceptionGroup: two (2 sub-exceptions)
+              +-+---------------- 1 ----------------
+                | Traceback (most recent call last):
+                |   File "<test run - snippet #0>", line 3, in f
+                |     1 / 0
+                |     ~~^~~
+                | ZeroDivisionError: division by zero
+                | 
+                | During handling of the above exception, another exception occurred:
+                | 
+                | Traceback (most recent call last):
+                |   File "<test run - snippet #0>", line 6, in f
+                |     raise ValueError(v)
+                | ValueError: 2
+                +---------------- 2 ----------------
+                | Exception Group Traceback (most recent call last):
+                |   File "<test run - snippet #0>", line 10, in <module>
+                |     raise ExceptionGroup("one", [f(1)])
+                | ExceptionGroup: one (1 sub-exception)
+                +-+---------------- 1 ----------------
+                  | Traceback (most recent call last):
+                  |   File "<test run - snippet #0>", line 3, in f
+                  |     1 / 0
+                  |     ~~^~~
+                  | ZeroDivisionError: division by zero
+                  | 
+                  | During handling of the above exception, another exception occurred:
+                  | 
+                  | Traceback (most recent call last):
+                  |   File "<test run - snippet #0>", line 6, in f
+                  |     raise ValueError(v)
+                  | ValueError: 1
+                  +------------------------------------
+
+            The above exception was the direct cause of the following exception:
+
+            Traceback (most recent call last):
+              File "<test run - snippet #0>", line 16, in <module>
+                raise RuntimeError("wrapping") from e
+            RuntimeError: wrapping
             """,
         ),
     ),
@@ -389,3 +524,37 @@ async def test_successful_run_repl_exec(monkeypatch: pytest.MonkeyPatch) -> None
     world
     """
     await _run_dev_output(monkeypatch, source, result, repl=True)
+
+
+async def test_regression_format_exception_from_previous_snippet(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    snippet_0 = textwrap.dedent(
+        """\
+    def repro():
+        raise Exception("this is an error!")
+
+    return repro
+    """
+    )
+    snippet_1 = "_()"
+    result = textwrap.dedent(
+        """\
+    Traceback (most recent call last):
+      File "<test run - snippet #1>", line 1, in func
+        _()
+      File "<test run - snippet #0>", line 2, in repro
+        raise Exception("this is an error!")
+    Exception: this is an error!
+    """
+    )
+    monkeypatch.setattr("redbot.core.dev_commands.sanitize_output", lambda ctx, s: s)
+
+    source_cache = SourceCache()
+    output = _get_dev_output(snippet_0, source_cache=source_cache)
+    await output.run_eval()
+    output = _get_dev_output(snippet_1, source_cache=source_cache, env={"_": output.result})
+    await output.run_eval()
+    assert str(output) == result
+    # ensure that our Context mock is never actually used by anything
+    assert not output.ctx.mock_calls

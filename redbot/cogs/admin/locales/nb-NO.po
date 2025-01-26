@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-05-02 23:06+0000\n"
+"POT-Creation-Date: 2023-06-14 02:57+0000\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian Bokmal\n"
 "MIME-Version: 1.0\n"
@@ -125,11 +125,15 @@ msgstr "\n"
 "` [p] redigeringsrollefarge Test # ff9900` \n"
 "        "
 
-#: redbot/cogs/admin/admin.py:292 redbot/cogs/admin/admin.py:325
+#: redbot/cogs/admin/admin.py:275
+msgid "{author} ({author.id}) changed the colour of role '{role.name}'"
+msgstr "{author} ({author.id}) endret fargen på rollen '{role.name}'"
+
+#: redbot/cogs/admin/admin.py:294 redbot/cogs/admin/admin.py:327
 msgid "Done."
 msgstr "Ferdig."
 
-#: redbot/cogs/admin/admin.py:296
+#: redbot/cogs/admin/admin.py:298
 #, docstring
 msgid "\n"
 "        Edit a role's name.\n\n"
@@ -146,48 +150,52 @@ msgstr "\n"
 " `[p] editrole name \" Transistor \\ \"Test` \n"
 "        "
 
-#: redbot/cogs/admin/admin.py:330
+#: redbot/cogs/admin/admin.py:308
+msgid "{author} ({author.id}) changed the name of role '{old_name}' to '{name}'"
+msgstr "{author} ({author.id}) endret navnet på rollen '{old_name}' til '{name}'"
+
+#: redbot/cogs/admin/admin.py:332
 #, docstring
 msgid "Announce a message to all servers the bot is in."
 msgstr "Gi en melding til alle servere boten er i."
 
-#: redbot/cogs/admin/admin.py:337
+#: redbot/cogs/admin/admin.py:339
 msgid "The announcement has begun."
 msgstr "Kunngjøringen har begynt."
 
-#: redbot/cogs/admin/admin.py:344
+#: redbot/cogs/admin/admin.py:346
 #, docstring
 msgid "Cancel a running announce."
 msgstr "Avbryt en løpende kunngjøring."
 
-#: redbot/cogs/admin/admin.py:346
+#: redbot/cogs/admin/admin.py:348
 msgid "There is no currently running announcement."
 msgstr "Det er for øyeblikket ingen kunngjøring."
 
-#: redbot/cogs/admin/admin.py:349
+#: redbot/cogs/admin/admin.py:351
 msgid "The current announcement has been cancelled."
 msgstr "Den nåværende kunngjøringen er kansellert."
 
-#: redbot/cogs/admin/admin.py:355
+#: redbot/cogs/admin/admin.py:357
 #, docstring
 msgid "Change how announcements are sent in this guild."
 msgstr "Endre hvordan kunngjøringer sendes i denne serveren."
 
-#: redbot/cogs/admin/admin.py:365
+#: redbot/cogs/admin/admin.py:367
 #, docstring
 msgid "Change the channel where the bot will send announcements."
 msgstr "Endre kanalen boten vil sende kunngjøringer."
 
-#: redbot/cogs/admin/admin.py:368
+#: redbot/cogs/admin/admin.py:370
 msgid "The announcement channel has been set to {channel.mention}"
 msgstr "Kunngjøringskanalen er satt til {channel.mention}"
 
-#: redbot/cogs/admin/admin.py:373
+#: redbot/cogs/admin/admin.py:375
 #, docstring
 msgid "Unsets the channel for announcements."
 msgstr "Opphever kanalen for kunngjøringer."
 
-#: redbot/cogs/admin/admin.py:398
+#: redbot/cogs/admin/admin.py:400
 #, docstring
 msgid "\n"
 "        Add or remove a selfrole from yourself.\n\n"
@@ -200,7 +208,7 @@ msgstr "\n"
 "        MERK: Rollen skiller mellom små og store bokstaver!\n"
 "        "
 
-#: redbot/cogs/admin/admin.py:411
+#: redbot/cogs/admin/admin.py:413
 #, docstring
 msgid "\n"
 "        Add a selfrole to yourself.\n\n"
@@ -213,7 +221,7 @@ msgstr "\n"
 "MERK: Rollen er små og små bokstaver!\n"
 "        "
 
-#: redbot/cogs/admin/admin.py:422
+#: redbot/cogs/admin/admin.py:424
 #, docstring
 msgid "\n"
 "        Remove a selfrole from yourself.\n\n"
@@ -226,7 +234,7 @@ msgstr "\n"
 " MERKNAD: Rollen er store og små bokstaver!\n"
 "        "
 
-#: redbot/cogs/admin/admin.py:433
+#: redbot/cogs/admin/admin.py:435
 #, docstring
 msgid "\n"
 "        Lists all available selfroles.\n"
@@ -235,18 +243,18 @@ msgstr "\n"
 "Viser alle tilgjengelige selvroller.\n"
 "        "
 
-#: redbot/cogs/admin/admin.py:443
+#: redbot/cogs/admin/admin.py:445
 msgid "Available Selfroles:\n"
 "{selfroles}"
 msgstr "Tilgjengelige selvroller:\n"
 " {selfroles}"
 
-#: redbot/cogs/admin/admin.py:449
+#: redbot/cogs/admin/admin.py:451
 #, docstring
 msgid "Manage selfroles."
 msgstr "Behandle selvroller."
 
-#: redbot/cogs/admin/admin.py:454
+#: redbot/cogs/admin/admin.py:456
 #, docstring
 msgid "\n"
 "        Add a role, or a selection of roles, to the list of available selfroles.\n\n"
@@ -257,23 +265,23 @@ msgstr "\n"
 "        MERK: Rollen skilles mellom store og små bokstaver!\n"
 "        "
 
-#: redbot/cogs/admin/admin.py:463
+#: redbot/cogs/admin/admin.py:465
 msgid "I cannot let you add {role.name} as a selfrole because that role is higher than or equal to your highest role in the Discord hierarchy."
 msgstr "Jeg kan ikke la deg gi {role.name} til  fordi den rollen er høyere enn eller lik din høyeste rolle i Discord-hierarkiet."
 
-#: redbot/cogs/admin/admin.py:473
+#: redbot/cogs/admin/admin.py:475
 msgid "The role \"{role.name}\" is already a selfrole."
 msgstr "Rollen \"{role.name}\" er allerede en selv rolle."
 
-#: redbot/cogs/admin/admin.py:479
+#: redbot/cogs/admin/admin.py:481
 msgid "Added {count} selfroles."
 msgstr "La til {count} selvroller."
 
-#: redbot/cogs/admin/admin.py:481
+#: redbot/cogs/admin/admin.py:483
 msgid "Added 1 selfrole."
 msgstr "Lagt til 1 selvrolle."
 
-#: redbot/cogs/admin/admin.py:487
+#: redbot/cogs/admin/admin.py:489
 #, docstring
 msgid "\n"
 "        Remove a role, or a selection of roles, from the list of available selfroles.\n\n"
@@ -284,57 +292,57 @@ msgstr "\n"
 "        MERK: Rollen skille mellom store og små bokstaver!\n"
 "        "
 
-#: redbot/cogs/admin/admin.py:496
+#: redbot/cogs/admin/admin.py:498
 msgid "I cannot let you remove {role.name} from being a selfrole because that role is higher than or equal to your highest role in the Discord hierarchy."
 msgstr "Jeg kan ikke la deg fjerne {role.name} fra fordi den rollen er høyere enn eller lik din høyeste rolle i Discord-hierarkiet."
 
-#: redbot/cogs/admin/admin.py:506
+#: redbot/cogs/admin/admin.py:508
 msgid "Removed {count} selfroles."
 msgstr "Fjernet {count} selvroller."
 
-#: redbot/cogs/admin/admin.py:508
+#: redbot/cogs/admin/admin.py:510
 msgid "Removed 1 selfrole."
 msgstr "Fjernet 1 selvrolle."
 
-#: redbot/cogs/admin/admin.py:514
+#: redbot/cogs/admin/admin.py:516
 #, docstring
 msgid "Clear the list of available selfroles for this server."
 msgstr "Slett listen over tilgjengelige selvroller for denne serveren."
 
-#: redbot/cogs/admin/admin.py:518
+#: redbot/cogs/admin/admin.py:520
 msgid "There are currently no selfroles."
 msgstr "Det er for tiden ingen selvroller."
 
-#: redbot/cogs/admin/admin.py:521
+#: redbot/cogs/admin/admin.py:523
 msgid "Are you sure you want to clear this server's selfrole list?"
 msgstr "Er du sikker på at du vil tømme serverens filterliste?"
 
-#: redbot/cogs/admin/admin.py:527
+#: redbot/cogs/admin/admin.py:529
 msgid "You took too long to respond."
 msgstr "Du tok for lang tid å svare."
 
-#: redbot/cogs/admin/admin.py:536
+#: redbot/cogs/admin/admin.py:538
 msgid "I cannot clear the selfroles because the selfrole '{role.name}' is higher than or equal to your highest role in the Discord hierarchy."
 msgstr "Jeg kan ikke la deg gi {role.name} til fordi den rollen er høyere enn eller lik din høyeste rolle i Discord-hierarkiet."
 
-#: redbot/cogs/admin/admin.py:542
+#: redbot/cogs/admin/admin.py:544
 msgid "Selfrole list cleared."
 msgstr "Rolle fjernet."
 
-#: redbot/cogs/admin/admin.py:544
+#: redbot/cogs/admin/admin.py:546
 msgid "No changes have been made."
 msgstr "Ingen endringer er utført."
 
-#: redbot/cogs/admin/admin.py:549
+#: redbot/cogs/admin/admin.py:551
 #, docstring
 msgid "Lock a bot to its current servers only."
 msgstr "Lås bare en bot til sine nåværende servere."
 
-#: redbot/cogs/admin/admin.py:554
+#: redbot/cogs/admin/admin.py:556
 msgid "The bot is no longer serverlocked."
 msgstr "Bot er ikke lenger serverlåst."
 
-#: redbot/cogs/admin/admin.py:556
+#: redbot/cogs/admin/admin.py:558
 msgid "The bot is now serverlocked."
 msgstr "Bot er nå serverlåst."
 

@@ -8,7 +8,7 @@ import time
 
 from enum import Enum, unique
 from pathlib import Path
-from typing import MutableMapping, Tuple, Union
+from typing import Any, MutableMapping, Tuple, Union
 
 import discord
 import psutil
@@ -17,6 +17,8 @@ from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.bot import Red
 from redbot.core.i18n import Translator
+
+from .managed_node.ll_server_config import DEFAULT_LAVALINK_YAML, change_dict_naming_convention
 
 log = getLogger("red.cogs.Audio.task.callback")
 _ = Translator("Audio", Path(__file__))
@@ -27,7 +29,7 @@ def get_max_allocation_size(exec) -> Tuple[int, bool]:
         max_heap_allowed = psutil.virtual_memory().total
         thinks_is_64_bit = True
     else:
-        max_heap_allowed = 4 * 1024**3
+        max_heap_allowed = min(4 * 1024**3, psutil.virtual_memory().total)
         thinks_is_64_bit = False
     return max_heap_allowed, thinks_is_64_bit
 
@@ -36,7 +38,7 @@ def get_jar_ram_defaults() -> Tuple[str, str]:
     min_ram = 64 * 1024**2
     # We don't know the java executable at this stage - not worth the extra work required here
     max_allocation, is_64bit = get_max_allocation_size(sys.executable)
-    max_ram_allowed = max_allocation * 0.5 if is_64bit else max_allocation
+    max_ram_allowed = min(max_allocation, psutil.virtual_memory().total * 0.5)
     max_ram = max(min_ram, max_ram_allowed)
     size_name = ("", "K", "M", "G", "T")
     i = int(math.floor(math.log(min_ram, 1024)))
@@ -53,37 +55,6 @@ def get_jar_ram_defaults() -> Tuple[str, str]:
 
 
 MIN_JAVA_RAM, MAX_JAVA_RAM = get_jar_ram_defaults()
-
-DEFAULT_LAVALINK_YAML = {
-    # The nesting structure of this dict is very important, it's a 1:1 mirror of application.yaml in JSON
-    "yaml__server__address": "localhost",
-    "yaml__server__port": 2333,
-    "yaml__lavalink__server__password": "youshallnotpass",
-    "yaml__lavalink__server__sources__http": True,
-    "yaml__lavalink__server__sources__bandcamp": True,
-    "yaml__lavalink__server__sources__local": True,
-    "yaml__lavalink__server__sources__soundcloud": True,
-    "yaml__lavalink__server__sources__youtube": True,
-    "yaml__lavalink__server__sources__twitch": True,
-    "yaml__lavalink__server__sources__vimeo": True,
-    "yaml__lavalink__server__bufferDurationMs": 400,
-    "yaml__lavalink__server__frameBufferDurationMs": 1000,
-    # 100 pages - 100 entries per page = 10,000 tracks which is the Audio Limit for a single playlist.
-    "yaml__lavalink__server__youtubePlaylistLoadLimit": 100,
-    "yaml__lavalink__server__playerUpdateInterval": 1,
-    "yaml__lavalink__server__youtubeSearchEnabled": True,
-    "yaml__lavalink__server__soundcloudSearchEnabled": True,
-    "yaml__lavalink__server__gc_warnings": True,
-    "yaml__metrics__prometheus__enabled": False,
-    "yaml__metrics__prometheus__endpoint": "/metrics",
-    "yaml__sentry__dsn": "",
-    "yaml__sentry__environment": "",
-    "yaml__logging__file__path": "./logs/",
-    "yaml__logging__level__root": "INFO",
-    "yaml__logging__level__lavalink": "INFO",
-    "yaml__logging__logback__rollingpolicy__max_history": 15,
-    "yaml__logging__logback__rollingpolicy__max_size": "10MB",
-}
 
 DEFAULT_LAVALINK_SETTINGS = {
     "host": DEFAULT_LAVALINK_YAML["yaml__server__address"],
@@ -102,25 +73,6 @@ def sizeof_fmt(num: Union[float, int]) -> str:
             return f"{num:3.1f}{unit}"
         num /= 1024.0
     return f"{num:.1f}Y"
-
-
-# This assumes all keys with `_` should be converted from `part1_part2` to `part1-part2`
-def convert_function(key: str) -> str:
-    return key.replace("_", "-")
-
-
-def change_dict_naming_convention(data) -> dict:
-    new = {}
-    for k, v in data.items():
-        new_v = v
-        if isinstance(v, dict):
-            new_v = change_dict_naming_convention(v)
-        elif isinstance(v, list):
-            new_v = list()
-            for x in v:
-                new_v.append(change_dict_naming_convention(x))
-        new[convert_function(k)] = new_v
-    return new
 
 
 class CacheLevel:

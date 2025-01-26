@@ -13,6 +13,7 @@ import importlib.metadata
 from packaging.requirements import Requirement
 from redbot.core import data_manager
 
+from redbot.core.bot import ExitCodes
 from redbot.core.commands import RedHelpFormatter, HelpSettings
 from redbot.core.i18n import (
     Translator,
@@ -140,6 +141,13 @@ def init_events(bot, cli_flags):
 
     @bot.event
     async def on_ready():
+        try:
+            await _on_ready()
+        except Exception as exc:
+            log.critical("The bot failed to get ready!", exc_info=exc)
+            sys.exit(ExitCodes.CRITICAL)
+
+    async def _on_ready():
         if bot._uptime is not None:
             return
 
@@ -170,26 +178,25 @@ def init_events(bot, cli_flags):
 
         outdated_red_message = ""
         rich_outdated_message = ""
-        with contextlib.suppress(aiohttp.ClientError, asyncio.TimeoutError):
-            pypi_version, py_version_req = await fetch_latest_red_version_info()
-            outdated = pypi_version and pypi_version > red_version_info
-            if outdated:
-                outdated_red_message, rich_outdated_message = get_outdated_red_messages(
-                    pypi_version, py_version_req
-                )
+        pypi_version, py_version_req = await fetch_latest_red_version_info()
+        outdated = pypi_version and pypi_version > red_version_info
+        if outdated:
+            outdated_red_message, rich_outdated_message = get_outdated_red_messages(
+                pypi_version, py_version_req
+            )
 
         rich_console = rich.get_console()
         rich_console.print(INTRO, style="red", markup=False, highlight=False)
         if guilds:
             rich_console.print(
                 Columns(
-                    [Panel(table_general_info, title=str(bot.user.name)), Panel(table_counts)],
+                    [Panel(table_general_info, title=bot.user.display_name), Panel(table_counts)],
                     equal=True,
                     align="center",
                 )
             )
         else:
-            rich_console.print(Columns([Panel(table_general_info, title=str(bot.user.name))]))
+            rich_console.print(Columns([Panel(table_general_info, title=bot.user.display_name)]))
 
         rich_console.print(
             "Loaded {} cogs with {} commands".format(len(bot.cogs), len(bot.commands))

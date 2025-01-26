@@ -47,6 +47,9 @@ extend functionalities used throughout the bot, as outlined below.
 
 .. autoclass:: redbot.core.commands.DMContext
 
+.. autoclass:: redbot.core.commands.UserFeedbackCheckFailure
+    :members:
+
 .. automodule:: redbot.core.commands.requires
     :members: PrivilegeLevel, PermState, Requires
 
@@ -66,7 +69,7 @@ Help Functionality
 
 .. warning::
 
-    The content in this section is provisional and may change
+    The content in this section is `provisional <developer-guarantees-exclusions>` and may change
     without prior notice or warning. Updates to this will be communicated
     on `this issue <https://github.com/Cog-Creators/Red-DiscordBot/issues/4084>`_
 

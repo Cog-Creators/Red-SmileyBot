@@ -105,32 +105,30 @@ class MiscellaneousCommands(MixinMeta, metaclass=CompositeMetaClass):
         queue_tracks = player.queue
         requesters = {"total": 0, "users": {}}
 
-        async def _usercount(req_username):
-            if req_username in requesters["users"]:
-                requesters["users"][req_username]["songcount"] += 1
+        async def _usercount(req_user_handle):
+            if req_user_handle in requesters["users"]:
+                requesters["users"][req_user_handle]["songcount"] += 1
                 requesters["total"] += 1
             else:
-                requesters["users"][req_username] = {}
-                requesters["users"][req_username]["songcount"] = 1
+                requesters["users"][req_user_handle] = {}
+                requesters["users"][req_user_handle]["songcount"] = 1
                 requesters["total"] += 1
 
         async for track in AsyncIter(queue_tracks):
-            req_username = "{}#{}".format(track.requester.name, track.requester.discriminator)
-            await _usercount(req_username)
+            req_user_handle = str(track.requester)
+            await _usercount(req_user_handle)
 
         try:
-            req_username = "{}#{}".format(
-                player.current.requester.name, player.current.requester.discriminator
-            )
-            await _usercount(req_username)
+            req_user_handle = str(player.current.requester)
+            await _usercount(req_user_handle)
         except AttributeError:
             return await self.send_embed_msg(ctx, title=_("There's nothing in the queue."))
 
-        async for req_username in AsyncIter(requesters["users"]):
-            percentage = float(requesters["users"][req_username]["songcount"]) / float(
+        async for req_user_handle in AsyncIter(requesters["users"]):
+            percentage = float(requesters["users"][req_user_handle]["songcount"]) / float(
                 requesters["total"]
             )
-            requesters["users"][req_username]["percent"] = round(percentage * 100, 1)
+            requesters["users"][req_user_handle]["percent"] = round(percentage * 100, 1)
 
         top_queue_users = heapq.nlargest(
             20,

@@ -95,7 +95,7 @@ class Filter(commands.Cog):
         The default name used is *John Doe*.
 
         Example:
-            - `[p]filterset defaultname Missingno`
+        - `[p]filterset defaultname Missingno`
 
         **Arguments:**
 
@@ -115,8 +115,8 @@ class Filter(commands.Cog):
         Set both to zero to disable autoban.
 
         Examples:
-            - `[p]filterset ban 5 5` - Ban users who say 5 filtered words in 5 seconds.
-            - `[p]filterset ban 2 20` - Ban users who say 2 filtered words in 20 seconds.
+        - `[p]filterset ban 5 5` - Ban users who say 5 filtered words in 5 seconds.
+        - `[p]filterset ban 2 20` - Ban users who say 2 filtered words in 20 seconds.
 
         **Arguments:**
 
@@ -264,8 +264,8 @@ class Filter(commands.Cog):
         Use double quotes to add sentences.
 
         Examples:
-            - `[p]filter channel add #channel word1 word2 word3`
-            - `[p]filter channel add #channel "This is a sentence"`
+        - `[p]filter channel add #channel word1 word2 word3`
+        - `[p]filter channel add #channel "This is a sentence"`
 
         **Arguments:**
 
@@ -293,8 +293,8 @@ class Filter(commands.Cog):
         Use double quotes to remove sentences.
 
         Examples:
-            - `[p]filter channel remove #channel word1 word2 word3`
-            - `[p]filter channel remove #channel "This is a sentence"`
+        - `[p]filter channel remove #channel word1 word2 word3`
+        - `[p]filter channel remove #channel "This is a sentence"`
 
         **Arguments:**
 
@@ -315,8 +315,8 @@ class Filter(commands.Cog):
         Use double quotes to add sentences.
 
         Examples:
-            - `[p]filter add word1 word2 word3`
-            - `[p]filter add "This is a sentence"`
+        - `[p]filter add word1 word2 word3`
+        - `[p]filter add "This is a sentence"`
 
         **Arguments:**
 
@@ -337,8 +337,8 @@ class Filter(commands.Cog):
         Use double quotes to remove sentences.
 
         Examples:
-            - `[p]filter remove word1 word2 word3`
-            - `[p]filter remove "This is a sentence"`
+        - `[p]filter remove word1 word2 word3`
+        - `[p]filter remove "This is a sentence"`
 
         **Arguments:**
 
@@ -445,7 +445,6 @@ class Filter(commands.Cog):
 
     async def filter_hits(
         self,
-        text: str,
         server_or_channel: Union[
             discord.Guild,
             discord.TextChannel,
@@ -453,6 +452,7 @@ class Filter(commands.Cog):
             discord.StageChannel,
             discord.Thread,
         ],
+        *texts: str,
     ) -> Set[str]:
         if isinstance(server_or_channel, discord.Guild):
             guild = server_or_channel
@@ -483,7 +483,8 @@ class Filter(commands.Cog):
             self.pattern_cache[(guild.id, channel and channel.id)] = pattern
 
         if pattern:
-            hits |= set(pattern.findall(text))
+            for text in texts:
+                hits |= set(pattern.findall(text))
         return hits
 
     async def check_filter(self, message: discord.Message):
@@ -506,7 +507,15 @@ class Filter(commands.Cog):
                         user_count = 0
                         member_data["filter_count"] = user_count
 
-        hits = await self.filter_hits(message.content, message.channel)
+        texts = [message.content]
+        poll = message.poll
+        if poll is not None:
+            texts.append(poll.question or "")
+            for answer in poll.answers:
+                texts.append(answer.text or "")
+        for attachment in message.attachments:
+            texts.append(attachment.description or "")
+        hits = await self.filter_hits(message.channel, *texts)
 
         if hits:
             # modlog doesn't accept PartialMessageable
@@ -607,7 +616,7 @@ class Filter(commands.Cog):
 
         await set_contextual_locales_from_guild(self.bot, guild)
 
-        if await self.filter_hits(member.display_name, member.guild):
+        if await self.filter_hits(member.guild, member.display_name):
             name_to_use = guild_data["filter_default_name"]
             reason = _("Filtered nickname") if member.nick else _("Filtered name")
             try:

@@ -32,7 +32,7 @@ from typing import (
 import aiohttp
 import discord
 from packaging.requirements import Requirement
-from rapidfuzz import fuzz, process
+import rapidfuzz
 from rich.progress import ProgressColumn
 from rich.progress_bar import ProgressBar
 from red_commons.logging import VERBOSE, TRACE
@@ -154,7 +154,13 @@ async def fuzzy_command_search(
         choices = {c: c.qualified_name for c in commands}
 
     # Do the scoring. `extracted` is a list of tuples in the form `(cmd_name, score, cmd)`
-    extracted = process.extract(term, choices, limit=5, scorer=fuzz.QRatio)
+    extracted = rapidfuzz.process.extract(
+        term,
+        choices,
+        limit=5,
+        scorer=rapidfuzz.fuzz.QRatio,
+        processor=rapidfuzz.utils.default_process,
+    )
     if not extracted:
         return None
 
@@ -217,7 +223,7 @@ async def create_backup(dest: Path = Path.home()) -> Optional[Path]:
 
     dest.mkdir(parents=True, exist_ok=True)
     timestr = datetime.utcnow().strftime("%Y-%m-%dT%H-%M-%S")
-    backup_fpath = dest / f"redv3_{data_manager.instance_name}_{timestr}.tar.gz"
+    backup_fpath = dest / f"redv3_{data_manager.instance_name()}_{timestr}.tar.gz"
 
     to_backup = []
     exclusions = [
@@ -242,7 +248,7 @@ async def create_backup(dest: Path = Path.home()) -> Optional[Path]:
         json.dump(repo_output, fs, indent=4)
     instance_file = data_path / "instance.json"
     with instance_file.open("w") as fs:
-        json.dump({data_manager.instance_name: data_manager.basic_config}, fs, indent=4)
+        json.dump({data_manager.instance_name(): data_manager.basic_config}, fs, indent=4)
     for f in data_path.glob("**/*"):
         if not any(ex in str(f) for ex in exclusions) and f.is_file():
             to_backup.append(f)

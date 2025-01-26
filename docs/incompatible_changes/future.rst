@@ -16,6 +16,17 @@ For Developers
 Removals
 ~~~~~~~~
 
+``SimpleMenu.select_menu`` attribute
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. deprecated-removed:: 3.5.14 60
+
+The `SimpleMenu.select_menu` attribute has been deprecated.
+
+Any behaviour enabled by the usage of this attribute should no longer be depended on.
+If you need this for something and cannot replace it with the other functionality,
+create an issue on Red's issue tracker.
+
 Downloader's shared libraries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

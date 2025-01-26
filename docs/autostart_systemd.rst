@@ -28,10 +28,6 @@ Next, your python :code:`path` can be fetched with the following commands:
     $ source ~/redenv/bin/activate
     (redenv) $ /usr/bin/which python
 
-    # If redbot is installed in a pyenv virtualenv
-    $ pyenv shell <virtualenv_name>
-    (redenv) $ pyenv which python
-
 Then create the new service file:
 
 :code:`sudo nano /etc/systemd/system/red@.service`

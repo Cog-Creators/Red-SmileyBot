@@ -13,6 +13,7 @@ __all__ = [
     "CopyingError",
     "ExistingGitRepo",
     "MissingGitRepo",
+    "AuthenticationError",
     "CloningError",
     "CurrentHashError",
     "HardResetError",
@@ -74,6 +75,15 @@ class MissingGitRepo(DownloaderException):
     """
     Thrown when a git repo is expected to exist but
     does not.
+    """
+
+    pass
+
+
+class AuthenticationError(GitException):
+    """
+    Thrown when git failed to authenticate with
+    the server
     """
 
     pass

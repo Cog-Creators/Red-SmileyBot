@@ -1,5 +1,4 @@
-aiodns
-aiohttp
+aiohttp<3.10
 aiohttp-json-rpc
 apsw
 babel

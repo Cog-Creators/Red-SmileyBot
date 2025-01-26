@@ -18,37 +18,38 @@ msgstr ""
 #: redbot/cogs/audio/apis/interface.py:270
 #: redbot/cogs/audio/apis/interface.py:600
 msgid "Failing to get tracks, skipping remaining."
-msgstr ""
+msgstr "トラックの取得に失敗しました。残りをスキップします。"
 
 #: redbot/cogs/audio/apis/interface.py:303
 #: redbot/cogs/audio/apis/spotify.py:175
 msgid "The Spotify API key or client secret has not been set properly. \n"
 "Use `{prefix}audioset spotifyapi` for instructions."
-msgstr ""
+msgstr "Spotify APIキー または クライアント シークレットが正しく設定されていません。 \n"
+"指示には`{prefix}audioset spotifyapi`を使用してください。"
 
 #: redbot/cogs/audio/apis/interface.py:345
 msgid "This doesn't seem to be a valid Spotify playlist/album URL or code."
-msgstr ""
+msgstr "有効なSpotifyプレイリスト/アルバムのURL、コードではないようです。"
 
 #: redbot/cogs/audio/apis/interface.py:471
 msgid "This doesn't seem to be a supported Spotify URL or code."
-msgstr ""
+msgstr "サポートされているspotifyのURLやコードではないようです。"
 
 #: redbot/cogs/audio/apis/interface.py:561
 msgid "The connection was reset while loading the playlist."
-msgstr ""
+msgstr "プレイリストの読み込み中に接続がリセットされました。"
 
 #: redbot/cogs/audio/apis/interface.py:572
 msgid "Player timeout, skipping remaining tracks."
-msgstr ""
+msgstr "プレーヤーがタイムアウトしました。残りのトラックをスキップします。"
 
 #: redbot/cogs/audio/apis/interface.py:665
 msgid " {bad_tracks} tracks cannot be queued."
-msgstr ""
+msgstr " {bad_tracks} トラックはキューできません。"
 
 #: redbot/cogs/audio/apis/interface.py:673
 msgid "Playlist Enqueued"
-msgstr ""
+msgstr "プレイリストをキューに追加しました"
 
 #: redbot/cogs/audio/apis/interface.py:674
 msgid "Added {num} tracks to the queue.{maxlength_msg}"

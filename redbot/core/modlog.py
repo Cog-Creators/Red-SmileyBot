@@ -98,8 +98,11 @@ async def _init(bot: Red):
     await _migrate_config(from_version=await _config.schema_version(), to_version=_SCHEMA_VERSION)
     await register_casetypes(all_generics)
 
-    async def on_member_ban(guild: discord.Guild, member: discord.Member):
-        if guild.unavailable or not guild.me.guild_permissions.view_audit_log:
+    async def on_audit_log_entry_create(entry: discord.AuditLogEntry):
+        guild = entry.guild
+        if guild.unavailable:
+            return
+        if entry.action not in (discord.AuditLogAction.ban, discord.AuditLogAction.unban):
             return
 
         try:
@@ -107,79 +110,14 @@ async def _init(bot: Red):
         except RuntimeError:
             return  # No modlog channel so no point in continuing
 
-        when = datetime.now(timezone.utc)
-        before = when + timedelta(minutes=1)
-        after = when - timedelta(minutes=1)
-        await asyncio.sleep(10)  # prevent small delays from causing a 5 minute delay on entry
-
-        attempts = 0
-        # wait up to an hour to find a matching case
-        while attempts < 12 and guild.me.guild_permissions.view_audit_log:
-            attempts += 1
-            try:
-                entry = await discord.utils.find(
-                    lambda e: e.target.id == member.id and after < e.created_at < before,
-                    guild.audit_logs(
-                        action=discord.AuditLogAction.ban, before=before, after=after
-                    ),
-                )
-            except discord.Forbidden:
-                break
-            except discord.HTTPException:
-                pass
-            else:
-                if entry:
-                    if entry.user.id != guild.me.id:
-                        # Don't create modlog entires for the bot's own bans, cogs do this.
-                        mod, reason = entry.user, entry.reason
-                        date = entry.created_at
-                        await create_case(_bot_ref, guild, date, "ban", member, mod, reason)
-                    return
-
-            await asyncio.sleep(300)
-
-    async def on_member_unban(guild: discord.Guild, user: discord.User):
-        if guild.unavailable or not guild.me.guild_permissions.view_audit_log:
+        # Don't create modlog entires for the bot's own bans, cogs do this.
+        if entry.user_id == guild.me.id:
             return
 
-        try:
-            await get_modlog_channel(guild)
-        except RuntimeError:
-            return  # No modlog channel so no point in continuing
+        mod, reason, date = entry.user, entry.reason, entry.created_at
+        await create_case(_bot_ref, guild, date, entry.action.name, entry.target, mod, reason)
 
-        when = datetime.now(timezone.utc)
-        before = when + timedelta(minutes=1)
-        after = when - timedelta(minutes=1)
-        await asyncio.sleep(10)  # prevent small delays from causing a 5 minute delay on entry
-
-        attempts = 0
-        # wait up to an hour to find a matching case
-        while attempts < 12 and guild.me.guild_permissions.view_audit_log:
-            attempts += 1
-            try:
-                entry = await discord.utils.find(
-                    lambda e: e.target.id == user.id and after < e.created_at < before,
-                    guild.audit_logs(
-                        action=discord.AuditLogAction.unban, before=before, after=after
-                    ),
-                )
-            except discord.Forbidden:
-                break
-            except discord.HTTPException:
-                pass
-            else:
-                if entry:
-                    if entry.user.id != guild.me.id:
-                        # Don't create modlog entires for the bot's own unbans, cogs do this.
-                        mod, reason = entry.user, entry.reason
-                        date = entry.created_at
-                        await create_case(_bot_ref, guild, date, "unban", user, mod, reason)
-                    return
-
-            await asyncio.sleep(300)
-
-    bot.add_listener(on_member_ban)
-    bot.add_listener(on_member_unban)
+    bot.add_listener(on_audit_log_entry_create)
 
 
 async def handle_auditype_key():
@@ -306,8 +244,8 @@ class Case:
         (note: it might not exist regardless of whether this attribute is `None`)
         or if it has never been created.
     last_known_username: Optional[str]
-        The last known username of the user.
-        `None` if the username of the user was never saved
+        The last known user handle (``username`` / ``username#1234``) of the user.
+        `None` if the handle of the user was never saved
         or if their data had to be anonymized.
     """
 
@@ -393,9 +331,9 @@ class Case:
             else:
                 setattr(self, item, value)
 
-        # update last known username
+        # update last known user handle
         if not isinstance(self.user, int):
-            self.last_known_username = f"{self.user.name}#{self.user.discriminator}"
+            self.last_known_username = str(self.user)
 
         if isinstance(self.channel, discord.Thread):
             self.parent_channel_id = self.channel.parent_id
@@ -503,7 +441,15 @@ class Case:
                 # can't use _() inside f-string expressions, see bpo-36310 and red#3818
                 translated = _("Unknown or Deleted User")
                 user = f"[{translated}] ({self.user})"
+            # Handle pomelo usernames stored before we updated our implementation
+            elif self.last_known_username.endswith("#0"):
+                user = f"{self.last_known_username[:-2]} ({self.user})"
+            # New usernames can't contain `#` and old usernames couldn't either.
+            elif len(self.last_known_username) <= 5 or self.last_known_username[-5] != "#":
+                user = f"{self.last_known_username} ({self.user})"
+            # Last known user handle is a legacy username with a discriminator
             else:
+                # isolate the name so that the direction of the discriminator and ID aren't changed
                 # See usage explanation here: https://www.unicode.org/reports/tr9/#Formatting
                 name = self.last_known_username[:-5]
                 discriminator = self.last_known_username[-4:]
@@ -511,8 +457,10 @@ class Case:
                     f"\N{FIRST STRONG ISOLATE}{name}"
                     f"\N{POP DIRECTIONAL ISOLATE}#{discriminator} ({self.user})"
                 )
+        elif self.user.discriminator == "0":
+            user = f"{self.user} ({self.user.id})"
         else:
-            # isolate the name so that the direction of the discriminator and ID do not get changed
+            # isolate the name so that the direction of the discriminator and ID aren't changed
             # See usage explanation here: https://www.unicode.org/reports/tr9/#Formatting
             user = escape_spoilers(
                 filter_invites(
@@ -1019,7 +967,7 @@ async def create_case(
     channel: Optional[Union[discord.abc.GuildChannel, discord.Thread]]
         The channel the action was taken in
     last_known_username: Optional[str]
-        The last known username of the user
+        The last known user handle (``username`` / ``username#1234``) of the user
         Note: This is ignored if a Member or User object is provided
         in the user field
 

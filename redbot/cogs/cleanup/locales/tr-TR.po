@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-05-02 23:06+0000\n"
+"POT-Creation-Date: 2024-01-04 00:13+0000\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -31,67 +31,56 @@ msgstr "Bu cog mesajları \"temizlemek\" (silmek) için kullanılan komutlar iç
 "    "
 
 #: redbot/cogs/cleanup/cleanup.py:58
+msgid "Try a smaller number instead."
+msgstr "Bunun yerine daha küçük bir sayı deneyin."
+
+#: redbot/cogs/cleanup/cleanup.py:61
 msgid "Are you sure you want to delete {number} messages?"
 msgstr "{number} tane mesajı silmek istediğinize emin misiniz?"
 
-#: redbot/cogs/cleanup/cleanup.py:72
+#: redbot/cogs/cleanup/cleanup.py:75
 msgid "Cancelled."
 msgstr "İptal."
 
-#: redbot/cogs/cleanup/cleanup.py:155
+#: redbot/cogs/cleanup/cleanup.py:158
 msgid "1 message was deleted."
 msgstr "1 mesaj silindi."
 
-#: redbot/cogs/cleanup/cleanup.py:158
+#: redbot/cogs/cleanup/cleanup.py:161
 msgid "{num} messages were deleted."
 msgstr "{num} mesaj silindi."
 
-#: redbot/cogs/cleanup/cleanup.py:184
+#: redbot/cogs/cleanup/cleanup.py:187
 #, docstring
 msgid "Base command for deleting messages."
 msgstr "Mesajları silmek için kullanılan temel komut."
 
-#: redbot/cogs/cleanup/cleanup.py:194
+#: redbot/cogs/cleanup/cleanup.py:197
 #, docstring
 msgid "Delete the last X messages matching the specified text in the current channel.\n\n"
 "        Example:\n"
-"            - `[p]cleanup text \"test\" 5`\n\n"
+"        - `[p]cleanup text \"test\" 5`\n\n"
 "        Remember to use double quotes.\n\n"
 "        **Arguments:**\n\n"
 "        - `<number>` The max number of messages to cleanup. Must be a positive integer.\n"
 "        - `<delete_pinned>` Whether to delete pinned messages or not. Defaults to False\n"
 "        "
-msgstr "Belirtilen yazıyla uyuşan, şu anki kanalda bulunan son X adet mesajı siler.\n\n"
-"        Örnek:\n"
-"            - `[p]cleanup text \"test\" 5`\n\n"
-"        Çift tırnak kullanmayı unutmayın.\n\n"
-"        **Seçenekler:**\n\n"
-"        - `<numara>` Maksimum kaç mesaj silineceği, pozitif tam sayı olmak zorundadır.\n"
-"        - `<sabit_silme>` Sabitlenmiş mesajların silinip silinmeyeceği, varsayılan olarak silinmezler (False)\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/cleanup/cleanup.py:254
+#: redbot/cogs/cleanup/cleanup.py:257
 #, docstring
 msgid "Delete the last X messages from a specified user in the current channel.\n\n"
 "        Examples:\n"
-"            - `[p]cleanup user @Twentysix 2`\n"
-"            - `[p]cleanup user Red 6`\n\n"
+"        - `[p]cleanup user @Twentysix 2`\n"
+"        - `[p]cleanup user Red 6`\n\n"
 "        **Arguments:**\n\n"
 "        - `<user>` The user whose messages are to be cleaned up.\n"
 "        - `<number>` The max number of messages to cleanup. Must be a positive integer.\n"
 "        - `<delete_pinned>` Whether to delete pinned messages or not. Defaults to False\n"
 "        "
-msgstr "Belirtilen kullanıcının göndermiş olduğu şu anki kanalda bulunan son X adet mesajı siler.\n\n"
-"        Örnek:\n"
-"            - `[p]cleanup user @Twentysix 2`\n"
-"            - `[p]cleanup user Red 6`\n\n"
-"        **Seçenekler:**\n\n"
-"        - `<kullanıcı>` Mesajları silinecek olan kullanıcı\n"
-"        - `<rakam>` Maksimum kaç mesaj silineceği, pozitif tam sayı olmak zorundadır.\n"
-"        - `<sabit silme>` Sabitlenmiş mesajların silinip silinmeyeceği, varsayılan olarak silinmezler (False)\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/cleanup/cleanup.py:324
+#: redbot/cogs/cleanup/cleanup.py:327
 #, docstring
 msgid "Delete all messages after a specified message.\n\n"
 "        To get a message id, enable developer mode in Discord's\n"
@@ -111,11 +100,11 @@ msgstr "Belirtilen bir mesajdan sonraki tüm mesajları sil.\n\n"
 "        -`<sabit_silme>` Sabit mesajların silinip silinmeyeceği. Varsayılan olarak kapalıdır. (False)\n"
 "        "
 
-#: redbot/cogs/cleanup/cleanup.py:345 redbot/cogs/cleanup/cleanup.py:400
+#: redbot/cogs/cleanup/cleanup.py:348 redbot/cogs/cleanup/cleanup.py:403
 msgid "Message not found."
 msgstr "Mesaj bulunamadı."
 
-#: redbot/cogs/cleanup/cleanup.py:378
+#: redbot/cogs/cleanup/cleanup.py:381
 #, docstring
 msgid "Deletes X messages before the specified message.\n\n"
 "        To get a message id, enable developer mode in Discord's\n"
@@ -137,45 +126,31 @@ msgstr "Belirtilen mesajdan önceki X adet mesajı siler.\n\n"
 "        - `<sabit_silme>` Sabit mesajların silinip silinmeyeceği. Varsayılan olarak kapalıdır. (False)\n"
 "        "
 
-#: redbot/cogs/cleanup/cleanup.py:434
+#: redbot/cogs/cleanup/cleanup.py:437
 #, docstring
 msgid "Delete the messages between Message One and Message Two, providing the messages IDs.\n\n"
 "        The first message ID should be the older message and the second one the newer.\n\n"
 "        Example:\n"
-"            - `[p]cleanup between 123456789123456789 987654321987654321`\n\n"
+"        - `[p]cleanup between 123456789123456789 987654321987654321`\n\n"
 "        **Arguments:**\n\n"
 "        - `<one>` The id of the message to cleanup after. This message won't be deleted.\n"
 "        - `<two>` The id of the message to cleanup before. This message won't be deleted.\n"
 "        - `<delete_pinned>` Whether to delete pinned messages or not. Defaults to False\n"
 "        "
-msgstr "IDleri verilen iki mesaj arasındaki mesajları siler.\n\n"
-"        İlk mesaj IDsi temizliğin başlangıç noktasını, ikinci mesaj IDsi ise bitiş noktasını belirtmelidir.\n\n"
-"        Örnek:\n"
-"            - `[p]cleanup between 123456789123456789 987654321987654321`\n\n"
-"        **Seçenekler:**\n\n"
-"        - `<bir>` Sonrasındaki mesajlar silinecek olan mesajın IDsi. Bu mesajın kendisi silinmez.\n"
-"        - `<iki>` Öncesindeki mesajlar silinecek olan mesajın IDsi. Bu mesajın kendisi silinmez.\n"
-"        - `<sabit_silme>` Sabit mesajların silinip silinmeyeceği. Varsayılan olarak kapalıdır. (False)\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/cleanup/cleanup.py:483
+#: redbot/cogs/cleanup/cleanup.py:486
 #, docstring
 msgid "Delete the last X messages in the current channel.\n\n"
 "        Example:\n"
-"            - `[p]cleanup messages 26`\n\n"
+"        - `[p]cleanup messages 26`\n\n"
 "        **Arguments:**\n\n"
 "        - `<number>` The max number of messages to cleanup. Must be a positive integer.\n"
 "        - `<delete_pinned>` Whether to delete pinned messages or not. Defaults to False\n"
 "        "
-msgstr "Şu anki kanalda bulunan son X mesajı siler.\n\n"
-"        Örnek:\n"
-"            - `[p]cleanup messages 26`\n\n"
-"        **Seçenekler:**\n\n"
-"        - `<rakam>` Maksimum kaç mesaj silineceği, pozitif tam sayı olmak zorundadır.\n"
-"        - `<sabit_silme>` Sabitlenmiş mesajların silinip silinmeyeceği, varsayılan olarak silinmezler (False)\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/cleanup/cleanup.py:522
+#: redbot/cogs/cleanup/cleanup.py:525
 #, docstring
 msgid "Clean up command messages and messages from the bot in the current channel.\n\n"
 "        Can only cleanup custom commands and alias commands if those cogs are loaded.\n\n"
@@ -190,33 +165,23 @@ msgstr "Botun şu anki kanala göndermiş olduğu mesajları ve komut yanıtlar�
 "        - `<sabit_silme>` Sabitlenmiş mesajların silinip silinmeyeceği, varsayılan olarak silinmezler (False)\n"
 "        "
 
-#: redbot/cogs/cleanup/cleanup.py:611
+#: redbot/cogs/cleanup/cleanup.py:614
 #, docstring
 msgid "Clean up messages owned by the bot in the current channel.\n\n"
 "        By default, all messages are cleaned. If a second argument is specified,\n"
 "        it is used for pattern matching - only messages containing the given text will be deleted.\n\n"
 "        Examples:\n"
-"            - `[p]cleanup self 6`\n"
-"            - `[p]cleanup self 10 Pong`\n"
-"            - `[p]cleanup self 7 \"\" True`\n\n"
+"        - `[p]cleanup self 6`\n"
+"        - `[p]cleanup self 10 Pong`\n"
+"        - `[p]cleanup self 7 \"\" True`\n\n"
 "        **Arguments:**\n\n"
 "        - `<number>` The max number of messages to cleanup. Must be a positive integer.\n"
 "        - `<match_pattern>` The text that messages must contain to be deleted. Use \"\" to skip this.\n"
 "        - `<delete_pinned>` Whether to delete pinned messages or not. Defaults to False\n"
 "        "
-msgstr "Şu anki kanalda bota ait olan mesajları siler.\n\n"
-"        Varsayılan olarak bütün mesajlar silinir. Eğer ikinci seçenek olarak komuta herhangi bir şey verilirse, eşleştirme yapılır ve sadece  verilen yazıyı içeren mesajlar silinir.\n\n"
-"        Örnekler:\n"
-"            - `[p]cleanup self 6`\n"
-"            - `[p]cleanup self 10 Pong`\n"
-"            - `[p]cleanup self 7 \"\" True`\n\n"
-"        **Seçenekler:**\n\n\n"
-"        - `<rakam>` Maksimum kaç mesaj silineceği, pozitif tam sayı olmak zorundadır.\n"
-"        - `<eşleştirme>` Bir mesajın silinmesi için bulundurması gereken yazı, eğer bunu atlamak isterseniz \"\" (iki tane çift tırnak) kullanın.\n"
-"        - `<sabit_silme>` Sabitlenmiş mesajların silinip silinmeyeceği, varsayılan olarak silinmezler (False)\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/cleanup/cleanup.py:698
+#: redbot/cogs/cleanup/cleanup.py:697
 #, docstring
 msgid "Deletes duplicate messages in the channel from the last X messages and keeps only one copy.\n\n"
 "        Defaults to 50.\n\n"
@@ -229,12 +194,12 @@ msgstr "Son X mesajdan aynı olanları siler ve sadece bir tanesini bırakır.\n
 "        - `<number>` Aynıları için denetlenecek mesaj sayısı, pozitif tam sayı olmak zorundadır.\n"
 "        "
 
-#: redbot/cogs/cleanup/cleanup.py:750
+#: redbot/cogs/cleanup/cleanup.py:749
 #, docstring
 msgid "Manage the settings for the cleanup command."
 msgstr "Temizlik komutu ayarlarını yönetin."
 
-#: redbot/cogs/cleanup/cleanup.py:756
+#: redbot/cogs/cleanup/cleanup.py:755
 #, docstring
 msgid "Toggle clean up notification settings.\n\n"
 "        When enabled, a message will be sent per cleanup, showing how many messages were deleted.\n"
@@ -245,11 +210,11 @@ msgstr "Temizlik bildirimlerini açıp kapatın.\n\n"
 "        Bu mesaj 5 saniye sonra silinir.\n"
 "        "
 
-#: redbot/cogs/cleanup/cleanup.py:764
+#: redbot/cogs/cleanup/cleanup.py:763
 msgid "I will no longer notify of message deletions."
 msgstr "Artık mesajların silindiği haber verilmeyecek."
 
-#: redbot/cogs/cleanup/cleanup.py:767
+#: redbot/cogs/cleanup/cleanup.py:766
 msgid "I will now notify of message deletions."
 msgstr "Mesajların silindiği artık haber verilecek."
 
