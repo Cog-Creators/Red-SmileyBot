@@ -3,7 +3,7 @@
 
 from .ll_server_config import generate_server_config, get_default_server_config
 from .ll_version import LAVALINK_BUILD_LINE, LavalinkOldVersion, LavalinkVersion
-from .version_pins import JAR_VERSION, YT_PLUGIN_VERSION
+from . import version_pins
 
 __all__ = (
     "generate_server_config",
@@ -11,6 +11,5 @@ __all__ = (
     "LAVALINK_BUILD_LINE",
     "LavalinkOldVersion",
     "LavalinkVersion",
-    "JAR_VERSION",
-    "YT_PLUGIN_VERSION",
+    "version_pins",
 )

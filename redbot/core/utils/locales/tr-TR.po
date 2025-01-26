@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2024-07-18 21:36+0000\n"
+"POT-Creation-Date: 2024-12-25 04:21+0000\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -15,55 +15,55 @@ msgstr ""
 "X-Crowdin-File-ID: 197\n"
 "Language: tr_TR\n"
 
-#: redbot/core/utils/chat_formatting.py:586
+#: redbot/core/utils/chat_formatting.py:654
 msgid "year"
 msgstr "yıl"
 
-#: redbot/core/utils/chat_formatting.py:586
+#: redbot/core/utils/chat_formatting.py:654
 msgid "years"
 msgstr "yıl"
 
-#: redbot/core/utils/chat_formatting.py:587
+#: redbot/core/utils/chat_formatting.py:655
 msgid "month"
 msgstr "ay"
 
-#: redbot/core/utils/chat_formatting.py:587
+#: redbot/core/utils/chat_formatting.py:655
 msgid "months"
 msgstr "ay"
 
-#: redbot/core/utils/chat_formatting.py:588
+#: redbot/core/utils/chat_formatting.py:656
 msgid "day"
 msgstr "gün"
 
-#: redbot/core/utils/chat_formatting.py:588
+#: redbot/core/utils/chat_formatting.py:656
 msgid "days"
 msgstr "gün"
 
-#: redbot/core/utils/chat_formatting.py:589
+#: redbot/core/utils/chat_formatting.py:657
 msgid "hour"
 msgstr "saat"
 
-#: redbot/core/utils/chat_formatting.py:589
+#: redbot/core/utils/chat_formatting.py:657
 msgid "hours"
 msgstr "saat"
 
-#: redbot/core/utils/chat_formatting.py:590
+#: redbot/core/utils/chat_formatting.py:658
 msgid "minute"
 msgstr "dakika"
 
-#: redbot/core/utils/chat_formatting.py:590
+#: redbot/core/utils/chat_formatting.py:658
 msgid "minutes"
 msgstr "dakika"
 
-#: redbot/core/utils/chat_formatting.py:591
+#: redbot/core/utils/chat_formatting.py:659
 msgid "second"
 msgstr "saniye"
 
-#: redbot/core/utils/chat_formatting.py:591
+#: redbot/core/utils/chat_formatting.py:659
 msgid "seconds"
 msgstr "saniye"
 
-#: redbot/core/utils/chat_formatting.py:599
+#: redbot/core/utils/chat_formatting.py:667
 msgid "negative"
 msgstr ""
 
@@ -71,49 +71,49 @@ msgstr ""
 msgid "Select a Page"
 msgstr "Bir sayfa seç"
 
-#: redbot/core/utils/views.py:172
+#: redbot/core/utils/views.py:183
 msgid "Page {num}"
 msgstr "Sayfa {num}"
 
-#: redbot/core/utils/views.py:317 redbot/core/utils/views.py:673
+#: redbot/core/utils/views.py:338 redbot/core/utils/views.py:694
 msgid "You are not authorized to interact with this."
 msgstr "Bu aracı kullanmaya yetkili değilsiniz."
 
-#: redbot/core/utils/views.py:359
+#: redbot/core/utils/views.py:380
 msgid "Set API Keys"
 msgstr "API ayarla"
 
-#: redbot/core/utils/views.py:360
+#: redbot/core/utils/views.py:381
 msgid "Keys and tokens"
 msgstr "Tokenler ve anahtarlar"
 
-#: redbot/core/utils/views.py:362
+#: redbot/core/utils/views.py:383
 msgid "Set API Keys for {service}"
 msgstr "{service} için bir API ayarla"
 
-#: redbot/core/utils/views.py:363
+#: redbot/core/utils/views.py:384
 msgid "Keys and tokens for {service}"
 msgstr "{service} için anahtar ve tokenler"
 
-#: redbot/core/utils/views.py:372
+#: redbot/core/utils/views.py:393
 msgid "Service"
 msgstr "Servis"
 
-#: redbot/core/utils/views.py:409
+#: redbot/core/utils/views.py:430
 msgid "This modal is for bot owners only. Whoops!"
 msgstr "Bu sadece bot sahipleri için. Ah be abi!"
 
-#: redbot/core/utils/views.py:422
+#: redbot/core/utils/views.py:443
 msgid "{error_message}\n"
 "Please try again."
 msgstr "{error_message}\n"
 "Lütfen tekrar deneyin."
 
-#: redbot/core/utils/views.py:429 redbot/core/utils/views.py:436
+#: redbot/core/utils/views.py:450 redbot/core/utils/views.py:457
 msgid "`{service}` API tokens have been set."
 msgstr "`{service}` API tokenleri ayarlandı."
 
-#: redbot/core/utils/views.py:472
+#: redbot/core/utils/views.py:493
 msgid "This button is for bot owners only, oh well."
 msgstr "Bu buton sadece bot sahipleri için, iyi bari."
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2024-08-07 20:36+0000\n"
+"POT-Creation-Date: 2024-10-20 20:20+0000\n"
 "Last-Translator: \n"
 "Language-Team: Russian\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "Страница {page_num}/{total_pages}"
 #: redbot/cogs/audio/core/utilities/formatting.py:95
 #: redbot/cogs/audio/core/utilities/playlists.py:526
 msgid "Connection to Lavalink node has failed"
-msgstr ""
+msgstr "Не удалось подключиться к узлу Lavalink"
 
 #: redbot/cogs/audio/core/utilities/formatting.py:98
 #: redbot/cogs/audio/core/utilities/player.py:591
@@ -43,7 +43,7 @@ msgstr "Сначала подключитесь к голосовому кана
 #: redbot/cogs/audio/core/utilities/formatting.py:109
 #: redbot/cogs/audio/core/utilities/playlists.py:554
 msgid "Connection to Lavalink node has not yet been established."
-msgstr ""
+msgstr "Соединение с узлом Lavalink еще не установлено."
 
 #: redbot/cogs/audio/core/utilities/formatting.py:116
 #: redbot/cogs/audio/core/utilities/player.py:442
@@ -231,7 +231,7 @@ msgstr "Не удается получить трек"
 #: redbot/cogs/audio/core/utilities/player.py:301
 #: redbot/cogs/audio/core/utilities/playlists.py:426
 msgid "I'm unable to get a track from the Lavalink node at the moment, try again in a few minutes."
-msgstr ""
+msgstr "Я не могу получить трек от Lavalink, повторите попытку через несколько минут."
 
 #: redbot/cogs/audio/core/utilities/player.py:327
 msgid "The Spotify API key or client secret has not been set properly. \n"
@@ -255,7 +255,7 @@ msgstr "{query} не является допустимым запросом."
 #: redbot/cogs/audio/core/utilities/playlists.py:627
 #: redbot/cogs/audio/core/utilities/playlists.py:656
 msgid "I'm unable to get a track from Lavalink node at the moment, try again in a few minutes."
-msgstr ""
+msgstr "Я не могу получить трек от Lavalink, повторите попытку через несколько минут."
 
 #: redbot/cogs/audio/core/utilities/player.py:416
 msgid "Local tracks will not work if the `Lavalink.jar` cannot see the track.\n"

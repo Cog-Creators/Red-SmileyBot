@@ -23,6 +23,7 @@ from redbot.core.utils.antispam import AntiSpam
 from redbot.core.utils.chat_formatting import box, humanize_list, underline, bold
 
 from ...errors import TrackEnqueueError, AudioError
+from ...managed_node import version_pins
 from ..abc import MixinMeta
 from ..cog_utils import CompositeMetaClass
 
@@ -87,7 +88,7 @@ DANGEROUS_COMMANDS = {
         "This command will change the executable path of Java, "
         "this is useful if you have multiple installations of Java and the default one is causing issues. "
         "Please don't change this unless you are certain that the Java version you are specifying is supported by Red. "
-        "The default and supported versions are currently Java 17 and 11."
+        "The supported versions are currently Java {supported_java_versions}."
     ),
     "command_llset_heapsize": _(
         "This command will change the maximum RAM allocation for the managed Lavalink node, "
@@ -279,7 +280,11 @@ class DpyEvents(MixinMeta, metaclass=CompositeMetaClass):
                     "If you wish to continue, enter this case sensitive token without spaces as your next message."
                     "\n\n{confirm_token}"
                 ).format(
-                    template=_(DANGEROUS_COMMANDS[ctx.command.callback.__name__]),
+                    template=_(DANGEROUS_COMMANDS[ctx.command.callback.__name__]).format(
+                        supported_java_versions=humanize_list(
+                            list(map(str, version_pins.SUPPORTED_JAVA_VERSIONS))
+                        ),
+                    ),
                     confirm_token=box(confirm_token, lang="py"),
                 )
                 sent = await ctx.send(message)

@@ -21,7 +21,7 @@ from redbot.core.i18n import (
 )
 from .. import __version__ as red_version, version_info as red_version_info
 from . import commands
-from .config import get_latest_confs
+from ._config import get_latest_confs
 from .utils._internal_utils import (
     fuzzy_command_search,
     format_fuzzy_results,

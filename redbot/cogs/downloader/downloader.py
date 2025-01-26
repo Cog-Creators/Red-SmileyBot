@@ -655,7 +655,11 @@ class Downloader(commands.Cog):
                 joined += "- **{}:** {}\n  - {}\n".format(
                     repo.name,
                     repo.short or "",
-                    "<{}>".format(repo.url),
+                    (
+                        f"<{repo.clean_url}>"
+                        if repo.clean_url.startswith(("http://", "https://"))
+                        else repo.clean_url
+                    ),
                 )
 
         for page in pagify(joined, ["\n"], shorten_by=16):

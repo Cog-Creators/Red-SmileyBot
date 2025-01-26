@@ -162,6 +162,7 @@
   - any:
       - redbot/core/_drivers/**/*
       - "!redbot/core/_drivers/**/locales/*"
+  - redbot/core/_config.py
   - redbot/core/config.py
   # Docs
   - docs/framework_config.rst
