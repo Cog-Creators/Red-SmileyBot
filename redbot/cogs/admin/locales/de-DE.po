@@ -126,7 +126,7 @@ msgstr "\n"
 
 #: redbot/cogs/admin/admin.py:275
 msgid "{author} ({author.id}) changed the colour of role '{role.name}'"
-msgstr ""
+msgstr "{author} ({author.id}) hat die Farbe der Rolle '{role.name}' geändert"
 
 #: redbot/cogs/admin/admin.py:294 redbot/cogs/admin/admin.py:327
 msgid "Done."
@@ -149,7 +149,7 @@ msgstr "\n"
 
 #: redbot/cogs/admin/admin.py:308
 msgid "{author} ({author.id}) changed the name of role '{old_name}' to '{name}'"
-msgstr ""
+msgstr "{author} ({author.id}) änderte den Namen der Rolle von '{old_name}' zu '{name}'"
 
 #: redbot/cogs/admin/admin.py:332
 #, docstring
@@ -200,7 +200,7 @@ msgid "\n"
 "        NOTE: The role is case sensitive!\n"
 "        "
 msgstr "\n"
-"        Entferne oder gib eine Rolle zu dir selbst.\n\n"
+"        Entferne oder gib dir selbst eine Rolle.\n\n"
 "        Server Admins müssen die Rolle für Mitglieder freigeben.\n\n"
 "        HINWEIS: Beachte Groß- und Kleinschreibung!\n"
 "        "
@@ -311,7 +311,7 @@ msgstr "Es sind keine selbst hinzufügbaren Rollen verfügbar."
 
 #: redbot/cogs/admin/admin.py:523
 msgid "Are you sure you want to clear this server's selfrole list?"
-msgstr "Bist du dir sicher, dass du die Liste der selbst hinzufügbaren Rollen dieses Servers löschen möchtest?"
+msgstr "Sind Sie sich sicher, dass Sie die Liste der selbst hinzufügbaren Rollen dieses Servers löschen möchten?"
 
 #: redbot/cogs/admin/admin.py:529
 msgid "You took too long to respond."
@@ -319,7 +319,7 @@ msgstr "Antwortzeit abgelaufen."
 
 #: redbot/cogs/admin/admin.py:538
 msgid "I cannot clear the selfroles because the selfrole '{role.name}' is higher than or equal to your highest role in the Discord hierarchy."
-msgstr "Ich kann die Liste der selbst hinzufügbaren Rollen nicht löschen, da {role.name} auf der gleichen Stufe oder höher als deine höchste Rolle in der Discord Hierarchie ist."
+msgstr "Ich kann die Liste der selbst hinzufügbaren Rollen nicht löschen, da '{role.name}' auf der gleichen Stufe oder höher als Ihre höchste Rolle in der Discord Hierarchie ist."
 
 #: redbot/cogs/admin/admin.py:544
 msgid "Selfrole list cleared."
@@ -360,5 +360,5 @@ msgstr "Die Rolle \"{role_name}\" ist keine gültige selbst definierte Rolle."
 
 #: redbot/cogs/admin/converters.py:36
 msgid "This selfrole has more than one case insensitive match. Please ask a moderator to resolve the ambiguity, or use the role ID to reference the role."
-msgstr ""
+msgstr "Diese Selbstrolle hat mehr als eine Fall-übergreifende Übereinstimmung. Bitte fragen Sie einen Moderator, um die Mehrdeutigkeit aufzulösen, oder verwenden Sie die Rollen-ID, um auf die Rolle zu verweisen."
 

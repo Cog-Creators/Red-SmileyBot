@@ -17,7 +17,7 @@ find detailed docs about usage and commands.
 You can see additional help for any command in this guide by using ``[p]help`` with the
 command name, like ``[p]help playlist append``.
 
-In this guide, you will see references to "Lavalink" or the "Lavalink.jar". `Lavalink <https://github.com/freyacodes/Lavalink/>`_ is the
+In this guide, you will see references to "Lavalink" or the "Lavalink.jar". `Lavalink <https://github.com/lavalink-devs/Lavalink/>`_ is the
 Java-based audio backend we use to be able to play music through the bot. Most users will
 not have to worry much about Lavalink or what it is, as Audio manages this process for you
 by default. Advanced users can read more about Lavalink and special cases under the 
@@ -551,7 +551,7 @@ uses OpenJDK 17 in the managed Lavalink configuration. It can be installed by ru
     sudo apt install openjdk-17-jre-headless -y
 
 Otherwise, Lavalink works well with most versions of Java 11, 13, 15, 16, 17, and 18. Azul 
-Zulu builds are suggested, see `here <https://github.com/freyacodes/Lavalink/#requirements>`__ for more information.
+Zulu builds are suggested, see `here <https://github.com/lavalink-devs/Lavalink/#requirements>`__ for more information.
 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Setting Up The Lavalink Folder
@@ -583,7 +583,7 @@ the ``cd lavalink`` command in the previous section, you can run the following c
 
 .. code-block:: sh
 
-    curl https://raw.githubusercontent.com/freyacodes/Lavalink/master/LavalinkServer/application.yml.example > application.yml
+    curl https://raw.githubusercontent.com/lavalink-devs/Lavalink/master/LavalinkServer/application.yml.example > application.yml
     curl -LOz Lavalink.jar https://github.com/Cog-Creators/Lavalink-Jars/releases/latest/download/Lavalink.jar
 
 If you did it properly, the files ``Lavalink.jar`` and ``application.yml`` will show up when we run ``ls``, the Linux command

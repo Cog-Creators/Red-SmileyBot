@@ -126,7 +126,7 @@ msgstr "\n"
 
 #: redbot/cogs/admin/admin.py:275
 msgid "{author} ({author.id}) changed the colour of role '{role.name}'"
-msgstr ""
+msgstr "{author} ({author.id}) a changé la couleur du rôle : '{role.name}'"
 
 #: redbot/cogs/admin/admin.py:294 redbot/cogs/admin/admin.py:327
 msgid "Done."
@@ -149,7 +149,7 @@ msgstr "\n"
 
 #: redbot/cogs/admin/admin.py:308
 msgid "{author} ({author.id}) changed the name of role '{old_name}' to '{name}'"
-msgstr ""
+msgstr "{author} ({author.id}) a changé le nom du rôle : '{old_name}' en '{name}'"
 
 #: redbot/cogs/admin/admin.py:332
 #, docstring
@@ -181,7 +181,7 @@ msgstr "Change la façon dont les annonces sont envoyées dans ce serveur."
 #: redbot/cogs/admin/admin.py:367
 #, docstring
 msgid "Change the channel where the bot will send announcements."
-msgstr ""
+msgstr "Changer le salon dans lequel le bot fera des annonces."
 
 #: redbot/cogs/admin/admin.py:370
 msgid "The announcement channel has been set to {channel.mention}"
@@ -361,5 +361,5 @@ msgstr "Le rôle \"{role_name}\" n'est pas un auto-rôle valide."
 
 #: redbot/cogs/admin/converters.py:36
 msgid "This selfrole has more than one case insensitive match. Please ask a moderator to resolve the ambiguity, or use the role ID to reference the role."
-msgstr ""
+msgstr "Ce auto-rôle a plus d'une correspondance insensible à la casse (case insensitive). Demandez à un modérateur de résoudre l'ambiguïté, ou utilisez l'ID du rôle pour référencer le rôle."
 

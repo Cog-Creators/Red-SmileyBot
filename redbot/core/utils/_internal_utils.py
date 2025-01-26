@@ -32,7 +32,7 @@ from typing import (
 import aiohttp
 import discord
 from packaging.requirements import Requirement
-from rapidfuzz import fuzz, process
+import rapidfuzz
 from rich.progress import ProgressColumn
 from rich.progress_bar import ProgressBar
 from red_commons.logging import VERBOSE, TRACE
@@ -154,7 +154,13 @@ async def fuzzy_command_search(
         choices = {c: c.qualified_name for c in commands}
 
     # Do the scoring. `extracted` is a list of tuples in the form `(cmd_name, score, cmd)`
-    extracted = process.extract(term, choices, limit=5, scorer=fuzz.QRatio)
+    extracted = rapidfuzz.process.extract(
+        term,
+        choices,
+        limit=5,
+        scorer=rapidfuzz.fuzz.QRatio,
+        processor=rapidfuzz.utils.default_process,
+    )
     if not extracted:
         return None
 

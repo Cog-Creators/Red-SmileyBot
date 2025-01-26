@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-05-02 23:06+0000\n"
+"POT-Creation-Date: 2023-06-14 02:57+0000\n"
 "Last-Translator: \n"
 "Language-Team: Japanese\n"
 "MIME-Version: 1.0\n"
@@ -21,56 +21,56 @@ msgstr "私はDiscordが許可を拒否した何かをしようとしました�
 
 #: redbot/cogs/admin/admin.py:25
 msgid "I can not give {role.name} to {member.display_name} because that role is higher than or equal to my highest role in the Discord hierarchy."
-msgstr "{role.name} を {member.display_name} に与えることはできません。その役職は、私が持っている最高役職より、上にあるためです。"
+msgstr "{role.name} を {member.display_name} に与えることはできません。その役職は、私より権限が上であるためです。"
 
 #: redbot/cogs/admin/admin.py:31
 msgid "I can not remove {role.name} from {member.display_name} because that role is higher than or equal to my highest role in the Discord hierarchy."
-msgstr "{role.name}から{member.display_name}を削除できません。その役割は、Discord階層における私の最高の役割以上のものです。"
+msgstr "{role.name}から{member.display_name}ロールはあなたと同じかあなたよりも権限が上なので削除できません。"
 
 #: redbot/cogs/admin/admin.py:37
 msgid "I can not edit {role.name} because that role is higher than my or equal to highest role in the Discord hierarchy."
-msgstr ""
+msgstr "そのロールは Discord の階層内で私のロールよりも上位か、最上位のロールと同等であるため、{role.name} を編集できません。"
 
 #: redbot/cogs/admin/admin.py:43
 msgid "I can not let you give {role.name} to {member.display_name} because that role is higher than or equal to your highest role in the Discord hierarchy."
-msgstr ""
+msgstr "そのロールは Discord の階層内で私のロールよりも上位か、最上位のロールと同等であるため、{role.name} を {member.display_name} に付与することはできません。"
 
 #: redbot/cogs/admin/admin.py:49
 msgid "I can not let you remove {role.name} from {member.display_name} because that role is higher than or equal to your highest role in the Discord hierarchy."
-msgstr ""
+msgstr "そのロールは Discord の階層内で私のロールよりも上位か、最上位のロールと同等であるため、{role.name} を {member.display_name} から削除することはできません。"
 
 #: redbot/cogs/admin/admin.py:55
 msgid "I can not let you edit {role.name} because that role is higher than or equal to your highest role in the Discord hierarchy."
-msgstr ""
+msgstr "そのロールは Discord の階層内で私のロールよりも上位か、最上位のロールと同等であるため、{role.name} の編集はできません。"
 
 #: redbot/cogs/admin/admin.py:61
 msgid "I need the \"Manage Roles\" permission to do that."
-msgstr ""
+msgstr "これを行うには\"役割の管理\"の権限が必要です"
 
 #: redbot/cogs/admin/admin.py:63
 msgid "I am already announcing something. If you would like to make a different announcement please use `{prefix}announce cancel` first."
-msgstr ""
+msgstr "すでにアナウンスしています。別のお知らせをしたい場合は先に `{prefix}announce cancel`を使用してください。"
 
 #: redbot/cogs/admin/admin.py:73
 #, docstring
 msgid "A collection of server administration utilities."
-msgstr ""
+msgstr "サーバー管理ユーティリティのコレクション"
 
 #: redbot/cogs/admin/admin.py:159
 msgid "{member.display_name} already has the role {role.name}."
-msgstr ""
+msgstr "{member.display_name}はすでにロール{role.name}を持っています。"
 
 #: redbot/cogs/admin/admin.py:180
 msgid "I successfully added {role.name} to {member.display_name}"
-msgstr ""
+msgstr "{role.name} を {member.display_name} に正常に追加しました"
 
 #: redbot/cogs/admin/admin.py:190
 msgid "{member.display_name} does not have the role {role.name}."
-msgstr ""
+msgstr "{member.display_name} にはロール {role.name} がありません。"
 
 #: redbot/cogs/admin/admin.py:211
 msgid "I successfully removed {role.name} from {member.display_name}"
-msgstr ""
+msgstr "{role.name} を {member.display_name} から正常に削除しました"
 
 #: redbot/cogs/admin/admin.py:226
 #, docstring
@@ -79,7 +79,11 @@ msgid "\n"
 "        Use double quotes if the role contains spaces.\n"
 "        If user is left blank it defaults to the author of the command.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        ユーザーにロールを追加します。\n\n"
+"        ロールにスペースが含まれる場合は二重引用符を使用します。\n"
+"        ユーザーを空白のままにすると、デフォルトでコマンドの作成者になります。\n"
+"        "
 
 #: redbot/cogs/admin/admin.py:244
 #, docstring
@@ -88,12 +92,16 @@ msgid "\n"
 "        Use double quotes if the role contains spaces.\n"
 "        If user is left blank it defaults to the author of the command.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        ユーザーからロールを削除します。\n\n"
+"        ロールにスペースが含まれる場合は二重引用符を使用します。\n"
+"        ユーザーを空白のままにすると、デフォルトでコマンドの作成者になります。\n"
+"        "
 
 #: redbot/cogs/admin/admin.py:256
 #, docstring
 msgid "Edit role settings."
-msgstr ""
+msgstr "ロール編集設定"
 
 #: redbot/cogs/admin/admin.py:263
 #, docstring
@@ -106,13 +114,25 @@ msgid "\n"
 "            `[p]editrole colour \"The Transistor\" #ff0000`\n"
 "            `[p]editrole colour Test #ff9900`\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        ロールの色を編集します。\n\n"
+"        役割にスペースが含まれる場合は二重引用符を使用します。\n"
+"        色は 16 進形式である必要があります。\n"
+"        [オンラインカラーピッカー](http://www.w3schools.com/colors/colors_picker.asp)\n\n"
+"        例：\n"
+"            `[p]editrole colour \"The Transistor\" #ff0000`\n"
+"            `[p]editrole colour Test #ff9900`\n"
+"        "
 
-#: redbot/cogs/admin/admin.py:292 redbot/cogs/admin/admin.py:325
+#: redbot/cogs/admin/admin.py:275
+msgid "{author} ({author.id}) changed the colour of role '{role.name}'"
+msgstr "{author} ({author.id}) がロール「{role.name}」の色を変更しました"
+
+#: redbot/cogs/admin/admin.py:294 redbot/cogs/admin/admin.py:327
 msgid "Done."
-msgstr ""
+msgstr "完了"
 
-#: redbot/cogs/admin/admin.py:296
+#: redbot/cogs/admin/admin.py:298
 #, docstring
 msgid "\n"
 "        Edit a role's name.\n\n"
@@ -120,176 +140,206 @@ msgid "\n"
 "        Example:\n"
 "            `[p]editrole name \"The Transistor\" Test`\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        役割の名前を編集します。\n\n"
+"        ロールまたは名前にスペースが含まれる場合は、二重引用符を使用します。\n\n"
+"        例：\n"
+"            `[p]editrole name \"The Transistor\" Test`\n"
+"        "
 
-#: redbot/cogs/admin/admin.py:330
+#: redbot/cogs/admin/admin.py:308
+msgid "{author} ({author.id}) changed the name of role '{old_name}' to '{name}'"
+msgstr "{author} ({author.id}) がロール名「{old_name}」を「{name}」に変更しました"
+
+#: redbot/cogs/admin/admin.py:332
 #, docstring
 msgid "Announce a message to all servers the bot is in."
-msgstr ""
+msgstr "ボットが参加しているすべてのサーバーにメッセージをアナウンスする"
 
-#: redbot/cogs/admin/admin.py:337
+#: redbot/cogs/admin/admin.py:339
 msgid "The announcement has begun."
-msgstr ""
-
-#: redbot/cogs/admin/admin.py:344
-#, docstring
-msgid "Cancel a running announce."
-msgstr ""
+msgstr "アナウンスを開始しました"
 
 #: redbot/cogs/admin/admin.py:346
+#, docstring
+msgid "Cancel a running announce."
+msgstr "実行中のアナウンスをキャンセル"
+
+#: redbot/cogs/admin/admin.py:348
 msgid "There is no currently running announcement."
-msgstr ""
+msgstr "現在実行中のアナウンスはありません"
 
-#: redbot/cogs/admin/admin.py:349
+#: redbot/cogs/admin/admin.py:351
 msgid "The current announcement has been cancelled."
-msgstr ""
+msgstr "現在のアナウンスがキャンセルされました"
 
-#: redbot/cogs/admin/admin.py:355
+#: redbot/cogs/admin/admin.py:357
 #, docstring
 msgid "Change how announcements are sent in this guild."
-msgstr ""
+msgstr "このギルドでのアナウンスの送信方法を変更します"
 
-#: redbot/cogs/admin/admin.py:365
+#: redbot/cogs/admin/admin.py:367
 #, docstring
 msgid "Change the channel where the bot will send announcements."
-msgstr ""
+msgstr "Botがアナウンスを送信するチャンネルを変更します"
 
-#: redbot/cogs/admin/admin.py:368
+#: redbot/cogs/admin/admin.py:370
 msgid "The announcement channel has been set to {channel.mention}"
-msgstr ""
+msgstr "アナウンスチャンネルが{channel.mention}に設定されました"
 
-#: redbot/cogs/admin/admin.py:373
+#: redbot/cogs/admin/admin.py:375
 #, docstring
 msgid "Unsets the channel for announcements."
-msgstr ""
+msgstr "アナウンスのチャンネルを解除します"
 
-#: redbot/cogs/admin/admin.py:398
+#: redbot/cogs/admin/admin.py:400
 #, docstring
 msgid "\n"
 "        Add or remove a selfrole from yourself.\n\n"
 "        Server admins must have configured the role as user settable.\n"
 "        NOTE: The role is case sensitive!\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        自分自身にロールを追加または削除します。\n\n"
+"        サーバー管理者は、ロールをユーザー設定可能として構成しておく必要があります。\n"
+"        注: ロールでは大文字と小文字が区別されます。\n"
+"        "
 
-#: redbot/cogs/admin/admin.py:411
+#: redbot/cogs/admin/admin.py:413
 #, docstring
 msgid "\n"
 "        Add a selfrole to yourself.\n\n"
 "        Server admins must have configured the role as user settable.\n"
 "        NOTE: The role is case sensitive!\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        自分自身にロールを追加します。\n\n"
+"        サーバー管理者は、ロールをユーザー設定可能として構成しておく必要があります。\n"
+"        注: ロールでは大文字と小文字が区別されます。\n"
+"        "
 
-#: redbot/cogs/admin/admin.py:422
+#: redbot/cogs/admin/admin.py:424
 #, docstring
 msgid "\n"
 "        Remove a selfrole from yourself.\n\n"
 "        Server admins must have configured the role as user settable.\n"
 "        NOTE: The role is case sensitive!\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        自分自身からロールを削除します。\n\n"
+"        サーバー管理者は、ロールをユーザー設定可能として構成しておく必要があります。\n"
+"        注: ロールでは大文字と小文字が区別されます。\n"
+"        "
 
-#: redbot/cogs/admin/admin.py:433
+#: redbot/cogs/admin/admin.py:435
 #, docstring
 msgid "\n"
 "        Lists all available selfroles.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        利用可能なすべてのロールをリストします。\n"
+"        "
 
-#: redbot/cogs/admin/admin.py:443
+#: redbot/cogs/admin/admin.py:445
 msgid "Available Selfroles:\n"
 "{selfroles}"
-msgstr ""
+msgstr "利用可能なセルフロール：\n"
+"{selfroles}"
 
-#: redbot/cogs/admin/admin.py:449
+#: redbot/cogs/admin/admin.py:451
 #, docstring
 msgid "Manage selfroles."
-msgstr ""
+msgstr "セルフロールの管理"
 
-#: redbot/cogs/admin/admin.py:454
+#: redbot/cogs/admin/admin.py:456
 #, docstring
 msgid "\n"
 "        Add a role, or a selection of roles, to the list of available selfroles.\n\n"
 "        NOTE: The role is case sensitive!\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        使用可能なセルフロールのリストからロールを削除します。\n\n"
+"        注：役割では大文字と小文字が区別されます！\n"
+"        "
 
-#: redbot/cogs/admin/admin.py:463
+#: redbot/cogs/admin/admin.py:465
 msgid "I cannot let you add {role.name} as a selfrole because that role is higher than or equal to your highest role in the Discord hierarchy."
-msgstr ""
+msgstr "そのロールは Discord の階層内で私のロールよりも上位か、最上位のロールと同等であるため、{role.name} をセルフロールとして追加することはできません。"
 
-#: redbot/cogs/admin/admin.py:473
+#: redbot/cogs/admin/admin.py:475
 msgid "The role \"{role.name}\" is already a selfrole."
-msgstr ""
-
-#: redbot/cogs/admin/admin.py:479
-msgid "Added {count} selfroles."
-msgstr ""
+msgstr "\"{role.name}\"はすでにセルフロールです。"
 
 #: redbot/cogs/admin/admin.py:481
-msgid "Added 1 selfrole."
-msgstr ""
+msgid "Added {count} selfroles."
+msgstr "{count} 個のセルフロールを追加しました。"
 
-#: redbot/cogs/admin/admin.py:487
+#: redbot/cogs/admin/admin.py:483
+msgid "Added 1 selfrole."
+msgstr "セルフロールを 1 つ追加しました。"
+
+#: redbot/cogs/admin/admin.py:489
 #, docstring
 msgid "\n"
 "        Remove a role, or a selection of roles, from the list of available selfroles.\n\n"
 "        NOTE: The role is case sensitive!\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        利用可能なセルフロールのリストからロールまたは選択されたロールを削除します。\n\n"
+"        注意: ロールは大文字と小文字を区別します。\n"
+"        "
 
-#: redbot/cogs/admin/admin.py:496
+#: redbot/cogs/admin/admin.py:498
 msgid "I cannot let you remove {role.name} from being a selfrole because that role is higher than or equal to your highest role in the Discord hierarchy."
-msgstr ""
-
-#: redbot/cogs/admin/admin.py:506
-msgid "Removed {count} selfroles."
-msgstr ""
+msgstr "そのロールは Discord の階層内で私のロールよりも上位か、最上位のロールと同等であるため、{role.name} をセルフロールから除外することはできません。"
 
 #: redbot/cogs/admin/admin.py:508
-msgid "Removed 1 selfrole."
-msgstr ""
+msgid "Removed {count} selfroles."
+msgstr "{count} 個のセルフロールを削除しました。"
 
-#: redbot/cogs/admin/admin.py:514
+#: redbot/cogs/admin/admin.py:510
+msgid "Removed 1 selfrole."
+msgstr "セルフロールを 1 つ削除しました。"
+
+#: redbot/cogs/admin/admin.py:516
 #, docstring
 msgid "Clear the list of available selfroles for this server."
-msgstr ""
+msgstr "このサーバーで利用可能なセルフロールのリストをクリアします。"
 
-#: redbot/cogs/admin/admin.py:518
+#: redbot/cogs/admin/admin.py:520
 msgid "There are currently no selfroles."
-msgstr ""
+msgstr "現在セルフロールはありません。"
 
-#: redbot/cogs/admin/admin.py:521
+#: redbot/cogs/admin/admin.py:523
 msgid "Are you sure you want to clear this server's selfrole list?"
-msgstr ""
+msgstr "このサーバーのセルフロールリストをクリアしてもよろしいですか？"
 
-#: redbot/cogs/admin/admin.py:527
+#: redbot/cogs/admin/admin.py:529
 msgid "You took too long to respond."
-msgstr ""
+msgstr "応答に時間がかかりすぎました。"
 
-#: redbot/cogs/admin/admin.py:536
+#: redbot/cogs/admin/admin.py:538
 msgid "I cannot clear the selfroles because the selfrole '{role.name}' is higher than or equal to your highest role in the Discord hierarchy."
-msgstr ""
-
-#: redbot/cogs/admin/admin.py:542
-msgid "Selfrole list cleared."
-msgstr ""
+msgstr "セルフロール '{role.name}' がDiscordの階層におけるあなたの最高の役割以上であるため、セルフロールをクリアすることはできません。"
 
 #: redbot/cogs/admin/admin.py:544
-msgid "No changes have been made."
-msgstr ""
+msgid "Selfrole list cleared."
+msgstr "セルフロールリストをクリアしました。"
 
-#: redbot/cogs/admin/admin.py:549
+#: redbot/cogs/admin/admin.py:546
+msgid "No changes have been made."
+msgstr "変更はありません。"
+
+#: redbot/cogs/admin/admin.py:551
 #, docstring
 msgid "Lock a bot to its current servers only."
 msgstr "Botを現在のサーバーにのみロックします。"
 
-#: redbot/cogs/admin/admin.py:554
+#: redbot/cogs/admin/admin.py:556
 msgid "The bot is no longer serverlocked."
 msgstr "Botはもうサーバーロックされていません。"
 
-#: redbot/cogs/admin/admin.py:556
+#: redbot/cogs/admin/admin.py:558
 msgid "The bot is now serverlocked."
 msgstr "Botはサーバーロックされました。"
 
@@ -307,9 +357,9 @@ msgstr "管理者コグがロードされていません。"
 
 #: redbot/cogs/admin/converters.py:30
 msgid "The role \"{role_name}\" is not a valid selfrole."
-msgstr ""
+msgstr "\"{role_name}\" は有効な自己ロールではありません。"
 
 #: redbot/cogs/admin/converters.py:36
 msgid "This selfrole has more than one case insensitive match. Please ask a moderator to resolve the ambiguity, or use the role ID to reference the role."
-msgstr ""
+msgstr "このセルフロールには複数の大文字小文字を区別しない一致があります。 曖昧さを解決するためにモデレータに尋ねるか、ロールIDを使用してロールを参照してください。"
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-05-13 10:40+0000\n"
+"POT-Creation-Date: 2024-07-10 18:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: Norwegian Bokmal\n"
 "MIME-Version: 1.0\n"
@@ -264,23 +264,23 @@ msgstr "Navn og kallenavn vil ikke lenger bli filtrert."
 msgid "Names and nicknames will now be filtered."
 msgstr "Navn og kallenavn vil nå bli filtrert."
 
-#: redbot/cogs/filter/filter.py:526
+#: redbot/cogs/filter/filter.py:535
 msgid "Filtered words used: {words}"
 msgstr "Filtrerte ord som brukes: {words}"
 
-#: redbot/cogs/filter/filter.py:528
+#: redbot/cogs/filter/filter.py:537
 msgid "Filtered word used: {word}"
 msgstr "Filtrert ord brukt: {word}"
 
-#: redbot/cogs/filter/filter.py:542
+#: redbot/cogs/filter/filter.py:551
 msgid "Autoban (too many filtered messages.)"
 msgstr "Autoban (for mange filtrerte meldinger.)"
 
-#: redbot/cogs/filter/filter.py:612
+#: redbot/cogs/filter/filter.py:621
 msgid "Filtered nickname"
 msgstr "Filtrert kallenavn"
 
-#: redbot/cogs/filter/filter.py:612
+#: redbot/cogs/filter/filter.py:621
 msgid "Filtered name"
 msgstr "Filtrert navn"
 

@@ -21,7 +21,7 @@ msgstr "\"{arg}\" ble ikke funnet. Det må være ID, mening eller navn på en se
 
 #: redbot/cogs/permissions/converters.py:74
 msgid "\"{arg}\" does not refer to a unique server, channel, user or role. Please use the ID for whatever/whoever you're trying to specify, or mention it/them."
-msgstr "\"{arg}}\"refererer ikke til en unik server, kanal, bruker eller rolle. Vennligst bruk IDen til hva som er allment eller hvem du prøver å spesifisere, eller nevne den/dem."
+msgstr "\"{arg}\" dette refererer ikke til en unik server, kanal, bruker eller rolle. Vennligst bruk ID-en til det/den du prøver å spesifisere, eller nevne den/dem."
 
 #: redbot/cogs/permissions/converters.py:117
 msgid "\"{arg}\" was not found. It must be the ID, mention, or name of a channel, user or role in this server."
@@ -94,7 +94,16 @@ msgid "This cog extends the default permission model of the bot. By default, man
 "4. Rules about a role the user has (The highest role they have with a rule will be used).\n"
 "5. Rules about the server a user is in (Global rules only).\n\n"
 "For more details, please read the [official documentation](https://docs.discord.red/en/stable/cog_permissions.html)."
-msgstr ""
+msgstr "Denne cog utvider standard tilgangsmodell for boten. Som standard er mange kommandoer begrenset basert på hva kommandoen kan gjøre.\n"
+"Denne cog gir deg tilgang til noen av disse restriksjonene. Du kan gi mer eller mindre tilgang til de fleste kommandoene ved å bruke den. Du kan imidlertid ikke endre restriksjoner på bare eierkommandoer.\n\n"
+"Når det er satt inn ekstra regler i denne farten, vil disse reglene bli kontrollert før de sjekker etter kommandoens standardbegrensninger.\n"
+"Globale regler (angitt av eieren) kontrolleres først, så regler angis for servere. Hvis flere globale eller serverregler gjelder for hvert tilfelle, er rekkefølgen de er merket av er:\n"
+"1. Regler om en bruker.\n"
+"2. Regler om tale/scene-kanalen en bruker er koblet til.\n"
+"3.\n"
+"En av reglene om kanalen eller en forelder i tråden ble sendt ut. Regler om en rolle som brukeren har (Den fremste rollen de har med regel vil bli brukt).\n"
+"5. Regler om serveren en bruker er bare i (Globalregler).\n\n"
+"For mer informasjon, vennligst les [offisiell dokumentasjon](https://docs.discord.red/en/stable/cog_permissions.html)."
 
 #: redbot/cogs/permissions/permissions.py:239
 #, docstring
@@ -326,7 +335,7 @@ msgstr "Leverer en fil med neste melding eller skriv noe for å avbryte."
 
 #: redbot/cogs/permissions/permissions.py:641
 msgid "You took too long to upload a file."
-msgstr ""
+msgstr "Du tok for lang tid å laste opp en fil."
 
 #: redbot/cogs/permissions/permissions.py:644
 msgid "You have cancelled the upload process."

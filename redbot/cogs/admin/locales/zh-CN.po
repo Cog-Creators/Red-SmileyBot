@@ -126,7 +126,7 @@ msgstr "  编辑身份证颜色\n\n"
 
 #: redbot/cogs/admin/admin.py:275
 msgid "{author} ({author.id}) changed the colour of role '{role.name}'"
-msgstr ""
+msgstr "{author} ({author.id}) 改变了角色的颜色 '{role.name}'"
 
 #: redbot/cogs/admin/admin.py:294 redbot/cogs/admin/admin.py:327
 msgid "Done."

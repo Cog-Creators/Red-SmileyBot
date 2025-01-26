@@ -37,7 +37,16 @@ MATCH_ALL_BUT_STR = Optional(Use(not_str))
 TRIVIA_LIST_SCHEMA = Schema(
     {
         Optional("$schema"): And(str, error=_("{key} key must be a text value.")),
-        Optional("AUTHOR"): And(str, error=_("{key} key must be a text value.")),
+        Optional("AUTHOR"): And(
+            str,
+            lambda text: 1 <= len(text) <= 1000,
+            error=_("{key} key must be a text value not longer than 1000 characters."),
+        ),
+        Optional("DESCRIPTION"): And(
+            str,
+            lambda text: 1 <= len(text) <= 200,
+            error=_("{key} key must be a text value not longer than 200 characters."),
+        ),
         Optional("CONFIG"): And(
             {
                 Optional("max_score"): And(

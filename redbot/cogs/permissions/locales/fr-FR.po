@@ -280,7 +280,7 @@ msgstr "Fournissez un fichier au message suivant ou tapez quoi que ce soit pour 
 
 #: redbot/cogs/permissions/permissions.py:641
 msgid "You took too long to upload a file."
-msgstr ""
+msgstr "Vous avez pris trop de temps pour envoyer un fichier."
 
 #: redbot/cogs/permissions/permissions.py:644
 msgid "You have cancelled the upload process."

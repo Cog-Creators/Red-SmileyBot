@@ -138,7 +138,10 @@ html_context = {
     "display_github": True,
     "github_user": "Cog-Creators",
     "github_repo": "Red-DiscordBot",
-    "github_version": "V3/develop/docs/",
+    "github_version": "V3/develop",
+    "version_slug": os.environ.get("READTHEDOCS_VERSION", ""),
+    "rtd_language": os.environ.get("READTHEDOCS_LANGUAGE", ""),
+    "READTHEDOCS": os.environ.get("READTHEDOCS", "") == "True",
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,
@@ -250,7 +253,10 @@ intersphinx_mapping = {
 extlinks = {
     "dpy_docs": (f"{dpy_docs_url}%s", None),
     "issue": ("https://github.com/Cog-Creators/Red-DiscordBot/issues/%s", "#%s"),
-    "ghuser": ("https://github.com/%s", "@%s"),
+    # below URL redirects to user page, if they don't have GH Sponsors set up,
+    # while allowing us to direct readers directly at a sponsorship opportunity,
+    # if they do
+    "ghuser": ("https://github.com/sponsors/%s", "@%s"),
 }
 
 # Doctest
@@ -274,7 +280,7 @@ class IgnoreCoroSubstitution(SphinxTransform):
     def apply(self, **kwargs) -> None:
         for ref in self.document.traverse(nodes.substitution_reference):
             if ref["refname"] == "coro":
-                ref.replace_self(nodes.Text("", ""))
+                ref.replace_self(nodes.Text(""))
 
 
 def setup(app):

@@ -117,6 +117,7 @@ _ = i18n.Translator("Core", __file__)
 TokenConverter = commands.get_dict_converter(delims=[" ", ",", ";"])
 
 MAX_PREFIX_LENGTH = 25
+MINIMUM_PREFIX_LENGTH = 1
 
 
 class CoreLogic:
@@ -2080,9 +2081,9 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
             )
         )
 
-    @slash.command(name="enablecog")
+    @slash.command(name="enablecog", require_var_positional=True)
     @commands.max_concurrency(1, wait=True)
-    async def slash_enablecog(self, ctx: commands.Context, cog_name: str):
+    async def slash_enablecog(self, ctx: commands.Context, *cog_names: str):
         """Marks all application commands in a cog as being enabled, allowing them to be added to the bot.
 
         See a list of cogs with application commands with `[p]slash list`.
@@ -2090,32 +2091,42 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         This command does NOT sync the enabled commands with Discord, that must be done manually with `[p]slash sync` for commands to appear in users' clients.
 
         **Arguments:**
-            - `<cog_name>` - The cog to enable commands from. This argument is case sensitive.
+            - `<cog_names>` - The cogs to enable commands from. This argument is case sensitive.
         """
         enabled_commands = await self.bot.list_enabled_app_commands()
         to_add_slash = []
         to_add_message = []
         to_add_user = []
 
+        successful_cogs = set()
         # Fetch a list of command names to enable
         for name, com in self.bot.tree._disabled_global_commands.items():
-            if self._is_submodule(cog_name, com.module):
-                to_add_slash.append(name)
+            for cog_name in cog_names:
+                if self._is_submodule(cog_name, com.module):
+                    to_add_slash.append(name)
+                    successful_cogs.add(cog_name)
         for key, com in self.bot.tree._disabled_context_menus.items():
-            if self._is_submodule(cog_name, com.module):
-                name, guild_id, com_type = key
-                com_type = discord.AppCommandType(com_type)
-                if com_type is discord.AppCommandType.message:
-                    to_add_message.append(name)
-                elif com_type is discord.AppCommandType.user:
-                    to_add_user.append(name)
+            for cog_name in cog_names:
+                if self._is_submodule(cog_name, com.module):
+                    name, guild_id, com_type = key
+                    com_type = discord.AppCommandType(com_type)
+                    if com_type is discord.AppCommandType.message:
+                        to_add_message.append(name)
+                        successful_cogs.add(cog_name)
+                    elif com_type is discord.AppCommandType.user:
+                        to_add_user.append(name)
+                        successful_cogs.add(cog_name)
+        failed_cogs = set(cog_names) - successful_cogs
 
         # Check that we are going to enable at least one command, for user feedback
         if not (to_add_slash or to_add_message or to_add_user):
             await ctx.send(
                 _(
-                    "Couldn't find any disabled commands from the cog `{cog_name}`. Use `{prefix}slash list` to see all cogs with application commands."
-                ).format(cog_name=cog_name, prefix=ctx.prefix)
+                    "Couldn't find any disabled commands from {cog_names}. Use `{prefix}slash list` to see all cogs with application commands"
+                ).format(
+                    cog_names=humanize_list([inline(name) for name in failed_cogs]),
+                    prefix=ctx.clean_prefix,
+                )
             )
             return
 
@@ -2129,7 +2140,7 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         if total_slash > SLASH_CAP:
             await ctx.send(
                 _(
-                    "Enabling all application commands from that cog would enable a total of {count} "
+                    "Enabling all application commands from these cogs would enable a total of {count} "
                     "commands, exceeding the {cap} command limit for slash commands. "
                     "Disable some commands first."
                 ).format(count=total_slash, cap=SLASH_CAP)
@@ -2138,7 +2149,7 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         if total_message > CONTEXT_CAP:
             await ctx.send(
                 _(
-                    "Enabling all application commands from that cog would enable a total of {count} "
+                    "Enabling all application commands from these cogs would enable a total of {count} "
                     "commands, exceeding the {cap} command limit for message commands. "
                     "Disable some commands first."
                 ).format(count=total_message, cap=CONTEXT_CAP)
@@ -2147,7 +2158,7 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         if total_user > CONTEXT_CAP:
             await ctx.send(
                 _(
-                    "Enabling all application commands from that cog would enable a total of {count} "
+                    "Enabling all application commands from these cogs would enable a total of {count} "
                     "commands, exceeding the {cap} command limit for user commands. "
                     "Disable some commands first."
                 ).format(count=total_user, cap=CONTEXT_CAP)
@@ -2171,14 +2182,24 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         names.extend(to_add_message)
         names.extend(to_add_user)
         formatted_names = humanize_list([inline(name) for name in names])
-        await ctx.send(
-            _("Enabled {count} commands from `{cog_name}`:\n{names}").format(
-                count=count, cog_name=cog_name, names=formatted_names
-            )
-        )
+        formatted_successful_cogs = humanize_list([inline(name) for name in successful_cogs])
 
-    @slash.command(name="disablecog")
-    async def slash_disablecog(self, ctx: commands.Context, cog_name):
+        output = _("Enabled {count} commands from {cog_names}:\n{names}").format(
+            count=count, cog_names=formatted_successful_cogs, names=formatted_names
+        )
+        if failed_cogs:
+            output += "\n\n"
+            output += _(
+                "Couldn't find any disabled commands from {cog_names}. Use `{prefix}slash list` to see all cogs with application commands."
+            ).format(
+                cog_names=humanize_list([inline(name) for name in failed_cogs]),
+                prefix=ctx.clean_prefix,
+            )
+        for page in pagify(output):
+            await ctx.send(page)
+
+    @slash.command(name="disablecog", require_var_positional=True)
+    async def slash_disablecog(self, ctx: commands.Context, *cog_names: str):
         """Marks all application commands in a cog as being disabled, preventing them from being added to the bot.
 
         See a list of cogs with application commands with `[p]slash list`.
@@ -2186,32 +2207,55 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         This command does NOT sync the enabled commands with Discord, that must be done manually with `[p]slash sync` for commands to appear in users' clients.
 
         **Arguments:**
-            - `<cog_name>` - The cog to disable commands from. This argument is case sensitive.
+            - `<cog_names>` - The cogs to disable commands from. This argument is case sensitive.
         """
         removed = []
+        removed_cogs = set()
         for name, com in self.bot.tree._global_commands.items():
-            if self._is_submodule(cog_name, com.module):
-                await self.bot.disable_app_command(name, discord.AppCommandType.chat_input)
-                removed.append(name)
+            for cog_name in cog_names:
+                if self._is_submodule(cog_name, com.module):
+                    await self.bot.disable_app_command(name, discord.AppCommandType.chat_input)
+                    removed.append(name)
+                    removed_cogs.add(cog_name)
         for key, com in self.bot.tree._context_menus.items():
-            if self._is_submodule(cog_name, com.module):
-                name, guild_id, com_type = key
-                await self.bot.disable_app_command(name, discord.AppCommandType(com_type))
-                removed.append(name)
+            for cog_name in cog_names:
+                if self._is_submodule(cog_name, com.module):
+                    name, guild_id, com_type = key
+                    await self.bot.disable_app_command(name, discord.AppCommandType(com_type))
+                    removed.append(name)
+                    removed_cogs.add(cog_name)
+        failed_cogs = set(cog_names) - removed_cogs
+
         if not removed:
             await ctx.send(
                 _(
-                    "Couldn't find any enabled commands from the `{cog_name}` cog. Use `{prefix}slash list` to see all cogs with application commands."
-                ).format(cog_name=cog_name, prefix=ctx.prefix)
+                    "Couldn't find any enabled commands from {cog_names}. Use `{prefix}slash list` to see all cogs with application commands."
+                ).format(
+                    cog_names=humanize_list([inline(name) for name in failed_cogs]),
+                    prefix=ctx.clean_prefix,
+                )
             )
             return
+
         await self.bot.tree.red_check_enabled()
         formatted_names = humanize_list([inline(name) for name in removed])
-        await ctx.send(
-            _("Disabled {count} commands from `{cog_name}`:\n{names}").format(
-                count=len(removed), cog_name=cog_name, names=formatted_names
-            )
+        formatted_removed_cogs = humanize_list([inline(name) for name in removed_cogs])
+
+        output = _("Disabled {count} commands from {cog_names}:\n{names}").format(
+            count=len(removed),
+            cog_names=formatted_removed_cogs,
+            names=formatted_names,
         )
+        if failed_cogs:
+            output += "\n\n"
+            output += _(
+                "Couldn't find any enabled commands from {cog_names}. Use `{prefix}slash list` to see all cogs with application commands."
+            ).format(
+                cog_names=humanize_list([inline(name) for name in failed_cogs]),
+                prefix=ctx.clean_prefix,
+            )
+        for page in pagify(output):
+            await ctx.send(page)
 
     @slash.command(name="list")
     async def slash_list(self, ctx: commands.Context):
@@ -2374,10 +2418,15 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         """Custom cooldown error message."""
         if not isinstance(error, commands.CommandOnCooldown):
             return await ctx.bot.on_command_error(ctx, error, unhandled_by_cog=True)
+        if ctx.bot._bypass_cooldowns and ctx.author.id in ctx.bot.owner_ids:
+            ctx.command.reset_cooldown(ctx)
+            new_ctx = await ctx.bot.get_context(ctx.message)
+            await ctx.bot.invoke(new_ctx)
+            return
         await ctx.send(
             _(
                 "You seem to be attempting to sync after recently syncing. Discord does not like it "
-                "when bots sync more often than neccecary, so this command has a cooldown. You "
+                "when bots sync more often than necessary, so this command has a cooldown. You "
                 "should enable/disable all commands you want to change first, and run this command "
                 "one time only after all changes have been made. "
             )
@@ -2847,21 +2896,12 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
             ctx.bot.description = description
             await ctx.tick()
 
-    @_set_bot.group(name="avatar", invoke_without_command=True)
-    @commands.is_owner()
-    async def _set_bot_avatar(self, ctx: commands.Context, url: str = None):
-        """Sets [botname]'s avatar
-
-        Supports either an attachment or an image URL.
-
-        **Examples:**
-        - `[p]set bot avatar` - With an image attachment, this will set the avatar.
-        - `[p]set bot avatar` - Without an attachment, this will show the command help.
-        - `[p]set bot avatar https://links.flaree.xyz/k95` - Sets the avatar to the provided url.
-
-        **Arguments:**
-        - `[url]` - An image url to be used as an avatar. Leave blank when uploading an attachment.
-        """
+    async def _set_bot_image(
+        self,
+        image_type: Literal["avatar", "banner"],
+        ctx: commands.Context,
+        url: Optional[str] = None,
+    ):
         if len(ctx.message.attachments) > 0:  # Attachments take priority
             data = await ctx.message.attachments[0].read()
         elif url is not None:
@@ -2882,19 +2922,48 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
 
         try:
             async with ctx.typing():
-                await ctx.bot.user.edit(avatar=data)
+                if image_type == "avatar":
+                    await ctx.bot.user.edit(avatar=data)
+                else:
+                    await ctx.bot.user.edit(banner=data)
         except discord.HTTPException:
-            await ctx.send(
-                _(
-                    "Failed. Remember that you can edit my avatar "
-                    "up to two times a hour. The URL or attachment "
-                    "must be a valid image in either JPG or PNG format."
+            if image_type == "avatar":
+                await ctx.send(
+                    _(
+                        "Failed. Remember that you can edit my avatar "
+                        "up to two times a hour. The URL or attachment "
+                        "must be a valid image in either JPG, PNG, GIF, or WEBP format."
+                    )
                 )
-            )
+            else:
+                await ctx.send(
+                    _(
+                        "Failed. Remember that you can edit my banner "
+                        "up to two times a hour. The URL or attachment "
+                        "must be a valid image in either JPG, PNG, GIF, or WEBP format."
+                    )
+                )
         except ValueError:
-            await ctx.send(_("JPG / PNG format only."))
+            await ctx.send(_("JPG / PNG / GIF / WEBP format only."))
         else:
             await ctx.send(_("Done."))
+
+    @_set_bot.group(name="avatar", invoke_without_command=True)
+    @commands.is_owner()
+    async def _set_bot_avatar(self, ctx: commands.Context, url: str = None):
+        """Sets [botname]'s avatar
+
+        Supports either an attachment or an image URL.
+
+        **Examples:**
+        - `[p]set bot avatar` - With an image attachment, this will set the avatar.
+        - `[p]set bot avatar` - Without an attachment, this will show the command help.
+        - `[p]set bot avatar https://avatars.githubusercontent.com/u/23690422` - Sets the avatar to the provided url.
+
+        **Arguments:**
+        - `[url]` - An image url to be used as an avatar. Leave blank when uploading an attachment.
+        """
+        await self._set_bot_image("avatar", ctx, url)
 
     @_set_bot_avatar.command(name="remove", aliases=["clear"])
     @commands.is_owner()
@@ -2908,6 +2977,36 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         async with ctx.typing():
             await ctx.bot.user.edit(avatar=None)
         await ctx.send(_("Avatar removed."))
+
+    @_set_bot.group(name="banner", invoke_without_command=True)
+    @commands.is_owner()
+    async def _set_bot_banner(self, ctx: commands.Context, url: str = None):
+        """Sets [botname]'s banner
+
+        Supports either an attachment or an image URL.
+
+        **Examples:**
+        - `[p]set bot banner` - With an image attachment, this will set the banner.
+        - `[p]set bot banner` - Without an attachment, this will show the command help.
+        - `[p]set bot banner https://opengraph.githubassets.com` - Sets the banner to the provided url.
+
+        **Arguments:**
+        - `[url]` - An image url to be used as an banner. Leave blank when uploading an attachment.
+        """
+        await self._set_bot_image("banner", ctx, url)
+
+    @_set_bot_banner.command(name="remove", aliases=["clear"])
+    @commands.is_owner()
+    async def _set_bot_banner_remove(self, ctx: commands.Context):
+        """
+        Removes [botname]'s banner.
+
+        **Example:**
+        - `[p]set bot banner remove`
+        """
+        async with ctx.typing():
+            await ctx.bot.user.edit(banner=None)
+        await ctx.send(_("Banner removed."))
 
     @_set_bot.command(name="username", aliases=["name"])
     @commands.is_owner()
@@ -3032,7 +3131,13 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
     )
     @commands.bot_in_a_guild()
     @commands.is_owner()
-    async def _set_status_stream(self, ctx: commands.Context, streamer=None, *, stream_title=None):
+    async def _set_status_stream(
+        self,
+        ctx: commands.Context,
+        streamer: commands.Range[str, 1, 489] = None,
+        *,
+        stream_title: commands.Range[str, 1, 128] = None,
+    ):
         """Sets [botname]'s streaming status to a twitch stream.
 
         This will appear as `Streaming <stream_title>` or `LIVE ON TWITCH` depending on the context.
@@ -3056,12 +3161,6 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
             stream_title = stream_title.strip()
             if "twitch.tv/" not in streamer:
                 streamer = "https://www.twitch.tv/" + streamer
-            if len(streamer) > 511:
-                await ctx.send(_("The maximum length of the streamer url is 511 characters."))
-                return
-            if len(stream_title) > 128:
-                await ctx.send(_("The maximum length of the stream title is 128 characters."))
-                return
             activity = discord.Streaming(url=streamer, name=stream_title)
             await ctx.bot.change_presence(status=status, activity=activity)
         elif streamer is not None:
@@ -3074,7 +3173,9 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
     @_set_status.command(name="playing", aliases=["game"])
     @commands.bot_in_a_guild()
     @commands.is_owner()
-    async def _set_status_game(self, ctx: commands.Context, *, game: str = None):
+    async def _set_status_game(
+        self, ctx: commands.Context, *, game: commands.Range[str, 1, 128] = None
+    ):
         """Sets [botname]'s playing status.
 
         This will appear as `Playing <game>` or `PLAYING A GAME: <game>` depending on the context.
@@ -3090,9 +3191,6 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         """
 
         if game:
-            if len(game) > 128:
-                await ctx.send(_("The maximum length of game descriptions is 128 characters."))
-                return
             game = discord.Game(name=game)
         else:
             game = None
@@ -3106,7 +3204,9 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
     @_set_status.command(name="listening")
     @commands.bot_in_a_guild()
     @commands.is_owner()
-    async def _set_status_listening(self, ctx: commands.Context, *, listening: str = None):
+    async def _set_status_listening(
+        self, ctx: commands.Context, *, listening: commands.Range[str, 1, 128] = None
+    ):
         """Sets [botname]'s listening status.
 
         This will appear as `Listening to <listening>`.
@@ -3123,11 +3223,6 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
 
         status = ctx.bot.guilds[0].me.status if len(ctx.bot.guilds) > 0 else discord.Status.online
         if listening:
-            if len(listening) > 128:
-                await ctx.send(
-                    _("The maximum length of listening descriptions is 128 characters.")
-                )
-                return
             activity = discord.Activity(name=listening, type=discord.ActivityType.listening)
         else:
             activity = None
@@ -3142,7 +3237,9 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
     @_set_status.command(name="watching")
     @commands.bot_in_a_guild()
     @commands.is_owner()
-    async def _set_status_watching(self, ctx: commands.Context, *, watching: str = None):
+    async def _set_status_watching(
+        self, ctx: commands.Context, *, watching: commands.Range[str, 1, 128] = None
+    ):
         """Sets [botname]'s watching status.
 
         This will appear as `Watching <watching>`.
@@ -3159,9 +3256,6 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
 
         status = ctx.bot.guilds[0].me.status if len(ctx.bot.guilds) > 0 else discord.Status.online
         if watching:
-            if len(watching) > 128:
-                await ctx.send(_("The maximum length of watching descriptions is 128 characters."))
-                return
             activity = discord.Activity(name=watching, type=discord.ActivityType.watching)
         else:
             activity = None
@@ -3174,7 +3268,9 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
     @_set_status.command(name="competing")
     @commands.bot_in_a_guild()
     @commands.is_owner()
-    async def _set_status_competing(self, ctx: commands.Context, *, competing: str = None):
+    async def _set_status_competing(
+        self, ctx: commands.Context, *, competing: commands.Range[str, 1, 128] = None
+    ):
         """Sets [botname]'s competing status.
 
         This will appear as `Competing in <competing>`.
@@ -3191,11 +3287,6 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
 
         status = ctx.bot.guilds[0].me.status if len(ctx.bot.guilds) > 0 else discord.Status.online
         if competing:
-            if len(competing) > 128:
-                await ctx.send(
-                    _("The maximum length of competing descriptions is 128 characters.")
-                )
-                return
             activity = discord.Activity(name=competing, type=discord.ActivityType.competing)
         else:
             activity = None
@@ -3206,6 +3297,37 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
             )
         else:
             await ctx.send(_("Competing cleared."))
+
+    @_set_status.command(name="custom")
+    @commands.bot_in_a_guild()
+    @commands.is_owner()
+    async def _set_status_custom(
+        self, ctx: commands.Context, *, text: commands.Range[str, 1, 128] = None
+    ):
+        """Sets [botname]'s custom status.
+
+        This will appear as `<text>`.
+
+        Maximum length for a custom status is 128 characters.
+
+        **Examples:**
+        - `[p]set status custom` - Clears the activity status.
+        - `[p]set status custom Running cogs...`
+
+        **Arguments:**
+        - `[text]` - The custom status text. Leave blank to clear the current activity status.
+        """
+
+        status = ctx.bot.guilds[0].me.status if len(ctx.bot.guilds) > 0 else discord.Status.online
+        if text:
+            activity = discord.CustomActivity(name=text)
+        else:
+            activity = None
+        await ctx.bot.change_presence(status=status, activity=activity)
+        if activity:
+            await ctx.send(_("Custom status set to `{text}`.").format(text=text))
+        else:
+            await ctx.send(_("Custom status cleared."))
 
     async def _set_my_status(self, ctx: commands.Context, status: discord.Status):
         game = ctx.bot.guilds[0].me.activity if len(ctx.bot.guilds) > 0 else None
@@ -4029,6 +4151,24 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
                 _("Prefixes cannot start with '/', as it conflicts with Discord's slash commands.")
             )
             return
+        if any(len(x) < MINIMUM_PREFIX_LENGTH for x in prefixes):
+            await ctx.send(
+                _(
+                    "Warning: A prefix is below the recommended length (1 character).\n"
+                    "Do you want to continue?"
+                )
+                + " (yes/no)"
+            )
+            pred = MessagePredicate.yes_or_no(ctx)
+            try:
+                await self.bot.wait_for("message", check=pred, timeout=30)
+            except asyncio.TimeoutError:
+                await ctx.send(_("Response timed out."))
+                return
+            else:
+                if pred.result is False:
+                    await ctx.send(_("Cancelled."))
+                    return
         if any(len(x) > MAX_PREFIX_LENGTH for x in prefixes):
             await ctx.send(
                 _(
@@ -4087,6 +4227,9 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
             await ctx.send(
                 _("Prefixes cannot start with '/', as it conflicts with Discord's slash commands.")
             )
+            return
+        if any(len(x) < MINIMUM_PREFIX_LENGTH for x in prefixes):
+            await ctx.send(_("You cannot have a prefix shorter than 1 character."))
             return
         if any(len(x) > MAX_PREFIX_LENGTH for x in prefixes):
             await ctx.send(_("You cannot have a prefix longer than 25 characters."))
@@ -4423,8 +4566,6 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
     async def helpset_maxpages(self, ctx: commands.Context, pages: int):
         """Set the maximum number of help pages sent in a server channel.
 
-        Note: This setting does not apply to menu help.
-
         If a help message contains more pages than this value, the help message will
         be sent to the command author via DM. This is to help reduce spam in server
         text channels.
@@ -4512,8 +4653,11 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         The maximum tagline length is 2048 characters.
         This setting only applies to embedded help. If no tagline is specified, the default will be used instead.
 
+        You can use `[\u200bp]` in your tagline, which will be replaced by the bot's prefix.
+
         **Examples:**
         - `[p]helpset tagline Thanks for using the bot!`
+        - `[p]helpset tagline Use [\u200bp]invite to add me to your server.`
         - `[p]helpset tagline` - Resets the tagline to the default.
 
         **Arguments:**

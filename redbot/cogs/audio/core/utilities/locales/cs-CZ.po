@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-05-11 20:55+0000\n"
+"POT-Creation-Date: 2024-10-20 20:20+0000\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
@@ -297,7 +297,7 @@ msgstr "Počkejte prosím, hledám skladby..."
 
 #: redbot/cogs/audio/core/utilities/player.py:629
 msgid "Getting track {num}/{total}..."
-msgstr "Záskávám skladby {num}/{total}..."
+msgstr "Získávám skladby {num}/{total}..."
 
 #: redbot/cogs/audio/core/utilities/player.py:630
 msgid "Matching track {num}/{total}..."
@@ -483,11 +483,11 @@ msgstr "Náhodně"
 msgid "Repeat"
 msgstr "Opakovat"
 
-#: redbot/cogs/audio/core/utilities/queue.py:159
+#: redbot/cogs/audio/core/utilities/queue.py:161
 msgid "Matching Tracks:"
 msgstr "Odpovídající skladby:"
 
-#: redbot/cogs/audio/core/utilities/queue.py:162
+#: redbot/cogs/audio/core/utilities/queue.py:164
 msgid "Page {page_num}/{total_pages} | {num_tracks} tracks"
 msgstr ""
 

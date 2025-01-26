@@ -566,6 +566,20 @@ class Downloader(commands.Cog):
             await ctx.send(
                 _("The repo name you provided is already in use. Please choose another name.")
             )
+        except errors.AuthenticationError as err:
+            await ctx.send(
+                _(
+                    "Failed to authenticate or repository does not exist."
+                    " See logs for more information."
+                )
+            )
+            log.exception(
+                "Something went wrong whilst cloning %s (to revision: %s)",
+                repo_url,
+                branch,
+                exc_info=err,
+            )
+
         except errors.CloningError as err:
             await ctx.send(
                 _(
@@ -594,7 +608,11 @@ class Downloader(commands.Cog):
         else:
             await ctx.send(_("Repo `{name}` successfully added.").format(name=name))
             if repo.install_msg:
-                await ctx.send(repo.install_msg.replace("[p]", ctx.clean_prefix))
+                await ctx.send(
+                    repo.install_msg.replace("[p]", ctx.clean_prefix).replace(
+                        "[botname]", ctx.me.display_name
+                    )
+                )
 
     @repo.command(name="delete", aliases=["remove", "del"], require_var_positional=True)
     async def _repo_del(self, ctx: commands.Context, *repos: Repo) -> None:
@@ -630,14 +648,22 @@ class Downloader(commands.Cog):
             joined = _("There are no repos installed.")
         else:
             if len(repos) > 1:
-                joined = _("# Installed Repos\n")
+                joined = _("## Installed Repos\n")
             else:
-                joined = _("# Installed Repo\n")
+                joined = _("## Installed Repo\n")
             for repo in sorted_repos:
-                joined += "+ {}: {}\n".format(repo.name, repo.short or "")
+                joined += "- **{}:** {}\n  - {}\n".format(
+                    repo.name,
+                    repo.short or "",
+                    (
+                        f"<{repo.clean_url}>"
+                        if repo.clean_url.startswith(("http://", "https://"))
+                        else repo.clean_url
+                    ),
+                )
 
         for page in pagify(joined, ["\n"], shorten_by=16):
-            await ctx.send(box(page.lstrip(" "), lang="markdown"))
+            await ctx.send(page)
 
     @repo.command(name="info")
     async def _repo_info(self, ctx: commands.Context, repo: Repo) -> None:
@@ -914,7 +940,11 @@ class Downloader(commands.Cog):
         await self.send_pagified(ctx, f"{message}{deprecation_notice}\n---")
         for cog in installed_cogs:
             if cog.install_msg:
-                await ctx.send(cog.install_msg.replace("[p]", ctx.clean_prefix))
+                await ctx.send(
+                    cog.install_msg.replace("[p]", ctx.clean_prefix).replace(
+                        "[botname]", ctx.me.display_name
+                    )
+                )
 
     @cog.command(name="uninstall", require_var_positional=True)
     async def _cog_uninstall(self, ctx: commands.Context, *cogs: InstalledCog) -> None:
@@ -1330,11 +1360,12 @@ class Downloader(commands.Cog):
 
         - `<repo>` The repo to list cogs from.
         """
+        sort_function = lambda x: x.name.lower()
         all_installed_cogs = await self.installed_cogs()
         installed_cogs_in_repo = [cog for cog in all_installed_cogs if cog.repo_name == repo.name]
         installed_str = "\n".join(
             "- {}{}".format(i.name, ": {}".format(i.short) if i.short else "")
-            for i in installed_cogs_in_repo
+            for i in sorted(installed_cogs_in_repo, key=sort_function)
         )
 
         if len(installed_cogs_in_repo) > 1:
@@ -1347,7 +1378,7 @@ class Downloader(commands.Cog):
         ]
         available_str = "\n".join(
             "+ {}{}".format(cog.name, ": {}".format(cog.short) if cog.short else "")
-            for cog in available_cogs
+            for cog in sorted(available_cogs, key=sort_function)
         )
 
         if not available_str:

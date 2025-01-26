@@ -1,6 +1,6 @@
 -c base.txt
 
 pylint
-pytest
-pytest-asyncio
+pytest<8
+pytest-asyncio<0.22
 pytest-mock

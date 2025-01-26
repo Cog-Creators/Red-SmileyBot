@@ -151,7 +151,7 @@ class Context(DPYContext):
         self,
         messages: Iterable[str],
         box_lang: Optional[str] = None,
-        timeout: int = 15,
+        timeout: int = 60,
         join_character: str = "",
     ) -> List[discord.Message]:
         """

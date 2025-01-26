@@ -1,6 +1,8 @@
 import contextlib
 import keyword
 import pkgutil
+import sys
+import textwrap
 from importlib import import_module, invalidate_caches
 from importlib.machinery import ModuleSpec
 from pathlib import Path
@@ -9,12 +11,13 @@ from typing import Union, List, Optional
 import redbot.cogs
 from redbot.core.commands import positive_int
 from redbot.core.utils import deduplicate_iterables
+from redbot.core.utils.views import ConfirmView
 import discord
 
 from . import commands
 from .config import Config
 from .i18n import Translator, cog_i18n
-from .data_manager import cog_data_path
+from .data_manager import cog_data_path, data_path
 
 from .utils.chat_formatting import box, pagify, humanize_list, inline
 
@@ -255,6 +258,12 @@ class CogManager:
 
         try:
             mod = import_module(real_name, package=package)
+            if mod.__spec__.name == "redbot.cogs.locales":
+                raise NoSuchCog(
+                    "No core cog by the name of '{}' could be found.".format(name),
+                    path=mod.__spec__.origin,
+                    name=name,
+                )
         except ImportError as e:
             if e.name == package + real_name:
                 raise NoSuchCog(
@@ -351,6 +360,81 @@ class CogManagerUI(commands.Cog):
         if not path.is_dir():
             await ctx.send(_("That path does not exist or does not point to a valid directory."))
             return
+
+        path = path.resolve()
+
+        # Path.is_relative_to() is 3.9+
+        bot_data_path = data_path()
+        if path == bot_data_path or bot_data_path in path.parents:
+            await ctx.send(
+                _("A cog path cannot be part of bot's data path ({bot_data_path}).").format(
+                    bot_data_path=inline(str(bot_data_path))
+                )
+            )
+            return
+
+        # Path.is_relative_to() is 3.9+
+        core_path = ctx.bot._cog_mgr.CORE_PATH
+        if path == core_path or core_path in path.parents:
+            await ctx.send(
+                _("A cog path cannot be part of bot's core path ({core_path}).").format(
+                    core_path=inline(str(core_path))
+                )
+            )
+            return
+
+        if (path / "__init__.py").is_file():
+            view = ConfirmView(ctx.author)
+            # Technically, we only know the path is a package,
+            # not that it's a cog package specifically.
+            # However, this is more likely to cause the user to rethink their choice.
+            if sys.platform == "win32":
+                example_cog_path = "D:\\red-cogs"
+                example_dir_structure = textwrap.dedent(
+                    """\
+                    - D:\\
+                    -- red-env
+                    -- red-data
+                    -- red-cogs
+                    ---- mycog
+                    ------ __init__.py
+                    ------ mycog.py
+                    ---- coolcog
+                    ------ __init__.py
+                    ------ coolcog.py"""
+                )
+            else:
+                example_cog_path = "/home/user/red-cogs"
+                example_dir_structure = textwrap.dedent(
+                    """\
+                    - /home/user/
+                    -- red-env
+                    -- red-data
+                    -- red-cogs
+                    ---- mycog
+                    ------ __init__.py
+                    ------ mycog.py
+                    ---- coolcog
+                    ------ __init__.py
+                    ------ coolcog.py"""
+                )
+            content = (
+                _(
+                    "The provided path appears to be a cog package,"
+                    " are you sure that this is the path that you want to add as a **cog path**?\n"
+                    "\nFor example, in the following case,"
+                    " you should be adding the {path} as a **cog path**:\n"
+                ).format(path=inline(example_cog_path))
+                + box(example_dir_structure)
+                + _("\nPlease consult the Cog Manager UI documentation, if you're unsure: ")
+                + "https://docs.discord.red/en/stable/cog_guides/cog_manager_ui.html"
+            )
+            view.message = await ctx.send(content, view=view)
+            await view.wait()
+            if not view.result:
+                await ctx.send(_("Okay, the path will not be added."))
+                return
+            await view.message.delete()
 
         try:
             await ctx.bot._cog_mgr.add_path(path)

@@ -21,7 +21,9 @@ from red_commons.logging import getLogger
 
 from redbot.core import data_manager, Config
 from redbot.core.i18n import Translator
+from redbot.core.utils.chat_formatting import humanize_list
 
+from . import managed_node
 from .errors import (
     LavalinkDownloadFailed,
     InvalidArchitectureException,
@@ -35,8 +37,9 @@ from .errors import (
     NoProcessFound,
     NodeUnhealthy,
 )
+from .managed_node import version_pins
+from .managed_node.ll_version import LAVALINK_BUILD_LINE, LavalinkVersion, LavalinkOldVersion
 from .utils import (
-    change_dict_naming_convention,
     get_max_allocation_size,
     replace_p_with_prefix,
 )
@@ -49,9 +52,13 @@ if TYPE_CHECKING:
 _ = Translator("Audio", pathlib.Path(__file__))
 log = getLogger("red.Audio.manager")
 
-_FAILED_TO_START: Final[Pattern] = re.compile(rb"Web server failed to start\. (.*)")
+_LL_READY_LOG: Final[bytes] = b"Lavalink is ready to accept connections."
+_LL_PLUGIN_LOG: Final[Pattern[bytes]] = re.compile(
+    rb"Found plugin '(?P<name>.+)' version (?P<version>\S+)$", re.MULTILINE
+)
+_FAILED_TO_START: Final[Pattern[bytes]] = re.compile(rb"Web server failed to start\. (.*)")
 
-# Version regexes
+# Java version regexes
 #
 # We expect the output to look something like:
 #     $ java -version
@@ -99,175 +106,12 @@ LAVALINK_LAVAPLAYER_LINE: Final[Pattern] = re.compile(
 LAVALINK_BUILD_TIME_LINE: Final[Pattern] = re.compile(
     rb"^Build time:\s+(?P<build_time>\d+[.\d+]*).*$", re.MULTILINE
 )
-# present until Lavalink 3.5-rc4
-LAVALINK_BUILD_LINE: Final[Pattern] = re.compile(rb"^Build:\s+(?P<build>\d+)$", re.MULTILINE)
-# we don't actually care about what the version format before 3.5-rc4 is exactly
-# as the comparison is based entirely on the build number
-LAVALINK_VERSION_LINE_PRE35: Final[Pattern] = re.compile(
-    rb"^Version:\s+(?P<version>\S+)$", re.MULTILINE | re.VERBOSE
-)
-# used for LL 3.5-rc4 and newer
-# This regex is limited to the realistic usage in the LL version number,
-# not everything that could be a part of it according to the spec.
-# We can easily release an update to this regex in the future if it ever becomes necessary.
-LAVALINK_VERSION_LINE: Final[Pattern] = re.compile(
-    rb"""
-    ^
-    Version:\s+
-    (?P<version>
-        (?P<major>0|[1-9]\d*)\.(?P<minor>0|[1-9]\d*)
-        # Before LL 3.6, when patch version == 0, it was stripped from the version string
-        (?:\.(?P<patch>0|[1-9]\d*))?
-        # Before LL 3.6, the dot in rc.N was optional
-        (?:-rc\.?(?P<rc>0|[1-9]\d*))?
-        # additional build metadata, can be used by our downstream Lavalink
-        # if we need to alter an upstream release
-        (?:\+red\.(?P<red>[1-9]\d*))?
-    )
-    $
-    """,
-    re.MULTILINE | re.VERBOSE,
-)
-
-
-class LavalinkOldVersion:
-    def __init__(self, raw_version: str, *, build_number: int) -> None:
-        self.raw_version = raw_version
-        self.build_number = build_number
-
-    def __str__(self) -> None:
-        return f"{self.raw_version}_{self.build_number}"
-
-    @classmethod
-    def from_version_output(cls, output: bytes) -> Self:
-        build_match = LAVALINK_BUILD_LINE.search(output)
-        if build_match is None:
-            raise ValueError("Could not find Build line in the given `--version` output.")
-        version_match = LAVALINK_VERSION_LINE_PRE35.search(output)
-        if version_match is None:
-            raise ValueError("Could not find Version line in the given `--version` output.")
-        return cls(
-            raw_version=version_match["version"].decode(),
-            build_number=int(build_match["build"]),
-        )
-
-    def __eq__(self, other: object) -> bool:
-        if isinstance(other, LavalinkOldVersion):
-            return self.build_number == other.build_number
-        if isinstance(other, LavalinkVersion):
-            return False
-        return NotImplemented
-
-    def __lt__(self, other: object) -> bool:
-        if isinstance(other, LavalinkOldVersion):
-            return self.build_number < other.build_number
-        if isinstance(other, LavalinkVersion):
-            return True
-        return NotImplemented
-
-    def __le__(self, other: object) -> bool:
-        if isinstance(other, LavalinkOldVersion):
-            return self.build_number <= other.build_number
-        if isinstance(other, LavalinkVersion):
-            return True
-        return NotImplemented
-
-    def __gt__(self, other: object) -> bool:
-        if isinstance(other, LavalinkOldVersion):
-            return self.build_number > other.build_number
-        if isinstance(other, LavalinkVersion):
-            return False
-        return NotImplemented
-
-    def __ge__(self, other: object) -> bool:
-        if isinstance(other, LavalinkOldVersion):
-            return self.build_number >= other.build_number
-        if isinstance(other, LavalinkVersion):
-            return False
-        return NotImplemented
-
-
-class LavalinkVersion:
-    def __init__(
-        self,
-        major: int,
-        minor: int,
-        patch: int = 0,
-        *,
-        rc: Optional[int] = None,
-        red: int = 0,
-    ) -> None:
-        self.major = major
-        self.minor = minor
-        self.patch = patch
-        self.rc = rc
-        self.red = red
-
-    def __str__(self) -> None:
-        version = f"{self.major}.{self.minor}.{self.patch}"
-        if self.rc is not None:
-            version += f"-rc{self.rc}"
-        if self.red:
-            version += f"_red{self.red}"
-        return version
-
-    @classmethod
-    def from_version_output(cls, output: bytes) -> Self:
-        match = LAVALINK_VERSION_LINE.search(output)
-        if match is None:
-            raise ValueError("Could not find Version line in the given `--version` output.")
-        return LavalinkVersion(
-            major=int(match["major"]),
-            minor=int(match["minor"]),
-            patch=int(match["patch"] or 0),
-            rc=int(match["rc"]) if match["rc"] is not None else None,
-            red=int(match["red"] or 0),
-        )
-
-    def _get_comparison_tuple(self) -> Tuple[int, int, int, bool, int, int]:
-        return self.major, self.minor, self.patch, self.rc is None, self.rc or 0, self.red
-
-    def __eq__(self, other: object) -> bool:
-        if isinstance(other, LavalinkVersion):
-            return self._get_comparison_tuple() == other._get_comparison_tuple()
-        if isinstance(other, LavalinkOldVersion):
-            return False
-        return NotImplemented
-
-    def __lt__(self, other: object) -> bool:
-        if isinstance(other, LavalinkVersion):
-            return self._get_comparison_tuple() < other._get_comparison_tuple()
-        if isinstance(other, LavalinkOldVersion):
-            return False
-        return NotImplemented
-
-    def __le__(self, other: object) -> bool:
-        if isinstance(other, LavalinkVersion):
-            return self._get_comparison_tuple() <= other._get_comparison_tuple()
-        if isinstance(other, LavalinkOldVersion):
-            return False
-        return NotImplemented
-
-    def __gt__(self, other: object) -> bool:
-        if isinstance(other, LavalinkVersion):
-            return self._get_comparison_tuple() > other._get_comparison_tuple()
-        if isinstance(other, LavalinkOldVersion):
-            return True
-        return NotImplemented
-
-    def __ge__(self, other: object) -> bool:
-        if isinstance(other, LavalinkVersion):
-            return self._get_comparison_tuple() >= other._get_comparison_tuple()
-        if isinstance(other, LavalinkOldVersion):
-            return True
-        return NotImplemented
 
 
 class ServerManager:
-    JAR_VERSION: Final[str] = LavalinkVersion(3, 7, 5)
     LAVALINK_DOWNLOAD_URL: Final[str] = (
         "https://github.com/Cog-Creators/Lavalink-Jars/releases/download/"
-        f"{JAR_VERSION}/"
+        f"{version_pins.JAR_VERSION}/"
         "Lavalink.jar"
     )
 
@@ -283,16 +127,25 @@ class ServerManager:
     _buildtime: ClassVar[Optional[str]] = None
     _java_exc: ClassVar[str] = "java"
 
-    def __init__(self, config: Config, cog: "Audio", timeout: Optional[int] = None) -> None:
+    def __init__(
+        self,
+        config: Config,
+        cog: "Audio",
+        timeout: Optional[int] = None,
+        download_timeout: Optional[int] = None,
+    ) -> None:
         self.ready: asyncio.Event = asyncio.Event()
+        self.downloaded: asyncio.Event = asyncio.Event()
         self._config = config
         self._proc: Optional[asyncio.subprocess.Process] = None  # pylint:disable=no-member
         self._shutdown: bool = False
         self.start_monitor_task = None
         self.timeout = timeout
+        self.download_timeout = download_timeout
         self.cog = cog
         self._args = []
         self._pipe_task = None
+        self.plugins: dict[str, str] = {}
 
     @property
     def lavalink_download_dir(self) -> pathlib.Path:
@@ -391,8 +244,9 @@ class ServerManager:
             raise
 
     async def process_settings(self):
-        data = change_dict_naming_convention(await self._config.yaml.all())
-        with open(self.lavalink_app_yml, "w") as f:
+        data = managed_node.generate_server_config(await self._config.yaml.all())
+
+        with open(self.lavalink_app_yml, "w", encoding="utf-8") as f:
             yaml.safe_dump(data, f)
 
     async def _get_jar_args(self) -> Tuple[List[str], Optional[str]]:
@@ -402,15 +256,29 @@ class ServerManager:
             if self._java_version is None:
                 extras = ""
             else:
-                extras = f" however you have version {self._java_version} (executable: {self._java_exc})"
+                version = ".".join(map(str, self._java_version))
+                extras = f" however you have version {version} (executable: {self._java_exc})"
+            supported_versions = humanize_list(
+                list(map(str, version_pins.SUPPORTED_JAVA_VERSIONS)),
+                locale="en-US",
+                style="or-short",
+            )
+            latest_version = str(version_pins.LATEST_SUPPORTED_JAVA_VERSION)
+            older_versions = humanize_list(
+                list(map(str, reversed(version_pins.OLDER_SUPPORTED_JAVA_VERSIONS))),
+                locale="en-US",
+                style="or-short",
+            )
             raise UnsupportedJavaException(
                 await replace_p_with_prefix(
                     self.cog.bot,
-                    f"The managed Lavalink node requires Java 17 or 11 to run{extras};\n"
-                    "Either install version 17 (or 11) and restart the bot or connect to an external Lavalink node "
-                    "(https://docs.discord.red/en/stable/install_guides/index.html)\n"
-                    "If you already have Java 17 or 11 installed then then you will need to specify the executable path, "
-                    "use '[p]llset java' to set the correct Java 17 or 11 executable.",
+                    f"The managed Lavalink node requires Java {supported_versions} to run{extras};\n"
+                    f"Either install version {latest_version} (or {older_versions})"
+                    " and restart the bot or connect to an external Lavalink node"
+                    " (https://docs.discord.red/en/stable/install_guides/index.html)\n"
+                    f"If you already have Java {supported_versions} installed"
+                    " then you will need to specify the executable path,"
+                    f" use '[p]llset java' to set the correct Java {supported_versions} executable.",
                 )  # TODO: Replace with Audio docs when they are out
             )
         java_xms, java_xmx = list((await self._config.java.all()).values())
@@ -448,7 +316,7 @@ class ServerManager:
             self._java_version = None
         else:
             self._java_version = await self._get_java_version()
-            self._java_available = self._java_version[0] in (11, 17)
+            self._java_available = self._java_version[0] in version_pins.SUPPORTED_JAVA_VERSIONS
             self._java_exc = java_exec
         return self._java_available, self._java_version
 
@@ -488,12 +356,14 @@ class ServerManager:
         log.info("Waiting for Managed Lavalink node to be ready")
         for i in itertools.cycle(range(50)):
             line = await self._proc.stdout.readline()
-            if b"Lavalink is ready to accept connections." in line:
+            if _LL_READY_LOG in line:
                 self.ready.set()
                 log.info("Managed Lavalink node is ready to receive requests.")
                 self._pipe_task = asyncio.create_task(self._pipe_output())
                 break
-            if _FAILED_TO_START.search(line):
+            if match := _LL_PLUGIN_LOG.search(line):
+                self.plugins[match["name"].decode()] = match["version"].decode()
+            elif _FAILED_TO_START.search(line):
                 raise ManagedLavalinkStartFailure(
                     f"Lavalink failed to start: {line.decode().strip()}"
                 )
@@ -511,6 +381,7 @@ class ServerManager:
 
     async def _partial_shutdown(self) -> None:
         self.ready.clear()
+        self.downloaded.clear()
         if self._shutdown is True:
             # For convenience, calling this method more than once or calling it before starting it
             # does nothing.
@@ -531,7 +402,8 @@ class ServerManager:
                     # A 404 means our LAVALINK_DOWNLOAD_URL is invalid, so likely the jar version
                     # hasn't been published yet
                     raise LavalinkDownloadFailed(
-                        f"Lavalink jar version {self.JAR_VERSION} hasn't been published yet",
+                        f"Lavalink jar version {version_pins.JAR_VERSION}"
+                        " hasn't been published yet",
                         response=response,
                         should_retry=False,
                     )
@@ -567,6 +439,7 @@ class ServerManager:
 
         log.info("Successfully downloaded Lavalink.jar (%s bytes written)", format(nbytes, ","))
         await self._is_up_to_date()
+        self.downloaded.set()
 
     async def _is_up_to_date(self):
         if self._up_to_date is True:
@@ -583,43 +456,71 @@ class ServerManager:
         stdout = (await _proc.communicate())[0]
         if (branch := LAVALINK_BRANCH_LINE.search(stdout)) is None:
             # Output is unexpected, suspect corrupted jarfile
-            return False
+            raise ValueError(
+                "Could not find 'Branch' line in the `--version` output,"
+                " or invalid branch name given."
+            )
         if (java := LAVALINK_JAVA_LINE.search(stdout)) is None:
             # Output is unexpected, suspect corrupted jarfile
-            return False
+            raise ValueError(
+                "Could not find 'JVM' line in the `--version` output,"
+                " or invalid version number given."
+            )
         if (lavaplayer := LAVALINK_LAVAPLAYER_LINE.search(stdout)) is None:
             # Output is unexpected, suspect corrupted jarfile
-            return False
+            raise ValueError(
+                "Could not find 'Lavaplayer' line in the `--version` output,"
+                " or invalid version number given."
+            )
         if (buildtime := LAVALINK_BUILD_TIME_LINE.search(stdout)) is None:
             # Output is unexpected, suspect corrupted jarfile
-            return False
+            raise ValueError(
+                "Could not find 'Build time' line in the `--version` output,"
+                " or invalid build time given."
+            )
 
-        if (build := LAVALINK_BUILD_LINE.search(stdout)) is not None:
-            try:
-                self._lavalink_version = LavalinkOldVersion.from_version_output(stdout)
-            except ValueError:
-                # Output is unexpected, suspect corrupted jarfile
-                return False
-        else:
-            try:
-                self._lavalink_version = LavalinkVersion.from_version_output(stdout)
-            except ValueError:
-                # Output is unexpected, suspect corrupted jarfile
-                return False
+        self._lavalink_version = (
+            LavalinkOldVersion.from_version_output(stdout)
+            if LAVALINK_BUILD_LINE.search(stdout) is not None
+            else LavalinkVersion.from_version_output(stdout)
+        )
         date = buildtime["build_time"].decode()
         date = date.replace(".", "/")
         self._lavalink_branch = branch["branch"].decode()
         self._jvm = java["jvm"].decode()
         self._lavaplayer = lavaplayer["lavaplayer"].decode()
         self._buildtime = date
-        self._up_to_date = self._lavalink_version >= self.JAR_VERSION
+        self._up_to_date = self._lavalink_version >= version_pins.JAR_VERSION
         return self._up_to_date
 
     async def maybe_download_jar(self):
-        if not (self.lavalink_jar_file.exists() and await self._is_up_to_date()):
+        if not self.lavalink_jar_file.exists():
+            log.info("Triggering first-time download of Lavalink...")
             await self._download_jar()
+            return
 
-    async def wait_until_ready(self, timeout: Optional[float] = None):
+        try:
+            up_to_date = await self._is_up_to_date()
+        except ValueError as exc:
+            log.warning("Failed to get Lavalink version: %s\nTriggering update...", exc)
+            await self._download_jar()
+            return
+
+        if not up_to_date:
+            log.info(
+                "Lavalink version outdated, triggering update from %s to %s...",
+                self._lavalink_version,
+                version_pins.JAR_VERSION,
+            )
+            await self._download_jar()
+        else:
+            self.downloaded.set()
+
+    async def wait_until_ready(
+        self, timeout: Optional[float] = None, download_timeout: Optional[float] = None
+    ):
+        download_timeout = download_timeout or self.download_timeout
+        await asyncio.wait_for(self.downloaded.wait(), timeout=download_timeout)
         await asyncio.wait_for(self.ready.wait(), timeout=timeout or self.timeout)
 
     async def start_monitor(self, java_path: str):
@@ -630,6 +531,7 @@ class ServerManager:
                 self._shutdown = False
                 if self._proc is None or self._proc.returncode is not None:
                     self.ready.clear()
+                    self.downloaded.clear()
                     await self._start(java_path=java_path)
                 while True:
                     await self.wait_until_ready(timeout=self.timeout)

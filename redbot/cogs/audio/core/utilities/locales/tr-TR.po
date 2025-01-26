@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-05-11 20:55+0000\n"
+"POT-Creation-Date: 2024-10-20 20:20+0000\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -483,11 +483,11 @@ msgstr "Karışık Oynat"
 msgid "Repeat"
 msgstr "Tekrarla"
 
-#: redbot/cogs/audio/core/utilities/queue.py:159
+#: redbot/cogs/audio/core/utilities/queue.py:161
 msgid "Matching Tracks:"
 msgstr "Eşleşen şarkılar:"
 
-#: redbot/cogs/audio/core/utilities/queue.py:162
+#: redbot/cogs/audio/core/utilities/queue.py:164
 msgid "Page {page_num}/{total_pages} | {num_tracks} tracks"
 msgstr "Sayfa {page_num}/{total_pages} | {num_tracks} parça"
 

@@ -622,8 +622,8 @@ class Config(metaclass=ConfigMeta):
         Unique identifier provided to differentiate cog data when name
         conflicts occur.
     force_registration : `bool`
-        Determines if Config should throw an error if a cog attempts to access
-        an attribute which has not been previously registered.
+        Determines whether `Config` should throw an error (`AttributeError`)
+        when attempting to access an attribute which has not been previously registered.
 
         Note
         ----

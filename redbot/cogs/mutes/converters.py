@@ -1,63 +1,79 @@
+from __future__ import annotations
+
 import logging
 import re
-from typing import Union, Dict
-from datetime import timedelta
+from typing import Optional, TypedDict
+from datetime import timedelta, datetime, timezone
+from typing_extensions import Annotated
 
 from discord.ext.commands.converter import Converter
 from redbot.core import commands
 from redbot.core import i18n
-
-log = logging.getLogger("red.cogs.mutes")
-
-# the following regex is slightly modified from Red
-# it's changed to be slightly more strict on matching with finditer
-# this is to prevent "empty" matches when parsing the full reason
-# This is also designed more to allow time interval at the beginning or the end of the mute
-# to account for those times when you think of adding time *after* already typing out the reason
-# https://github.com/Cog-Creators/Red-DiscordBot/blob/V3/develop/redbot/core/commands/converter.py#L55
-TIME_RE_STRING = r"|".join(
-    [
-        r"((?P<weeks>\d+?)\s?(weeks?|w))",
-        r"((?P<days>\d+?)\s?(days?|d))",
-        r"((?P<hours>\d+?)\s?(hours?|hrs|hr?))",
-        r"((?P<minutes>\d+?)\s?(minutes?|mins?|m(?!o)))",  # prevent matching "months"
-        r"((?P<seconds>\d+?)\s?(seconds?|secs?|s))",
-    ]
-)
-TIME_RE = re.compile(TIME_RE_STRING, re.I)
-TIME_SPLIT = re.compile(r"t(?:ime)?=")
+from redbot.core.commands.converter import TIME_RE
 
 _ = i18n.Translator("Mutes", __file__)
+log = logging.getLogger("red.cogs.mutes")
+
+TIME_SPLIT = re.compile(r"t(?:ime\s?)?=\s*")
 
 
-class MuteTime(Converter):
+def _edgematch(pattern: re.Pattern[str], argument: str) -> Optional[re.Match[str]]:
+    """Internal utility to match at either end of the argument string"""
+    # precondition: pattern does not end in $
+    # precondition: argument does not end in whitespace
+    return pattern.match(argument) or re.search(
+        pattern.pattern + "$", argument, flags=pattern.flags
+    )
+
+
+class _MuteTime(TypedDict, total=False):
+    duration: timedelta
+    reason: str
+    until: datetime
+
+
+class _MuteTimeConverter(Converter):
     """
     This will parse my defined multi response pattern and provide usable formats
     to be used in multiple responses
     """
 
-    async def convert(
-        self, ctx: commands.Context, argument: str
-    ) -> Dict[str, Union[timedelta, str, None]]:
-        time_split = TIME_SPLIT.split(argument)
-        result: Dict[str, Union[timedelta, str, None]] = {}
+    async def convert(self, ctx: commands.Context, argument: str) -> _MuteTime:
+        time_split = TIME_SPLIT.search(argument)
+        result: _MuteTime = {}
         if time_split:
-            maybe_time = time_split[-1]
+            maybe_time = argument[time_split.end() :]
+            strategy = re.match
         else:
             maybe_time = argument
+            strategy = _edgematch
 
-        time_data = {}
-        for time in TIME_RE.finditer(maybe_time):
-            argument = argument.replace(time[0], "")
-            for k, v in time.groupdict().items():
-                if v:
-                    time_data[k] = int(v)
-        if time_data:
+        match = strategy(TIME_RE, maybe_time)
+        if match:
+            time_data = {k: int(v) for k, v in match.groupdict().items() if v is not None}
+            for k in time_data:
+                if k in ("years", "months"):
+                    raise commands.BadArgument(
+                        _("`{unit}` is not a valid unit of time for this command").format(unit=k)
+                    )
             try:
-                result["duration"] = timedelta(**time_data)
+                result["duration"] = duration = timedelta(**time_data)
+                result["until"] = ctx.message.created_at + duration
+                # Catch if using the timedelta with the current date will also result in an Overflow error
             except OverflowError:
                 raise commands.BadArgument(
                     _("The time provided is too long; use a more reasonable time.")
                 )
+            if duration <= timedelta(seconds=0):
+                raise commands.BadArgument(_("The time provided must not be in the past."))
+            if time_split:
+                start, end = time_split.span()
+                end += match.end()
+            else:
+                start, end = match.span()
+            argument = argument[:start] + argument[end:]
         result["reason"] = argument.strip()
         return result
+
+
+MuteTime = Annotated[_MuteTime, _MuteTimeConverter]

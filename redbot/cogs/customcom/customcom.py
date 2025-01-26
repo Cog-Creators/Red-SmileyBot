@@ -6,7 +6,7 @@ from typing import Iterable, List, Mapping, Tuple, Dict, Set, Literal, Union
 from urllib.parse import quote_plus
 
 import discord
-from rapidfuzz import process
+import rapidfuzz
 
 from redbot.core import Config, commands
 from redbot.core.commands import Parameter
@@ -324,7 +324,9 @@ class CustomCommands(commands.Cog):
         - `<query>` The query to search for. Can be multiple words.
         """
         cc_commands = await CommandObj.get_commands(self.config.guild(ctx.guild))
-        extracted = process.extract(query, list(cc_commands.keys()))
+        extracted = rapidfuzz.process.extract(
+            query, list(cc_commands.keys()), processor=rapidfuzz.utils.default_process
+        )
         accepted = []
         for key, score, __ in extracted:
             if score > 60:

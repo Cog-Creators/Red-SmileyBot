@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-05-01 22:55+0000\n"
+"POT-Creation-Date: 2024-04-04 07:32+0000\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,10 @@ msgid "Various commands relating to streaming platforms.\n\n"
 "    You can check if a Twitch, YouTube or Picarto stream is\n"
 "    currently live.\n"
 "    "
-msgstr ""
+msgstr "Diversi comandi relativi alle piattaforme di streaming.\n\n"
+"    Puoi controllare se uno stream Twitch, YouTube o Picarto è\n"
+"    attualmente in diretta.\n"
+"    "
 
 #: redbot/cogs/streams/streams.py:123
 msgid "You need a client secret key if you want to use the Twitch API on this cog.\n"
@@ -32,46 +35,53 @@ msgid "You need a client secret key if you want to use the Twitch API on this co
 "5. Copy your client ID and your client secret into:\n"
 "{command}\n\n"
 "Note: These tokens are sensitive and should only be used in a private channel or in DM with the bot."
-msgstr ""
+msgstr "Hai bisogno di una chiave segreta client se vuoi usare l'API Twitch su questo ingranaggio.\n"
+"Segui questi passaggi:\n"
+"1. Vai a questa pagina: {link}.\n"
+"2. Fare clic su \"Manage\" sulla tua applicazione.\n"
+"3. Clicca su \"Nuovo segreto\".\n"
+"5. Copia il tuo ID cliente e il tuo segreto client in:\n"
+"{command}\n\n"
+"Nota: Questi token sono sensibili e dovrebbero essere utilizzati solo in un canale privato o in DM con il bot."
 
 #: redbot/cogs/streams/streams.py:138 redbot/cogs/streams/streams.py:534
 msgid "<your_client_id_here>"
-msgstr ""
+msgstr "<your_client_id_here>"
 
 #: redbot/cogs/streams/streams.py:138 redbot/cogs/streams/streams.py:534
 msgid "<your_client_secret_here>"
-msgstr ""
+msgstr "<your_client_secret_here>"
 
 #: redbot/cogs/streams/streams.py:208
 #, docstring
 msgid "Check if a Twitch channel is live."
-msgstr ""
+msgstr "Controlla se un canale Twitch è live."
 
 #: redbot/cogs/streams/streams.py:223
 #, docstring
 msgid "Check if a YouTube channel is live."
-msgstr ""
+msgstr "Controlla se un canale YouTube è live."
 
 #: redbot/cogs/streams/streams.py:241
 #, docstring
 msgid "Check if a Picarto channel is live."
-msgstr ""
+msgstr "Controlla se un canale Picarto è live."
 
 #: redbot/cogs/streams/streams.py:253 redbot/cogs/streams/streams.py:289
 msgid "That user is offline."
-msgstr ""
+msgstr "Quell'utente è offline."
 
 #: redbot/cogs/streams/streams.py:255 redbot/cogs/streams/streams.py:491
 msgid "That user doesn't seem to exist."
-msgstr ""
+msgstr "Quell'utente non sembra esistere."
 
 #: redbot/cogs/streams/streams.py:258 redbot/cogs/streams/streams.py:459
 msgid "The Twitch token is either invalid or has not been set. See {command}."
-msgstr ""
+msgstr "Il token Twitch non è valido o non è stato impostato. Vedi {command}."
 
 #: redbot/cogs/streams/streams.py:264 redbot/cogs/streams/streams.py:466
 msgid "The YouTube API key is either invalid or has not been set. See {command}."
-msgstr ""
+msgstr "La chiave API di YouTube non è valida o non è stata impostata. Vedi {command}."
 
 #: redbot/cogs/streams/streams.py:270 redbot/cogs/streams/streams.py:474
 msgid "YouTube quota has been exceeded. Try again later or contact the owner if this continues."
@@ -351,45 +361,45 @@ msgstr ""
 msgid "{display_name} is live!"
 msgstr ""
 
-#: redbot/cogs/streams/streamtypes.py:226
-msgid "This stream will start in {time}"
+#: redbot/cogs/streams/streamtypes.py:227
+msgid "This stream will start <t:{time}:R>"
 msgstr ""
 
-#: redbot/cogs/streams/streamtypes.py:232
-msgid "This stream was scheduled for {min} minutes ago"
+#: redbot/cogs/streams/streamtypes.py:231
+msgid "This stream was scheduled for <t:{time}:R>"
 msgstr ""
 
-#: redbot/cogs/streams/streamtypes.py:445
+#: redbot/cogs/streams/streamtypes.py:446
 msgid "Untitled broadcast"
 msgstr ""
 
-#: redbot/cogs/streams/streamtypes.py:447
+#: redbot/cogs/streams/streamtypes.py:448
 msgid " - Rerun"
 msgstr ""
 
-#: redbot/cogs/streams/streamtypes.py:450
-#: redbot/cogs/streams/streamtypes.py:498
+#: redbot/cogs/streams/streamtypes.py:451
+#: redbot/cogs/streams/streamtypes.py:497
 msgid "Followers"
 msgstr ""
 
-#: redbot/cogs/streams/streamtypes.py:451
-#: redbot/cogs/streams/streamtypes.py:499
+#: redbot/cogs/streams/streamtypes.py:452
+#: redbot/cogs/streams/streamtypes.py:498
 msgid "Total views"
 msgstr ""
 
-#: redbot/cogs/streams/streamtypes.py:456
+#: redbot/cogs/streams/streamtypes.py:457
 msgid "Playing: "
 msgstr ""
 
-#: redbot/cogs/streams/streamtypes.py:504
+#: redbot/cogs/streams/streamtypes.py:503
 msgid "None"
 msgstr "Nessuno"
 
-#: redbot/cogs/streams/streamtypes.py:507
+#: redbot/cogs/streams/streamtypes.py:506
 msgid "NSFW | "
 msgstr ""
 
-#: redbot/cogs/streams/streamtypes.py:511
+#: redbot/cogs/streams/streamtypes.py:510
 msgid "{adult}Category: {category} | Tags: {tags}"
 msgstr ""
 

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-05-01 22:55+0000\n"
+"POT-Creation-Date: 2024-04-04 07:32+0000\n"
 "Last-Translator: \n"
 "Language-Team: Czech\n"
 "MIME-Version: 1.0\n"
@@ -63,7 +63,7 @@ msgstr "Tento uživatel je offline."
 
 #: redbot/cogs/streams/streams.py:255 redbot/cogs/streams/streams.py:491
 msgid "That user doesn't seem to exist."
-msgstr ""
+msgstr "Zdá se, že tento uživatel neexistuje."
 
 #: redbot/cogs/streams/streams.py:258 redbot/cogs/streams/streams.py:459
 msgid "The Twitch token is either invalid or has not been set. See {command}."
@@ -83,7 +83,7 @@ msgstr "Při pokusu o spojení s API streamovací službou nastala chyba."
 
 #: redbot/cogs/streams/streams.py:301 redbot/cogs/streams/streams.py:810
 msgid "Watch the stream"
-msgstr ""
+msgstr "Sledovat stream"
 
 #: redbot/cogs/streams/streams.py:310
 #, docstring
@@ -349,47 +349,47 @@ msgstr ""
 
 #: redbot/cogs/streams/streams.py:934
 msgid "{display_name} is live!"
+msgstr "{display_name}, právě vysílá!"
+
+#: redbot/cogs/streams/streamtypes.py:227
+msgid "This stream will start <t:{time}:R>"
 msgstr ""
 
-#: redbot/cogs/streams/streamtypes.py:226
-msgid "This stream will start in {time}"
+#: redbot/cogs/streams/streamtypes.py:231
+msgid "This stream was scheduled for <t:{time}:R>"
 msgstr ""
 
-#: redbot/cogs/streams/streamtypes.py:232
-msgid "This stream was scheduled for {min} minutes ago"
-msgstr ""
-
-#: redbot/cogs/streams/streamtypes.py:445
+#: redbot/cogs/streams/streamtypes.py:446
 msgid "Untitled broadcast"
 msgstr "Nepojmenované vysílání"
 
-#: redbot/cogs/streams/streamtypes.py:447
+#: redbot/cogs/streams/streamtypes.py:448
 msgid " - Rerun"
 msgstr " - Znovu spustit"
 
-#: redbot/cogs/streams/streamtypes.py:450
-#: redbot/cogs/streams/streamtypes.py:498
+#: redbot/cogs/streams/streamtypes.py:451
+#: redbot/cogs/streams/streamtypes.py:497
 msgid "Followers"
 msgstr "Sledující"
 
-#: redbot/cogs/streams/streamtypes.py:451
-#: redbot/cogs/streams/streamtypes.py:499
+#: redbot/cogs/streams/streamtypes.py:452
+#: redbot/cogs/streams/streamtypes.py:498
 msgid "Total views"
 msgstr "Celkové shlédnutí"
 
-#: redbot/cogs/streams/streamtypes.py:456
+#: redbot/cogs/streams/streamtypes.py:457
 msgid "Playing: "
 msgstr "Hraje: "
 
-#: redbot/cogs/streams/streamtypes.py:504
+#: redbot/cogs/streams/streamtypes.py:503
 msgid "None"
 msgstr "Žádná"
 
-#: redbot/cogs/streams/streamtypes.py:507
+#: redbot/cogs/streams/streamtypes.py:506
 msgid "NSFW | "
 msgstr "NSFW | "
 
-#: redbot/cogs/streams/streamtypes.py:511
+#: redbot/cogs/streams/streamtypes.py:510
 msgid "{adult}Category: {category} | Tags: {tags}"
 msgstr "{adult}Kategorie: {category} | Štítky: {tags}"
 

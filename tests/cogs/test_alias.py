@@ -30,6 +30,20 @@ async def test_add_guild_alias(alias, ctx):
     assert alias_obj.name == "test"
 
 
+async def test_translate_alias_message(alias, ctx, newline_message, prefix):
+    await create_test_guild_alias(alias, ctx)
+    alias_obj = await alias._aliases.get_alias(ctx.guild, "test")
+
+    translated_message = alias.translate_alias_message(newline_message, prefix, alias_obj)
+
+    original_content = newline_message.content.split(" ", 1)[1]
+    original_content = original_content.replace(" ", "")
+    new_content = translated_message.content.split(" ", 1)[1]
+    new_content = new_content.replace(" ", "")
+
+    assert new_content == original_content
+
+
 async def test_delete_guild_alias(alias, ctx):
     await create_test_guild_alias(alias, ctx)
     alias_obj = await alias._aliases.get_alias(ctx.guild, "test")

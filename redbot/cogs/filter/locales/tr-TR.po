@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-05-13 10:40+0000\n"
+"POT-Creation-Date: 2024-07-10 18:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: Turkish\n"
 "MIME-Version: 1.0\n"
@@ -264,23 +264,23 @@ msgstr "İsimler ve takma adlar artık filtrelenmeyecek."
 msgid "Names and nicknames will now be filtered."
 msgstr "İsimler ve takma adlar artık filtrelenecek."
 
-#: redbot/cogs/filter/filter.py:526
+#: redbot/cogs/filter/filter.py:535
 msgid "Filtered words used: {words}"
 msgstr "Kullanılan yasaklı kelimeler: {words}"
 
-#: redbot/cogs/filter/filter.py:528
+#: redbot/cogs/filter/filter.py:537
 msgid "Filtered word used: {word}"
 msgstr "Kullanılan yasaklı kelime: {word}"
 
-#: redbot/cogs/filter/filter.py:542
+#: redbot/cogs/filter/filter.py:551
 msgid "Autoban (too many filtered messages.)"
 msgstr "Otomatik banlama (çok fazla filtrelenmiş mesaj)"
 
-#: redbot/cogs/filter/filter.py:612
+#: redbot/cogs/filter/filter.py:621
 msgid "Filtered nickname"
 msgstr "Filtre adı"
 
-#: redbot/cogs/filter/filter.py:612
+#: redbot/cogs/filter/filter.py:621
 msgid "Filtered name"
 msgstr "Filtre adı"
 

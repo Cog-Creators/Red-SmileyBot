@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-02-14 02:36+0000\n"
+"POT-Creation-Date: 2024-01-09 00:35+0000\n"
 "Last-Translator: \n"
 "Language-Team: Korean\n"
 "MIME-Version: 1.0\n"
@@ -31,165 +31,165 @@ msgstr "명령어에 대한 별칭을 만들어주세요.\n\n"
 "    실행할 시, 별칭들은 추가된 인수들을 승인할거예요.\n"
 "    그리고 저장된 별칭들에 추가할거예요.    "
 
-#: redbot/cogs/alias/alias.py:180
+#: redbot/cogs/alias/alias.py:190
 msgid "Aliases:\n"
 msgstr "별칭:\n"
 
-#: redbot/cogs/alias/alias.py:182
+#: redbot/cogs/alias/alias.py:192
 msgid "\n\n"
 "Page {page}/{total}"
 msgstr "\n\n"
 "페이지 {page}/{total}"
 
-#: redbot/cogs/alias/alias.py:192
+#: redbot/cogs/alias/alias.py:202
 #, docstring
 msgid "Manage command aliases."
 msgstr "명령어 별칭들을 관리하세요."
 
-#: redbot/cogs/alias/alias.py:197
+#: redbot/cogs/alias/alias.py:207
 #, docstring
 msgid "Manage global aliases."
 msgstr "글로벌 별칭들을 관리하세요."
 
-#: redbot/cogs/alias/alias.py:204
+#: redbot/cogs/alias/alias.py:214
 #, docstring
 msgid "Add an alias for a command."
 msgstr "명령어에 대한 별칭을 등록해주세요."
 
-#: redbot/cogs/alias/alias.py:209
+#: redbot/cogs/alias/alias.py:219
 msgid "You attempted to create a new alias with the name {name} but that name is already a command on this bot."
 msgstr "이름이 {name}인 새 별칭을 생성하려고 했지만, 해당 이름은 이 봇의 명령어와 중복돼요."
 
-#: redbot/cogs/alias/alias.py:220
+#: redbot/cogs/alias/alias.py:230
 msgid "You attempted to create a new alias with the name {name} but that alias already exists."
 msgstr "이름이 {name} 인 새 별칭을 생성하려고 했지만, 해당 별칭은 이미 이 서버에 등록되어 있어요."
 
-#: redbot/cogs/alias/alias.py:231
+#: redbot/cogs/alias/alias.py:241
 msgid "You attempted to create a new alias with the name {name} but that name is an invalid alias name. Alias names may not contain spaces."
 msgstr "이름이 {name}인 새 별칭을 생성하려고 했지만, 해당 이름은 사용할 수 없는 별칭 이름이에요. 별칭은 공백을 포함할 수 없어요."
 
-#: redbot/cogs/alias/alias.py:243 redbot/cogs/alias/alias.py:302
+#: redbot/cogs/alias/alias.py:253 redbot/cogs/alias/alias.py:312
 msgid "You attempted to create a new alias for a command that doesn't exist."
 msgstr "존재하지 않는 명령어에 대한 새 별칭을 생성하려고 시도하셨어요."
 
-#: redbot/cogs/alias/alias.py:257
+#: redbot/cogs/alias/alias.py:267
 msgid "A new alias with the trigger `{name}` has been created."
 msgstr "`{name}`을 실행하는 새 별칭이 등록됐어요."
 
-#: redbot/cogs/alias/alias.py:263
+#: redbot/cogs/alias/alias.py:273
 #, docstring
 msgid "Add a global alias for a command."
 msgstr "명령어에 대한 글로벌 별칭을 등록해주세요."
 
-#: redbot/cogs/alias/alias.py:268
+#: redbot/cogs/alias/alias.py:278
 msgid "You attempted to create a new global alias with the name {name} but that name is already a command on this bot."
 msgstr "이름이 {name}인 새 글로벌 별칭을 생성하려고 했지만, 해당 이름은 커맨드와 중복돼요."
 
-#: redbot/cogs/alias/alias.py:279
+#: redbot/cogs/alias/alias.py:289
 msgid "You attempted to create a new global alias with the name {name} but that alias already exists."
 msgstr "이름이 {name} 인 새 별칭을 생성하려고 했지만, 해당 별칭은 이미 이 서버에 등록되어 있어요."
 
-#: redbot/cogs/alias/alias.py:290
+#: redbot/cogs/alias/alias.py:300
 msgid "You attempted to create a new global alias with the name {name} but that name is an invalid alias name. Alias names may not contain spaces."
 msgstr "이름이 {name}인 새 글로벌 별칭을 생성하려고 했지만, 해당 별칭은 사용할 수 없는 별칭 이름이에요. 별칭 이름에는 공백을 포함할 수 없어요."
 
-#: redbot/cogs/alias/alias.py:313
+#: redbot/cogs/alias/alias.py:323
 msgid "A new global alias with the trigger `{name}` has been created."
 msgstr "`{name}`을 실행하는 새로운 글로벌 별칭이 등록됐어요."
 
-#: redbot/cogs/alias/alias.py:322
+#: redbot/cogs/alias/alias.py:332
 #, docstring
 msgid "Edit an existing alias in this server."
 msgstr "기존에 존재하던 이 서버의 별칭을 편집해요"
 
-#: redbot/cogs/alias/alias.py:327 redbot/cogs/alias/alias.py:362
+#: redbot/cogs/alias/alias.py:337 redbot/cogs/alias/alias.py:372
 msgid "The alias with the name {name} does not exist."
 msgstr "{name} 이름의 별명이 존재하지 않아요"
 
-#: redbot/cogs/alias/alias.py:333 redbot/cogs/alias/alias.py:368
+#: redbot/cogs/alias/alias.py:343 redbot/cogs/alias/alias.py:378
 msgid "You attempted to edit an alias to a command that doesn't exist."
 msgstr "존재하지 않는 명령어에 대한 새 별칭을 생성하려고 시도하셨어요."
 
-#: redbot/cogs/alias/alias.py:342 redbot/cogs/alias/alias.py:375
+#: redbot/cogs/alias/alias.py:352 redbot/cogs/alias/alias.py:385
 msgid "The alias with the trigger `{name}` has been edited successfully."
 msgstr ""
 
-#: redbot/cogs/alias/alias.py:349 redbot/cogs/alias/alias.py:382
+#: redbot/cogs/alias/alias.py:359 redbot/cogs/alias/alias.py:392
 msgid "Alias with the name `{name}` was not found."
 msgstr "이름이 `{name}`인 별칭을 찾을 수 없어요."
 
-#: redbot/cogs/alias/alias.py:357
+#: redbot/cogs/alias/alias.py:367
 #, docstring
 msgid "Edit an existing global alias."
 msgstr "기존 글로벌 별칭들을 삭제해주세요."
 
-#: redbot/cogs/alias/alias.py:389
+#: redbot/cogs/alias/alias.py:399
 #, docstring
 msgid "Try to execute help for the base command of the alias."
 msgstr "별칭의 기본 명령어에 대한 도움말을 실행해 보세요."
 
-#: redbot/cogs/alias/alias.py:394
+#: redbot/cogs/alias/alias.py:404
 msgid "No such alias exists."
 msgstr "그런 별칭은 등록되어 있지 않아요."
 
-#: redbot/cogs/alias/alias.py:398
+#: redbot/cogs/alias/alias.py:408
 #, docstring
 msgid "Show what command the alias executes."
 msgstr "별칭이 실행하는 명령어를 표시해주세요."
 
-#: redbot/cogs/alias/alias.py:403
+#: redbot/cogs/alias/alias.py:413
 msgid "The `{alias_name}` alias will execute the command `{command}`"
 msgstr "`{alias_name}` 별칭은 `{command}` 명령을 실행해요."
 
-#: redbot/cogs/alias/alias.py:408
+#: redbot/cogs/alias/alias.py:418
 msgid "There is no alias with the name `{name}`"
 msgstr "이름이 `{name}`인 별칭이 없어요."
 
-#: redbot/cogs/alias/alias.py:414
+#: redbot/cogs/alias/alias.py:424
 #, docstring
 msgid "Delete an existing alias on this server."
 msgstr "이 서버에 있는 기존 별칭을 삭제해주세요."
 
-#: redbot/cogs/alias/alias.py:416 redbot/cogs/alias/alias.py:448
+#: redbot/cogs/alias/alias.py:426 redbot/cogs/alias/alias.py:458
 msgid "There are no aliases on this server."
 msgstr "이 서버에 등록된 별칭이 없어요."
 
-#: redbot/cogs/alias/alias.py:421 redbot/cogs/alias/alias.py:436
+#: redbot/cogs/alias/alias.py:431 redbot/cogs/alias/alias.py:446
 msgid "Alias with the name `{name}` was successfully deleted."
 msgstr "이름이 `{name}`인 별칭이 성공적으로 삭제됐어요."
 
-#: redbot/cogs/alias/alias.py:424 redbot/cogs/alias/alias.py:439
+#: redbot/cogs/alias/alias.py:434 redbot/cogs/alias/alias.py:449
 msgid "Alias with name `{name}` was not found."
 msgstr "이름이 `{name}`인 별칭을 찾을 수 없어요."
 
-#: redbot/cogs/alias/alias.py:429
+#: redbot/cogs/alias/alias.py:439
 #, docstring
 msgid "Delete an existing global alias."
 msgstr "기존 글로벌 별칭들을 삭제해주세요."
 
-#: redbot/cogs/alias/alias.py:431
+#: redbot/cogs/alias/alias.py:441
 msgid "There are no global aliases on this bot."
 msgstr "이 봇에 등록된 별칭이 없어요."
 
-#: redbot/cogs/alias/alias.py:445
+#: redbot/cogs/alias/alias.py:455
 #, docstring
 msgid "List the available aliases on this server."
 msgstr "이 서버에서 사용할 수 있는 별칭들을 나열해주세요."
 
-#: redbot/cogs/alias/alias.py:454
+#: redbot/cogs/alias/alias.py:464
 #, docstring
 msgid "List the available global aliases on this bot."
 msgstr "이 봇에서 사용할 수 있는 글로벌 별칭들을 나열해주세요."
 
-#: redbot/cogs/alias/alias.py:457
+#: redbot/cogs/alias/alias.py:467
 msgid "There are no global aliases."
 msgstr "전역적인 별칭이 없어요."
 
-#: redbot/cogs/alias/alias_entry.py:197
+#: redbot/cogs/alias/alias_entry.py:196
 msgid "Arguments must be specified with a number."
 msgstr "인수는 숫자로 지정해줘야해요."
 
-#: redbot/cogs/alias/alias_entry.py:204
+#: redbot/cogs/alias/alias_entry.py:203
 msgid "Arguments must be sequential. Missing arguments: "
 msgstr "인수는 순차적이어야해요. 미확인된 인수: "
 
