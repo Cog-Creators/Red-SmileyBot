@@ -22,7 +22,7 @@ from redbot.core.utils._internal_utils import (
 )
 from redbot.core import config, data_manager
 from redbot.core._config import migrate
-from redbot.core.cli import ExitCodes
+from redbot.core._cli import ExitCodes
 from redbot.core.data_manager import appdir, config_dir, config_file
 from redbot.core._drivers import (
     BackendType,
