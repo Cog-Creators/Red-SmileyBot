@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2022-12-30 02:22+0000\n"
+"POT-Creation-Date: 2023-08-10 05:03+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -101,19 +101,19 @@ msgstr "\n"
 "        **參數：**\n\n"
 "        - `<query>` 要搜索的查詢。 可以是多個單詞。"
 
-#: redbot/cogs/customcom/customcom.py:337
+#: redbot/cogs/customcom/customcom.py:339
 msgid "No close matches were found."
 msgstr "沒有符合的結果。"
 
-#: redbot/cogs/customcom/customcom.py:342
+#: redbot/cogs/customcom/customcom.py:344
 msgid "Search results"
 msgstr "查詢結果"
 
-#: redbot/cogs/customcom/customcom.py:347
+#: redbot/cogs/customcom/customcom.py:349
 msgid "The following matches have been found:"
 msgstr "已找到以下匹配的項目："
 
-#: redbot/cogs/customcom/customcom.py:352
+#: redbot/cogs/customcom/customcom.py:354
 #, docstring
 msgid "Create custom commands.\n\n"
 "        If a type is not specified, a simple CC will be created.\n"
@@ -126,7 +126,7 @@ msgstr "創建自定義指令。\n\n"
 "        [here](https://docs.discord.red/en/stable/cog_customcom.html)。\n"
 "        "
 
-#: redbot/cogs/customcom/customcom.py:363
+#: redbot/cogs/customcom/customcom.py:365
 #, docstring
 msgid "Create a CC where it will randomly choose a response!\n\n"
 "        Note: This command is interactive.\n\n"
@@ -139,151 +139,122 @@ msgstr "創建一個 CC，它將隨機選擇一個響應！\n\n"
 "        - `<command>` 為返回文本而執行的指令。 轉換為小寫。\n"
 "        "
 
-#: redbot/cogs/customcom/customcom.py:373
-#: redbot/cogs/customcom/customcom.py:414
+#: redbot/cogs/customcom/customcom.py:375
+#: redbot/cogs/customcom/customcom.py:416
 msgid "Custom command names cannot have spaces in them."
 msgstr "自定義指令名稱中不能有空格。"
 
-#: redbot/cogs/customcom/customcom.py:376
-#: redbot/cogs/customcom/customcom.py:417
+#: redbot/cogs/customcom/customcom.py:378
+#: redbot/cogs/customcom/customcom.py:419
 msgid "There already exists a bot command with the same name."
 msgstr "已存在相同名稱的指令。"
 
-#: redbot/cogs/customcom/customcom.py:380
+#: redbot/cogs/customcom/customcom.py:382
 msgid "Custom command process cancelled."
 msgstr "自定義指令進程已取消。"
 
-#: redbot/cogs/customcom/customcom.py:384
-#: redbot/cogs/customcom/customcom.py:421
+#: redbot/cogs/customcom/customcom.py:386
+#: redbot/cogs/customcom/customcom.py:423
 msgid "Custom command successfully added."
 msgstr "已成功新增自定義指令。"
 
-#: redbot/cogs/customcom/customcom.py:387
-#: redbot/cogs/customcom/customcom.py:424
+#: redbot/cogs/customcom/customcom.py:389
+#: redbot/cogs/customcom/customcom.py:426
 msgid "This command already exists. Use `{command}` to edit it."
 msgstr "此指令已存在。使用 `{command}` 來編輯它。"
 
-#: redbot/cogs/customcom/customcom.py:393
-#: redbot/cogs/customcom/customcom.py:432
-#: redbot/cogs/customcom/customcom.py:535
+#: redbot/cogs/customcom/customcom.py:395
+#: redbot/cogs/customcom/customcom.py:434
+#: redbot/cogs/customcom/customcom.py:537
 msgid "The text response you're trying to create has more than 2000 characters.\n"
 "I cannot send messages that are longer than 2000 characters."
 msgstr "您嘗試創建的文本回覆超過 2000 個字符。\n"
 "我無法發送超過 2000 個字符的訊息。"
 
-#: redbot/cogs/customcom/customcom.py:402
+#: redbot/cogs/customcom/customcom.py:404
 #, docstring
 msgid "Add a simple custom command.\n\n"
 "        Example:\n"
-"            - `[p]customcom create simple yourcommand Text you want`\n\n"
+"        - `[p]customcom create simple yourcommand Text you want`\n\n"
 "        **Arguments:**\n\n"
 "        - `<command>` The command executed to return the text. Cast to lowercase.\n"
 "        - `<text>` The text to return when executing the command. See guide for enhanced usage.\n"
 "        "
-msgstr "添加一個簡單的自定義指令。\n\n"
-"        例子：\n"
-"            -`[p]customcom create simple yourcommand Text you want`\n\n"
-"        **參數：**\n\n"
-"        - `<command>` 為返回文本而執行的命令。 轉換為小寫。\n"
-"        - `<text>` 執行命令時返回的文本。 請參閱進階用法指南。\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/customcom/customcom.py:443
+#: redbot/cogs/customcom/customcom.py:445
 #, docstring
 msgid "Set, edit, or view the cooldown for a custom command.\n\n"
 "        You may set cooldowns per member, channel, or guild. Multiple\n"
 "        cooldowns may be set. All cooldowns must be cooled to call the\n"
 "        custom command.\n\n"
 "        Examples:\n"
-"            - `[p]customcom cooldown pingrole`\n"
-"            - `[p]customcom cooldown yourcommand 30`\n"
-"            - `[p]cc cooldown mycommand 30 guild`\n\n"
+"        - `[p]customcom cooldown pingrole`\n"
+"        - `[p]customcom cooldown yourcommand 30`\n"
+"        - `[p]cc cooldown mycommand 30 guild`\n\n"
 "        **Arguments:**\n\n"
 "        - `<command>` The custom command to check or set the cooldown.\n"
 "        - `[cooldown]` The number of seconds to wait before allowing the command to be invoked again. If omitted, will instead return the current cooldown settings.\n"
 "        - `[per]` The group to apply the cooldown on. Defaults to per member. Valid choices are server / guild, user / member, and channel.\n"
 "        "
-msgstr "設置、編輯或查看自定義命令的冷卻時間。\n\n"
-"        您可以為每個成員、頻道或公會設置冷卻時間。 可\n"
-"        以設置多個冷卻時間。設有冷卻時間必須先冷卻才能使用\n"
-"        自定義命令。\n\n"
-"        例子：\n"
-"            - `[p]customcom cooldown pingrole`\n"
-"            - `[p]customcom cooldown yourcommand 30`\n"
-"            - `[p]cc cooldown mycommand 30 guild`\n\n"
-"        **參數：**\n\n"
-"        - `<command>` 用於檢查或設置冷卻時間的自定義命令。\n"
-"        - `[cooldown]` 允許再次使用命令之前等待的秒數。如果省略，將改為返回當前的冷卻時間設置。\n"
-"        - `[per]` 要應用冷卻時間的群組。默認為每個成員。有效的選擇是伺務器/公會、用戶/成員和頻道。\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/customcom/customcom.py:464
-#: redbot/cogs/customcom/customcom.py:505
+#: redbot/cogs/customcom/customcom.py:466
+#: redbot/cogs/customcom/customcom.py:507
 msgid "That command doesn't exist."
 msgstr "這個指令不存在。"
 
-#: redbot/cogs/customcom/customcom.py:469
+#: redbot/cogs/customcom/customcom.py:471
 msgid "A {} may call this command every {} seconds"
 msgstr "{} 可以每 {} 秒使用一次此指令"
 
-#: redbot/cogs/customcom/customcom.py:473
+#: redbot/cogs/customcom/customcom.py:475
 msgid "This command has no cooldown."
 msgstr "此指令沒有冷卻時間。"
 
-#: redbot/cogs/customcom/customcom.py:477
+#: redbot/cogs/customcom/customcom.py:479
 msgid "{} must be one of {}"
 msgstr "{} 必須是 {} 之一"
 
-#: redbot/cogs/customcom/customcom.py:481
+#: redbot/cogs/customcom/customcom.py:483
 msgid "Custom command cooldown successfully edited."
 msgstr "已成功編輯自定義指令冷卻時間。"
 
-#: redbot/cogs/customcom/customcom.py:484
-#: redbot/cogs/customcom/customcom.py:525
+#: redbot/cogs/customcom/customcom.py:486
+#: redbot/cogs/customcom/customcom.py:527
 msgid "That command doesn't exist. Use `{command}` to add it."
 msgstr "該命令不存在。使用 `{command}` 添加它。"
 
-#: redbot/cogs/customcom/customcom.py:492
+#: redbot/cogs/customcom/customcom.py:494
 #, docstring
 msgid "Delete a custom command.\n\n"
 "        Example:\n"
-"            - `[p]customcom delete yourcommand`\n\n"
+"        - `[p]customcom delete yourcommand`\n\n"
 "        **Arguments:**\n\n"
 "        - `<command>` The custom command to delete.\n"
 "        "
-msgstr "刪除自定義指令。\n\n"
-"        例子：\n"
-"            -`[p]customcom delete yourcommand`\n\n"
-"        **參數：**\n\n"
-"        - `<command>` 要刪除的自定義指令。\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/customcom/customcom.py:503
+#: redbot/cogs/customcom/customcom.py:505
 msgid "Custom command successfully deleted."
 msgstr "自定義指令已成功刪除。"
 
-#: redbot/cogs/customcom/customcom.py:510
+#: redbot/cogs/customcom/customcom.py:512
 #, docstring
 msgid "Edit a custom command.\n\n"
 "        Example:\n"
-"            - `[p]customcom edit yourcommand Text you want`\n\n"
+"        - `[p]customcom edit yourcommand Text you want`\n\n"
 "        **Arguments:**\n\n"
 "        - `<command>` The custom command to edit.\n"
 "        - `<text>` The new text to return when executing the command.\n"
 "        "
-msgstr "編輯自定義指令。\n\n"
-"        例子：\n"
-"            - `[p]customcom edit yourcommand Text you want`\n\n"
-"        **參數：**\n\n"
-"        - `<command>` 要編輯的自定義指令。\n"
-"        - `<text>` 執行命令時要返回的新文本。\n"
-"        "
+msgstr ""
 
-#: redbot/cogs/customcom/customcom.py:522
+#: redbot/cogs/customcom/customcom.py:524
 msgid "Custom command successfully edited."
 msgstr "自定義指令已成功編輯。"
 
-#: redbot/cogs/customcom/customcom.py:544
+#: redbot/cogs/customcom/customcom.py:546
 #, docstring
 msgid "List all available custom commands.\n\n"
 "        The list displays a preview of each command's response, with\n"
@@ -294,19 +265,19 @@ msgstr "列出所有可用的自定義指令。\n\n"
 "        轉譯了 markdown 並用空格替換了換行符。\n"
 "        "
 
-#: redbot/cogs/customcom/customcom.py:553
+#: redbot/cogs/customcom/customcom.py:555
 msgid "There are no custom commands in this server. Use `{command}` to start adding some."
 msgstr "此伺務器中沒有自定義指令。使用 `{command}` 開始添加。"
 
-#: redbot/cogs/customcom/customcom.py:569
+#: redbot/cogs/customcom/customcom.py:571
 msgid "Custom Command List"
 msgstr "自訂指令列表"
 
-#: redbot/cogs/customcom/customcom.py:573
+#: redbot/cogs/customcom/customcom.py:575
 msgid "Page {num}/{total}"
 msgstr "第{num}頁/共{total}頁"
 
-#: redbot/cogs/customcom/customcom.py:583
+#: redbot/cogs/customcom/customcom.py:585
 #, docstring
 msgid "Shows a custom command's responses and its settings.\n\n"
 "        **Arguments:**\n\n"
@@ -317,23 +288,23 @@ msgstr "顯示自定義指令的響應及其設置。\n\n"
 "        - `<command_name>` 要顯示的自定義指令。\n"
 "        "
 
-#: redbot/cogs/customcom/customcom.py:593
+#: redbot/cogs/customcom/customcom.py:595
 msgid "I could not not find that custom command."
 msgstr "我找不到那個自定義指令。"
 
-#: redbot/cogs/customcom/customcom.py:604
+#: redbot/cogs/customcom/customcom.py:606
 msgid "Deleted User"
 msgstr "已刪除的使用者"
 
-#: redbot/cogs/customcom/customcom.py:610
+#: redbot/cogs/customcom/customcom.py:612
 msgid "Random"
 msgstr "隨機"
 
-#: redbot/cogs/customcom/customcom.py:610
+#: redbot/cogs/customcom/customcom.py:612
 msgid "Normal"
 msgstr "一般"
 
-#: redbot/cogs/customcom/customcom.py:612
+#: redbot/cogs/customcom/customcom.py:614
 msgid "Command: {command_name}\n"
 "Author: {author}\n"
 "Created: {created_at}\n"
@@ -343,27 +314,27 @@ msgstr "命令：{command_name}\n"
 "創建時間：{created_at}\n"
 "類型：{type}\n"
 
-#: redbot/cogs/customcom/customcom.py:624
+#: redbot/cogs/customcom/customcom.py:626
 msgid "Cooldowns:\n"
 msgstr "冷卻：\n"
 
-#: redbot/cogs/customcom/customcom.py:626
+#: redbot/cogs/customcom/customcom.py:628
 msgid "{num} seconds per {period}\n"
 msgstr "每 {period} {num} 秒\n"
 
-#: redbot/cogs/customcom/customcom.py:629
+#: redbot/cogs/customcom/customcom.py:631
 msgid "Responses:\n"
 msgstr "回應:\n"
 
-#: redbot/cogs/customcom/customcom.py:729
+#: redbot/cogs/customcom/customcom.py:731
 msgid "Too many arguments!"
 msgstr "太多參數!"
 
-#: redbot/cogs/customcom/customcom.py:733
+#: redbot/cogs/customcom/customcom.py:735
 msgid "Arguments must be sequential. Missing arguments: "
 msgstr "參數必須是連續的。缺少參數： "
 
-#: redbot/cogs/customcom/customcom.py:759
+#: redbot/cogs/customcom/customcom.py:761
 msgid "Conflicting colon notation for argument {index}: \"{name1}\" and \"{name2}\"."
 msgstr "參數 {index} 的冒號符號衝突：“{name1}”和“{name2}”。"
 

@@ -1,0 +1,2230 @@
+AUTHOR: Michaelis
+DESCRIPTION: A trivia about the whole Doom video game franchise.
+# Classic Doom
+
+"Name the company that developed Doom 1.":
+- id Software
+- id
+"Name the company that developed Doom 2.":
+- id Software
+- id
+"Name the soundtrack composer of Doom 1.":
+- Bobby Prince
+- Robert Prince
+"Name the soundtrack composer of Doom 2.":
+- Bobby Prince
+- Robert Prince
+"In which year was Doom 1 released?":
+- 1993
+"In which year was Doom 2 released?":
+- 1994
+"What were first person shooters called around the time of Doom's original release in 1993?":
+- Doom clones
+- Doom clone
+"Which weapon has a number in its name?":
+- BFG-9000
+- BFG
+"Which film gave the game its name?":
+- Color of Money
+"How much armor does the green armor pickup give in Classic Doom?":
+- 100
+"How much armor does the blue armor pickup give?":
+- 200
+"How many episodes are there in Doom 1?":
+- Three
+- 3
+"How many episodes are there in Ultimate Doom?":
+- Four
+- 4
+"Which Classic Doom weapon has vertical spread?":
+- Super Shotgun
+- SSG
+"Which Classic Doom weapon deals splash damage?":
+- Rocket Launcher
+- RL
+"Which Classic Doom weapon has mechanics so obscure it had an entire FAQ document devoted to it?":
+- BFG-9000
+- BFG
+"How many difficulty levels are there in Classic Doom?":
+- Five
+- 5
+"Name any key developer of Classic Doom.":
+- Adrian Carmack
+- John Carmack
+- Carmack
+- Kevin Cloud 
+- Tom Hall 
+- American McGee 
+- Sandy Petersen 
+- John Romero 
+- Romero
+- Tim Willits
+"Which demon is specifically mentioned in the pro tips to be defeated by *shooting at it until it dies*?":
+- Cyberdemon
+- Cyborg
+- Cyber
+- Cybie
+- Tyrant
+"Which portion of damage does green armor save from in Classic Doom?":
+- One third
+- third
+- 33%
+- 33
+- 1/3
+- 0.3
+- 0.33
+- 0.333
+- 0.(3)
+- 0,3
+- 0,33
+- 0,333
+- 0,(3)
+"Which portion of damage does blue armor save from?":
+- One half
+- half
+- halve
+- 50%
+- 50
+- 1/2
+- 0.5
+- 0,5
+"How many bullets can Doomguy carry with backpack?":
+- 400
+"How many bullets can Doomguy carry without backpack?":
+- 200
+"How many shells can Doomguy carry with backpack?":
+- 100
+"How many shells can Doomguy carry without backpack?":
+- 50
+"How many rockets can Doomguy carry with backpack?":
+- 100
+"How many rockets can Doomguy carry without backpack?":
+- 50
+"How many cells can Doomguy carry with backpack?":
+- 600
+"How many cells can Doomguy carry without backpack?":
+- 300
+"How many monster types are there in Doom 1?":
+- Ten
+- 10
+"How many levels does Doom 1 feature?":
+- 27
+- 24
+"How many levels does Ultimate Doom feature?":
+- 36
+- 32
+"How many levels does Doom 2 feature?":
+- 32
+- 30
+"Song from which level from Doom 1 references Rise by Pantera?":
+- "E1M4: Command Control"
+- E1M4
+- Command Control
+"Song from which level from Doom 2 references South of Heaven by Slayer?":
+- "Map07: Dead Simple"
+- Map07
+- M07
+- seventh
+- 07
+- 7
+- Dead Simple
+- "Map19: The Citadel"
+- Map19
+- M19
+- 19
+- Citadel
+- "Map29: The Living End"
+- Map29
+- M29
+- 29
+- Living End
+"Song from which level from Doom 2 references After All (The Dead) by Black Sabbath?":
+- "Map10: Refueling Base"
+- Map10
+- M10
+- tenth
+- 10
+- Refueling Base
+- "Map16: Suburbs"
+- Map16
+- M16
+- 16
+- Suburbs
+"Song from which level from Doom 2 references This Love by Pantera?":
+- "Map18: The Courtyard"
+- Map18
+- M18
+- 18
+- Courtyard
+- "Map27: Monster Condo"
+- Map27
+- M27
+- 27
+- Monster Condo
+"Song from which level from Doom 1 references Mouth for War by Pantera?":
+- "E2M9: Fortress of Mystery"
+- E2M9
+- Fortress of Mystery
+- "E3M1: Hell Keep"
+- E3M1
+- Hell Keep
+"Song from which level from Doom 2 references Them Bones by Alice in Chains?":
+- "Map23: Barrels o' Fun"
+- Map23
+- M23
+- 23
+- Barrels o' Fun
+- Barrels o Fun
+- Barrels of Fun
+"Song from which level from Doom 2 references Angry Chair by Alice in Chains?":
+- "Map25: Bloodfalls"
+- Map25
+- M25
+- 25
+- Bloodfalls
+"Song from which level from Doom 1 references Behind the Crooked Cross by Slayer?":
+- "E3M3: Pandemonium"
+- E3M3
+- Pandemonium
+- "E4M3: Sever the Wicked"
+- E4M3
+- Sever the Wicked
+"Which difficulty level is shortened to ITYTD?":
+- I'm Too Young To Die
+- Im Too Young To Die
+"Which difficulty level is shortened to HNTR?":
+- Hey, Not Too Rough
+- Hey Not Too Rough
+"Which difficulty level is shortened to HMP?":
+- Hurt Me Plenty
+"Which difficulty level is shortened to UV?":
+- Ultra Violence
+- Ultra-Violence
+- Ultraviolence
+"Which difficulty level is shortened to NM?":
+- Nightmare!
+- Nightmare
+"Which powerup gives Doomguy +100 health?":
+- Supercharge
+- Soulsphere
+"Which Classic Doom powerup renders player's view in inverted grayscale?":
+- Invulnerability
+- Invincibility
+"Which Classic Doom powerup renders all sectors with full brightness?":
+- Light amplification visor
+- Lite-amp
+- Liteamp
+- Goggles
+"Which Classic Doom powerup increases strength of the melee attack tenfold?":
+- Berserk
+"Which Classic Doom powerup reveals the level's architecture?":
+- Computer area map
+- Computer map
+- Full map
+- Automap
+"Which Classic Doom powerup's protective effect randomly fails?":
+- Radiation shielding suit
+- Radiation suit
+- Environmental suit
+- Hazard suit
+- Protective suit
+- Protection suit
+"Which powerup renders Doomguy in the same way as the Spectre monster?":
+- Partial invisibility
+- Blursphere
+- Blur
+"What does ''BFG'' stand for?":
+- Big Fucking Gun
+"What does ''UAC'' stand for?":
+- Union Aerospace Corporation
+"In which Doom installment was Deathmatch featured first?":
+- Doom 1
+- 1
+- Original
+- Initial
+"Which weapon is vital to completing Map30: Icon of Sin?":
+- Rocket Launcher
+- Rocket
+- RL
+"Which Classic Doom monster has been officially sold as a marketable plushie?":
+- Cacodemon
+- Caco
+- Tomato
+- Raspberry
+"What pet does Doomguy have?":
+- Rabbit
+"What is the name of Doomguy's pet?":
+- Daisy
+"Which country took issue with the Easter egg secret levels in Doom 2?":
+- Germany
+- Deutschland
+- de
+"Enter any Classic Doom cheat code.":
+- idbehold
+- idchoppers
+- idclip
+- idclev
+- iddqd
+- iddt
+- idfa
+- idkfa
+- idmus
+- idmypos
+- idspispopd
+"What is the two letter prefix of all of the Classic Doom cheat codes?":
+- id
+"Which Classic Doom weapon can be specifically obtained with a cheat?":
+- Chainsaw
+"Which Classic Doom weapon is accompanied by a pickup message \"Find some meat!\"?":
+- Chainsaw
+"How many distinct keys are there in Classic Doom?":
+- Six
+- 6
+"Name any key from Classic Doom.":
+- Blue keycard
+- Yellow keycard
+- Red keycard
+- Blue key card
+- Yellow key card
+- Red key card
+- Blue card
+- Yellow card
+- Red card
+- Blue skullkey
+- Yellow skullkey
+- Red skullkey
+- Blue skull key
+- Yellow skull key
+- Red skull key
+- Blue skull
+- Yellow skull
+- Red skull
+"In which Doom installment was Chainsaw featured first?":
+- Doom 1
+- 1
+- Original
+- Initial
+"In which Doom installment was Super Shotgun featured first?":
+- "Doom 2: Hell on Earth"
+- Doom 2
+- Doom ii
+- Hell on Earth
+- 2
+"In which Doom installment was BFG-9000 featured first?":
+- Doom 1
+- 1
+- Original
+- Initial
+"What is the file format used by Classic Doom to store game data?":
+- "*.WAD"
+- ".WAD"
+- WAD
+"Name any official expansion for Doom 2.":
+- Final Doom
+- Plutonia Experiment
+- Plutonia
+- TNT
+- Evilution
+- No Rest for the Living
+- Master Levels
+- Nerve
+"Which official Doom 2 expansion featured an original soundtrack?":
+- "TNT: Evilution"
+- TNT
+- Evilution
+"Which official IWAD is widely considered the hardest?":
+- Plutonia Experiment
+- Plutonia
+"Which name of a Doom level comes from Proverb 15:24: _''The way of life is above to the wise, that he may depart from hell beneath.''_":
+- Hell Beneath
+"Which name of a Doom level comes from Psalm 139:22: _''I hate them with perfect hatred; I account them mine enemies.''_":
+- Perfect Hatred
+"Which name of a Doom level comes from Matthew 13:49: _''So shall it be at the end of the world: the angels shall come forth, and sever the wicked from among the just.''_":
+- Sever the Wicked
+"Which name of a Doom level comes from James 3:8: _''But the tongue can no man tame; it is an unruly evil, full of deadly poison.''_":
+- Unruly Evil
+"Which name of a Doom level comes from Luke 16:30: _''No, father Abraham, but if someone from the dead goes to them, they will repent.''_":
+- They Will Repent
+"Which name of a Doom level comes from Psalm 139:20: _''For they speak against thee wickedly, [and] thine enemies take [thy name] in vain.''_":
+- Against Thee Wickedly
+"Which name of a Doom level comes from Revelation 6:8: _''And I looked, and behold a pale horse: and his name that sat on him was Death, and hell followed with him.''_":
+- And Hell Followed
+"Which name of a Doom level comes from Proverb 5:9: _''Lest thou give thine honour unto others, and thy years unto the cruel.''_":
+- Unto the Cruel
+"Which Doom 2 level features Commander Keen?":
+- "Map32: Grosse"
+- Map32
+- M32
+- 32
+- Grosse
+"Which game by id Software is referenced in the secret levels of Doom 2?":
+- Wolfenstein 3D
+- Commander Keen
+"How much health does a Cyberdemon have in Classic Doom?":
+- 4000
+- 4k
+"How much health does a Spider Mastermind have in Classic Doom?":
+- 3000
+- 3k
+"What is the name of the separate Classic Doom episode released in 2019 by John Romero?":
+- Sigil
+"Which artist provided high quality MP3 soundtrack for John Romero's Sigil episode?":
+- Buckethead
+"Which artist provided high quality MIDI soundtrack for John Romero's Sigil episode?":
+- James Paddock
+- Jimmy
+"Which name is Doom protagonist called in the Doom 2 endgame cast sequence?":
+- Our Hero
+"Which Doom 2 map has a secret that is impossible to get, unless pushed by a monster?":
+- "Map15: Industrial Zone"
+- Map15
+- M15
+- 15
+- Industrial Zone
+"In Classic Doom, what are monsters with zero radius and height called?":
+- Ghost
+"In Classic Doom, what are crushed monsters resurrected by an Archvile called?":
+- Ghost
+"What is the style of completing levels without using weapons to harm demons called?":
+- Pacifist
+"What is the classification of a main WAD file that holds a Classic Doom engine game's resources?":
+- Internal
+- IWAD
+"What is the classification of an extra WAD with custom content for a Classic Doom engine game?":
+- Patch
+- PWAD
+"What is a map with excessive monster count called?":
+- Slaughtermap
+- Slaughter
+"How many tics are there in a second in Classic Doom?":
+- Thirty-five
+- Thirty five
+- 35
+"Which Doom 1 powerup was supposed to be an ''extra life'' powerup, before the concept of lives was dropped during development?":
+- Soulsphere
+- Supercharge
+"Which Doom 2 monster cannot normally be targeted by other monsters for infighting?":
+- Pain Elemental
+- Arch-vile
+- Archvile
+"Which Doom 2 monster can kill itself with splash damage?":
+- Arch-vile
+- Archvile
+"Which Doom 1 v1.0 map originally had a Wolfenstein reference that was removed in later versions?":
+- "E1M4: Command Control"
+- E1M4
+- Command Control
+"Which map object facilitates same-species infighting in Classic Doom?":
+- Explosive barrel
+- Barrel
+"Which Doom 1 level was featured in a Windows 95 promo video with Bill Gates?":
+- "E1M2: Nuclear Plant"
+- E1M2
+- Nuclear Plant
+"Which Classic Doom difficulty is the easiest?":
+- I'm Too Young To Die
+- ITYTD
+"Which Classic Doom difficulty is the hardest?":
+- Nightmare
+- NM
+"Which Classic Doom difficulty features respawning monsters?":
+- Nightmare
+- NM
+"Base projectile impact damage in Classic Doom is multiplied by a random number from 1 to...":
+- eight
+- 8
+"Classic Doom BFG deals the greater portion of its damage output through...":
+- Tracers
+"Which status bar face was supposed to appear when taking 20+ damage in Classic Doom, but never did because of a bug?":
+- Ouch
+"Which slot does Phobos Anomaly level occupy in Doom 1?":
+- E1M8
+- 1 8
+- 8th
+"Which slot does Tower of Babel level occupy in Doom 1?":
+- E2M8
+- 2 8
+"Which slot does Dis level occupy in Doom 1?":
+- E3M8
+- 3 8
+"Who serves as the boss of Knee-Deep in the Dead episode of Doom 1?":
+- Barons of Hell
+- Barons
+- Baron
+- Bruisers
+- Bruiser
+- Door with health
+"Who serves as the boss of The Shores of Hell episode of Doom 1?":
+- Cyberdemon
+"Who serves as the boss of Inferno episode of Doom 1?":
+- Spider Mastermind
+- Mastermind
+- Spiderdemon
+- Spider demon
+"Which slot does Dead Simple level occupy in Doom 2?":
+- Map07
+- M07
+- seventh
+- M7
+- 07
+- 7
+"Which slot does Suburbs level occupy in Doom 2?":
+- Map16
+- M16
+- 16
+"Which slot does Icon of Sin level occupy in Doom 2?":
+- Map30
+- M30
+- 30
+"Which slot does Wolfenstein level occupy in Doom 2?":
+- Map31
+- M31
+- 31
+"Which Classic Doom level requires killing Barons of Hell in order to proceed?":
+- "E1M8: Phobos Anomaly"
+- E1M8
+- 1 8
+- 8th
+- Phobos Anomaly
+"Which Classic Doom level requires killing Mancubi and then Arachnotrons in order to proceed?":
+- "Map07: Dead Simple"
+- Map07
+- M07
+- seventh
+- M7
+- 07
+- 7
+- Dead Simple
+"Which Doom 2 level contains the teleporter to secret levels?":
+- "Map15: Industrial Zone"
+- Map15
+- M15
+- 15
+- Industrial Zone
+"Which Doom 2 level is the return point from secret levels?":
+- "Map16: Suburbs"
+- Map16
+- M16
+- 16
+- Suburbs
+"Which Classic Doom level features a direct confrontation between a Cyberdemon and a Spider Mastermind?":
+- "Map20: Gotcha!"
+- Map20
+- M20
+- 20
+- Gotcha
+- Gotcha!
+"Which Doom 2 level is reliant on chain reactions of exploding barrels?":
+- "Map23: Barrels o' Fun"
+- Map23
+- M23
+- 23
+- Barrels o' Fun
+- Barrels o Fun
+- Barrels of Fun
+"Which Doom 2 level is controversial for its tightrope-like navigation?":
+- "Map24: The Chasm"
+- Map24
+- M24
+- 24
+- Chasm
+"Which Classic Doom level features a ''monster'' actually painted on the wall with textures?":
+- "Map30: Icon of Sin"
+- Map30
+- M30
+- 30
+- Icon of Sin
+"Which Classic Doom level features a Commander Keen reference?":
+- "Map32: Grosse"
+- Map32
+- M32
+- 32
+- Grosse
+"Where is the Chainsaw found first in Doom 2?":
+- "Map01: Entryway"
+- Map01
+- M01
+- first
+- 01
+- 1
+- Entryway
+- Balcony
+"Which monster from Classic Doom is this? https://media.discordapp.net/attachments/792116745301131274/792116777437364224/classic_demon_1.png":
+- Arch-vile
+- Archvile
+"Which monster from Classic Doom is this? https://media.discordapp.net/attachments/792116745301131274/792116781158367252/classic_demon_2.png":
+- Hell Knight
+- Hellknight
+"Which monster from Classic Doom is this? https://media.discordapp.net/attachments/792116745301131274/792116785603805184/classic_demon_3.png":
+- Baron of Hell
+- Baron
+- Bruiser
+- Door with health
+"Which monster from Classic Doom is this? https://media.discordapp.net/attachments/792116745301131274/792116789558902814/classic_demon_4.png":
+- Arachnotron
+"Which monster from Classic Doom is this? https://media.discordapp.net/attachments/792116745301131274/792116792986042378/classic_demon_5.png":
+- Heavy Weapon Dude
+- Former commando
+- Chaingunner
+- Chaingun Guy
+"Which monster from Classic Doom is this? https://media.discordapp.net/attachments/792116745301131274/792116796656058418/classic_demon_6.png":
+- Cyberdemon
+- Cyborg
+- Cyber
+- Cybie
+"Which monster from Classic Doom is this? https://media.discordapp.net/attachments/792116745301131274/792116800442859520/classic_demon_7.png":
+- Mancubus
+- Fatso
+"Which monster from Classic Doom is this? https://media.discordapp.net/attachments/792116745301131274/792116803966206046/classic_demon_8.png":
+- Cacodemon
+- Caco
+- Tomato
+- Raspberry
+"Which monster from Classic Doom is this? https://media.discordapp.net/attachments/792116745301131274/792116807459930122/classic_demon_9.png":
+- Pain Elemental
+- Meatball
+"Which monster from Classic Doom is this? https://media.discordapp.net/attachments/792116745301131274/792116810786144286/classic_demon_10.png":
+- Zombieman
+- Former human
+"Which monster from Classic Doom is this? https://media.discordapp.net/attachments/792116745301131274/792116821422506004/classic_demon_12.png":
+- Revenant
+- Revenatn
+- Skeleton
+"Which monster from Classic Doom is this? https://media.discordapp.net/attachments/792116745301131274/792116826003079168/classic_demon_13.png":
+- Lost Soul
+"Which monster from Classic Doom is this? https://media.discordapp.net/attachments/792116745301131274/792116830570807296/classic_demon_14.png":
+- Spider Mastermind
+- Mastermind
+- Spiderdemon
+- Spider demon
+"Which monster from Classic Doom is this? https://media.discordapp.net/attachments/792116745301131274/792116834487762954/classic_demon_15.png":
+- Shotgun Guy
+- Former Sergeant
+- Former Human Sergeant
+"Which monster from Classic Doom is this? https://media.discordapp.net/attachments/792116745301131274/792116837932466277/classic_demon_16.png":
+- Wolfenstein SS
+- SS
+- Schutzstaffel
+"Which monster from Classic Doom is this? https://media.discordapp.net/attachments/792116745301131274/792116841702359070/classic_demon_17.png":
+- Imp
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345122620178462/screenshot_3.png":
+- "Map01: Entryway"
+- Map01
+- M01
+- first
+- 01
+- 1
+- Entryway
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345126839386172/screenshot_4.png":
+- "Map03: The Gantlet"
+- Map03
+- M03
+- third
+- 03
+- 3
+- Gantlet
+- Gauntlet
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345133802586112/screenshot_5.png":
+- "Map06: The Crusher"
+- Map06
+- M06
+- sixth
+- 06
+- 6
+- Crusher
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345141499133972/screenshot_6.png":
+- "Map07: Dead Simple"
+- Map07
+- M07
+- seventh
+- 07
+- 7
+- Dead Simple
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345148809805852/screenshot_7.png":
+- "Map08: Tricks and Traps"
+- Map08
+- M08
+- eighth
+- 08
+- 8
+- Tricks and Traps
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345152407470091/screenshot_8.png":
+- "Map11: 'O' of Destruction!"
+- "Map11: Circle of Death"
+- Map11
+- M11
+- eleventh
+- 11
+- O of Destruction!
+- Circle of Death
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345155352657931/screenshot_9.png":
+- "Map16: Suburbs"
+- Map16
+- M16
+- 16
+- Suburbs
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345161253519410/screenshot_10.png":
+- "Map18: The Courtyard"
+- Map18
+- M18
+- 18
+- Courtyard
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345167259893760/screenshot_11.png":
+- "Map20: Gotcha!"
+- Map20
+- M20
+- 20
+- Gotcha
+- Gotcha!
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345170217009162/screenshot_12.png":
+- "Map23: Barrels o' Fun"
+- Map23
+- M23
+- 23
+- Barrels o' Fun
+- Barrels o Fun
+- Barrels of Fun
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345178491846666/screenshot_13.png":
+- "Map24: The Chasm"
+- Map24
+- M24
+- 24
+- Chasm
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345188403249152/screenshot_14.png":
+- "Map28: The Spirit World"
+- Map28
+- M28
+- 28
+- Spirit World
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345193223159828/screenshot_15.png":
+- "Map30: Icon of Sin"
+- Map30
+- M30
+- 30
+- Icon of Sin
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345195622039553/screenshot_16.png":
+- "Map31: Wolfenstein"
+- Map31
+- M31
+- 31
+- Wolfenstein
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345199056781322/screenshot_17.png":
+- "E1M1: Hangar"
+- E1M1
+- Hangar
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345205273657354/screenshot_18.png":
+- "E1M5: Phobos Lab"
+- E1M5
+- Phobos Lab
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345211169931264/screenshot_19.png":
+- "E1M7: Computer Station"
+- E1M7
+- Computer Station
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345221048303616/screenshot_20.png":
+- "E1M8: Phobos Anomaly"
+- E1M8
+- Phobos Anomaly
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345224793030656/screenshot_21.png":
+- "E2M1: Deimos Anomaly"
+- E2M1
+- Deimos Anomaly
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345231118958592/screenshot_22.png":
+- "E2M2: Containment Area"
+- E2M2
+- Containment Area
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345238009413632/screenshot_23.png":
+- "E2M4: Deimos Lab"
+- E2M4
+- Deimos Lab
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345245844897822/screenshot_24.png":
+- "E2M8: Tower of Babel"
+- E2M8
+- Tower of Babel
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345250240135188/screenshot_25.png":
+- "E3M1: Hell Keep"
+- E3M1
+- Hell Keep
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345254384631818/screenshot_27.png":
+- "E3M5: Unholy Cathedral"
+- E3M5
+- Unholy Cathedral
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345261342982184/screenshot_28.png":
+- "E3M6: Mt. Erebus"
+- E3M6
+- Mt. Erebus
+"Which Classic Doom map is this? https://media.discordapp.net/attachments/792116745301131274/792345268397932544/screenshot_29.png":
+- "E3M8: Dis"
+- E3M8
+- Dis
+
+# Other IWAD games
+
+"Name any non-Doom commercial game based on the Classic Doom engine, ''id Tech 1''.":
+- Heretic
+- Hexen
+- Strife
+- Chex
+- Hacx
+"Name any weapon from Heretic.":
+- Staff
+- Gauntlets
+- Wand
+- Crossbow
+- Claw
+- Hellstaff
+- Staff
+- Phoenix Rod
+- Firemace
+- Mace
+"Name any weapon from Hexen.":
+- Gauntlets
+- Axe
+- Hammer
+- Quietus
+- Mace
+- Serpent
+- Staff
+- Firestorm
+- Fire
+- Wraithverge
+- Wraith
+- Wand
+- Frost
+- Shards
+- Arc
+- Bloodscourge
+- Blood
+"Name any weapon from Strife.":
+- Dagger
+- Crossbow
+- Rifle
+- Mini-missile launcher
+- Minimissile launcher
+- Missile launcher
+- Mini-rocket launcher
+- Minirocket launcher
+- Rocket launcher
+- Grenade launcher
+- Flamethrower
+- Mauler
+- Sigil
+"In which Doom-based game was looking up and down featured first?":
+- Heretic
+"In which Doom-based game was jumping featured first?":
+- "Hexen: Beyond Heretic"
+- Hexen
+"In which Doom-based game were multiple player classes featured first?":
+- "Hexen: Beyond Heretic"
+- Hexen
+"In which Doom-based game were dialogues with voice acting featured first?":
+- "Strife: Quest for the Sigil"
+- Strife
+"Which commercial game based on the Classic Doom engine had distinctly comic book style?":
+- "Strife: Quest for the Sigil"
+- Strife
+"Which Doom-based game featured a mercenary protagonist joining the resistance against a religious cult?":
+- "Strife: Quest for the Sigil"
+- Strife
+"Which company developed two dark fantasy games based on the Classic Doom engine?":
+- Raven Software
+- Raven
+"Which Doom-based game came in cereal boxes?":
+- Chex Quest
+- Chex
+"Which Doom-based game is this screenshot taken from? https://media.discordapp.net/attachments/792116745301131274/792345111639621632/screenshot_1.png":
+- Chex Quest
+- Chex
+"Which Doom-based game is this screenshot taken from? https://media.discordapp.net/attachments/792116745301131274/792345114978680832/screenshot_2.png":
+- Chex Quest 2
+- Chex
+"Which Doom-based game is this screenshot taken from? https://media.discordapp.net/attachments/792116745301131274/792345272898289674/screenshot_30.png":
+- Heretic
+"Which Doom-based game is this screenshot taken from? https://media.discordapp.net/attachments/792116745301131274/792345278782898196/screenshot_31.png":
+- Heretic
+"Which Doom-based game is this screenshot taken from? https://media.discordapp.net/attachments/792116745301131274/792345285514100746/screenshot_32.png":
+- Heretic
+"Which Doom-based game is this screenshot taken from? https://media.discordapp.net/attachments/792116745301131274/792345288793784350/screenshot_33.png":
+- "Hexen: Beyond Heretic"
+- Hexen
+"Which Doom-based game is this screenshot taken from? https://media.discordapp.net/attachments/792116745301131274/792345293286408192/screenshot_34.png":
+- "Hexen: Beyond Heretic"
+- Hexen
+"Which Doom-based game is this screenshot taken from? https://media.discordapp.net/attachments/792116745301131274/792345303575035935/screenshot_35.png":
+- "Strife: Quest for the Sigil"
+- Strife
+"Which Doom-based game is this screenshot taken from? https://media.discordapp.net/attachments/792116745301131274/792345308745957376/screenshot_36.png":
+- "Strife: Quest for the Sigil"
+- Strife
+"Which Doom-based game is this screenshot taken from? https://media.discordapp.net/attachments/792116745301131274/792345310474666004/screenshot_37.png":
+- "Strife: Quest for the Sigil"
+- Strife
+
+# Movies
+
+"Who stars in the 2005 Doom movie?":
+- Karl Urban
+- Rosamund Pike
+- Dwayne Johnson
+- Rock
+"What is the nickname of Karl Urban's character in the 2005 Doom movie?":
+- Reaper
+"What is the nickname of The Rock's character in the 2005 Doom movie?":
+- Sarge
+"What is the nickname of the UAC employee that greets the marine party on Mars in the 2005 Doom movie?":
+- Pinky
+"What is the nickname of the Martian native superhuman found by archeologists in the 2005 Doom movie?":
+- Lucy
+"What does ''BFG'' stand for in the 2005 Doom movie?":
+- Bio Force Gun
+- BioForce Gun
+- Bio-Force Gun
+"What color is BFG in the 2005 Doom movie?":
+- Blue
+- Cyan
+"Who stars in the Doom: Annihilation movie?":
+- Amy Mason
+- Amy Manson
+- Dominic Mafham
+- Luke Allen-Gale
+- Nina Bergman
+"Whose name was misspelled in the opening sequence of the Doom: Annihilation movie?":
+- Amy Manson
+- Amy Mason
+
+# Other offshoots
+
+"Which monster was introduced in PSX Doom?":
+- Nightmare Spectre
+- Nightmare Demon
+- Nightmare Pinky
+"Which monster was introduced in Doom 64?":
+- Nightmare Imp
+- Mother Demon
+"Which weapon was introduced in Doom 64?":
+- Unmaker
+"In which Doom installment was colored lighting featured first?":
+- PSX Doom
+- Sony PlayStation
+- PlayStation
+- PS
+- PSX
+"Name any Doom novel.":
+- Knee-Deep In The Dead
+- Hell on Earth
+- Infernal Sky
+- Endgame
+- Worlds on Fire
+- Maelstrom
+"What is the name of the Classic Doom novels' protagonist?":
+- Flynn Taggart
+- Flynn
+- Fly
+"Which Quake game first featured Doom protagonist as a playable character?":
+- Quake 3 Arena
+- Quake 3
+- 3
+"Name any Doom game designed for mobile phones.":
+- Doom RPG
+- Doom Resurrection
+- Doom 2 RPG
+"Name any non-Doom game that includes a direct reference to Doom.":
+- Angry Video Game Nerd Adventures
+- Battlefield
+- Bizarre Adventures of Woodruff and the Schnibble
+- Brink
+- Corridor 7
+- Damage Incorporated
+- Duke Nukem
+- Dungeons of Dredmor
+- Earthworm Jim
+- Fallout 4
+- Ganbare Goemon 4
+- Heretic
+- Ion Fury
+- Jazz Jackrabbit 2
+- Master of Magic
+- Minecraft
+- Muppets Inside
+- Project X Zone
+- Quake 2
+- Quake 3
+- Quake Champions
+- Radix
+- Rage
+- Soldier of Fortune II
+- Sin
+- Spyro 3
+- Super Columbine Massacre RPG
+- SCMRPG
+- This Means War
+- Tomb Raider
+- Tony Hawk's Pro Skater 3
+- Virtual Springfield
+- Wolfenstein
+- Old Blood
+"Which Doom wiki is the One True Wiki?":
+- doomwiki.org
+"Which Doom wiki is the false wiki left behind?":
+- Fandom-based wiki
+- Fandom
+- https://doom.fandom.com
+- http://doom.fandom.com
+- doom.fandom.com
+- doom.fandom
+- fandom.com
+"In Quake 3 Arena, what is the alternate Doom skin with orange armor called?":
+- Phobos
+"What is the name of the Doom game made for virtual reality?":
+- Doom VFR
+- VFR
+"Who is the protagonist of Doom VFR?":
+- Dr. Abraham Peters
+- Abraham
+- Peters
+
+# Doom Bible and ancient history
+
+"What was the design document of the original Doom called?":
+- Doom Bible
+"Who wrote the Doom Bible?":
+- Tom Hall
+"Which year was the Doom Bible written?":
+- 1992
+"According to Doom Bible, what was the name of the celestial body on which Doom was originally set to take place?":
+- Tei Tenga
+"According to Doom Bible, what were marines supposed to be playing when the disaster struck?":
+- Cards
+"According to Doom Bible, which character was supposed to die at the conclusion of the first episode?":
+- Buddy Dacote
+"According to Doom Bible, what was the significance of Buddy Dacote's name?":
+- Dies At the Conclusion Of This Episode
+- Dies at conclusion of this episode
+- Dies at conclusion
+- conclusion of this episode
+"Artwork of which Dungeons & Dragons monster inspired the appearance of Cacodemon?":
+- Astral dreadnought
+"Whose hands were photographed for weapon sprites seen in Classic Doom?":
+- Kevin Cloud
+
+# Doom 3
+
+"In which Doom installment were grenades featured first?":
+- Doom 3
+- 3
+"In which Doom installment was jumping featured first?":
+- Doom 3
+- 3
+"In which Doom installment was crouching featured first?":
+- Doom 3
+- 3
+"In which Doom installment was flashlight featured first?":
+- Doom 3
+- 3
+"In which Doom installment was ''WASD'' first set up as the default control scheme?":
+- Doom 3
+- 3
+"In which Doom installment was a built-in editor featured first?":
+- Doom 3
+- 3
+"In which year was Doom 3 released?":
+- 2004
+"In which year do the events of Doom 3 take place?":
+- 2145
+"How many levels does Doom 3 campaign feature?":
+- 27
+"Name the company that developed Doom 3.":
+- id Software
+- id
+"Name the soundtrack composer of Doom 3.":
+- Chris Vrenna
+- Tweaker
+"Name any key developer of Doom 3.":
+- Adrian Carmack 
+- John Carmack 
+- Carmack
+- Kevin Cloud 
+- Todd Hollenshead 
+- Donna Jackson 
+- Katherine Anna Kang 
+- Kenneth Scott 
+- J.M.P van Waveren 
+- Tim Willits
+"Which Doom 3 level features a unique loading screen?":
+- Hell
+- Inferno
+"Which weapon drains health from killed enemies?":
+- Soul Cube
+- Soulcube
+- Serpent Staff
+"Name any demon original to Doom 3.":
+- Cherub
+- Guardian
+- Seeker
+- Maggot
+- Sabaoth
+- Tick
+- Trite
+- Vagary
+- Wraith
+"Name any Classic Doom demon not represented in Doom 3.":
+- Spectre
+- Baron of Hell
+- Spider Mastermind
+- Arachnotron
+- Pain elemental
+- Icon of Sin
+"How many digits do locker codes in Doom 3 have?":
+- Three
+- 3
+"What is the code to MartianBuddy lockers in Doom 3?":
+- 0508
+"Name any official expansion for Doom 3.":
+- Resurrection of Evil
+- BFG Edition
+- Lost Mission
+"How many Berserker powerups are there in Doom 3?":
+- Two
+- 2
+"Who arrives on Mars in the same dropship as the Doom 3 protagonist?":
+- Counselor Elliot Swann
+- Swann
+- Campbell
+"Which Doom 3 NPC carries a BFG-9000?":
+- Jack Campbell
+- Campbell
+"Which Doom 3 NPC introduces the Lost Souls?":
+- Theresa Chasar
+- Theresa
+- Chasar
+"Name any non-Doom commercial game based on Doom 3 engine, ''id Tech 4''.":
+- Quake 4
+- Prey
+- Enemy Territory
+- Quake Wars
+- Wolfenstein
+- Brink
+"Which weapon do the Zombie Security in Doom 3 use?":
+- Pistol
+- Shotgun
+- Machinegun
+"In Doom 3 universe, which company is a notorious source of spam emails?":
+- MartianBuddy
+- Martian Buddy
+"In Doom 3, which power tool was mis-shipped to Mars?":
+- Chainsaw
+"What is the title of the Doom 3 clicker Easter egg mini-game?":
+- Super Turbo Turkey Puncher 3
+- Super Turbo Turkey Puncher
+"Which Doom 3 map is this? https://media.discordapp.net/attachments/792116745301131274/792356744495628308/shot00001.jpg":
+- "Monorail: Facility Transport"
+- Monorail
+- mono rail
+"Which Doom 3 map is this? https://media.discordapp.net/attachments/792116745301131274/792356750422179860/shot00002.jpg":
+- Hell
+- Inferno
+"Which Doom 3 map is this? https://media.discordapp.net/attachments/792116745301131274/792356757480931348/shot00003.jpg":
+- "Alpha Labs - Sector 4: Union Aerospace Science Division"
+- Alpha Labs
+- Sector 4
+"Which Doom 3 map is this? https://media.discordapp.net/attachments/792116745301131274/792356761725829120/shot00005.jpg":
+- "Site 3: Analysis Facility"
+- Site 3
+
+# D e w m (Doom 2016)
+
+"What is the official built-in editor for Doom 2016 called?":
+- Snapmap
+"In which Doom installment was double jumping featured first?":
+- Doom 2016
+- 2016
+- 4
+"In which Doom installment was quick melee featured first?":
+- Doom 2016
+- 2016
+- 4
+"In which Doom installment was the Dopefish referenced first?":
+- Doom 2016
+- 2016
+- 4
+"In which year was the new Doom reboot released?":
+- 2016
+"In which year do the events of Doom 2016 take place?":
+- 2149
+"How many levels does Doom 2016 campaign feature?":
+- 13
+"Name the company that developed Doom 2016.":
+- id Software
+- id
+"Name the soundtrack composer of Doom 2016.":
+- Mick Gordon
+- Mick
+- Gordon
+"Name any key developer of Doom 2016.":
+- John Carmack
+- Carmack
+- Kevin Cloud 
+- Mark Diaz 
+- Hugo Martin 
+- Jason Martin 
+- Jason O'Connell 
+- Mike Rubits 
+- Tiago Sousa 
+- Marty Stratton 
+- Stratton
+- Emerson Tung 
+"Which Doom 2016 weapon can only store ammo for 3 shots?":
+- BFG-9000
+- BFG
+"Which Doom 2016 game mechanic is used to gain health from staggered enemies?":
+- Glory Kill
+"Which Doom 2016 weapon is used to replenish ammunition for other weapons?":
+- Chainsaw
+"How many modifications do most of the Doom 2016 weapons have?":
+- Two
+- 2
+"How many modifications does BFG-9000 have in Doom 2016?":
+- Zero
+- None
+- 0
+"What do Field Drones deliver?":
+- Weapon modifications
+- Modifications
+- Modification
+- Modules
+- Module
+- Mods
+- Mod
+"Name any multiplayer-exclusive weapon from Doom 2016.":
+- Burst rifle
+- Mark V
+- Grenade launcher
+- Hellshot
+- Lightning gun
+- Reaper
+- Static rifle
+- Vortex rifle
+"In Doom 2016 multiplayer, what are weapons designed to counter Demon Rune transformations called?":
+- Power weapons
+- power
+"Name any multiplayer power weapon from Doom 2016.":
+- BFG-9000
+- BFG
+- Gauss cannon
+- Chainsaw
+"Which Doom 2016 weapon is used for advanced level traversal and sequence breaking?":
+- Gauss cannon
+- Gauss
+"Which Doom 2016 weapon is actually a railgun?":
+- Gauss cannon
+- Gauss
+"Which Plasma Rifle modification remains the same between Doom 2016 and Doom Eternal?":
+- Heat Blast
+"Which Chaingun modification remains the same between Doom 2016 and Doom Eternal?":
+- Mobile Turret
+"Which Doom 2016 weapon has no representation in Doom Eternal?":
+- Pistol
+"What is the alternative fire mode of power weapons in Doom 2016 multiplayer?":
+- X-ray vision
+- X-ray
+- xray
+- wallhack
+- wall hack
+- see through
+"Name any demon that is available for morphing through the Demon Rune in Doom 2016 multiplayer.":
+- Revenant
+- Baron of Hell
+- Mancubus
+- Prowler
+- Harvester
+- Cacodemon
+- Spectre
+"Name any multiplayer-exclusive equipment item from Doom 2016.":
+- Kinetic mine
+- Lateral thrusters
+- Personal teleporter
+- teleporter
+- translocator
+- Shield wall
+- Tesla rocket
+- Threat sensor
+- Threat pulse
+"Which item upgrades Doom Slayer's health, armor and ammo capacity in Doom 2016?":
+- Argent cells
+- Argent
+- Dragon balls
+"Who was the head of the overrun UAC facility on Mars in Doom 2016?":
+- Dr. Samuel Hayden
+- Samuel
+- Hayden
+"Who accompanies the Slayer in Doom 2016, enabling weapon upgrade challenges?":
+- VEGA
+"Who was the cause of the demonic invasion in Doom 2016?":
+- Dr. Olivia Pierce
+- Olivia
+- Pierce
+"Which Doom 2016 level features a Commander Keen's helmet?":
+- Kadingir Sanctum
+- Kadingir
+- Blood Keep
+"What is the name of the powered combat exoskeleton that Doom Slayer wears?":
+- Praetor suit
+- Praetor
+"Which over-the-top one-liner from the Doom comic was made canon in Doom 2016?":
+- Rip and tear
+"What is the title of the Doom 2016 match-three Easter egg mini-game?":
+- Demon Destruction
+"Which popular song from Doom 2016 shares its name with a level in game?":
+- BFG Division
+"Where is the first Slayer's Testament found?":
+- Kadingir Sanctum
+- Kadingir
+- Blood Keep
+"Name any Doom 2016 multiplayer map.":
+- Argent Breach
+- Beneath
+- Boneyard
+- Cataclysm
+- Chasm
+- Disposal
+- Empyrian
+- Excavation
+- Heatwave
+- Helix
+- Infernal
+- Molten
+- Offering
+- Orbital
+- Outbreak
+- Perdition
+- Ritual
+- Sacrilegious
+"What is the name of this demon from Doom 2016? https://media.discordapp.net/attachments/792116745301131274/796451666642731038/concept_2.jpg":
+- Baron of Hell
+- Baron
+"What is the name of this demon from Doom 2016? https://media.discordapp.net/attachments/792116745301131274/796451677951098901/concept_4.jpg":
+- Harvester
+"What is the name of this demon from Doom 2016? https://media.discordapp.net/attachments/792116745301131274/796451683868999750/concept_5.jpg":
+- Hell Guard
+- Twin
+- Twins
+"What is the name of this demon from Doom 2016? https://media.discordapp.net/attachments/792116745301131274/796451690193748029/concept_6.jpg":
+- Hell Razer
+- Razer
+"What is the name of this demon from Doom 2016? https://media.discordapp.net/attachments/792116745301131274/796451696133406730/concept_7.jpg":
+- Prowler
+"What is the name of this demon from Doom 2016? https://media.discordapp.net/attachments/792116745301131274/796451700055081010/concept_8.jpg":
+- Summoner
+"Which Doom 2016 level is this? https://media.discordapp.net/attachments/792116745301131274/796451707810086922/concept_9.jpg":
+- Argent d' Nur
+- argent nur
+"Which Doom 2016 level is this? https://media.discordapp.net/attachments/792116745301131274/796451725027704872/concept_11.jpg":
+- Foundry
+"Which Doom 2016 powerup is this? https://media.discordapp.net/attachments/792116745301131274/796451727577448478/concept_12.jpg":
+- Berserk
+"Which Doom 2016 powerup is this? https://media.discordapp.net/attachments/792116745301131274/796451730882822164/concept_13.jpg":
+- Haste
+"Which Doom 2016 powerup is this? https://media.discordapp.net/attachments/792116745301131274/796451734209167400/concept_14.jpg":
+- Invulnerability
+- Invincibility
+- Invul
+"Which Doom 2016 powerup is this? https://media.discordapp.net/attachments/792116745301131274/796451737531056149/concept_15.jpg":
+- Regeneration
+- Regen
+"What resides in this chest? https://media.discordapp.net/attachments/792116745301131274/796451755248058458/concept_17.jpg":
+- Doom Slayer
+- Doomslayer
+- Doomguy
+- Protagonist
+- Our Hero
+- you
+- me
+- i
+"Which Doom 2016 weapon is this? https://media.discordapp.net/attachments/792116745301131274/796451759522447461/concept_18.jpg":
+- Gauss Cannon
+- Gauss
+- Rail gun
+- railgun
+"Which Doom 2016 weapon is this? https://media.discordapp.net/attachments/792116745301131274/796451764345503744/concept_19.jpg":
+- Heavy Assault Rifle
+- Assault Rifle
+- HAR
+"Which Doom 2016 weapon is this? https://media.discordapp.net/attachments/792116745301131274/796451769261359164/concept_20.jpg":
+- Hellshot
+- Hell shot
+"Which Doom 2016 weapon is this? https://media.discordapp.net/attachments/792116745301131274/796451773548068894/concept_21.jpg":
+- Lightning Gun
+- LG
+- Arc Cannon
+"Which Doom 2016 item is this? https://media.discordapp.net/attachments/792116745301131274/796451779851059230/concept_22.jpg":
+- Field Drone
+- Mod bot
+- weapon mod
+- modbot
+"Which Doom 2016 weapon is this? https://media.discordapp.net/attachments/792116745301131274/796451659915067422/concept_1.jpg":
+- Vortex Rifle
+- Vortex
+"Which Doom 2016 weapon is this? https://media.discordapp.net/attachments/792116745301131274/796451784230568007/concept_23.jpg":
+- Plasma Rifle
+- Plasma
+"Which Doom 2016 weapon is this? https://media.discordapp.net/attachments/792116745301131274/796451793742594138/concept_25.jpg":
+- Rocket Launcher
+- Rocket
+- RL
+"Which Doom 2016 weapon is this? https://media.discordapp.net/attachments/792116745301131274/796451799615012864/concept_26.jpg":
+- Combat Shotgun
+- Shotgun
+"Which Doom 2016 weapon is this? https://media.discordapp.net/attachments/792116745301131274/796451804145647636/concept_27.jpg":
+- Static Rifle
+- static
+
+#  D e e w h m (Doom Eternal)
+
+"Which weapon was converted into a hotkey function in Doom Eternal?":
+- Chainsaw
+"In which Doom installment was dashing featured first?":
+- Doom Eternal
+- Eternal
+- 5
+"In which Doom installment was BFG-10k featured first?":
+- Doom Eternal
+- Eternal
+- 5
+"In which year was Doom Eternal released?":
+- 2020
+"In which year do the events of Doom Eternal take place?":
+- 2163
+"How many levels does Doom Eternal campaign feature?":
+- 14
+"Name the company that developed Doom Eternal.":
+- id Software
+- id
+"Name the soundtrack composer of Doom Eternal.":
+- Mick Gordon
+- Mick
+- Gordon
+"Name the soundtrack composer of Doom Eternal DLC, The Ancient Gods, pt. 1.":
+- Andrew Hulshult
+- Hulshult
+- David Levy
+"Which Doom Eternal equipment restores Slayer's health?":
+- Ice Bomb
+- Ice
+"Which Doom Eternal equipment restores Slayer's armor?":
+- Flame Belch
+- Flamethrower
+- Flame
+- Belch
+"Which Doom Eternal weapon requires six Empyrean keys to unlock?":
+- Unmaykr
+- Unmaker
+"Which Doom Eternal weapon shares ammo with BFG-9000?":
+- Unmaykr
+- Unmaker
+"Which Doom Eternal weapon has a grappling hook?":
+- Super Shotgun
+- SSG
+"What is the Cyberdemon look-alike from Doom Eternal called?":
+- Tyrant
+"Which Doom Eternal demon was only present as a Demon Rune morph in Doom 2016 multiplayer?":
+- Prowler
+"Which ambient enemy summons demons and increases their aggression in Doom Eternal?":
+- Buff Totem
+"Which ambient enemy hides in the holes under ground in Doom Eternal?":
+- Tentacle
+"Which Doom Eternal boss uses a huge enchanted shield?":
+- Gladiator
+"Which boss has to be defeated before executing Deag Grav?":
+- Gladiator
+"Which Doom Eternal demon projects energy shields?":
+- Carcass
+"Which Doom Eternal demon uses a Super Shotgun?":
+- Marauder
+"Which Doom Eternal demon summons a spirit wolf?":
+- Marauder
+"Which suit upgrade allows the Doom Slayer to perform Glory Kills faster in Doom Eternal than in Doom 2016?":
+- Doomblade
+- Blade
+"What is the grappling hook on the Super Shotgun from Doom Eternal called?":
+- Meathook
+- Meat hook
+"Which item upgrades Slayer's health, armor and ammo capacity in Doom Eternal?":
+- Sentinel Crystal
+- Crystal
+"Which game did the release of Doom Eternal coincide with?":
+- "Animal Crossing: New Horizons"
+- Animal Crossing
+- Fairy Tail
+"Which multiplayer mode did Doom Eternal launch with?":
+- Battlemode
+- Battle mode
+"What is the name of the Rocket Launcher created by Deag Ranak?":
+- Paingiver
+- Pain giver
+"How many players participate in a Battlemode match?":
+- Three
+- 3
+"How many player-controlled demons participate in a Battlemode match?":
+- Two
+- 2
+"How many Slayers participate in a Battlemode match?":
+- One
+- 1
+"What is the name of the Sightless Judge in Doom Eternal?":
+- Kalibas
+"Which item is used to unlock bonus items in the Doom Eternal hub area?":
+- Sentinel Battery
+- Batteries
+"Transformation into which demon is featured in Doom Eternal campaign?":
+- Revenant
+- Revenatn
+- Skeleton
+"Which map decoration triggers a Secret Encounter in Doom Eternal?":
+- Gore nest
+"Which map decoration triggers a Slayer Gate encounter in Doom Eternal?":
+- Gore nest
+"Which Doom Eternal level features an Easter egg fight with two Tyrants over a birthday cake?":
+- Super gore nest
+- Super
+"What is the unique reward for completing Slayer Gate encounters, in addition to weapon upgrade points?":
+- Empyrean Key
+"Which object is required to obtain the Unmaykr?":
+- Empyrean Key
+"How many Empyrean Keys are required to obtain the Unmaykr?":
+- Six
+- 6
+"Which password unlocks Doom 2 in the Fortress of Doom?":
+- FLYNNTAGGART
+- FLYNN TAGGART
+"How many six-string guitars does the Slayer possess?":
+- Three
+- 3
+"How many pips of Chainsaw fuel can the Slayer carry in Doom Eternal?":
+- Three
+- 3
+"How many pips of Chainsaw fuel can the Slayer regenerate in Doom Eternal?":
+- One
+- 1
+"How many pips of Chainsaw fuel can the Doom Slayer regenerate in Doom 2016?":
+- Zero
+- None
+- 0
+"Which weapon modification is the only way to defeat an ambient demon from the Doom Eternal DLC ''The Ancient Gods, Part One''?":
+- Microwave Beam
+- Microwave
+- Beam
+"Which demon can only be slain using Plasma Rifle's Microwave Beam modification?":
+- Spirit
+"Which race hails from the realm of Urdak?":
+- Maykrs
+- Maykr
+"Who created the Maykrs?":
+- The Father
+- Father
+"Where do Maykrs come from?":
+- Urdak
+"What is the leader of Maykrs called?":
+- Khan Maykr
+- Khan
+"What is the collective consciousness from which all Maykrs originate called?":
+- Singularity
+"What is the name of the Hell city where Argent energy is produced?":
+- Nekravol
+"What is the only weapon that can defeat a Titan?":
+- Crucible
+"What is a massive portable temple carried by a Titan called?":
+- Hell barge
+- Barge
+"Who is the only Titan that's actually fought in Doom Eternal?":
+- Icon of Sin
+"Who is the Betrayer's son, lost on the battlefield and returned for his betrayal?":
+- Icon of Sin
+"Which Titan's trial must be completed in order to ascend from the Blood Swamps to the Ingmore Sanctum?":
+- Maligog
+"What are gigantic Sentinel battle mechs called?":
+- Atlans
+- Atlan
+"What is the name of the homeworld of the Night Sentinels and the Argenta?":
+- Sentinel Prime
+"Where are the research logs by Dr. Elena Richardson found?":
+- ARC Complex
+- ARC
+- Complex
+"Which Doom 64 weapon was Unmaykr based on?":
+- Unmaker
+"Which Doom Eternal weapon is inspired by Unmaker from Doom 64?":
+- Unmaykr
+"Which weapon is used to shoot a hole into the surface of Mars?":
+- BFG-10K
+- BFG-10 K
+- BFG 10K
+- BFG 10 K
+- BFG10K
+- BFG-10000
+- BFG-10 000
+- BFG10000
+- 10K
+- 10 K
+- 10000
+- 10 000
+"What does ARC stand for?":
+- Armored Response Coalition
+"Which organization is the global alliance of military forces led by Samuel Hayden?":
+- Armored Response Coalition
+- ARC
+"Which Doom Eternal level is the first one to feature Combat Shotgun?":
+- Hell on Earth
+- First
+- 1st
+- Start
+"Where is the Chainsaw found first in Doom Eternal?":
+- Hell on Earth
+- First
+- 1st
+- Hell barge
+"Where is the Heavy Cannon found first?":
+- Hell on Earth
+- First
+- 1st
+- Start
+"On which Doom Eternal level is Plasma Rifle found first?":
+- Exultia
+- Second
+- 2nd
+- 2
+"On which Doom Eternal level is Paingiver found?":
+- Cultist Base
+- Third
+- 3rd
+- 3
+"Where does the Slayer recover his prized Super Shotgun?":
+- Cultist Base
+- Third
+- 3rd
+- 3
+"Where does the Slayer obtain Ballista?":
+- Fortress of Doom
+- after base
+- before super
+"Where does the Slayer obtain Chaingun?":
+- Super Gore Nest
+- Super
+"Where does the Slayer recover BFG-9000?":
+- Mars Core
+- Phobos
+- station
+- battlestation
+"Where does the Slayer reclaim his Crucible?":
+- Taras Nabad
+"Where does the Slayer obtain Unmaykr?":
+- Fortress of Doom
+- after taras
+- before nekravol
+"Where does the name ''Nekravol'' mean?":
+- City of the Damned
+- city damned
+"Which city is called ''the city of the damned''?":
+- Nekravol
+"Which weapon was called ''Diabolical Musket'' and ''Lucifer's Bane'' by demons?":
+- Super Shotgun
+- SSG
+"What did demons call the Super Shotgun in Doom Eternal?":
+- Lucifer's Bane
+- Diabolical Musket
+- Device of torment
+"What happens the longer the Icon Of Sin is on Earth?":
+- The stronger he will become
+- stronger become
+- stronger becomes
+"What you can't just do to the surface of Mars?":
+- Shoot a hole into
+- shoot a hole
+- a hole
+"Which Doom Eternal level is this? https://media.discordapp.net/attachments/792116745301131274/796384759949164544/screen_4.jpg":
+- Hell on Earth
+"Which Doom Eternal level is this? https://media.discordapp.net/attachments/792116745301131274/796384759218962472/screen_5.jpg":
+- Hell on Earth
+"Which Doom Eternal level is this? https://media.discordapp.net/attachments/792116745301131274/796384743183613972/screen_2.jpg":
+- Exultia
+"Which Doom Eternal level is this? https://media.discordapp.net/attachments/792116745301131274/796384753803722773/screen_3.jpg":
+- Exultia
+"Which Doom Eternal level is this? https://media.discordapp.net/attachments/792116745301131274/796384751179005982/screen_6.jpg":
+- Cultist Base
+- Cultist
+"Which Doom Eternal level is this? https://media.discordapp.net/attachments/792116745301131274/796384760230182912/screen_7.jpg":
+- Cultist Base
+- Cultist
+"Which Doom Eternal level is this? https://media.discordapp.net/attachments/792116745301131274/796384687974383647/screen_1.jpg":
+- Doom Hunter Base
+- Doom Hunter's Base
+- Hunter
+"Which Doom Eternal level is this? https://media.discordapp.net/attachments/792116745301131274/796384761353338910/screen_8.jpg":
+- Doom Hunter Base
+- Doom Hunter's Base
+- Hunter
+"Which Doom Eternal level is this? https://media.discordapp.net/attachments/792116745301131274/796384343504715816/screen_1.jpg":
+- ARC Complex
+- ARC
+- Complex
+"Which Doom Eternal level is this? https://media.discordapp.net/attachments/792116745301131274/796384362849108008/screen_2.jpg":
+- ARC Complex
+- ARC
+- Complex
+"Which Doom Eternal level is this? https://media.discordapp.net/attachments/792116745301131274/796384362278158336/screen_3.jpg":
+- Mars Core
+- Marscore
+"Which Doom Eternal level is this? https://media.discordapp.net/attachments/792116745301131274/796384366934229082/screen_4.jpg":
+- Mars Core
+- Marscore
+"Which Doom Eternal level is this? https://media.discordapp.net/attachments/792116745301131274/796384408877006878/screen_5.jpg":
+- Sentinel Prime
+- Prime
+"Which Doom Eternal level is this? https://media.discordapp.net/attachments/792116745301131274/796384450141093948/screen_6.jpg":
+- Sentinel Prime
+- Prime
+"Which Doom Eternal level is this? https://media.discordapp.net/attachments/792116745301131274/796384461418922024/screen_7.jpg":
+- Super gore nest
+- Super
+"Which Doom Eternal level is this? https://media.discordapp.net/attachments/792116745301131274/796384460505350174/screen_8.jpg":
+- Super gore nest
+- Super
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869737367371776/demons_1.jpg":
+- Arachnotron
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869742006272010/demons_2.jpg":
+- Arch-vile
+- Archvile
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869746481987614/demons_3.jpg":
+- Baron of Hell
+- Baron
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869751351574598/demons_4.jpg":
+- Cacodemon
+- Caco
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869754300563456/demons_5.jpg":
+- Carcass
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869758825168916/demons_6.jpg":
+- Cueball
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869767613284402/demons_7.jpg":
+- Cyber-Mancubus
+- cyber mancubus
+- Cybermancubus
+- Cyber-fatso
+- cyber fatso
+- Cyberfatso
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869773283590184/demons_8.jpg":
+- Tyrant
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869780195147776/demons_9.jpg":
+- Doom Hunter
+- Doom-Hunter
+- Doomhunter
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869784788434944/demons_10.jpg":
+- Dread knight
+- Dreadknight
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869789507420170/demons_11.jpg":
+- Gargoyle
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869796385816606/demons_12.jpg":
+- Gladiator
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869801377431582/demons_13.jpg":
+- Hell Knight
+- Hellknight
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869807186149407/demons_14.jpg":
+- Imp
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869811091177482/demons_15.jpg":
+- Khan Maykr
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869816165498930/demons_16.jpg":
+- Lost Soul
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869821900161024/demons_17.jpg":
+- Mancubus
+- Fatso
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869826450063370/demons_18.jpg":
+- Maykr Drone
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869831551123456/demons_19.jpg":
+- Mecha-Zombie
+- Mecha Zombie
+- Mechazombie
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869836890079232/demons_20.jpg":
+- Pain Elemental
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869841750884403/demons_21.jpg":
+- Pinky
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869846822191124/demons_22.jpg":
+- Prowler
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869849699352607/demons_23.jpg":
+- Marauder
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869854455824394/demons_24.jpg":
+- Revenant
+- Skeleton
+- Revenatn
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869870222737408/demons_27.jpg":
+- Spectre
+"What is the name of this demon from Doom Eternal? https://media.discordapp.net/attachments/792116745301131274/795869874479693824/demons_28.jpg":
+- Whiplash
+"Which Doom Eternal weapon is this? https://media.discordapp.net/attachments/792116745301131274/795871686482329610/weawea_2.jpg":
+- Chainsaw
+"Which Doom Eternal weapon is this? https://media.discordapp.net/attachments/792116745301131274/795871690563256350/weawea_3.jpg":
+- BFG-9000
+- BFG9000
+- BFG-9k
+- BFG9k
+- BFG
+- Big Gun
+- 9k
+- 9000
+"Which Doom Eternal weapon is this? https://media.discordapp.net/attachments/792116745301131274/795871695507554324/weawea_4.jpg":
+- Unmaykr
+- Unmaker
+"Which Doom Eternal weapon is this? https://media.discordapp.net/attachments/792116745301131274/795871700264419358/weawea_5.jpg":
+- Crucible
+"Which Doom Eternal weapon is this? https://media.discordapp.net/attachments/792116745301131274/795871705377669130/weawea_6.jpg":
+- Combat Shotgun
+- Shotgun
+"Which weapon modification is used on this Combat Shotgun? https://media.discordapp.net/attachments/792116745301131274/795871710280286238/weawea_7.jpg":
+- Sticky Bombs
+- Sticky
+- Bombs
+"Which weapon modification is used on this Combat Shotgun? https://media.discordapp.net/attachments/792116745301131274/795871715028631562/weawea_8.jpg":
+- Full Auto
+- Automatic
+- Auto
+"Which Doom Eternal weapon is this? https://media.discordapp.net/attachments/792116745301131274/795871720560132116/weawea_9.jpg":
+- Heavy Cannon
+"Which weapon modification is used on this Heavy Cannon? https://media.discordapp.net/attachments/792116745301131274/795871724401983498/weawea_10.jpg":
+- Micro Missiles
+- Micro-Missiles
+- Micromissiles
+- Micro
+- Missiles
+"Which weapon modification is used on this Heavy Cannon? https://media.discordapp.net/attachments/792116745301131274/795871728814522408/weawea_11.jpg":
+- Precision Bolt
+- Precision
+- Bolt
+"Which Doom Eternal weapon is this? https://media.discordapp.net/attachments/792116745301131274/795871733982036008/weawea_12.jpg":
+- Plasma Rifle
+- Plasma
+"Which weapon modification is used on this Plasma Rifle? https://media.discordapp.net/attachments/792116745301131274/795871737140346890/weawea_13.jpg":
+- Microwave Beam
+- Microwave Meme
+- Microwave
+- Beam
+"Which weapon modification is used on this Plasma Rifle? https://media.discordapp.net/attachments/792116745301131274/795871741741105162/weawea_14.jpg":
+- Heat Blast
+- Heat
+- Blast
+"Which Doom Eternal weapon is this? https://media.discordapp.net/attachments/792116745301131274/795871746137784340/weawea_15.jpg":
+- Super Shotgun
+- SSG
+"Which Doom Eternal weapon is this? https://media.discordapp.net/attachments/792116745301131274/795871751166492692/weawea_16.jpg":
+- Rocket Launcher
+- Paingiver
+- Pain giver
+"Which weapon modification is used on this Rocket Launcher? https://media.discordapp.net/attachments/792116745301131274/795871754907942943/weawea_17.jpg":
+- Remote Detonation
+- Remote
+- Detonation
+- Detonator
+"Which weapon modification is used on this Rocket Launcher? https://media.discordapp.net/attachments/792116745301131274/795871759420096512/weawea_18.jpg":
+- Lock-On Burst
+- Lock
+- Lockon
+- Burst
+"Which Doom Eternal weapon is this? https://media.discordapp.net/attachments/792116745301131274/795871764311179274/weawea_19.jpg":
+- Ballista
+"Which weapon modification is used on this Ballista? https://media.discordapp.net/attachments/792116745301131274/795871769042223176/weawea_20.jpg":
+- Arbalest
+"Which weapon modification is used on this Ballista? https://media.discordapp.net/attachments/792116745301131274/795871773665001493/weawea_21.jpg":
+- Destroyer Blade
+- Destroyer
+- Blade
+"Which Doom Eternal weapon is this? https://media.discordapp.net/attachments/792116745301131274/795871778262089778/weawea_22.jpg":
+- Chaingun
+"Which weapon modification is used on this Chaingun? https://media.discordapp.net/attachments/792116745301131274/795871781750964224/weawea_23.jpg":
+- Energy Shield
+- Shield
+"Which weapon modification is used on this Chaingun? https://media.discordapp.net/attachments/792116745301131274/795871681960607744/weawea_1.jpg":
+- Mobile Turret
+- Turret
+
+
+# Quake Champions
+
+"What is Doom Slayer's active ability in Quake Champions?":
+- Berserk
+"What is Doom Slayer's passive ability in Quake Champions?":
+- Double Jump
+
+# Quotes
+
+"Who does this quote belong to? _''Against all the evil that Hell can conjure, all the wickedness that mankind can produce, we will send unto them... only you. Rip and tear, until it is done.''_":
+- King Novik
+- Novik
+"Who does this quote belong to? _''What you interfere with now is bigger than you can imagine.''_": 
+- King Novik
+- Novik
+"Who does this quote belong to? _''They are no longer your people to save!''_":
+- King Novik
+- Novik
+"Where is this quote found? _''Warning: the Slayer has entered the facility.''_":
+- Phobos base
+- Phobos
+"Who does this quote belong to? _''Saving your people will not bring you peace. Only make the burden you carry worse.''_":
+- Betrayer
+"Who does this quote belong to? _''For millennia we have survived. Made others sacrifice in the name of our prosperity–so that they may in turn find redemption.''_":
+- Khan Maykr
+- Khan
+"Who does this quote belong to? _''Who are you, a human, once a mortal, to defy our traditions?''_":
+- Khan Maykr
+- Khan
+"Who does this quote belong to? _''You were never one of us. You are nothing but a usurper... a false idol.''_":
+- Marauder
+"Who does this quote belong to? _''My eyes have been opened. Let me help you to see, Slayer.''_":
+- Marauder
+"Where is this quote found? _''For he will walk among us, and he will smite the evil from this earth. For he who comes in our time of need is not of mortal breed, he is the Destroyer, the right hand of our Creator and the one who brings fear where there is no hope.''_":
+- Corrax Tablet
+- Corrax
+"Where is this quote found? _''So you walk eternally through the shadow realms, standing against evil where all others falter. May your thirst for retribution never quench, may the blood on your sword never dry, and may we never need you again.''_":
+- Corrax Tablet
+- Corrax
+"Who does this quote belong to? _''... guts, huge guts! Kill them... must kill them all! Rip... And... Tear! The demons... they are everywhere. Must... kill them all!''_":
+- Doom Slayer
+- Doomslayer
+- Doom guy
+- Doomguy
+- Protagonist
+- Player
+- Our Hero
+"Who does this quote belong to? _''I'm willing to take full responsibility for the horrible events of the last 24 hours, but you must understand—our interest in their world was purely for the betterment of mankind. Everything has clearly gotten out of hand, yes, but it was worth the risk. I assure you.''_":
+- Dr. Samuel Hayden
+- Samuel
+- Hayden
+"Who does this quote belong to? _''Your affinity for guns is apparent. I'm confident you'll find something useful there as well.''_":
+- Dr. Samuel Hayden
+- Samuel
+- Hayden
+"Who does this quote belong to? _''You've won—it's over. You stopped the invasion and closed the portal. But it's come at a price—Argent, VEGA. This entire operation.''_":
+- Dr. Samuel Hayden
+- Samuel
+- Hayden
+"Who does this quote belong to? _''You see, I've watched you work; come to understand your motivation. You think the only way is to kill them all—leave nothing behind—and you may be right.''_":
+- Dr. Samuel Hayden
+- Samuel
+- Hayden
+"Who does this quote belong to? _''We can't just shut it all down. Without Argent Energy it will be worse. I don't expect you to agree. But with this! We can continue our work.''_":
+- Dr. Samuel Hayden
+- Samuel
+- Hayden
+"Who does this quote belong to? _''I am not the villain in this story. I do what I do because there is no choice.''_":
+- Dr. Samuel Hayden
+- Samuel
+- Hayden
+"Who does this quote belong to? _''Our time is up. I can't kill you—but I won't have you standing in our way. Until we see each other again.''_":
+- Dr. Samuel Hayden
+- Samuel
+- Hayden
+"Who does this quote belong to? _''You can't just shoot a hole into the surface of Mars.''_":
+- Dr. Samuel Hayden
+- Samuel
+- Hayden
+"Who does this quote belong to? _''I believe in honesty... especially now, in what will be your final moments in this world.''_":
+- Dr. Olivia Pierce
+- Olivia
+- Pierce
+"Who does this quote belong to? _''My sisters and brothers, be thankful. You will be the first. You will have a seat alongside them as I will in what will become the new world they create for us. Starting now.''_":
+- Dr. Olivia Pierce
+- Olivia
+- Pierce
+"Who does this quote belong to? _''You could not have saved them, anyway.''_":
+- Dr. Olivia Pierce
+- Olivia
+- Pierce
+"Who does this quote belong to? _''They promised me... so much...''_":
+- Dr. Olivia Pierce
+- Olivia
+- Pierce
+"Where is this quote found? _''In the first age, in the first battle, when the shadows first lengthened, one stood.''_":
+- Slayer's Testament
+- testament
+- testaments
+- Kadingir Sanctum
+- Kadingir
+- Blood Keep
+- Dogma
+"Where is this quote found? _''Burned by the embers of Armageddon, his soul blistered by the fires of Hell and tainted beyond ascension, he chose the path of perpetual torment.''_":
+- Slayer's Testament
+- testament
+- testaments
+- Kadingir Sanctum
+- Kadingir
+- Blood Keep
+"Where is this quote found? _''In his ravenous hatred he found no peace; and with boiling blood he scoured the Umbral Plains seeking vengeance against the dark lords who had wronged him.''_":
+- Slayer's Testament
+- testament
+- testaments
+- Kadingir Sanctum
+- Kadingir
+- Blood Keep
+"Where is this quote found? _''He wore the crown of the Night Sentinels, and those that tasted the bite of his sword named him... the Doom Slayer.''_":
+- Slayer's Testament
+- testament
+- testaments
+- Kadingir Sanctum
+- Kadingir
+- Blood Keep
+"Where is this quote found? _''They knew he would come, as he always had, as he always will, to feast on the blood of the wicked. For he alone could draw strength from his fallen foes, and ever his power grew, swift and unrelenting.''_":
+- Slayer's Testament
+- testament
+- testaments
+- Titan's Realm
+- Dakhma
+"Where is this quote found? _''And blinded by his fervor, the lure drew him in. The priests brought down the temple upon the Doom Slayer, and in his defeat entombed him in the cursed sarcophagus.''_":
+- Slayer's Testament
+- testament
+- testaments
+- Necropolis
+- Doom
+"Where is this quote found? _''The mark of the Doom Slayer was burned upon his crypt, a warning to all of Hell that the terror within must never be freed. There he lies still, and ever more, in silent suffering.''_":
+- Slayer's Testament
+- testament
+- testaments
+- Necropolis
+- Doom
+"Who does this quote belong to? _''There is no chance that the subject is a demon. We have blood samples pulled from the Mars event that show his blood type is AB positive. He is male with a genome that makes him very much a member of the human race.''_":
+- Dr. Elena Richardson
+- Elena
+- Richardson
+"Who does this quote belong to? _''I cannot ignore that the timing of his arrival — the identity of his enemies — the fire and brimstone element to this catastrophe we currently find ourselves in has... it has definitely shaken my scientific resolve.''_":
+- Dr. Elena Richardson
+- Elena
+- Richardson
+"Who does this quote belong to? _''Maybe he is a God. Maybe he represents humankind's rage — their will to persevere, to overcome that which would threaten our survival. He is uncompromising, a relentless being of violence, that knows no mention of the hesitation.''_":
+- Dr. Elena Richardson
+- Elena
+- Richardson
+"Who does this quote belong to? _''But then he came — he cut through them like a sickle through a field — his fury surpassing their own. He is faster — more relentless. I believe him now to be more than just a man — he is... DOOM.''_":
+- Dr. Elena Richardson
+- Elena
+- Richardson
+"Who does this quote belong to? _''And with him lies our salvation. For as they gain in strength, so do they fall in numbers. The Priests command the armies to the North and South, but he controls the fight.''_":
+- Dr. Elena Richardson
+- Elena
+- Richardson
+"Who does this quote belong to? _''The inner circle of death is where he resides — hunting them at the far reaches of the Earth and beyond. I am a believer now - I feel it is in DOOM that I have faith.''_":
+- Dr. Elena Richardson
+- Elena
+- Richardson
+"Who does this quote belong to? _''The Slayer is the spear that stabs at the heart of our attackers, and those that would seek to harm us should feel warned.''_":
+- Dr. Elena Richardson
+- Elena
+- Richardson
+"Who does this quote belong to? _''For there is only one dominant life form in this universe and it carries a steel barreled sword of vengeance. All hail the coming of the Destroyer — the Slayer's time is now.''_":
+- Dr. Elena Richardson
+- Elena
+- Richardson
+
+# Community and Source Ports
+
+"What is the name of the plush Cacodemon toy made by Jonas ''Chrozoron'' Feragen in 1995?":
+- Hissy
+"Which source port was named specifically to appear at the end of an alphabetically sorted list?":
+- ZDoom
+"Which source port was GZDoom originally based on?":
+- ZDoom
+"Which source port was named using a portmanteau of two most suggested name variants with a prefix?":
+- Zandronum
+"Which source port was suggested the name Andromeda?":
+- Zandronum
+"Which source port was suggested the name Infernum?":
+- Zandronum
+"Which source port superseded Skulltag?":
+- Zandronum
+"Which source port preceded Zandronum?":
+- Skulltag
+"Which source port came with numerous new weapons, powerups, runes, monsters and maps?":
+- Skulltag
+"Which website hosts the largest curated collection of custom resources for Classic Doom modders?":
+- Realm 667
+- Realm667
+- R667
+"Which Classic Doom monster is sometimes pejoratively called ''a door with health''?":
+- Baron of Hell
+- Baron
+- Bruiser
+"Which Classic Doom monster is sometimes humorously called ''a meatball''?":
+- Pain Elemental
+"Which Classic Doom monster is sometimes humorously called ''a tomato''?":
+- Cacodemon
+- Caco
+"Which Classic Doom monster is sometimes humorously called ''a raspberry''?":
+- Cacodemon
+- Caco
+"Which demon is sometimes jokingly depicted with a trumpet?":
+- Revenant
+- Revenatn
+- Skeleton
+"Name any source port of Classic Doom.":
+- ZDoom
+- GZDoom
+- LZDoom
+- QZDoom
+- Skulltag
+- Zandronum
+- QZandronum
+- Q-Zandronum
+- GLBoom
+- PrBoom
+- PrBoom+
+- Chocolate
+- Crispy
+- JDoom
+- Doomsday
+- Doom Retro
+- EDGE
+- 3DGE
+- Hyper3DGE
+- Eternity
+- Odamex
+- ZDaemon
+- Risen3D
+- Smack My Marine Up
+- SMMU
+- SvStrife
+- Vavoom
+- WinDoom
+- Doom95
+- Doom 95
+- MBF
+- Boom
+- Legacy
+- csDoom
+"Name any source port with an active multiplayer scene.":
+- Zandronum
+- ZDaemon
+- Skulltag
+- Odamex
+- QZandronum
+- Q-Zandronum
+"Name any programming language used by Classic Doom mod developers.":
+- ACS
+- Dehacked
+- FraggleScript
+- DDF
+- EDF
+- RTS
+- COAL
+- Decorate
+- Sbarinfo
+- ZScript
+"What is the name of the annual celebratory write-up from the members of Doomworld forum?":
+- Cacowards
+- Cacoward
+"Name any Cacoward category.":
+- Multiplayer
+- Worst
+- Mordeth
+- Mockaward
+- Mock
+- Gameplay Mod
+- Mapper
+- Creator
+- Espi
+- Lifetime
+- Codeaward
+- Machaward
+- Spaceship of Theseus
+- Dootaward
+"Name any work that received the Mordeth Cacoward.":
+- Hellcore
+- Jägermörder 02 Terra Nova
+- Jagermorder
+- Terra Nova
+- Crucified Dreams
+- Knee Deep in ZDoom
+- KDiZD
+- Deus Vult II
+- Deus Vult 2
+- Plutonia 2
+- Stronghold
+- 1994 Tune-up Community Project
+- 1994
+- Tune-up
+- Community Chest IV
+- Community Chest 4
+- ZDoom Community Map Project Take II
+- ZDCMP
+- Doom 2 in Name Only
+- D2INO
+- ChaosCore
+- Doom the Way id Did The Lost Episodes
+- DTWID
+- TNT 2
+- Sonic Robo Blast 2
+- Pacifist
+"Name any work that received the Best Multiplayer Cacoward.":
+- Progressive Duel 3
+- 8-Bit
+- 8bit
+- 8 bit
+- Nimrod
+- Dynamite Deathmatch
+- 32 in 24
+- 32in24
+- 32-in-24
+- 32 24
+- UDMX
+- Megaman
+- WhoDunIt
+- Eyedea
+- Samsara
+- Eon Deathmatch
+- Push
+- RageCTF
+- Rage
+- Don't Be A Bitch
+- DBaB
+- ChaosCore
+- Aeon
+- AeonDM
+- Pyrrhic
+- Progressive Duel 2
+- Progduel
+- Quake Champions Doom Edition
+- QCDE
+- Neon
+- NeonDM
+- DoomWare
+"Name any mod that received the Best Gameplay Mod Cacoward.":
+- Treasure Tech
+- Brutal Doom
+- Russian Overkill
+- MSX
+- DemonSteele
+- DoomRL Arsenal
+- DRLA
+- Doom 4 Doom
+- D4D
+- Guncaster
+- Netronian Chaos
+- GMOTA
+- Doom 4 Vanilla
+- D4V
+- Lt. Typhon
+- NAKU-NARU
+- Nobody Told Me About id
+- SWWM GZ
+"What is the most advanced map format used by Classic Doom ports?":
+- Universal Doom Map Format
+- UDMF
+"Name any editor used for Classic Doom modding.":
+- Slade
+- GZDoom Builder
+- DeePsea
+- DETH
+- DEU
+- WinDEU
+- ZETH
+- Doom Builder
+- XWE
+- SLumpEd
+- Eureka
+- Yadex
+- WhackEd
+- DeHackEd
+- SLIGE
+- OBLIGE
+- WadAuthor

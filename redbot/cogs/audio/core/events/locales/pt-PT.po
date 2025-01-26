@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2022-10-31 01:43+0000\n"
+"POT-Creation-Date: 2024-08-26 17:53+0000\n"
 "Last-Translator: \n"
 "Language-Team: Portuguese\n"
 "MIME-Version: 1.0\n"
@@ -15,371 +15,407 @@ msgstr ""
 "X-Crowdin-File-ID: 670\n"
 "Language: pt_PT\n"
 
-#: redbot/cogs/audio/core/events/cog.py:216
+#: redbot/cogs/audio/core/events/cog.py:218
 msgid "Auto Play started."
-msgstr ""
+msgstr "Reprodução automática iniciada."
 
 #: redbot/cogs/audio/core/events/dpy.py:34
 msgid "Create Instant Invite"
-msgstr ""
+msgstr "Criar Convite Instantâneo"
 
 #: redbot/cogs/audio/core/events/dpy.py:35
 msgid "Kick Members"
-msgstr ""
+msgstr "Expulsar membros"
 
 #: redbot/cogs/audio/core/events/dpy.py:36
 msgid "Ban Members"
-msgstr ""
+msgstr "Banir Membros"
 
 #: redbot/cogs/audio/core/events/dpy.py:37
 msgid "Administrator"
-msgstr ""
+msgstr "Administrador"
 
 #: redbot/cogs/audio/core/events/dpy.py:38
 msgid "Manage Channels"
-msgstr ""
+msgstr "Gerir canais"
 
 #: redbot/cogs/audio/core/events/dpy.py:39
 msgid "Manage Server"
-msgstr ""
+msgstr "Gerir Servidor"
 
 #: redbot/cogs/audio/core/events/dpy.py:40
 msgid "Add Reactions"
-msgstr ""
+msgstr "Adicionar Reacções"
 
 #: redbot/cogs/audio/core/events/dpy.py:41
 msgid "View Audit Log"
-msgstr ""
+msgstr "Ver o registro de auditoria"
 
 #: redbot/cogs/audio/core/events/dpy.py:42
 msgid "Priority Speaker"
-msgstr ""
+msgstr "Voz prioritária"
 
 #: redbot/cogs/audio/core/events/dpy.py:43
-msgid "Go Live"
-msgstr ""
+msgid "Video"
+msgstr "Vídeo"
 
 #: redbot/cogs/audio/core/events/dpy.py:44
 msgid "Read Text Channels & See Voice Channels"
-msgstr ""
+msgstr "Ler canais de texto e ver canais de voz"
 
 #: redbot/cogs/audio/core/events/dpy.py:45
 msgid "Send Messages"
-msgstr ""
+msgstr "Enviar mensagens"
 
 #: redbot/cogs/audio/core/events/dpy.py:46
-msgid "Send TTS Messages"
-msgstr ""
+msgid "Send Text-to-speech Messages"
+msgstr "Envia mensagens de conversão de texto em voz"
 
 #: redbot/cogs/audio/core/events/dpy.py:47
 msgid "Manage Messages"
-msgstr ""
+msgstr "Gerir Mensagens"
 
 #: redbot/cogs/audio/core/events/dpy.py:48
 msgid "Embed Links"
-msgstr ""
+msgstr "Links Incorporados"
 
 #: redbot/cogs/audio/core/events/dpy.py:49
 msgid "Attach Files"
-msgstr ""
+msgstr "Anexar ficheiros"
 
 #: redbot/cogs/audio/core/events/dpy.py:50
 msgid "Read Message History"
-msgstr ""
+msgstr "Ler Histórico de Mensagens"
 
 #: redbot/cogs/audio/core/events/dpy.py:51
 msgid "Mention @everyone, @here, and All Roles"
-msgstr ""
+msgstr "Mencionar \\@everyone, \\@here e todos os cargos"
 
 #: redbot/cogs/audio/core/events/dpy.py:52
 msgid "Use External Emojis"
-msgstr ""
+msgstr "Usar Emojis Externos"
 
 #: redbot/cogs/audio/core/events/dpy.py:53
 msgid "View Server Insights"
-msgstr ""
+msgstr "Ver estatísticas do servidor"
 
 #: redbot/cogs/audio/core/events/dpy.py:54
 msgid "Connect"
-msgstr ""
+msgstr "Conectar"
 
 #: redbot/cogs/audio/core/events/dpy.py:55
 msgid "Speak"
-msgstr ""
+msgstr "Falar"
 
 #: redbot/cogs/audio/core/events/dpy.py:56
 msgid "Mute Members"
-msgstr ""
+msgstr "Silenciar membros"
 
 #: redbot/cogs/audio/core/events/dpy.py:57
 msgid "Deafen Members"
-msgstr ""
+msgstr "Ensurdecer Membros"
 
 #: redbot/cogs/audio/core/events/dpy.py:58
 msgid "Move Members"
-msgstr ""
+msgstr "Mover membros"
 
 #: redbot/cogs/audio/core/events/dpy.py:59
 msgid "Use Voice Activity"
-msgstr ""
+msgstr "Usar Deteção de Voz"
 
 #: redbot/cogs/audio/core/events/dpy.py:60
 msgid "Change Nickname"
-msgstr ""
+msgstr "Alterar Alcunha"
 
 #: redbot/cogs/audio/core/events/dpy.py:61
 msgid "Manage Nicknames"
-msgstr ""
+msgstr "Gerir Alcunhas"
 
 #: redbot/cogs/audio/core/events/dpy.py:62
 msgid "Manage Roles"
-msgstr ""
+msgstr "Gerir Cargos"
 
 #: redbot/cogs/audio/core/events/dpy.py:63
 msgid "Manage Webhooks"
-msgstr ""
+msgstr "Gerir webhooks"
 
 #: redbot/cogs/audio/core/events/dpy.py:64
-msgid "Manage Emojis"
-msgstr ""
+msgid "Manage Expressions"
+msgstr "Gerir Expressões"
 
 #: redbot/cogs/audio/core/events/dpy.py:65
 msgid "Use Application Commands"
-msgstr ""
+msgstr "Usar comandos de aplicativo"
 
 #: redbot/cogs/audio/core/events/dpy.py:66
 msgid "Request to Speak"
-msgstr ""
+msgstr "Pedir para Falar"
 
 #: redbot/cogs/audio/core/events/dpy.py:67
 msgid "Manage Events"
-msgstr ""
+msgstr "Gerir Eventos"
 
 #: redbot/cogs/audio/core/events/dpy.py:68
 msgid "Manage Threads"
-msgstr ""
+msgstr "Gerir Tópicos"
 
 #: redbot/cogs/audio/core/events/dpy.py:69
 msgid "Create Public Threads"
-msgstr ""
+msgstr "Criar Tópico Público"
 
 #: redbot/cogs/audio/core/events/dpy.py:70
 msgid "Create Private Threads"
-msgstr ""
+msgstr "Criar Tópicos Privados"
 
 #: redbot/cogs/audio/core/events/dpy.py:71
 msgid "Use External Stickers"
-msgstr ""
+msgstr "Usar Adesivos Externos"
 
 #: redbot/cogs/audio/core/events/dpy.py:72
 msgid "Send Messages in Threads"
-msgstr ""
+msgstr "Enviar Mensagens em Tópicos"
 
 #: redbot/cogs/audio/core/events/dpy.py:73
-msgid "Start Activities"
-msgstr ""
+msgid "Use Activities"
+msgstr "Usar Atividades"
 
 #: redbot/cogs/audio/core/events/dpy.py:74
-msgid "Moderate Member"
-msgstr ""
+msgid "Time out members"
+msgstr "Castigar membros"
+
+#: redbot/cogs/audio/core/events/dpy.py:75
+msgid "View Creator Monetization Analytics"
+msgstr "Visualizar a Análise da Monetização do Criador"
+
+#: redbot/cogs/audio/core/events/dpy.py:76
+msgid "Use Soundboard"
+msgstr "Usar Soundboard"
+
+#: redbot/cogs/audio/core/events/dpy.py:77
+msgid "Create Expressions"
+msgstr "Criar expressões"
 
 #: redbot/cogs/audio/core/events/dpy.py:78
-msgid "This command will change the executable path of Java, this is useful if you have multiple installations of Java and the default one is causing issues. Please don't change this unless you are certain that the Java version you are specifying is supported by Red. The default and supported version is currently Java 11."
-msgstr ""
+msgid "Create Events"
+msgstr "Criar Eventos"
 
-#: redbot/cogs/audio/core/events/dpy.py:84
+#: redbot/cogs/audio/core/events/dpy.py:79
+msgid "Use External Sounds"
+msgstr "Usar Sons Externos"
+
+#: redbot/cogs/audio/core/events/dpy.py:80
+msgid "Send Voice Messages"
+msgstr "Enviar Mensagens de Voz"
+
+#: redbot/cogs/audio/core/events/dpy.py:81
+msgid "Create Polls"
+msgstr "Criar Votações"
+
+#: redbot/cogs/audio/core/events/dpy.py:82
+msgid "Use External Apps"
+msgstr "Usar Aplicações Externas"
+
+#: redbot/cogs/audio/core/events/dpy.py:86
+msgid "This command will change the executable path of Java, this is useful if you have multiple installations of Java and the default one is causing issues. Please don't change this unless you are certain that the Java version you are specifying is supported by Red. The default and supported versions are currently Java 17 and 11."
+msgstr "Este comando irá alterar o caminho executável do Java, isso é útil se você tem várias instalações do Java e a padrão está causando problemas. Por favor, não mude isso, a menos que tenha certeza de que a versão Java que está especificando é suportada pelo Red. As versões padrão e suportadas atualmente são o Java 17 e o 11."
+
+#: redbot/cogs/audio/core/events/dpy.py:92
 msgid "This command will change the maximum RAM allocation for the managed Lavalink node, usually you will never have to change this, before considering changing it please consult our support team."
-msgstr ""
-
-#: redbot/cogs/audio/core/events/dpy.py:89
-msgid "This command will disable the managed Lavalink node, if you toggle this command you must specify an external Lavalink node to connect to, if you do not do so Audio will stop working."
-msgstr ""
-
-#: redbot/cogs/audio/core/events/dpy.py:94
-msgid "This command is used to specify the IP which will be used by Red to connect to an external Lavalink node. "
-msgstr ""
+msgstr "Este comando irá alterar a alocação máxima de RAM para o nó gerenciado Lavalink, Normalmente você nunca precisará mudar isto, antes de considerar alterá-lo por favor consulte nossa equipe de suporte."
 
 #: redbot/cogs/audio/core/events/dpy.py:97
+msgid "This command will disable the managed Lavalink node, if you toggle this command you must specify an external Lavalink node to connect to, if you do not do so Audio will stop working."
+msgstr "Este comando desativará o nó Lavalink gerenciado, se você alternar este comando você deve especificar um nó Lavalink externo a se conectar, se você não fizer isso o Áudio irá parar de funcionar."
+
+#: redbot/cogs/audio/core/events/dpy.py:102
+msgid "This command is used to specify the IP which will be used by Red to connect to an external Lavalink node. "
+msgstr "Este comando é usado para especificar o IP que será usado pelo Red para conectar a um nó Lavalink externo. "
+
+#: redbot/cogs/audio/core/events/dpy.py:105
 msgid "This command is used to specify the authentication password used by Red to connect to an external Lavalink node."
-msgstr ""
+msgstr "Este comando é usado para especificar a senha de autenticação usada pelo Red para conectar a um nó externo Lavalink."
 
-#: redbot/cogs/audio/core/events/dpy.py:101
+#: redbot/cogs/audio/core/events/dpy.py:109
 msgid "This command is used toggle between secured and unsecured connections to an external Lavalink node."
-msgstr ""
-
-#: redbot/cogs/audio/core/events/dpy.py:104
-msgid "This command is used to specify the connection port used by Red to connect to an external Lavalink node."
-msgstr ""
-
-#: redbot/cogs/audio/core/events/dpy.py:107
-msgid "This command specifies which network interface and IP the managed Lavalink node will bind to, by default this is 'localhost', only change this if you want the managed Lavalink node to bind to a specific IP/interface."
-msgstr ""
+msgstr "Este comando é usado para alternar entre conexões seguras e não seguras para um nó Lavalink externo."
 
 #: redbot/cogs/audio/core/events/dpy.py:112
-msgid "This command changes the authentication password required to connect to this managed node.The default value is 'youshallnotpass'."
-msgstr ""
+msgid "This command is used to specify the connection port used by Red to connect to an external Lavalink node."
+msgstr "Este comando é usado para especificar a porta de conexão usada pelo Red para conectar a um nó de Lavalink externo."
 
-#: redbot/cogs/audio/core/events/dpy.py:116
-msgid "This command changes the connection port used to connect to this managed node, only change this if the default port '2333' is causing conflicts with existing applications."
-msgstr ""
+#: redbot/cogs/audio/core/events/dpy.py:115
+msgid "This command specifies which network interface and IP the managed Lavalink node will bind to, by default this is 'localhost', only change this if you want the managed Lavalink node to bind to a specific IP/interface."
+msgstr "Este comando especifica a qual interface de rede e IP o nó Lavalink gerenciado será vinculado, por padrão isto é 'localhost', só mude isso se você quiser que o nó gerenciado de Lavalink vincule a um IP/interface específico."
 
 #: redbot/cogs/audio/core/events/dpy.py:120
+msgid "This command changes the authentication password required to connect to this managed node.The default value is 'youshallnotpass'."
+msgstr "Este comando altera a senha de autenticação necessária para conectar a este nó gerenciado. O valor padrão é 'youshallnotpass'."
+
+#: redbot/cogs/audio/core/events/dpy.py:124
+msgid "This command changes the connection port used to connect to this managed node, only change this if the default port '2333' is causing conflicts with existing applications."
+msgstr "Este comando altera a porta de conexão utilizada para conectar a este nó gerenciado, somente mude isso se a porta padrão '2333' estiver causando conflitos com aplicações existentes."
+
+#: redbot/cogs/audio/core/events/dpy.py:128
 msgid "This command toggles the support of direct url streams like Icecast or Shoutcast streams. An example is <http://ice1.somafm.com/gsclassic-128-mp3>; disabling this will make the bot unable to play any direct url steam content."
-msgstr ""
+msgstr "Este comando alterna o suporte a streams de url diretas como Icecast ou Shoutcast fluxos. Um exemplo é <http://ice1.somafm.com/gsclassic-128-mp3>format@@1; desabilitar isso não fará com que o bot não possa reproduzir qualquer conteúdo Steam Url direta."
 
-#: redbot/cogs/audio/core/events/dpy.py:130
+#: redbot/cogs/audio/core/events/dpy.py:138
 msgid "This command toggles the support of local track audio playback. An example is `/mnt/data/my_super_funky_track.mp3`; disabling this will make the bot unable to play any local track content."
-msgstr ""
+msgstr "Este comando alterna o suporte à reprodução de áudio local. Um exemplo é `/mnt/data/my_super_funky_track. p3`; desabilitar isto fará com que o bot não possa reproduzir qualquer conteúdo local."
 
-#: redbot/cogs/audio/core/events/dpy.py:135
+#: redbot/cogs/audio/core/events/dpy.py:143
 msgid "This command toggles the support of SoundCloud playback. An example is <https://soundcloud.com/user-103858850/tilla>; disabling this will make the bot unable to play any SoundCloud content."
-msgstr ""
+msgstr "Este comando alterna o suporte à reprodução do SoundCloud. Um exemplo é <https://soundcloud.com/user-103858850/tilla>; desabilitar isso fará com que o bot não possa reproduzir conteúdo do SoundCloud."
 
-#: redbot/cogs/audio/core/events/dpy.py:140
+#: redbot/cogs/audio/core/events/dpy.py:148
 msgid "This command toggles the support of YouTube playback (Spotify depends on YouTube). Disabling this will make the bot unable to play any YouTube content: this includes Spotify."
-msgstr ""
+msgstr "Este comando alterna o suporte da reprodução do YouTube (Spotify depende do YouTube). Desabilitar isso fará com que o bot não possa reproduzir qualquer conteúdo do YouTube: isso inclui o Spotify."
 
-#: redbot/cogs/audio/core/events/dpy.py:145
+#: redbot/cogs/audio/core/events/dpy.py:153
 msgid "This command toggles the support of Twitch playback. An example of this is <https://twitch.tv/monstercat>; disabling this will make the bot unable to play any Twitch content."
-msgstr ""
+msgstr "Esse comando alterna o apoio da reprodução do Twitch. Um exemplo disso é <https://twitch.tv/monstercat>; desabilitar isso fará com que o bot não possa jogar qualquer conteúdo da Twitch."
 
-#: redbot/cogs/audio/core/events/dpy.py:150
+#: redbot/cogs/audio/core/events/dpy.py:158
 msgid "This command toggles the support of Vimeo playback. An example of this is <https://vimeo.com/157743578>; disabling this will make the bot unable to play any Vimeo content."
-msgstr ""
-
-#: redbot/cogs/audio/core/events/dpy.py:155
-msgid "This setting controls the managed node's framebuffer, do not change this unless instructed."
-msgstr ""
-
-#: redbot/cogs/audio/core/events/dpy.py:159
-msgid "This setting controls the managed node's JDA-NAS buffer, do not change this unless instructed."
-msgstr ""
+msgstr "Este comando alterna o suporte da reprodução Vimeo. Um exemplo disso é <https://vimeo.com/157743578>; desabilitar isso fará com que o bot não possa jogar nenhum conteúdo Vimeo."
 
 #: redbot/cogs/audio/core/events/dpy.py:163
+msgid "This setting controls the managed node's framebuffer, do not change this unless instructed."
+msgstr "Esta configuração controla o framework gerenciado, não altere isso a menos que instruído."
+
+#: redbot/cogs/audio/core/events/dpy.py:167
+msgid "This setting controls the managed node's JDA-NAS buffer, do not change this unless instructed."
+msgstr "Esta configuração controla o buffer JDA-NAS do nó gerenciado, não muda isso a menos que instruído."
+
+#: redbot/cogs/audio/core/events/dpy.py:171
 msgid "This command will reset every setting changed by `[p]llset`."
-msgstr ""
+msgstr "Este comando irá redefinir todas as configurações alteradas por `[p]llset`."
 
-#: redbot/cogs/audio/core/events/dpy.py:180
+#: redbot/cogs/audio/core/events/dpy.py:188
 msgid "You have attempted to run Audio's managed Lavalink node on an unsupported architecture. Only settings related commands will be available."
-msgstr ""
+msgstr "Você tentou executar o nó Lavalink gerenciado do Áudio em uma arquitetura não suportada. Somente comandos relacionados a configurações estarão disponíveis."
 
-#: redbot/cogs/audio/core/events/dpy.py:202
+#: redbot/cogs/audio/core/events/dpy.py:210
 msgid "I'm missing permissions to send messages in this server. Please address this as soon as possible."
-msgstr ""
+msgstr "Faltam permissões para enviar mensagens neste servidor. Por favor, resolva isso o mais rápido possível."
 
-#: redbot/cogs/audio/core/events/dpy.py:228
+#: redbot/cogs/audio/core/events/dpy.py:236
 msgid "I'm missing permissions in this server, Please address this as soon as possible.\n\n"
 "Expected Permissions:\n"
-msgstr ""
+msgstr "Não tenho permissores neste servidor, Por favor resolva o mais rápido possível:\n"
 
-#: redbot/cogs/audio/core/events/dpy.py:235
+#: redbot/cogs/audio/core/events/dpy.py:243
 msgid "Enabled"
-msgstr ""
+msgstr "Ativado"
 
-#: redbot/cogs/audio/core/events/dpy.py:235
+#: redbot/cogs/audio/core/events/dpy.py:243
 msgid "Disabled"
-msgstr ""
+msgstr "Desactivado"
 
-#: redbot/cogs/audio/core/events/dpy.py:266
+#: redbot/cogs/audio/core/events/dpy.py:274
 msgid "You should not be running this command."
-msgstr ""
+msgstr "Você não deve estar executando este comando."
 
-#: redbot/cogs/audio/core/events/dpy.py:269
+#: redbot/cogs/audio/core/events/dpy.py:277
 msgid "\n"
 "{template}\n"
 "If you wish to continue, enter this case sensitive token without spaces as your next message.\n\n"
 "{confirm_token}"
-msgstr ""
+msgstr "\n"
+"{template}\n"
+"Se você deseja continuar, insira este token sensível a maiúsculas e minúsculas sem espaços como a sua próxima mensagem.\n\n"
+"{confirm_token}"
 
-#: redbot/cogs/audio/core/events/dpy.py:313
+#: redbot/cogs/audio/core/events/dpy.py:321
 msgid "No DJ role found. Disabling DJ mode."
-msgstr ""
-
-#: redbot/cogs/audio/core/events/dpy.py:323
-msgid "`{user_input}` is not a valid value for `{command}`"
-msgstr ""
+msgstr "Nenhum cargo de DJ encontrado. Desativando o modo DJ."
 
 #: redbot/cogs/audio/core/events/dpy.py:331
+msgid "`{user_input}` is not a valid value for `{command}`"
+msgstr "`{user_input}` não é um valor válido para `{command}`"
+
+#: redbot/cogs/audio/core/events/dpy.py:339
 msgid "Unable To Parse Argument"
-msgstr ""
+msgstr "Incapaz de analisar Argumento"
 
-#: redbot/cogs/audio/core/events/dpy.py:343
-#: redbot/cogs/audio/core/events/dpy.py:352
+#: redbot/cogs/audio/core/events/dpy.py:351
+#: redbot/cogs/audio/core/events/dpy.py:360
 msgid "Invalid Argument"
-msgstr ""
+msgstr "Argumento Inválido"
 
-#: redbot/cogs/audio/core/events/dpy.py:344
+#: redbot/cogs/audio/core/events/dpy.py:352
 msgid "The argument you gave for `{}` is not valid: I was expecting a `{}`."
-msgstr ""
+msgstr "O argumento que você deu para `{}` não é válido: eu estava esperando um `{}`."
 
-#: redbot/cogs/audio/core/events/dpy.py:362
+#: redbot/cogs/audio/core/events/dpy.py:370
 msgid "Invalid Environment"
-msgstr ""
-
-#: redbot/cogs/audio/core/events/dpy.py:363
-msgid "Connection to Lavalink node has been lost."
-msgstr ""
+msgstr "Ambiente inválido"
 
 #: redbot/cogs/audio/core/events/dpy.py:371
-msgid "No Player Available"
-msgstr ""
+msgid "Connection to Lavalink node has been lost."
+msgstr "A conexão com o node Lavalink foi perdida."
 
-#: redbot/cogs/audio/core/events/dpy.py:372
-msgid "The bot is not connected to a voice channel."
-msgstr ""
+#: redbot/cogs/audio/core/events/dpy.py:379
+msgid "No Player Available"
+msgstr "Nenhum jogador disponível"
 
 #: redbot/cogs/audio/core/events/dpy.py:380
+msgid "The bot is not connected to a voice channel."
+msgstr "O bot não está conectado a um canal de voz."
+
+#: redbot/cogs/audio/core/events/dpy.py:388
 #: redbot/cogs/audio/core/events/lavalink.py:183
 msgid "Unable to Get Track"
-msgstr ""
+msgstr "Não foi possível obter a faixa"
 
-#: redbot/cogs/audio/core/events/dpy.py:381
+#: redbot/cogs/audio/core/events/dpy.py:389
 #: redbot/cogs/audio/core/events/lavalink.py:184
 msgid "I'm unable to get a track from the Lavalink node at the moment, try again in a few minutes."
-msgstr ""
+msgstr "Não consigo obter uma faixa do nó de Lavalink no momento, tente novamente em alguns minutos."
 
-#: redbot/cogs/audio/core/events/dpy.py:392
+#: redbot/cogs/audio/core/events/dpy.py:400
 msgid "There was an issue communicating with Discord."
-msgstr ""
+msgstr "Houve um problema na comunicação com o Discord."
 
-#: redbot/cogs/audio/core/events/dpy.py:393
+#: redbot/cogs/audio/core/events/dpy.py:401
 msgid "This error has been reported to the bot owner."
-msgstr ""
+msgstr "Este erro foi denunciado ao dono do bot."
 
 #: redbot/cogs/audio/core/events/lavalink.py:175
 msgid "Couldn't get a valid track."
-msgstr ""
+msgstr "Não foi possível obter uma faixa válida."
 
 #: redbot/cogs/audio/core/events/lavalink.py:210
 msgid "Now Playing"
-msgstr ""
+msgstr "A tocar agora"
 
 #: redbot/cogs/audio/core/events/lavalink.py:212
 msgid "Track length: {length} | Requested by: {user}"
-msgstr ""
+msgstr "Comprimento da faixa: {length} ^\\\\Solicitado por: {user}"
 
 #: redbot/cogs/audio/core/events/lavalink.py:235
 msgid "Queue ended."
-msgstr ""
+msgstr "Fila terminada."
 
 #: redbot/cogs/audio/core/events/lavalink.py:301
 msgid "Multiple Errors Detected"
-msgstr ""
+msgstr "Vários erros detectados"
 
 #: redbot/cogs/audio/core/events/lavalink.py:302
 msgid "Closing the audio player due to multiple errors being detected. If this persists, please inform the bot owner as the Audio cog may be temporally unavailable."
-msgstr ""
+msgstr "Encerrando o player de áudio devido a vários erros detectados. Se isso persistir, informe ao proprietário do bot como um codec de áudio pode estar temporariamente indisponível."
 
 #: redbot/cogs/audio/core/events/lavalink.py:316
 msgid "Track Stuck"
-msgstr ""
+msgstr "Faixa travou"
 
 #: redbot/cogs/audio/core/events/lavalink.py:317
 msgid "Playback of the song has stopped due to an unexpected error.\n"
 "{error}"
-msgstr ""
+msgstr "A reprodução da música parou devido a um erro inesperado.\n"
+"{error}"
 
 #: redbot/cogs/audio/core/events/lavalink.py:323
 msgid "Track Error"
-msgstr ""
+msgstr "Erro na faixa"
 

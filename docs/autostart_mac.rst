@@ -57,6 +57,8 @@ Paste the following and replace the following:
             <string>username</string>
             <key>InitGroups</key>
             <true/>
+            <key>ProcessType</key>
+            <string>Interactive</string>
         </dict>
     </plist>
 

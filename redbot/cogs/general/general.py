@@ -40,7 +40,7 @@ class RPSParser:
             self.choice = None
 
 
-MAX_ROLL: Final[int] = 2**64 - 1
+MAX_ROLL: Final[int] = 2**63 - 1
 
 
 @cog_i18n(_)
@@ -220,7 +220,9 @@ class General(commands.Cog):
     async def lmgtfy(self, ctx, *, search_terms: str):
         """Create a lmgtfy link."""
         search_terms = escape(urllib.parse.quote_plus(search_terms), mass_mentions=True)
-        await ctx.send("https://lmgtfy.app/?q={}&s=g".format(search_terms))
+        await ctx.send(
+            f"https://cog-creators.github.io/lmgtfy/search?q={search_terms}&btnK=Google+Search"
+        )
 
     @commands.command(hidden=True)
     @commands.guild_only()
@@ -355,7 +357,7 @@ class General(commands.Cog):
             joined_on = _(
                 "{bot_name} joined this server on {bot_join}. That's over {since_join} days ago!"
             ).format(
-                bot_name=ctx.bot.user.name,
+                bot_name=ctx.bot.user.display_name,
                 bot_join=guild.me.joined_at.strftime("%d %b %Y %H:%M:%S"),
                 since_join=humanize_number((ctx.message.created_at - guild.me.joined_at).days),
             )

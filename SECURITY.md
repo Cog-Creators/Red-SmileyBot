@@ -3,15 +3,15 @@
 ## Supported Versions
 
 The table below explains the current state of our versions. Currently, only version
-3.4 and higher are supported and receive security updates. Versions lower than 3.4
+3.5 and higher are supported and receive security updates. Versions lower than 3.5
 are considered End of Life and will not receive any security updates.
 
 | Version       | Branch     | Security Updates   | End of Life        |
 |---------------|------------|--------------------|--------------------|
 | < 2.0         | master     | :x:                | :white_check_mark: |
 | >= 2.0, < 3.0 | develop    | :x:                | :white_check_mark: |
-| >= 3.0, < 3.4 | V3/develop | :x:                | :white_check_mark: |
-| >= 3.4        | V3/develop | :white_check_mark: | :x:                |
+| >= 3.0, < 3.5 | V3/develop | :x:                | :white_check_mark: |
+| >= 3.5        | V3/develop | :white_check_mark: | :x:                |
 
 
 ## Reporting a Vulnerability

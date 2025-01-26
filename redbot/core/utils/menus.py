@@ -32,66 +32,143 @@ _active_menus: Dict[int, SimpleMenu] = {}
 
 
 class _GenericButton(discord.ui.Button):
-    def __init__(self, emoji: Union[str, discord.PartialEmoji], func):
-        super().__init__(
-            emoji=discord.PartialEmoji.from_str(emoji), style=discord.ButtonStyle.grey
-        )
+    def __init__(self, emoji: discord.PartialEmoji, func: _ControlCallable):
+        super().__init__(emoji=emoji, style=discord.ButtonStyle.grey)
         self.func = func
 
     async def callback(self, interaction: discord.Interaction):
+        await interaction.response.defer()
         ctx = self.view.ctx
         pages = self.view.source.entries
         controls = None
         message = self.view.message
         page = self.view.current_page
         timeout = self.view.timeout
-        emoji = self.emoji
-        try:
+        emoji = (
+            str(self.emoji)
+            if self.emoji.is_unicode_emoji()
+            else (ctx.bot.get_emoji(self.emoji.id) or self.emoji)
+        )
+        user = self.view.author if not self.view._fallback_author_to_ctx else None
+        if user is not None:
+            await self.func(ctx, pages, controls, message, page, timeout, emoji, user=user)
+        else:
             await self.func(ctx, pages, controls, message, page, timeout, emoji)
-        except Exception:
-            pass
-        await interaction.response.defer()
 
 
 async def menu(
     ctx: commands.Context,
     pages: _PageList,
     controls: Optional[Mapping[str, _ControlCallable]] = None,
-    message: discord.Message = None,
+    message: Optional[discord.Message] = None,
     page: int = 0,
     timeout: float = 30.0,
+    *,
+    user: Optional[discord.User] = None,
 ) -> _T:
     """
     An emoji-based menu
 
-    .. note:: All pages should be of the same type
+    All functions for handling what a particular emoji does
+    should be coroutines (i.e. :code:`async def`). Additionally,
+    they must take all of the parameters of this function, in
+    addition to a string representing the emoji reacted with.
+    This parameter should be the 7th one, and none of the
+    parameters in the handling functions are optional.
 
-    .. note:: All functions for handling what a particular emoji does
-              should be coroutines (i.e. :code:`async def`). Additionally,
-              they must take all of the parameters of this function, in
-              addition to a string representing the emoji reacted with.
-              This parameter should be the last one, and none of the
-              parameters in the handling functions are optional
+    .. warning::
+
+        The ``user`` parameter is considered `provisional <developer-guarantees-exclusions>`.
+        If no issues arise, we plan on including it under developer guarantees
+        in the first release made after 2024-05-24.
+
+    .. warning::
+
+        If you're using the ``user`` param, you need to pass it
+        as a keyword-only argument, and set :obj:`None` as the
+        default in your function.
+
+    Examples
+    --------
+
+    Simple menu using default controls::
+
+        from redbot.core.utils.menus import menu
+
+        pages = ["Hello", "Hi", "Bonjour", "Salut"]
+        await menu(ctx, pages)
+
+    Menu with a custom control performing an action (deleting an item from pages list)::
+
+        from redbot.core.utils import menus
+
+        items = ["Apple", "Banana", "Cucumber", "Dragonfruit"]
+
+        def generate_pages():
+            return [f"{fruit} is an awesome fruit!" for fruit in items]
+
+        async def delete_item_action(ctx, pages, controls, message, page, timeout, emoji):
+            fruit = items.pop(page)  # lookup and remove corresponding fruit name
+            await ctx.send(f"I guess you don't like {fruit}, huh? Deleting...")
+            pages = generate_pages()
+            if not pages:
+                return await menus.close_menu(ctx, pages, controls, message, page, timeout)
+            page = min(page, len(pages) - 1)
+            return await menus.menu(ctx, pages, controls, message, page, timeout)
+
+        pages = generate_pages()
+        controls = {**menus.DEFAULT_CONTROLS, "\\N{NO ENTRY SIGN}": delete_item_action}
+        await menus.menu(ctx, pages, controls)
+
+    Menu with custom controls that output a result (confirmation prompt)::
+
+        from redbot.core.utils.menus import menu
+
+        async def control_yes(*args, **kwargs):
+            return True
+
+        async def control_no(*args, **kwargs):
+            return False
+
+        msg = "Do you wish to continue?"
+        controls = {
+            "\\N{WHITE HEAVY CHECK MARK}": control_yes,
+            "\\N{CROSS MARK}": control_no,
+        }
+        reply = await menu(ctx, [msg], controls)
+        if reply:
+            await ctx.send("Continuing...")
+        else:
+            await ctx.send("Okay, I'm not going to perform the requested action.")
 
     Parameters
     ----------
     ctx: commands.Context
         The command context
-    pages: `list` of `str` or `discord.Embed`
+    pages: Union[List[str], List[discord.Embed]]
         The pages of the menu.
+        All pages need to be of the same type (either `str` or `discord.Embed`).
     controls: Optional[Mapping[str, Callable]]
         A mapping of emoji to the function which handles the action for the
         emoji. The signature of the function should be the same as of this function
         and should additionally accept an ``emoji`` parameter of type `str`.
         If not passed, `DEFAULT_CONTROLS` is used *or*
         only a close menu control is shown when ``pages`` is of length 1.
-    message: discord.Message
+    message: Optional[discord.Message]
         The message representing the menu. Usually :code:`None` when first opening
         the menu
     page: int
         The current page number of the menu
     timeout: float
         The time (in seconds) to wait for a reaction
+    user: Optional[discord.User]
+        The user allowed to interact with the menu. Defaults to ``ctx.author``.
+
+        .. warning::
+
+            This parameter is `provisional <developer-guarantees-exclusions>`.
+            If no issues arise, we plan on including it under developer guarantees
+            in the first release made after 2024-05-24.
 
     Raises
     ------
@@ -108,6 +185,7 @@ async def menu(
             view._source = _SimplePageSource(pages)
         new_page = await view.get_page(page)
         view.current_page = page
+        view.timeout = timeout
         await view.message.edit(**new_page)
         return
     if not isinstance(pages[0], (discord.Embed, str)):
@@ -134,13 +212,12 @@ async def menu(
         # where the original message is already sent prior to starting.
         # This is not normally the way we recommend sending this because
         # internally we already include the emojis we expect.
+        view = SimpleMenu(pages, timeout=timeout)
         if controls == DEFAULT_CONTROLS:
-            view = SimpleMenu(pages)
-            await view.start(ctx)
+            await view.start(ctx, user=user)
             await view.wait()
             return
         else:
-            view = SimpleMenu(pages)
             view.remove_item(view.last_button)
             view.remove_item(view.first_button)
             has_next = False
@@ -148,18 +225,19 @@ async def menu(
             has_close = False
             to_add = {}
             for emoji, func in controls.items():
+                part_emoji = discord.PartialEmoji.from_str(str(emoji))
                 if func == next_page:
                     has_next = True
-                    if emoji != view.forward_button.emoji:
-                        view.forward_button.emoji = discord.PartialEmoji.from_str(emoji)
+                    if part_emoji != view.forward_button.emoji:
+                        view.forward_button.emoji = part_emoji
                 elif func == prev_page:
                     has_prev = True
-                    if emoji != view.backward_button.emoji:
-                        view.backward_button.emoji = discord.PartialEmoji.from_str(emoji)
+                    if part_emoji != view.backward_button.emoji:
+                        view.backward_button.emoji = part_emoji
                 elif func == close_menu:
                     has_close = True
                 else:
-                    to_add[emoji] = func
+                    to_add[part_emoji] = func
             if not has_next:
                 view.remove_item(view.forward_button)
             if not has_prev:
@@ -168,7 +246,7 @@ async def menu(
                 view.remove_item(view.stop_button)
             for emoji, func in to_add.items():
                 view.add_item(_GenericButton(emoji, func))
-            await view.start(ctx)
+            await view.start(ctx, user=user)
             _active_menus[view.message.id] = view
             await view.wait()
             del _active_menus[view.message.id]
@@ -193,7 +271,9 @@ async def menu(
             return
 
     try:
-        predicates = ReactionPredicate.with_emojis(tuple(controls.keys()), message, ctx.author)
+        predicates = ReactionPredicate.with_emojis(
+            tuple(controls.keys()), message, user or ctx.author
+        )
         tasks = [
             asyncio.create_task(ctx.bot.wait_for("reaction_add", check=predicates)),
             asyncio.create_task(ctx.bot.wait_for("reaction_remove", check=predicates)),
@@ -206,7 +286,7 @@ async def menu(
 
         if len(done) == 0:
             raise asyncio.TimeoutError()
-        react, user = done.pop().result()
+        react, __ = done.pop().result()
     except asyncio.TimeoutError:
         if not ctx.me:
             return
@@ -229,9 +309,14 @@ async def menu(
         except discord.NotFound:
             return
     else:
-        return await controls[react.emoji](
-            ctx, pages, controls, message, page, timeout, react.emoji
-        )
+        if user is not None:
+            return await controls[react.emoji](
+                ctx, pages, controls, message, page, timeout, react.emoji, user=user
+            )
+        else:
+            return await controls[react.emoji](
+                ctx, pages, controls, message, page, timeout, react.emoji
+            )
 
 
 async def next_page(
@@ -242,6 +327,8 @@ async def next_page(
     page: int,
     timeout: float,
     emoji: str,
+    *,
+    user: Optional[discord.User] = None,
 ) -> _T:
     """
     Function for showing next page which is suitable
@@ -251,7 +338,12 @@ async def next_page(
         page = 0  # Loop around to the first item
     else:
         page = page + 1
-    return await menu(ctx, pages, controls, message=message, page=page, timeout=timeout)
+    if user is not None:
+        return await menu(
+            ctx, pages, controls, message=message, page=page, timeout=timeout, user=user
+        )
+    else:
+        return await menu(ctx, pages, controls, message=message, page=page, timeout=timeout)
 
 
 async def prev_page(
@@ -262,6 +354,8 @@ async def prev_page(
     page: int,
     timeout: float,
     emoji: str,
+    *,
+    user: Optional[discord.User] = None,
 ) -> _T:
     """
     Function for showing previous page which is suitable
@@ -271,7 +365,12 @@ async def prev_page(
         page = len(pages) - 1  # Loop around to the last item
     else:
         page = page - 1
-    return await menu(ctx, pages, controls, message=message, page=page, timeout=timeout)
+    if user is not None:
+        return await menu(
+            ctx, pages, controls, message=message, page=page, timeout=timeout, user=user
+        )
+    else:
+        return await menu(ctx, pages, controls, message=message, page=page, timeout=timeout)
 
 
 async def close_menu(
@@ -282,6 +381,8 @@ async def close_menu(
     page: int,
     timeout: float,
     emoji: str,
+    *,
+    user: Optional[discord.User] = None,
 ) -> None:
     """
     Function for closing (deleting) menu which is suitable

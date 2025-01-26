@@ -31,7 +31,7 @@ Open a terminal or command prompt and type one of the following
 .. note::
 
   To install the development version, replace ``Red-DiscordBot`` in the above commands with the
-  link below. **The development version of the bot contains experimental changes. It is not
+  value below. **The development version of the bot contains experimental changes. It is not
   intended for normal users.** We will not support anyone using the development version in any
   support channels. Using the development version may break third party cogs and not all core
   commands may work. Downgrading to stable after installing the development version may cause
@@ -40,7 +40,7 @@ Open a terminal or command prompt and type one of the following
 
   .. code-block:: none
 
-      git+https://github.com/Cog-Creators/Red-DiscordBot@V3/develop#egg=Red-DiscordBot
+      Red-DiscordBot @ https://github.com/Cog-Creators/Red-DiscordBot/tarball/V3/develop
 
 
 (Windows users may need to use :code:`py -3.8` or :code:`python` instead of :code:`python3.8`)
@@ -55,7 +55,7 @@ the purposes of this example, we'll call this :code:`mycog`).
 In this folder, create three files: :code:`__init__.py`,
 :code:`mycog.py`, and :code:`info.json`. Open the folder in
 a text editor or IDE (examples include `Sublime Text 3 <https://www.sublimetext.com/>`_,
-`Visual Studio Code <https://code.visualstudio.com/>`_, `Atom <https://atom.io/>`_, and
+`Visual Studio Code <https://code.visualstudio.com/>`_, and
 `PyCharm <http://www.jetbrains.com/pycharm/>`_).
 
 .. attention:: 
@@ -147,7 +147,7 @@ have successfully created a cog!
         ------ __init__.py
         ------ coolcog.py
     
-    You would then use :code:`[p]addpath D:\red-cogs` to add the path
+    You would then use :code:`[p]addpath D:\\red-cogs` to add the path
     and then you can use :code:`[p]load mycog` or :code:`[p]load coolcog`
     to load them
     

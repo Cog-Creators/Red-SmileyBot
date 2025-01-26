@@ -23,6 +23,7 @@ from redbot.core.utils.antispam import AntiSpam
 from redbot.core.utils.chat_formatting import box, humanize_list, underline, bold
 
 from ...errors import TrackEnqueueError, AudioError
+from ...managed_node import version_pins
 from ..abc import MixinMeta
 from ..cog_utils import CompositeMetaClass
 
@@ -40,10 +41,10 @@ HUMANIZED_PERM = {
     "add_reactions": _("Add Reactions"),
     "view_audit_log": _("View Audit Log"),
     "priority_speaker": _("Priority Speaker"),
-    "stream": _("Go Live"),
+    "stream": _("Video"),
     "read_messages": _("Read Text Channels & See Voice Channels"),
     "send_messages": _("Send Messages"),
-    "send_tts_messages": _("Send TTS Messages"),
+    "send_tts_messages": _("Send Text-to-speech Messages"),
     "manage_messages": _("Manage Messages"),
     "embed_links": _("Embed Links"),
     "attach_files": _("Attach Files"),
@@ -61,7 +62,7 @@ HUMANIZED_PERM = {
     "manage_nicknames": _("Manage Nicknames"),
     "manage_roles": _("Manage Roles"),
     "manage_webhooks": _("Manage Webhooks"),
-    "manage_emojis": _("Manage Emojis"),
+    "manage_expressions": _("Manage Expressions"),
     "use_application_commands": _("Use Application Commands"),
     "request_to_speak": _("Request to Speak"),
     "manage_events": _("Manage Events"),
@@ -70,8 +71,16 @@ HUMANIZED_PERM = {
     "create_private_threads": _("Create Private Threads"),
     "external_stickers": _("Use External Stickers"),
     "send_messages_in_threads": _("Send Messages in Threads"),
-    "start_embedded_activities": _("Start Activities"),
-    "moderate_members": _("Moderate Member"),
+    "use_embedded_activities": _("Use Activities"),
+    "moderate_members": _("Time out members"),
+    "view_creator_monetization_analytics": _("View Creator Monetization Analytics"),
+    "use_soundboard": _("Use Soundboard"),
+    "create_expressions": _("Create Expressions"),
+    "create_events": _("Create Events"),
+    "use_external_sounds": _("Use External Sounds"),
+    "send_voice_messages": _("Send Voice Messages"),
+    "send_polls": _("Create Polls"),
+    "use_external_apps": _("Use External Apps"),
 }
 
 DANGEROUS_COMMANDS = {
@@ -79,7 +88,7 @@ DANGEROUS_COMMANDS = {
         "This command will change the executable path of Java, "
         "this is useful if you have multiple installations of Java and the default one is causing issues. "
         "Please don't change this unless you are certain that the Java version you are specifying is supported by Red. "
-        "The default and supported version is currently Java 11."
+        "The supported versions are currently Java {supported_java_versions}."
     ),
     "command_llset_heapsize": _(
         "This command will change the maximum RAM allocation for the managed Lavalink node, "
@@ -271,7 +280,11 @@ class DpyEvents(MixinMeta, metaclass=CompositeMetaClass):
                     "If you wish to continue, enter this case sensitive token without spaces as your next message."
                     "\n\n{confirm_token}"
                 ).format(
-                    template=_(DANGEROUS_COMMANDS[ctx.command.callback.__name__]),
+                    template=_(DANGEROUS_COMMANDS[ctx.command.callback.__name__]).format(
+                        supported_java_versions=humanize_list(
+                            list(map(str, version_pins.SUPPORTED_JAVA_VERSIONS))
+                        ),
+                    ),
                     confirm_token=box(confirm_token, lang="py"),
                 )
                 sent = await ctx.send(message)

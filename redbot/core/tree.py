@@ -17,6 +17,7 @@ from .app_commands import (
     Group,
     NoPrivateMessage,
     TransformerError,
+    UserFeedbackCheckFailure,
 )
 from .i18n import Translator
 from .utils.chat_formatting import humanize_list, inline
@@ -251,7 +252,12 @@ class RedTree(CommandTree):
         if interaction.response.is_done():
             if interaction.is_expired():
                 return await interaction.channel.send(*args, **kwargs)
-            return await interaction.followup.send(*args, ephemeral=True, **kwargs)
+            delete_after = kwargs.pop("delete_after", None)
+            kwargs["wait"] = True
+            msg = await interaction.followup.send(*args, ephemeral=True, **kwargs)
+            if delete_after is not None:
+                await msg.delete(delay=delete_after)
+            return msg
         return await interaction.response.send_message(*args, ephemeral=True, **kwargs)
 
     @staticmethod
@@ -322,12 +328,29 @@ class RedTree(CommandTree):
                 relative_time=relative_time
             )
             await self._send_from_interaction(interaction, msg, delete_after=error.retry_after)
+        elif isinstance(error, UserFeedbackCheckFailure):
+            if error.message:
+                await self._send_from_interaction(interaction, error.message)
         elif isinstance(error, CheckFailure):
             await self._send_from_interaction(
                 interaction, _("You are not permitted to use this command.")
             )
         else:
             log.exception(type(error).__name__, exc_info=error)
+
+    async def _send_interaction_check_failure(
+        self, interaction: discord.Interaction, message: str
+    ):
+        """Handles responding to interaction check failures.
+        Mainly used for when an interaction is an autocomplete and
+        providing the message in the autocomplete response.
+        """
+        if interaction.type is discord.InteractionType.autocomplete:
+            await interaction.response.autocomplete(
+                [discord.app_commands.Choice(name=message[:80], value="None")]
+            )
+            return
+        await interaction.response.send_message(message, ephemeral=True)
 
     async def interaction_check(self, interaction: discord.Interaction):
         """Global checks for app commands."""
@@ -336,15 +359,15 @@ class RedTree(CommandTree):
 
         if interaction.guild:
             if not (await self.client.ignored_channel_or_guild(interaction)):
-                await interaction.response.send_message(
-                    "This channel or server is ignored.", ephemeral=True
+                await self._send_interaction_check_failure(
+                    interaction, _("This channel or server is ignored.")
                 )
                 return False
 
         if not (await self.client.allowed_by_whitelist_blacklist(interaction.user)):
-            await interaction.response.send_message(
-                "You are not permitted to use commands because of an allowlist or blocklist.",
-                ephemeral=True,
+            await self._send_interaction_check_failure(
+                interaction,
+                _("You are not permitted to use commands because of an allowlist or blocklist."),
             )
             return False
 

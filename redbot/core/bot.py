@@ -255,7 +255,7 @@ class Red(
         Set's Red's help formatter.
 
         .. warning::
-            This method is provisional.
+            This method is `provisional <developer-guarantees-exclusions>`.
 
 
         The formatter must implement all methods in
@@ -296,7 +296,7 @@ class Red(
         Resets Red's help formatter.
 
         .. warning::
-            This method is provisional.
+            This method is `provisional <developer-guarantees-exclusions>`.
 
 
         This exists for use in ``cog_unload`` for cogs which replace the formatter
@@ -886,7 +886,12 @@ class Red(
             if ctx.channel.type is not discord.ChannelType.private:
                 raise TypeError("Can't check permissions for non-private PartialMessageable.")
             is_private = True
-        perms = ctx.channel.permissions_for(author)
+        if isinstance(ctx, discord.Message):
+            perms = ctx.channel.permissions_for(author)
+        else:
+            # `permissions` attribute will use permissions from the interaction when possible,
+            # or `ctx.channel.permissions_for(author)` for non-interaction contexts.
+            perms = ctx.permissions
         surpass_ignore = (
             is_private
             or perms.manage_guild
@@ -1257,7 +1262,11 @@ class Red(
     def _setup_owners(self) -> None:
         if self.application.team:
             if self._use_team_features:
-                self.owner_ids.update(m.id for m in self.application.team.members)
+                self.owner_ids.update(
+                    m.id
+                    for m in self.application.team.members
+                    if m.role in (discord.TeamMemberRole.admin, discord.TeamMemberRole.developer)
+                )
         elif self._owner_id_overwrite is None:
             self.owner_ids.add(self.application.owner.id)
 
@@ -1787,12 +1796,90 @@ class Red(
             "user": curr_user_commands,
         }
 
+    async def get_app_command_id(
+        self,
+        command_name: str,
+        command_type: discord.AppCommandType = discord.AppCommandType.chat_input,
+    ) -> Optional[int]:
+        """
+        Get the cached ID for a particular app command.
+
+        Pulls from Red's internal cache of app command IDs, which is updated
+        when the ``[p]slash sync`` command is ran on this instance
+        or `bot.tree.sync() <RedTree.sync()>` is called.
+        Does not keep track of guild-specific app commands.
+
+        Parameters
+        ----------
+        command_name : str
+            Name of the command to get the ID of.
+        command_type : `discord.AppCommandType`
+            Type of the command to get the ID of.
+
+        Returns
+        -------
+        Optional[int]
+            The cached of the specified app command or ``None``,
+            if the command does not exist or Red does not know the ID
+            for that app command.
+        """
+        if command_type is discord.AppCommandType.chat_input:
+            cfg = self._config.enabled_slash_commands()
+        elif command_type is discord.AppCommandType.message:
+            cfg = self._config.enabled_message_commands()
+        elif command_type is discord.AppCommandType.user:
+            cfg = self._config.enabled_user_commands()
+        else:
+            raise TypeError("command type must be one of chat_input, message, user")
+
+        curr_commands = await cfg
+        return curr_commands.get(command_name, None)
+
+    async def get_app_command_mention(
+        self,
+        command_name: str,
+        command_type: discord.AppCommandType = discord.AppCommandType.chat_input,
+    ) -> Optional[str]:
+        """
+        Get the string that allows you to mention a particular app command.
+
+        Pulls from Red's internal cache of app command IDs, which is updated
+        when the ``[p]slash sync`` command is ran on this instance
+        or `bot.tree.sync() <RedTree.sync()>` is called.
+        Does not keep track of guild-specific app commands.
+
+        Parameters
+        ----------
+        command_name : str
+            Name of the command to get the mention for.
+        command_type : `discord.AppCommandType`
+            Type of the command to get the mention for.
+
+        Returns
+        -------
+        Optional[str]
+            The string that allows you to mention the specified app command
+            or ``None``, if the command does not exist or Red does not know the ID
+            for that app command.
+        """
+        # Empty string names will break later code and can't exist as commands, exit early
+        if not command_name:
+            raise ValueError("command name must be a non-empty string")
+        # Account for mentioning subcommands by fetching from the cache based on the base command
+        base_command = command_name.split(" ")[0]
+        command_id = await self.get_app_command_id(base_command, command_type)
+        if command_id is None:
+            return None
+        return f"</{command_name}:{command_id}>"
+
     async def is_automod_immune(
         self, to_check: Union[discord.Message, commands.Context, discord.abc.User, discord.Role]
     ) -> bool:
         """
         Checks if the user, message, context, or role should be considered immune from automated
         moderation actions.
+
+        Bot users are considered immune.
 
         This will return ``False`` in direct messages.
 
@@ -1812,22 +1899,22 @@ class Red(
             return False
 
         if isinstance(to_check, discord.Role):
-            ids_to_check = [to_check.id]
+            ids_to_check = {to_check.id}
         else:
             author = getattr(to_check, "author", to_check)
+            if author.bot:
+                return True
+            ids_to_check = set()
             try:
-                ids_to_check = [r.id for r in author.roles]
+                ids_to_check = {r.id for r in author.roles}
             except AttributeError:
-                # webhook messages are a user not member,
-                # cheaper than isinstance
-                if author.bot and author.discriminator == "0000":
-                    return True  # webhooks require significant permissions to enable.
-            else:
-                ids_to_check.append(author.id)
+                # cheaper than isinstance(author, discord.User)
+                pass
+            ids_to_check.add(author.id)
 
         immune_ids = await self._config.guild(guild).autoimmune_ids()
 
-        return any(i in immune_ids for i in ids_to_check)
+        return not ids_to_check.isdisjoint(immune_ids)
 
     @staticmethod
     async def send_filtered(
@@ -2322,7 +2409,7 @@ class Red(
         *,
         user: Optional[discord.User] = None,
         box_lang: Optional[str] = None,
-        timeout: int = 15,
+        timeout: int = 60,
         join_character: str = "",
     ) -> List[discord.Message]:
         """

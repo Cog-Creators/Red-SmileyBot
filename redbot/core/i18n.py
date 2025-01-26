@@ -8,7 +8,7 @@ import logging
 import discord
 
 from pathlib import Path
-from typing import Callable, TYPE_CHECKING, Union, Dict, Optional
+from typing import Callable, TYPE_CHECKING, Union, Dict, Optional, TypeVar
 
 import babel.localedata
 from babel.core import Locale
@@ -383,11 +383,13 @@ def get_babel_regional_format(regional_format: Optional[str] = None) -> babel.co
 # noinspection PyPep8
 from . import commands
 
+_TypeT = TypeVar("_TypeT", bound=type)
 
-def cog_i18n(translator: Translator):
+
+def cog_i18n(translator: Translator) -> Callable[[_TypeT], _TypeT]:
     """Get a class decorator to link the translator to this cog."""
 
-    def decorator(cog_class: type):
+    def decorator(cog_class: _TypeT) -> _TypeT:
         cog_class.__translator__ = translator
         for name, attr in cog_class.__dict__.items():
             if isinstance(attr, (commands.Group, commands.Command)):

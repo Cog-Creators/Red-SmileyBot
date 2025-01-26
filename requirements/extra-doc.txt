@@ -1,32 +1,38 @@
 alabaster==0.7.13
     # via sphinx
-certifi==2022.12.7
+certifi==2024.12.14
     # via requests
-docutils==0.18.1
+charset-normalizer==3.4.0
+    # via requests
+docutils==0.20.1
     # via
     #   sphinx
     #   sphinx-prompt
     #   sphinx-rtd-theme
 imagesize==1.4.1
     # via sphinx
-jinja2==3.1.2
+importlib-metadata==8.5.0
     # via sphinx
-markupsafe==2.1.2
+jinja2==3.1.5
+    # via sphinx
+markupsafe==2.1.5
     # via jinja2
-requests==2.29.0
+pytz==2024.2
+    # via babel
+requests==2.32.3
     # via sphinx
 snowballstemmer==2.2.0
     # via sphinx
-sphinx==6.2.1
+sphinx==7.1.2
     # via
     #   -r extra-doc.in
     #   sphinx-prompt
     #   sphinx-rtd-theme
     #   sphinxcontrib-jquery
     #   sphinxcontrib-trio
-sphinx-prompt==1.6.0
+sphinx-prompt==1.7.0
     # via -r extra-doc.in
-sphinx-rtd-theme==1.2.0
+sphinx-rtd-theme==3.0.2
     # via -r extra-doc.in
 sphinxcontrib-applehelp==1.0.4
     # via sphinx
@@ -44,5 +50,7 @@ sphinxcontrib-serializinghtml==1.1.5
     # via sphinx
 sphinxcontrib-trio==1.1.2
     # via -r extra-doc.in
-urllib3==1.26.15
+urllib3==2.2.3
     # via requests
+zipp==3.20.2
+    # via importlib-metadata

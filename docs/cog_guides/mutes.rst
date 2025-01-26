@@ -145,28 +145,6 @@ If no time interval is provided this will be cleared.
 
 * ``[time]``: The length of time for a default mute.
 
-.. _mutes-command-muteset-forcerole:
-
-"""""""""""""""""
-muteset forcerole
-"""""""""""""""""
-
-.. note:: |owner-lock|
-
-**Syntax**
-
-.. code-block:: none
-
-    [p]muteset forcerole <true_or_false>
-
-**Description**
-
-Whether or not to force role only mutes on the bot.
-
-**Arguments**
-
-* ``<true_or_false>``: Whether to enable or disable this setting, must provide ``true`` or ``false``.
-
 .. _mutes-command-muteset-makerole:
 
 """"""""""""""""
@@ -238,8 +216,8 @@ muteset role
 
 Sets the role to be applied when muting a user.
 
-If no role is setup the bot will attempt to mute a user by setting
-channel overwrites in all channels to prevent the user from sending messages.
+If no role is setup the bot will attempt to mute a user
+by utilizing server timeouts.
 
 .. Note:: 
     
@@ -362,6 +340,34 @@ Unmute a user in this channel (or in the parent of this thread).
 * ``<users...>``: A space separated list of usernames, ID's, or mentions.
 * ``[reason]``: The reason for the unmute.
 
+.. _mutes-command-timeout:
+
+^^^^^^^
+timeout
+^^^^^^^
+
+.. note:: |mod-lock|
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]timeout <users...> [time_and_reason]
+
+**Description**
+
+Timeout users.
+
+Examples:
+
+* ``[p]timeout @member1 @member2 spam 5 hours``
+* ``[p]timeout @member1 3 days``
+
+**Arguments**
+
+* ``<users...>``: A space separated list of usernames, ID's, or mentions.
+* ``[time_and_reason]``: The time and reason. If no time is provided, the mute will use the default set time or give an error if this hasn't been configured.
+
 .. _mutes-command-voicemute:
 
 ^^^^^^^^^
@@ -372,7 +378,7 @@ voicemute
 
 .. code-block:: none
 
-    [p]voicemute <users...> [reason]
+    [p]voicemute <users...> [time_and_reason]
 
 **Description**
 

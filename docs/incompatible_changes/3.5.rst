@@ -45,6 +45,16 @@ If you wish to continue using auto-restart functionality, we recommend following
 Behavior changes
 ~~~~~~~~~~~~~~~~
 
+x86-64 CPUs are now only supported if they support x86-64-v2 instruction set
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+On x86-64 systems, we now require that your CPU supports x86-64-v2 instruction set.
+This roughly translates to us dropping support for Intel CPUs that have been released before 2009
+and AMD CPUs that have been releasesd before 2012.
+
+This has been mostly dictated by one of our dependencies but some Linux distributions
+are already dropping support for it in their latest versions as well.
+
 Thread-related changes
 ^^^^^^^^^^^^^^^^^^^^^^
 

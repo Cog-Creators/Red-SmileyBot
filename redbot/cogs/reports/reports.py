@@ -128,7 +128,7 @@ class Reports(commands.Cog):
             await ctx.send(_("Reporting is now disabled."))
 
     async def internal_filter(self, m: discord.Member, mod=False, perms=None):
-        if perms and m.guild_permissions >= perms:
+        if perms is not None and m.guild_permissions >= perms:
             return True
         if mod and await self.bot.is_mod(m):
             return True

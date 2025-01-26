@@ -50,11 +50,13 @@ class DebugInfo:
     def __init__(self, bot: Optional[Red] = None) -> None:
         self.bot = bot
 
-    async def get_text(self) -> str:
-        if self.bot is None:
-            return await self.get_cli_text()
-        else:
-            return await self.get_command_text()
+    @property
+    def is_logged_in(self) -> bool:
+        return self.bot is not None and self.bot.application_id is not None
+
+    @property
+    def is_connected(self) -> bool:
+        return self.bot is not None and self.bot.is_ready()
 
     async def get_cli_text(self) -> str:
         parts = ["\x1b[31m# Debug Info for Red:\x1b[0m"]
@@ -131,14 +133,40 @@ class DebugInfo:
         )
 
     async def _get_red_vars_section(self) -> DebugInfoSection:
-        if data_manager.instance_name is None:
+        instance_name = data_manager.instance_name()
+        if instance_name is None:
             return DebugInfoSection(
                 "Red variables",
                 f"Metadata file: {data_manager.config_file}",
             )
 
-        parts = [f"Instance name: {data_manager.instance_name}"]
+        parts = [f"Instance name: {instance_name}"]
+
         if self.bot is not None:
+            # sys.original_argv is available since 3.10 and shows the actual command line arguments
+            # rather than a Python-transformed version (i.e. with '-c' or path to `__main__.py`
+            # as first element). We could just not show the first argument for consistency
+            # but it can be useful.
+            cli_args = getattr(sys, "orig_argv", sys.argv).copy()
+            # best effort attempt to expunge a token argument
+            for idx, arg in enumerate(cli_args):
+                if not arg.startswith("--to"):
+                    continue
+                arg_name, sep, arg_value = arg.partition("=")
+                if arg_name not in ("--to", "--tok", "--toke", "--token"):
+                    continue
+                if sep:
+                    cli_args[idx] = f"{arg_name}{sep}[EXPUNGED]"
+                elif len(cli_args) > idx + 1:
+                    cli_args[idx + 1] = f"[EXPUNGED]"
+            parts.append(f"Command line arguments: {cli_args!r}")
+
+            # This formatting is a bit ugly but this is a debug information command
+            # and calling repr() on prefix strings ensures that the list isn't ambiguous.
+            prefixes = ", ".join(map(repr, await self.bot._config.prefix()))
+            parts.append(f"Global prefix(es): {prefixes}")
+
+        if self.is_logged_in:
             owners = []
             for uid in self.bot.owner_ids:
                 try:
@@ -149,7 +177,7 @@ class DebugInfo:
             owners_string = ", ".join(owners) or "None"
             parts.append(f"Owner(s): {', '.join(owners) or 'None'}")
 
-        if self.bot is not None:
+        if self.is_connected:
             disabled_intents = (
                 ", ".join(
                     intent_name.replace("_", " ").title()

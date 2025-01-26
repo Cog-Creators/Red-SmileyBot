@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2023-02-14 02:36+0000\n"
+"POT-Creation-Date: 2024-01-09 00:35+0000\n"
 "Last-Translator: \n"
 "Language-Team: Italian\n"
 "MIME-Version: 1.0\n"
@@ -26,165 +26,165 @@ msgid "Create aliases for commands.\n\n"
 "    "
 msgstr ""
 
-#: redbot/cogs/alias/alias.py:180
+#: redbot/cogs/alias/alias.py:190
 msgid "Aliases:\n"
 msgstr "Pseudonimi:\n"
 
-#: redbot/cogs/alias/alias.py:182
+#: redbot/cogs/alias/alias.py:192
 msgid "\n\n"
 "Page {page}/{total}"
 msgstr "\n\n"
 "Pagina {page} di {total}"
 
-#: redbot/cogs/alias/alias.py:192
+#: redbot/cogs/alias/alias.py:202
 #, docstring
 msgid "Manage command aliases."
 msgstr "Gestisci gli pseudonimi dei comandi."
 
-#: redbot/cogs/alias/alias.py:197
+#: redbot/cogs/alias/alias.py:207
 #, docstring
 msgid "Manage global aliases."
 msgstr "Gestisci gli pseudonimi globali."
 
-#: redbot/cogs/alias/alias.py:204
+#: redbot/cogs/alias/alias.py:214
 #, docstring
 msgid "Add an alias for a command."
 msgstr "Aggiungi uno pseudonimo per un comando."
 
-#: redbot/cogs/alias/alias.py:209
+#: redbot/cogs/alias/alias.py:219
 msgid "You attempted to create a new alias with the name {name} but that name is already a command on this bot."
 msgstr "Hai cercato di creare un nuovo pseudonimo con il nome {name} ma questo nome corrisponde già ad un comando su questo bot."
 
-#: redbot/cogs/alias/alias.py:220
+#: redbot/cogs/alias/alias.py:230
 msgid "You attempted to create a new alias with the name {name} but that alias already exists."
 msgstr "Hai provato a creare un nuovo pseudonimo con il nome {name} ma quello pseudonimo esiste già."
 
-#: redbot/cogs/alias/alias.py:231
+#: redbot/cogs/alias/alias.py:241
 msgid "You attempted to create a new alias with the name {name} but that name is an invalid alias name. Alias names may not contain spaces."
 msgstr "Hai cercato di creare un nuovo pseudonimo con il nome {name} ma quel nome non è un valido pseudonimo. Gli pseudonimi non possono contenere spazi."
 
-#: redbot/cogs/alias/alias.py:243 redbot/cogs/alias/alias.py:302
+#: redbot/cogs/alias/alias.py:253 redbot/cogs/alias/alias.py:312
 msgid "You attempted to create a new alias for a command that doesn't exist."
 msgstr "Hai provato a creare un nuovo pseudonimo per un comando che non esiste."
 
-#: redbot/cogs/alias/alias.py:257
+#: redbot/cogs/alias/alias.py:267
 msgid "A new alias with the trigger `{name}` has been created."
 msgstr "Un nuovo pseudonimo con il comando '{name}' è stato creato."
 
-#: redbot/cogs/alias/alias.py:263
+#: redbot/cogs/alias/alias.py:273
 #, docstring
 msgid "Add a global alias for a command."
 msgstr "Aggiungi uno pseudonimo globale per un comando."
 
-#: redbot/cogs/alias/alias.py:268
+#: redbot/cogs/alias/alias.py:278
 msgid "You attempted to create a new global alias with the name {name} but that name is already a command on this bot."
 msgstr "Hai provato a creare un nuovo pseudonimo globale con il nome {name} ma questo nome è già un comando su questo bot."
 
-#: redbot/cogs/alias/alias.py:279
+#: redbot/cogs/alias/alias.py:289
 msgid "You attempted to create a new global alias with the name {name} but that alias already exists."
 msgstr "Hai provato a creare un nuovo pseudonimo globale con il nome {name} ma quello pseudonimo esiste già."
 
-#: redbot/cogs/alias/alias.py:290
+#: redbot/cogs/alias/alias.py:300
 msgid "You attempted to create a new global alias with the name {name} but that name is an invalid alias name. Alias names may not contain spaces."
 msgstr "Hai cercato di creare un nuovo pseudonimo globale con il nome {name} ma questo nome non è uno pseudonimo valido. Gli pseudonimi non possono contenere spazi."
 
-#: redbot/cogs/alias/alias.py:313
+#: redbot/cogs/alias/alias.py:323
 msgid "A new global alias with the trigger `{name}` has been created."
 msgstr "Un nuovo pseudonimo globale con il comando '{name}' è stato creato."
 
-#: redbot/cogs/alias/alias.py:322
+#: redbot/cogs/alias/alias.py:332
 #, docstring
 msgid "Edit an existing alias in this server."
 msgstr ""
 
-#: redbot/cogs/alias/alias.py:327 redbot/cogs/alias/alias.py:362
+#: redbot/cogs/alias/alias.py:337 redbot/cogs/alias/alias.py:372
 msgid "The alias with the name {name} does not exist."
 msgstr ""
 
-#: redbot/cogs/alias/alias.py:333 redbot/cogs/alias/alias.py:368
+#: redbot/cogs/alias/alias.py:343 redbot/cogs/alias/alias.py:378
 msgid "You attempted to edit an alias to a command that doesn't exist."
 msgstr ""
 
-#: redbot/cogs/alias/alias.py:342 redbot/cogs/alias/alias.py:375
+#: redbot/cogs/alias/alias.py:352 redbot/cogs/alias/alias.py:385
 msgid "The alias with the trigger `{name}` has been edited successfully."
 msgstr ""
 
-#: redbot/cogs/alias/alias.py:349 redbot/cogs/alias/alias.py:382
+#: redbot/cogs/alias/alias.py:359 redbot/cogs/alias/alias.py:392
 msgid "Alias with the name `{name}` was not found."
 msgstr ""
 
-#: redbot/cogs/alias/alias.py:357
+#: redbot/cogs/alias/alias.py:367
 #, docstring
 msgid "Edit an existing global alias."
 msgstr ""
 
-#: redbot/cogs/alias/alias.py:389
+#: redbot/cogs/alias/alias.py:399
 #, docstring
 msgid "Try to execute help for the base command of the alias."
 msgstr "Prova a eseguire l'aiuto per il comando di base degli pseudonimi."
 
-#: redbot/cogs/alias/alias.py:394
+#: redbot/cogs/alias/alias.py:404
 msgid "No such alias exists."
 msgstr "Non esiste nessun alias con questo nome."
 
-#: redbot/cogs/alias/alias.py:398
+#: redbot/cogs/alias/alias.py:408
 #, docstring
 msgid "Show what command the alias executes."
 msgstr "Mostra quale comando viene eseguito dallo pseudonimo."
 
-#: redbot/cogs/alias/alias.py:403
+#: redbot/cogs/alias/alias.py:413
 msgid "The `{alias_name}` alias will execute the command `{command}`"
 msgstr "Lo pseudonimo `{alias_name}` eseguirà il comando `{command}`"
 
-#: redbot/cogs/alias/alias.py:408
+#: redbot/cogs/alias/alias.py:418
 msgid "There is no alias with the name `{name}`"
 msgstr "Non c'è alcun pseudonimo con il nome `{name}`"
 
-#: redbot/cogs/alias/alias.py:414
+#: redbot/cogs/alias/alias.py:424
 #, docstring
 msgid "Delete an existing alias on this server."
 msgstr "Elimina uno pseudonimo esistente su questo server."
 
-#: redbot/cogs/alias/alias.py:416 redbot/cogs/alias/alias.py:448
+#: redbot/cogs/alias/alias.py:426 redbot/cogs/alias/alias.py:458
 msgid "There are no aliases on this server."
 msgstr "Non ci sono alias su questo server."
 
-#: redbot/cogs/alias/alias.py:421 redbot/cogs/alias/alias.py:436
+#: redbot/cogs/alias/alias.py:431 redbot/cogs/alias/alias.py:446
 msgid "Alias with the name `{name}` was successfully deleted."
 msgstr "Lo pseudonimo con il nome `{name}` è stato eliminato con successo."
 
-#: redbot/cogs/alias/alias.py:424 redbot/cogs/alias/alias.py:439
+#: redbot/cogs/alias/alias.py:434 redbot/cogs/alias/alias.py:449
 msgid "Alias with name `{name}` was not found."
 msgstr "Lo pseudonimo con il nome `{name}` non è stato trovato."
 
-#: redbot/cogs/alias/alias.py:429
+#: redbot/cogs/alias/alias.py:439
 #, docstring
 msgid "Delete an existing global alias."
 msgstr "Elimina uno pseudonimo globale esistente."
 
-#: redbot/cogs/alias/alias.py:431
+#: redbot/cogs/alias/alias.py:441
 msgid "There are no global aliases on this bot."
 msgstr "Non ci sono pseudonimi globali su questo bot."
 
-#: redbot/cogs/alias/alias.py:445
+#: redbot/cogs/alias/alias.py:455
 #, docstring
 msgid "List the available aliases on this server."
 msgstr "Elenca gli pseudonimi disponibili su questo server."
 
-#: redbot/cogs/alias/alias.py:454
+#: redbot/cogs/alias/alias.py:464
 #, docstring
 msgid "List the available global aliases on this bot."
 msgstr "Elenca gli pseudonimi globali disponibili su questo server."
 
-#: redbot/cogs/alias/alias.py:457
+#: redbot/cogs/alias/alias.py:467
 msgid "There are no global aliases."
 msgstr "Non ci sono pseudonimi globali."
 
-#: redbot/cogs/alias/alias_entry.py:197
+#: redbot/cogs/alias/alias_entry.py:196
 msgid "Arguments must be specified with a number."
 msgstr "Gli argomenti devono essere specificati con un numero."
 
-#: redbot/cogs/alias/alias_entry.py:204
+#: redbot/cogs/alias/alias_entry.py:203
 msgid "Arguments must be sequential. Missing arguments: "
 msgstr "Gli argomenti devono essere consecutivi. Argomenti mancanti: "
 

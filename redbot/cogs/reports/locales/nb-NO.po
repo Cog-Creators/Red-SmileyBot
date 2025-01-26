@@ -147,7 +147,11 @@ msgid "Open a message tunnel.\n\n"
 "        to the ticket opener's direct messages.\n\n"
 "        Tunnels do not persist across bot restarts.\n"
 "        "
-msgstr ""
+msgstr "Åpne meldingstunnel.\n\n"
+"        Denne tunnelen vil videresende ting du sier i denne kanalen\n"
+"        til saksens direktemeldinger.\n\n"
+"        Tunneler forblir ikke omstart fra roboten.\n"
+"        "
 
 #: redbot/cogs/reports/reports.py:410
 msgid "That ticket doesn't seem to exist"

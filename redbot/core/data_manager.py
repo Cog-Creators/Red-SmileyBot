@@ -18,16 +18,17 @@ __all__ = (
     "core_data_path",
     "bundled_data_path",
     "data_path",
+    "instance_name",
     "metadata_file",
-    "storage_details",
     "storage_type",
+    "storage_details",
 )
 
 log = logging.getLogger("red.data_manager")
 
 basic_config = None
 
-instance_name = None
+_instance_name = None
 
 basic_config_default: Dict[str, Any] = {
     "DATA_PATH": None,
@@ -106,8 +107,8 @@ def load_basic_configuration(instance_name_: str):
         redbot setup.
     """
     global basic_config
-    global instance_name
-    instance_name = instance_name_
+    global _instance_name
+    _instance_name = instance_name_
 
     try:
         with config_file.open(encoding="utf-8") as fs:
@@ -119,10 +120,10 @@ def load_basic_configuration(instance_name_: str):
         )
         sys.exit(ExitCodes.CONFIGURATION_ERROR)
     try:
-        basic_config = config[instance_name]
+        basic_config = config[_instance_name]
     except KeyError:
         print(
-            "Instance with this name doesn't exist."
+            f"Instance with name '{_instance_name}' doesn't exist."
             " You can create new instance using `redbot-setup` prior to running the bot."
         )
         sys.exit(ExitCodes.INVALID_CLI_USAGE)
@@ -232,6 +233,17 @@ def data_path() -> Path:
         Storage type.
     """
     return _base_data_path()
+
+
+def instance_name() -> str:
+    """Gets instance's name.
+
+    Returns
+    -------
+    str
+        Instance name.
+    """
+    return _instance_name
 
 
 def metadata_file() -> Path:

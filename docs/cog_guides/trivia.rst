@@ -334,6 +334,26 @@ will use all of the specified lists to select questions from.
 
 - ``<categories...>`` The category to play. Can be multiple.
 
+.. _trivia-command-trivia-info:
+
+^^^^^^^^^^^
+trivia info
+^^^^^^^^^^^
+
+**Syntax**
+
+.. code-block:: none
+
+    [p]trivia info <category>
+
+**Description**
+
+Get information about a trivia category.
+
+**Arguments**
+
+* ``<category>``: The category to get the information for.
+
 .. _trivia-command-trivia-leaderboard:
 
 ^^^^^^^^^^^^^^^^^^

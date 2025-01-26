@@ -7,7 +7,7 @@ import discord
 import lavalink
 from red_commons.logging import getLogger
 
-from rapidfuzz import process
+import rapidfuzz
 from redbot.core import commands
 from redbot.core.i18n import Translator
 from redbot.core.utils import AsyncIter
@@ -132,7 +132,9 @@ class QueueUtilities(MixinMeta, metaclass=CompositeMetaClass):
                 track_title = track.title
 
             tracks[queue_idx] = track_title
-        search_results = process.extract(search_words, tracks, limit=50)
+        search_results = rapidfuzz.process.extract(
+            search_words, tracks, limit=50, processor=rapidfuzz.utils.default_process
+        )
         search_list = []
         async for title, percent_match, queue_position in AsyncIter(search_results):
             if percent_match > 89:

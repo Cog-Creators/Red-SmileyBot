@@ -41,12 +41,33 @@ If there are multiple authors, we can separate them with commas.
 
     AUTHOR: Red, Rojo, Rouge
 
+-----------------
+Description Field
+-----------------
+
+We can also add an optional ``DESCRIPTION`` to our trivia list, which
+will show from the output of ``[p]trivia info <category>``. The
+description should indicate to the user what the trivia list is
+about and what kind of questions they can expect to face.
+
+For example, if you were writing a logo quiz trivia list, you could
+create a description like this:
+
+.. code-block:: yaml
+
+    AUTHOR: Kreusada
+    DESCRIPTION: >-
+      A quiz to test your logo knowledge to the limit. This trivia
+      will send image URLs and ask you to identify the company's name
+      from the logo that is sent.
+
 ---------------------
 Questions and Answers
 ---------------------
 
 Writing questions and answers is simple. Once you've finished your
-``AUTHOR`` field, you can move on to your questions just below.
+``AUTHOR`` field and ``DESCRIPTION`` field, you can move on to your questions
+just below.
 
 Questions should consist of at least one answer, with other
 possible answers included if necessary. You must put a colon at the end 
@@ -98,6 +119,7 @@ As you've added more questions, your file should look something like this:
 .. code-block:: yaml
 
     AUTHOR: Red
+    DESCRIPTION: A general quiz to test your knowledge.
     How many days are there in a regular year?:
     - 365
     - three hundred and sixty five

@@ -25,7 +25,7 @@ Basic Usage
 
     class MyCog(commands.Cog):
         def __init__(self):
-            self.config = Config.get_conf(self, identifier=1234567890)
+            self.config = Config.get_conf(self, identifier=1234567890, force_registration=True)
 
             self.config.register_global(
                 foo=True
@@ -55,15 +55,19 @@ Then, in the class's :code:`__init__` function, you need to get a config instanc
 
     class MyCog(commands.Cog):
         def __init__(self):
-            self.config = Config.get_conf(self, identifier=1234567890)
+            self.config = Config.get_conf(self, identifier=1234567890, force_registration=True)
 
 The ``identifier`` in :py:meth:`Config.get_conf` is used to keep your cog's data separate
 from that of another cog, and thus should be unique to your cog. For example: if we
 have two cogs named :code:`MyCog` and their identifier is different, each will have
-its own data without overwriting the other's data. Note that it is also possible
-to force registration of a data key before allowing you to get and set data for
-that key by adding :code:`force_registration=True` after identifier (that defaults
-to :code:`False` though)
+its own data without overwriting the other's data.
+
+Note that, as shown by most of the examples in this document, it is also possible to
+force registration of a data key before allowing you to get and set data for that key
+by adding :code:`force_registration=True` after identifier.
+When this is set to :code:`False` (the default), the default value for any key that isn't registered
+will be :code:`None`. When this is set to :code:`True` (as shown in this document), attempting
+to read from or write to any key that isn't registered will raise an :exc:`AttributeError`.
 
 After we've gotten that, we need to register default values:
 
@@ -71,7 +75,7 @@ After we've gotten that, we need to register default values:
 
     class MyCog(commands.Cog):
         def __init__(self):
-            self.config = Config.get_conf(self, identifier=1234567890)
+            self.config = Config.get_conf(self, identifier=1234567890, force_registration=True)
             default_global = {
                 "foobar": True,
                 "foo": {
@@ -213,7 +217,7 @@ Tutorial example.
 
     class MyCog(commands.Cog):
         def __init__(self):
-            self.config = Config.get_conf(self, identifier=1234567890)
+            self.config = Config.get_conf(self, identifier=1234567890, force_registration=True)
             default_guild = {
                 "blah": [],
                 "baz": 1234567890
@@ -264,7 +268,7 @@ Now let's see an example that uses multiple identifiers:
 
     class ChannelAccess(commands.Cog):
         def __init__(self):
-            self.config = Config.get_conf(self, identifier=1234567890)
+            self.config = Config.get_conf(self, identifier=1234567890, force_registration=True)
             default_access = {
                 "allowed": False
             }
@@ -304,7 +308,7 @@ the built-in Economy credits::
 
     class Pets(commands.Cog):
         def __init__(self):
-            self.config = Config.get_conf(self, 1234567890)
+            self.config = Config.get_conf(self, 1234567890, force_registration=True)
 
             # Here we'll assign some default costs for the pets
             self.config.register_global(
@@ -509,7 +513,7 @@ API Reference
     includes keys within a `dict` when one is being set, as well as keys in  nested dictionaries
     within that `dict`. For example::
 
-        >>> config = Config.get_conf(self, identifier=999)
+        >>> config = Config.get_conf(self, identifier=999, force_registration=True)
         >>> config.register_global(foo={})
         >>> await config.foo.set_raw(123, value=True)
         >>> await config.foo()

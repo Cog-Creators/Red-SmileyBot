@@ -8,6 +8,8 @@ from .postgres import PostgresDriver
 
 __all__ = [
     "get_driver",
+    "get_driver_class",
+    "get_driver_class_include_old",
     "ConfigCategory",
     "IdentifierData",
     "BaseDriver",
@@ -32,7 +34,7 @@ class BackendType(enum.Enum):
 _DRIVER_CLASSES = {BackendType.JSON: JsonDriver, BackendType.POSTGRES: PostgresDriver}
 
 
-def _get_driver_class_include_old(storage_type: Optional[BackendType] = None) -> Type[BaseDriver]:
+def get_driver_class_include_old(storage_type: Optional[BackendType] = None) -> Type[BaseDriver]:
     """
     ONLY for use in CLI for moving data away from a no longer supported backend
     """
@@ -115,7 +117,7 @@ def get_driver(
         if not allow_old:
             driver_cls: Type[BaseDriver] = get_driver_class(storage_type)
         else:
-            driver_cls: Type[BaseDriver] = _get_driver_class_include_old(storage_type)
+            driver_cls: Type[BaseDriver] = get_driver_class_include_old(storage_type)
     except ValueError:
         if storage_type in (BackendType.MONGOV1, BackendType.MONGO):
             raise RuntimeError(

@@ -18,7 +18,7 @@ except ModuleNotFoundError:
     pymongo = None
 
 from .. import errors
-from .base import BaseDriver, IdentifierData
+from .base import BaseDriver, IdentifierData, MissingExtraRequirements
 
 __all__ = ["MongoDriver"]
 
@@ -33,7 +33,7 @@ class MongoDriver(BaseDriver):
     @classmethod
     async def initialize(cls, **storage_details) -> None:
         if motor is None:
-            raise errors.MissingExtraRequirements(
+            raise MissingExtraRequirements(
                 "Red must be installed with the [mongo] extra to use the MongoDB driver"
             )
         uri = storage_details.get("URI", "mongodb")

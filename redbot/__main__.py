@@ -17,7 +17,7 @@ import sys
 from argparse import Namespace
 from copy import deepcopy
 from pathlib import Path
-from typing import Any, Awaitable, Callable, NoReturn, Union
+from typing import Any, Awaitable, Callable, NoReturn, Optional, Union
 
 import discord
 import rich
@@ -62,9 +62,9 @@ def list_instances():
         sys.exit(ExitCodes.SHUTDOWN)
 
 
-async def debug_info(*args: Any) -> None:
+async def debug_info(red: Optional[Red] = None, *args: Any) -> None:
     """Shows debug information useful for debugging."""
-    print(await DebugInfo().get_text())
+    print(await DebugInfo(red).get_cli_text())
 
 
 async def edit_instance(red, cli_flags):
@@ -268,7 +268,7 @@ def _copy_data(data):
 def early_exit_runner(
     cli_flags: Namespace,
     func: Union[Callable[[], Awaitable[Any]], Callable[[Red, Namespace], Awaitable[Any]]],
-) -> None:
+) -> NoReturn:
     """
     This one exists to not log all the things like it's a full run of the bot.
     """
@@ -277,6 +277,7 @@ def early_exit_runner(
     try:
         if not cli_flags.instance_name:
             loop.run_until_complete(func())
+            sys.exit(ExitCodes.SHUTDOWN)
             return
 
         data_manager.load_basic_configuration(cli_flags.instance_name)
@@ -288,10 +289,12 @@ def early_exit_runner(
     except (KeyboardInterrupt, EOFError):
         print("Aborted!")
     finally:
-        loop.run_until_complete(asyncio.sleep(1))
+        # note: sleep is unnecessary since we're not making any network connections
         asyncio.set_event_loop(None)
         loop.stop()
         loop.close()
+
+    sys.exit(ExitCodes.SHUTDOWN)
 
 
 async def run_bot(red: Red, cli_flags: Namespace) -> None:
@@ -394,7 +397,8 @@ async def run_bot(red: Red, cli_flags: Namespace) -> None:
             "With that out of the way, depending on who you want to be considered as owner,"
             " you can:\n"
             "a) pass --team-members-are-owners when launching Red"
-            " - in this case Red will treat all members of the bot application's team as owners\n"
+            " - in this case Red will treat members of the bot application's team as owners,"
+            " if their team role is Owner, Admin, or Developer\n"
             f"b) set owner manually with `redbot --edit {cli_flags.instance_name}`\n"
             "c) pass owner ID(s) when launching Red with --owner"
             " (and --co-owner if you need more than one) flag\n"
