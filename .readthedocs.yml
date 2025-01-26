@@ -8,3 +8,10 @@ build:
     - pip install .[doc]
     - cat docs/conf.py
     - python -m sphinx -T -E -b html -d _readthedocs/doctrees -D language=en docs _readthedocs/html
+
+python:
+  install:
+    - method: pip
+      path: .
+      extra_requirements:
+        - doc
