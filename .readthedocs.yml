@@ -7,7 +7,7 @@ build:
   commands:
     - pip install .[doc]
     - cat docs/conf.py
-    - python -m sphinx -T -E -b html -d _readthedocs/doctrees -D language=en docs _readthedocs/html
+    - python -m sphinx -T -b html -d _build/doctrees -D language=en docs $READTHEDOCS_OUTPUT/html
 
 python:
   install:
