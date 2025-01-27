@@ -618,8 +618,14 @@ class PlayerControllerCommands(MixinMeta, metaclass=CompositeMetaClass):
     @commands.guild_only()
     @commands.cooldown(1, 15, commands.BucketType.guild)
     @commands.bot_has_permissions(embed_links=True)
-    async def command_summon(self, ctx: commands.Context):
-        """Summon the bot to a voice channel."""
+    async def command_summon(
+        self, ctx: commands.Context, *, voice_channel: Optional[discord.VoiceChannel] = None
+    ):
+        """Summon the bot to a voice channel.
+
+        You can specify a personalised voice room with an id. Otherwise, the bot will join the voice room you are in.
+        To learn how to get a channel ID please read the following help article: <https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID>
+        """
         dj_enabled = self._dj_status_cache.setdefault(
             ctx.guild.id, await self.config.guild(ctx.guild).dj_enabled()
         )
@@ -643,10 +649,11 @@ class PlayerControllerCommands(MixinMeta, metaclass=CompositeMetaClass):
             )
 
         try:
+            channel = voice_channel or ctx.author.voice.channel
             if (
-                not self.can_join_and_speak(ctx.author.voice.channel)
-                or not ctx.author.voice.channel.permissions_for(ctx.me).move_members
-                and self.is_vc_full(ctx.author.voice.channel)
+                not self.can_join_and_speak(channel)
+                or not channel.permissions_for(ctx.me).move_members
+                and self.is_vc_full(channel)
             ):
                 ctx.command.reset_cooldown(ctx)
                 return await self.send_embed_msg(
@@ -656,17 +663,14 @@ class PlayerControllerCommands(MixinMeta, metaclass=CompositeMetaClass):
                 )
             if not self._player_check(ctx):
                 player = await lavalink.connect(
-                    ctx.author.voice.channel,
+                    channel,
                     self_deaf=await self.config.guild_from_id(ctx.guild.id).auto_deafen(),
                 )
                 player.store("notify_channel", ctx.channel.id)
             else:
                 player = lavalink.get_player(ctx.guild.id)
                 player.store("notify_channel", ctx.channel.id)
-                if (
-                    ctx.author.voice.channel == player.channel
-                    and ctx.guild.me in ctx.author.voice.channel.members
-                ):
+                if channel == player.channel and ctx.guild.me in channel.members:
                     ctx.command.reset_cooldown(ctx)
                     return await self.send_embed_msg(
                         ctx,
@@ -674,7 +678,7 @@ class PlayerControllerCommands(MixinMeta, metaclass=CompositeMetaClass):
                         description=_("I am already in your channel."),
                     )
                 await player.move_to(
-                    ctx.author.voice.channel,
+                    channel,
                     self_deaf=await self.config.guild_from_id(ctx.guild.id).auto_deafen(),
                 )
             await ctx.tick()
