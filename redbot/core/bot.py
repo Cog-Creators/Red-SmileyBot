@@ -911,7 +911,18 @@ class Red(
             return True
 
         if isinstance(ctx.channel, discord.Thread):
-            channel = ctx.channel.parent
+            if isinstance(ctx, discord.Interaction) and ctx.is_user_integration():
+                ctx: discord.Interaction
+                # This is a user installed interaction, and thus... We're doomed!
+                # We must mock an object because we don't have the channel cached,
+                # and we are unable to fetch a full channel from the interaction
+                # #BlameDiscord, See Red#6501 for more details.
+
+                # LIMITATIONS: Due the fact that we don't know the categories either as they aren't...
+                # communicated in the interaction, we can't check for category ignores.
+                channel = discord.Object(id=ctx.channel.parent_id)
+            else:
+                channel = ctx.channel.parent
             thread = ctx.channel
         else:
             channel = ctx.channel
