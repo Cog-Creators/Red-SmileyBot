@@ -1190,6 +1190,8 @@ def group(name=None, cls=Group, **attrs):
 
     Same interface as `discord.ext.commands.group`.
     """
+    attrs["help_override"] = attrs.pop("help", None)
+
     return dpy_command_deco(name, cls, **attrs)
 
 
