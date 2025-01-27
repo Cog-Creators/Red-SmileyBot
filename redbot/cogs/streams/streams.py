@@ -339,6 +339,107 @@ class Streams(commands.Cog):
             return
         await self.stream_alert(ctx, TwitchStream, channel_name.lower(), discord_channel)
 
+    @_twitch.command(name="addgame")
+    async def twitch_addgame(self, ctx: commands.Context, channel_name: str, *, game_name: str):
+        """Add a game to send alerts for the specified channel.
+
+        Game name must be exactly the name that appears on the game's Twitch page"""
+        stream = self.get_stream(TwitchStream, channel_name)
+        if not stream:
+            return await ctx.send(
+                _("That channel has not been set up for stream alerts in this channel!")
+            )
+        try:
+            status, game_data = await stream.get_data(
+                _streamtypes.TWITCH_GAMES_ENDPOINT, game_name
+            )
+        except (aiohttp.ClientConnectionError, asyncio.TimeoutError):
+            return await ctx.send(_("Connection error occurred when fetching Twitch stream"))
+        if not game_data:
+            return await ctx.send(
+                _(
+                    "Could not find the game requested. Make sure the game name matches how it appears on Twitch."
+                )
+            )
+        else:
+            game = game_data["data"][0]
+            if game["id"] in stream.games:
+                chan_list = stream.games[game["id"]]
+            else:
+                chan_list = []
+            if ctx.channel.id in chan_list:
+                return await ctx.send(
+                    _("Already notifying in this channel when the stream is live with this game!")
+                )
+            else:
+                self.streams.remove(stream)
+                chan_list.append(ctx.channel.id)
+                stream.games[game["id"]] = chan_list
+                self.streams.append(stream)
+                await self.save_streams()
+                await ctx.tick()
+
+    @_twitch.command(name="removegame")
+    async def twitch_removegame(self, ctx: commands.Context, channel_name: str, *, game_name: str):
+        """Remove a game to send alerts for the specified channel.
+
+        Game name must be exactly the name that appears on the game's Twitch page"""
+        stream = self.get_stream(TwitchStream, channel_name)
+        if not stream:
+            return await ctx.send(
+                _("That channel has not been set up for stream alerts in this channel!")
+            )
+        try:
+            status, game_data = await stream.get_data(
+                _streamtypes.TWITCH_GAMES_ENDPOINT, game_name
+            )
+        except (aiohttp.ClientConnectionError, asyncio.TimeoutError):
+            return await ctx.send(_("Connection error occurred when fetching Twitch stream"))
+        if not game_data:
+            return await ctx.send(
+                _(
+                    "Could not find the game requested. Make sure the game name matches how it appears on Twitch."
+                )
+            )
+        else:
+            game = game_data["data"][0]
+            if game["id"] in stream.games:
+                chan_list = stream.games[game["id"]]
+            else:
+                chan_list = []
+            if ctx.channel.id not in chan_list:
+                return await ctx.send(
+                    _(
+                        "That game isn't in the list of games to alert for this stream in this channel"
+                    )
+                )
+            else:
+                self.streams.remove(stream)
+                chan_list.remove(ctx.channel.id)
+                stream.games[game["id"]] = chan_list
+                self.streams.append(stream)
+                await self.save_streams()
+                await ctx.tick()
+
+    @_twitch.command(name="cleargames")
+    async def twitch_cleargames(self, ctx: commands.Context, channel_name: str):
+        """Clear the game list for the stream filter"""
+        stream = self.get_stream(TwitchStream, channel_name)
+        if not stream:
+            return await ctx.send(
+                _("That channel has not been set up for stream alerts in this channel!")
+            )
+        self.streams.remove(stream)
+        newdict = {}
+        for k, v in stream.games.items():
+            if ctx.channel.id in v:
+                v.remove(ctx.channel.id)
+            newdict[k] = v
+        stream.games = newdict
+        self.streams.append(stream)
+        await self.save_streams()
+        await ctx.tick()
+
     @streamalert.command(name="youtube")
     async def youtube_alert(
         self,
@@ -830,13 +931,17 @@ class Streams(commands.Cog):
                     is_schedule = False
                     if stream.__class__.__name__ == "TwitchStream":
                         await self.maybe_renew_twitch_bearer_token()
-                        embed, is_rerun = await stream.is_online()
-
+                        embed, data, is_rerun = await stream.is_online()
+                        is_schedule = False
                     elif stream.__class__.__name__ == "YoutubeStream":
                         embed, is_schedule = await stream.is_online()
-
+                        is_rerun = False
+                        data = {}
                     else:
                         embed = await stream.is_online()
+                        data = {}
+                        is_rerun = False
+                        is_schedule = False
                 except StreamNotFound:
                     if stream.retry_count > MAX_RETRY_COUNT:
                         log.info("Stream with name %s no longer exists. Removing...", stream.name)
@@ -884,6 +989,13 @@ class Streams(commands.Cog):
 
                         guild_data = await self.config.guild(channel.guild).all()
                         if guild_data["ignore_reruns"] and is_rerun:
+                            continue
+
+                        if (
+                            isinstance(stream, TwitchStream)
+                            and stream.games
+                            and channel_id not in stream.games[data["game_id"]]
+                        ):
                             continue
                         if guild_data["ignore_schedule"] and is_schedule:
                             continue
