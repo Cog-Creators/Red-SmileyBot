@@ -298,16 +298,18 @@ class Economy(commands.Cog):
 
         cur_time = calendar.timegm(ctx.message.created_at.utctimetuple())
         credits_name = await bank.get_currency_name(ctx.guild)
+        old_balance = await bank.get_balance(author)
         if await bank.is_global():  # Role payouts will not be used
             # Gets the latest time the user used the command successfully and adds the global payday time
             next_payday = (
                 await self.config.user(author).next_payday() + await self.config.PAYDAY_TIME()
             )
             if cur_time >= next_payday:
+                credit_amount = await self.config.PAYDAY_CREDITS()
                 try:
-                    await bank.deposit_credits(author, await self.config.PAYDAY_CREDITS())
+                    new_balance = await bank.deposit_credits(author, credit_amount)
                 except errors.BalanceTooHigh as exc:
-                    await bank.set_balance(author, exc.max_balance)
+                    new_balance = await bank.set_balance(author, exc.max_balance)
                     await ctx.send(
                         _(
                             "You've reached the maximum amount of {currency}! "
@@ -317,6 +319,15 @@ class Economy(commands.Cog):
                             currency=credits_name, new_balance=humanize_number(exc.max_balance)
                         )
                     )
+                    payload = bank.PaydayClaimInformation(
+                        author,
+                        ctx.channel,
+                        ctx.message,
+                        exc.max_balance - credit_amount,
+                        old_balance,
+                        new_balance,
+                    )
+                    self.bot.dispatch("red_economy_payday_claim", payload)
                     return
                 # Sets the current time as the latest payday
                 await self.config.user(author).next_payday.set(cur_time)
@@ -331,11 +342,15 @@ class Economy(commands.Cog):
                     ).format(
                         author=author,
                         currency=credits_name,
-                        amount=humanize_number(await self.config.PAYDAY_CREDITS()),
+                        amount=humanize_number(credit_amount),
                         new_balance=humanize_number(await bank.get_balance(author)),
                         pos=humanize_number(pos) if pos else pos,
                     )
                 )
+                payload = bank.PaydayClaimInformation(
+                    author, ctx.channel, ctx.message, credit_amount, old_balance, new_balance
+                )
+                self.bot.dispatch("red_economy_payday_claim", payload)
 
             else:
                 relative_time = discord.utils.format_dt(
@@ -361,9 +376,9 @@ class Economy(commands.Cog):
                     if role_credits > credit_amount:
                         credit_amount = role_credits
                 try:
-                    await bank.deposit_credits(author, credit_amount)
+                    new_balance = await bank.deposit_credits(author, credit_amount)
                 except errors.BalanceTooHigh as exc:
-                    await bank.set_balance(author, exc.max_balance)
+                    new_balance = await bank.set_balance(author, exc.max_balance)
                     await ctx.send(
                         _(
                             "You've reached the maximum amount of {currency}! "
@@ -373,6 +388,15 @@ class Economy(commands.Cog):
                             currency=credits_name, new_balance=humanize_number(exc.max_balance)
                         )
                     )
+                    payload = bank.PaydayClaimInformation(
+                        author,
+                        ctx.channel,
+                        ctx.message,
+                        exc.max_balance - credit_amount,
+                        old_balance,
+                        new_balance,
+                    )
+                    self.bot.dispatch("red_economy_payday_claim", payload)
                     return
 
                 # Sets the latest payday time to the current time
@@ -394,6 +418,11 @@ class Economy(commands.Cog):
                         pos=humanize_number(pos) if pos else pos,
                     )
                 )
+                payload = bank.PaydayClaimInformation(
+                    author, ctx.channel, ctx.message, credit_amount, old_balance, new_balance
+                )
+                self.bot.dispatch("red_economy_payday_claim", payload)
+
             else:
                 relative_time = discord.utils.format_dt(
                     datetime.now(timezone.utc) + timedelta(seconds=next_payday - cur_time), "R"

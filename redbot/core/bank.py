@@ -3,8 +3,9 @@ from __future__ import annotations
 import asyncio
 import logging
 from datetime import datetime, timezone
-from typing import Union, List, Optional, TYPE_CHECKING, Literal
+from typing import Union, List, Optional, TYPE_CHECKING, Literal, NamedTuple, Dict
 from functools import wraps
+import json
 
 import discord
 
@@ -46,6 +47,10 @@ __all__ = (
     "set_default_balance",
     "AbortPurchase",
     "cost",
+    "PaydayClaimInformation",
+    "BankSetBalanceInformation",
+    "BankTransferInformation",
+    "BankPruneInformation",
 )
 
 _MAX_BALANCE = 2**63 - 1
@@ -81,9 +86,13 @@ _data_deletion_lock = asyncio.Lock()
 _cache_is_global = None
 _cache = {"bank_name": None, "currency": None, "default_balance": None, "max_balance": None}
 
+_bot_ref: Optional[Red] = None
 
-async def _init():
+
+async def _init(bot: Red):
     global _config
+    global _bot_ref
+    _bot_ref = bot
     _config = Config.get_conf(None, 384734293238749, cog_name="Bank", force_registration=True)
     _config.register_global(**_DEFAULT_GLOBAL)
     _config.register_guild(**_DEFAULT_GUILD)
@@ -336,6 +345,7 @@ async def set_balance(member: Union[discord.Member, discord.User], amount: int) 
         group = _config.user(member)
     else:
         group = _config.member(member)
+    old_balance = await group.balance()
     await group.balance.set(amount)
 
     if await group.created_at() == 0:
@@ -344,7 +354,8 @@ async def set_balance(member: Union[discord.Member, discord.User], amount: int) 
 
     if await group.name() == "":
         await group.name.set(member.display_name)
-
+    payload = BankSetBalanceInformation(member, guild, old_balance, amount)
+    _bot_ref.dispatch("red_bank_set_balance", payload)
     return amount
 
 
@@ -483,8 +494,11 @@ async def transfer_credits(
             user=to.display_name, max_balance=max_bal, currency_name=currency
         )
 
-    await withdraw_credits(from_, amount)
-    return await deposit_credits(to, amount)
+    sender_new = await withdraw_credits(from_, amount)
+    recipient_new = await deposit_credits(to, amount)
+    payload = BankTransferInformation(from_, to, guild, amount, sender_new, recipient_new)
+    _bot_ref.dispatch("red_bank_transfer_credits", payload)
+    return recipient_new
 
 
 async def wipe_bank(guild: Optional[discord.Guild] = None) -> None:
@@ -499,8 +513,10 @@ async def wipe_bank(guild: Optional[discord.Guild] = None) -> None:
     """
     if await is_global():
         await _config.clear_all_users()
+        _bot_ref.dispatch("red_bank_wipe", -1)
     else:
         await _config.clear_all_members(guild)
+        _bot_ref.dispatch("red_bank_wipe", getattr(guild, "id", None))
 
 
 async def bank_prune(bot: Red, guild: discord.Guild = None, user_id: int = None) -> None:
@@ -523,45 +539,48 @@ async def bank_prune(bot: Red, guild: discord.Guild = None, user_id: int = None)
         If guild is :code:`None` and the bank is Local.
 
     """
-
     global_bank = await is_global()
+    if not global_bank and guild is None:
+        raise BankPruneError("'guild' can't be None when pruning a local bank")
 
+    _guilds = set()
+    _uguilds = set()
     if global_bank:
-        _guilds = set()
-        _uguilds = set()
+        group = _config._get_base_group(_config.USER)
         if user_id is None:
             async for g in AsyncIter(bot.guilds, steps=100):
                 if not g.unavailable and g.large and not g.chunked:
                     _guilds.add(g)
                 elif g.unavailable:
                     _uguilds.add(g)
-        group = _config._get_base_group(_config.USER)
 
     else:
-        if guild is None:
-            raise BankPruneError("'guild' can't be None when pruning a local bank")
-        if user_id is None:
-            _guilds = {guild} if not guild.unavailable and guild.large else set()
-            _uguilds = {guild} if guild.unavailable else set()
         group = _config._get_base_group(_config.MEMBER, str(guild.id))
-
-    if user_id is None:
-        for _guild in _guilds:
-            await _guild.chunk()
-        accounts = await group.all()
-        tmp = accounts.copy()
-        members = bot.get_all_members() if global_bank else guild.members
-        user_list = {str(m.id) for m in members if m.guild not in _uguilds}
-
-    async with group.all() as bank_data:  # FIXME: use-config-bulk-update
         if user_id is None:
-            for acc in tmp:
-                if acc not in user_list:
-                    del bank_data[acc]
+            if guild.large and not guild.unavailable:
+                _guilds.add(guild)
+            if guild.unavailable:
+                _uguilds.add(guild)
+
+    pruned = {}
+    async with group.all() as bank_data:
+        if user_id in None:
+            for _guild in _guilds:
+                await _guild.chunk()
+            members = bot.get_all_members() if global_bank else guild.members
+            valid_users = {str(m.id) for m in members if m.guild not in _uguilds}
+            for account_user_id, account in bank_data.copy().items():
+                if account_user_id not in valid_users:
+                    pruned[account_user_id] = account
+                    del bank_data[account_user_id]
         else:
             user_id = str(user_id)
             if user_id in bank_data:
+                pruned[user_id] = bank_data[user_id]
                 del bank_data[user_id]
+
+    payload = BankPruneInformation(guild, user_id, pruned)
+    _bot_ref.dispatch("red_bank_prune", payload)
 
 
 async def get_leaderboard(positions: int = None, guild: discord.Guild = None) -> List[tuple]:
@@ -724,11 +743,14 @@ async def set_global(global_: bool) -> bool:
 
     if await is_global():
         await _config.clear_all_users()
+        _bot_ref.dispatch("red_bank_wipe", -1)
     else:
         await _config.clear_all_members()
+        _bot_ref.dispatch("red_bank_wipe", None)
 
     await _config.is_global.set(global_)
     _cache_is_global = global_
+    _bot_ref.dispatch("red_bank_set_global", global_)
     return global_
 
 
@@ -1085,3 +1107,91 @@ def cost(amount: int):
             return coro_or_command
 
     return deco
+
+
+class PaydayClaimInformation(NamedTuple):
+    member: discord.Member
+    channel: Union[discord.TextChannel, discord.Thread, discord.ForumChannel]
+    message: discord.Message
+    amount: int
+    old_balance: int
+    new_balance: int
+
+    def to_dict(self) -> dict:
+        return {
+            "member": self.member.id,
+            "channel": self.channel.id,
+            "message": self.message.id,
+            "amount": self.amount,
+            "old_balance": self.old_balance,
+            "new_balance": self.new_balance,
+        }
+
+    def to_json(self) -> str:
+        return json.dumps(self.to_dict())
+
+
+class BankSetBalanceInformation(NamedTuple):
+    recipient: Union[discord.Member, discord.User]
+    guild: Union[discord.Guild, None]
+    recipient_old_balance: int
+    recipient_new_balance: int
+
+    def to_dict(self) -> dict:
+        return {
+            "recipient": self.recipient.id,
+            "guild": getattr(self.guild, "id", None),
+            "recipient_old_balance": self.recipient_old_balance,
+            "recipient_new_balance": self.recipient_new_balance,
+        }
+
+    def to_json(self) -> str:
+        return json.dumps(self.to_dict())
+
+
+class BankTransferInformation(NamedTuple):
+    sender: Union[discord.Member, discord.User]
+    recipient: Union[discord.Member, discord.User]
+    guild: Union[discord.Guild, None]
+    transfer_amount: int
+    sender_new_balance: int
+    recipient_new_balance: int
+
+    def to_dict(self) -> dict:
+        return {
+            "sender": self.sender.id,
+            "recipient": self.recipient.id,
+            "guild": getattr(self.guild, "id", None),
+            "transfer_amount": self.transfer_amount,
+            "sender_new_balance": self.sender_new_balance,
+            "recipient_new_balance": self.recipient_new_balance,
+        }
+
+    def to_json(self) -> str:
+        return json.dumps(self.to_dict())
+
+
+class BankPruneInformation(NamedTuple):
+    guild: Union[discord.Guild, None]
+    user_id: Union[int, None]
+    # {user_id: {name: str, balance: int, created_at: int}}
+    pruned_users: Dict[str, Dict[str, Union[int, str]]]
+
+    @property
+    def scope(self) -> Literal["global", "guild", "user"]:
+        if self.guild is None and self.user_id is None:
+            return "global"
+        elif self.guild is not None and self.user_id is None:
+            return "guild"
+        return "user"
+
+    def to_dict(self) -> dict:
+        return {
+            "guild": getattr(self.guild, "id", None),
+            "user_id": self.user_id,
+            "scope": self.scope,
+            "pruned_users": self.pruned_users,
+        }
+
+    def to_json(self) -> str:
+        return json.dumps(self.to_dict())
