@@ -4,9 +4,9 @@ import pkgutil
 import sys
 import textwrap
 from importlib import import_module, invalidate_caches
-from importlib.machinery import ModuleSpec
+from importlib.machinery import FileFinder, ModuleSpec
 from pathlib import Path
-from typing import Union, List, Optional
+from typing import Union, List, Optional, Tuple
 
 import redbot.cogs
 from redbot.core.commands import positive_int
@@ -297,15 +297,37 @@ class CogManager:
         with contextlib.suppress(NoSuchCog):
             return await self._find_core_cog(name)
 
-    async def available_modules(self) -> List[str]:
-        """Finds the names of all available modules to load."""
-        paths = list(map(str, await self.paths()))
-
-        ret = []
+    def _iter_cogs(self, paths: List[str]) -> List[Tuple[str, bool]]:
+        """Find the names of all available cogs to load from given paths."""
         for finder, module_name, _ in pkgutil.iter_modules(paths):
             # reject package names that can't be valid python identifiers
             if module_name.isidentifier() and not keyword.iskeyword(module_name):
-                ret.append(module_name)
+                yield finder, module_name
+
+    def available_core_cogs(self) -> List[str]:
+        """Find the names of all available core cogs to load."""
+        return [module_name for _, module_name in self._iter_cogs([self.CORE_PATH])]
+
+    async def available_cogs(self) -> List[Tuple[str, bool]]:
+        """
+        Find the names of all available cog packages to load.
+
+        Includes info about whether the cog would be loaded from a core path.
+
+        Returns
+        -------
+        List[Tuple[str, bool]]
+            A list of (str, bool) pairs where the first item is the cog package name
+            and the second item is a bool indicating whether the cog would be loaded
+            from a core path.
+        """
+        paths = list(map(str, await self.paths()))
+
+        ret = []
+        core_path = str(self.CORE_PATH)
+        for finder, module_name in self._iter_cogs(paths):
+            is_from_core_path = isinstance(finder, FileFinder) and finder.path == core_path
+            ret.append((module_name, is_from_core_path))
         return ret
 
     @staticmethod
@@ -540,12 +562,18 @@ class CogManagerUI(commands.Cog):
         """
         loaded = set(ctx.bot.extensions.keys())
 
-        all_cogs = set(await ctx.bot._cog_mgr.available_modules())
+        core_cogs = set(ctx.bot._cog_mgr.available_core_cogs())
+        all_cogs = set()
+        overridden_core_cogs = set()
+        for cog_name, is_from_core_path in await ctx.bot._cog_mgr.available_cogs():
+            all_cogs.add(cog_name)
+            if not is_from_core_path and cog_name in core_cogs:
+                overridden_core_cogs.add(cog_name)
 
         unloaded = all_cogs - loaded
 
-        loaded = sorted(list(loaded), key=str.lower)
-        unloaded = sorted(list(unloaded), key=str.lower)
+        loaded = sorted(loaded, key=str.lower)
+        unloaded = sorted(unloaded, key=str.lower)
 
         if await ctx.embed_requested():
             loaded = _("**{} loaded:**\n").format(len(loaded)) + ", ".join(loaded)
