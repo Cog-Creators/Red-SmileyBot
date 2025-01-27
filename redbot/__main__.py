@@ -27,7 +27,7 @@ from redbot import __version__
 from redbot.core.bot import Red, ExitCodes, _NoOwnerSet
 from redbot.core._cli import interactive_config, confirm, parse_cli_flags
 from redbot.setup import get_data_dir, get_name, save_config
-from redbot.core import data_manager, _drivers
+from redbot.core import _data_manager, data_manager, _drivers
 from redbot.core._debuginfo import DebugInfo
 from redbot.core._sharedlibdeprecation import SharedLibImportWarner
 
@@ -42,13 +42,13 @@ log = logging.getLogger("red.main")
 
 
 def _get_instance_names():
-    with data_manager.config_file.open(encoding="utf-8") as fs:
+    with _data_manager.config_file.open(encoding="utf-8") as fs:
         data = json.load(fs)
     return sorted(data.keys())
 
 
 def list_instances():
-    if not data_manager.config_file.exists():
+    if not _data_manager.config_file.exists():
         print(
             "No instances have been configured! Configure one "
             "using `redbot-setup` before trying to run the bot!"
@@ -100,7 +100,7 @@ async def edit_instance(red, cli_flags):
     await _edit_prefix(red, prefix, no_prompt)
     await _edit_owner(red, owner, no_prompt)
 
-    data = deepcopy(data_manager.basic_config)
+    data = deepcopy(_data_manager.basic_config)
     name = _edit_instance_name(old_name, new_name, confirm_overwrite, no_prompt)
     _edit_data_path(data, name, data_path, copy_data, no_prompt)
 
@@ -237,7 +237,7 @@ def _edit_data_path(data, instance_name, data_path, copy_data, no_prompt):
         data["DATA_PATH"] = data_path
         if copy_data and not _copy_data(data):
             print("Can't copy data to non-empty location. Data location will remain unchanged.")
-            data["DATA_PATH"] = data_manager.basic_config["DATA_PATH"]
+            data["DATA_PATH"] = _data_manager.basic_config["DATA_PATH"]
     elif not no_prompt and confirm("Would you like to change the data location?", default=False):
         data["DATA_PATH"] = get_data_dir(
             instance_name=instance_name, data_path=None, interactive=True
@@ -246,7 +246,7 @@ def _edit_data_path(data, instance_name, data_path, copy_data, no_prompt):
             if not _copy_data(data):
                 print("Can't copy the data to non-empty location.")
                 if not confirm("Do you still want to use the new data location?"):
-                    data["DATA_PATH"] = data_manager.basic_config["DATA_PATH"]
+                    data["DATA_PATH"] = _data_manager.basic_config["DATA_PATH"]
                     print("Data location will remain unchanged.")
                     return
             print("Old data has been copied over to the new location.")
@@ -261,7 +261,7 @@ def _copy_data(data):
             # this is needed because copytree doesn't work when destination folder exists
             # Python 3.8 has `dirs_exist_ok` option for that
             os.rmdir(data["DATA_PATH"])
-    shutil.copytree(data_manager.basic_config["DATA_PATH"], data["DATA_PATH"])
+    shutil.copytree(_data_manager.basic_config["DATA_PATH"], data["DATA_PATH"])
     return True
 
 
@@ -280,7 +280,7 @@ def early_exit_runner(
             sys.exit(ExitCodes.SHUTDOWN)
             return
 
-        data_manager.load_basic_configuration(cli_flags.instance_name)
+        _data_manager.load_basic_configuration(cli_flags.instance_name)
         red = Red(cli_flags=cli_flags, description="Red V3", dm_help=None)
         driver_cls = _drivers.get_driver_class()
         loop.run_until_complete(driver_cls.initialize(**data_manager.storage_details()))
@@ -321,7 +321,7 @@ async def run_bot(red: Red, cli_flags: Namespace) -> None:
     )
 
     log.debug("====Basic Config====")
-    log.debug("Data Path: %s", data_manager._base_data_path())
+    log.debug("Data Path: %s", data_manager.data_path())
     log.debug("Storage Type: %s", data_manager.storage_type())
 
     # lib folder has to be in sys.path before trying to load any 3rd-party cog (GH-3061)
@@ -495,9 +495,9 @@ def main():
                 "\033[0m"
             )
             cli_flags.instance_name = "temporary_red"
-            data_manager.create_temp_config()
+            _data_manager.create_temp_config()
 
-        data_manager.load_basic_configuration(cli_flags.instance_name)
+        _data_manager.load_basic_configuration(cli_flags.instance_name)
 
         red = Red(cli_flags=cli_flags, description="Red V3", dm_help=None)
 

@@ -231,6 +231,7 @@
 "Category: Core - Other Internals":
   # Source
   - redbot/core/_cog_manager.py
+  - redbot/core/_data_manager.py
   - redbot/core/_events.py
   - redbot/core/_global_checks.py
   - redbot/core/_settings_caches.py

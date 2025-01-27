@@ -32,10 +32,10 @@ __all__ = [
 
 @pytest.fixture(autouse=True)
 def override_data_path(tmpdir):
-    from redbot.core import data_manager
+    from redbot.core import _data_manager
 
-    data_manager.basic_config = data_manager.basic_config_default
-    data_manager.basic_config["DATA_PATH"] = str(tmpdir)
+    _data_manager.basic_config = _data_manager.basic_config_default
+    _data_manager.basic_config["DATA_PATH"] = str(tmpdir)
 
 
 @pytest.fixture()
