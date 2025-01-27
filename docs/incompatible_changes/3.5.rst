@@ -469,9 +469,10 @@ To help support some of the newer features, we've also added a few things:
 - Utilities that allow to **properly** check whether a member can do something in threads (or channels)
   for cases where it isn't as simple as checking permissions:
 
-    - Command check decorators: `bot_can_manage_channel()`, `bot_can_react()`
-    - Permission check decorators: `can_manage_channel()`, `guildowner_or_can_manage_channel()`,
-      `admin_or_can_manage_channel()`, `mod_or_can_manage_channel()`
+    - Command check decorators: `redbot.core.commands.bot_can_manage_channel()`, `redbot.core.commands.bot_can_react()`
+    - Permission check decorators: `redbot.core.commands.can_manage_channel()`, 
+      `redbot.core.commands.guildowner_or_can_manage_channel()`, `redbot.core.commands.admin_or_can_manage_channel()`,
+      `redbot.core.commands.mod_or_can_manage_channel()`
     - Functions: `can_user_send_messages_in()`, `can_user_manage_channel()`, `can_user_react_in()`
 
 - New module (`redbot.core.utils.views`) with useful `discord.ui.View` subclasses

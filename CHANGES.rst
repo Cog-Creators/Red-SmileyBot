@@ -929,7 +929,7 @@ Additions
 - **Core - Commands Package** - Added `RawUserIdConverter` (:issue:`4486`)
 - |cool| **Core - Commands Package** - Added support for hybrid commands (:issue:`5681`)
 - **Core - Commands Package** - Added `positive_int` and `finite_float` converters (:issue:`5939`, :issue:`5969`)
-- **Core - Commands Package** - Added new checks for proper permission resolution in both channels and threads: `bot_can_manage_channel()`, `bot_can_react()`, `can_manage_channel()`, `guildowner_or_can_manage_channel()`, `admin_or_can_manage_channel()`, `mod_or_can_manage_channel()` (:issue:`5600`)
+- **Core - Commands Package** - Added new checks for proper permission resolution in both channels and threads: `redbot.core.commands.bot_can_manage_channel()`, `redbot.core.commands.bot_can_react()`, `redbot.core.commands.can_manage_channel()`, `redbot.core.commands.guildowner_or_can_manage_channel()`, `redbot.core.commands.admin_or_can_manage_channel()`, `redbot.core.commands.mod_or_can_manage_channel()` (:issue:`5600`)
 - **Core - Dependencies** - Added ``red_commons`` as a dependency (:issue:`5624`)
 - **Core - Modlog** - Added `Case.parent_channel` and `Case.parent_channel_id` (support for threads) (:issue:`5600`)
 - **Core - Utils Package** - Added `SimpleMenu`, a template view subclass (:issue:`5634`)
