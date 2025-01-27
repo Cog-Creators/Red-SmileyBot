@@ -3,10 +3,11 @@ from __future__ import annotations
 import asyncio
 import logging
 from datetime import datetime, timezone
-from typing import Union, List, Optional, TYPE_CHECKING, Literal
+from typing import Union, List, Optional, TYPE_CHECKING, Literal, Dict, NamedTuple
 from functools import wraps
 
 import discord
+from discord import user
 
 from redbot.core.utils import AsyncIter
 from redbot.core.utils.chat_formatting import humanize_number
@@ -81,9 +82,13 @@ _data_deletion_lock = asyncio.Lock()
 _cache_is_global = None
 _cache = {"bank_name": None, "currency": None, "default_balance": None, "max_balance": None}
 
+_bot_ref: Optional[Red] = None
 
-async def _init():
+
+async def _init(bot: Red):
     global _config
+    global _bot_ref
+    _bot_ref = bot
     _config = Config.get_conf(None, 384734293238749, cog_name="Bank", force_registration=True)
     _config.register_global(**_DEFAULT_GLOBAL)
     _config.register_guild(**_DEFAULT_GUILD)
@@ -336,6 +341,7 @@ async def set_balance(member: Union[discord.Member, discord.User], amount: int) 
         group = _config.user(member)
     else:
         group = _config.member(member)
+    old_balance = await group.balance()
     await group.balance.set(amount)
 
     if await group.created_at() == 0:
@@ -345,6 +351,11 @@ async def set_balance(member: Union[discord.Member, discord.User], amount: int) 
     if await group.name() == "":
         await group.name.set(member.display_name)
 
+    payload = BankSetBalanceInformation(
+        member.id, (0 if _cache_is_global else guild.id), old_balance, amount
+    )
+
+    _bot_ref.dispatch("red_bank_set_balance", payload)
     return amount
 
 
@@ -483,8 +494,15 @@ async def transfer_credits(
             user=to.display_name, max_balance=max_bal, currency_name=currency
         )
 
-    await withdraw_credits(from_, amount)
-    return await deposit_credits(to, amount)
+    sender_new = await withdraw_credits(from_, amount)
+    recipient_new = await deposit_credits(to, amount)
+
+    payload = BankTransferInformation(
+        amount, from_.id, to.id, (0 if _cache_is_global else guild.id), sender_new, recipient_new
+    )
+    _bot_ref.dispatch("red_bank_transfer_credits", payload)
+
+    return recipient_new
 
 
 async def wipe_bank(guild: Optional[discord.Guild] = None) -> None:
@@ -499,8 +517,10 @@ async def wipe_bank(guild: Optional[discord.Guild] = None) -> None:
     """
     if await is_global():
         await _config.clear_all_users()
+        _bot_ref.dispatch("red_bank_wipe", -1)
     else:
         await _config.clear_all_members(guild)
+        _bot_ref.dispatch("red_bank_wipe", getattr(guild, "id", 0))
 
 
 async def bank_prune(bot: Red, guild: discord.Guild = None, user_id: int = None) -> None:
@@ -523,6 +543,14 @@ async def bank_prune(bot: Red, guild: discord.Guild = None, user_id: int = None)
         If guild is :code:`None` and the bank is Local.
 
     """
+
+    print(f"{guild} | {user_id}")
+    if guild is None and user_id is None:
+        scope = 1  # prune global
+    if guild is not None and user_id is None:
+        scope = 2  # prune server
+    else:
+        scope = 3  # prune user
 
     global_bank = await is_global()
 
@@ -562,6 +590,10 @@ async def bank_prune(bot: Red, guild: discord.Guild = None, user_id: int = None)
             user_id = str(user_id)
             if user_id in bank_data:
                 del bank_data[user_id]
+
+    payload = BankPruneInformation(scope, tmp)
+
+    _bot_ref.dispatch("red_bank_prune_accounts", payload)
 
 
 async def get_leaderboard(positions: int = None, guild: discord.Guild = None) -> List[tuple]:
@@ -724,11 +756,14 @@ async def set_global(global_: bool) -> bool:
 
     if await is_global():
         await _config.clear_all_users()
+        _bot_ref.dispatch("red_bank_wipe", -1)
     else:
         await _config.clear_all_members()
+        _bot_ref.dispatch("red_bank_wipe", 0)
 
     await _config.is_global.set(global_)
     _cache_is_global = global_
+    _bot_ref.dispatch("red_bank_set_global", global_)
     return global_
 
 
@@ -1085,3 +1120,24 @@ def cost(amount: int):
             return coro_or_command
 
     return deco
+
+
+class BankTransferInformation(NamedTuple):
+    transfer_amount: int
+    sender_id: int
+    recipient_id: int
+    guild_id: int
+    sender_new_balance: int
+    recipient_new_balance: int
+
+
+class BankSetBalanceInformation(NamedTuple):
+    recipient_id: int
+    guild_id: int
+    recipient_old_balance: int
+    recipient_new_balance: int
+
+
+class BankPruneInformation(NamedTuple):
+    scope: int
+    pruned_users: Union[List[int], Dict[str, List[int]]]
