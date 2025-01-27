@@ -132,6 +132,9 @@ class Value:
 
     """
 
+    # to reserve these attributes for __getattr__
+    __slots__ = ("identifier_data", "default", "_driver", "_config", "__dict__")
+
     def __init__(self, identifier_data: IdentifierData, default_value, driver, config: "Config"):
         self.identifier_data = identifier_data
         self.default = default_value
@@ -281,6 +284,9 @@ class Group(Value):
         Same as `Config.force_registration`.
 
     """
+
+    # to reserve these attributes for __getattr__
+    __slots__ = ("_defaults", "force_registration")
 
     def __init__(
         self,
@@ -631,6 +637,19 @@ class Config(metaclass=ConfigMeta):
     USER = "USER"
     MEMBER = "MEMBER"
 
+    # to reserve these attributes for __getattr__
+    __slots__ = (
+        "cog_name",
+        "unique_identifier",
+        "_driver",
+        "force_registration",
+        "_defaults",
+        "custom_groups",
+        "_lock_cache",
+        "__weakref__",
+        "__dict__",
+    )
+
     def __init__(
         self,
         cog_name: str,
@@ -773,6 +792,8 @@ class Config(metaclass=ConfigMeta):
         for i, k in enumerate(splitted, start=1):
             if not k.isidentifier():
                 raise RuntimeError("'{}' is an invalid config key.".format(k))
+            if k in [*dir(Config), *dir(Group), *dir(Value)]:
+                raise RuntimeError("'{}' is a reserved config key.".format(k))
             if i == len(splitted):
                 partial[k] = value
             else:
