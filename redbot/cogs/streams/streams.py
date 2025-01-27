@@ -5,11 +5,13 @@ from redbot.core import commands, Config
 from redbot.core.i18n import cog_i18n, Translator, set_contextual_locales_from_guild
 from redbot.core.utils._internal_utils import send_to_owners_with_prefix_replaced
 from redbot.core.utils.chat_formatting import escape, inline, pagify
+from redbot.core.utils.menus import menu
 
 from .streamtypes import (
     PicartoStream,
     Stream,
     TwitchStream,
+    TwitchTeam,
     YoutubeStream,
 )
 from .errors import (
@@ -19,6 +21,7 @@ from .errors import (
     OfflineStream,
     StreamNotFound,
     StreamsError,
+    TwitchTeamNotFound,
     YoutubeQuotaExceeded,
 )
 from . import streamtypes as _streamtypes
@@ -218,6 +221,20 @@ class Streams(commands.Cog):
 
     @commands.guild_only()
     @commands.command()
+    async def twitchteam(self, ctx: commands.Context, team_name: str):
+        """Check if a Twitch team is live."""
+        await self.maybe_renew_twitch_bearer_token()
+        token = (await self.bot.get_shared_api_tokens("twitch")).get("client_id")
+        team = TwitchTeam(
+            _bot=self.bot,
+            name=team_name,
+            token=token,
+            bearer=self.ttv_bearer_cache.get("access_token", None),
+        )
+        await self.check_online(ctx, team)
+
+    @commands.guild_only()
+    @commands.command()
     @commands.cooldown(1, 30, commands.BucketType.guild)
     async def youtubestream(self, ctx: commands.Context, channel_id_or_name: str):
         """Check if a YouTube channel is live."""
@@ -245,12 +262,17 @@ class Streams(commands.Cog):
     async def check_online(
         self,
         ctx: commands.Context,
-        stream: Union[PicartoStream, YoutubeStream, TwitchStream],
+        stream: Union[PicartoStream, YoutubeStream, TwitchStream, TwitchTeam],
     ):
         try:
-            info = await stream.is_online()
+            if isinstance(stream, TwitchTeam):
+                info = await stream.check_online_team()
+            else:
+                info = await stream.is_online()
         except OfflineStream:
             await ctx.send(_("That user is offline."))
+        except TwitchTeamNotFound:
+            await ctx.send(_("That team doesn't seem to exist."))
         except StreamNotFound:
             await ctx.send(_("That user doesn't seem to exist."))
         except InvalidTwitchCredentials:
@@ -282,12 +304,16 @@ class Streams(commands.Cog):
                 _("Something went wrong whilst trying to contact the stream service's API.")
             )
         else:
+            members = []
             if isinstance(info, tuple):
-                embed, is_rerun = info
-                ignore_reruns = await self.config.guild(ctx.channel.guild).ignore_reruns()
-                if ignore_reruns and is_rerun:
-                    await ctx.send(_("That user is offline."))
-                    return
+                if isinstance(stream, TwitchTeam):
+                    embed, members = info
+                else:
+                    embed, is_rerun = info
+                    ignore_reruns = await self.config.guild(ctx.channel.guild).ignore_reruns()
+                    if ignore_reruns and is_rerun:
+                        await ctx.send(_("That user is offline."))
+                        return
             else:
                 embed = info
 
@@ -301,7 +327,12 @@ class Streams(commands.Cog):
                         label=_("Watch the stream"), style=discord.ButtonStyle.link, url=stream_url
                     )
                 )
-            await ctx.send(embed=embed, view=view)
+            if isinstance(stream, TwitchTeam):
+                await ctx.send(embed=embed)
+                member_embeds = [m[0] for m in members]
+                await menu(ctx, member_embeds)
+            else:
+                await ctx.send(embed=embed, view=view)
 
     @commands.group()
     @commands.guild_only()
