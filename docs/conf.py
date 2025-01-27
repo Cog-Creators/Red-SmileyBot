@@ -245,6 +245,7 @@ intersphinx_mapping = {
     "motor": ("https://motor.readthedocs.io/en/stable/", None),
     "babel": ("http://babel.pocoo.org/en/stable/", None),
     "dateutil": ("https://dateutil.readthedocs.io/en/stable/", None),
+    "lavalink": ("https://red-lavalink.readthedocs.io/en/stable/", None),
 }
 
 # Extlinks
