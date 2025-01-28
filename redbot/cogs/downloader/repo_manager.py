@@ -126,6 +126,7 @@ class Repo(RepoJSONMixin):
         "git -C {path} log --diff-filter=D --pretty=format:%H -n 1 {descendant_rev}"
         " -- {module_name}/__init__.py"
     )
+    GIT_VERIFY_BRANCH = "git -C {path} show-ref --quiet --verify refs/heads/{branch}"
 
     PIP_INSTALL = "{python} -m pip install -U -t {target_dir} {reqs}"
 
@@ -257,6 +258,22 @@ class Repo(RepoJSONMixin):
 
         """
         return await self.latest_commit() == self.commit
+
+    async def is_branch(self) -> bool:
+        """
+        Check if the branch assosiated with the repo is a tag.
+
+        Returns
+        -------
+        bool
+            `True` if branch is a tag or `False` otherwise
+        """
+        git_command = ProcessFormatter().format(
+            self.GIT_VERIFY_BRANCH, branch=self.branch, path=self.folder_path
+        )
+        p = await self._run(git_command)
+
+        return p.returncode == 0
 
     async def _get_file_update_statuses(
         self, old_rev: str, new_rev: Optional[str] = None
@@ -833,6 +850,9 @@ class Repo(RepoJSONMixin):
         -------
         `UpdateError` - if git pull results with non-zero exit code
         """
+        if not await self.is_branch():
+            return self.commit, self.commit
+
         old_commit = await self.latest_commit()
 
         await self.hard_reset()
