@@ -46,6 +46,15 @@
         "type": "integer"
       }
     },
+    "max_python_version": {
+      "type": "array",
+      "description": "Max version number of Python in the format [MAJOR, MINOR, PATCH]",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "integer"
+      }
+    },
     "hidden": {
       "type": "boolean",
       "description": "Determines if a cog is visible in the cog list for a repo."

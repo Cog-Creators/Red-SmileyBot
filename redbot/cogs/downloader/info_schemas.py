@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 from typing import TYPE_CHECKING, Any, Callable, Dict, Tuple, Union, cast
 
@@ -98,7 +99,7 @@ def ensure_red_version_info(
 def ensure_python_version_info(
     info_file: Path, key_name: str, value: Union[Any, UseDefault]
 ) -> Tuple[int, int, int]:
-    default = (3, 5, 1)
+    default = sys.version_info[:3]
     if value is USE_DEFAULT:
         return default
     if not isinstance(value, list):
@@ -214,6 +215,7 @@ INSTALLABLE_SCHEMA: SchemaType = {
     "min_bot_version": ensure_red_version_info,
     "max_bot_version": ensure_red_version_info,
     "min_python_version": ensure_python_version_info,
+    "max_python_version": ensure_python_version_info,
     "hidden": ensure_bool,
     "disabled": ensure_bool,
     "required_cogs": ensure_required_cogs_mapping,
