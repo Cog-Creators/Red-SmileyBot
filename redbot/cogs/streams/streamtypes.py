@@ -20,6 +20,7 @@ from .errors import (
     InvalidYoutubeCredentials,
     StreamNotFound,
     YoutubeQuotaExceeded,
+    YoutubeStreamNotFound,
 )
 from redbot.core.i18n import Translator
 from redbot.core.utils.chat_formatting import humanize_number, humanize_timedelta
@@ -207,6 +208,8 @@ class YoutubeStream(Stream):
             async with aiohttp.ClientSession() as session:
                 async with session.get(YOUTUBE_VIDEOS_ENDPOINT, params=params) as r:
                     data = await r.json()
+            if len(data["items"]) == 0:
+                raise YoutubeStreamNotFound()
             return await self.make_embed(data)
         raise OfflineStream()
 

@@ -31,5 +31,9 @@ class YoutubeQuotaExceeded(StreamsError):
     pass
 
 
+class YoutubeStreamNotFound(StreamsError):
+    pass
+
+
 class OfflineStream(StreamsError):
     pass
