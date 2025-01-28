@@ -294,12 +294,13 @@ else:
         def __init__(self, *expected_keys: str, delims: Optional[List[str]] = None):
             self.expected_keys = expected_keys
             self.delims = delims or [" "]
-            self.pattern = re.compile(r"|".join(re.escape(d) for d in self.delims))
+            self.pattern = re.compile(
+                r"(?:[^" + r"".join(re.escape(d) for d in self.delims) + r'"]|"(?:\\.|[^"])*")+'
+            )  # Regex credit to https://stackoverflow.com/a/16710842
 
         async def convert(self, ctx: "Context", argument: str) -> Dict[str, str]:
             ret: Dict[str, str] = {}
-            args = self.pattern.split(argument)
-
+            args = [a.strip('"') for a in self.pattern.findall(argument)]
             if len(args) % 2 != 0:
                 raise BadArgument(_("Missing a key or value."))
 
