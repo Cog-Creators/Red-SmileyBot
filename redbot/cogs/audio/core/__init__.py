@@ -133,6 +133,7 @@ class Audio(
             emptydc_timer=0,
             emptypause_enabled=False,
             emptypause_timer=0,
+            emptyqueuedc_timer=0,
             jukebox=False,
             jukebox_price=0,
             maxlength=0,

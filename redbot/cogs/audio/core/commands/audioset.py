@@ -614,23 +614,33 @@ class AudioSetCommands(MixinMeta, metaclass=CompositeMetaClass):
     @command_audioset.command(name="dc")
     @commands.guild_only()
     @commands.mod_or_permissions(manage_guild=True)
-    async def command_audioset_dc(self, ctx: commands.Context):
+    async def command_audioset_dc(self, ctx: commands.Context, seconds: int = 0):
         """Toggle the bot auto-disconnecting when done playing.
 
         This setting takes precedence over `[p]audioset emptydisconnect`.
+        Users can optionally specify a delay.
         """
+        if seconds < 0:
+            return await self.send_embed_msg(
+                ctx, title=_("Invalid Time"), description=_("Seconds can't be less than zero.")
+            )
 
         disconnect = await self.config.guild(ctx.guild).disconnect()
         autoplay = await self.config.guild(ctx.guild).auto_play()
         msg = ""
-        msg += _("Auto-disconnection at queue end: {true_or_false}.").format(
-            true_or_false=_("Enabled") if not disconnect else _("Disabled")
+        msg += _("Auto-disconnection at queue end: {true_or_false}").format(
+            true_or_false=_(f"Enabled with {seconds} second delay.")
+            if not disconnect
+            else _("Disabled")
         )
         if disconnect is not True and autoplay is True:
             msg += _("\nAuto-play has been disabled.")
             await self.config.guild(ctx.guild).auto_play.set(False)
 
         await self.config.guild(ctx.guild).disconnect.set(not disconnect)
+
+        if not disconnect:
+            await self.config.guild(ctx.guild).emptyqueuedc_timer.set(seconds)
 
         await self.send_embed_msg(ctx, title=_("Setting Changed"), description=msg)
 
@@ -968,12 +978,14 @@ class AudioSetCommands(MixinMeta, metaclass=CompositeMetaClass):
         data = await self.config.guild(ctx.guild).all()
 
         auto_deafen = _("Enabled") if data["auto_deafen"] else _("Disabled")
+        disconnect = data["disconnect"]
         dj_role_obj = ctx.guild.get_role(data["dj_role"])
         dj_enabled = data["dj_enabled"]
         emptydc_enabled = data["emptydc_enabled"]
         emptydc_timer = data["emptydc_timer"]
         emptypause_enabled = data["emptypause_enabled"]
         emptypause_timer = data["emptypause_timer"]
+        emptyqueuedc_timer = data["emptyqueuedc_timer"]
         jukebox = data["jukebox"]
         jukebox_price = data["jukebox_price"]
         thumbnail = data["thumbnail"]
@@ -1012,6 +1024,10 @@ class AudioSetCommands(MixinMeta, metaclass=CompositeMetaClass):
         if emptydc_enabled:
             msg += _("Disconnect timer: [{num_seconds}]\n").format(
                 num_seconds=self.get_time_string(emptydc_timer)
+            )
+        if disconnect:
+            msg += _("Empty queue disconnect timer: [{num_seconds}]\n").format(
+                num_seconds=self.get_time_string(emptyqueuedc_timer)
             )
         if emptypause_enabled:
             msg += _("Auto Pause timer: [{num_seconds}]\n").format(
