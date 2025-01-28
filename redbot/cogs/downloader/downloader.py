@@ -462,7 +462,11 @@ class Downloader(commands.Cog):
             for req in reqs:
                 if not await repo.install_raw_requirements([req], self.LIB_PATH):
                     failed_reqs.append(req)
-        return tuple(failed_reqs)
+        failed_cogs = []
+        for cog in cogs:
+            if any(req in failed_reqs for cog_req in cog.requirements):
+                failed_cogs.append(cog)
+        return tuple(failed_reqs), tuple(failed_cogs)
 
     @staticmethod
     async def _delete_cog(target: Path) -> None:
@@ -754,7 +758,7 @@ class Downloader(commands.Cog):
                     continue
                 repos.add(cog.repo)
                 cogs.append(cog)
-            failed_reqs = await self._install_requirements(cogs)
+            failed_reqs, failed_cogs = await self._install_requirements(cogs)
             all_installed_libs: List[InstalledModule] = []
             all_failed_libs: List[Installable] = []
             for repo in repos:
@@ -770,6 +774,12 @@ class Downloader(commands.Cog):
                 if len(failed_reqs) > 1
                 else _("Failed to install the requirement: ")
             ) + humanize_list(tuple(map(inline, failed_reqs)))
+            if failed_cogs:
+                message += (
+                    _("Potentially problematic cogs:")
+                    if len(failed_cogs) > 1
+                    else _("Potentially problematic cog:")
+                ) + humanize_list(tuple(map(inline, failed_cogs)))
         if all_failed_libs:
             libnames = [lib.name for lib in failed_libs]
             message += (
@@ -866,13 +876,19 @@ class Downloader(commands.Cog):
                 if not cogs:
                     await self.send_pagified(ctx, message)
                     return
-                failed_reqs = await self._install_requirements(cogs)
+                failed_reqs, failed_cogs = await self._install_requirements(cogs)
                 if failed_reqs:
                     message += (
                         _("\nFailed to install requirements: ")
                         if len(failed_reqs) > 1
                         else _("\nFailed to install the requirement: ")
                     ) + humanize_list(tuple(map(inline, failed_reqs)))
+                    if failed_cogs:
+                        message += (
+                            _("Potentially problematic cogs:")
+                            if len(failed_cogs) > 1
+                            else _("Potentially problematic cog:")
+                        ) + humanize_list(tuple(map(inline, failed_cogs)))
                     await self.send_pagified(ctx, message)
                     return
 
@@ -1618,7 +1634,7 @@ class Downloader(commands.Cog):
         current_cog_versions: Iterable[InstalledModule],
     ) -> Tuple[Set[str], str]:
         current_cog_versions_map = {cog.name: cog for cog in current_cog_versions}
-        failed_reqs = await self._install_requirements(cogs_to_update)
+        failed_reqs, failed_cogs = await self._install_requirements(cogs_to_update)
         if failed_reqs:
             return (
                 set(),
@@ -1627,7 +1643,15 @@ class Downloader(commands.Cog):
                     if len(failed_reqs) > 1
                     else _("Failed to install the requirement: ")
                 )
-                + humanize_list(tuple(map(inline, failed_reqs))),
+                + humanize_list(tuple(map(inline, failed_reqs)))
+                + (
+                    _("Potentially problematic cogs:")
+                    if len(failed_cogs) > 1
+                    else _("Potentially problematic cog:")
+                    + humanize_list(tuple(map(inline, failed_cogs)))
+                )
+                if failed_cogs
+                else "",
             )
         installed_cogs, failed_cogs = await self._install_cogs(cogs_to_update)
         installed_libs, failed_libs = await self._reinstall_libraries(libs_to_update)
