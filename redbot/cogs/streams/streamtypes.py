@@ -19,6 +19,7 @@ from .errors import (
     InvalidTwitchCredentials,
     InvalidYoutubeCredentials,
     StreamNotFound,
+    InvalidTrovoCredentials,
     YoutubeQuotaExceeded,
 )
 from redbot.core.i18n import Translator
@@ -34,6 +35,10 @@ YOUTUBE_CHANNELS_ENDPOINT = YOUTUBE_BASE_URL + "/channels"
 YOUTUBE_SEARCH_ENDPOINT = YOUTUBE_BASE_URL + "/search"
 YOUTUBE_VIDEOS_ENDPOINT = YOUTUBE_BASE_URL + "/videos"
 YOUTUBE_CHANNEL_RSS = "https://www.youtube.com/feeds/videos.xml?channel_id={channel_id}"
+
+TROVO_BASE_URL = "https://open-api.trovo.live/openplatform"
+TROVO_GETUSERS_ENDPOINT = TROVO_BASE_URL + "/getusers"
+TROVO_CHANNELINFO_ENDPOINT = TROVO_BASE_URL + "/channels/id"
 
 _ = Translator("Streams", __file__)
 
@@ -508,4 +513,61 @@ class PicartoStream(Stream):
             data["adult"] = ""
 
         embed.set_footer(text=_("{adult}Category: {category} | Tags: {tags}").format(**data))
+        return embed
+
+
+class TrovoStream(Stream):
+    token_name = "trovo"
+
+    def __init__(self, **kwargs):
+        self.id = kwargs.pop("id", None)
+        self._client_id = kwargs.pop("token").get("client_id")
+        super().__init__(**kwargs)
+
+    async def is_online(self):
+        if not self._client_id:
+            raise InvalidTrovoCredentials()
+        async with aiohttp.ClientSession(headers={"Client-ID": str(self._client_id)}) as session:
+            if not self.id:
+                self.id = await self.fetch_id(session)
+            async with session.post(
+                TROVO_CHANNELINFO_ENDPOINT, json={"channel_id": self.id}
+            ) as response:
+                data = await response.json()
+        self._check_errors(response, data)
+        return self.make_embed(data)
+
+    async def fetch_id(self, session: aiohttp.ClientSession):
+        async with session.post(TROVO_GETUSERS_ENDPOINT, json={"users": [self.name]}) as response:
+            data = await response.json()
+        self._check_errors(response, data)
+        return data["users"][0]["channel_id"]
+
+    def _check_errors(self, response: aiohttp.ClientResponse, data: dict):
+        if response.status == 404:
+            raise StreamNotFound()
+        elif response.status == 400:
+            if data["message"] == "header err":
+                raise InvalidTrovoCredentials()
+            elif data["message"] == "check invalid param":
+                raise StreamNotFound()
+            else:
+                raise APIError(400, data)
+        elif response.status != 200:
+            raise APIError(response.status, data)
+
+    def make_embed(self, data: dict):
+        embed = discord.Embed(
+            title=data["live_title"] or _("Untitled broadcast"),
+            url=data["channel_url"],
+            color=0x19D66B,
+        )
+        embed.set_author(name=data["username"])
+        embed.add_field(name=_("Followers"), value=humanize_number(data["followers"]))
+        if profile_pic := data["profile_pic"]:
+            embed.set_thumbnail(url=rnd(profile_pic))
+        if thumbnail := data["thumbnail"]:
+            embed.set_image(url=rnd(thumbnail))
+        if category := data["category_name"]:
+            embed.set_footer(text=_("Playing: ") + category)
         return embed
