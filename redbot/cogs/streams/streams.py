@@ -821,6 +821,10 @@ class Streams(commands.Cog):
             message_data["is_schedule"] = True
         stream.messages.append(message_data)
 
+    def _has_stream_alert_perms(self, channel: discord.TextChannel) -> bool:
+        perms = channel.permissions_for(channel.guild.me)
+        return all((perms.send_messages, perms.embed_links))
+
     async def check_streams(self):
         to_remove = []
         for stream in self.streams:
@@ -888,6 +892,8 @@ class Streams(commands.Cog):
                         if guild_data["ignore_schedule"] and is_schedule:
                             continue
                         if is_schedule:
+                            if not self._has_stream_alert_perms(channel):
+                                continue
                             # skip messages and mentions
                             await self._send_stream_alert(stream, channel, embed, is_schedule=True)
                             await self.save_streams()
@@ -938,11 +944,13 @@ class Streams(commands.Cog):
                                         formatting=True,
                                     )
                                 )
-                        await self._send_stream_alert(stream, channel, embed, content)
-                        if edited_roles:
-                            for role in edited_roles:
-                                await role.edit(mentionable=False)
-                        await self.save_streams()
+
+                        if self._has_stream_alert_perms(channel):
+                            await self._send_stream_alert(stream, channel, embed, content)
+                            if edited_roles:
+                                for role in edited_roles:
+                                    await role.edit(mentionable=False)
+                            await self.save_streams()
             except Exception as e:
                 log.error("An error has occurred with Streams. Please report it.", exc_info=e)
 
