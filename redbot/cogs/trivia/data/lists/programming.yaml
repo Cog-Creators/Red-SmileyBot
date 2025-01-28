@@ -1,0 +1,208 @@
+AUTHOR: Lemon (inthedark.org#0666)
+DESCRIPTION: A trivia to test a person's knowledge of programming concepts, terminology, and history. It can include questions about programming languages, algorithm, data structures, software development methodologies, and computer science principles.
+Who created the Python programming language?:
+- Guido van Rossum
+How many heading tags are in HTML?:
+- 6
+- Six
+In the early 1970s Dennis M. Ritchie, an employee of AT&T, came up with which single letter computer programming language?:
+- C
+- The C Language
+- The C Programming Language
+- C Programming Language
+- C Language
+This computer programming language was introduced by Niklaus Wirth in late 1970. What is the name of the language that was named after a famous French mathematician?:
+- PASCAL
+- PASCAL after Blaise Pascal
+Visual Basic, a third generation language, was released in 1991 and declared legacy in 2008. Which corporation released this easy to learn language?:
+- Microsoft
+Who created the programming language ruby?:
+- Yukihiro Matsumoto
+Who are the writers of the classic manual, "The C Programming Language"?:
+- Kernighan & Ritchie
+- Kernighan and Ritchie
+How does one indicate that certain text is to be treated as a "comment" in the classic C language?:
+- Place the text between /* */
+- /* */
+Is there a difference between i++ and ++i ?:
+- Sometimes there's a difference, sometimes not
+- Sometimes there is a difference, sometime there is not
+In C programming, what does i equal at the end of the following piece (snippet) of code? i = 1; i *= 5; i += 3;:
+- 8
+- Eight
+In the C language, how does one write the statement, "if i NOT equal to zero"?:
+- if (i != 0)
+What was the name of iTunes before it was purchased by Apple and renamed iTunes? (It sounds like a 1996 Michael Jordan movie.):
+- SoundJam MP
+MPEG-4 is a set standard with no possibility for growth as circumstances warrant. A new MPEG will be developed instead.:
+- False
+- No
+What form of punctuation must end all C++ statements?:
+- ;
+- Semicolon
+Which of these C++ variable types can be used to store a floating point number?:
+- Double
+Which company was behind the creation of Java?:
+- Sun Microsystems
+What was the original name for Java?:
+- Oak
+What is the name of the inventor (or father) of Java?:
+- James Gosling
+What is the Java API intended for business and server 3-tier applications is called?:
+- Java 2, Enterprise Edition
+- Java 2
+- Enterprise Edition
+- Java 2 Enterprise Edition
+What does AWT stand for?:
+- Abstract WIndow Toolkit
+What is the name of the class that all Java classes inherit (directly or indirectly) from?:
+- Object
+Which algorithm would work best to sort data as it arrives, one piece at a time, perhaps from a network?:
+- Insertion sort
+When using a heap, which function will give you the parent of the entry with index i?:
+- Integer division, i / 2
+- Integer division i / 2
+- Integer division
+Google Earth has a feature that allows you to see a 360-degree panoramic view of many major metropolitan cities. What is this feature called?:
+- Street view
+- Streetview
+Google Earth has a feature that allows you a 3D view of which ancient city as it looked in 320 AD?:
+- Rome
+Not only does Google Earth feature terrestrial locations, but it also features other bodies from our solar system. Which of these is one of them?:
+- Mars
+What do we call a piece of software that "tells" an operating system how to communicate with the computer's hardware?:
+- A device driver
+- Device driver
+The first copyleft license was made available by GNU (GNU's Not UNIX). This is often called GNU GPL or just GPL. What does GPL stand for?:
+- General Public License
+Which operating system, originally developed by Linus Torvalds, was licensed under the copyleft GNU GPL?:
+- Linux
+What does CSS actually stand for?:
+- Cascading Style Sheets
+What keyword is given to a rule to prevent other conflicting rules from overriding it?:
+- "!important"
+When elements are positioned absolutely, they can be layered on top of one another. What property determines the stacking order for layered elements?:
+- Z-index
+- Z index
+The process of building an object on the computer within 3D space is most often called what?:
+- Modeling
+Once the character or object is built in the program, what is the process called of adding color, reflection, transparency, translucency and roughness?:
+- Texturing
+Basic shapes, such as cubes, cylinders and circles that are used to build an object are called what?:
+- Primitives
+What are the collection of computers linked together to render different frames of a single animation referred to as?:
+- Render farm
+How big (size) is the standard CD?:
+- 12 cm
+- twelve centimeters
+- twelve cm
+- 12 centimeters
+- 4.72 inches
+- Four point seven two inches
+- Four point seventy two inches
+When they were first introduced, how many minutes of music could be stored on a CD?:
+- 74
+- Seventy four
+What is used to read the data off the data track of a CD?:
+- Laser
+In 1983, this person was the first to offer a definition of the term 'computer virus'.:
+- Cohen
+- Fred Cohen
+- Fred
+A computer virus that actively attacks an anti-virus program or programs in an effort to prevent detection.:
+- Retrovirus
+In what year did the Symantec Corporation first release Norton Antivirus?:
+- 1990
+In 1988 one of the most common viruses was unleashed. Activated every Friday the 13th, the virus affects both .EXE and .COM files and deletes any programs run on that day. What is the name of that virus?:
+- Jerusalem
+Before a Cascading Style Sheet is useful, you need to include one into your HTML page. What HTML tag can you use to apply CSS rules to a document?:
+- Style
+Which SQL command would you use to retrieve a record or records from the database?:
+- SELECT
+- Select
+Which SQL command would you use to add a new record (row) to the database?:
+- INSERT
+- Insert
+Which SQL command would you use to modify the contents of an existing record (row) in the database?:
+- UPDATE
+- Update
+Since there are only 10 different digits, we can't have any base greater than 10.:
+- False
+- No
+What would be the decimal value of 1111 1110?:
+- 254
+A double is classified as what data type?:
+- A floating point data type
+- Floating point data type
+What is the symbol for the modulus operator?:
+- "%"
+What function is automatically called at the beginning of a C++ program?:
+- main()
+What is the standard file extension for a C++ source code file?:
+- .cpp
+Who was the child of a famous poet and English mathematician whom many historians consider the first programmer?:
+- Ada Lovelace
+- Ada
+- Lovelace
+What is the name of the first widely-used programming language that was developed by IBM in the mid 1950s?:
+- Fortran
+What is the name of the programming language, created in 1958, popularly used in artificial intelligence and which uses lists as a main data structure?:
+- LISP
+What is a function declaration without a body called?:
+- Function prototype
+What is a parameter that receives the location of an argument called?:
+- Reference parameter
+Which 32-bit register is used as the default loop counter?:
+- ECX
+Which operator in assembly language counts the number of bytes in an identifier?:
+- TYPE
+What does the "Q" in QBasic stand for?:
+- Quick
+QBasic was developed by which company?:
+- Microsoft
+The word COBOL is an acronym for what?:
+- COmmon Business Oriented Language
+- Common business oriented language
+Why was the language called "Python "?:
+- The inventor is a fan of "Monty Python's Flying Circus"
+- Monty Python's Flying Circus
+Which languages does Python owe its origin to?:
+- ABC, Modula-3
+- ABC
+- Modula-3
+- Modula 3
+What is the Java implementation of Python popularly known as ?:
+- Jython
+If you wanted to capitalize the first letter of each word in a string in PHP, which function would you use?:
+- ucwords()
+How would I decorate a class method if I wanted to use it without initializing a class?:
+- "@staticmethod"
+What does the acronym SMTP represent?:
+- Simple Mail Transport Protocol
+In 1982 which port was established as the main default transmission channel for email?:
+- 25
+What does the acronym MIME represent?:
+- Multipurpose Internet Mail Extensions
+Which tag indicates the start of a block of PHP code?:
+- <?php
+- < ? php
+Variables in PHP start with what symbol?:
+- $
+When released in 1995, the name PHP originally stood for?:
+- Personal Home Page Tools
+If someone wanted to draw a hard, straight edge line in GIMP, what tool would they use?:
+- Pencil Tool
+If someone wanted to select a connected area of a picture based on color, what tool would they use?:
+- Fuzzy Select Tool
+What is the official name for the dog-like mascot of GIMP?:
+- Wilber
+What Perl function will remove a trailing newline from a string, but no other characters?:
+- chomp
+Who is the creator and primary maintainer of Perl?:
+- Larry Wall
+What is the file type associated with a Crystal Report?:
+- .rpt
+What were Crystal Decisions formerly called?:
+- Seagate Software
+Where is Crystal Decisions main Canadian office located?:
+- Vancouver
