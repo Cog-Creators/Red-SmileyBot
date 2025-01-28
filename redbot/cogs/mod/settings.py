@@ -105,8 +105,8 @@ class ModSettings(MixinMeta):
 
     @modset.command()
     @commands.guild_only()
-    async def hierarchy(self, ctx: commands.Context):
-        """Toggle role hierarchy check for mods and admins.
+    async def hierarchy(self, ctx: commands.Context, enabled: bool):
+        """Set role hierarchy check for mods and admins.
 
         **WARNING**: Disabling this setting will allow mods to take
         actions on users above them in the role hierarchy!
@@ -114,14 +114,12 @@ class ModSettings(MixinMeta):
         This is enabled by default.
         """
         guild = ctx.guild
-        toggled = await self.config.guild(guild).respect_hierarchy()
-        if not toggled:
-            await self.config.guild(guild).respect_hierarchy.set(True)
+        await self.config.guild(guild).respect_hierarchy.set(enabled)
+        if enabled:
             await ctx.send(
                 _("Role hierarchy will be checked when moderation commands are issued.")
             )
         else:
-            await self.config.guild(guild).respect_hierarchy.set(False)
             await ctx.send(
                 _("Role hierarchy will be ignored when moderation commands are issued.")
             )
@@ -324,23 +322,21 @@ class ModSettings(MixinMeta):
 
     @modset.command()
     @commands.guild_only()
-    async def reinvite(self, ctx: commands.Context):
-        """Toggle whether an invite will be sent to a user when unbanned.
+    async def reinvite(self, ctx: commands.Context, enabled: bool):
+        """Set whether an invite will be sent to a user when unbanned.
 
         If this is True, the bot will attempt to create and send a single-use invite
         to the newly-unbanned user.
         """
         guild = ctx.guild
-        cur_setting = await self.config.guild(guild).reinvite_on_unban()
-        if not cur_setting:
-            await self.config.guild(guild).reinvite_on_unban.set(True)
+        await self.config.guild(guild).reinvite_on_unban.set(enabled)
+        if enabled:
             await ctx.send(
                 _("Users unbanned with {command} will be reinvited.").format(
                     command=inline(f"{ctx.clean_prefix}unban")
                 )
             )
         else:
-            await self.config.guild(guild).reinvite_on_unban.set(False)
             await ctx.send(
                 _("Users unbanned with {command} will not be reinvited.").format(
                     command=inline(f"{ctx.clean_prefix}unban")
