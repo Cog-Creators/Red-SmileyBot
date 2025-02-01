@@ -220,6 +220,15 @@ def parse_cli_flags(args):
         help="Force unloading specified cogs.",
     )
     parser.add_argument(
+        "--cog-path",
+        type=str,
+        default=[],
+        nargs="+",
+        action="extend",
+        help="Add a specific path to the list of cog paths. "
+        "This can be used multiple times to add multiple paths.",
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Makes Red quit with code 0 just before the "

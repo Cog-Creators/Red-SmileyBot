@@ -1221,6 +1221,15 @@ class Red(
                 )
             )
 
+        if self._cli_flags.cog_path:
+            for path in self._cli_flags.cog_path:
+                path = Path(path)
+                if not path.exists():
+                    log.warning("Cog path '%s' does not exist, skipping", path)
+                    continue
+                await self._cog_mgr.add_path(path)
+                log.info("Added cog path: %s", path)
+
         if packages:
             # Load permissions first, for security reasons
             try:
