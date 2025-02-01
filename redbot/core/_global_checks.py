@@ -5,4 +5,6 @@ from . import commands
 def init_global_checks(bot):
     @bot.check_once
     async def check_message_is_eligible_as_command(ctx: commands.Context) -> bool:
+        if ctx.interaction is not None:
+            return True
         return await ctx.bot.message_eligible_as_command(ctx.message)
