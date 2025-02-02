@@ -310,6 +310,7 @@ async def test_update(mocker, repo):
     new_commit = "a0ccc2390883c85a361f5a90c72e1b07958939fa"
     m = _mock_run(mocker, repo, 0)
     _mock_setup_repo(mocker, repo, new_commit)
+    mocker.patch.object(repo, "is_branch", autospec=True, return_value=True)
     mocker.patch.object(repo, "latest_commit", autospec=True, return_value=old_commit)
     mocker.patch.object(repo, "hard_reset", autospec=True, return_value=None)
     ret = await repo.update()
