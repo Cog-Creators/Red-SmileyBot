@@ -41,6 +41,7 @@ class ModSettings(MixinMeta):
         warn_mention_spam = data["mention_spam"]["warn"]
         kick_mention_spam = data["mention_spam"]["kick"]
         ban_mention_spam = data["mention_spam"]["ban"]
+        days_mention_spam = data["mention_spam"]["ban_days"]
         strict_mention_spam = data["mention_spam"]["strict"]
         respect_hierarchy = data["respect_hierarchy"]
         delete_delay = data["delete_delay"]
@@ -73,6 +74,12 @@ class ModSettings(MixinMeta):
             if ban_mention_spam
             else _("No")
         )
+        if days_mention_spam:
+            msg += _(
+                "Message history delete on mention spam ban: Previous {num_days} days\n"
+            ).format(num_days=days_mention_spam)
+        else:
+            msg += _("Message history delete on mention spam ban: Don't delete any\n")
         msg += (
             _("Mention Spam Strict: All mentions will count including duplicates\n")
             if strict_mention_spam
@@ -278,6 +285,24 @@ class ModSettings(MixinMeta):
                 "Anyone mentioning {max_mentions} or more people "
                 "in a single message will be autobanned.\n{mismatch_message}"
             ).format(max_mentions=max_mentions, mismatch_message=mismatch_message)
+        )
+
+    @mentionspam.command(name="days")
+    @commands.guild_only()
+    async def mentionspam_days(self, ctx: commands.Context, days: int = 1):
+        """
+        Set the number of days worth of messages to be deleted when a user is banned for mention spam.
+
+        The number of days must be between 0 and 7.
+        """
+        guild = ctx.guild
+        if not (0 <= days <= 7):
+            return await ctx.send(_("Invalid number of days. Must be between 0 and 7."))
+        await self.config.guild(guild).mention_spam.ban_days.set(days)
+        await ctx.send(
+            _(
+                "{days} days worth of messages will be deleted when a user is banned for spamming mentions."
+            ).format(days=days)
         )
 
     @modset.command()

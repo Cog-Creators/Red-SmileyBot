@@ -49,7 +49,7 @@ class Mod(
     }
 
     default_guild_settings = {
-        "mention_spam": {"ban": None, "kick": None, "warn": None, "strict": False},
+        "mention_spam": {"ban": None, "kick": None, "warn": None, "strict": False, "ban_days": 1},
         "delete_repeats": -1,
         "ignored": False,
         "respect_hierarchy": True,
