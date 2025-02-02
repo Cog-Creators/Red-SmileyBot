@@ -11,11 +11,13 @@ from .streamtypes import (
     Stream,
     TwitchStream,
     YoutubeStream,
+    TrovoStream,
 )
 from .errors import (
     APIError,
     InvalidTwitchCredentials,
     InvalidYoutubeCredentials,
+    InvalidTrovoCredentials,
     OfflineStream,
     StreamNotFound,
     StreamsError,
@@ -42,7 +44,7 @@ log = logging.getLogger("red.core.cogs.Streams")
 class Streams(commands.Cog):
     """Various commands relating to streaming platforms.
 
-    You can check if a Twitch, YouTube or Picarto stream is
+    You can check if a Twitch, YouTube, Picarto, or Trovo stream is
     currently live.
     """
 
@@ -242,10 +244,17 @@ class Streams(commands.Cog):
         stream = PicartoStream(_bot=self.bot, name=channel_name)
         await self.check_online(ctx, stream)
 
+    @commands.command()
+    async def trovo(self, ctx: commands.Context, channel_name: str):
+        """Check if a Trovo channel is live."""
+        token = await self.bot.get_shared_api_tokens("trovo")
+        stream = TrovoStream(name=channel_name, token=token)
+        await self.check_online(ctx, stream)
+
     async def check_online(
         self,
         ctx: commands.Context,
-        stream: Union[PicartoStream, YoutubeStream, TwitchStream],
+        stream: Union[PicartoStream, YoutubeStream, TwitchStream, TrovoStream],
     ):
         try:
             info = await stream.is_online()
@@ -264,6 +273,12 @@ class Streams(commands.Cog):
                 _(
                     "The YouTube API key is either invalid or has not been set. See {command}."
                 ).format(command=inline(f"{ctx.clean_prefix}streamset youtubekey"))
+            )
+        except InvalidTrovoCredentials:
+            await ctx.send(
+                _(
+                    "The Trovo API key is either invalid or has not been set. See {command}."
+                ).format(command=f"`{ctx.clean_prefix}streamset trovokey`")
             )
         except YoutubeQuotaExceeded:
             await ctx.send(
@@ -362,6 +377,13 @@ class Streams(commands.Cog):
     ):
         """Toggle alerts in this channel for a Picarto stream."""
         await self.stream_alert(ctx, PicartoStream, channel_name, discord_channel)
+
+    @streamalert.command(name="trovo")
+    async def trovo_alert(
+        self, ctx: commands.Context, channel_name: str, discord_channel: discord.TextChannel = None
+    ):
+        """Toggle alerts in this channel for a Trovo stream."""
+        await self.stream_alert(ctx, TrovoStream, channel_name.lower(), discord_channel)
 
     @streamalert.command(name="stop", usage="[disable_all=No]")
     async def streamalert_stop(self, ctx: commands.Context, _all: bool = False):
@@ -469,6 +491,14 @@ class Streams(commands.Cog):
                     ).format(command=inline(f"{ctx.clean_prefix}streamset youtubekey"))
                 )
                 return
+            except InvalidTrovoCredentials:
+                await ctx.send(
+                    _(
+                        "The Trovo API key is either invalid or has not been set. See "
+                        "{command}."
+                    ).format(command=f"`{ctx.clean_prefix}streamset trovokey`")
+                )
+                return
             except YoutubeQuotaExceeded:
                 await ctx.send(
                     _(
@@ -560,6 +590,29 @@ class Streams(commands.Cog):
             link3="https://support.google.com/googleapi/answer/6158862",
             command="`{}set api youtube api_key {}`".format(
                 ctx.clean_prefix, _("<your_api_key_here>")
+            ),
+        )
+
+        await ctx.maybe_send_embed(message)
+
+    @streamset.command()
+    @checks.is_owner()
+    async def trovokey(self, ctx: commands.Context):
+        """Explain how to set the Trovo token."""
+
+        message = _(
+            "To obtain and set a Trovo client ID, follow these steps:\n"
+            "1. Visit the Trovo developer portal at {link}\n"
+            '2. Click the "New Application" button in the top right\n'
+            "3. Fill out the application. The Redirect URIs should be left empty\n"
+            "4. Copy your Client ID and run the command "
+            "{command}\n\n"
+            "Note: These tokens are sensitive and should only be used in a private channel\n"
+            "or in DM with the bot.\n"
+        ).format(
+            link="https://developer.trovo.live/",
+            command="`{}set api trovo client_id {}`".format(
+                ctx.clean_prefix, _("<your_client_ID_here>")
             ),
         )
 
