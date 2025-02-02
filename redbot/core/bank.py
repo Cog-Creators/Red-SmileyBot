@@ -3,7 +3,7 @@ from __future__ import annotations
 import asyncio
 import logging
 from datetime import datetime, timezone
-from typing import Union, List, Optional, TYPE_CHECKING, Literal
+from typing import Union, List, Optional, TYPE_CHECKING, Literal, Tuple
 from functools import wraps
 
 import discord
@@ -606,27 +606,36 @@ async def get_leaderboard(positions: int = None, guild: discord.Guild = None) ->
 
 
 async def get_leaderboard_position(
-    member: Union[discord.User, discord.Member]
-) -> Union[int, None]:
+    member: Union[discord.User, discord.Member], return_lb_size: bool = False
+) -> Union[Optional[int], Tuple[Optional[int], int]]:
     """
-    Get the leaderboard position for the specified user
+     Get the leaderboard position for the specified user
 
-    Parameters
-    ----------
-    member : `discord.User` or `discord.Member`
-        The user to get the leaderboard position of
+     Parameters
+     ----------
+     member : `discord.User` or `discord.Member`
+         The user to get the leaderboard position of
 
-    Returns
-    -------
-    `int`
-        The position of the user on the leaderboard
+     return_lb_size : bool
+         Whether or not to return a tuple with position and size of leaderboard
 
-    Raises
-    ------
-    TypeError
-        If the bank is currently guild-specific and a `discord.User` object was passed in
+
+     Returns
+     -------
+     `int`
+         The position of the user on the leaderboard
+
+    Tuple[Optional[int], int]
+         The position of the user on the leaderboard followed
+         by the size of the leaderboard
+
+     Raises
+     ------
+     TypeError
+         If the bank is currently guild-specific and a `discord.User` object was passed in
 
     """
+
     if await is_global():
         guild = None
     else:
@@ -638,9 +647,13 @@ async def get_leaderboard_position(
     else:
         pos = discord.utils.find(lambda x: x[1][0] == member.id, enumerate(leaderboard, 1))
         if pos is None:
-            return None
+            return_pos = None
         else:
-            return pos[0]
+            return_pos = pos[0]
+    if return_lb_size is True:
+        return return_pos, len(leaderboard)
+    else:
+        return return_pos
 
 
 async def get_account(member: Union[discord.Member, discord.User]) -> Account:
