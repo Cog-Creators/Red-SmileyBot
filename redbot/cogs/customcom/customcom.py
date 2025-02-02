@@ -71,6 +71,10 @@ class CommandObj:
                         com_info["author"]["id"] = 0xDE1
                         com_info["author"]["name"] = "Deleted User"
 
+                    if com_info.get("last_editor", {}).get("id", 0) == user_id:
+                        com_info["last_editor"]["id"] = 0xDE1
+                        com_info["last_editor"]["name"] = "Deleted User"
+
                     if editors := com_info.get("editors", None):
                         for index, editor_id in enumerate(editors):
                             if editor_id == user_id:
@@ -156,6 +160,7 @@ class CommandObj:
             "command": command,
             "cooldowns": {},
             "created_at": self.get_now(),
+            "last_editor": None,
             "editors": [],
             "response": response,
         }
@@ -177,7 +182,7 @@ class CommandObj:
         if not ccinfo:
             raise NotFound()
 
-        author = ctx.message.author
+        editor = ctx.message.author
 
         if ask_for and not response:
             await ctx.send(_("Do you want to create a 'randomized' custom command?") + " (yes/no)")
@@ -214,10 +219,11 @@ class CommandObj:
                 if value <= 0:
                     del ccinfo["cooldowns"][key]
 
-        if author.id not in ccinfo["editors"]:
+        ccinfo["last_editor"] = {"id": editor.id, "name": str(editor)}
+        if editor.id not in ccinfo["editors"]:
             # Add the person who invoked the `edit` coroutine to the list of
             # editors, if the person is not yet in there
-            ccinfo["editors"].append(author.id)
+            ccinfo["editors"].append(editor.id)
 
         ccinfo["edited_at"] = self.get_now()
 
@@ -580,7 +586,7 @@ class CustomCommands(commands.Cog):
             pages = list(map(box, pagify(content, page_length=2000, shorten_by=10)))
             await menus.menu(ctx, pages)
 
-    @customcom.command(name="show")
+    @customcom.command(name="show", aliases=["info"])
     async def cc_show(self, ctx, command_name: str):
         """Shows a custom command's responses and its settings.
 
@@ -609,15 +615,36 @@ class CustomCommands(commands.Cog):
         else:
             author = f"{cmd['author']['name']} ({_aid})"
 
+        if cmd.get("last_editor") or cmd["editors"]:
+            if cmd.get("last_editor"):
+                _leid = cmd["last_editor"]["id"]
+            else:
+                _leid = cmd["editors"][-1]
+            if _leid == 0xDE1:
+                last_editor = _("Deleted User")
+            elif member := ctx.guild.get_member(_leid):
+                last_editor = f"{member} ({_leid})"
+            elif cmd.get("last_editor"):
+                author = f"{cmd['last_editor']['name']} ({_leid})"
+            else:
+                last_editor = _("Member not found. ({_leid})").format(_leid=_leid)
+        else:
+            last_editor = _("Never edited.")
+
         _type = _("Random") if len(responses) > 1 else _("Normal")
 
         text = _(
             "Command: {command_name}\n"
             "Author: {author}\n"
+            "Last editor: {last_editor}\n"
             "Created: {created_at}\n"
             "Type: {type}\n"
         ).format(
-            command_name=command_name, author=author, created_at=cmd["created_at"], type=_type
+            command_name=command_name,
+            author=author,
+            last_editor=last_editor,
+            created_at=cmd["created_at"],
+            type=_type,
         )
 
         cooldowns = cmd.get("cooldowns", {})
