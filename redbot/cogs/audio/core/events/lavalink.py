@@ -234,6 +234,8 @@ class LavalinkEvents(MixinMeta, metaclass=CompositeMetaClass):
                 if notify_channel and notify and self._has_notify_perms(notify_channel):
                     await self.send_embed_msg(notify_channel, title=_("Queue ended."))
                 if disconnect:
+                    delay = guild_data["emptyqueuedc_timer"]
+                    await asyncio.sleep(delay)
                     log.debug(
                         "Queue ended for %s, Disconnecting bot due to configuration", guild_id
                     )
