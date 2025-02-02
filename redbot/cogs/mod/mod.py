@@ -63,7 +63,7 @@ class Mod(
         "track_nicknames": True,
     }
 
-    default_channel_settings = {"ignored": False}
+    default_channel_settings = {"ignored": False, "delete_repeats": 0}
 
     default_member_settings = {"past_nicks": [], "perms_cache": {}, "banned_until": False}
 
