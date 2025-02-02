@@ -66,6 +66,9 @@ Keys specific to the cog info.json (case sensitive)
 - ``min_python_version`` (list of integers) - Min version number of Python
   in the format ``[MAJOR, MINOR, PATCH]``
 
+- ``max_python_version`` (list of integers) - Max version number of Python
+  in the format ``[MAJOR, MINOR, PATCH]``
+
 - ``hidden`` (bool) - Determines if a cog is visible in the cog list for a repo.
 
 - ``disabled`` (bool) - Determines if a cog is available for install.

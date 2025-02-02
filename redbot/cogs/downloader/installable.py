@@ -52,6 +52,8 @@ class Installable(RepoJSONMixin):
         Ignored if `min_bot_version` is newer than `max_bot_version`.
     min_python_version : `tuple` of `int`
         The minimum python version required for this cog.
+    max_python_version : `tuple` of `int`
+        The maximum python version allowed for this cog.
     hidden : `bool`
         Whether or not this cog will be hidden from the user when they use
         `Downloader`'s commands.
@@ -91,6 +93,7 @@ class Installable(RepoJSONMixin):
         self.min_bot_version: VersionInfo
         self.max_bot_version: VersionInfo
         self.min_python_version: Tuple[int, int, int]
+        self.max_python_version: Tuple[int, int, int]
         self.hidden: bool
         self.disabled: bool
         self.required_cogs: Dict[str, str]  # Cog name -> repo URL

@@ -1521,12 +1521,25 @@ class Downloader(commands.Cog):
         outdated_python_version: List[str] = []
         outdated_bot_version: List[str] = []
         for cog in cogs:
-            if cog.min_python_version > sys.version_info:
+            ignore_max = cog.min_bot_version > cog.max_bot_version
+            if (
+                cog.min_python_version > sys.version_info
+                or not ignore_max
+                and cog.max_python_version < sys.version_info
+            ):
                 outdated_python_version.append(
                     inline(cog.name)
-                    + _(" (Minimum: {min_version})").format(
+                    + _(" (Minimum: {min_version}").format(
                         min_version=".".join([str(n) for n in cog.min_python_version])
                     )
+                    + (
+                        ""
+                        if ignore_max
+                        else _(", at most: {max_version}").format(
+                            max_version=".".join([str(n) for n in cog.min_python_version])
+                        )
+                    )
+                    + ")"
                 )
                 continue
             ignore_max = cog.min_bot_version > cog.max_bot_version
@@ -1550,19 +1563,28 @@ class Downloader(commands.Cog):
         message = ""
         if outdated_python_version:
             message += (
-                _("\nThese cogs require higher python version than you have: ")
-                if len(outdated_python_version)
-                else _("\nThis cog requires higher python version than you have: ")
-            ) + humanize_list(outdated_python_version)
+                _(
+                    "\nThese cogs require a different Python version"
+                    " than you currently have ({current_version}): "
+                )
+                if len(outdated_python_version) > 1
+                else _(
+                    "\nThis cog requires a different Python version than you currently"
+                    " have ({current_version}): "
+                )
+            ).format(current_version=".".join(sys.version_info[:3])) + humanize_list(
+                outdated_python_version
+            )
+
         if outdated_bot_version:
             message += (
                 _(
-                    "\nThese cogs require different Red version"
+                    "\nThese cogs require a different Red version"
                     " than you currently have ({current_version}): "
                 )
                 if len(outdated_bot_version) > 1
                 else _(
-                    "\nThis cog requires different Red version than you currently "
+                    "\nThis cog requires a different Red version than you currently "
                     "have ({current_version}): "
                 )
             ).format(current_version=red_version_info) + humanize_list(outdated_bot_version)
