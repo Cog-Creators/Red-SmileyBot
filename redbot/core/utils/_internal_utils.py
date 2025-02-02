@@ -252,7 +252,7 @@ async def create_backup(dest: Path = Path.home()) -> Optional[Path]:
     for f in data_path.glob("**/*"):
         if not any(ex in str(f) for ex in exclusions) and f.is_file():
             to_backup.append(f)
-
+    to_backup.append(repos_file)  # manually include this file because the code above excludes it
     with tarfile.open(str(backup_fpath), "w:gz") as tar:
         for f in to_backup:
             tar.add(str(f), arcname=str(f.relative_to(data_path)), recursive=False)
