@@ -14,16 +14,15 @@ from typing import Dict, Any, Optional, Union
 
 import click
 
-from redbot.core._cli import confirm
+from redbot.core._cli import cli_level_to_log_level, confirm
 from redbot.core.utils._internal_utils import (
     safe_delete,
     create_backup as red_create_backup,
-    cli_level_to_log_level,
 )
-from redbot.core import config, data_manager
+from redbot.core import config, data_manager, _data_manager
 from redbot.core._config import migrate
 from redbot.core._cli import ExitCodes
-from redbot.core.data_manager import appdir, config_dir, config_file
+from redbot.core._data_manager import appdir, config_dir, config_file
 from redbot.core._drivers import (
     BackendType,
     IdentifierData,
@@ -39,7 +38,7 @@ except PermissionError:
     print("You don't have permission to write to '{}'\nExiting...".format(config_dir))
     sys.exit(ExitCodes.CONFIGURATION_ERROR)
 
-instance_data = data_manager.load_existing_config()
+instance_data = _data_manager.load_existing_config()
 if instance_data is None:
     instance_list = []
 else:
@@ -47,7 +46,7 @@ else:
 
 
 def save_config(name, data, remove=False):
-    _config = data_manager.load_existing_config()
+    _config = _data_manager.load_existing_config()
     if remove and name in _config:
         _config.pop(name)
     else:
@@ -211,7 +210,7 @@ def basic_setup(
         instance_name=name, data_path=data_path, interactive=interactive
     )
 
-    default_dirs = deepcopy(data_manager.basic_config_default)
+    default_dirs = deepcopy(_data_manager.basic_config_default)
     default_dirs["DATA_PATH"] = default_data_dir
 
     storage_type = get_storage_type(backend, interactive=interactive)
@@ -285,7 +284,7 @@ async def do_migration(
 
 
 async def create_backup(instance: str, destination_folder: Path = Path.home()) -> None:
-    data_manager.load_basic_configuration(instance)
+    _data_manager.load_basic_configuration(instance)
     backend_type = get_current_backend(instance)
     if backend_type != BackendType.JSON:
         await do_migration(backend_type, BackendType.JSON)
@@ -308,7 +307,7 @@ async def remove_instance(
     drop_db: Optional[bool] = None,
     remove_datapath: Optional[bool] = None,
 ) -> None:
-    data_manager.load_basic_configuration(instance)
+    _data_manager.load_basic_configuration(instance)
     backend = get_current_backend(instance)
 
     if interactive is True and delete_data is None:
@@ -340,7 +339,7 @@ async def remove_instance(
         )
 
     if remove_datapath is True:
-        data_path = data_manager.core_data_path().parent
+        data_path = data_manager.data_path()
         safe_delete(data_path)
 
     save_config(instance, {}, remove=True)
@@ -528,9 +527,9 @@ def convert(instance: str, backend: str) -> None:
     """Convert data backend of an instance."""
     current_backend = get_current_backend(instance)
     target = get_target_backend(backend)
-    data_manager.load_basic_configuration(instance)
+    _data_manager.load_basic_configuration(instance)
 
-    default_dirs = deepcopy(data_manager.basic_config_default)
+    default_dirs = deepcopy(_data_manager.basic_config_default)
     default_dirs["DATA_PATH"] = str(Path(instance_data[instance]["DATA_PATH"]))
 
     if current_backend == BackendType.MONGOV1:

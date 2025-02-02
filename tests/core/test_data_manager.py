@@ -4,7 +4,7 @@ from pathlib import Path
 import pytest
 
 from redbot.pytest.data_manager import *
-from redbot.core import data_manager
+from redbot.core import _data_manager, data_manager
 
 
 def test_no_basic(cog_instance):
@@ -20,6 +20,6 @@ def test_core_path(data_mgr_config, tmpdir):
     conf_path = tmpdir.join("config.json")
     conf_path.write(json.dumps(data_mgr_config))
 
-    data_manager.load_basic_configuration(Path(str(conf_path)))
+    _data_manager.load_basic_configuration(Path(str(conf_path)))
 
     assert data_manager.core_data_path().parent == Path(data_mgr_config["BASE_DIR"])

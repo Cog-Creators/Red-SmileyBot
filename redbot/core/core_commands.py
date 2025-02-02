@@ -4794,10 +4794,9 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
     @commands.is_owner()
     async def datapath(self, ctx: commands.Context):
         """Prints the bot's data path."""
-        from redbot.core.data_manager import basic_config
+        from redbot.core.data_manager import data_path
 
-        data_dir = Path(basic_config["DATA_PATH"])
-        msg = _("Data path: {path}").format(path=data_dir)
+        msg = _("Data path: {path}").format(path=data_path())
         await ctx.send(box(msg))
 
     @commands.command(hidden=True)

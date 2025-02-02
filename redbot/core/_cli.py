@@ -7,8 +7,7 @@ from typing import Optional
 
 import discord
 from discord import __version__ as discord_version
-
-from redbot.core.utils._internal_utils import cli_level_to_log_level
+from red_commons.logging import VERBOSE, TRACE
 
 
 # This needs to be an int enum to be used
@@ -338,3 +337,15 @@ def parse_cli_flags(args):
     args.logging_level = cli_level_to_log_level(args.logging_level)
 
     return args
+
+
+def cli_level_to_log_level(level: int) -> int:
+    if level == 0:
+        log_level = logging.INFO
+    elif level == 1:
+        log_level = logging.DEBUG
+    elif level == 2:
+        log_level = VERBOSE
+    else:
+        log_level = TRACE
+    return log_level
