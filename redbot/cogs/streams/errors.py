@@ -9,6 +9,10 @@ class StreamNotFound(StreamsError):
     pass
 
 
+class TwitchTeamNotFound(StreamsError):
+    pass
+
+
 class APIError(StreamsError):
     def __init__(self, status_code: int, raw_data: Any) -> None:
         self.status_code = status_code

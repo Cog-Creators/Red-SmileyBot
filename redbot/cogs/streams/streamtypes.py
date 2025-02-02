@@ -19,6 +19,7 @@ from .errors import (
     InvalidTwitchCredentials,
     InvalidYoutubeCredentials,
     StreamNotFound,
+    TwitchTeamNotFound,
     YoutubeQuotaExceeded,
 )
 from redbot.core.i18n import Translator
@@ -27,6 +28,7 @@ from redbot.core.utils.chat_formatting import humanize_number, humanize_timedelt
 TWITCH_BASE_URL = "https://api.twitch.tv"
 TWITCH_ID_ENDPOINT = TWITCH_BASE_URL + "/helix/users"
 TWITCH_STREAMS_ENDPOINT = TWITCH_BASE_URL + "/helix/streams/"
+TWITCH_TEAMS_ENDPOINT = TWITCH_BASE_URL + "/helix/teams"
 TWITCH_FOLLOWS_ENDPOINT = TWITCH_BASE_URL + "/helix/channels/followers"
 
 YOUTUBE_BASE_URL = "https://www.googleapis.com/youtube/v3"
@@ -302,13 +304,11 @@ class YoutubeStream(Stream):
         return "<{0.__class__.__name__}: {0.name} (ID: {0.id})>".format(self)
 
 
-class TwitchStream(Stream):
+class TwitchMeta(Stream):
     token_name = "twitch"
     platform_name = "Twitch"
 
     def __init__(self, **kwargs):
-        self.id = kwargs.pop("id", None)
-        self._display_name = None
         self._client_id = kwargs.pop("token", None)
         self._bearer = kwargs.pop("bearer", None)
         self._rate_limit_resets: set = set()
@@ -370,6 +370,16 @@ class TwitchStream(Stream):
             except (aiohttp.ClientConnectionError, asyncio.TimeoutError) as exc:
                 log.warning("Connection error occurred when fetching Twitch stream", exc_info=exc)
                 return None, {}
+
+
+class TwitchStream(TwitchMeta):
+    token_name = "twitch"
+    platform_name = "Twitch"
+
+    def __init__(self, **kwargs):
+        self.id = kwargs.pop("id", None)
+        self._display_name = None
+        super().__init__(**kwargs)
 
     async def is_online(self):
         user_profile_data = None
@@ -435,7 +445,8 @@ class TwitchStream(Stream):
         else:
             raise APIError(code, data)
 
-    def make_embed(self, data):
+    @staticmethod
+    def make_embed(data):
         is_rerun = data["type"] == "rerun"
         url = f"https://www.twitch.tv/{data['login']}" if data["login"] is not None else None
         logo = data["profile_image_url"]
@@ -508,4 +519,102 @@ class PicartoStream(Stream):
             data["adult"] = ""
 
         embed.set_footer(text=_("{adult}Category: {category} | Tags: {tags}").format(**data))
+        return embed
+
+
+class TwitchTeam(TwitchMeta):
+    def __init__(self, **kwargs):
+        self.id = kwargs.pop("id", None)
+        self._display_name = None
+        super().__init__(**kwargs)
+
+    async def _request_team_member_data(
+        self, team_members: List[dict]
+    ) -> List[Tuple[discord.Embed, bool]]:
+        user_ids = []
+        orig = team_members
+        for member in team_members:
+            user_ids.append(member["user_id"])
+
+        embeds = []
+
+        while user_ids:
+            current = user_ids[:100]
+            users_code, users_data = await self.get_data(TWITCH_ID_ENDPOINT, {"id": current})
+            streams_code, streams_data = await self.get_data(
+                TWITCH_STREAMS_ENDPOINT, {"user_id": current}
+            )
+            if users_code == 200 and streams_code == 200:
+                for user in users_data["data"]:
+                    stream_data = {}
+                    for stream in streams_data["data"]:
+                        if user["id"] == stream["user_id"]:
+                            stream_data = stream
+                            break
+                    else:
+                        continue
+
+                    final_data = dict.fromkeys(
+                        ("game_name", "followers", "login", "profile_image_url", "view_count")
+                    )
+
+                    final_data["login"] = user["login"]
+                    final_data["profile_image_url"] = user["profile_image_url"]
+                    final_data["view_count"] = user["view_count"]
+
+                    final_data["user_name"] = stream_data["user_name"]
+                    final_data["game_name"] = stream_data["game_name"]
+                    final_data["thumbnail_url"] = stream_data["thumbnail_url"]
+                    final_data["title"] = stream_data["title"]
+                    final_data["type"] = stream_data["type"]
+
+                    __, follows_data = await self.get_data(
+                        TWITCH_FOLLOWS_ENDPOINT, {"to_id": user["id"]}
+                    )
+                    if follows_data:
+                        final_data["followers"] = follows_data["total"]
+
+                    embeds.append(
+                        (TwitchStream.make_embed(final_data), final_data["type"] == "rerun")
+                    )
+                user_ids = user_ids[100:]
+            elif users_code == 401 or streams_code == 401:
+                raise InvalidTwitchCredentials()
+            else:
+                raise APIError(users_code, users_data)
+
+        return embeds
+
+    async def check_online_team(self):
+        team_members = []
+
+        team_code, team_data = await self.get_data(TWITCH_TEAMS_ENDPOINT, {"name": self.name})
+        if team_code == 200:
+            team_data = team_data["data"][0]
+            final_data = dict.fromkeys(
+                ("team_display_name", "info", "background_image_url", "thumbnail_url")
+            )
+            final_data["team_display_name"] = team_data["team_display_name"]
+            final_data["info"] = team_data["info"]
+            final_data["background_image_url"] = team_data["background_image_url"]
+            final_data["thumbnail_url"] = team_data["thumbnail_url"]
+            online_members = await self._request_team_member_data(team_data["users"])
+            final_data["online_members"] = online_members
+
+            return self.make_embed(final_data), online_members
+
+        elif team_code == 401:
+            raise InvalidTwitchCredentials()
+        elif team_code == 404:
+            raise TwitchTeamNotFound()
+        else:
+            raise APIError(team_code, team_data)
+
+    @staticmethod
+    def make_embed(data):
+        embed = discord.Embed(title=data["team_display_name"], color=0x6441A4)
+        embed.set_thumbnail(url=data["thumbnail_url"])
+        embed.set_image(url=data["background_image_url"])
+        embed.add_field(name=_("Info"), value=data["info"], inline=False)
+        embed.add_field(name=_("Online members"), value=len(data["online_members"]), inline=False)
         return embed
