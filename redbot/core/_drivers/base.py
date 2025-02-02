@@ -6,7 +6,11 @@ import rich.progress
 
 from redbot.core.utils._internal_utils import RichIndefiniteBarColumn
 
-__all__ = ["BaseDriver", "IdentifierData", "ConfigCategory"]
+__all__ = ("BaseDriver", "IdentifierData", "ConfigCategory", "MissingExtraRequirements")
+
+
+class MissingExtraRequirements(Exception):
+    """Raised when an extra requirement is missing but required."""
 
 
 class ConfigCategory(str, enum.Enum):

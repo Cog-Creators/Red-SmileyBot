@@ -162,6 +162,7 @@
   - any:
       - redbot/core/_drivers/**/*
       - "!redbot/core/_drivers/**/locales/*"
+  - redbot/core/_config.py
   - redbot/core/config.py
   # Docs
   - docs/framework_config.rst
@@ -215,6 +216,7 @@
   - redbot/core/commands/help.py
 "Category: Core - i18n":
   # Source
+  - redbot/core/_i18n.py
   - redbot/core/i18n.py
   # Locale files
   - redbot/**/locales/*

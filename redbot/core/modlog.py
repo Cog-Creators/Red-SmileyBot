@@ -120,7 +120,7 @@ async def _init(bot: Red):
     bot.add_listener(on_audit_log_entry_create)
 
 
-async def handle_auditype_key():
+async def _handle_audit_type_key():
     all_casetypes = {
         casetype_name: {
             inner_key: inner_value
@@ -162,7 +162,7 @@ async def _migrate_config(from_version: int, to_version: int):
             )
 
     if from_version < 3 <= to_version:
-        await handle_auditype_key()
+        await _handle_audit_type_key()
         await _config.schema_version.set(3)
 
     if from_version < 4 <= to_version:

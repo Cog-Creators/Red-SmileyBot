@@ -37,7 +37,7 @@ import discord
 from discord.ext import commands as dpy_commands
 from discord.ext.commands import when_mentioned_or
 
-from . import Config, i18n, app_commands, commands, errors, _drivers, modlog, bank
+from . import Config, _i18n, i18n, app_commands, commands, errors, _drivers, modlog, bank
 from ._cli import ExitCodes
 from ._cog_manager import CogManager, CogManagerUI
 from .core_commands import Core
@@ -1156,9 +1156,9 @@ class Red(
             self.owner_ids.add(self._owner_id_overwrite)
 
         i18n_locale = await self._config.locale()
-        i18n.set_locale(i18n_locale)
+        _i18n.set_global_locale(i18n_locale)
         i18n_regional_format = await self._config.regional_format()
-        i18n.set_regional_format(i18n_regional_format)
+        _i18n.set_global_regional_format(i18n_regional_format)
 
     async def _pre_connect(self) -> None:
         """

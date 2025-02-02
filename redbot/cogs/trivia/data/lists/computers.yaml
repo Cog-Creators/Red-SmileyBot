@@ -235,8 +235,10 @@ Which device allows your computer to talk to other computers over a telephone li
 - Modem
 Which subnet mask would be used as the classful mask for the IP address 128.107.52.27?:
 - 255.255.0.0
+- /16
 Which subnet mask would be used as the classful mask for the IP address 192.135.250.27?:
 - 255.255.255.0
+- /24
 Which value represents the “trustworthiness” of a route and is used to determine which route to install into the routing table when there are multiple routes toward the same destination?:
 - Administrative distance
 Who invented the computer mouse?:

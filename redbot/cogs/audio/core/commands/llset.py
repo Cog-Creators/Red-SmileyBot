@@ -10,10 +10,11 @@ from red_commons.logging import getLogger
 from redbot.core import commands
 from redbot.core.data_manager import cog_data_path
 from redbot.core.i18n import Translator
-from redbot.core.utils.chat_formatting import box, inline
+from redbot.core.utils.chat_formatting import box, humanize_list, inline
 
 from ..abc import MixinMeta
 from ..cog_utils import CompositeMetaClass
+from ...managed_node import version_pins
 from ...utils import (
     MAX_JAVA_RAM,
     DEFAULT_LAVALINK_YAML,
@@ -27,6 +28,16 @@ from ...utils import (
 
 log = getLogger("red.cogs.Audio.cog.Commands.lavalink_setup")
 _ = Translator("Audio", Path(__file__))
+
+
+class LavalinkSetupJavaCommand(commands.Command):
+    def format_text_for_context(self, ctx: commands.Context, text: str) -> str:
+        text = super().format_text_for_context(ctx, text)
+        return text.format(
+            supported_java_versions=humanize_list(
+                list(map(str, version_pins.SUPPORTED_JAVA_VERSIONS))
+            ),
+        )
 
 
 class LavalinkSetupCommands(MixinMeta, metaclass=CompositeMetaClass):
@@ -43,7 +54,7 @@ class LavalinkSetupCommands(MixinMeta, metaclass=CompositeMetaClass):
         All the commands in here have the potential to break the Audio cog.
         """
 
-    @command_llset.command(name="java")
+    @command_llset.command(name="java", cls=LavalinkSetupJavaCommand)
     @has_managed_server()
     async def command_llset_java(self, ctx: commands.Context, *, java_path: str = "java"):
         """Change your Java executable path.
@@ -51,7 +62,7 @@ class LavalinkSetupCommands(MixinMeta, metaclass=CompositeMetaClass):
         This command shouldn't need to be used most of the time, and is only useful if the host machine has conflicting Java versions.
 
         If changing this make sure that the Java executable you set is supported by Audio.
-        The current supported versions are Java 17 and 11.
+        The current supported versions are Java {supported_java_versions}.
 
         Enter nothing or "java" to reset it back to default.
         """

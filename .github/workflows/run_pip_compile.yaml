@@ -15,7 +15,7 @@ jobs:
           - macos-latest
     steps:
       - name: Checkout the repository.
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python 3.8.
         uses: actions/setup-python@v4
@@ -48,7 +48,7 @@ jobs:
           python .github/workflows/scripts/compile_requirements.py
 
       - name: Upload requirements files.
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.compile_requirements.outputs.sys_platform }}
           path: requirements/${{ steps.compile_requirements.outputs.sys_platform }}-*.txt
@@ -59,7 +59,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the repository.
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python 3.8.
         uses: actions/setup-python@v4
@@ -71,17 +71,17 @@ jobs:
           python -m pip install -U "packaging>=22.0"
 
       - name: Download Windows requirements.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: win32
           path: requirements
       - name: Download Linux requirements.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: linux
           path: requirements
       - name: Download macOS requirements.
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: darwin
           path: requirements
@@ -91,7 +91,7 @@ jobs:
           python .github/workflows/scripts/merge_requirements.py
 
       - name: Upload merged requirements files.
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: merged
           path: |
