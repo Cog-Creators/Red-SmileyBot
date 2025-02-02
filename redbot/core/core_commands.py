@@ -18,6 +18,9 @@ import pip
 import traceback
 from pathlib import Path
 from collections import defaultdict
+
+from red_commons.logging import getLogger, VERBOSE, TRACE
+
 from redbot.core import app_commands, data_manager
 from redbot.core.utils.menus import menu
 from redbot.core.utils.views import SetApiView
@@ -110,7 +113,7 @@ if TYPE_CHECKING:
 
 __all__ = ["Core"]
 
-log = logging.getLogger("red")
+log = getLogger("red")
 
 _ = i18n.Translator("Core", __file__)
 
@@ -4267,6 +4270,42 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
             content = _("Successfully reset the error message back to the default one.")
 
         await ctx.send(content)
+
+    @_set.command(name="logging")
+    @commands.is_owner()
+    async def _set_logging(self, ctx: commands.Context, level: int, name: str = None):
+        """Change the logging level for a logger. if no name is provided, the root logger (red) is used.
+
+        Levels are the following:
+        0: Critical
+        1: Error
+        2: Warning
+        3: Info
+        4: Debug
+        5: Verbose
+        6: Trace
+        """
+        if name is None:
+            name = "red"
+        level_map = {
+            0: logging.CRITICAL,
+            1: logging.ERROR,
+            2: logging.WARNING,
+            3: logging.INFO,
+            4: logging.DEBUG,
+            5: VERBOSE,
+            6: TRACE,
+        }
+        if level not in level_map:
+            await ctx.send_help()
+            return
+        logger = getLogger(name)
+        logger.setLevel(level_map[level])
+        await ctx.maybe_send_embed(
+            _("Logger {name} level set to `{level}`.").format(
+                level=logging.getLevelName(logger.level), name=name
+            )
+        )
 
     @commands.group()
     @commands.is_owner()
