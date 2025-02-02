@@ -1,4 +1,5 @@
 import asyncio
+import aiohttp
 import logging
 from typing import Tuple, Union
 
@@ -320,6 +321,65 @@ class Admin(commands.Cog):
             return
         try:
             await role.edit(reason=reason, name=name)
+        except discord.Forbidden:
+            await ctx.send(_(GENERIC_FORBIDDEN))
+        else:
+            log.info(reason)
+            await ctx.send(_("Done."))
+
+    @editrole.command(name="icon")
+    async def edit_role_icon(
+        self,
+        ctx: commands.Context,
+        role: discord.Role,
+        icon: Union[discord.Emoji, discord.PartialEmoji, str],
+    ):
+        """
+        Edit a role's icon.
+
+        Use double quotes if the role contains spaces.
+
+        Example:
+            `[p]editrole icon "The Transistor" <:red:230319279424143360>`
+            `[p]editrole icon "The Transistor" https://cdn.discordapp.com/emojis/230319279424143360.webp`
+        """
+        author = ctx.message.author
+        reason = "{}({}) changed the icon of role '{}'".format(author.name, author.id, role.name)
+
+        if "ROLE_ICONS" not in ctx.guild.features:
+            await ctx.send(_("This server does not have support for the role icons feature."))
+            return
+
+        if not self.pass_user_hierarchy_check(ctx, role):
+            await ctx.send(_(ROLE_USER_HIERARCHY_ISSUE).format(role=role))
+            return
+        if not self.pass_hierarchy_check(ctx, role):
+            await ctx.send(_(ROLE_HIERARCHY_ISSUE).format(role=role))
+            return
+        if not ctx.guild.me.guild_permissions.manage_roles:
+            await ctx.send(_(NEED_MANAGE_ROLES))
+            return
+
+        if ctx.message.attachments:
+            image = await ctx.message.attachments[0].read()
+        elif isinstance(icon, discord.Emoji):
+            image = await icon.read()
+        elif isinstance(icon, discord.PartialEmoji) and icon.is_custom_emoji():
+            image = await icon.read()
+        elif isinstance(icon, str) and icon.startswith("http"):
+            try:
+                async with aiohttp.ClientSession() as session:
+                    async with session.get(url=icon, raise_for_status=True) as response:
+                        image = await response.read()
+            except aiohttp.ClientResponseError as error:
+                await ctx.send(_("Invalid url provided: {}").format(error.message))
+                return
+        else:
+            await ctx.send(_(f"Please provide a valid emoji or link for the role icon."))
+            return
+
+        try:
+            await role.edit(reason=reason, display_icon=image)
         except discord.Forbidden:
             await ctx.send(_(GENERIC_FORBIDDEN))
         else:
