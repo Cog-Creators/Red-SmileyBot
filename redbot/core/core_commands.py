@@ -3704,8 +3704,22 @@ class Core(commands.commands._RuleDropper, commands.Cog, CoreLogic):
         else:
             if ctx.bot_permissions.manage_messages:
                 await ctx.message.delete()
+            embed = discord.Embed()
+            for api_service_name, token in tokens.items():
+                if token.startswith("<") and token.endswith(">"):
+                    angle_bracket_warning = (
+                        "You may have failed to properly format your {api_service_name}. If you were told to enter a key"
+                        " with an example such as [p]set api {service} api_key <your_api_key_here>, and your API key"
+                        " was HREDFGWE, make sure to run [p]set api {service} api_key HREDFGWE, and not "
+                        " [p]set api {service} api_key <HREDFGWE>"
+                    ).format(api_service_name=api_service_name, service=service)
+                    log.warning(angle_bracket_warning)
+                    embed.add_field(name=_("Warning"), value=_(angle_bracket_warning))
             await ctx.bot.set_shared_api_tokens(service, **tokens)
-            await ctx.send(_("`{service}` API tokens have been set.").format(service=service))
+            await ctx.send(
+                _("`{service}` API tokens have been set.").format(service=service),
+                embed=embed if len(embed.fields) > 0 else None,
+            )
 
     @_set_api.command(name="list")
     async def _set_api_list(self, ctx: commands.Context):
