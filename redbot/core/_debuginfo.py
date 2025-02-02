@@ -165,6 +165,12 @@ class DebugInfo:
             # and calling repr() on prefix strings ensures that the list isn't ambiguous.
             prefixes = ", ".join(map(repr, await self.bot._config.prefix()))
             parts.append(f"Global prefix(es): {prefixes}")
+            core_cogs = set(self.bot._cog_mgr.available_core_cogs())
+            overridden_core_cogs = set()
+            for cog_name, is_from_core_path in await self.bot._cog_mgr.available_cogs():
+                if not is_from_core_path and cog_name in core_cogs:
+                    overridden_core_cogs.add(cog_name)
+            parts.append(f"Overridden core cogs: {', '.join(overridden_core_cogs) or 'None'}")
 
         if self.is_logged_in:
             owners = []
