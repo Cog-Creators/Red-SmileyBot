@@ -1,6 +1,6 @@
 .. Red changelogs
 
-Redbot 3.5.15 (2024-02-03)
+Redbot 3.5.15 (2025-02-03)
 ==========================
 
 | Thanks to all these amazing people that contributed to this release:
