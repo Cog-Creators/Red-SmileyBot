@@ -115,7 +115,7 @@ class Red(
             owner=None,
             whitelist=[],
             blacklist=[],
-            locale="en-US",
+            locale=_i18n.FRESH_INSTALL_LOCALE,
             regional_format=None,
             embeds=True,
             color=15158332,
@@ -1145,9 +1145,26 @@ class Red(
             self.owner_ids.add(self._owner_id_overwrite)
 
         i18n_locale = await self._config.locale()
-        _i18n.set_global_locale(i18n_locale)
+        try:
+            _i18n.set_global_locale(i18n_locale)
+        except ValueError:
+            i18n_locale = _i18n.FRESH_INSTALL_LOCALE
+            await self._config.locale.clear()
+            log.warning(
+                "The bot's global locale was set to an invalid value and has been reset"
+                " to default (%s).",
+                i18n_locale,
+            )
         i18n_regional_format = await self._config.regional_format()
-        _i18n.set_global_regional_format(i18n_regional_format)
+        try:
+            _i18n.set_global_regional_format(i18n_regional_format)
+        except ValueError:
+            await self._config.regional_format.clear()
+            log.warning(
+                "The bot's global regional format was set to an invalid value and has been reset"
+                " to default (which is to inherit global locale, i.e. %s).",
+                i18n_locale,
+            )
 
     async def _pre_connect(self) -> None:
         """

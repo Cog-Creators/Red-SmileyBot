@@ -22,8 +22,9 @@ __all__ = (
 )
 
 
+FRESH_INSTALL_LOCALE = "en-US"
 current_locale = ContextVar("current_locale")
-current_locale_default = "en-US"
+current_locale_default = FRESH_INSTALL_LOCALE
 current_regional_format = ContextVar("current_regional_format")
 current_regional_format_default = None
 
