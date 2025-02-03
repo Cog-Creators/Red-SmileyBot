@@ -16,6 +16,13 @@ def test_config_register_global_badvalues(config):
         config.register_global(**{"invalid var name": True})
 
 
+def test_config_register_reserved_keys(config):
+    config.register_global(**{"group": {"value": True}, "value": True})
+    for attr in [*dir(config), *dir(config.group), *dir(config.value)]:
+        with pytest.raises(RuntimeError):
+            config.register_global(**{attr: True})
+
+
 async def test_config_register_guild(config, empty_guild):
     config.register_guild(enabled=False, some_list=[], some_dict={})
     assert config.defaults[config.GUILD]["enabled"] is False
