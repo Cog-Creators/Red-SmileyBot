@@ -1,5 +1,46 @@
 .. Red changelogs
 
+Redbot 3.5.15 (2024-02-03)
+==========================
+
+| Thanks to all these amazing people that contributed to this release:
+| :ghuser:`aikaterna`, :ghuser:`Flame442`, :ghuser:`Jackenmen`, :ghuser:`Kowlin`
+
+Read before updating
+--------------------
+
+#. openSUSE Leap 15.5 is no longer supported as it has already reached its end of life.
+
+#. Information for Audio users that are using an external Lavalink instance (if you don't know what that is, you should skip this point):
+
+    We've updated our default application.yml file and you should update your instance's ``application.yml`` accordingly.
+    More specifically, we bumped the version of YT source plugin.
+    `Download Red 3.5.15's default application.yml file <https://github.com/Cog-Creators/Red-DiscordBot/releases/download/3.5.15/Red-DiscordBot-3.5.15-default-lavalink-application.yml>`__
+
+End-user changelog
+------------------
+
+Changes
+*******
+
+- **Core - Dependencies** - Red's dependencies have been bumped (:issue:`6512`)
+- **Core - OS Support** - openSUSE Leap 15.5 is no longer supported as it has already reached its end of life (:issue:`6512`)
+- **Cogs - Audio** - The ``[p]audioset logs`` command can now be used in DMs (:issue:`6499`)
+- **Cogs - Trivia - Lists** - Added subnet masks in CIDR notations as answers to subnet-related questions in the ``computers`` trivia (:issue:`6499`)
+
+Fixes
+*****
+
+- **Core - Bot Commands** - The ``[p]set api`` command no longer errors with long service names (:issue:`6478`, :issue:`6502`)
+- |cool| **Cogs - Audio** - Fixed recent YT playback issues (:issue:`6509`, :issue:`6511`)
+
+Developer changelog
+-------------------
+
+- **Core - i18n** - Added `redbot.core.i18n.set_contextual_locale()` and `redbot.core.i18n.set_contextual_regional_format()` functions (:issue:`6022`)
+
+----
+
 Redbot 3.5.14 (2024-12-25)
 ==========================
 
