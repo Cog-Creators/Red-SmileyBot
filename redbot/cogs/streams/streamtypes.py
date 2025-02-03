@@ -28,6 +28,7 @@ TWITCH_BASE_URL = "https://api.twitch.tv"
 TWITCH_ID_ENDPOINT = TWITCH_BASE_URL + "/helix/users"
 TWITCH_STREAMS_ENDPOINT = TWITCH_BASE_URL + "/helix/streams/"
 TWITCH_FOLLOWS_ENDPOINT = TWITCH_BASE_URL + "/helix/channels/followers"
+TWITCH_GAMES_ENDPOINT = TWITCH_BASE_URL + "/helix/games"
 
 YOUTUBE_BASE_URL = "https://www.googleapis.com/youtube/v3"
 YOUTUBE_CHANNELS_ENDPOINT = YOUTUBE_BASE_URL + "/channels"
@@ -311,6 +312,7 @@ class TwitchStream(Stream):
         self._display_name = None
         self._client_id = kwargs.pop("token", None)
         self._bearer = kwargs.pop("bearer", None)
+        self.games = kwargs.pop("games", {})
         self._rate_limit_resets: set = set()
         self._rate_limit_remaining: int = 0
         super().__init__(**kwargs)
