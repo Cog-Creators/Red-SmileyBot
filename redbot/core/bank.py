@@ -156,7 +156,7 @@ def is_owner_if_bank_global():
     otherwise ensure it's used in guild (WITHOUT checking any user permissions).
 
     When used on the command, this should be combined
-    with permissions check like `guildowner_or_permissions()`.
+    with permissions check like `redbot.core.commands.guildowner_or_permissions()`.
 
     This is a `command check <discord.ext.commands.check>`.
 

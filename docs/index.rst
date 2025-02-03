@@ -70,6 +70,7 @@ Welcome to Red - Discord Bot's documentation!
     framework_bank
     framework_bot
     framework_checks
+    framework_checks_app_commands
     framework_commands
     framework_app_commands
     framework_config

@@ -143,6 +143,7 @@
   - redbot/core/app_commands/*
   # Docs
   - docs/framework_app_commands.rst
+  - docs/framework_checks_app_commands.rst
   # Tests
   - tests/core/test_app_commands.py
 "Category: Core - API - Commands Package":
