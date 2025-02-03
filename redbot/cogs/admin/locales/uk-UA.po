@@ -21,56 +21,56 @@ msgstr "Я намагався зробити щось, на що Discord від�
 
 #: redbot/cogs/admin/admin.py:25
 msgid "I can not give {role.name} to {member.display_name} because that role is higher than or equal to my highest role in the Discord hierarchy."
-msgstr ""
+msgstr "Я не можу надати роль {role.name} {member.display_name}, тому що ця роль є вищою за мою найвищу роль."
 
 #: redbot/cogs/admin/admin.py:31
 msgid "I can not remove {role.name} from {member.display_name} because that role is higher than or equal to my highest role in the Discord hierarchy."
-msgstr ""
+msgstr "Я не можу прибрати {role.name} у {member.display_name}, тому що ця роль є вищою за мою найвищу роль."
 
 #: redbot/cogs/admin/admin.py:37
 msgid "I can not edit {role.name} because that role is higher than my or equal to highest role in the Discord hierarchy."
-msgstr ""
+msgstr "Я не можу змінити {role.name}, тому що ця роль є вищою ніж моя найвища роль."
 
 #: redbot/cogs/admin/admin.py:43
 msgid "I can not let you give {role.name} to {member.display_name} because that role is higher than or equal to your highest role in the Discord hierarchy."
-msgstr ""
+msgstr "Я не можу надати {role.name} {member.display_name}, тому що ця роль вища за вашу найвищу роль."
 
 #: redbot/cogs/admin/admin.py:49
 msgid "I can not let you remove {role.name} from {member.display_name} because that role is higher than or equal to your highest role in the Discord hierarchy."
-msgstr ""
+msgstr "Я не можу прибрати {role.name} у {member.display_name}, тому що ця роль є вищою за вашу найвищу роль."
 
 #: redbot/cogs/admin/admin.py:55
 msgid "I can not let you edit {role.name} because that role is higher than or equal to your highest role in the Discord hierarchy."
-msgstr ""
+msgstr "Я неможу дозволити вам редагувати {role.name}, тому що ця роль вища за вашу найвищу роль."
 
 #: redbot/cogs/admin/admin.py:61
 msgid "I need the \"Manage Roles\" permission to do that."
-msgstr ""
+msgstr "Мені потрібен дозвіл \"Керувати ролями\", щоб це зробити."
 
 #: redbot/cogs/admin/admin.py:63
 msgid "I am already announcing something. If you would like to make a different announcement please use `{prefix}announce cancel` first."
-msgstr ""
+msgstr "Я вже щось оголошую. Якщо ви хочете зробити інше оголошення, будь ласка, спочатку використайте '{prefix}announce cancel`."
 
 #: redbot/cogs/admin/admin.py:73
 #, docstring
 msgid "A collection of server administration utilities."
-msgstr ""
+msgstr "Колекція утилітів адміністрації сервера."
 
 #: redbot/cogs/admin/admin.py:159
 msgid "{member.display_name} already has the role {role.name}."
-msgstr ""
+msgstr "{member.display_name} вже має роль {role.name}."
 
 #: redbot/cogs/admin/admin.py:180
 msgid "I successfully added {role.name} to {member.display_name}"
-msgstr ""
+msgstr "Успішно додав(ла) {role.name} до {member.display_name}"
 
 #: redbot/cogs/admin/admin.py:190
 msgid "{member.display_name} does not have the role {role.name}."
-msgstr ""
+msgstr "{member.display_name} не має ролі {role.name}."
 
 #: redbot/cogs/admin/admin.py:211
 msgid "I successfully removed {role.name} from {member.display_name}"
-msgstr ""
+msgstr "Я успішно прибрав(ла) {role.name} у {member.display_name}"
 
 #: redbot/cogs/admin/admin.py:226
 #, docstring
@@ -79,7 +79,11 @@ msgid "\n"
 "        Use double quotes if the role contains spaces.\n"
 "        If user is left blank it defaults to the author of the command.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        Додати роль до користувача\n\n"
+"        Використовуйте подвійні лапки, якщо роль має пробіли.\n"
+"        Якщо користувач не буде вказаним, то за замовчуванням роль буде надана автору команди.\n"
+"        "
 
 #: redbot/cogs/admin/admin.py:244
 #, docstring
@@ -88,12 +92,16 @@ msgid "\n"
 "        Use double quotes if the role contains spaces.\n"
 "        If user is left blank it defaults to the author of the command.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        Додати роль до користувача\n\n"
+"        Використовуйте подвійні лапки, якщо роль має пробіли.\n"
+"        Якщо користувач не буде вказаним, то за замовчуванням роль буде надана автору команди.\n"
+"        "
 
 #: redbot/cogs/admin/admin.py:256
 #, docstring
 msgid "Edit role settings."
-msgstr ""
+msgstr "Зміна налаштувань ролі."
 
 #: redbot/cogs/admin/admin.py:263
 #, docstring
@@ -110,11 +118,11 @@ msgstr ""
 
 #: redbot/cogs/admin/admin.py:275
 msgid "{author} ({author.id}) changed the colour of role '{role.name}'"
-msgstr ""
+msgstr "{author} ({author.id}) змінив колір ролі '{role.name}'"
 
 #: redbot/cogs/admin/admin.py:294 redbot/cogs/admin/admin.py:327
 msgid "Done."
-msgstr ""
+msgstr "Готово."
 
 #: redbot/cogs/admin/admin.py:298
 #, docstring
@@ -128,48 +136,48 @@ msgstr ""
 
 #: redbot/cogs/admin/admin.py:308
 msgid "{author} ({author.id}) changed the name of role '{old_name}' to '{name}'"
-msgstr ""
+msgstr "{author} ({author.id}) змінив ім'я ролі '{old_name}' на '{name}'"
 
 #: redbot/cogs/admin/admin.py:332
 #, docstring
 msgid "Announce a message to all servers the bot is in."
-msgstr ""
+msgstr "Оголосити повідомлення в усіх серверах, де знаходиться бот."
 
 #: redbot/cogs/admin/admin.py:339
 msgid "The announcement has begun."
-msgstr ""
+msgstr "Оголошення почалося."
 
 #: redbot/cogs/admin/admin.py:346
 #, docstring
 msgid "Cancel a running announce."
-msgstr ""
+msgstr "Відмінити запущене оголошення."
 
 #: redbot/cogs/admin/admin.py:348
 msgid "There is no currently running announcement."
-msgstr ""
+msgstr "На даний момент немає оголошення."
 
 #: redbot/cogs/admin/admin.py:351
 msgid "The current announcement has been cancelled."
-msgstr ""
+msgstr "Поточне оголошення було скасовано."
 
 #: redbot/cogs/admin/admin.py:357
 #, docstring
 msgid "Change how announcements are sent in this guild."
-msgstr ""
+msgstr "Змінити спосіб надсилання оголошень у цю спільноту."
 
 #: redbot/cogs/admin/admin.py:367
 #, docstring
 msgid "Change the channel where the bot will send announcements."
-msgstr ""
+msgstr "Змініть канал, в якому бот буде надсилати оголошення."
 
 #: redbot/cogs/admin/admin.py:370
 msgid "The announcement channel has been set to {channel.mention}"
-msgstr ""
+msgstr "Канал для оголошень встановлений до {channel.mention}"
 
 #: redbot/cogs/admin/admin.py:375
 #, docstring
 msgid "Unsets the channel for announcements."
-msgstr ""
+msgstr "Прибирає канал для оголошень."
 
 #: redbot/cogs/admin/admin.py:400
 #, docstring
@@ -178,7 +186,10 @@ msgid "\n"
 "        Server admins must have configured the role as user settable.\n"
 "        NOTE: The role is case sensitive!\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        Додайте чи приберіть собі селф-ролі\n\n"
+"        Адміністратори серверу повинні були налаштувати роль як \"користувацьку\"\n"
+"        ПОМІТКА: Ролі чутливі до реєстру        "
 
 #: redbot/cogs/admin/admin.py:413
 #, docstring
@@ -203,17 +214,20 @@ msgstr ""
 msgid "\n"
 "        Lists all available selfroles.\n"
 "        "
-msgstr ""
+msgstr "\n"
+"        Перераховує усі доступні селф-ролі.\n"
+"        "
 
 #: redbot/cogs/admin/admin.py:445
 msgid "Available Selfroles:\n"
 "{selfroles}"
-msgstr ""
+msgstr "Доступні селф-ролі:\n"
+"{selfroles}"
 
 #: redbot/cogs/admin/admin.py:451
 #, docstring
 msgid "Manage selfroles."
-msgstr ""
+msgstr "Керувати селф-ролями."
 
 #: redbot/cogs/admin/admin.py:456
 #, docstring
@@ -225,19 +239,19 @@ msgstr ""
 
 #: redbot/cogs/admin/admin.py:465
 msgid "I cannot let you add {role.name} as a selfrole because that role is higher than or equal to your highest role in the Discord hierarchy."
-msgstr ""
+msgstr "Я не можу дозволити вам додати {role.name} як селф-роль, бо ця роль є вищою за вашу найвищу роль."
 
 #: redbot/cogs/admin/admin.py:475
 msgid "The role \"{role.name}\" is already a selfrole."
-msgstr ""
+msgstr "Роль \"{role.name}\" вже є селф-роллю."
 
 #: redbot/cogs/admin/admin.py:481
 msgid "Added {count} selfroles."
-msgstr ""
+msgstr "Додано {count} селф-ролей."
 
 #: redbot/cogs/admin/admin.py:483
 msgid "Added 1 selfrole."
-msgstr ""
+msgstr "Додано 1 селф-роль."
 
 #: redbot/cogs/admin/admin.py:489
 #, docstring
@@ -249,40 +263,40 @@ msgstr ""
 
 #: redbot/cogs/admin/admin.py:498
 msgid "I cannot let you remove {role.name} from being a selfrole because that role is higher than or equal to your highest role in the Discord hierarchy."
-msgstr ""
+msgstr "Я не можу дозволити вам прибрати {role.name} зі списку селф-ролей, бо ця роль є вищою за вашу найвищу роль."
 
 #: redbot/cogs/admin/admin.py:508
 msgid "Removed {count} selfroles."
-msgstr ""
+msgstr "Вилучено {count} селф-ролей."
 
 #: redbot/cogs/admin/admin.py:510
 msgid "Removed 1 selfrole."
-msgstr ""
+msgstr "Прибрано 1 селф-роль."
 
 #: redbot/cogs/admin/admin.py:516
 #, docstring
 msgid "Clear the list of available selfroles for this server."
-msgstr ""
+msgstr "Очистити список доступних селф-ролей для цього сервера."
 
 #: redbot/cogs/admin/admin.py:520
 msgid "There are currently no selfroles."
-msgstr ""
+msgstr "Наразі немає селф-ролей."
 
 #: redbot/cogs/admin/admin.py:523
 msgid "Are you sure you want to clear this server's selfrole list?"
-msgstr ""
+msgstr "Ви впевнені, що хочете очистити список селф-ролей цього сервера?"
 
 #: redbot/cogs/admin/admin.py:529
 msgid "You took too long to respond."
-msgstr ""
+msgstr "Ви зайняли занадто довго часу, щоб відповісти."
 
 #: redbot/cogs/admin/admin.py:538
 msgid "I cannot clear the selfroles because the selfrole '{role.name}' is higher than or equal to your highest role in the Discord hierarchy."
-msgstr ""
+msgstr "Я не можу прибрати селф-ролі, тому що селф-роль '{role.name}' вища аніж усі ваші ролі."
 
 #: redbot/cogs/admin/admin.py:544
 msgid "Selfrole list cleared."
-msgstr ""
+msgstr "Список з селф-ролями був очищений."
 
 #: redbot/cogs/admin/admin.py:546
 msgid "No changes have been made."
@@ -303,21 +317,21 @@ msgstr ""
 
 #: redbot/cogs/admin/announcer.py:68
 msgid "I could not announce to the following server: "
-msgstr ""
+msgstr "Не вдалося зробити оголошення у наступній спільноті: "
 
 #: redbot/cogs/admin/announcer.py:70
 msgid "I could not announce to the following servers: "
-msgstr ""
+msgstr "Не вдалося зробити оголошення у наступних спільнотах: "
 
 #: redbot/cogs/admin/converters.py:13
 msgid "The Admin cog is not loaded."
-msgstr ""
+msgstr "Адмін-ког не завантажено."
 
 #: redbot/cogs/admin/converters.py:30
 msgid "The role \"{role_name}\" is not a valid selfrole."
-msgstr ""
+msgstr "Роль \"{role_name}\" не є дійсною селф-роллю."
 
 #: redbot/cogs/admin/converters.py:36
 msgid "This selfrole has more than one case insensitive match. Please ask a moderator to resolve the ambiguity, or use the role ID to reference the role."
-msgstr ""
+msgstr "Ця селф-роль має більше ніж один збіг. Будь ласка, попросіть модератора вирішити цю неоднозначність, або використайте ID ролі для уточнення ролі."
 

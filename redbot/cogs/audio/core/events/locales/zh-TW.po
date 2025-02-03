@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2024-08-26 17:53+0000\n"
+"POT-Creation-Date: 2025-01-26 22:03+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -19,305 +19,305 @@ msgstr ""
 msgid "Auto Play started."
 msgstr "已開始自動播放。"
 
-#: redbot/cogs/audio/core/events/dpy.py:34
+#: redbot/cogs/audio/core/events/dpy.py:35
 msgid "Create Instant Invite"
 msgstr "建立即時邀請"
 
-#: redbot/cogs/audio/core/events/dpy.py:35
+#: redbot/cogs/audio/core/events/dpy.py:36
 msgid "Kick Members"
 msgstr "踢出成員"
 
-#: redbot/cogs/audio/core/events/dpy.py:36
+#: redbot/cogs/audio/core/events/dpy.py:37
 msgid "Ban Members"
 msgstr "封鎖成員"
 
-#: redbot/cogs/audio/core/events/dpy.py:37
+#: redbot/cogs/audio/core/events/dpy.py:38
 msgid "Administrator"
 msgstr "管理員"
 
-#: redbot/cogs/audio/core/events/dpy.py:38
+#: redbot/cogs/audio/core/events/dpy.py:39
 msgid "Manage Channels"
 msgstr "管理頻道"
 
-#: redbot/cogs/audio/core/events/dpy.py:39
+#: redbot/cogs/audio/core/events/dpy.py:40
 msgid "Manage Server"
 msgstr "管理伺服器"
 
-#: redbot/cogs/audio/core/events/dpy.py:40
+#: redbot/cogs/audio/core/events/dpy.py:41
 msgid "Add Reactions"
 msgstr "新增反應"
 
-#: redbot/cogs/audio/core/events/dpy.py:41
+#: redbot/cogs/audio/core/events/dpy.py:42
 msgid "View Audit Log"
 msgstr "檢視審核日誌"
 
-#: redbot/cogs/audio/core/events/dpy.py:42
+#: redbot/cogs/audio/core/events/dpy.py:43
 msgid "Priority Speaker"
 msgstr "優先發言者"
 
-#: redbot/cogs/audio/core/events/dpy.py:43
+#: redbot/cogs/audio/core/events/dpy.py:44
 msgid "Video"
 msgstr ""
 
-#: redbot/cogs/audio/core/events/dpy.py:44
+#: redbot/cogs/audio/core/events/dpy.py:45
 msgid "Read Text Channels & See Voice Channels"
 msgstr "讀取文字頻道和查看語音頻道"
 
-#: redbot/cogs/audio/core/events/dpy.py:45
+#: redbot/cogs/audio/core/events/dpy.py:46
 msgid "Send Messages"
 msgstr "發送訊息"
 
-#: redbot/cogs/audio/core/events/dpy.py:46
+#: redbot/cogs/audio/core/events/dpy.py:47
 msgid "Send Text-to-speech Messages"
 msgstr ""
 
-#: redbot/cogs/audio/core/events/dpy.py:47
+#: redbot/cogs/audio/core/events/dpy.py:48
 msgid "Manage Messages"
 msgstr "管理訊息"
 
-#: redbot/cogs/audio/core/events/dpy.py:48
+#: redbot/cogs/audio/core/events/dpy.py:49
 msgid "Embed Links"
 msgstr "嵌入連結"
 
-#: redbot/cogs/audio/core/events/dpy.py:49
+#: redbot/cogs/audio/core/events/dpy.py:50
 msgid "Attach Files"
 msgstr "附加文件"
 
-#: redbot/cogs/audio/core/events/dpy.py:50
+#: redbot/cogs/audio/core/events/dpy.py:51
 msgid "Read Message History"
 msgstr "讀取歷史訊息"
 
-#: redbot/cogs/audio/core/events/dpy.py:51
+#: redbot/cogs/audio/core/events/dpy.py:52
 msgid "Mention @everyone, @here, and All Roles"
 msgstr "提及 @everyone、@here 和所有身分組"
 
-#: redbot/cogs/audio/core/events/dpy.py:52
+#: redbot/cogs/audio/core/events/dpy.py:53
 msgid "Use External Emojis"
 msgstr "使用外部表情符號"
 
-#: redbot/cogs/audio/core/events/dpy.py:53
+#: redbot/cogs/audio/core/events/dpy.py:54
 msgid "View Server Insights"
 msgstr "檢視伺服器分析"
 
-#: redbot/cogs/audio/core/events/dpy.py:54
+#: redbot/cogs/audio/core/events/dpy.py:55
 msgid "Connect"
 msgstr "連接"
 
-#: redbot/cogs/audio/core/events/dpy.py:55
+#: redbot/cogs/audio/core/events/dpy.py:56
 msgid "Speak"
 msgstr "說話"
 
-#: redbot/cogs/audio/core/events/dpy.py:56
+#: redbot/cogs/audio/core/events/dpy.py:57
 msgid "Mute Members"
 msgstr "靜音成員"
 
-#: redbot/cogs/audio/core/events/dpy.py:57
+#: redbot/cogs/audio/core/events/dpy.py:58
 msgid "Deafen Members"
 msgstr "使成員拒聽"
 
-#: redbot/cogs/audio/core/events/dpy.py:58
+#: redbot/cogs/audio/core/events/dpy.py:59
 msgid "Move Members"
 msgstr "移動成員"
 
-#: redbot/cogs/audio/core/events/dpy.py:59
+#: redbot/cogs/audio/core/events/dpy.py:60
 msgid "Use Voice Activity"
 msgstr "使用語音活動"
 
-#: redbot/cogs/audio/core/events/dpy.py:60
+#: redbot/cogs/audio/core/events/dpy.py:61
 msgid "Change Nickname"
 msgstr "更改暱稱"
 
-#: redbot/cogs/audio/core/events/dpy.py:61
+#: redbot/cogs/audio/core/events/dpy.py:62
 msgid "Manage Nicknames"
 msgstr "管理暱稱"
 
-#: redbot/cogs/audio/core/events/dpy.py:62
+#: redbot/cogs/audio/core/events/dpy.py:63
 msgid "Manage Roles"
 msgstr "管理身分組"
 
-#: redbot/cogs/audio/core/events/dpy.py:63
+#: redbot/cogs/audio/core/events/dpy.py:64
 msgid "Manage Webhooks"
 msgstr "管理 Webhooks"
 
-#: redbot/cogs/audio/core/events/dpy.py:64
+#: redbot/cogs/audio/core/events/dpy.py:65
 msgid "Manage Expressions"
 msgstr "管理表示式"
 
-#: redbot/cogs/audio/core/events/dpy.py:65
+#: redbot/cogs/audio/core/events/dpy.py:66
 msgid "Use Application Commands"
 msgstr "使用應用程式命令"
 
-#: redbot/cogs/audio/core/events/dpy.py:66
+#: redbot/cogs/audio/core/events/dpy.py:67
 msgid "Request to Speak"
 msgstr "要求發言"
 
-#: redbot/cogs/audio/core/events/dpy.py:67
+#: redbot/cogs/audio/core/events/dpy.py:68
 msgid "Manage Events"
 msgstr "管理活動"
 
-#: redbot/cogs/audio/core/events/dpy.py:68
+#: redbot/cogs/audio/core/events/dpy.py:69
 msgid "Manage Threads"
 msgstr "管理討論串"
 
-#: redbot/cogs/audio/core/events/dpy.py:69
+#: redbot/cogs/audio/core/events/dpy.py:70
 msgid "Create Public Threads"
 msgstr "建立公開討論串"
 
-#: redbot/cogs/audio/core/events/dpy.py:70
+#: redbot/cogs/audio/core/events/dpy.py:71
 msgid "Create Private Threads"
 msgstr "建立私人討論串"
 
-#: redbot/cogs/audio/core/events/dpy.py:71
+#: redbot/cogs/audio/core/events/dpy.py:72
 msgid "Use External Stickers"
 msgstr "使用外部貼圖"
 
-#: redbot/cogs/audio/core/events/dpy.py:72
+#: redbot/cogs/audio/core/events/dpy.py:73
 msgid "Send Messages in Threads"
 msgstr "在討論串中傳送訊息"
 
-#: redbot/cogs/audio/core/events/dpy.py:73
+#: redbot/cogs/audio/core/events/dpy.py:74
 msgid "Use Activities"
 msgstr ""
 
-#: redbot/cogs/audio/core/events/dpy.py:74
+#: redbot/cogs/audio/core/events/dpy.py:75
 msgid "Time out members"
 msgstr ""
 
-#: redbot/cogs/audio/core/events/dpy.py:75
+#: redbot/cogs/audio/core/events/dpy.py:76
 msgid "View Creator Monetization Analytics"
 msgstr ""
 
-#: redbot/cogs/audio/core/events/dpy.py:76
+#: redbot/cogs/audio/core/events/dpy.py:77
 msgid "Use Soundboard"
 msgstr "使用音效板"
 
-#: redbot/cogs/audio/core/events/dpy.py:77
+#: redbot/cogs/audio/core/events/dpy.py:78
 msgid "Create Expressions"
 msgstr "新增表示式"
 
-#: redbot/cogs/audio/core/events/dpy.py:78
+#: redbot/cogs/audio/core/events/dpy.py:79
 msgid "Create Events"
 msgstr ""
 
-#: redbot/cogs/audio/core/events/dpy.py:79
+#: redbot/cogs/audio/core/events/dpy.py:80
 msgid "Use External Sounds"
 msgstr ""
 
-#: redbot/cogs/audio/core/events/dpy.py:80
+#: redbot/cogs/audio/core/events/dpy.py:81
 msgid "Send Voice Messages"
 msgstr "傳送語音訊息"
 
-#: redbot/cogs/audio/core/events/dpy.py:81
+#: redbot/cogs/audio/core/events/dpy.py:82
 msgid "Create Polls"
 msgstr ""
 
-#: redbot/cogs/audio/core/events/dpy.py:82
+#: redbot/cogs/audio/core/events/dpy.py:83
 msgid "Use External Apps"
 msgstr ""
 
-#: redbot/cogs/audio/core/events/dpy.py:86
-msgid "This command will change the executable path of Java, this is useful if you have multiple installations of Java and the default one is causing issues. Please don't change this unless you are certain that the Java version you are specifying is supported by Red. The default and supported versions are currently Java 17 and 11."
+#: redbot/cogs/audio/core/events/dpy.py:87
+msgid "This command will change the executable path of Java, this is useful if you have multiple installations of Java and the default one is causing issues. Please don't change this unless you are certain that the Java version you are specifying is supported by Red. The supported versions are currently Java {supported_java_versions}."
 msgstr ""
 
-#: redbot/cogs/audio/core/events/dpy.py:92
+#: redbot/cogs/audio/core/events/dpy.py:93
 msgid "This command will change the maximum RAM allocation for the managed Lavalink node, usually you will never have to change this, before considering changing it please consult our support team."
 msgstr "此命令將更改託管 Lavalink 節點的最大 RAM 分配，通常您永遠不必更改它，在考慮更改它之前請諮詢我們的開發團隊。"
 
-#: redbot/cogs/audio/core/events/dpy.py:97
+#: redbot/cogs/audio/core/events/dpy.py:98
 msgid "This command will disable the managed Lavalink node, if you toggle this command you must specify an external Lavalink node to connect to, if you do not do so Audio will stop working."
 msgstr "此命令將禁用託管的 Lavalink 節點，如果您切換此命令，則必須指定要連接的外部 Lavalink 節點，否則Audio將停止工作。"
 
-#: redbot/cogs/audio/core/events/dpy.py:102
+#: redbot/cogs/audio/core/events/dpy.py:103
 msgid "This command is used to specify the IP which will be used by Red to connect to an external Lavalink node. "
 msgstr "此命令用於指定 Red 將用於連接到外部 Lavalink 節點的 IP。 "
 
-#: redbot/cogs/audio/core/events/dpy.py:105
+#: redbot/cogs/audio/core/events/dpy.py:106
 msgid "This command is used to specify the authentication password used by Red to connect to an external Lavalink node."
 msgstr "該命令用於指定 Red 連接到外部 Lavalink 節點時使用的認證密碼。"
 
-#: redbot/cogs/audio/core/events/dpy.py:109
+#: redbot/cogs/audio/core/events/dpy.py:110
 msgid "This command is used toggle between secured and unsecured connections to an external Lavalink node."
 msgstr "此命令用於在與外部 Lavalink 節點的安全和不安全連接之間切換。"
 
-#: redbot/cogs/audio/core/events/dpy.py:112
+#: redbot/cogs/audio/core/events/dpy.py:113
 msgid "This command is used to specify the connection port used by Red to connect to an external Lavalink node."
 msgstr "該命令用於指定Red用於連接外部Lavalink節點的連接端口。"
 
-#: redbot/cogs/audio/core/events/dpy.py:115
+#: redbot/cogs/audio/core/events/dpy.py:116
 msgid "This command specifies which network interface and IP the managed Lavalink node will bind to, by default this is 'localhost', only change this if you want the managed Lavalink node to bind to a specific IP/interface."
 msgstr "此命令指定託管 Lavalink 節點將綁定到哪個網絡接口和 IP，默認情況下這是“localhost”，僅當您希望託管 Lavalink 節點綁定到特定 IP/接口時才需更改此設置。"
 
-#: redbot/cogs/audio/core/events/dpy.py:120
+#: redbot/cogs/audio/core/events/dpy.py:121
 msgid "This command changes the authentication password required to connect to this managed node.The default value is 'youshallnotpass'."
 msgstr "此命令為更改連接到此受管節點所需的身份驗證密碼。默認值為“youshallnotpass”。"
 
-#: redbot/cogs/audio/core/events/dpy.py:124
+#: redbot/cogs/audio/core/events/dpy.py:125
 msgid "This command changes the connection port used to connect to this managed node, only change this if the default port '2333' is causing conflicts with existing applications."
 msgstr "此命令更改用於連接到此受管節點的連接端口，僅當默認端口“2333”與現有應用程序發生衝突時才更改此端口。"
 
-#: redbot/cogs/audio/core/events/dpy.py:128
+#: redbot/cogs/audio/core/events/dpy.py:129
 msgid "This command toggles the support of direct url streams like Icecast or Shoutcast streams. An example is <http://ice1.somafm.com/gsclassic-128-mp3>; disabling this will make the bot unable to play any direct url steam content."
 msgstr "此命令切換對直接 url 直播的支持，如 Icecast 或 Shoutcast 。 如: <http://ice1.somafm.com/gsclassic-128-mp3>； 禁用此功能將使機器人無法播放任何直接 url 蒸汽內容。"
 
-#: redbot/cogs/audio/core/events/dpy.py:138
+#: redbot/cogs/audio/core/events/dpy.py:139
 msgid "This command toggles the support of local track audio playback. An example is `/mnt/data/my_super_funky_track.mp3`; disabling this will make the bot unable to play any local track content."
 msgstr "此命令切換對本地軌道音頻播放的支持。 如: `/mnt/data/my_super_funky_track.mp3`； 禁用此功能將使機器人無法播放任何本地曲目內容。"
 
-#: redbot/cogs/audio/core/events/dpy.py:143
+#: redbot/cogs/audio/core/events/dpy.py:144
 msgid "This command toggles the support of SoundCloud playback. An example is <https://soundcloud.com/user-103858850/tilla>; disabling this will make the bot unable to play any SoundCloud content."
 msgstr "此命令切換對 SoundCloud 的播放支持。 如: <https://soundcloud.com/user-103858850/tilla>； 禁用此功能將使機器人無法播放任何 SoundCloud 內容。"
 
-#: redbot/cogs/audio/core/events/dpy.py:148
+#: redbot/cogs/audio/core/events/dpy.py:149
 msgid "This command toggles the support of YouTube playback (Spotify depends on YouTube). Disabling this will make the bot unable to play any YouTube content: this includes Spotify."
 msgstr "此命令切換對 YouTube 的播放支持(Spotify 取決於 YouTube)。 禁用此功能將使機器人無法播放任何 YouTube 內容，包括 Spotify。"
 
-#: redbot/cogs/audio/core/events/dpy.py:153
+#: redbot/cogs/audio/core/events/dpy.py:154
 msgid "This command toggles the support of Twitch playback. An example of this is <https://twitch.tv/monstercat>; disabling this will make the bot unable to play any Twitch content."
 msgstr "此命令切換對 Twitch 的播放支持。 如: <https://twitch.tv/monstercat>； 禁用此功能將使機器人無法播放任何 Twitch 內容。"
 
-#: redbot/cogs/audio/core/events/dpy.py:158
+#: redbot/cogs/audio/core/events/dpy.py:159
 msgid "This command toggles the support of Vimeo playback. An example of this is <https://vimeo.com/157743578>; disabling this will make the bot unable to play any Vimeo content."
 msgstr "此命令切換對 Vimeo 的播放支持。 如: <https://vimeo.com/157743578>； 禁用此功能將使機器人無法播放任何 Vimeo 內容。"
 
-#: redbot/cogs/audio/core/events/dpy.py:163
+#: redbot/cogs/audio/core/events/dpy.py:164
 msgid "This setting controls the managed node's framebuffer, do not change this unless instructed."
 msgstr "此設置控制受管節點的幀緩衝區，除非有官方指示，否則不要更改此設置。"
 
-#: redbot/cogs/audio/core/events/dpy.py:167
+#: redbot/cogs/audio/core/events/dpy.py:168
 msgid "This setting controls the managed node's JDA-NAS buffer, do not change this unless instructed."
 msgstr "此設置控制受管節點的 JDA-NAS 緩衝區，除非有官方指示，否則不要更改此設置。"
 
-#: redbot/cogs/audio/core/events/dpy.py:171
+#: redbot/cogs/audio/core/events/dpy.py:172
 msgid "This command will reset every setting changed by `[p]llset`."
 msgstr "此指令將重置由 `[p]llset` 更改的所有設定值。"
 
-#: redbot/cogs/audio/core/events/dpy.py:188
+#: redbot/cogs/audio/core/events/dpy.py:189
 msgid "You have attempted to run Audio's managed Lavalink node on an unsupported architecture. Only settings related commands will be available."
 msgstr "您已嘗試在不受支持的架構上運行託管Audio的 Lavalink 節點。 目前只有與設置相關的命令可用。"
 
-#: redbot/cogs/audio/core/events/dpy.py:210
+#: redbot/cogs/audio/core/events/dpy.py:211
 msgid "I'm missing permissions to send messages in this server. Please address this as soon as possible."
 msgstr "我缺少在此伺務器中發送消息的權限。 請盡快解決這個問題。"
 
-#: redbot/cogs/audio/core/events/dpy.py:236
+#: redbot/cogs/audio/core/events/dpy.py:237
 msgid "I'm missing permissions in this server, Please address this as soon as possible.\n\n"
 "Expected Permissions:\n"
 msgstr "我缺少此伺務器的權限，請盡快解決此問題。\n\n"
 "預期權限：\n"
 
-#: redbot/cogs/audio/core/events/dpy.py:243
+#: redbot/cogs/audio/core/events/dpy.py:244
 msgid "Enabled"
 msgstr "已啟用"
 
-#: redbot/cogs/audio/core/events/dpy.py:243
+#: redbot/cogs/audio/core/events/dpy.py:244
 msgid "Disabled"
 msgstr "已停用"
 
-#: redbot/cogs/audio/core/events/dpy.py:274
+#: redbot/cogs/audio/core/events/dpy.py:275
 msgid "You should not be running this command."
 msgstr "您不應該使用此指令。"
 
-#: redbot/cogs/audio/core/events/dpy.py:277
+#: redbot/cogs/audio/core/events/dpy.py:278
 msgid "\n"
 "{template}\n"
 "If you wish to continue, enter this case sensitive token without spaces as your next message.\n\n"
@@ -327,58 +327,58 @@ msgstr "\n"
 "如果您想繼續，請輸入這個不帶空格區分大小寫的令牌作為您的下一條消息。\n\n"
 "{confirm_token}"
 
-#: redbot/cogs/audio/core/events/dpy.py:321
+#: redbot/cogs/audio/core/events/dpy.py:326
 msgid "No DJ role found. Disabling DJ mode."
 msgstr "沒有找到DJ身分組。 自動停用DJ模式中。"
 
-#: redbot/cogs/audio/core/events/dpy.py:331
+#: redbot/cogs/audio/core/events/dpy.py:336
 msgid "`{user_input}` is not a valid value for `{command}`"
 msgstr "`{user_input}` 不是 `{command}` 的有效數值"
 
-#: redbot/cogs/audio/core/events/dpy.py:339
+#: redbot/cogs/audio/core/events/dpy.py:344
 msgid "Unable To Parse Argument"
 msgstr "無法分析參數"
 
-#: redbot/cogs/audio/core/events/dpy.py:351
-#: redbot/cogs/audio/core/events/dpy.py:360
+#: redbot/cogs/audio/core/events/dpy.py:356
+#: redbot/cogs/audio/core/events/dpy.py:365
 msgid "Invalid Argument"
 msgstr "無效的參數"
 
-#: redbot/cogs/audio/core/events/dpy.py:352
+#: redbot/cogs/audio/core/events/dpy.py:357
 msgid "The argument you gave for `{}` is not valid: I was expecting a `{}`."
 msgstr "您為 `{}` 提供的參數無效：我支持的是 `{}`。"
 
-#: redbot/cogs/audio/core/events/dpy.py:370
+#: redbot/cogs/audio/core/events/dpy.py:375
 msgid "Invalid Environment"
 msgstr "無效的環境。"
 
-#: redbot/cogs/audio/core/events/dpy.py:371
+#: redbot/cogs/audio/core/events/dpy.py:376
 msgid "Connection to Lavalink node has been lost."
 msgstr "與 Lavalink 節點的連接已丟失。"
 
-#: redbot/cogs/audio/core/events/dpy.py:379
+#: redbot/cogs/audio/core/events/dpy.py:384
 msgid "No Player Available"
 msgstr "沒有可用的播放器"
 
-#: redbot/cogs/audio/core/events/dpy.py:380
+#: redbot/cogs/audio/core/events/dpy.py:385
 msgid "The bot is not connected to a voice channel."
 msgstr "機器人未連接到語音頻道。"
 
-#: redbot/cogs/audio/core/events/dpy.py:388
+#: redbot/cogs/audio/core/events/dpy.py:393
 #: redbot/cogs/audio/core/events/lavalink.py:183
 msgid "Unable to Get Track"
 msgstr "無法獲取歌曲。"
 
-#: redbot/cogs/audio/core/events/dpy.py:389
+#: redbot/cogs/audio/core/events/dpy.py:394
 #: redbot/cogs/audio/core/events/lavalink.py:184
 msgid "I'm unable to get a track from the Lavalink node at the moment, try again in a few minutes."
 msgstr "我目前無法從 Lavalink 節點獲取曲目，請過幾分鐘再試。"
 
-#: redbot/cogs/audio/core/events/dpy.py:400
+#: redbot/cogs/audio/core/events/dpy.py:405
 msgid "There was an issue communicating with Discord."
 msgstr "與 Discord 通信時出現問題。"
 
-#: redbot/cogs/audio/core/events/dpy.py:401
+#: redbot/cogs/audio/core/events/dpy.py:406
 msgid "This error has been reported to the bot owner."
 msgstr "此錯誤已報告給機器人所有者。"
 

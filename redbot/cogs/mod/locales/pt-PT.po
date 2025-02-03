@@ -500,7 +500,7 @@ msgstr ""
 
 #: redbot/cogs/mod/names.py:275
 msgid "Roles"
-msgstr ""
+msgstr "Cargos"
 
 #: redbot/cogs/mod/names.py:275
 msgid "Role"

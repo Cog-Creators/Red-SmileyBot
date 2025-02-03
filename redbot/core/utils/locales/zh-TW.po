@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: red-discordbot\n"
-"POT-Creation-Date: 2024-12-25 04:21+0000\n"
+"POT-Creation-Date: 2025-02-01 23:37+0000\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Traditional\n"
 "MIME-Version: 1.0\n"
@@ -75,7 +75,7 @@ msgstr "選擇一個頁面"
 msgid "Page {num}"
 msgstr "{num} 頁"
 
-#: redbot/core/utils/views.py:338 redbot/core/utils/views.py:694
+#: redbot/core/utils/views.py:338 redbot/core/utils/views.py:698
 msgid "You are not authorized to interact with this."
 msgstr "您無權限與此互動。"
 
@@ -87,33 +87,29 @@ msgstr "設置 API Keys"
 msgid "Keys and tokens"
 msgstr "Keys 和 tokens"
 
-#: redbot/core/utils/views.py:383
-msgid "Set API Keys for {service}"
-msgstr "為 {service} 設置 API 密鑰"
-
-#: redbot/core/utils/views.py:384
+#: redbot/core/utils/views.py:388
 msgid "Keys and tokens for {service}"
 msgstr "{service} 的密鑰和令牌"
 
-#: redbot/core/utils/views.py:393
+#: redbot/core/utils/views.py:397
 msgid "Service"
 msgstr "服務"
 
-#: redbot/core/utils/views.py:430
+#: redbot/core/utils/views.py:434
 msgid "This modal is for bot owners only. Whoops!"
 msgstr "哎呀！此模式僅適用於機器人所有者。"
 
-#: redbot/core/utils/views.py:443
+#: redbot/core/utils/views.py:447
 msgid "{error_message}\n"
 "Please try again."
 msgstr "{error_message}\n"
 "請再試一次。"
 
-#: redbot/core/utils/views.py:450 redbot/core/utils/views.py:457
+#: redbot/core/utils/views.py:454 redbot/core/utils/views.py:461
 msgid "`{service}` API tokens have been set."
 msgstr "`{service}` API 令牌已設置。"
 
-#: redbot/core/utils/views.py:493
+#: redbot/core/utils/views.py:497
 msgid "This button is for bot owners only, oh well."
 msgstr "哦，好吧！此按鈕僅適用於機器人所有者。"
 

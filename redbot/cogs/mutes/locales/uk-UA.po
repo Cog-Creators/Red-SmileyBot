@@ -17,27 +17,27 @@ msgstr ""
 
 #: redbot/cogs/mutes/converters.py:57
 msgid "`{unit}` is not a valid unit of time for this command"
-msgstr ""
+msgstr "`{unit}` не є припустимою одиницею часу для цієї команди"
 
 #: redbot/cogs/mutes/converters.py:65 redbot/cogs/mutes/mutes.py:1016
 msgid "The time provided is too long; use a more reasonable time."
-msgstr ""
+msgstr "Вказаний час задовгий, використовуйте більш обґрунтований час."
 
 #: redbot/cogs/mutes/converters.py:68
 msgid "The time provided must not be in the past."
-msgstr ""
+msgstr "Наданий час не повинен бути в минулому."
 
 #: redbot/cogs/mutes/mutes.py:34
 msgid "That user is already muted in {location}."
-msgstr ""
+msgstr "Цей користувач вже заглушений в {location}."
 
 #: redbot/cogs/mutes/mutes.py:35
 msgid "That user is not muted in {location}."
-msgstr ""
+msgstr "Цей користувач не заглушений в {location}."
 
 #: redbot/cogs/mutes/mutes.py:36
 msgid "I cannot let you do that. You are not higher than the user in the role hierarchy."
-msgstr ""
+msgstr "Я не можу дозволити вам це зробити. Ви не вищі, ніж вказаний користувач у рольовій ієрархії."
 
 #: redbot/cogs/mutes/mutes.py:39
 msgid "I cannot let you do that. You are not higher than the mute role in the role hierarchy."
@@ -142,43 +142,43 @@ msgstr ""
 
 #: redbot/cogs/mutes/mutes.py:580
 msgid "Unknown"
-msgstr ""
+msgstr "Невідомо"
 
 #: redbot/cogs/mutes/mutes.py:585
 msgid "No reason provided."
-msgstr ""
+msgstr "Причини не передбачено."
 
 #: redbot/cogs/mutes/mutes.py:595
 msgid "Until"
-msgstr ""
+msgstr "До"
 
 #: redbot/cogs/mutes/mutes.py:596
 msgid "Duration"
-msgstr ""
+msgstr "Тривалість"
 
 #: redbot/cogs/mutes/mutes.py:597
 msgid "Guild"
-msgstr ""
+msgstr "Спільнота"
 
 #: redbot/cogs/mutes/mutes.py:599
 msgid "Moderator"
-msgstr ""
+msgstr "Модератор"
 
 #: redbot/cogs/mutes/mutes.py:607
 msgid "Moderator:"
-msgstr ""
+msgstr "Модератор:"
 
 #: redbot/cogs/mutes/mutes.py:609
 msgid "Until:"
-msgstr ""
+msgstr "До:"
 
 #: redbot/cogs/mutes/mutes.py:609
 msgid "Duration:"
-msgstr ""
+msgstr "Тривалість:"
 
 #: redbot/cogs/mutes/mutes.py:613
 msgid "Guild:"
-msgstr ""
+msgstr "Спільнота:"
 
 #: redbot/cogs/mutes/mutes.py:652 redbot/cogs/mutes/mutes.py:657
 msgid "Manually removed mute role"

@@ -17,63 +17,63 @@ msgstr ""
 
 #: redbot/core/commands/converter.py:90
 msgid "`{unit}` is not a valid unit of time for this command"
-msgstr ""
+msgstr "`{unit}` не є припустимою одиницею часу для цієї команди"
 
 #: redbot/core/commands/converter.py:151 redbot/core/commands/converter.py:219
 msgid "The time set is way too high, consider setting something reasonable."
-msgstr ""
+msgstr "Набір часу є зависоким, слід задати щось розумне."
 
 #: redbot/core/commands/converter.py:155
 msgid "This amount of time is too large for this command. (Maximum: {maximum})"
-msgstr ""
+msgstr "Цей час завеликий для цієї команди. (Максимум: {maximum})"
 
 #: redbot/core/commands/converter.py:159 redbot/core/commands/converter.py:168
 msgid "0 seconds"
-msgstr ""
+msgstr "0 секунд"
 
 #: redbot/core/commands/converter.py:164
 msgid "This amount of time is too small for this command. (Minimum: {minimum})"
-msgstr ""
+msgstr "Цей проміжок часу занадто малий для цієї команди. (Мінімум: {minimum})"
 
 #: redbot/core/commands/converter.py:256
 msgid "'{input}' doesn't look like a valid user ID."
-msgstr ""
+msgstr "'{input}' не схоже на дійсний ID користувача."
 
 #: redbot/core/commands/converter.py:279
 msgid "`{arg}` is not a number."
-msgstr ""
+msgstr "`{arg}` не є числом."
 
 #: redbot/core/commands/converter.py:281
 msgid "`{arg}` is not a finite number."
-msgstr ""
+msgstr "`{arg}` не є скінченним числом."
 
 #: redbot/core/commands/converter.py:304
 msgid "Missing a key or value."
-msgstr ""
+msgstr "Відсутній ключ або значення."
 
 #: redbot/core/commands/converter.py:310
 msgid "Unexpected key `{key}`."
-msgstr ""
+msgstr "Неочікуваний ключ `{key}`."
 
 #: redbot/core/commands/converter.py:544
 msgid "Command \"{arg}\" not found."
-msgstr ""
+msgstr "Команда \"{arg}\" не знайдена."
 
 #: redbot/core/commands/converter.py:554
 msgid "Cog \"{arg}\" not found."
-msgstr ""
+msgstr "Ког \"{arg}\" не знайдено."
 
 #: redbot/core/commands/help.py:125 redbot/core/commands/help.py:144
 msgid "No"
-msgstr ""
+msgstr "Ні"
 
 #: redbot/core/commands/help.py:127
 msgid "Yes"
-msgstr ""
+msgstr "Так"
 
 #: redbot/core/commands/help.py:133
 msgid "Disabled"
-msgstr ""
+msgstr "Вимкнено"
 
 #: redbot/core/commands/help.py:138
 msgid "\n"
@@ -82,19 +82,19 @@ msgstr ""
 
 #: redbot/core/commands/help.py:145
 msgid "Yes, reactions"
-msgstr ""
+msgstr "Так, реакції"
 
 #: redbot/core/commands/help.py:146
 msgid "Yes, buttons"
-msgstr ""
+msgstr "Так, кнопки"
 
 #: redbot/core/commands/help.py:147
 msgid "Yes, buttons with select menu"
-msgstr ""
+msgstr "Так, кнопки з меню вибору"
 
 #: redbot/core/commands/help.py:148
 msgid "Yes, select menu only"
-msgstr ""
+msgstr "Так, лише меню вибору"
 
 #: redbot/core/commands/help.py:152
 msgid "Maximum characters per page: {page_char_limit}\n"
@@ -111,41 +111,41 @@ msgstr ""
 
 #: redbot/core/commands/help.py:303
 msgid "Type {command1} for more info on a command. You can also type {command2} for more info on a category."
-msgstr ""
+msgstr "Введіть {command1} для інформації про команду. Також ви можете ввести {command2} для більш детальної інформації про категорію."
 
 #: redbot/core/commands/help.py:358
 msgid "Syntax:\n"
-msgstr ""
+msgstr "Синтаксис:\n"
 
 #: redbot/core/commands/help.py:360
 msgid "Aliases"
-msgstr ""
+msgstr "Псевдоніми"
 
 #: redbot/core/commands/help.py:360
 msgid "Alias"
-msgstr ""
+msgstr "Псевдонім"
 
 #: redbot/core/commands/help.py:381
 msgid "{aliases} and {number} more aliases."
-msgstr ""
+msgstr "{aliases} та {number} більше псевдонімів."
 
 #: redbot/core/commands/help.py:385
 msgid "{aliases} and one more alias."
-msgstr ""
+msgstr "{aliases} та ще один псевдонім."
 
 #: redbot/core/commands/help.py:432 redbot/core/commands/help.py:434
 #: redbot/core/commands/help.py:446
 msgid "Subcommands:"
-msgstr ""
+msgstr "Підкоманди:"
 
 #: redbot/core/commands/help.py:434 redbot/core/commands/help.py:612
 msgid " (continued)"
-msgstr ""
+msgstr " (продовжено)"
 
 #: redbot/core/commands/help.py:508 redbot/core/commands/help.py:768
 #: redbot/core/commands/help.py:783 redbot/core/commands/help.py:804
 msgid "{ctx.me.display_name} Help Menu"
-msgstr ""
+msgstr "Меню довідки {ctx.me.display_name}"
 
 #: redbot/core/commands/help.py:555
 msgid "*Page {page_num} of {page_count}*\n"
@@ -155,28 +155,28 @@ msgstr ""
 #: redbot/core/commands/help.py:610 redbot/core/commands/help.py:612
 #: redbot/core/commands/help.py:624
 msgid "Commands:"
-msgstr ""
+msgstr "Команди:"
 
 #: redbot/core/commands/help.py:663 redbot/core/commands/help.py:692
 #: redbot/core/commands/help.py:705
 msgid "No Category:"
-msgstr ""
+msgstr "Немає категорії:"
 
 #: redbot/core/commands/help.py:676
 msgid "{title} (continued)"
-msgstr ""
+msgstr "{title} (продовжено)"
 
 #: redbot/core/commands/help.py:779
 msgid "Help topic for {command_name} not found."
-msgstr ""
+msgstr "Тема довідки для {command_name} не знайдена."
 
 #: redbot/core/commands/help.py:798
 msgid "Command {command_name} has no subcommand named {not_found}."
-msgstr ""
+msgstr "Команда {command_name} не має підкоманди {not_found}."
 
 #: redbot/core/commands/help.py:903
 msgid "I couldn't send the help message to you in DM. Either you blocked me or you disabled DMs in this server."
-msgstr ""
+msgstr "Я не зміг надіслати вам допоміжне повідомлення в ПП. Ви заблокували мене, або ви вимкнули ПП на цьому сервері."
 
 #: redbot/core/commands/help.py:939
 #, docstring
@@ -186,5 +186,10 @@ msgid "\n"
 "    (Help) you know I need someone\n"
 "    (Help!)\n"
 "    "
-msgstr ""
+msgstr "\n"
+"    I need somebody\n"
+"    (Help) not just anybody\n"
+"    (Help) you know I need someone\n"
+"    (Help!)\n"
+"    "
 
