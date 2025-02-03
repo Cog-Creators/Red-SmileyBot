@@ -20,10 +20,16 @@ from redbot.core.utils._internal_utils import (
     create_backup as red_create_backup,
     cli_level_to_log_level,
 )
-from redbot.core import config, data_manager, _drivers
+from redbot.core import config, data_manager
+from redbot.core._config import migrate
 from redbot.core._cli import ExitCodes
 from redbot.core.data_manager import appdir, config_dir, config_file
-from redbot.core._drivers import BackendType, IdentifierData
+from redbot.core._drivers import (
+    BackendType,
+    IdentifierData,
+    get_driver_class,
+    get_driver_class_include_old,
+)
 
 conversion_log = logging.getLogger("red.converter")
 
@@ -211,7 +217,7 @@ def basic_setup(
     storage_type = get_storage_type(backend, interactive=interactive)
 
     default_dirs["STORAGE_TYPE"] = storage_type.value
-    driver_cls = _drivers.get_driver_class(storage_type)
+    driver_cls = get_driver_class(storage_type)
     default_dirs["STORAGE_DETAILS"] = driver_cls.get_config_details()
 
     if name in instance_data:
@@ -262,15 +268,15 @@ def get_target_backend(backend: str) -> BackendType:
 async def do_migration(
     current_backend: BackendType, target_backend: BackendType
 ) -> Dict[str, Any]:
-    cur_driver_cls = _drivers._get_driver_class_include_old(current_backend)
-    new_driver_cls = _drivers.get_driver_class(target_backend)
+    cur_driver_cls = get_driver_class_include_old(current_backend)
+    new_driver_cls = get_driver_class(target_backend)
     cur_storage_details = data_manager.storage_details()
     new_storage_details = new_driver_cls.get_config_details()
 
     await cur_driver_cls.initialize(**cur_storage_details)
     await new_driver_cls.initialize(**new_storage_details)
 
-    await config.migrate(cur_driver_cls, new_driver_cls)
+    await migrate(cur_driver_cls, new_driver_cls)
 
     await cur_driver_cls.teardown()
     await new_driver_cls.teardown()
@@ -284,7 +290,7 @@ async def create_backup(instance: str, destination_folder: Path = Path.home()) -
     if backend_type != BackendType.JSON:
         await do_migration(backend_type, BackendType.JSON)
     print("Backing up the instance's data...")
-    driver_cls = _drivers.get_driver_class()
+    driver_cls = get_driver_class()
     await driver_cls.initialize(**data_manager.storage_details())
     backup_fpath = await red_create_backup(destination_folder)
     await driver_cls.teardown()
@@ -320,7 +326,7 @@ async def remove_instance(
     if _create_backup is True:
         await create_backup(instance)
 
-    driver_cls = _drivers.get_driver_class(backend)
+    driver_cls = get_driver_class(backend)
     if delete_data is True:
         await driver_cls.initialize(**data_manager.storage_details())
         try:

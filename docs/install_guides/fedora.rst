@@ -12,7 +12,7 @@ Installing Red on Fedora Linux
 Installing the pre-requirements
 -------------------------------
 
-Fedora Linux 39 and above has all required packages available in official repositories. Install
+Fedora Linux 40 and above has all required packages available in official repositories. Install
 them with dnf:
 
 .. prompt:: bash

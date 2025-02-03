@@ -32,7 +32,7 @@ msgstr "此 cog 包含用於“清理”(刪除) 消息的指令。\n\n"
 
 #: redbot/cogs/cleanup/cleanup.py:58
 msgid "Try a smaller number instead."
-msgstr ""
+msgstr "請嘗試較小的數字。"
 
 #: redbot/cogs/cleanup/cleanup.py:61
 msgid "Are you sure you want to delete {number} messages?"
@@ -65,7 +65,13 @@ msgid "Delete the last X messages matching the specified text in the current cha
 "        - `<number>` The max number of messages to cleanup. Must be a positive integer.\n"
 "        - `<delete_pinned>` Whether to delete pinned messages or not. Defaults to False\n"
 "        "
-msgstr ""
+msgstr "刪除在當前頻道中匹配指定文字的最後 X 則訊息。\n\n"
+"         範例:\n"
+"         - `[p]cleanup text \"test\" 5`\n\n"
+"         記得使用雙引號。\n\n"
+"         **參數:**\n\n"
+"          - `<number>` 要清理的最大訊息數量。必須是正整數。\n"
+"        - `<delete_pinned>` 是否刪除置頂訊息。預設為否。        "
 
 #: redbot/cogs/cleanup/cleanup.py:257
 #, docstring
@@ -78,7 +84,15 @@ msgid "Delete the last X messages from a specified user in the current channel.\
 "        - `<number>` The max number of messages to cleanup. Must be a positive integer.\n"
 "        - `<delete_pinned>` Whether to delete pinned messages or not. Defaults to False\n"
 "        "
-msgstr ""
+msgstr "刪除在目前頻道中來自指定使用者的最後 X 則訊息\n\n"
+"        範例：\n"
+"        - `[p]cleanup user @Twentysix 2`\n"
+"        - `[p]cleanup user Red 6`\n\n"
+"        **參數：**\n\n"
+"        - `<user>` 要清除其留言的使用者。\n"
+"        - `<number>` 清理的最大訊息數量。必須是正整數。\n"
+"        - `<delete_pinned>` 是否刪除釘選訊息。預設為否。\n"
+"        "
 
 #: redbot/cogs/cleanup/cleanup.py:327
 #, docstring

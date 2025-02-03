@@ -21,6 +21,7 @@ from red_commons.logging import getLogger
 
 from redbot.core import data_manager, Config
 from redbot.core.i18n import Translator
+from redbot.core.utils.chat_formatting import humanize_list
 
 from . import managed_node
 from .errors import (
@@ -36,6 +37,7 @@ from .errors import (
     NoProcessFound,
     NodeUnhealthy,
 )
+from .managed_node import version_pins
 from .managed_node.ll_version import LAVALINK_BUILD_LINE, LavalinkVersion, LavalinkOldVersion
 from .utils import (
     get_max_allocation_size,
@@ -109,7 +111,7 @@ LAVALINK_BUILD_TIME_LINE: Final[Pattern] = re.compile(
 class ServerManager:
     LAVALINK_DOWNLOAD_URL: Final[str] = (
         "https://github.com/Cog-Creators/Lavalink-Jars/releases/download/"
-        f"{managed_node.JAR_VERSION}/"
+        f"{version_pins.JAR_VERSION}/"
         "Lavalink.jar"
     )
 
@@ -125,13 +127,21 @@ class ServerManager:
     _buildtime: ClassVar[Optional[str]] = None
     _java_exc: ClassVar[str] = "java"
 
-    def __init__(self, config: Config, cog: "Audio", timeout: Optional[int] = None) -> None:
+    def __init__(
+        self,
+        config: Config,
+        cog: "Audio",
+        timeout: Optional[int] = None,
+        download_timeout: Optional[int] = None,
+    ) -> None:
         self.ready: asyncio.Event = asyncio.Event()
+        self.downloaded: asyncio.Event = asyncio.Event()
         self._config = config
         self._proc: Optional[asyncio.subprocess.Process] = None  # pylint:disable=no-member
         self._shutdown: bool = False
         self.start_monitor_task = None
         self.timeout = timeout
+        self.download_timeout = download_timeout
         self.cog = cog
         self._args = []
         self._pipe_task = None
@@ -246,15 +256,29 @@ class ServerManager:
             if self._java_version is None:
                 extras = ""
             else:
-                extras = f" however you have version {self._java_version} (executable: {self._java_exc})"
+                version = ".".join(map(str, self._java_version))
+                extras = f" however you have version {version} (executable: {self._java_exc})"
+            supported_versions = humanize_list(
+                list(map(str, version_pins.SUPPORTED_JAVA_VERSIONS)),
+                locale="en-US",
+                style="or-short",
+            )
+            latest_version = str(version_pins.LATEST_SUPPORTED_JAVA_VERSION)
+            older_versions = humanize_list(
+                list(map(str, reversed(version_pins.OLDER_SUPPORTED_JAVA_VERSIONS))),
+                locale="en-US",
+                style="or-short",
+            )
             raise UnsupportedJavaException(
                 await replace_p_with_prefix(
                     self.cog.bot,
-                    f"The managed Lavalink node requires Java 17 or 11 to run{extras};\n"
-                    "Either install version 17 (or 11) and restart the bot or connect to an external Lavalink node "
-                    "(https://docs.discord.red/en/stable/install_guides/index.html)\n"
-                    "If you already have Java 17 or 11 installed then then you will need to specify the executable path, "
-                    "use '[p]llset java' to set the correct Java 17 or 11 executable.",
+                    f"The managed Lavalink node requires Java {supported_versions} to run{extras};\n"
+                    f"Either install version {latest_version} (or {older_versions})"
+                    " and restart the bot or connect to an external Lavalink node"
+                    " (https://docs.discord.red/en/stable/install_guides/index.html)\n"
+                    f"If you already have Java {supported_versions} installed"
+                    " then you will need to specify the executable path,"
+                    f" use '[p]llset java' to set the correct Java {supported_versions} executable.",
                 )  # TODO: Replace with Audio docs when they are out
             )
         java_xms, java_xmx = list((await self._config.java.all()).values())
@@ -292,7 +316,7 @@ class ServerManager:
             self._java_version = None
         else:
             self._java_version = await self._get_java_version()
-            self._java_available = self._java_version[0] in (11, 17)
+            self._java_available = self._java_version[0] in version_pins.SUPPORTED_JAVA_VERSIONS
             self._java_exc = java_exec
         return self._java_available, self._java_version
 
@@ -357,6 +381,7 @@ class ServerManager:
 
     async def _partial_shutdown(self) -> None:
         self.ready.clear()
+        self.downloaded.clear()
         if self._shutdown is True:
             # For convenience, calling this method more than once or calling it before starting it
             # does nothing.
@@ -377,7 +402,7 @@ class ServerManager:
                     # A 404 means our LAVALINK_DOWNLOAD_URL is invalid, so likely the jar version
                     # hasn't been published yet
                     raise LavalinkDownloadFailed(
-                        f"Lavalink jar version {managed_node.JAR_VERSION}"
+                        f"Lavalink jar version {version_pins.JAR_VERSION}"
                         " hasn't been published yet",
                         response=response,
                         should_retry=False,
@@ -414,6 +439,7 @@ class ServerManager:
 
         log.info("Successfully downloaded Lavalink.jar (%s bytes written)", format(nbytes, ","))
         await self._is_up_to_date()
+        self.downloaded.set()
 
     async def _is_up_to_date(self):
         if self._up_to_date is True:
@@ -464,7 +490,7 @@ class ServerManager:
         self._jvm = java["jvm"].decode()
         self._lavaplayer = lavaplayer["lavaplayer"].decode()
         self._buildtime = date
-        self._up_to_date = self._lavalink_version >= managed_node.JAR_VERSION
+        self._up_to_date = self._lavalink_version >= version_pins.JAR_VERSION
         return self._up_to_date
 
     async def maybe_download_jar(self):
@@ -484,11 +510,17 @@ class ServerManager:
             log.info(
                 "Lavalink version outdated, triggering update from %s to %s...",
                 self._lavalink_version,
-                managed_node.JAR_VERSION,
+                version_pins.JAR_VERSION,
             )
             await self._download_jar()
+        else:
+            self.downloaded.set()
 
-    async def wait_until_ready(self, timeout: Optional[float] = None):
+    async def wait_until_ready(
+        self, timeout: Optional[float] = None, download_timeout: Optional[float] = None
+    ):
+        download_timeout = download_timeout or self.download_timeout
+        await asyncio.wait_for(self.downloaded.wait(), timeout=download_timeout)
         await asyncio.wait_for(self.ready.wait(), timeout=timeout or self.timeout)
 
     async def start_monitor(self, java_path: str):
@@ -499,6 +531,7 @@ class ServerManager:
                 self._shutdown = False
                 if self._proc is None or self._proc.returncode is not None:
                     self.ready.clear()
+                    self.downloaded.clear()
                     await self._start(java_path=java_path)
                 while True:
                     await self.wait_until_ready(timeout=self.timeout)

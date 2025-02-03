@@ -394,7 +394,7 @@ msgstr "{display_name} 正在直播！"
 
 #: redbot/cogs/streams/streamtypes.py:227
 msgid "This stream will start <t:{time}:R>"
-msgstr ""
+msgstr "此直播將在 <t:{time}:R> 開始"
 
 #: redbot/cogs/streams/streamtypes.py:231
 msgid "This stream was scheduled for <t:{time}:R>"

@@ -16,7 +16,7 @@ jobs:
     needs: pr_stable_bump
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -73,7 +73,7 @@ jobs:
       milestone_number: ${{ steps.get_milestone_number.outputs.result }}
     steps:
       # Checkout repository and install Python
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v4
         with:

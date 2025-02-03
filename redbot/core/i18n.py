@@ -9,18 +9,27 @@ import discord
 
 from pathlib import Path
 from typing import Callable, TYPE_CHECKING, Union, Dict, Optional, TypeVar
-from contextvars import ContextVar
 
 import babel.localedata
 from babel.core import Locale
+
+from redbot.core import _i18n
+from redbot.core._i18n import (
+    current_locale as _current_locale,
+    current_regional_format as _current_regional_format,
+    set_contextual_locale as _set_contextual_locale,
+    set_contextual_regional_format as _set_contextual_regional_format,
+)
 
 if TYPE_CHECKING:
     from redbot.core.bot import Red
 
 
-__all__ = [
+__all__ = (
     "get_locale",
     "get_regional_format",
+    "set_contextual_locale",
+    "set_contextual_regional_format",
     "get_locale_from_guild",
     "get_regional_format_from_guild",
     "set_contextual_locales_from_guild",
@@ -28,12 +37,9 @@ __all__ = [
     "get_babel_locale",
     "get_babel_regional_format",
     "cog_i18n",
-]
+)
 
 log = logging.getLogger("red.i18n")
-
-_current_locale = ContextVar("_current_locale", default="en-US")
-_current_regional_format = ContextVar("_current_regional_format", default=None)
 
 WAITING_FOR_MSGID = 1
 IN_MSGID = 2
@@ -42,8 +48,6 @@ IN_MSGSTR = 4
 
 MSGID = 'msgid "'
 MSGSTR = 'msgstr "'
-
-_translators = []
 
 
 def get_locale() -> str:
@@ -55,18 +59,7 @@ def get_locale() -> str:
     str
         Current locale's language code with country code included, e.g. "en-US".
     """
-    return str(_current_locale.get())
-
-
-def set_locale(locale: str) -> None:
-    global _current_locale
-    _current_locale = ContextVar("_current_locale", default=locale)
-    reload_locales()
-
-
-def set_contextual_locale(locale: str) -> None:
-    _current_locale.set(locale)
-    reload_locales()
+    return _current_locale.get(_i18n.current_locale_default)
 
 
 def get_regional_format() -> str:
@@ -78,23 +71,55 @@ def get_regional_format() -> str:
     str
         Current regional format's language code with country code included, e.g. "en-US".
     """
-    if _current_regional_format.get() is None:
-        return str(_current_locale.get())
-    return str(_current_regional_format.get())
+    regional_format = _current_regional_format.get(_i18n.current_regional_format_default)
+    if regional_format is None:
+        return _current_locale.get(_i18n.current_locale_default)
+    return regional_format
 
 
-def set_regional_format(regional_format: Optional[str]) -> None:
-    global _current_regional_format
-    _current_regional_format = ContextVar("_current_regional_format", default=regional_format)
+def set_contextual_locale(language_code: str, /) -> str:
+    """
+    Set contextual locale (without regional format) to the given value.
+
+    Parameters
+    ----------
+    language_code: str
+        Locale's language code with country code included, e.g. "en-US".
+
+    Returns
+    -------
+    str
+        Standardized locale name.
+
+    Raises
+    ------
+    ValueError
+        Language code is invalid.
+    """
+    return _set_contextual_locale(language_code, verify_language_code=True)
 
 
-def set_contextual_regional_format(regional_format: Optional[str]) -> None:
-    _current_regional_format.set(regional_format)
+def set_contextual_regional_format(language_code: Optional[str], /) -> Optional[str]:
+    """
+    Set contextual regional format to the given value.
 
+    Parameters
+    ----------
+    language_code: str, optional
+        Contextual regional's language code with country code included, e.g. "en-US"
+        or ``None`` if regional format should inherit the contextual locale's value.
 
-def reload_locales() -> None:
-    for translator in _translators:
-        translator.load_translations()
+    Returns
+    -------
+    str
+        Standardized locale name or ``None`` if ``None`` was passed.
+
+    Raises
+    ------
+    ValueError
+        Language code is invalid.
+    """
+    return _set_contextual_regional_format(language_code, verify_language_code=True)
 
 
 async def get_locale_from_guild(bot: Red, guild: Optional[discord.Guild]) -> str:
@@ -151,8 +176,8 @@ async def set_contextual_locales_from_guild(bot: Red, guild: Optional[discord.Gu
     """
     locale = await get_locale_from_guild(bot, guild)
     regional_format = await get_regional_format_from_guild(bot, guild)
-    set_contextual_locale(locale)
-    set_contextual_regional_format(regional_format)
+    _set_contextual_locale(locale)
+    _set_contextual_regional_format(regional_format)
 
 
 def _parse(translation_file: io.TextIOWrapper) -> Dict[str, str]:
@@ -216,7 +241,7 @@ def _unescape(string):
     return string
 
 
-def get_locale_path(cog_folder: Path, extension: str) -> Path:
+def _get_locale_path(cog_folder: Path, extension: str) -> Path:
     """
     Gets the folder path containing localization files.
 
@@ -250,7 +275,7 @@ class Translator(Callable[[str], str]):
         self.cog_name = name
         self.translations = {}
 
-        _translators.append(self)
+        _i18n.translators.append(self)
 
         self.load_translations()
 
@@ -280,7 +305,7 @@ class Translator(Callable[[str], str]):
             # self.translations
             return
 
-        locale_path = get_locale_path(self.cog_folder, "po")
+        locale_path = _get_locale_path(self.cog_folder, "po")
         with contextlib.suppress(IOError, FileNotFoundError):
             with locale_path.open(encoding="utf-8") as file:
                 self._parse(file)

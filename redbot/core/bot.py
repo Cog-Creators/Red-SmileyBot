@@ -38,7 +38,7 @@ import discord
 from discord.ext import commands as dpy_commands
 from discord.ext.commands import when_mentioned_or
 
-from . import Config, i18n, app_commands, commands, errors, _drivers, modlog, bank
+from . import Config, _i18n, i18n, app_commands, commands, errors, _drivers, modlog, bank
 from ._cli import ExitCodes
 from ._cog_manager import CogManager, CogManagerUI
 from .core_commands import Core
@@ -887,7 +887,12 @@ class Red(
             if ctx.channel.type is not discord.ChannelType.private:
                 raise TypeError("Can't check permissions for non-private PartialMessageable.")
             is_private = True
-        perms = ctx.channel.permissions_for(author)
+        if isinstance(ctx, discord.Message):
+            perms = ctx.channel.permissions_for(author)
+        else:
+            # `permissions` attribute will use permissions from the interaction when possible,
+            # or `ctx.channel.permissions_for(author)` for non-interaction contexts.
+            perms = ctx.permissions
         surpass_ignore = (
             is_private
             or perms.manage_guild
@@ -1141,9 +1146,9 @@ class Red(
             self.owner_ids.add(self._owner_id_overwrite)
 
         i18n_locale = await self._config.locale()
-        i18n.set_locale(i18n_locale)
+        _i18n.set_global_locale(i18n_locale)
         i18n_regional_format = await self._config.regional_format()
-        i18n.set_regional_format(i18n_regional_format)
+        _i18n.set_global_regional_format(i18n_regional_format)
 
     async def _pre_connect(self) -> None:
         """
@@ -1797,6 +1802,82 @@ class Red(
             "message": curr_message_commands,
             "user": curr_user_commands,
         }
+
+    async def get_app_command_id(
+        self,
+        command_name: str,
+        command_type: discord.AppCommandType = discord.AppCommandType.chat_input,
+    ) -> Optional[int]:
+        """
+        Get the cached ID for a particular app command.
+
+        Pulls from Red's internal cache of app command IDs, which is updated
+        when the ``[p]slash sync`` command is ran on this instance
+        or `bot.tree.sync() <RedTree.sync()>` is called.
+        Does not keep track of guild-specific app commands.
+
+        Parameters
+        ----------
+        command_name : str
+            Name of the command to get the ID of.
+        command_type : `discord.AppCommandType`
+            Type of the command to get the ID of.
+
+        Returns
+        -------
+        Optional[int]
+            The cached of the specified app command or ``None``,
+            if the command does not exist or Red does not know the ID
+            for that app command.
+        """
+        if command_type is discord.AppCommandType.chat_input:
+            cfg = self._config.enabled_slash_commands()
+        elif command_type is discord.AppCommandType.message:
+            cfg = self._config.enabled_message_commands()
+        elif command_type is discord.AppCommandType.user:
+            cfg = self._config.enabled_user_commands()
+        else:
+            raise TypeError("command type must be one of chat_input, message, user")
+
+        curr_commands = await cfg
+        return curr_commands.get(command_name, None)
+
+    async def get_app_command_mention(
+        self,
+        command_name: str,
+        command_type: discord.AppCommandType = discord.AppCommandType.chat_input,
+    ) -> Optional[str]:
+        """
+        Get the string that allows you to mention a particular app command.
+
+        Pulls from Red's internal cache of app command IDs, which is updated
+        when the ``[p]slash sync`` command is ran on this instance
+        or `bot.tree.sync() <RedTree.sync()>` is called.
+        Does not keep track of guild-specific app commands.
+
+        Parameters
+        ----------
+        command_name : str
+            Name of the command to get the mention for.
+        command_type : `discord.AppCommandType`
+            Type of the command to get the mention for.
+
+        Returns
+        -------
+        Optional[str]
+            The string that allows you to mention the specified app command
+            or ``None``, if the command does not exist or Red does not know the ID
+            for that app command.
+        """
+        # Empty string names will break later code and can't exist as commands, exit early
+        if not command_name:
+            raise ValueError("command name must be a non-empty string")
+        # Account for mentioning subcommands by fetching from the cache based on the base command
+        base_command = command_name.split(" ")[0]
+        command_id = await self.get_app_command_id(base_command, command_type)
+        if command_id is None:
+            return None
+        return f"</{command_name}:{command_id}>"
 
     async def is_automod_immune(
         self, to_check: Union[discord.Message, commands.Context, discord.abc.User, discord.Role]

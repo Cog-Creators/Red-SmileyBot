@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # Checkout repository and install Python
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -57,7 +57,7 @@ jobs:
     name: Build package
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -75,7 +75,7 @@ jobs:
         run: python -m twine check dist/*
 
       - name: Upload packaged distributions
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-output
           path: ./dist
@@ -84,7 +84,7 @@ jobs:
     name: Generate default application.yml
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -102,7 +102,7 @@ jobs:
           python .github/workflows/scripts/get_default_ll_server_config.py "release_assets/$APP_YML_FILE"
 
       - name: Upload default application.yml
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ll-default-server-config
           path: ./release_assets
@@ -120,13 +120,13 @@ jobs:
       id-token: write
     steps:
       - name: Download packaged distributions
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: build-output
           path: dist/
 
       - name: Download default application.yml
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: ll-default-server-config
           path: release_assets/
@@ -160,7 +160,7 @@ jobs:
         run: |
           echo "BASE_BRANCH=${TAG_BASE_BRANCH#'refs/heads/'}" >> $GITHUB_ENV
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: ${{ env.BASE_BRANCH }}
       - name: Set up Python

@@ -11,7 +11,7 @@ except ModuleNotFoundError:
     asyncpg = None
 
 from ... import data_manager, errors
-from ..base import BaseDriver, IdentifierData, ConfigCategory
+from ..base import BaseDriver, IdentifierData, ConfigCategory, MissingExtraRequirements
 from ..log import log
 
 __all__ = ["PostgresDriver"]
@@ -41,7 +41,7 @@ class PostgresDriver(BaseDriver):
     @classmethod
     async def initialize(cls, **storage_details) -> None:
         if asyncpg is None:
-            raise errors.MissingExtraRequirements(
+            raise MissingExtraRequirements(
                 "Red must be installed with the [postgres] extra to use the PostgreSQL driver"
             )
         cls._pool = await asyncpg.create_pool(**storage_details)
