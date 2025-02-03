@@ -1619,16 +1619,17 @@ class Downloader(commands.Cog):
     ) -> Tuple[Set[str], str]:
         current_cog_versions_map = {cog.name: cog for cog in current_cog_versions}
         failed_reqs = await self._install_requirements(cogs_to_update)
-        if failed_reqs:
-            return (
-                set(),
-                (
-                    _("Failed to install requirements: ")
-                    if len(failed_reqs) > 1
-                    else _("Failed to install the requirement: ")
-                )
-                + humanize_list(tuple(map(inline, failed_reqs))),
-            )
+        if failed_reqs:  # Skip cog if a requirement failed to install
+            failed_req_cogs = set()
+            for req in failed_reqs:
+                failed_req_cogs |= {cog for cog in cogs_to_update if req in cog.requirements}
+
+            # Make a new cogs_to_update without the cogs that have failed requirements
+            cogs_to_update_new = ()
+            for cog in cogs_to_update:
+                if cog not in failed_req_cogs:
+                    cogs_to_update_new += (cog,)
+            cogs_to_update = cogs_to_update_new
         installed_cogs, failed_cogs = await self._install_cogs(cogs_to_update)
         installed_libs, failed_libs = await self._reinstall_libraries(libs_to_update)
         await self._save_to_installed(installed_cogs + installed_libs)
@@ -1667,6 +1668,18 @@ class Downloader(commands.Cog):
                 message += _(
                     "\nYou may need to resync your slash commands with `{prefix}slash sync`."
                 ).format(prefix=ctx.prefix)
+        if failed_reqs:
+            message += (
+                _("\nFailed to install requirements: ")
+                if len(failed_reqs) > 1
+                else _("\nFailed to install the requirement: ")
+            ) + humanize_list(tuple(map(inline, failed_reqs)))
+            if failed_req_cogs:
+                message += (
+                    _("\nThe following cogs were not updated: ")
+                    if len(failed_req_cogs) > 1
+                    else _("\nThe following cog was not updated: ")
+                ) + humanize_list(tuple(map(inline, {cog.name for cog in failed_req_cogs})))
         if failed_cogs:
             cognames = [cog.name for cog in failed_cogs]
             message += (
@@ -1676,6 +1689,18 @@ class Downloader(commands.Cog):
             ) + humanize_list(tuple(map(inline, cognames)))
         if not cogs_to_update:
             message = _("No cogs were updated.")
+            if failed_reqs:
+                message += (
+                    _("\nFailed to install requirements: ")
+                    if len(failed_reqs) > 1
+                    else _("\nFailed to install the requirement: ")
+                ) + humanize_list(tuple(map(inline, failed_reqs)))
+                if failed_req_cogs:
+                    message += (
+                        _("\nThe following cogs were not updated: ")
+                        if len(failed_req_cogs) > 1
+                        else _("\nThe following cog was not updated: ")
+                    ) + humanize_list(tuple(map(inline, {cog.name for cog in failed_req_cogs})))
         if installed_libs:
             message += (
                 _(
