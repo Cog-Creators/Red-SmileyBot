@@ -26,7 +26,7 @@ Changes
 - **Core - Dependencies** - Red's dependencies have been bumped (:issue:`6512`)
 - **Core - OS Support** - openSUSE Leap 15.5 is no longer supported as it has already reached its end of life (:issue:`6512`)
 - **Cogs - Audio** - The ``[p]audioset logs`` command can now be used in DMs (:issue:`6499`)
-- **Cogs - Trivia - Lists** - Added subnet masks in CIDR notations as answers to subnet-related questions in the ``computers`` trivia (:issue:`6499`)
+- **Cogs - Trivia - Lists** - Added subnet masks in CIDR notations as answers to subnet-related questions in the ``computers`` trivia (:issue:`6495`)
 
 Fixes
 *****
